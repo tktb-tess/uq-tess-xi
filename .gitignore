@@ -23,6 +23,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Rust
-wasm/target/debug/
+wasm/target/
 
 .arc/
