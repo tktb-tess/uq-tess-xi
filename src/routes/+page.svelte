@@ -1,5 +1,5 @@
 <main class="flex flex-col gap-y-1 justify-center items-center min-h-screen overflow-clip">
-    <p class="text-8xl font-serif italic">Hallo, Welt!</p>
+    <p class="text-8xl font-serif italic text-nowrap">Hallo, Welt!</p>
 </main>
 
 <style>
