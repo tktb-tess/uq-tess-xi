@@ -45,11 +45,12 @@
 @theme {
     --font-sans: 'InterVariable', sans-serif;
     --font-serif: 'CharisSIL', serif;
-    
     --color-mnlila: oklch(17.62% .0962 296);
+    --color-llila: oklch(91.76% .0444 296);
     --gutter: calc(var(--spacing) * 4);
     --ngutter: calc(var(--gutter) * -1);
     --link-transition-dur: 120ms;
+    --tracking-ultra: 3rem;
 }
 
 @layer base {
