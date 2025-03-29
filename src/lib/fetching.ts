@@ -22,7 +22,7 @@ export type CotecMetadata = Readonly<{
     type: readonly string[];
 }>;
 
-type CotecContent = {
+export type CotecContent = {
     messier: unknown;
     name: {
         normal: string[];
