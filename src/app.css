@@ -43,9 +43,10 @@
 }
 
 @theme {
-    --font-sans: 'InterVariable', sans-serif;
-    --font-serif: 'CharisSIL', serif;
-    --color-mnlila: oklch(17.62% .0962 296);
+    --font-sans: 'InterVariable', var(--stylus-font-sans, sans-serif);
+    --font-serif: 'CharisSIL', var(--stylus-font-serif, serif);
+    --color-mnlila: oklch(.18 .0957 296);
+    --color-mnlila2: oklch(.36 .1554 296);
     --color-llila: oklch(91.76% .0444 296);
     --gutter: calc(var(--spacing) * 4);
     --ngutter: calc(var(--gutter) * -1);
