@@ -1,16 +1,10 @@
 import { parseToJSON } from "$lib/fetching";
-
+const [metadata, contents] = await parseToJSON();
 
 export const GET = async () => {
     console.log('receive GET request');
-    const [metadata, contents] = await parseToJSON();
-    
-    const ctc = {
-        metadata,
-        contents,
-    }
 
-    const body = new Blob([JSON.stringify(ctc)], { type: 'application/json' });
+    const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
 
     return new Response(body);
 };
