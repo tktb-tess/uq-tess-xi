@@ -6,8 +6,8 @@
 <header
 	class="min-h-screen bg-gradient-to-b from-mnlila2 to-mnlila grid grid-cols-1 gap-y-6 place-content-center place-items-center"
 >
-	<TessLogo class="fill-white w-[300px] h-auto" fadein />
-	<h1 class="text-white font-semibold font-serif text-5xl lg:text-6xl xl:text-7xl text-center">
+	<TessLogo class="fill-white w-[200px] lg:w-[300px] h-auto" fadein />
+	<h1 class="text-white font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠　久　肆　方　体
 	</h1>
 </header>
