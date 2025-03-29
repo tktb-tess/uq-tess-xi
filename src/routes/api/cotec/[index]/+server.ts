@@ -1,5 +1,6 @@
 import { parseToJSON } from "$lib/fetching";
 import { getRndInt } from "$lib/util.js";
+import { error } from "@sveltejs/kit";
 
 const [, contents] = await parseToJSON();
 
@@ -18,7 +19,8 @@ export const GET = async ({ params }) => {
 
             return new Response(body);
         } else {
-            return new Response('Not Found', { status: 404 });
+            console.log('404 Not Found');
+            error(404, { message: 'Not Found' });
         }
     }
 };
