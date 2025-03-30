@@ -7,7 +7,7 @@ const config = {
 		vitePreprocess(),
 	],
 	kit: { 
-		adapter: adapter() 
+		adapter: adapter()
 	},
 	extensions: [
 		'.svelte',

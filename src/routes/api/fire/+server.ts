@@ -10,9 +10,12 @@ const getPrimeB64 = (bit_len: number) => {
 
 };
 
-
-
 export const GET = ({ url }) => {
+    console.log('receive GET request at fire');
+
+    const headers = new Headers({
+        'Access-Control-Allow-Origin': '*',
+    });
 
     const bit_len = (() => {
         const bit_len = Number.parseInt(url.searchParams.get('length') ?? '');
@@ -34,5 +37,5 @@ export const GET = ({ url }) => {
 
     const body = new Blob([JSON.stringify({ primes: res })], { type: 'application/json' });
     
-    return new Response(body);
+    return new Response(body, { headers });
 };
