@@ -10,17 +10,17 @@ const isMoyune = (str: string): str is MoyuneClass => {
     return false;
 };
 
-export type CotecMetadata = Readonly<{
-    datasize: readonly [number, number];
+export type CotecMetadata = {
+    datasize: [number, number];
     title: string;
-    author: readonly string[];
-    date_created: Readonly<Date>;
-    date_last_updated: Readonly<Date>;
-    license: Readonly<{ name: string, content: string }>;
+    author: string[];
+    date_created: Date;
+    date_last_updated: Date;
+    license: { name: string, content: string };
     advanced: number;
-    label: readonly string[];
-    type: readonly string[];
-}>;
+    label: string[];
+    type: string[];
+};
 
 export type CotecContent = {
     messier: unknown;
@@ -101,7 +101,7 @@ const fetchConlangList = async () => {
     return parsed;
 };
 
-export const parseToJSON = async (): Promise<[CotecMetadata, readonly Readonly<CotecContent>[]]> => {
+export const parseToJSON = async (): Promise<[Readonly<CotecMetadata>, readonly Readonly<CotecContent>[]]> => {
 
     const contents: CotecContent[] = [];
 
@@ -129,7 +129,7 @@ export const parseToJSON = async (): Promise<[CotecMetadata, readonly Readonly<C
     const label = parsed_data[1];
     const type = parsed_data[2];
 
-    const metadata: CotecMetadata = {
+    const metadata = {
         datasize,
         title,
         author,
@@ -139,7 +139,7 @@ export const parseToJSON = async (): Promise<[CotecMetadata, readonly Readonly<C
         advanced,
         label,
         type
-    } as const;
+    } as const satisfies CotecMetadata;
 
     // messier,name,kanji,desc,creator,period,site,twitter,dict,grammar,world,category,moyune,cla,part,example,script
     for (let i = 3; i < parsed_data.length - 1; i++) {

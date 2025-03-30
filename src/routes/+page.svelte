@@ -8,7 +8,7 @@
 >
 	<TessLogo class="fill-white w-[200px] lg:w-[300px] h-auto" fadein />
 	<h1 class="text-white font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
-		悠　久　肆　方　体
+		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
 </header>
 

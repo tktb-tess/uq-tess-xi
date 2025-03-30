@@ -12,8 +12,10 @@ export const GET = async ({ url }) => {
 
     if (!Number.isFinite(index)) {
         content = contents[getRndInt(0, contents.length)];
+
     } else if (index >= 0 && index < contents.length) {
         content = contents[index];
+
     } else {
         console.log('404 not found');
         error(404, { message: 'no langs found' });
@@ -23,3 +25,5 @@ export const GET = async ({ url }) => {
 
     return new Response(body);
 };
+
+
