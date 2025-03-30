@@ -13,8 +13,6 @@ export default defineConfig({
 		open: '/.',
 	},
 	optimizeDeps: {
-		exclude: [
-			
-		],
+		exclude: [],
 	}
 });

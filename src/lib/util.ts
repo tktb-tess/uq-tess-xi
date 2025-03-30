@@ -353,3 +353,17 @@ export const parseCSV = (csv: string) => {
 
     return rows;
 }
+
+/**
+ * 指定ビット長の確率的素数を返す (64ビット未満は確定的)
+ * @param bit_len ビット長
+ * @returns 
+ */
+export const getRandPrime = (bit_len: number) => {
+    
+    while (true) {
+        const p = getRandBigInt(bit_len, true);
+        if (millerRabin(p)) return p;
+    }
+};
+
