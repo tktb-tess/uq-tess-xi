@@ -1,18 +1,32 @@
 import { parseToJSON } from "$lib/fetching";
-const [metadata, contents] = await parseToJSON();
 
-export const GET = async ({ url }) => {
+
+const allowed_origins = [
+    'https://conlang-gacha.vercel.app',
+    'http://localhost:5173',
+    'https://www.google.com',
+] as const;
+
+export const GET = async ({ url, request, setHeaders }) => {
     console.log('receive GET request');
 
-    const headers = new Headers({
-        'Access-Control-Allow-Origin': 'https://conlang-gacha.vercel.app, http://localhost:5173',
+    const origin = request.headers.get('Origin')!;
+
+    allowed_origins.forEach((allowed) => {
+        if (allowed === origin) {
+            setHeaders({
+                'Access-Control-Allow-Origin': origin,
+            });
+        }
     });
+
+    const [metadata, contents] = await parseToJSON();
 
     const err = url.searchParams.get('forbidden');
 
-    if (err) return new Response('!', { headers, status: 403 });
+    if (err) return new Response('!', { status: 403 });
 
     const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
     
-    return new Response(body, { headers });
+    return new Response(body);
 };
