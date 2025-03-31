@@ -5,12 +5,12 @@ export const GET = async ({ url }) => {
     console.log('receive GET request');
 
     const headers = new Headers({
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://conlang-gacha.vercel.app',
     });
 
     const err = url.searchParams.get('forbidden');
 
-    if (err === 'true') return new Response('!', { headers, status: 403 });
+    if (err) return new Response('!', { headers, status: 403 });
 
     const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
     
