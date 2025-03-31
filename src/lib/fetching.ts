@@ -14,8 +14,8 @@ export type CotecMetadata = {
     datasize: [number, number];
     title: string;
     author: string[];
-    date_created: Date;
-    date_last_updated: Date;
+    date_created: string;
+    date_last_updated: string;
     license: { name: string, content: string };
     advanced: number;
     label: string[];
@@ -117,8 +117,8 @@ export const parseToJSON = async (): Promise<[Readonly<CotecMetadata>, readonly 
 
     const title = row_meta[1];
     const author = row_meta[2].split(',').map((str) => str.trim());
-    const date_created = new Date(row_meta[3]);
-    const date_last_updated = new Date(row_meta[4]);
+    const date_created = row_meta[3];
+    const date_last_updated = row_meta[4];
     const license = { name: row_meta[5], content: row_meta[6] } as const;
     const advanced = Number.parseInt(row_meta[7]);
 
