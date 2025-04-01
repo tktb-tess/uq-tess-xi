@@ -4,6 +4,10 @@
 	import '../app.css';
 </script>
 
+<svelte:head>
+	<title>悠久肆方体</title>
+</svelte:head>
+
 <header
 	class="min-h-screen bg-gradient-to-b from-mnlila2 to-mnlila grid grid-cols-1 gap-y-6 place-content-center place-items-center"
 >
