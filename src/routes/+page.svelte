@@ -69,7 +69,7 @@
 		<ul>
 			<li>人工言語作成者に50の質問</li>
 			<li>古英語の動詞活用まとめ（準備中）</li>
-			<li>人工言語ガチャ …日本語圏の人工言語をランダムに1つ表示する。</li>
+			<li><ExtLink href="https://conlang-gacha.vercel.app" text="人工言語ガチャ" /> …日本語圏の人工言語をランダムに1つ表示する。</li>
 		</ul>
 	</section>
 	<section>
