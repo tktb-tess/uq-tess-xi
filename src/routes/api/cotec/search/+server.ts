@@ -1,5 +1,5 @@
-import { parseToJSON, type CotecContent } from "$lib/fetching";
-import { getRndInt } from "$lib/util.js";
+import { parseToJSON, type CotecContent } from "$lib/modules/fetching";
+import { getRndInt } from "$lib/modules/util.js";
 import { error } from "@sveltejs/kit";
 
 const [, contents] = await parseToJSON();

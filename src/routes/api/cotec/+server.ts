@@ -1,4 +1,4 @@
-import { parseToJSON } from "$lib/fetching";
+import { parseToJSON } from "$lib/modules/fetching";
 
 const allowed_origins = [
     'https://conlang-gacha.vercel.app',
@@ -6,7 +6,7 @@ const allowed_origins = [
 ] as const;
 
 export const GET = async ({ url, request, setHeaders }) => {
-    console.log('receive GET request');
+    console.log('receive GET request at /cotec');
 
     const origin = request.headers.get('Origin');
 

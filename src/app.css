@@ -3,73 +3,107 @@
 /* font-face settings */
 
 @font-face {
-    font-family: 'InterVariable';
-    font-style: normal;
-    src: local('Inter'), url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2');
+	font-family: 'InterVariable';
+	font-style: normal;
+	src:
+		local('Inter'),
+		url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'InterVariable';
-    font-style: italic;
-    src: local('Inter Italic'), url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2');
+	font-family: 'InterVariable';
+	font-style: italic;
+	src:
+		local('Inter Italic'),
+		url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'CharisSIL';
-    font-weight: 100 500;
-    font-style: normal;
-    src: local('Charis SIL'), url('/woff2/CharisSIL-Regular.woff2') format('woff2');
+	font-family: 'CharisSIL';
+	font-weight: 100 500;
+	font-style: normal;
+	src:
+		local('Charis SIL'),
+		url('/woff2/CharisSIL-Regular.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'CharisSIL';
-    font-weight: 100 500;
-    font-style: italic;
-    src: local('Charis SIL Italic'), url('/woff2/CharisSIL-Italic.woff2') format('woff2');
+	font-family: 'CharisSIL';
+	font-weight: 100 500;
+	font-style: italic;
+	src:
+		local('Charis SIL Italic'),
+		url('/woff2/CharisSIL-Italic.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'CharisSIL';
-    font-weight: 600 900;
-    font-style: normal;
-    src: local('Charis SIL Bold'), url('/woff2/CharisSIL-Bold.woff2') format('woff2');
+	font-family: 'CharisSIL';
+	font-weight: 600 900;
+	font-style: normal;
+	src:
+		local('Charis SIL Bold'),
+		url('/woff2/CharisSIL-Bold.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: 'CharisSIL';
-    font-weight: 600 900;
-    font-style: italic;
-    src: local('Charis SIL Bold Italic'), url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
+	font-family: 'CharisSIL';
+	font-weight: 600 900;
+	font-style: italic;
+	src:
+		local('Charis SIL Bold Italic'),
+		url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
 }
 
 @theme {
-    --font-sans: 'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
-    --font-serif: 'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho', 'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
-    --color-mnlila: oklch(.18 .0957 296);
-    --color-mnlila2: oklch(.36 .1554 296);
-    --color-llila: oklch(91.76% .0444 296);
-    --gutter: calc(var(--spacing) * 4);
-    --ngutter: calc(var(--gutter) * -1);
-    --link-transition-dur: 120ms;
-    --tracking-ultra: 3rem;
+	--font-sans:
+		'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
+		'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+	--font-serif:
+		'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
+		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+	--color-mnlila: oklch(0.18 0.0957 296);
+	--color-mnlila2: oklch(0.36 0.1554 296);
+	--color-llila: oklch(91.76% 0.0444 296);
+	--gutter: calc(var(--spacing) * 4);
+	--ngutter: calc(var(--gutter) * -1);
+	--link-transition-dur: 120ms;
+	--tracking-ultra: 3rem;
 }
 
 @layer base {
-    a {
-        color: var(--color-blue-600);
-        transition: color var(--link-transition-dur) ease-in-out;
-    }
+	a {
+		@apply text-blue-700 transition-colors hover:text-blue-400;
+	}
 
-    @media (hover: hover) and (pointer: fine) {
-        a:hover {
-            color: var(--color-blue-950);
-        }
-    }
+	button {
+		@apply cursor-pointer;
+	}
 
-    button {
-        cursor: pointer;
-    }
+	h2,
+	h3,
+	p,
+	ul {
+		@apply mb-3 leading-[1.5];
+	}
+
+	h2,
+	h3 {
+		@apply text-mnlila font-serif font-bold;
+	}
+
+	h2 {
+		@apply text-3xl text-center border-b;
+	}
+
+	h2#subtitle {
+		@apply border-none my-8;
+	}
+
+	ul {
+		list-style: '\2023';
+
+		li {
+			@apply ms-3 ps-1;
+		}
+	}
 }
-
-
-

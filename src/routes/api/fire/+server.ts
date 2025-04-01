@@ -1,4 +1,4 @@
-import { getRandPrime } from '$lib/util.js';
+import { getRandPrime } from '$lib/modules/util.js';
 import { Buffer } from 'node:buffer';
 
 const getPrimeB64 = (bit_len: number) => {
@@ -11,7 +11,7 @@ const getPrimeB64 = (bit_len: number) => {
 };
 
 export const GET = ({ url }) => {
-    console.log('receive GET request at fire');
+    console.log('receive GET request at /fire');
 
     const bit_len = (() => {
         const bit_len = Number.parseInt(url.searchParams.get('length') ?? '');

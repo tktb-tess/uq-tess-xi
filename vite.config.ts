@@ -4,15 +4,11 @@ import { defineConfig } from 'vite';
 import wasm from 'vite-plugin-wasm';
 
 export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		sveltekit(),
-		wasm(),
-	],
+	plugins: [tailwindcss(), sveltekit(), wasm()],
 	server: {
-		open: '/.',
+		open: '/.'
 	},
 	optimizeDeps: {
-		exclude: [],
+		exclude: []
 	}
 });
