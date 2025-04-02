@@ -1,15 +1,15 @@
-import { parseToJSON } from "$lib/modules/fetching";
+import { parseToJSON } from '$lib/modules/fetching';
 
 export const GET = async ({ url }) => {
-    console.log('receive GET request at /cotec');
+	console.log('receive GET request at /cotec');
 
-    const [metadata, contents] = await parseToJSON();
+	const [metadata, contents] = await parseToJSON();
 
-    const err = url.searchParams.get('forbidden');
+	const fb = url.searchParams.get('forbidden');
 
-    if (err) return new Response('!', { status: 403 });
+	if (fb) return new Response('!', { status: 403 });
 
-    const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
-    
-    return new Response(body);
+	const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
+
+	return new Response(body);
 };

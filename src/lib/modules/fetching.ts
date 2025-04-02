@@ -49,7 +49,7 @@ export type CotecContent = {
     script: string[];
 };
 
-const ctcurl = "https://kaeru2193.github.io/Conlang-List-Works/conlinguistics-wiki-list.ctc";
+const ctcurl = 'https://kaeru2193.github.io/Conlang-List-Works/conlinguistics-wiki-list.ctc';
 
 /** by ChatGPT */
 const parseCSV = (csvString: string) => {
@@ -95,19 +95,16 @@ const fetchConlangList = async () => {
         throw new Error(`failed to fetch!\nresponse status: ${resp.status}`);
     }
 
-    const raw = await resp.text();
-    const parsed = parseCSV(raw);
-
-    return parsed;
+    return resp.text();
 };
 
 export const parseToJSON = async (): Promise<[Readonly<CotecMetadata>, readonly Readonly<CotecContent>[]]> => {
 
     const contents: CotecContent[] = [];
 
-    const parsed_data = await fetchConlangList();
+    const raw = await fetchConlangList();
+    const parsed_data = parseCSV(raw);
     const row_meta = parsed_data[0];
-
 
     // メタデータ
     const datasize = ((): [number, number] => {
@@ -228,7 +225,6 @@ export const parseToJSON = async (): Promise<[Readonly<CotecMetadata>, readonly 
         // 辞書・文法のsiteをdict, grammarにパース
         if (cotec_one_content.site) {
 
-
             cotec_one_content.site.forEach((elem) => {
                 if (typeof (elem) !== 'object' || Array.isArray(elem)) return;
 
@@ -282,7 +278,7 @@ export const parseToJSON = async (): Promise<[Readonly<CotecMetadata>, readonly 
                     if (elem.content) {
                         const clav3_regex = /^(?<dialect>~|[a-z]{2})_(?<language>[a-z]{2})_(?<family>~|[a-z]{3})_(?<creator>[a-z]{3})$/;
                         const match = clav3_regex.exec(elem.content);
-
+                        
                         if (match && match.groups) {
                             const { dialect, language, family, creator } = match.groups;
 

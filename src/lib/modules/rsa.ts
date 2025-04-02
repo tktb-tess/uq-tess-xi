@@ -8,9 +8,9 @@ const e = 65537n;
 
 export default class RSA {
 
-    private readonly p;
-    private readonly q;
-    private readonly d;
+    readonly #p;
+    readonly #q;
+    readonly #d;
 
     get [Symbol.toStringTag]() {
         return RSA.name;
@@ -39,8 +39,8 @@ export default class RSA {
                 if (counter > 100000) throw Error('failed to construct.');
             }
 
-            this.p = p_;
-            this.q = q_;
+            this.#p = p_;
+            this.#q = q_;
 
             // λ(pq) = LCM(p-1, q-1) = (p-1) * (q-1) / GCD(p-1, q-1)
 
@@ -56,7 +56,7 @@ export default class RSA {
             // 互いに素でなければ選びなおし
             if (gcd !== 1n) continue loop;
 
-            this.d = (() => {
+            this.#d = (() => {
                 let d_ = x;
                 while (d_ < 0n) d_ += lambda;
                 return d_;
@@ -71,12 +71,12 @@ export default class RSA {
      * @returns 
      */
     toString(radix?: number) {
-        const n = this.p * this.q;
+        const n = this.#p * this.#q;
         return `n: ${n.toString(radix)}\ne: ${e.toString(radix)}`;
     }
 
     toJSON() {
-        let n_hexstr = (this.p * this.q).toString(16);
+        let n_hexstr = (this.#p * this.#q).toString(16);
         if (n_hexstr.length % 2 === 1) n_hexstr = '0' + n_hexstr;
 
         const n_bin = Uint8Array.from(n_hexstr.match(/.{2}/g) ?? [], d => Number.parseInt(d, 16));
@@ -92,7 +92,7 @@ export default class RSA {
     }
 
     toBin() {
-        let n_hexstr = (this.p * this.q).toString(16);
+        let n_hexstr = (this.#p * this.#q).toString(16);
         if (n_hexstr.length & 1) n_hexstr = '0' + n_hexstr;
 
         let e_hexstr = e.toString(16);
@@ -109,7 +109,7 @@ export default class RSA {
      * @returns Base64形式の暗号文
      */
     encrypt(text: string) {
-        const radix = this.p * this.q;
+        const radix = this.#p * this.#q;
         const utf8 = encoder.encode(text);
         const m_hexstr = Array.from(utf8, n => n.toString(16).padStart(2, '0')).join('');
         let m_bigint = BigInt('0x' + m_hexstr);
@@ -145,7 +145,7 @@ export default class RSA {
      */
     decrypt(base64: string) {
 
-        const radix = this.p * this.q;
+        const radix = this.#p * this.#q;
         const c_bin = new Uint8Array(Base64.b64ToBin(base64));
         const c_hexstr = Array.from(c_bin, n => n.toString(16).padStart(2, '0')).join('');
         let c_bigint = BigInt('0x' + c_hexstr);
@@ -155,7 +155,7 @@ export default class RSA {
         while (c_bigint > 0n) {
             const c_one = c_bigint % radix;
 
-            const m_one = modPow(c_one, this.d, radix);
+            const m_one = modPow(c_one, this.#d, radix);
 
             m_arr.push(m_one);
 

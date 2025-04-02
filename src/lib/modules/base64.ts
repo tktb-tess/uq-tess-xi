@@ -3,20 +3,20 @@ const decoder = new TextDecoder();
 
 export default class Base64<T extends ArrayBufferLike = ArrayBufferLike> {
 
-    readonly buffer;
+    #buffer;
 
     constructor(data: string | T) {
 
         if (typeof data === 'string') {
-            this.buffer = Base64.b64ToBin(data) as T;
+            this.#buffer = Base64.b64ToBin(data) as T;
         } else {
-            this.buffer = data;
+            this.#buffer = data;
         }
         
     };
 
     get base64() {
-        return Base64.binToB64(this.buffer);
+        return Base64.binToB64(this.#buffer);
     }
 
     toString() {
@@ -24,11 +24,11 @@ export default class Base64<T extends ArrayBufferLike = ArrayBufferLike> {
     }
 
     getUint8() {
-        return new Uint8Array(this.buffer);
+        return new Uint8Array(this.#buffer);
     }
 
     getDataView() {
-        return new DataView(this.buffer);
+        return new DataView(this.#buffer);
     }
 
     toJSON() {
@@ -90,21 +90,4 @@ export default class Base64<T extends ArrayBufferLike = ArrayBufferLike> {
         return Base64.binToB64(hash.buffer);
     }
 }
-
-declare global {
-    interface ArrayBuffer {
-        toString(): string;
-    }
-    interface SharedArrayBuffer {
-        toString(): string;
-    }
-}
-
-ArrayBuffer.prototype.toString = function() {
-    return Base64.binToB64(this);
-}
-
-SharedArrayBuffer.prototype.toString = function() {
-    return Base64.binToB64(this);
-};
 

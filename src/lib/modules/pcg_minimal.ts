@@ -10,7 +10,7 @@ const increment = 0x5851f42d4c957f2dn;
  * PCG (Permuted congruential generator) 乱数のクラス
  */
 export default class PCGXSHRR {
-    private readonly state;
+    readonly #state;
 
     get [Symbol.toStringTag]() {
         return PCGXSHRR.name;
@@ -26,28 +26,28 @@ export default class PCGXSHRR {
      */
     constructor(seeds?: BigUint64Array<ArrayBuffer>) {
 
-        this.state = new BigUint64Array(2);
+        this.#state = new BigUint64Array(2);
 
         if (seeds && seeds.length >= 2) {
-            this.state[1] = (seeds[1] << 1n) | 1n;
+            this.#state[1] = (seeds[1] << 1n) | 1n;
             this.step();
-            this.state[0] += seeds[0];
+            this.#state[0] += seeds[0];
             this.step();
 
         } else {
-            this.state[0] = initial_state[0];
-            this.state[1] = initial_state[1];
+            this.#state[0] = initial_state[0];
+            this.#state[1] = initial_state[1];
         }
     }
 
     /** 内部状態を1サイクル進める */
     step() {
-        this.state[0] = this.state[0] * increment + this.state[1];
+        this.#state[0] = this.#state[0] * increment + this.#state[1];
     }
 
     /** 32bit 乱数を返す (内部状態は変わらない) */
     get value() {
-        const prev = this.state[0];
+        const prev = this.#state[0];
         const rot = prev >> 59n;
         const shifted = BigInt.asUintN(32, (prev ^ (prev >> 18n)) >> 27n);
         return rot32(Number(shifted), Number(rot));
