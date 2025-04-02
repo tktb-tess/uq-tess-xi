@@ -73,6 +73,7 @@
 @layer base {
 	* {
 		font-optical-sizing: auto;
+		scroll-behavior: smooth;
 	}
 	a {
 		@apply text-blue-700 transition-colors hover:text-blue-400;

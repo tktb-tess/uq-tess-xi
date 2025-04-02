@@ -2,6 +2,7 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import '../app.css';
+	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 </script>
 
 <svelte:head>
@@ -138,6 +139,8 @@
     <p>※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。</p>
 	<p class="">© 2025 Tessyrrhaqt / 斗琴庭暁響</p>
 </footer>
+
+<PageTopBtn />
 
 <style>
     
