@@ -28,7 +28,7 @@
 	{onclick}
 	class="
 		block fixed right-5 bottom-5 p-2 rounded-[50%] bg-transparent text-gray-600 hover:bg-gray-600 hover:text-white
-		transition-[color,background-color,opacity,visibility]
+		transition-[color,background-color,opacity,visibility] data-[invisible]:opacity-0 data-[invisible]:invisible
 	"
 	type="button"
 	aria-label="ページトップへ戻る"
@@ -43,8 +43,4 @@
 </button>
 
 <style>
-	button[data-invisible] {
-		opacity: 0;
-		visibility: hidden;
-	}
 </style>

@@ -3,6 +3,13 @@
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import '../app.css';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+	import type { PageProps } from './$types';
+	
+	let { data }: PageProps = $props();
+	let size = $derived.by(() => {
+		const len = data.word.entry.form.length;
+		return (len < 10) ? 'text-5xl' : 'text-4xl';
+	});
 </script>
 
 <svelte:head>
@@ -34,7 +41,33 @@
 
 	<section>
 		<h2 class="text-center">今日の単語</h2>
-		<!-- あとで -->
+		<div class="w-[75%] max-w-[750px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12">
+			
+			<h3 class="font-serif font-normal {size}">{data.word.entry.form}</h3>
+			<p>訳</p>
+			<table 
+				class="
+					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
+					[&_:is(thead,tbody,tr)]:contents [&_:is(th,td)]:block gap-5
+				"
+			>
+				<thead>
+					<tr>
+						<th class="font-normal">品詞</th>
+						<th class="font-normal">意味</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each data.word.translations as translation}
+						
+						<tr>
+							<td class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]">{translation.title}</td>
+							<td class="justify-self-start">{translation.forms.join(', ')}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</section>
 	<section>
 		<h2 class="">創作言語</h2>

@@ -3,4 +3,4 @@
 </script>
 
 
-<h2 class="border-none">ツール</h2>
+<h2 id="subtitle">ツール</h2>

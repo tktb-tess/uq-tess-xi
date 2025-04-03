@@ -1,4 +1,5 @@
 import { parseToJSON } from '$lib/modules/fetching';
+import { json } from '@sveltejs/kit';
 
 export const GET = async ({ url }) => {
 	console.log('receive GET request at /cotec');
@@ -9,7 +10,10 @@ export const GET = async ({ url }) => {
 
 	if (fb) return new Response('!', { status: 403 });
 
-	const body = new Blob([JSON.stringify({ metadata, contents })], { type: 'application/json' });
+	const body = { metadata, contents };
+	const headers = {
+		'Content-Type': 'application/json',
+	};
 
-	return new Response(body);
+	return json(body, { headers });
 };

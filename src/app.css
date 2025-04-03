@@ -7,7 +7,7 @@
 	font-style: normal;
 	src:
 		local('Inter'),
-		url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2');
+		url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -15,7 +15,7 @@
 	font-style: italic;
 	src:
 		local('Inter Italic'),
-		url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2');
+		url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -76,7 +76,7 @@
 		scroll-behavior: smooth;
 	}
 	a {
-		@apply text-blue-700 transition-colors hover:text-blue-400;
+		@apply text-blue-700 transition-colors hover:text-blue-700/60;
 	}
 
 	button {

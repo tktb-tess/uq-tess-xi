@@ -7,37 +7,41 @@
 
 <MyHeader />
 
-<div class="flex flex-wrap [&_*]:min-w-0 mx-2">
+<div class="flex flex-wrap [&_*]:min-w-0 px-2">
 	<nav
-		class="flex-[100%] md:flex-3/12 lg:flex-2/12 mt-5 md:sticky [&_:is(p,ul)]:mb-0 ps-5 [&_a]:text-black [&_a]:hover:text-black/60"
+		class="
+			flex-[100%] lg:flex-3/12 xl:flex-2/12 [&_:is(p,ul)]:mb-0 pt-4 md:h-[calc(100vh-64px)] md:overflow-x-auto
+			[&_a]:text-black [&_a]:hover:bg-mnlila [&_a]:hover:text-white flex flex-col **:break-words
+			[&_:is(h4,a,summary)]:px-3 [&_:is(h4,a,summary)]:py-2 *:me-1
+		"
 	>
-		<div>
-			<p>Vässenzländisķ</p>
-			<ul class="list-none [&_li]:p-0">
-				<li><a href="/vaes">概説</a></li>
-				<li><a href="/vaes/letterandpron">文字と発音</a></li>
-				<li><a href="/vaes/phonology">音韻論</a></li>
-				<li>Leipzig–Jakarta List (準備中)</li>
-				<li>りんご文 (準備中)</li>
-				<li>
-					文法
-					<ul class="list-none [&_li]:p-0">
-						<li>名詞</li>
-						<li>数詞</li>
-						<li>動詞</li>
-						<li>形容詞</li>
-					</ul>
-				</li>
-			</ul>
+		<div class="flex flex-col">
+			<h4 class="text-2xl font-light">Vässenzländisķ</h4>
+			<div class="flex flex-col">
+				<a href="/vaes">概説</a>
+				<a href="/vaes/letterandpron">文字と発音</a>
+				<a href="/vaes/phonology">音韻論</a>
+				<a href="/vaes">Leipzig–Jakarta List (準備中)</a>
+				<a href="/vaes">りんご文 (準備中)</a>
+				<details>
+					<summary class="cursor-pointer block">文法</summary>
+					<div class="flex flex-col">
+						<a href="/vaes">名詞</a>
+						<a href="/vaes">数詞</a>
+						<a href="/vaes">動詞</a>
+						<a href="/vaes">形容詞</a>
+					</div>
+				</details>
+			</div>
 		</div>
-		<div>
-			<p>データ</p>
-			<ul class="list-none [&_li]:p-0">
-				<li>古英語の動詞活用まとめ</li>
-			</ul>
+		<div class="flex flex-col">
+			<h4 class="text-2xl font-light">データ</h4>
+			<div class="flex flex-col">
+				<a href="/vaes">古英語の動詞活用まとめ</a>
+			</div>
 		</div>
 	</nav>
-	<main class="flex-[100%] md:flex-9/12 lg:flex-10/12">
+	<main class="flex-[100%] lg:flex-9/12 xl:flex-10/12 bg-slate-50">
 		{@render children()}
 	</main>
 </div>

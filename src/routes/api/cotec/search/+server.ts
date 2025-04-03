@@ -1,6 +1,6 @@
 import { parseToJSON, type CotecContent } from "$lib/modules/fetching";
 import { getRndInt } from "$lib/modules/util.js";
-import { error } from "@sveltejs/kit";
+import { error, json } from "@sveltejs/kit";
 
 const [, contents] = await parseToJSON();
 
@@ -21,9 +21,11 @@ export const GET = async ({ url }) => {
         error(404, { message: 'no langs found' });
     }
 
-    const body = new Blob([JSON.stringify(content)], { type: 'application/json' });
+    const headers = {
+        'Content-Type': 'application/json',
+    };
 
-    return new Response(body);
+    return json(content, { headers });
 };
 
 

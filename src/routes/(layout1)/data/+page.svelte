@@ -3,4 +3,4 @@
 </script>
 
 
-<h2 class="border-none">概説</h2>
+<h2 id="subtitle">データ</h2>

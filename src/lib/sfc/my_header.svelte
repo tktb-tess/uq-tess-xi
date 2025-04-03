@@ -2,7 +2,7 @@
 	let { subtitle = '' } = $props();
 </script>
 
-<header class="bg-mnlila text-white [&_a]:text-white [&_a]:hover:text-white/80 h-[64px]">
+<header class="bg-mnlila text-white [&_a]:text-white [&_a]:hover:text-white/80 h-[64px] **:break-words">
     <div class="flex [&_*]:min-w-[0] mx-auto max-w-[75%] h-full items-center gap-x-5">
         <h1 class="font-serif text-3xl"><a href="/.">悠久肆方体</a></h1>
         <p class="m-0">{subtitle}</p>

@@ -2,4 +2,4 @@
 
 </script>
 
-<h2 class="border-none">音韻論</h2>
+<h2 id="subtitle">音韻論</h2>

@@ -2,4 +2,4 @@
 
 </script>
 
-<h2 class="border-none">文字と発音</h2>
+<h2 id="subtitle">文字と発音</h2>

@@ -1,6 +1,6 @@
 
 
-<h2 class="border-none">その他</h2>
+<h2 id="subtitle">その他</h2>
 
 <ul>
     <li><a href="/others/tools">ツール</a></li>
