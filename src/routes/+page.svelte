@@ -45,9 +45,9 @@
 			古英語の他、ゲルマン語派の他言語、特にドイツ語やアイスランド語、古ノルド語を参考にしている。
 		</p>
 		<ul>
-			<li>概説</li>
-			<li>音韻論</li>
-			<li>文字と発音</li>
+			<li><a href="/vaes">概説</a></li>
+			<li><a href="/vaes/phonology">音韻論</a></li>
+			<li><a href="/vaes/letterandpron">文字と発音</a></li>
 			<li>りんごを食べたい58文（準備中）</li>
 			<li>数詞</li>
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633" text="辞書 (ZpDIC Online)" /></li>
@@ -105,7 +105,7 @@
         <ul>
             <li>n次元超立体の命名案（準備中）</li>
             <li>ジョンソンの立体のcrown jewelsの命名案（準備中）</li>
-            <li>ツール</li>
+            <li><a href="/others/tools">ツール</a></li>
             <li>終末式ローマ字 «Syuğmatusǐkiro–mázi» …舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。</li>
             <li>グレゴリオ聖歌の音階について</li>
             <li>日本語 チベット文字表記</li>
