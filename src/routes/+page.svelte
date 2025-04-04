@@ -38,9 +38,10 @@
 	<p>
 		わたし、斗琴庭暁響（とことばあかね）が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
 	</p>
-
+	
 	<section>
 		<h2 class="text-center">今日の単語</h2>
+		<pre>debug: {data.date.toISOString()} vs {data.date_n.toISOString()}</pre>
 		<div class="w-[75%] max-w-[750px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12">
 			
 			<h3 class="font-serif font-normal {size}">{data.word.entry.form}</h3>
