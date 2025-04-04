@@ -80,7 +80,7 @@
 		<ul>
 			<li><a href="/vaes">概説</a></li>
 			<li><a href="/vaes/phonology">音韻論</a></li>
-			<li><a href="/vaes/letterandpron">文字と発音</a></li>
+			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
 			<li>りんごを食べたい58文（準備中）</li>
 			<li><a href="/vaes/numeral">数詞</a></li>
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633" text="辞書 (ZpDIC Online)" /></li>
