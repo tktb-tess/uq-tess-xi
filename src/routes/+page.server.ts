@@ -12,5 +12,5 @@ export const load = async () => {
     const length = vaesOtmJson.words.length;
     const word = vaesOtmJson.words[rand % length];
 
-    return { word, date, date_n };
+    return { word, date: date.toISOString(), date_n: date_n.toISOString() };
 };
