@@ -37,6 +37,8 @@
 		"vite-plugin-wasm": "^3.4.1"
 	},
 	"dependencies": {
+		"@date-fns/tz": "^1.2.0",
+		"date-fns": "^4.1.0",
 		"papaparse": "^5.5.2"
 	}
 }

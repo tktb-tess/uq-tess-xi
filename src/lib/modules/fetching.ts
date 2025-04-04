@@ -48,7 +48,7 @@ export type CotecMetadata = {
 };
 
 export type CotecContent = {
-	messier: unknown;
+	messier: string | null;
 	name: string[];
 	kanji: string[];
 	desc: string[];
@@ -70,6 +70,11 @@ export type CotecContent = {
 	part: string | null;
 	example: string[];
 	script: string[];
+};
+
+export type Cotec = {
+	metadata: CotecMetadata;
+	contents: CotecContent[];
 };
 
 const ctcurl = 'https://kaeru2193.github.io/Conlang-List-Works/conlinguistics-wiki-list.ctc';
@@ -120,9 +125,7 @@ const fetchConlangList = async () => {
 	return resp.text();
 };
 
-export const parseToJSON = async (): Promise<
-	[Readonly<CotecMetadata>, readonly Readonly<CotecContent>[]]
-> => {
+export const parseToJSON = async () => {
 	const contents: CotecContent[] = [];
 
 	const raw = await fetchConlangList();
@@ -149,7 +152,7 @@ export const parseToJSON = async (): Promise<
 	const label = parsed_data[1];
 	const type = parsed_data[2];
 
-	const metadata = {
+	const metadata: CotecMetadata = {
 		datasize,
 		title,
 		author,
@@ -159,7 +162,7 @@ export const parseToJSON = async (): Promise<
 		advanced,
 		label,
 		type
-	} as const satisfies CotecMetadata;
+	};
 
 	// messier,name,kanji,desc,creator,period,site,twitter,dict,grammar,world,category,moyune,cla,part,example,script
 	for (let i = 3; i < parsed_data.length - 1; i++) {
@@ -370,5 +373,5 @@ export const parseToJSON = async (): Promise<
 	}
 
 	console.log('fetching & parsing cotec file is successful');
-	return [metadata, contents];
+	return { metadata, contents };
 };

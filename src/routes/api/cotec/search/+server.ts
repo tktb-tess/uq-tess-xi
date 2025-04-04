@@ -2,7 +2,7 @@ import { parseToJSON, type CotecContent } from "$lib/modules/fetching";
 import { getRndInt } from "$lib/modules/util.js";
 import { error, json } from "@sveltejs/kit";
 
-const [, contents] = await parseToJSON();
+const { contents } = await parseToJSON();
 
 export const GET = async ({ url }) => {
     console.log('receive GET request');
