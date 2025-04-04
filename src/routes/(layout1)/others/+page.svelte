@@ -1,4 +1,7 @@
 
+<svelte:head>
+    <title>miscellaneous</title>
+</svelte:head>
 
 <h2 id="subtitle">その他</h2>
 

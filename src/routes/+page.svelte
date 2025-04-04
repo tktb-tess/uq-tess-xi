@@ -6,7 +6,7 @@
 	import type { PageProps } from './$types';
 	
 	let { data }: PageProps = $props();
-	let size = $derived.by(() => {
+	const size = $derived.by(() => {
 		const len = data.word.entry.form.length;
 		return (len < 10) ? 'text-5xl' : 'text-4xl';
 	});
@@ -41,7 +41,7 @@
 	
 	<section>
 		<h2 class="text-center">今日の単語</h2>
-		<div class="w-[75%] max-w-[750px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12">
+		<div class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12">
 			
 			<h3 class="font-serif font-normal {size}">{data.word.entry.form}</h3>
 			<p>訳</p>
@@ -70,7 +70,7 @@
 		</div>
 	</section>
 	<section>
-		<h2 class="">創作言語</h2>
+		<h2>創作言語</h2>
 		<h3>ヴェッセンズラン語 (Vässenzländisķ)</h3>
 		<p>
 			「もしも古英語の屈折がほとんど残った言語があったら？」というコンセプトでつくられている言語。
@@ -82,7 +82,7 @@
 			<li><a href="/vaes/phonology">音韻論</a></li>
 			<li><a href="/vaes/letterandpron">文字と発音</a></li>
 			<li>りんごを食べたい58文（準備中）</li>
-			<li>数詞</li>
+			<li><a href="/vaes/numeral">数詞</a></li>
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633" text="辞書 (ZpDIC Online)" /></li>
 		</ul>
 		<h3><s>ヤズニェル語 (Ásnélnowy)（凍結）</s></h3>
@@ -101,8 +101,8 @@
 	<section>
 		<h2>言語関連のデータ</h2>
 		<ul>
-			<li>人工言語作成者に50の質問</li>
-			<li>古英語の動詞活用まとめ（準備中）</li>
+			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
+			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ（準備中）</a></li>
 			<li><ExtLink href="https://conlang-gacha.vercel.app" text="人工言語ガチャ" /> …日本語圏の人工言語をランダムに1つ表示する。</li>
 		</ul>
 	</section>

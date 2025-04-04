@@ -3,8 +3,8 @@
 </script>
 
 <svelte:head>
-    <title>葦語 動詞</title>
+    <title>質問</title>
 </svelte:head>
 
-<h2 id="subtitle">動詞</h2>
+<h2 id="subtitle">人工言語製作者に50の質問</h2>
 <p class="text-red-600 text-xl text-center">工事中……</p>

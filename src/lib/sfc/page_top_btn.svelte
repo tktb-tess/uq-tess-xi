@@ -1,15 +1,14 @@
 <script lang="ts">
-	import type { MouseEventHandler, UIEventHandler } from 'svelte/elements';
 	import { scrollY } from 'svelte/reactivity/window';
 
 	let btn: HTMLButtonElement | null = null;
 
-	const onclick: MouseEventHandler<HTMLButtonElement> = () => {
+	const onclick = () => {
 		window.scroll({ top: 0 });
 	};
 
-	const onscroll: UIEventHandler<Window> = () => {
-		console.log('fire!');
+	const onscroll = () => {
+		// console.log('fire!');
 
 		if (btn && scrollY.current) {
 			
@@ -42,5 +41,3 @@
 	</svg>
 </button>
 
-<style>
-</style>
