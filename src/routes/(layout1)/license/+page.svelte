@@ -1,25 +1,18 @@
 <script>
-	import ExtLink from "$lib/sfc/ext_link.svelte";
-
+	import ExtLink from '$lib/sfc/ext_link.svelte';
 </script>
 
-
-
 <svelte:head>
-    <title>ライセンス</title>
+	<title>ライセンス</title>
 </svelte:head>
 
-<h2>Inter</h2>
+<h2>OFL.txt</h2>
 <ul>
-    <li><ExtLink href="/license/Inter" text="OFL.txt" /></li>
+	<li><ExtLink href="/license/Inter" text="Inter" /></li>
+    <li><ExtLink href="/license/CharisSIL" text="Charis SIL" /></li>
 </ul>
 
-<h2>Charis SIL</h2>
+<h2>FONTLOG.txt</h2>
 <ul>
-    <li><ExtLink href="/license/CharisSIL" text="OFL.txt" /></li>
-</ul>
-
-<h2>FONTLOG</h2>
-<ul>
-    <li><ExtLink href="/license/FONTLOG" text="FONTLOG.txt" /></li>
+	<li><ExtLink href="/license/FONTLOG" text="FONTLOG.txt" /></li>
 </ul>

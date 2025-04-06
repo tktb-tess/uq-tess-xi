@@ -7,4 +7,5 @@
 
 <ul>
     <li><a href="/others/tools">ツール</a></li>
+    <li><a href="/others/tools">音楽</a></li>
 </ul>

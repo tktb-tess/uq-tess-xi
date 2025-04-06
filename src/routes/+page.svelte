@@ -4,11 +4,11 @@
 	import '../app.css';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { PageProps } from './$types';
-	
+
 	let { data }: PageProps = $props();
 	const size = $derived.by(() => {
 		const len = data.word.entry.form.length;
-		return (len < 10) ? 'text-5xl' : 'text-4xl';
+		return len < 10 ? 'text-5xl' : 'text-4xl';
 	});
 </script>
 
@@ -17,10 +17,12 @@
 </svelte:head>
 
 <header
-	class="min-h-screen bg-gradient-to-b from-mnlila2 to-mnlila grid grid-cols-1 gap-y-6 place-content-center place-items-center"
+	class="min-h-screen bg-linear-to-br/oklch from-title-s to-title-e grid grid-cols-1 gap-y-6 place-content-center place-items-center"
 >
 	<TessLogo class="fill-white w-[200px] lg:w-[300px] h-auto" fadein />
-	<h1 class="text-white font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
+	<h1
+		class="text-white font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center"
+	>
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
 </header>
@@ -38,14 +40,24 @@
 	<p>
 		わたし、斗琴庭暁響（とことばあかね）が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
 	</p>
-	
+
 	<section>
 		<h2 class="text-center">今日の単語</h2>
-		<div class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12">
-			
+		<div
+			class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-mnlila rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white shadow-sm mt-12"
+		>
 			<h3 class="font-serif font-normal {size}">{data.word.entry.form}</h3>
+			{#if data.pron}
+				<p class="text-black/60">
+					{#if data.pron.includes('/')}
+						{data.pron}
+					{:else}
+						{`/${data.pron}/`}
+					{/if}
+				</p>
+			{/if}
 			<p>訳</p>
-			<table 
+			<table
 				class="
 					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
 					[&_:is(thead,tbody,tr)]:contents [&_:is(th,td)]:block gap-5
@@ -59,9 +71,11 @@
 				</thead>
 				<tbody>
 					{#each data.word.translations as translation}
-						
 						<tr>
-							<td class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]">{translation.title}</td>
+							<td
+								class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
+								>{translation.title}</td
+							>
 							<td class="justify-self-start">{translation.forms.join(', ')}</td>
 						</tr>
 					{/each}
@@ -103,7 +117,9 @@
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
 			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ（準備中）</a></li>
-			<li><ExtLink href="https://conlang-gacha.vercel.app" text="人工言語ガチャ" /> …日本語圏の人工言語をランダムに1つ表示する。</li>
+			<li>
+				<ExtLink href="https://conlang-gacha.vercel.app" text="人工言語ガチャ" /> …日本語圏の人工言語をランダムに1つ表示する。
+			</li>
 		</ul>
 	</section>
 	<section>
@@ -128,53 +144,66 @@
 	<section>
 		<h2>その他の活動</h2>
 		<h3>音楽</h3>
-        <p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
-        <ul>
-            <li>いくつかの曲</li>
-            <li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming" text="SoundCloud" /></li>
-            <li><ExtLink href="https://www.youtube.com/@tessyrrhaqt" text="YouTube" /></li>
-        </ul>
+		<p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
+		<ul>
+			<li>いくつかの曲</li>
+			<li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming" text="SoundCloud" /></li>
+			<li><ExtLink href="https://www.youtube.com/@tessyrrhaqt" text="YouTube" /></li>
+		</ul>
 		<h3>雑多</h3>
-        <ul>
-            <li>n次元超立体の命名案（準備中）</li>
-            <li>ジョンソンの立体のcrown jewelsの命名案（準備中）</li>
-            <li><a href="/others/tools">ツール</a></li>
-            <li>終末式ローマ字 «Syuğmatusǐkiro–mázi» …舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。</li>
-            <li>グレゴリオ聖歌の音階について</li>
-            <li>日本語 チベット文字表記</li>
-            <li>当サイトで使用しているフォントのライセンス</li>
-        </ul>
+		<ul>
+			<li>n次元超立体の命名案（準備中）</li>
+			<li>ジョンソンの立体のcrown jewelsの命名案（準備中）</li>
+			<li><a href="/others/tools">ツール</a></li>
+			<li>
+				終末式ローマ字 «Syuğmatusǐkiro–mázi»
+				…舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。
+			</li>
+			<li>グレゴリオ聖歌の音階について</li>
+			<li>日本語 チベット文字表記</li>
+			<li>当サイトで使用しているフォントのライセンス</li>
+		</ul>
 		<h3>メモ</h3>
-        <ul>
-            <li>Miller–Rabin 素数判定法</li>
-        </ul>
+		<ul>
+			<li>Miller–Rabin 素数判定法</li>
+		</ul>
 	</section>
 	<section>
 		<h2>外部リンク</h2>
 		<h3>各種SNS</h3>
-        <ul>
-            <li><ExtLink href="https://x.com/triethylamineq" text="𝕏witter" /></li>
-            <li><ExtLink href="https://bsky.app/profile/tktb-tess.dev" text="Bluesky" /></li>
-            <li><ExtLink href="https://misskey.io/@tessy_tktb" text="Misskey.io" /></li>
-        </ul>
+		<ul>
+			<li><ExtLink href="https://x.com/triethylamineq" text="𝕏witter" /></li>
+			<li><ExtLink href="https://bsky.app/profile/tktb-tess.dev" text="Bluesky" /></li>
+			<li><ExtLink href="https://misskey.io/@tessy_tktb" text="Misskey.io" /></li>
+		</ul>
 		<h3>その他</h3>
-        <ul>
-            <li><ExtLink href="https://tesyrrhaqt.hatenablog.com/" text="はてなブログ（あかねの多目的室）" /></li>
-            <li><ExtLink href="https://rechord.cc/users/triethylamineq" text="rechord" /></li>
-            <li><ExtLink href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing" text="Xenharmonic_calc" /> …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。</li>
-        </ul>
+		<ul>
+			<li>
+				<ExtLink
+					href="https://tesyrrhaqt.hatenablog.com/"
+					text="はてなブログ（あかねの多目的室）"
+				/>
+			</li>
+			<li><ExtLink href="https://rechord.cc/users/triethylamineq" text="rechord" /></li>
+			<li>
+				<ExtLink
+					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
+					text="Xenharmonic_calc"
+				/> …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
+			</li>
+		</ul>
 	</section>
 	<p class="font-serif font-semibold text-red-600 text-center text-xl">工事中…</p>
-	
 </main>
 
 <footer class="flex flex-col items-center my-5 px-(--gutter)">
-    <p>※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。</p>
-	<p class="">© 2025 Tessyrrhaqt / 斗琴庭暁響</p>
+	<p>
+		※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
+	</p>
+	<p class="">© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
 </footer>
 
 <PageTopBtn />
 
 <style>
-    
 </style>

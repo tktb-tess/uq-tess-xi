@@ -20,7 +20,7 @@
 
 @font-face {
 	font-family: 'CharisSIL';
-	font-weight: 100 500;
+	font-weight: 100 900;
 	font-style: normal;
 	src:
 		local('Charis SIL'),
@@ -29,29 +29,11 @@
 
 @font-face {
 	font-family: 'CharisSIL';
-	font-weight: 100 500;
+	font-weight: 100 900;
 	font-style: italic;
 	src:
 		local('Charis SIL Italic'),
 		url('/woff2/CharisSIL-Italic.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'CharisSIL';
-	font-weight: 600 900;
-	font-style: normal;
-	src:
-		local('Charis SIL Bold'),
-		url('/woff2/CharisSIL-Bold.woff2') format('woff2');
-}
-
-@font-face {
-	font-family: 'CharisSIL';
-	font-weight: 600 900;
-	font-style: italic;
-	src:
-		local('Charis SIL Bold Italic'),
-		url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
 }
 
 @theme {
@@ -61,13 +43,32 @@
 	--font-serif:
 		'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
 		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
-	--color-mnlila: oklch(0.18 0.0957 296);
-	--color-mnlila2: oklch(0.36 0.1554 296);
-	--color-llila: oklch(91.76% 0.0444 296);
+	--color-mnlila: oklch(.18 .0957 296);
+	--color-title-s: oklch(.3 .1545 306);
+	--color-title-e: oklch(.3 .1632 286);
+	--color-llila: oklch(.9176 .0444 296);
 	--gutter: calc(var(--spacing) * 4);
 	--ngutter: calc(var(--gutter) * -1);
 	--link-transition-dur: 120ms;
 	--tracking-ultra: 3rem;
+}
+
+@property --lightness {
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 0;
+}
+
+@property --chroma {
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 0;
+}
+
+@property --hue {
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 296;
 }
 
 @layer base {
@@ -75,8 +76,13 @@
 		font-optical-sizing: auto;
 		scroll-behavior: smooth;
 	}
+
+	html,
+	:host {
+		-webkit-tap-highlight-color: revert;
+	}
 	a {
-		@apply text-blue-700 transition-colors hover:text-blue-700/60;
+		@apply text-blue-700 hover:underline;
 	}
 
 	button {
