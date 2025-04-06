@@ -7,12 +7,12 @@
 
 <MyHeader />
 
-<div class="flex flex-wrap [&_*]:min-w-0 px-2">
+<div class="flex flex-wrap [&_*]:min-w-0 ps-2">
 	<nav
 		class="
 			flex-[100%] lg:flex-[0_1_calc(3/12*100%)] xl:flex-[0_1_calc(5/24*100%)] 2xl:flex-[0_1_calc(2/12*100%)] [&_:is(p,ul)]:mb-0 pt-4 md:h-[calc(100vh-64px)] md:overflow-x-auto
-			[&_a]:text-black [&_a]:hover:bg-mnlila [&_a]:hover:text-white flex flex-col **:break-words
-			[&_:is(h4,a,summary)]:px-3 [&_:is(h4,a,summary)]:py-2 *:me-1
+			[&_a]:text-black [&_:is(a,summary)]:hover:bg-mnlila [&_:is(a,summary)]:hover:text-white [&_a]:no-underline [&_:is(a,summary)]:transition-colors flex flex-col **:break-words
+			[&_:is(h4,a,summary)]:px-3 [&_:is(h4,a,summary)]:py-2 [&_:is(a,summary)]:rounded-lg *:me-1
 		"
 	>
 		<div class="flex flex-col">
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 	</nav>
-	<main class="flex-auto bg-slate-50">
+	<main class="flex-auto bg-slate-50 px-2 flow-root">
 		{@render children()}
 	</main>
 </div>
