@@ -17,13 +17,12 @@ export const GET = async ({ url }) => {
         content = contents[index];
 
     } else {
-        console.log('404 not found');
-        error(404, { message: 'no langs found' });
+        error(404, { message: 'noLanguageFound' });
     }
 
     const headers = {
         'Content-Type': 'application/json',
-    };
+    } as const;
 
     return json(content, { headers });
 };

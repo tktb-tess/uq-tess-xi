@@ -1,5 +1,5 @@
 import { parseToJSON, type CotecContent } from '$lib/modules/fetching';
-import { json, text } from '@sveltejs/kit';
+import { json, text, error } from '@sveltejs/kit';
 import Papa from 'papaparse';
 
 type CtcStrgfd = {
@@ -11,8 +11,8 @@ export const GET = async ({ url }) => {
 	
 	const { metadata, contents } = await parseToJSON();
 
-	const fb = url.searchParams.get('forbidden');
-	if (fb) return new Response(null, { status: 418 });
+	const fb = url.searchParams.get('forbidden') === 'true';
+	if (fb) error(403);
 
 	const isCsv = url.searchParams.get('csv') === 'true';
 	
@@ -20,13 +20,13 @@ export const GET = async ({ url }) => {
 		const body = toCSV(contents);
 		const headers = {
 			'Content-Type': 'text/plain; charset=utf-8',
-		};
+		} as const;
 		return text(body, { headers });
 	} else {
 		const body = { metadata, contents };
 		const headers = {
 			'Content-Type': 'application/json',
-		};
+		} as const;
 
 		return json(body, { headers });
 	}
@@ -66,7 +66,7 @@ const toCSV = (contents: CotecContent[]) => {
 				const { dialect, language, family, creator } = content.clav3;
 				return `${dialect}_${language}_${family}_${creator}`;
 			} else {
-				return content.clav3;
+				return null;
 			}
 		})();
 
