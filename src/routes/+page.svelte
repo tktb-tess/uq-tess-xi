@@ -6,10 +6,6 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	const size = $derived.by(() => {
-		const len = data.word.entry.form.length;
-		return len < 10 ? 'text-5xl' : 'text-4xl';
-	});
 </script>
 
 <svelte:head>
@@ -44,9 +40,9 @@
 	<section>
 		<h2 class="text-center">今日の単語</h2>
 		<div
-			class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl [&_*]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12"
+			class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl [:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12"
 		>
-			<h3 class="font-serif font-normal {size}">{data.word.entry.form}</h3>
+			<h3 class="font-serif font-normal {data.size}">{data.today_word.entry.form}</h3>
 			{#if data.pron}
 				<p class="text-black/60 font-ipa">
 					{#if data.pron.includes('/')}
@@ -70,24 +66,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each data.word.translations as translation}
+					{#each data.today_word.translations as translation}
 						<tr>
 							<td
 								class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
-								>{translation.title}</td
 							>
+								{translation.title}
+							</td>
 							<td class="justify-self-start">{translation.forms.join(', ')}</td>
 						</tr>
 					{/each}
 				</tbody>
 			</table>
+			<p class="self-end me-3"><ExtLink href={data.dic_url} text="ZpDIC Online" /></p>
 		</div>
 	</section>
 	<section>
 		<h2>創作言語</h2>
 		<h3>ヴェッセンズラン語 (Vässenzländisķ)</h3>
 		<p>
-			「もしも古英語の屈折がほとんど残った言語があったら？」というコンセプトでつくられている言語。
+			「もしも古英語の屈折がほとんど残った言語があったら?」というコンセプトでつくられている言語。
 			下位世界の地球のヴェッセンズラン島のヴェッセンズラン共和国で話される、複雑な形態変化を維持した屈折語。
 			古英語の他、ゲルマン語派の他言語、特にドイツ語やアイスランド語、古ノルド語を参考にしている。
 		</p>
