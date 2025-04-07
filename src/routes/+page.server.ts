@@ -1,7 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { TZDate } from '@date-fns/tz';
-import vaes_otm_json from '$lib/assets/vl-ja.otm.json';
-export const prerender = false;
+import vaes_otm_json from '$lib/assets/vl-ja.otm.json';;
 
 export const load = async () => {
     const date = TZDate.tz('Asia/Tokyo');
@@ -20,5 +19,5 @@ export const load = async () => {
         return len < 10 ? 'text-5xl' : 'text-4xl';
     })();
 
-    return { today_word, dic_url, pron, size };
+    return { today_word, dic_url, pron, size } as const;
 };

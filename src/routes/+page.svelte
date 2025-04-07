@@ -25,7 +25,7 @@
 
 <main
 	class="
-        container mx-auto bg-slate-50 px-(--gutter) min-h-screen
+        container mx-auto bg-slate-50 px-3 min-h-screen
         flex flex-col gap-y-10 py-2
     "
 >

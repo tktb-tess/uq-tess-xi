@@ -63,11 +63,9 @@
 		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
 	--font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
 	--color-mnlila: oklch(0.18 0.0957 296);
-	--color-title-s: oklch(0.3 0.1545 306);
-	--color-title-e: oklch(0.3 0.1632 286);
+	--color-title-s: oklch(0.3 0.1469 316);
+	--color-title-e: oklch(0.3 0.1469 276);
 	--color-llila: oklch(0.9176 0.0444 296);
-	--gutter: calc(var(--spacing) * 4);
-	--ngutter: calc(var(--gutter) * -1);
 	--link-transition-dur: 120ms;
 	--tracking-ultra: 3rem;
 }
