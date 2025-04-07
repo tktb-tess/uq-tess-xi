@@ -2,6 +2,8 @@ import { Buffer } from 'node:buffer';
 import { TZDate } from '@date-fns/tz';
 import vaes_otm_json from '$lib/assets/vl-ja.otm.json';;
 
+export const prerender = false;
+
 export const load = async () => {
     const date = TZDate.tz('Asia/Tokyo');
     const encoded = Buffer.from(date.toDateString());
