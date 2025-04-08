@@ -56,7 +56,7 @@
 			<table
 				class="
 					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-					[&_:is(thead,tbody,tr)]:contents [&_:is(th,td)]:block gap-5
+					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
 				"
 			>
 				<thead>

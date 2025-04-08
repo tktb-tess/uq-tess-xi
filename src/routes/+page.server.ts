@@ -1,6 +1,6 @@
 import { Buffer } from 'node:buffer';
 import { TZDate } from '@date-fns/tz';
-import vaes_otm_json from '$lib/assets/vl-ja.otm.json';;
+import vaes_otm_json from '$lib/assets/vl-ja.otm.json';
 
 export const prerender = false;
 

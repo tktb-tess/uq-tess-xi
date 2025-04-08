@@ -1,11 +1,15 @@
-import { parseToJSON, type CotecContent } from "$lib/modules/fetching";
+import type { CotecContent, Cotec } from "$lib/modules/fetching";
 import { getRndInt } from "$lib/modules/util.js";
 import { error, json } from "@sveltejs/kit";
 
-const { contents } = await parseToJSON();
 
-export const GET = async ({ url }) => {
+
+export const GET = async ({ url, fetch }) => {
     console.log('receive GET request');
+    const fetch_url = `https://tktb-tess.github.io/cotec-json-data/parsed-from-conlinguistics-wiki-list.ctc.json`;
+    const resp = await fetch(fetch_url);
+    if (!resp.ok) error(resp.status);
+    const { contents } = await resp.json() as Cotec;
     const index = Number.parseInt(url.searchParams.get('index') ?? '');
 
     let content: CotecContent | undefined;
