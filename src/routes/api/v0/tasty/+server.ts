@@ -5,6 +5,6 @@ import { createClient } from "redis";
 export const GET = async () => {
     const redis = await createClient({ url: REDIS_URL }).connect();
 
-    const a = redis.get('today-word');
+    const a = redis.json.get('today-word');
     return json(a);
 }
