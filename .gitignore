@@ -26,3 +26,4 @@ vite.config.ts.timestamp-*
 wasm/target/
 
 .arc/
+.vercel
