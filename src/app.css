@@ -70,13 +70,13 @@
 	--tracking-ultra: 3rem;
 }
 
-@property --lightness {
+@property --lght {
 	syntax: '<number>';
 	inherits: false;
 	initial-value: 0;
 }
 
-@property --chroma {
+@property --chrm {
 	syntax: '<number>';
 	inherits: false;
 	initial-value: 0;
