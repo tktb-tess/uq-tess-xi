@@ -42,7 +42,7 @@
 		<div
 			class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl [:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12"
 		>
-			<h3 class="font-serif font-normal {data.size}">{data.today_word.entry.form}</h3>
+			<h3 class="font-serif font-normal {data.size}">{data.today_word.name}</h3>
 			{#if data.pron}
 				<p class="text-black/60 font-ipa">
 					{#if data.pron.includes('/')}
@@ -66,14 +66,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each data.today_word.translations as translation}
+					{#each data.today_word.equivalents as translation}
 						<tr>
 							<td
 								class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
 							>
-								{translation.title}
+								{translation.titles.join(', ')}
 							</td>
-							<td class="justify-self-start">{translation.forms.join(', ')}</td>
+							<td class="justify-self-start">{translation.names.join(', ')}</td>
 						</tr>
 					{/each}
 				</tbody>
