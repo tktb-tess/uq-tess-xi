@@ -45,8 +45,7 @@ export const GET = async ({ request }) => {
 
         /** check */
         const stored = await redis.json.get('today-word');
-        console.log(stored);
-        return json(today_word);
+        return json(stored);
 
     } catch (e: unknown) {
         if (e instanceof Response) {
