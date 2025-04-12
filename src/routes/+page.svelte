@@ -1,11 +1,9 @@
 <script lang="ts">
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import '../app.css';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-	import type { PageProps } from './$types';
 
-	let { data }: PageProps = $props();
+	const { data } = $props();
 </script>
 
 <svelte:head>

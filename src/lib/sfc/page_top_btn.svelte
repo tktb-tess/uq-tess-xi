@@ -2,6 +2,7 @@
 	import { scrollY } from 'svelte/reactivity/window';
 
 	let btn: HTMLButtonElement | null = null;
+	let is_invisible = $state(true);
 
 	const onclick = () => {
 		window.scroll({ top: 0 });
@@ -10,13 +11,8 @@
 	const onscroll = () => {
 		// console.log('fire!');
 
-		if (btn && scrollY.current) {
-			
-			if (scrollY.current < 1000) {
-				btn.dataset.invisible = '';
-			} else {
-				delete btn.dataset.invisible;
-			}
+		if (scrollY.current) {
+			is_invisible = scrollY.current < 1000;
 		}
 	};
 </script>
@@ -27,12 +23,11 @@
 	{onclick}
 	class="
 		block fixed right-5 bottom-5 p-2 rounded-[50%] bg-transparent text-gray-600 hover:bg-gray-600 hover:text-white
-		transition-[color,background-color,opacity,visibility] data-[invisible]:opacity-0 data-[invisible]:invisible
+		transition-[color,background-color,opacity,visibility] data-invisible:opacity-0 data-invisible:invisible
 	"
 	type="button"
 	aria-label="ページトップへ戻る"
-	data-invisible
-	bind:this={btn}
+	data-invisible={is_invisible ? '' : null}
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="3 4 18 18" class="fill-current size-9">
 		<path
