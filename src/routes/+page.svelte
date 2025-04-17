@@ -80,7 +80,7 @@
 						{/each}
 					</tbody>
 				</table>
-				<p class="self-end me-3"><ExtLink href={data.dic_url} text="ZpDIC Online" /></p>
+				<p class="self-end me-3"><ExtLink href={data.dic_url}>ZpDIC Online</ExtLink></p>
 			{:else}
 				<h3>データを取得できませんでした</h3>
 				<p>
@@ -109,7 +109,7 @@
 			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
 			<li>りんごを食べたい58文（準備中）</li>
 			<li><a href="/vaes/numeral">数詞</a></li>
-			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633" text="辞書 (ZpDIC Online)" /></li>
+			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
 		</ul>
 		<h3><s>ヤズニェル語 (Ásnélnowy)（凍結）</s></h3>
 		<p class="font-semibold">
@@ -130,7 +130,7 @@
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
 			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ（準備中）</a></li>
 			<li>
-				<ExtLink href="https://conlang-gacha.vercel.app" text="人工言語ガチャ" /> …日本語圏の人工言語をランダムに1つ表示する。
+				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>
 		</ul>
 	</section>
@@ -147,7 +147,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><ExtLink href="https://kaeru2193.net/phunlang/name/" text="雰語・雰名" /></td>
+					<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語・雰名</ExtLink></td>
 					<td>常代 方累 (Xûyâo Zùngwíl)</td>
 				</tr>
 			</tbody>
@@ -159,8 +159,8 @@
 		<p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
 		<ul>
 			<li>いくつかの曲</li>
-			<li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming" text="SoundCloud" /></li>
-			<li><ExtLink href="https://www.youtube.com/@tessyrrhaqt" text="YouTube" /></li>
+			<li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming">SoundCloud</ExtLink></li>
+			<li><ExtLink href="https://www.youtube.com/@tessyrrhaqt">YouTube</ExtLink></li>
 		</ul>
 		<h3>雑多</h3>
 		<ul>
@@ -184,24 +184,24 @@
 		<h2>外部リンク</h2>
 		<h3>各種SNS</h3>
 		<ul>
-			<li><ExtLink href="https://x.com/triethylamineq" text="𝕏witter" /></li>
-			<li><ExtLink href="https://bsky.app/profile/tktb-tess.dev" text="Bluesky" /></li>
-			<li><ExtLink href="https://misskey.io/@tessy_tktb" text="Misskey.io" /></li>
+			<li><ExtLink href="https://x.com/triethylamineq">𝕏witter</ExtLink></li>
+			<li><ExtLink href="https://bsky.app/profile/tktb-tess.dev">Bluesky</ExtLink></li>
+			<li><ExtLink href="https://misskey.io/@tessy_tktb">Misskey.io</ExtLink></li>
 		</ul>
 		<h3>その他</h3>
 		<ul>
 			<li>
-				<ExtLink
-					href="https://tesyrrhaqt.hatenablog.com/"
-					text="はてなブログ（あかねの多目的室）"
-				/>
+				<ExtLink href="https://tesyrrhaqt.hatenablog.com/">
+					はてなブログ（あかねの多目的室）
+				</ExtLink>
 			</li>
-			<li><ExtLink href="https://rechord.cc/users/triethylamineq" text="rechord" /></li>
+			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
 			<li>
 				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
-					text="Xenharmonic_calc"
-				/> …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
+				>
+					Xenharmonic_calc
+				</ExtLink> …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
 			</li>
 		</ul>
 	</section>
