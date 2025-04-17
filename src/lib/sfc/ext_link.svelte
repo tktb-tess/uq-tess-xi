@@ -4,7 +4,7 @@
         href: string;
         text: string;
     };
-    let { href, text }: Props = $props();
+    const { href, text }: Props = $props();
 </script>
 
 <a href={href} target="_blank" rel="noreferrer">{text} <ExtLinkIcon /></a>

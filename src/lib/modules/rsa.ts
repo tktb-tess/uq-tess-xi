@@ -46,7 +46,7 @@ export default class RSA {
 
             const lambda = (() => {
                 const phi = (p_ - 1n) * (q_ - 1n);
-                const gcd = exEuclidean(p_ - 1n, q_ - 1n).gcd;
+                const { gcd } = exEuclidean(p_ - 1n, q_ - 1n);
 
                 return phi / gcd;
             })();

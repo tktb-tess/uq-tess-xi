@@ -1,4 +1,4 @@
-const encoder = new TextEncoder();
+import { Buffer } from "node:buffer";
 
 /**
  * min以上, max未満の整数を返す
@@ -265,8 +265,8 @@ export const factorial = (n_: number) => {
     return odd_part << two_exp;
 };
 
-export const lazyExec = (delay = 2000) => {
-    return new Promise((resolve: (value: string) => void) => {
+export const lazyExec = (delay = 2000): Promise<string> => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(`resolved in ${delay} ms`);
         }, delay);
@@ -292,8 +292,8 @@ export const typeOf = (v: unknown) => {
 
 export const getRandIntFromDate = async () => {
     const today = new Date().toDateString();
-    const utf8arr = encoder.encode(today);
-    const hashed = new Uint32Array(await crypto.subtle.digest('SHA-256', Uint8Array.from(utf8arr)), 0, 1);
+    const utf8arr = Buffer.from(today);
+    const hashed = new Uint32Array(await crypto.subtle.digest('SHA-256', utf8arr), 0, 1);
 
     return hashed[0];
 }

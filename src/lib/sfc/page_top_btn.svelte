@@ -1,23 +1,20 @@
 <script lang="ts">
 	import { scrollY } from 'svelte/reactivity/window';
 
-	let btn: HTMLButtonElement | null = null;
-	let is_invisible = $state(true);
+	const is_invisible = $derived.by(() => {
+		// console.log(scrollY.current);
+		if (typeof scrollY.current === 'number') {
+			return scrollY.current < 1000;
+		} else {
+			return true;
+		}
+	});
 
 	const onclick = () => {
 		window.scroll({ top: 0 });
 	};
 
-	const onscroll = () => {
-		// console.log('fire!');
-
-		if (scrollY.current) {
-			is_invisible = scrollY.current < 1000;
-		}
-	};
 </script>
-
-<svelte:window {onscroll} />
 
 <button
 	{onclick}

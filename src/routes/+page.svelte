@@ -38,45 +38,61 @@
 	<section>
 		<h2 class="text-center">今日の単語</h2>
 		<div
-			class="w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl [:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12"
+			class="
+				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl
+				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
+			"
 		>
-			<h3 class="font-serif font-normal {data.size}">{data.today_word.name}</h3>
-			{#if data.pron}
-				<p class="text-black/60 font-ipa">
-					{#if data.pron.includes('/')}
-						{data.pron}
-					{:else}
-						{`/${data.pron}/`}
-					{/if}
-				</p>
-			{/if}
-			<p>訳</p>
-			<table
-				class="
+			{#if data.is_success}
+				<h3 class="font-serif font-normal {data.size}">{data.today_word.name}</h3>
+				{#if data.pron}
+					<p class="text-black/60 font-ipa">
+						{#if data.pron.includes('/')}
+							{data.pron}
+						{:else}
+							{`/${data.pron}/`}
+						{/if}
+					</p>
+				{/if}
+				<p>訳</p>
+				<table
+					class="
 					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
 					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
 				"
-			>
-				<thead>
-					<tr>
-						<th class="font-normal">品詞</th>
-						<th class="font-normal">意味</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each data.today_word.equivalents as translation}
+				>
+					<thead>
 						<tr>
-							<td
-								class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
-							>
-								{translation.titles.join(', ')}
-							</td>
-							<td class="justify-self-start">{translation.names.join(', ')}</td>
+							<th class="font-normal">品詞</th>
+							<th class="font-normal">意味</th>
 						</tr>
-					{/each}
-				</tbody>
-			</table>
-			<p class="self-end me-3"><ExtLink href={data.dic_url} text="ZpDIC Online" /></p>
+					</thead>
+					<tbody>
+						{#each data.today_word.equivalents as translation}
+							<tr>
+								<td
+									class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
+								>
+									{translation.titles.join(', ')}
+								</td>
+								<td class="justify-self-start">{translation.names.join(', ')}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+				<p class="self-end me-3"><ExtLink href={data.dic_url} text="ZpDIC Online" /></p>
+			{:else}
+				<h3>データを取得できませんでした</h3>
+				<p>
+					{#if data.error instanceof Error}
+						{data.error.message}
+					{:else if data.error instanceof Response}
+						{data.error.status}
+					{:else}
+						{`${data.error}`}
+					{/if}
+				</p>
+			{/if}
 		</div>
 	</section>
 	<section>
