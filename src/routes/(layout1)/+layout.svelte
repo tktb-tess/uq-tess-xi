@@ -81,7 +81,7 @@
 
 	<main class="flex-[1_0_0] bg-slate-50 px-2 flow-root">
 		<button
-			class="px-3 py-1 bg-black text-white rounded-lg lg:hidden"
+			class="px-3 py-1 mt-2 bg-black text-white rounded-lg lg:hidden hover:text-white/70 transition-colors"
 			type="button"
 			onclick={() => { is_open = true; }}
 		>
@@ -148,12 +148,12 @@
 		z-index: 1000;
 		background-color: transparent;
 		transition-property: visibility, background-color;
-		transition-timing-function: step-end;
+		transition-timing-function: cubic-bezier(0, .2, 1, 0);
 		overflow-x: hidden;
 
 		&[data-open] {
 			visibility: visible;
-			transition-timing-function: step-start;
+			transition-timing-function: cubic-bezier(0, 1, .8, 1);
 			background-color: color-mix(in oklch, black 50%, transparent);
 		}
 	}
