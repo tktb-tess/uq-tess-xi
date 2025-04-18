@@ -12,8 +12,8 @@ type WordData = {
 	size: 'text-5xl' | 'text-4xl';
 } | {
 	is_success: false;
-	error: unknown;
-}
+	error: string;
+};
 
 
 export const load = async (): Promise<WordData> => {
@@ -40,6 +40,5 @@ export const load = async (): Promise<WordData> => {
 		} else {
 			return { is_success: false, error: `${e}` } as const;
 		}
-		
 	}
 };

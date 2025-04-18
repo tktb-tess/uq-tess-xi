@@ -84,13 +84,7 @@
 			{:else}
 				<h3>データを取得できませんでした</h3>
 				<p>
-					{#if data.error instanceof Error}
-						{data.error.message}
-					{:else if data.error instanceof Response}
-						{data.error.status}
-					{:else}
-						{`${data.error}`}
-					{/if}
+					{data.error}
 				</p>
 			{/if}
 		</div>
@@ -137,9 +131,12 @@
 	<section>
 		<h2>頂いた名前</h2>
 		<table
-			class="grid [&_:is(thead,tbody,tr)]:contents [&_td]:bg-slate-200 [&_td]:border [&_td]:border-slate-400 [&_td]:px-3 [&_td]:py-1 gap-1 grid-cols-[repeat(2,auto)] place-content-center"
+			class="
+				grid [&_:is(thead,tbody,tr)]:contents [&_td]:bg-slate-100 [&_td]:border [&_td]:border-slate-400
+				[&_td]:px-3 [&_td]:py-1 gap-1 grid-cols-[repeat(2,auto)] place-content-center
+			"
 		>
-			<thead class="">
+			<thead>
 				<tr>
 					<td class="text-center">言語</td>
 					<td class="text-center">名</td>
@@ -201,7 +198,8 @@
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
 				>
 					Xenharmonic_calc
-				</ExtLink> …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
+				</ExtLink>
+				…各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
 			</li>
 		</ul>
 	</section>

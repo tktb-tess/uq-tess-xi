@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
+	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import MyHeader from '$lib/sfc/my_header.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
@@ -8,7 +9,7 @@
 	let is_open = $state(false);
 
 	const large = $derived.by(() => {
-		if (innerWidth.current) {
+		if (typeof innerWidth.current === 'number') {
 			return innerWidth.current >= 1024;
 		} else return false;
 	});
@@ -85,7 +86,7 @@
 			type="button"
 			onclick={() => { is_open = true; }}
 		>
-			開閉ボタン
+			<Hamburger />
 		</button>
 		{@render children()}
 	</main>
@@ -163,7 +164,7 @@
 		flex-direction: column;
 		row-gap: calc(var(--spacing) * 1);
 		overflow-y: auto;
-		padding-top: calc(var(--spacing) * 4);
+		padding-block: calc(var(--spacing) * 4);
 	}
 
 	.drawer {

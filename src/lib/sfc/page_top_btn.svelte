@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { scrollY } from 'svelte/reactivity/window';
+	import type { MouseEventHandler } from 'svelte/elements';
+	import { browser } from '$app/environment';
 
 	const is_invisible = $derived.by(() => {
 		// console.log(scrollY.current);
@@ -10,10 +12,11 @@
 		}
 	});
 
-	const onclick = () => {
-		window.scroll({ top: 0 });
+	const onclick: MouseEventHandler<HTMLButtonElement> = () => {
+		if (browser) {
+			window.scroll({ top: 0 });
+		}
 	};
-
 </script>
 
 <button
@@ -32,4 +35,3 @@
 		/>
 	</svg>
 </button>
-
