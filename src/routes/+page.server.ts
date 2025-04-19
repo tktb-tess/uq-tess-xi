@@ -16,7 +16,7 @@ type WordData = {
 };
 
 
-export const load = async (): Promise<WordData> => {
+export const load = async (): Promise<Readonly<WordData>> => {
 	try {
 		const redis = await createClient({ url: REDIS_URL }).connect();
 		const today_word = await redis.json.get('today-word') as ZpDICAPIResponseWord;
@@ -29,7 +29,7 @@ export const load = async (): Promise<WordData> => {
 			const len = today_word.name.length;
 			return len < 10 ? 'text-5xl' : 'text-4xl';
 		})();
-		console.log(today_word);
+		
 		return { is_success: true, today_word, dic_url, pron, size } as const;
 	} catch (e: unknown) {
 		console.error(e);

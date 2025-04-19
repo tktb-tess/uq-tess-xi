@@ -5,9 +5,7 @@
 	let isOpen = $state(false);
 
 	const large = $derived(
-		(typeof innerWidth.current === 'number') 
-		? innerWidth.current > 1024 
-		: false
+		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
 	);
 </script>
 
@@ -20,7 +18,7 @@
 <header
 	class="
         bg-mnlila text-white [&_a]:text-white [&_a]:hover:text-white/70
-        [&_a]:transition-colors [&_a]:no-underline [&_a]:block
+        [&_a]:transition-colors [&_a]:no-underline
     "
 >
 	<div
@@ -34,9 +32,28 @@
 				{@render links()}
 			</nav>
 		{:else}
-			<div class="relative">
-				<button onclick={() => { isOpen = !isOpen; }} type="button" class="px-12"><Kebab /></button>
-				<nav class="absolute hidden data-open:flex *:flex-[0_0_auto] bg-violet-800 flex-col gap-y-2 top-[66px] left-0" data-open={isOpen ? '' : null}>
+			<div class="relative w-[130px]">
+				<button
+					onclick={() => {
+						if (!isOpen) {
+							isOpen = true;
+							setTimeout(() => {
+								const closeMenu = () => {
+									isOpen = false;
+								};
+								window.addEventListener('click', closeMenu, { once: true });
+							}, 20);
+						}
+					}}
+					type="button"
+					class="h-[64px] mx-auto flex items-center hover:text-white/70 transition-colors"
+				>
+					<Kebab />
+				</button>
+				<nav
+					class="absolute hidden data-open:flex items-center *:flex-[0_0_auto] bg-mnlila flex-col gap-y-2 top-[66px] w-full"
+					data-open={isOpen ? '' : null}
+				>
 					{@render links()}
 				</nav>
 			</div>
@@ -45,5 +62,4 @@
 </header>
 
 <style>
-
 </style>

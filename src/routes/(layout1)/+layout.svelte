@@ -39,7 +39,7 @@
 			<a href="/vaes/LJ-list">Leipzig–Jakarta List (準備中)</a>
 			<a href="/vaes/ringo-bunn">りんご文 (準備中)</a>
 			<details>
-				<summary class="cursor-pointer">文法 (準備中)</summary>
+				<summary class="cursor-pointer user-select-none">文法 (準備中)</summary>
 				<div class="flex flex-col">
 					<a href="/vaes/noun">名詞</a>
 					<a href="/vaes/numeral">数詞</a>
@@ -195,5 +195,10 @@
 		@media (width >= 96rem) {
 			flex: 0 0 calc(4 / 24 * 100%);
 		}
+	}
+
+	.user-select-none {
+		user-select: none;
+		-webkit-user-select: none;
 	}
 </style>
