@@ -1,7 +1,6 @@
 import { error, text } from '@sveltejs/kit';
-import type { RequestEvent } from './$types';
 
-export const GET = async ({ params, fetch: f }: RequestEvent) => {
+export const GET = async ({ params, fetch: svFetch }) => {
 	const headers = {
 		'Content-Type': 'text/plain; charset=utf-8'
 	} as const;
@@ -23,7 +22,7 @@ export const GET = async ({ params, fetch: f }: RequestEvent) => {
 		}
 	})();
 
-	const resp = await f(path);
+	const resp = await svFetch(path);
 	if (!resp.ok) error(resp.status);
 	const body = await resp.text();
 
