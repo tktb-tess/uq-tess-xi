@@ -130,6 +130,7 @@
 	</section>
 	<section>
 		<h2>頂いた名前</h2>
+		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
 		<table
 			class="
 				grid [&_:is(thead,tbody,tr)]:contents [&_td]:bg-slate-100 [&_td]:border [&_td]:border-slate-400
