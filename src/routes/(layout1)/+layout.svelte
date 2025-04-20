@@ -1,30 +1,42 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
-	import MyHeader from '$lib/sfc/my_header.svelte';
+	import Kebab from '$lib/sfc/kebab.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
 
 	const { children } = $props();
-	let is_open = $state(false);
+	let drawerIsOpen = $state(false);
+	let headMenuIsOpen = $state(false);
 
-	const large = $derived.by(() => {
-		if (typeof innerWidth.current === 'number') {
-			return innerWidth.current >= 1024;
-		} else return false;
-	});
+	const large = $derived(
+		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
+	);
 
 	const onClickBackdrop: MouseEventHandler<HTMLButtonElement> = (e) => {
 		if (e.target === e.currentTarget) {
-			is_open = false;
+			drawerIsOpen = false;
 		}
 	};
 
-	onNavigate((nav) => {
+	const onClickHeadMenu: MouseEventHandler<HTMLButtonElement> = () => {
+		if (!headMenuIsOpen) {
+			headMenuIsOpen = true;
+
+			setTimeout(() => {
+				const handleClose = () => {
+					headMenuIsOpen = false;
+				};
+
+				window.addEventListener('click', handleClose, { once: true });
+			});
+		}
+	};
+
+	onNavigate(() => {
 		return new Promise(async (resolve) => {
-			is_open = false;
+			drawerIsOpen = false;
 			resolve();
-			await nav.complete;
 		});
 	});
 </script>
@@ -59,7 +71,46 @@
 	</div>
 {/snippet}
 
-<MyHeader />
+{#snippet links()}
+	<a href="/vaes">Vässenzländisķ</a>
+	<a href="/data">データ</a>
+	<a href="/others">その他</a>
+{/snippet}
+
+<header
+	class="
+        bg-mnlila text-white [&_a]:text-white [&_a]:hover:text-white/70
+        [&_a]:transition-colors [&_a]:no-underline
+    "
+>
+	<div class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5">
+		<h1 class="font-serif text-3xl [&_a]:h-[64px]">
+			<a class="flex items-center" href="/.">悠久肆方体</a>
+		</h1>
+		{#if large}
+			<nav
+				class="flex *:flex-[0_0_auto] items-center gap-x-5 [&_a]:h-[64px] [&_a]:flex [&_a]:items-center"
+			>
+				{@render links()}
+			</nav>
+		{:else}
+			<div class="relative">
+				<button class="grid h-[64px] place-content-center" onclick={onClickHeadMenu}>
+					<Kebab />
+				</button>
+				<nav
+					class="
+						absolute flex invisible data-open:visible transition-[visibility,scale,translate] flex-col *:block *:text-center *:flex-[0_0_auto]
+						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] left-[-70px] w-max scale-y-0 -translate-y-[52px] data-open:scale-y-100 data-open:translate-y-0
+					"
+					data-open={headMenuIsOpen ? '' : null}
+				>
+					{@render links()}
+				</nav>
+			</div>
+		{/if}
+	</div>
+</header>
 
 <div class="flex flex-wrap [&_*]:min-w-0 ps-2 overflow-x-clip">
 	{#if large}
@@ -72,9 +123,9 @@
 			type="button"
 			onclick={onClickBackdrop}
 			class="drawer-backdrop"
-			data-open={is_open ? '' : null}
+			data-open={drawerIsOpen ? '' : null}
 		>
-			<nav class="drawer" data-open={is_open ? '' : null}>
+			<nav class="drawer" data-open={drawerIsOpen ? '' : null}>
 				{@render sideMenu()}
 			</nav>
 		</button>
@@ -84,7 +135,9 @@
 		<button
 			class="px-3 py-1 mt-2 bg-black text-white rounded-lg lg:hidden hover:text-white/70 transition-colors"
 			type="button"
-			onclick={() => { is_open = true; }}
+			onclick={() => {
+				drawerIsOpen = true;
+			}}
 		>
 			<Hamburger />
 		</button>
@@ -149,12 +202,12 @@
 		z-index: 1000;
 		background-color: transparent;
 		transition-property: visibility, background-color;
-		transition-timing-function: cubic-bezier(0, .2, 1, 0);
+		transition-timing-function: cubic-bezier(0, 0.2, 1, 0);
 		overflow-x: hidden;
 
 		&[data-open] {
 			visibility: visible;
-			transition-timing-function: cubic-bezier(0, 1, .8, 1);
+			transition-timing-function: cubic-bezier(0, 1, 0.8, 1);
 			background-color: color-mix(in oklch, black 50%, transparent);
 		}
 	}

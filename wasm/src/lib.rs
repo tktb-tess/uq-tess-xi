@@ -1,4 +1,4 @@
-use num_bigint::{BigInt, BigUint};
+use num_bigint::BigUint;
 //use js_sys::BigInt as jsBigInt;
 
 pub fn mod_pow(b: &BigUint, p: &BigUint, m: &BigUint) -> BigUint {
@@ -11,12 +11,15 @@ pub fn mod_pow(b: &BigUint, p: &BigUint, m: &BigUint) -> BigUint {
     };
 
     let mut res = one.clone();
+    let [mut base, mut power] = [b.clone(), p.clone()];
 
-    while *p > BigUint::ZERO {
-        if p & &one == one {
-            res = res * b % m;
+    while power > BigUint::ZERO {
+        if &power & &one == one {
+            res = res * &base % m;
         };
-        
+
+        base = &base * &base % m;
+        power >>= 1;
     }
 
     res
