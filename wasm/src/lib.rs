@@ -1,5 +1,22 @@
-use num_bigint::BigUint;
-//use js_sys::BigInt as jsBigInt;
+use num_bigint::{BigUint, BigInt};
+use js_sys::BigInt as jsBigInt;
+
+fn bigint_to_js(v: &BigInt) -> jsBigInt {
+    v.to_string().parse().unwrap()
+}
+
+fn biguint_to_js(v: &BigUint) -> jsBigInt {
+    v.to_string().parse().unwrap()
+}
+
+fn from_js_bigint(v: &jsBigInt) -> BigInt {
+    v.to_string(10)
+    .unwrap()
+    .as_string()
+    .unwrap()
+    .parse()
+    .unwrap()
+}
 
 pub fn mod_pow(b: &BigUint, p: &BigUint, m: &BigUint) -> BigUint {
     let one = BigUint::from(1u8);
@@ -11,7 +28,8 @@ pub fn mod_pow(b: &BigUint, p: &BigUint, m: &BigUint) -> BigUint {
     };
 
     let mut res = one.clone();
-    let [mut base, mut power] = [b.clone(), p.clone()];
+    let mut base = b.clone();
+    let mut power = p.clone();
 
     while power > BigUint::ZERO {
         if &power & &one == one {

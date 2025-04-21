@@ -79,8 +79,7 @@
 
 <header
 	class="
-        bg-mnlila text-white [&_a]:text-white [&_a]:hover:text-white/70
-        [&_a]:transition-colors [&_a]:no-underline
+        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline
     "
 >
 	<div class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5">
@@ -101,7 +100,8 @@
 				<nav
 					class="
 						absolute flex invisible data-open:visible transition-[visibility,scale,translate] flex-col *:block *:text-center *:flex-[0_0_auto]
-						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] left-[-70px] w-max scale-y-0 -translate-y-[52px] data-open:scale-y-100 data-open:translate-y-0
+						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] left-[-70px] w-max scale-y-0
+						-translate-y-[52px] data-open:scale-y-100 data-open:translate-y-0
 					"
 					data-open={headMenuIsOpen ? '' : null}
 				>
