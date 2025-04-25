@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
+	import DetailsArrow from '$lib/sfc/details-arrow.svelte';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
@@ -58,7 +59,7 @@
 	};
 
 	onNavigate(() => {
-		return new Promise(async (resolve) => {
+		return new Promise((resolve) => {
 			drawerIsOpen = false;
 			resolve();
 		});
@@ -76,6 +77,12 @@
 			<a href="/vaes/ringo-bunn">りんご文 (準備中)</a>
 			<details bind:this={accordion} class="">
 				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
+					<DetailsArrow
+						class="
+							size-6 transition-[rotate] duration-250
+							{accordionIsOpen ? 'rotate-90' : null}
+						"
+					/>
 					文法 (準備中)
 				</summary>
 				<div
