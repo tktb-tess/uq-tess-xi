@@ -1,15 +1,19 @@
 use num_bigint::{BigUint, BigInt};
 use js_sys::BigInt as jsBigInt;
 
-fn bigint_to_js(v: &BigInt) -> jsBigInt {
-    v.to_string().parse().unwrap()
+pub fn bigint_to_js(v: &BigInt) -> jsBigInt {
+    v.to_string()
+    .parse::<jsBigInt>()
+    .unwrap()
 }
 
-fn biguint_to_js(v: &BigUint) -> jsBigInt {
-    v.to_string().parse().unwrap()
+pub fn biguint_to_js(v: &BigUint) -> jsBigInt {
+    v.to_string()
+    .parse::<jsBigInt>()
+    .unwrap()
 }
 
-fn from_js_bigint(v: &jsBigInt) -> BigInt {
+pub fn from_js_bigint(v: &jsBigInt) -> BigInt {
     v.to_string(10)
     .unwrap()
     .as_string()

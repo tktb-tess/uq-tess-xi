@@ -97,6 +97,7 @@
 	html,
 	:host {
 		-webkit-tap-highlight-color: revert;
+		
 	}
 
 	a {

@@ -8,6 +8,8 @@
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
 	let headMenuIsOpen = $state(false);
+	let accordionIsOpen = $state(false);
+	let accordion: HTMLDetailsElement | null = null;
 
 	const large = $derived(
 		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
@@ -29,7 +31,29 @@
 				};
 
 				window.addEventListener('click', handleClose, { once: true });
-			});
+			}, 10);
+		}
+	};
+
+	const onClickDetails: MouseEventHandler<HTMLElement> = (e) => {
+		e.preventDefault();
+
+		if (!accordionIsOpen) {
+			if (accordion) {
+				accordion.open = true;
+			}
+
+			setTimeout(() => {
+				accordionIsOpen = true;
+			}, 10);
+		} else {
+			accordionIsOpen = false;
+
+			setTimeout(() => {
+				if (accordion) {
+					accordion.open = false;
+				}
+			}, 260);
 		}
 	};
 
@@ -50,9 +74,18 @@
 			<a href="/vaes/phonology">音韻論</a>
 			<a href="/vaes/LJ-list">Leipzig–Jakarta List (準備中)</a>
 			<a href="/vaes/ringo-bunn">りんご文 (準備中)</a>
-			<details>
-				<summary class="cursor-pointer user-select-none">文法 (準備中)</summary>
-				<div class="flex flex-col">
+			<details bind:this={accordion} class="">
+				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
+					文法 (準備中)
+				</summary>
+				<div
+					class="
+						flex flex-col invisible h-0 overflow-y-hidden
+						data-opened:visible data-opened:h-[calc-size(auto,size)] transition-[height,visibility]
+						duration-250
+					"
+					data-opened={accordionIsOpen ? '' : null}
+				>
 					<a href="/vaes/noun">名詞</a>
 					<a href="/vaes/numeral">数詞</a>
 					<a href="/vaes/verb">動詞</a>
@@ -176,15 +209,11 @@
 		}
 
 		:where(h4, a, summary) {
-			padding-block: calc(var(--spacing) * 2);
+			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
 		}
 
-		:where(h4, a) {
-			padding-inline: calc(var(--spacing) * 3);
-		}
-
-		:where(summary) {
-			padding-inline: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
+		details > div > a {
+			padding-inline-start: calc(var(--spacing) * 4);
 		}
 	}
 
