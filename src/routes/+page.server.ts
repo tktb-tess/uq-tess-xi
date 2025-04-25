@@ -32,7 +32,7 @@ export const load = async (): Promise<Readonly<WordData>> => {
 		
 		return { is_success: true, today_word, dic_url, pron, size } as const;
 	} catch (e: unknown) {
-		console.error(e);
+		// console.error(e);
 		if (e instanceof Error) {
 			return { is_success: false, error: e.message } as const;
 		} else if (e instanceof Response) {

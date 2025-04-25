@@ -2,6 +2,7 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+	import { onMount } from 'svelte';
 
 	const { data } = $props();
 </script>
@@ -175,7 +176,11 @@
 		</ul>
 		<h3>メモ</h3>
 		<ul>
-			<li>Miller–Rabin 素数判定法</li>
+			<li>
+				<ExtLink href="https://gist.github.com/tktb-tess/91f831a1c93d78fe54ad1cec172d08d2">
+					Miller–Rabin 素数判定法
+				</ExtLink>
+			</li>
 		</ul>
 	</section>
 	<section>
@@ -204,7 +209,7 @@
 			</li>
 		</ul>
 	</section>
-	<p class="font-serif font-semibold text-red-600 text-center text-xl">工事中…</p>
+	<p class="font-serif font-semibold text-[red] text-center text-xl">工事中…</p>
 </main>
 
 <footer class="flex flex-col items-center my-5 px-(--gutter)">
