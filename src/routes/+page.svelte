@@ -2,7 +2,6 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-	import { onMount } from 'svelte';
 
 	const { data } = $props();
 </script>
