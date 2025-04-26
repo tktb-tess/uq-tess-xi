@@ -48,7 +48,6 @@
 					setTimeout(resolve, offset);
 				});
 				accordionIsOpen = true;
-				
 			} else {
 				accordionIsOpen = false;
 
@@ -61,11 +60,12 @@
 		}
 	};
 
-	onNavigate(() => 
-		new Promise((resolve) => {
-			drawerIsOpen = false;
-			resolve();
-		})
+	onNavigate(
+		() =>
+			new Promise((resolve) => {
+				drawerIsOpen = false;
+				resolve();
+			})
 	);
 </script>
 
@@ -76,13 +76,13 @@
 			<a href="/vaes">概説</a>
 			<a href="/vaes/letter-et-pron">文字と発音</a>
 			<a href="/vaes/phonology">音韻論</a>
-			<a href="/vaes/LJ-list">Leipzig–Jakarta List (準備中)</a>
-			<a href="/vaes/ringo-bunn">りんご文 (準備中)</a>
+			<a aria-disabled="true">Leipzig–Jakarta List (準備中)</a>
+			<a aria-disabled="true">りんご文 (準備中)</a>
 			<details bind:this={accordion} class="">
 				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
 					<DetailsArrow
 						class="
-							size-5 transition-transform duration-250
+							size-4.5 transition-transform duration-250 align-middle translate-y-[-1px]
 							{accordionIsOpen ? 'rotate-x-180' : null}
 						"
 					/>
@@ -96,10 +96,10 @@
 					"
 					data-open={accordionIsOpen ? '' : null}
 				>
-					<a href="/vaes/noun">名詞</a>
+					<a aria-disabled="true">名詞 (準備中)</a>
 					<a href="/vaes/numeral">数詞</a>
-					<a href="/vaes/verb">動詞</a>
-					<a href="/vaes/adjective">形容詞</a>
+					<a aria-disabled="true">動詞 (準備中)</a>
+					<a aria-disabled="true">形容詞 (準備中)</a>
 				</div>
 			</details>
 		</div>
@@ -117,7 +117,7 @@
 {#snippet links()}
 	<a href="/vaes">Vässenzländisķ</a>
 	<a href="/data">データ</a>
-	<a href="/others">その他</a>
+	<a href="/others">雑多</a>
 {/snippet}
 
 <header
@@ -212,9 +212,11 @@
 			transition-duration: var(--default-transition-duration);
 			border-radius: 0.5rem;
 
-			&:hover {
-				background-color: var(--color-mnlila);
-				color: white;
+			@media (hover: hover) and (pointer: fine) {
+				&:hover {
+					background-color: var(--color-mnlila);
+					color: white;
+				}
 			}
 		}
 

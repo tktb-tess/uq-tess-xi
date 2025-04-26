@@ -122,7 +122,7 @@
 		<h2>言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ（準備中）</a></li>
+			<li><a aria-disabled="true">古英語の動詞活用まとめ（準備中）</a></li>
 			<li>
 				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>
@@ -156,7 +156,7 @@
 		<h3>音楽</h3>
 		<p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
 		<ul>
-			<li>いくつかの曲</li>
+			<li><a href="/others/musik">いくつかの曲</a></li>
 			<li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming">SoundCloud</ExtLink></li>
 			<li><ExtLink href="https://www.youtube.com/@tessyrrhaqt">YouTube</ExtLink></li>
 		</ul>
@@ -166,12 +166,14 @@
 			<li>ジョンソンの立体のcrown jewelsの命名案（準備中）</li>
 			<li><a href="/others/tools">ツール</a></li>
 			<li>
-				終末式ローマ字 «Syuğmatusǐkiro–mázi»
+				<ExtLink href="https://tktb-tess.github.io/apocaly_romaji/"
+					>終末式ローマ字 «Syuğmatusǐkiro–mázi»</ExtLink
+				><br />
 				…舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。
 			</li>
 			<li>グレゴリオ聖歌の音階について</li>
 			<li>日本語 チベット文字表記</li>
-			<li>当サイトで使用しているフォントのライセンス</li>
+			<li><a href="/license">当サイトで使用しているフォントのライセンス</a></li>
 		</ul>
 		<h3>メモ</h3>
 		<ul>
