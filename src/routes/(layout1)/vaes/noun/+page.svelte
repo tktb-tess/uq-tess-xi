@@ -6,5 +6,5 @@
     <title>葦語 名詞</title>
 </svelte:head>
 
-<h2 id="subtitle">名詞</h2>
+<h2 class="my-8 text-center">名詞</h2>
 <p class="text-red-600 text-xl text-center">工事中……</p>

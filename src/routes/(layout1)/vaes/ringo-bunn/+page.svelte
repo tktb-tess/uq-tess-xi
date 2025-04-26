@@ -6,7 +6,7 @@
 	<title>葦語 りんご文</title>
 </svelte:head>
 
-<h2 id="subtitle">りんごを食べたい58文</h2>
+<h2 class="my-8 text-center">りんごを食べたい58文</h2>
 <p>
 	以下は、ざすろん氏により作成された
 	<ExtLink href="https://zaslon.info/langcontents/1450/">りんごを食べたい58文</ExtLink>

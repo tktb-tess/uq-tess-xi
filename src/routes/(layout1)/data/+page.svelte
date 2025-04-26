@@ -6,7 +6,7 @@
     <title>データ</title>
 </svelte:head>
 
-<h2 id="subtitle">データ</h2>
+<h2 class="my-8 text-center">データ</h2>
 <ul>
     <li><a href="/data/conlang-xcumon">人工言語製作者に50の質問</a></li>
     <li><a href="/data/OE-verb-conj-type">古英語 動詞活用まとめ</a></li>

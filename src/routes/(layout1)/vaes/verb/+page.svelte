@@ -6,5 +6,5 @@
     <title>葦語 動詞</title>
 </svelte:head>
 
-<h2 id="subtitle">動詞</h2>
+<h2 class="my-8 text-center">動詞</h2>
 <p class="text-red-600 text-xl text-center">工事中……</p>

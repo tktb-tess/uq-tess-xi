@@ -6,4 +6,4 @@
     <title>ツール</title>
 </svelte:head>
 
-<h2 id="subtitle">ツール</h2>
+<h2 class="my-8 text-center">ツール</h2>

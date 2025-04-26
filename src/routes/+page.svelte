@@ -223,4 +223,8 @@
 <PageTopBtn />
 
 <style>
+	h2 {
+		text-align: center;
+		border-bottom: double 3px currentColor;
+	}
 </style>

@@ -2,4 +2,4 @@
 	<title>miscellaneous</title>
 </svelte:head>
 
-<h2 id="subtitle">雑多</h2>
+<h2 class="my-8 text-center">雑多</h2>
