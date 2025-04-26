@@ -3,6 +3,7 @@
 	import DetailsArrow from '$lib/sfc/details-arrow.svelte';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
+	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
 
@@ -44,18 +45,21 @@
 		if (accordion) {
 			if (!acrdnIsOpen && !accordion.open) {
 				accordion.open = true;
-				await new Promise((resolve) => {
-					setTimeout(resolve, offset);
+				await new Promise<void>((resolve) => {
+					setTimeout(() => {
+						acrdnIsOpen = true;
+						resolve();
+					}, offset);
 				});
-				acrdnIsOpen = true;
 			} else if (acrdnIsOpen && accordion.open) {
 				acrdnIsOpen = false;
 
-				await new Promise((resolve) => {
-					setTimeout(resolve, offset + transitionDur);
+				await new Promise<void>((resolve) => {
+					setTimeout(() => {
+						if (accordion) accordion.open = false;
+						resolve();
+					}, offset + transitionDur);
 				});
-
-				accordion.open = false;
 			}
 		}
 	};
@@ -174,7 +178,7 @@
 		</button>
 	{/if}
 
-	<main class="flex-[1_0_0] bg-slate-50 px-2 flow-root">
+	<main class="flex-[1_0_0] bg-slate-50 px-4 flow-root">
 		<button
 			class="px-3 py-1 mt-2 bg-black text-white rounded-lg lg:hidden hover:text-white/70 transition-colors"
 			type="button"
@@ -187,6 +191,8 @@
 		{@render children()}
 	</main>
 </div>
+
+<PageTopBtn />
 
 <style>
 	.side-menu {
@@ -257,13 +263,13 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: calc(var(--spacing) * 1);
-		overflow-y: auto;
 		padding-block: calc(var(--spacing) * 4);
 	}
 
 	.drawer {
 		height: 100vh;
 		position: fixed;
+		overflow-y: auto;
 		top: 0;
 		left: 0;
 		width: 18rem;
@@ -280,7 +286,7 @@
 
 	.non-drawer {
 		flex: 0 0 calc(6 / 24 * 100%);
-		height: calc(100vh - 64px);
+		min-height: calc(100vh - 64px);
 
 		@media (width >= 80rem) {
 			flex: 0 0 calc(5 / 24 * 100%);

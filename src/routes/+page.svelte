@@ -27,7 +27,7 @@
         flex flex-col gap-y-10 py-2
     "
 >
-	<h2 class="" id="subtitle">〜ようこそ〜</h2>
+	<h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
 	<p class="text-[red] font-semibold text-xl text-center">
 		※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
 	</p>
@@ -223,7 +223,7 @@
 <PageTopBtn />
 
 <style>
-	h2 {
+	h2:not(#subtitle) {
 		text-align: center;
 		border-bottom: double 3px currentColor;
 	}
