@@ -36,34 +36,37 @@
 		}
 	};
 
-	const onClickDetails: MouseEventHandler<HTMLElement> = (e) => {
+	const onClickDetails: MouseEventHandler<HTMLElement> = async (e) => {
 		e.preventDefault();
+		const offset = 10;
+		const transitionDur = 250;
 
-		if (!accordionIsOpen) {
-			if (accordion) {
+		if (accordion) {
+			if (!accordionIsOpen && !accordion.open) {
 				accordion.open = true;
-			}
-
-			setTimeout(() => {
+				await new Promise((resolve) => {
+					setTimeout(resolve, offset);
+				});
 				accordionIsOpen = true;
-			}, 10);
-		} else {
-			accordionIsOpen = false;
+				
+			} else {
+				accordionIsOpen = false;
 
-			setTimeout(() => {
-				if (accordion) {
-					accordion.open = false;
-				}
-			}, 260);
+				await new Promise((resolve) => {
+					setTimeout(resolve, offset + transitionDur);
+				});
+
+				accordion.open = false;
+			}
 		}
 	};
 
-	onNavigate(() => {
-		return new Promise((resolve) => {
+	onNavigate(() => 
+		new Promise((resolve) => {
 			drawerIsOpen = false;
 			resolve();
-		});
-	});
+		})
+	);
 </script>
 
 {#snippet sideMenu()}
@@ -79,8 +82,8 @@
 				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
 					<DetailsArrow
 						class="
-							size-6 transition-[rotate] duration-250
-							{accordionIsOpen ? 'rotate-90' : null}
+							size-5 transition-transform duration-250
+							{accordionIsOpen ? 'rotate-x-180' : null}
 						"
 					/>
 					文法 (準備中)
@@ -88,10 +91,10 @@
 				<div
 					class="
 						flex flex-col invisible h-0 overflow-y-hidden
-						data-opened:visible data-opened:h-[calc-size(auto,size)] transition-[height,visibility]
+						data-open:visible data-open:h-[calc-size(auto,size)] transition-[height,visibility]
 						duration-250
 					"
-					data-opened={accordionIsOpen ? '' : null}
+					data-open={accordionIsOpen ? '' : null}
 				>
 					<a href="/vaes/noun">名詞</a>
 					<a href="/vaes/numeral">数詞</a>
@@ -220,7 +223,7 @@
 		}
 
 		details > div > a {
-			padding-inline-start: calc(var(--spacing) * 4);
+			padding-inline-start: calc(var(--spacing) * 5);
 		}
 	}
 
