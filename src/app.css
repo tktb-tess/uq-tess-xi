@@ -143,3 +143,16 @@
 		}
 	}
 }
+
+@utility user-select-* {
+	user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
+	-webkit-user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
+}
+
+@custom-variant any-hover {
+	@media (any-hover: hover) {
+		&:hover {
+			@slot;
+		}
+	}
+}

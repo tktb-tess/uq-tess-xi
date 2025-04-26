@@ -9,7 +9,7 @@
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
 	let headMenuIsOpen = $state(false);
-	let accordionIsOpen = $state(false);
+	let acrdnIsOpen = $state(false);
 	let accordion: HTMLDetailsElement | null = null;
 
 	const large = $derived(
@@ -42,14 +42,14 @@
 		const transitionDur = 250;
 
 		if (accordion) {
-			if (!accordionIsOpen && !accordion.open) {
+			if (!acrdnIsOpen && !accordion.open) {
 				accordion.open = true;
 				await new Promise((resolve) => {
 					setTimeout(resolve, offset);
 				});
-				accordionIsOpen = true;
-			} else {
-				accordionIsOpen = false;
+				acrdnIsOpen = true;
+			} else if (acrdnIsOpen && accordion.open) {
+				acrdnIsOpen = false;
 
 				await new Promise((resolve) => {
 					setTimeout(resolve, offset + transitionDur);
@@ -82,8 +82,8 @@
 				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
 					<DetailsArrow
 						class="
-							size-4.5 transition-transform duration-250 align-middle translate-y-[-1px]
-							{accordionIsOpen ? 'rotate-x-180' : null}
+							size-4.5 transition-transform duration-250 translate-y-[-1px]
+							{acrdnIsOpen ? 'rotate-x-180' : null}
 						"
 					/>
 					文法 (準備中)
@@ -94,7 +94,7 @@
 						data-open:visible data-open:h-[calc-size(auto,size)] transition-[height,visibility]
 						duration-250
 					"
-					data-open={accordionIsOpen ? '' : null}
+					data-open={acrdnIsOpen ? '' : null}
 				>
 					<a aria-disabled="true">名詞 (準備中)</a>
 					<a href="/vaes/numeral">数詞</a>
@@ -122,7 +122,7 @@
 
 <header
 	class="
-        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline
+        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
     "
 >
 	<div class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5">
@@ -212,7 +212,7 @@
 			transition-duration: var(--default-transition-duration);
 			border-radius: 0.5rem;
 
-			@media (hover: hover) and (pointer: fine) {
+			@media (any-hover: hover) {
 				&:hover {
 					background-color: var(--color-mnlila);
 					color: white;
@@ -289,10 +289,5 @@
 		@media (width >= 96rem) {
 			flex: 0 0 calc(4 / 24 * 100%);
 		}
-	}
-
-	.user-select-none {
-		user-select: none;
-		-webkit-user-select: none;
 	}
 </style>
