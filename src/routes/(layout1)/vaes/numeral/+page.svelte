@@ -95,57 +95,75 @@
 </p>
 <p>物を数えるときなど、単独で使う場合も <em>an</em> を使う。</p>
 <p>変化表は以下。</p>
-<div>
-	<div>
-		<table class="grid-cols-[repeat(4,auto)]">
-			<thead>
-				<tr>
-					<th scope="col">＼</th>
-					<th scope="col">男性</th>
-					<th scope="col">中性</th>
-					<th scope="col">女性</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">主格</th>
-					<td>an</td>
-					<td>an</td>
-					<td>an</td>
-				</tr>
-				<tr>
-					<th scope="row">属格</th>
-					<td>anes</td>
-					<td>anes</td>
-					<td>anr</td>
-				</tr>
-				<tr>
-					<th scope="row">与格</th>
-					<td>anum</td>
-					<td>anum</td>
-					<td>anr</td>
-				</tr>
-				<tr>
-					<th scope="row">対格</th>
-					<td>änn</td>
-					<td>an</td>
-					<td>änn</td>
-				</tr>
-				<tr>
-					<th scope="row">具格<sup>※</sup></th>
-					<td>änn</td>
-					<td>änn</td>
-					<td>anr</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+
+<table class="grid-cols-[repeat(4,auto)]">
+	<thead>
+		<tr>
+			<th scope="col">＼</th>
+			<th scope="col">男性</th>
+			<th scope="col">中性</th>
+			<th scope="col">女性</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">主格</th>
+			<td>an</td>
+			<td>an</td>
+			<td>an</td>
+		</tr>
+		<tr>
+			<th scope="row">属格</th>
+			<td>anes</td>
+			<td>anes</td>
+			<td>anr</td>
+		</tr>
+		<tr>
+			<th scope="row">与格</th>
+			<td>anum</td>
+			<td>anum</td>
+			<td>anr</td>
+		</tr>
+		<tr>
+			<th scope="row">対格</th>
+			<td>änn</td>
+			<td>an</td>
+			<td>änn</td>
+		</tr>
+		<tr>
+			<th scope="row">具格<sup>※</sup></th>
+			<td>änn</td>
+			<td>änn</td>
+			<td>anr</td>
+		</tr>
+	</tbody>
+</table>
+
 <p class="text-center text-[0.8rem]">※具格は通常使われず、代わりに与格が使われる</p>
 <p>
-	また、2 <em>tvęģ</em>
-	は性によって変化する。しかし、後ろに他の数詞が来るときは名詞の性に拘わらず中性形の <em>taw</em> が使用される。
+	また、2 <em>tvęģ</em> は性によって変化する。
 </p>
+
+<p>変化表は以下。</p>
+
+<table class="grid-cols-[repeat(3,auto)]">
+	<thead>
+		<tr>
+			<th scope="col">男性</th>
+			<th scope="col">中性</th>
+			<th scope="col">女性</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tvęģ</td>
+			<td>taw</td>
+			<td>tva</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>ただし、後ろに他の数詞が来るときは名詞の性に拘わらず中性形の <em>taw</em> が使用される。</p>
 <p>単独で使う場合は男性形 <em>tvęģ</em> を使う。</p>
 <p>
 	例. <em>Inr bylding sind taw ðawzend hunde.</em> &#8213; その建物の中には2000匹の犬がいる。
@@ -153,126 +171,106 @@
 <p>
 	例2. <em>Inr bylding sind ðawzend tvęģ hundas.</em> &#8213; その建物の中には1002匹の犬がいる。
 </p>
-<p>変化表は以下。</p>
-<div>
-	<div>
-		<table class="grid-cols-[repeat(3,auto)]">
-			<thead>
-				<tr>
-					<th scope="col">男性</th>
-					<th scope="col">中性</th>
-					<th scope="col">女性</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>tvęģ</td>
-					<td>taw</td>
-					<td>tva</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+
 <h3>20&ndash;999</h3>
+
 <div>
-	<div>
-		<table class="grid-cols-[repeat(6,auto)]">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>20</td>
-					<td>tvintaģ</td>
-					<td>30</td>
-					<td>ðraitaģ</td>
-					<td>40</td>
-					<td>fewrtaģ</td>
-				</tr>
-				<tr>
-					<td>21</td>
-					<td>an-and-tvintaģ</td>
-					<td>31</td>
-					<td>an-and-ðräitaģ</td>
-					<td>50</td>
-					<td>faiftaģ</td>
-				</tr>
-				<tr>
-					<td>22</td>
-					<td>taw-and-tvintaģ</td>
-					<td>32</td>
-					<td>taw-and-ðraitaģ</td>
-					<td>60</td>
-					<td>sightaģ</td>
-				</tr>
-				<tr>
-					<td>23</td>
-					<td>ðrau-and-tvintaģ</td>
-					<td>33</td>
-					<td>ðrau-and-ðraitaģ</td>
-					<td>70</td>
-					<td>söftaģ</td>
-				</tr>
-				<tr>
-					<td>24</td>
-					<td>fewr-and-tvintaģ</td>
-					<td>34</td>
-					<td>fewr-and-ðraitaģ</td>
-					<td>80</td>
-					<td>aghdtaģ</td>
-				</tr>
-				<tr>
-					<td>25</td>
-					<td>faiv-and-tvintaģ</td>
-					<td>35</td>
-					<td>faiv-and-ðraitaģ</td>
-					<td>90</td>
-					<td>newntaģ</td>
-				</tr>
-				<tr>
-					<td>26</td>
-					<td>siks-and-tvintaģ</td>
-					<td>36</td>
-					<td>siks-and-ðraitaģ</td>
-					<td>100</td>
-					<td>(an-)hundred</td>
-				</tr>
-				<tr>
-					<td>27</td>
-					<td>sövon-and-tvintaģ</td>
-					<td>37</td>
-					<td>sövon-and-ðraitaģ</td>
-					<td>110</td>
-					<td>änlftaģ</td>
-				</tr>
-				<tr>
-					<td>28</td>
-					<td>aght-and-tvintaģ</td>
-					<td>38</td>
-					<td>aght-and-ðraitaģ</td>
-					<td>120</td>
-					<td>tvälftaģ</td>
-				</tr>
-				<tr>
-					<td>29</td>
-					<td>nięw-and-tvintaģ</td>
-					<td>39</td>
-					<td>nięw-and-ðraitaģ</td>
-					<td>&ndash;</td>
-					<td>&ndash;</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	<table class="grid-cols-[repeat(6,auto)]">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">数詞</th>
+				<th scope="col"></th>
+				<th scope="col">数詞</th>
+				<th scope="col"></th>
+				<th scope="col">数詞</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>20</td>
+				<td>tvintaģ</td>
+				<td>30</td>
+				<td>ðraitaģ</td>
+				<td>40</td>
+				<td>fewrtaģ</td>
+			</tr>
+			<tr>
+				<td>21</td>
+				<td>an-and-tvintaģ</td>
+				<td>31</td>
+				<td>an-and-ðräitaģ</td>
+				<td>50</td>
+				<td>faiftaģ</td>
+			</tr>
+			<tr>
+				<td>22</td>
+				<td>taw-and-tvintaģ</td>
+				<td>32</td>
+				<td>taw-and-ðraitaģ</td>
+				<td>60</td>
+				<td>sightaģ</td>
+			</tr>
+			<tr>
+				<td>23</td>
+				<td>ðrau-and-tvintaģ</td>
+				<td>33</td>
+				<td>ðrau-and-ðraitaģ</td>
+				<td>70</td>
+				<td>söftaģ</td>
+			</tr>
+			<tr>
+				<td>24</td>
+				<td>fewr-and-tvintaģ</td>
+				<td>34</td>
+				<td>fewr-and-ðraitaģ</td>
+				<td>80</td>
+				<td>aghdtaģ</td>
+			</tr>
+			<tr>
+				<td>25</td>
+				<td>faiv-and-tvintaģ</td>
+				<td>35</td>
+				<td>faiv-and-ðraitaģ</td>
+				<td>90</td>
+				<td>newntaģ</td>
+			</tr>
+			<tr>
+				<td>26</td>
+				<td>siks-and-tvintaģ</td>
+				<td>36</td>
+				<td>siks-and-ðraitaģ</td>
+				<td>100</td>
+				<td>(an-)hundred</td>
+			</tr>
+			<tr>
+				<td>27</td>
+				<td>sövon-and-tvintaģ</td>
+				<td>37</td>
+				<td>sövon-and-ðraitaģ</td>
+				<td>110</td>
+				<td>änlftaģ</td>
+			</tr>
+			<tr>
+				<td>28</td>
+				<td>aght-and-tvintaģ</td>
+				<td>38</td>
+				<td>aght-and-ðraitaģ</td>
+				<td>120</td>
+				<td>tvälftaģ</td>
+			</tr>
+			<tr>
+				<td>29</td>
+				<td>nięw-and-tvintaģ</td>
+				<td>39</td>
+				<td>nięw-and-ðraitaģ</td>
+				<td>&ndash;</td>
+				<td>&ndash;</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
+
 <p>
 	21&ndash;99、<strong>および110&ndash;129</strong>は、「(1の位)-<em>and</em
 	>-(10の位)」とハイフンで繋いで書く。
@@ -306,72 +304,70 @@
 </p>
 <h3>1000&ndash;</h3>
 <p></p>
-<div>
-	<div>
-		<table class="grid-cols-[repeat(2,auto)]">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1,000</td>
-					<td>(an) ðawzend</td>
-				</tr>
-				<tr>
-					<td>10,000</td>
-					<td>taw ðawzend</td>
-				</tr>
-				<tr>
-					<td>100,000</td>
-					<td>(an-)hundred ðawzend</td>
-				</tr>
-				<tr>
-					<td>10<sup>6</sup></td>
-					<td>(an) miljönn</td>
-				</tr>
-				<tr>
-					<td>10<sup>7</sup></td>
-					<td>taw miljonnan</td>
-				</tr>
-				<tr>
-					<td>10<sup>8</sup></td>
-					<td>(an)hundred miljonnan</td>
-				</tr>
-				<tr>
-					<td>10<sup>9</sup></td>
-					<td>(an) miljard</td>
-				</tr>
-				<tr>
-					<td>10<sup>10</sup></td>
-					<td>taw miljardan</td>
-				</tr>
-				<tr>
-					<td>10<sup>12</sup></td>
-					<td>(an) biljönn</td>
-				</tr>
-				<tr>
-					<td>10<sup>15</sup></td>
-					<td>(an) biljard</td>
-				</tr>
-				<tr>
-					<td>10<sup>18</sup></td>
-					<td>(an) triljönn</td>
-				</tr>
-				<tr>
-					<td>10<sup>21</sup></td>
-					<td>(an) triljard</td>
-				</tr>
-				<tr>
-					<td>・・・</td>
-					<td>・・・</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+
+<table class="grid-cols-[repeat(2,auto)]">
+	<thead>
+		<tr>
+			<th scope="col"></th>
+			<th scope="col">数詞</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1,000</td>
+			<td>(an) ðawzend</td>
+		</tr>
+		<tr>
+			<td>10,000</td>
+			<td>taw ðawzend</td>
+		</tr>
+		<tr>
+			<td>100,000</td>
+			<td>(an-)hundred ðawzend</td>
+		</tr>
+		<tr>
+			<td>10<sup>6</sup></td>
+			<td>(an) miljönn</td>
+		</tr>
+		<tr>
+			<td>10<sup>7</sup></td>
+			<td>taw miljonnan</td>
+		</tr>
+		<tr>
+			<td>10<sup>8</sup></td>
+			<td>(an)hundred miljonnan</td>
+		</tr>
+		<tr>
+			<td>10<sup>9</sup></td>
+			<td>(an) miljard</td>
+		</tr>
+		<tr>
+			<td>10<sup>10</sup></td>
+			<td>taw miljardan</td>
+		</tr>
+		<tr>
+			<td>10<sup>12</sup></td>
+			<td>(an) biljönn</td>
+		</tr>
+		<tr>
+			<td>10<sup>15</sup></td>
+			<td>(an) biljard</td>
+		</tr>
+		<tr>
+			<td>10<sup>18</sup></td>
+			<td>(an) triljönn</td>
+		</tr>
+		<tr>
+			<td>10<sup>21</sup></td>
+			<td>(an) triljard</td>
+		</tr>
+		<tr>
+			<td>・・・</td>
+			<td>・・・</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>1,000以降の数詞は、他のヨーロッパ言語と同じように1,000毎に新たな数詞が用いられる。</p>
 <p>
 	ヴェッセンズラン語の数詞はいわゆる “long scale” であり（ドイツ語やフランス語と同じ方式）、10<sup
@@ -385,72 +381,71 @@
 	<em>-ljönn, -ljard</em> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
 </p>
 <p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
-<div>
-	<table class="grid-cols-[repeat(3,auto)]">
-		<caption>-ljönn</caption>
-		<thead>
-			<tr>
-				<th scope="col">＼</th>
-				<th scope="col">単数</th>
-				<th scope="col">複数</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">主格</th>
-				<td>-ljönn</td>
-				<td>-ljonnan</td>
-			</tr>
-			<tr>
-				<th scope="row">属格</th>
-				<td>-ljonnan</td>
-				<td>-ljonne</td>
-			</tr>
-			<tr>
-				<th scope="row">与格</th>
-				<td>-ljonnan</td>
-				<td>-ljonnum</td>
-			</tr>
-			<tr>
-				<th scope="row">対格</th>
-				<td>-ljonnan</td>
-				<td>-ljonnan</td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="grid-cols-[repeat(3,auto)]">
-		<caption>-ljard</caption>
-		<thead>
-			<tr>
-				<th scope="col">＼</th>
-				<th scope="col">単数</th>
-				<th scope="col">複数</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">主格</th>
-				<td>-ljard</td>
-				<td>-ljardan</td>
-			</tr>
-			<tr>
-				<th scope="row">属格</th>
-				<td>-ljardan</td>
-				<td>-ljardne</td>
-			</tr>
-			<tr>
-				<th scope="row">与格</th>
-				<td>-ljardan</td>
-				<td>-ljardum</td>
-			</tr>
-			<tr>
-				<th scope="row">対格</th>
-				<td>-ljardan</td>
-				<td>-ljardan</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+
+<table class="grid-cols-[repeat(3,auto)]">
+	<caption>-ljönn</caption>
+	<thead>
+		<tr>
+			<th scope="col">＼</th>
+			<th scope="col">単数</th>
+			<th scope="col">複数</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">主格</th>
+			<td>-ljönn</td>
+			<td>-ljonnan</td>
+		</tr>
+		<tr>
+			<th scope="row">属格</th>
+			<td>-ljonnan</td>
+			<td>-ljonne</td>
+		</tr>
+		<tr>
+			<th scope="row">与格</th>
+			<td>-ljonnan</td>
+			<td>-ljonnum</td>
+		</tr>
+		<tr>
+			<th scope="row">対格</th>
+			<td>-ljonnan</td>
+			<td>-ljonnan</td>
+		</tr>
+	</tbody>
+</table>
+<table class="grid-cols-[repeat(3,auto)]">
+	<caption>-ljard</caption>
+	<thead>
+		<tr>
+			<th scope="col">＼</th>
+			<th scope="col">単数</th>
+			<th scope="col">複数</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">主格</th>
+			<td>-ljard</td>
+			<td>-ljardan</td>
+		</tr>
+		<tr>
+			<th scope="row">属格</th>
+			<td>-ljardan</td>
+			<td>-ljardne</td>
+		</tr>
+		<tr>
+			<th scope="row">与格</th>
+			<td>-ljardan</td>
+			<td>-ljardum</td>
+		</tr>
+		<tr>
+			<th scope="row">対格</th>
+			<td>-ljardan</td>
+			<td>-ljardan</td>
+		</tr>
+	</tbody>
+</table>
 
 <p class="text-black/10">
 	1,145,141,919,810<br />
@@ -460,83 +455,78 @@
 	</em>
 </p>
 <h2>序数詞 (Ämbyrdlaiķraiman)</h2>
-
-<div>
-	<div>
-		<table class="grid-cols-[repeat(4,auto)]">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-					<th scope="col"></th>
-					<th scope="col">数詞</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>0.</td>
-					<td>zeroðe</td>
-					<td>10.</td>
-					<td>tųyðe</td>
-				</tr>
-				<tr>
-					<td>1.</td>
-					<td>fyrest</td>
-					<td>11.</td>
-					<td>änlfte</td>
-				</tr>
-				<tr>
-					<td>2.</td>
-					<td>uwðer</td>
-					<td>12.</td>
-					<td>tvälfte</td>
-				</tr>
-				<tr>
-					<td>3.</td>
-					<td>ðritde</td>
-					<td>13.</td>
-					<td>ðrautųyðe</td>
-				</tr>
-				<tr>
-					<td>4.</td>
-					<td>fewrðe</td>
-					<td>14.</td>
-					<td>fewrtųyðe</td>
-				</tr>
-				<tr>
-					<td>5.</td>
-					<td>faifte</td>
-					<td>15.</td>
-					<td>faiftųyðe</td>
-				</tr>
-				<tr>
-					<td>6.</td>
-					<td>sighte</td>
-					<td>16.</td>
-					<td>sightųyðe</td>
-				</tr>
-				<tr>
-					<td>7.</td>
-					<td>sövonðe</td>
-					<td>17.</td>
-					<td>söftųyðe</td>
-				</tr>
-				<tr>
-					<td>8.</td>
-					<td>aghtðe</td>
-					<td>18.</td>
-					<td>aghdtųyðe</td>
-				</tr>
-				<tr>
-					<td>9.</td>
-					<td>nięwðe</td>
-					<td>19.</td>
-					<td>newntųyðe</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+<table class="grid-cols-[repeat(4,auto)]">
+	<thead>
+		<tr>
+			<th scope="col"></th>
+			<th scope="col">数詞</th>
+			<th scope="col"></th>
+			<th scope="col">数詞</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0.</td>
+			<td>zeroðe</td>
+			<td>10.</td>
+			<td>tųyðe</td>
+		</tr>
+		<tr>
+			<td>1.</td>
+			<td>fyrest</td>
+			<td>11.</td>
+			<td>änlfte</td>
+		</tr>
+		<tr>
+			<td>2.</td>
+			<td>uwðer</td>
+			<td>12.</td>
+			<td>tvälfte</td>
+		</tr>
+		<tr>
+			<td>3.</td>
+			<td>ðritde</td>
+			<td>13.</td>
+			<td>ðrautųyðe</td>
+		</tr>
+		<tr>
+			<td>4.</td>
+			<td>fewrðe</td>
+			<td>14.</td>
+			<td>fewrtųyðe</td>
+		</tr>
+		<tr>
+			<td>5.</td>
+			<td>faifte</td>
+			<td>15.</td>
+			<td>faiftųyðe</td>
+		</tr>
+		<tr>
+			<td>6.</td>
+			<td>sighte</td>
+			<td>16.</td>
+			<td>sightųyðe</td>
+		</tr>
+		<tr>
+			<td>7.</td>
+			<td>sövonðe</td>
+			<td>17.</td>
+			<td>söftųyðe</td>
+		</tr>
+		<tr>
+			<td>8.</td>
+			<td>aghtðe</td>
+			<td>18.</td>
+			<td>aghdtųyðe</td>
+		</tr>
+		<tr>
+			<td>9.</td>
+			<td>nięwðe</td>
+			<td>19.</td>
+			<td>newntųyðe</td>
+		</tr>
+	</tbody>
+</table>
 <p>
 	序数詞は1&ndash;3は特殊な語形で、4以降は基数詞に <em>-ðe</em> をつける。ただし5, 11, 12など
 	<em>-v</em>
@@ -545,13 +535,13 @@
 <p>8. <em>aghtðe</em> の <em>t</em> は読まなくてもよい。</p>
 <p>序数詞を形容詞として使うときは、<em>fyrest, uwðer</em> を除き弱変化のみとなる。</p>
 
-<h4 class="text-center" style="color: red;">工事中…</h4>
+<h4 class="text-center text-[red] text-2xl">工事中…</h4>
 
 <style>
 	table {
 		display: grid;
 		place-content: center;
-		gap: 0.2rem;
+		place-items: center;
 		margin-block: calc(var(--spacing) * 6);
 
 		> * {
@@ -569,18 +559,31 @@
 	:is(td, th) {
 		display: block;
 		font-weight: 400;
-		border: solid 1px var(--color-slate-400);
-		padding: 0 0.6rem;
+		padding: 0.2rem 0.6rem;
 		overflow-wrap: break-word;
+	}
 
-		tbody > tr:nth-child(even) > & {
+	tr {
+		background-color: white;
+
+		&:nth-child(even) {
 			background-color: var(--color-slate-200);
 		}
+	}
 
-		thead > tr > & {
-			border: none;
-			background-color: var(--color-slate-500);
-			color: white;
-		}
+	thead > tr {
+		background-color: var(--color-slate-500);
+		color: white;
+	}
+
+	:is(thead, tbody) {
+		box-shadow: 0 2px 2px #00000020;
+	}
+
+	caption {
+		grid-column: 1 / -1;
+		font-size: 1.4rem;
+		margin-bottom: 0.2rem;
+		font-family: var(--font-serif);
 	}
 </style>
