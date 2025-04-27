@@ -571,6 +571,7 @@
 		font-weight: 400;
 		border: solid 1px var(--color-slate-400);
 		padding: 0 0.6rem;
+		overflow-wrap: break-word;
 
 		tbody > tr:nth-child(even) > & {
 			background-color: var(--color-slate-200);

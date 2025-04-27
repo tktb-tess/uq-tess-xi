@@ -76,8 +76,8 @@
 }
 
 @custom-variant any-hover {
-	@media (any-hover: hover) {
-		&:hover {
+	&:hover {
+		@media (any-hover: hover) {
 			@slot;
 		}
 	}
@@ -113,7 +113,7 @@
 	}
 
 	a {
-		@apply text-blue-700 hover:underline;
+		@apply text-blue-700 any-hover:underline;
 	}
 
 	button, input[type="button"] {
