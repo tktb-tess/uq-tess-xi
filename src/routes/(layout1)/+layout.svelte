@@ -108,7 +108,7 @@
 			</details>
 		</div>
 	</div>
-	<hr />
+	<hr class="border-black/30 w-15 mx-auto my-4" />
 	<div class="side-menu">
 		<h4 class="text-2xl font-sans text-black font-extralight">MISCELLANEOUS</h4>
 		<div class="flex flex-col">
@@ -126,10 +126,21 @@
 
 <header
 	class="
-        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
+        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors relative
     "
 >
 	<div class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5">
+		{#if !large}
+			<button
+				class="text-white hover:text-white/70 transition-colors absolute top-[19px] left-6"
+				type="button"
+				onclick={() => {
+					drawerIsOpen = true;
+				}}
+			>
+				<Hamburger class="size-6" />
+			</button>
+		{/if}
 		<h1 class="font-serif text-3xl [&_a]:h-[64px]">
 			<a class="flex items-center" href="/.">悠久肆方体</a>
 		</h1>
@@ -141,8 +152,8 @@
 			</nav>
 		{:else}
 			<div class="relative">
-				<button class="grid h-[64px] place-content-center" onclick={onClickHeadMenu}>
-					<Kebab />
+				<button class="grid h-[64px] place-content-center transition-colors any-hover:text-white/70" onclick={onClickHeadMenu}>
+					<Kebab class="size-5" />
 				</button>
 				<nav
 					class="
@@ -179,15 +190,6 @@
 	{/if}
 
 	<main class="flex-[1_0_0] bg-slate-50 px-4 flow-root">
-		<button
-			class="px-3 py-1 mt-2 bg-black text-white rounded-lg lg:hidden hover:text-white/70 transition-colors"
-			type="button"
-			onclick={() => {
-				drawerIsOpen = true;
-			}}
-		>
-			<Hamburger />
-		</button>
 		{@render children()}
 	</main>
 </div>

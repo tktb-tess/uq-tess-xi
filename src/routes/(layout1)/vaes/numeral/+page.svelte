@@ -7,7 +7,7 @@
 
 <h2 class="text-center my-8">数詞</h2>
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
-<h2>基数詞 (Kardinalraiman)</h2>
+<h2 class="border-b-3 border-double ps-1">基数詞 (Kardinalraiman)</h2>
 <h3>0&ndash;19</h3>
 <div class="table-container">
 	<table class="grid-cols-[repeat(4,auto)]">
@@ -460,7 +460,7 @@
 		nięw-hundred-newntųy ðawzend aght-hundred-tųy
 	</em>
 </p>
-<h2>序数詞 (Ämbyrdlaiķraiman)</h2>
+<h2 class="border-b-3 border-double ps-1">序数詞 (Ämbyrdlaiķraiman)</h2>
 <div class="table-container">
 	<table class="grid-cols-[repeat(4,auto)]">
 		<thead>

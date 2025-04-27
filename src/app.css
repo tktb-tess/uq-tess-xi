@@ -72,11 +72,20 @@
 
 @utility user-select-* {
 	user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
-	-webkit-user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
+	-webkit-user-select: --value(
+		'none',
+		'auto',
+		'all',
+		'text',
+		'initial',
+		'inherit',
+		'unset',
+		'revert'
+	);
 }
 
 @utility table-container {
-	@apply overflow-x-auto my-7;
+	@apply overflow-x-auto my-8;
 	scrollbar-width: thin;
 }
 
@@ -121,7 +130,8 @@
 		@apply text-blue-700 any-hover:underline;
 	}
 
-	button, input[type="button"] {
+	button,
+	input[type='button'] {
 		@apply cursor-pointer;
 	}
 
@@ -157,15 +167,17 @@
 	}
 
 	table {
-		@apply grid m-1 md:place-content-center;
+		@apply grid md:place-content-center;
 	}
 
-	:is(thead, tbody) {
-		@apply shadow-sm;
-	}
-
-	:is(thead, tbody, tfoot, tr) {
+	thead,
+	tbody,
+	tr {
 		@apply grid grid-cols-subgrid col-span-full gap-[inherit];
+	}
+
+	tbody {
+		@apply border-l border-r border-b border-slate-200;
 	}
 
 	tbody > tr {
@@ -176,7 +188,8 @@
 		@apply text-white bg-slate-500;
 	}
 
-	:is(td, th) {
+	td,
+	th {
 		@apply block font-normal px-2 py-1 text-nowrap;
 	}
 
