@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
+	import CloseButton from '$lib/sfc/close_button.svelte';
 	import DetailsArrow from '$lib/sfc/details-arrow.svelte';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
@@ -17,10 +18,8 @@
 		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
 	);
 
-	const onClickBackdrop: MouseEventHandler<HTMLButtonElement> = (e) => {
-		if (e.target === e.currentTarget) {
-			drawerIsOpen = false;
-		}
+	const onClickCloseBtn: MouseEventHandler<HTMLButtonElement> = () => {
+		drawerIsOpen = false;
 	};
 
 	const onClickHeadMenu: MouseEventHandler<HTMLButtonElement> = () => {
@@ -126,13 +125,13 @@
 
 <header
 	class="
-        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors relative
+        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
     "
 >
-	<div class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5">
+	<div class="flex *:flex-[0_0_auto] mx-auto justify-between w-[90%] md:w-[75%] gap-x-5">
 		{#if !large}
 			<button
-				class="text-white hover:text-white/70 transition-colors absolute top-[19px] left-6"
+				class="text-white hover:text-white/70 transition-colors"
 				type="button"
 				onclick={() => {
 					drawerIsOpen = true;
@@ -151,14 +150,17 @@
 				{@render links()}
 			</nav>
 		{:else}
-			<div class="relative">
-				<button class="grid h-[64px] place-content-center transition-colors any-hover:text-white/70" onclick={onClickHeadMenu}>
+			<div class="relative ms-auto">
+				<button
+					class="grid h-[64px] place-content-center transition-colors any-hover:text-white/70"
+					onclick={onClickHeadMenu}
+				>
 					<Kebab class="size-5" />
 				</button>
 				<nav
 					class="
 						absolute flex invisible data-open:visible transition-[visibility,scale,translate] flex-col *:block *:text-center *:flex-[0_0_auto]
-						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] left-[-70px] w-max scale-y-0
+						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] -right-3 w-max scale-y-0
 						-translate-y-[52px] data-open:scale-y-100 data-open:translate-y-0
 					"
 					data-open={headMenuIsOpen ? '' : null}
@@ -179,14 +181,20 @@
 		<!-- drawer backdrop -->
 		<button
 			type="button"
-			onclick={onClickBackdrop}
+			onclick={onClickCloseBtn}
 			class="drawer-backdrop"
 			data-open={drawerIsOpen ? '' : null}
-		>
-			<nav class="drawer" data-open={drawerIsOpen ? '' : null}>
-				{@render sideMenu()}
-			</nav>
-		</button>
+			aria-label="close sidemenu"
+		></button>
+		<nav class="drawer" data-open={drawerIsOpen ? '' : null}>
+			<div class="flex justify-end px-4">
+				<button type="button" onclick={onClickCloseBtn} class="transition-colors any-hover:text-black/60">
+					<CloseButton class="size-6" />
+				</button>
+			</div>
+
+			{@render sideMenu()}
+		</nav>
 	{/if}
 
 	<main class="flex-[1_0_0] bg-slate-50 px-4 flow-root">
@@ -237,7 +245,8 @@
 		}
 	}
 
-	:is(.drawer, .drawer-backdrop) {
+	.drawer,
+	.drawer-backdrop {
 		transition-duration: var(--default-transition-duration);
 	}
 
@@ -248,7 +257,7 @@
 		text-align: start;
 		inset: 0;
 		visibility: hidden;
-		z-index: 1000;
+		z-index: 10;
 		background-color: transparent;
 		transition-property: visibility, background-color;
 		transition-timing-function: cubic-bezier(0, 0.2, 1, 0);
@@ -261,7 +270,8 @@
 		}
 	}
 
-	:is(.drawer, .non-drawer) {
+	.drawer,
+	.non-drawer {
 		display: flex;
 		flex-direction: column;
 		row-gap: calc(var(--spacing) * 1);
@@ -272,6 +282,7 @@
 		height: 100vh;
 		position: fixed;
 		overflow-y: auto;
+		z-index: 20;
 		top: 0;
 		left: 0;
 		width: 18rem;

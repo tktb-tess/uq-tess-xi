@@ -71,17 +71,8 @@
 }
 
 @utility user-select-* {
-	user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
-	-webkit-user-select: --value(
-		'none',
-		'auto',
-		'all',
-		'text',
-		'initial',
-		'inherit',
-		'unset',
-		'revert'
-	);
+	user-select: --value('none', 'auto', 'all', 'text');
+	-webkit-user-select: --value('none', 'auto', 'all', 'text');
 }
 
 @utility table-container {
