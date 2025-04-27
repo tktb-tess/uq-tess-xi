@@ -159,7 +159,7 @@
 	</div>
 </header>
 
-<div class="flex flex-wrap [&_*]:min-w-0 overflow-x-clip">
+<div class="flex flex-wrap *:min-w-0 overflow-x-clip">
 	{#if large}
 		<nav class="non-drawer">
 			{@render sideMenu()}

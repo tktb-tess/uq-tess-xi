@@ -131,25 +131,22 @@
 	<section>
 		<h2>頂いた名前</h2>
 		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
-		<table
-			class="
-				grid [&_:is(thead,tbody,tr)]:contents [&_td]:bg-slate-100 [&_td]:border [&_td]:border-slate-400
-				[&_td]:px-3 [&_td]:py-1 gap-1 grid-cols-[repeat(2,auto)] place-content-center
-			"
-		>
-			<thead>
-				<tr>
-					<td class="text-center">言語</td>
-					<td class="text-center">名</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語・雰名</ExtLink></td>
-					<td>常代 方累 (Xûyâo Zùngwíl)</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="table-container">
+			<table class="grid-cols-[repeat(2,auto)]">
+				<thead>
+					<tr>
+						<td class="">言語</td>
+						<td class="">名</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語・雰名</ExtLink></td>
+						<td>常代 方累 (Xûyâo Zùngwíl)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 	<section>
 		<h2>その他の活動</h2>

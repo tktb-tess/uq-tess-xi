@@ -75,6 +75,11 @@
 	-webkit-user-select: --value('none', 'auto', 'all', 'text', 'initial', 'inherit', 'unset', 'revert');
 }
 
+@utility table-container {
+	@apply overflow-x-auto my-7;
+	scrollbar-width: thin;
+}
+
 @custom-variant any-hover {
 	&:hover {
 		@media (any-hover: hover) {
@@ -149,5 +154,33 @@
 		li {
 			@apply ms-3 ps-1;
 		}
+	}
+
+	table {
+		@apply grid m-1 md:place-content-center;
+	}
+
+	:is(thead, tbody) {
+		@apply shadow-sm;
+	}
+
+	:is(thead, tbody, tfoot, tr) {
+		@apply grid grid-cols-subgrid col-span-full gap-[inherit];
+	}
+
+	tbody > tr {
+		@apply bg-white [&:nth-child(even)]:bg-slate-200;
+	}
+
+	thead > tr {
+		@apply text-white bg-slate-500;
+	}
+
+	:is(td, th) {
+		@apply block font-normal px-2 py-1 text-nowrap;
+	}
+
+	caption {
+		@apply block col-span-full mb-1 text-xl font-serif;
 	}
 }
