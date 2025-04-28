@@ -135,8 +135,8 @@
 			<table class="grid-cols-[repeat(2,auto)]">
 				<thead>
 					<tr>
-						<td class="">言語</td>
-						<td class="">名</td>
+						<th>言語</th>
+						<th>名</th>
 					</tr>
 				</thead>
 				<tbody>

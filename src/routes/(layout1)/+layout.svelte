@@ -174,9 +174,11 @@
 
 <div class="flex flex-wrap *:min-w-0 overflow-x-clip">
 	{#if large}
-		<nav class="non-drawer">
-			{@render sideMenu()}
-		</nav>
+		<div>
+			<nav class="non-drawer">
+				{@render sideMenu()}
+			</nav>
+		</div>
 	{:else}
 		<!-- drawer backdrop -->
 		<button
@@ -188,7 +190,11 @@
 		></button>
 		<nav class="drawer" data-open={drawerIsOpen ? '' : null}>
 			<div class="flex justify-end px-4">
-				<button type="button" onclick={onClickCloseBtn} class="transition-colors any-hover:text-black/60">
+				<button
+					type="button"
+					onclick={onClickCloseBtn}
+					class="transition-colors any-hover:text-black/60"
+				>
 					<CloseButton class="size-6" />
 				</button>
 			</div>
@@ -197,7 +203,7 @@
 		</nav>
 	{/if}
 
-	<main class="flex-[1_0_0] bg-slate-50 px-4 flow-root">
+	<main class="flex-[1_0_0] bg-slate-50 px-4 flex flex-col gap-y-5">
 		{@render children()}
 	</main>
 </div>
@@ -276,6 +282,7 @@
 		flex-direction: column;
 		row-gap: calc(var(--spacing) * 1);
 		padding-block: calc(var(--spacing) * 4);
+		scrollbar-width: thin;
 	}
 
 	.drawer {
@@ -298,8 +305,14 @@
 	}
 
 	.non-drawer {
+		height: 100vh;
+		overflow-y: auto;
+		position: sticky;
+		top: 0;
+	}
+
+	div:has(> .non-drawer) {
 		flex: 0 0 calc(6 / 24 * 100%);
-		min-height: calc(100vh - 64px);
 
 		@media (width >= 80rem) {
 			flex: 0 0 calc(5 / 24 * 100%);

@@ -5,13 +5,20 @@
 	<title>葦語 音韻論</title>
 </svelte:head>
 
-<h2 class="text-center my-8">音韻論</h2>
-<p>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</p>
-<p>
-	<span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span class="font-ipa"
-		>“//”</span
-	> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
-</p>
+<h2 id="subtitle" class="text-center my-8">音韻論</h2>
+<section aria-labelledby="legend">
+	<h2 id="legend" class="border-b-3 border-double ps-1">凡例</h2>
+
+	<ul>
+		<li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
+		<li>
+			<span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span class="font-ipa"
+				>“//”</span
+			> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
+		</li>
+	</ul>
+</section>
+
 <section aria-labelledby="consonant">
 	<h2 id="consonant" class="border-b-3 border-double ps-1">子音</h2>
 
@@ -19,7 +26,7 @@
 		<table class="grid-cols-[repeat(9,auto)] [&_td]:font-ipa [&_td]:text-center">
 			<thead>
 				<tr>
-					<th scope="col" class="col-span-2">＼</th>
+					<th scope="col" class="col-span-2"></th>
 					<th scope="col">両唇</th>
 					<th scope="col">唇歯</th>
 					<th scope="col">歯/歯茎</th>
@@ -31,7 +38,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row">破裂音</th>
+					<th scope="row" class="row-start-2 row-end-5">破裂音</th>
 					<th scope="row">無声</th>
 					<td>p</td>
 					<td></td>
@@ -42,7 +49,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row" class="col-2">有声</th>
+					<th scope="row" class="col-start-2">有声</th>
 					<td>b</td>
 					<td></td>
 					<td>d</td>
@@ -52,7 +59,7 @@
 					<td>(ʔ)</td>
 				</tr>
 				<tr>
-					<th scope="row" class="col-2">前声門化</th>
+					<th scope="row" class="col-start-2">前声門化</th>
 					<td>ʔ͡p</td>
 					<td></td>
 					<td>ʔ͡t</td>
@@ -72,7 +79,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row">摩擦音</th>
+					<th scope="row" class="row-span-3">摩擦音</th>
 					<th scope="row">無声中央</th>
 					<td></td>
 					<td>f</td>
@@ -83,7 +90,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th class="col-2">無声側面</th>
+					<th class="col-start-2">無声側面</th>
 					<td></td>
 					<td></td>
 					<td>ɬ</td>
@@ -93,7 +100,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row" class="col-2">有声</th>
+					<th scope="row" class="col-start-2">有声</th>
 					<td></td>
 					<td></td>
 					<td>z</td>
@@ -123,7 +130,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row">接近音</th>
+					<th scope="row" class="row-span-2">接近音</th>
 					<th scope="row">中央</th>
 					<td></td>
 					<td>ʋ</td>
@@ -134,7 +141,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row" class="col-2">側面</th>
+					<th scope="row" class="col-start-2">側面</th>
 					<td></td>
 					<td></td>
 					<td>l</td>
@@ -205,10 +212,10 @@
 			<caption>口母音</caption>
 			<thead>
 				<tr>
-					<th scope="col">＼</th>
+					<th class="row-span-3"></th>
 					<th scope="col" class="col-span-4">前舌</th>
-					<th scope="col">中舌</th>
-					<th scope="col" class="col-span-2">後舌</th>
+					<th scope="col" class="row-span-2">中舌</th>
+					<th scope="col" class="col-span-2 row-span-2">後舌</th>
 				</tr>
 				<tr>
 					<th scope="col" class="col-start-2 col-end-4">非円唇</th>
@@ -284,9 +291,9 @@
 			<caption class="text-center fw-bolder">鼻母音</caption>
 			<thead>
 				<tr>
-					<th scope="col">＼</th>
+					<th scope="col" class="row-span-3"></th>
 					<th scope="col" class="col-span-4">前舌</th>
-					<th scope="col" class="col-span-2">後舌</th>
+					<th scope="col" class="col-span-2 row-span-2">後舌</th>
 				</tr>
 				<tr>
 					<th scope="col" class="col-start-2 col-end-4">非円唇</th>
@@ -339,7 +346,7 @@
 		<table class="grid-cols-[repeat(5,auto)]">
 			<thead>
 				<tr>
-					<th scope="col" class="col-span-2">＼</th>
+					<th scope="col" class="col-span-2 row-span-2"></th>
 					<th scope="col" class="col-span-3">終点</th>
 				</tr>
 				<tr class="*:font-ipa">
@@ -350,7 +357,7 @@
 			</thead>
 			<tbody class="[&_td]:font-ipa [&_td]:text-center">
 				<tr>
-					<th scope="row">始点</th>
+					<th scope="row" class="row-span-2">始点</th>
 					<th scope="row">半広</th>
 					<td>ɛɪ̯</td>
 					<td>œʏ̯</td>

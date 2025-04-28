@@ -63,6 +63,7 @@
 		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
 	--font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
 	--color-mnlila: oklch(0.18 0.0957 296);
+	--color-mnlila-lghtr: oklch(0.5 0.12 296);
 	--color-title-s: oklch(0.3 0.1469 316);
 	--color-title-e: oklch(0.3 0.1469 276);
 	--color-llila: oklch(0.9176 0.0444 296);
@@ -142,7 +143,7 @@
 	}
 
 	h2 {
-		@apply text-3xl lg:text-4xl;
+		@apply text-3xl;
 	}
 
 	h3 {
@@ -164,24 +165,36 @@
 	thead,
 	tbody,
 	tr {
-		@apply grid grid-cols-subgrid col-span-full gap-[inherit];
+		@apply contents;
 	}
 
-	tbody {
-		@apply border-l border-r border-b border-slate-200;
+	tbody td:first-child {
+		@apply border-l border-slate-200;
 	}
 
-	tbody > tr {
-		@apply bg-white [&:nth-child(even)]:bg-slate-200;
+	tbody td:last-child {
+		@apply border-r border-slate-200;
 	}
 
-	thead > tr {
-		@apply text-white bg-slate-500;
+	tbody > tr:last-child > td {
+		@apply border-b border-slate-200;
 	}
 
 	td,
 	th {
 		@apply block font-normal px-2 py-1 text-nowrap;
+	}
+
+	tbody > tr > td {
+		@apply bg-white;
+	}
+
+	tbody > tr:nth-child(even) > td {
+		@apply bg-slate-200;
+	}
+
+	th {
+		@apply bg-mnlila-lghtr text-white;
 	}
 
 	caption {
