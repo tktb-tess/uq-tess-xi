@@ -5,7 +5,6 @@
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-	import { untrack } from 'svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
 

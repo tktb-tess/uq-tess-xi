@@ -2,8 +2,22 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+	import type { WordData } from './api/v0/today-word/+server';
 
-	const { data } = $props();
+	const todayWordProm = async (): Promise<WordData> => {
+		const url = '/api/v0/today-word';
+		const response = await fetch(url);
+
+		if (!response.ok) {
+			return {
+				is_success: false,
+				status: response.status,
+				message: response.statusText
+			};
+		}
+
+		return response.json();
+	};
 </script>
 
 <svelte:head>
@@ -44,52 +58,59 @@
 				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
 			"
 		>
-			{#if data.is_success}
-				<h3 class="font-serif font-normal {data.size}">{data.today_word.name}</h3>
-				{#if data.pron}
-					<p class="text-black/60 font-ipa">
-						{#if data.pron.includes('/')}
-							{data.pron}
-						{:else}
-							{`/${data.pron}/`}
-						{/if}
+			{#await todayWordProm()}
+				<h3>読み込み中……</h3>
+			{:then todayWord}
+				{#if todayWord.is_success}
+					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.today_word.name}</h3>
+					{#if todayWord.pron}
+						<p class="text-black/60 font-ipa">
+							{#if todayWord.pron.includes('/')}
+								{todayWord.pron}
+							{:else}
+								{`/${todayWord.pron}/`}
+							{/if}
+						</p>
+					{/if}
+					<p>訳</p>
+					<table
+						class="
+							grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
+							[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
+						"
+					>
+						<thead>
+							<tr>
+								<th class="font-normal bg-transparent text-black">品詞</th>
+								<th class="font-normal bg-transparent text-black">意味</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each todayWord.today_word.equivalents as translation}
+								<tr>
+									<td
+										class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"
+									>
+										{translation.titles.join(', ')}
+									</td>
+									<td class="justify-self-start border-none bg-transparent"
+										>{translation.names.join(', ')}</td
+									>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+					<p class="self-end me-3"><ExtLink href={todayWord.dic_url}>ZpDIC Online</ExtLink></p>
+				{:else}
+					<h3>データを取得できませんでした</h3>
+					<p>
+						{todayWord.status}: {todayWord.message}
 					</p>
 				{/if}
-				<p>訳</p>
-				<table
-					class="
-					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
-				"
-				>
-					<thead>
-						<tr>
-							<th class="font-normal bg-transparent text-black">品詞</th>
-							<th class="font-normal bg-transparent text-black">意味</th>
-						</tr>
-					</thead>
-					<tbody>
-						{#each data.today_word.equivalents as translation}
-							<tr>
-								<td
-									class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"
-								>
-									{translation.titles.join(', ')}
-								</td>
-								<td class="justify-self-start border-none bg-transparent"
-									>{translation.names.join(', ')}</td
-								>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-				<p class="self-end me-3"><ExtLink href={data.dic_url}>ZpDIC Online</ExtLink></p>
-			{:else}
+			{:catch e}
 				<h3>データを取得できませんでした</h3>
-				<p>
-					{data.error}
-				</p>
-			{/if}
+				<p>{e}</p>
+			{/await}
 		</div>
 	</section>
 	<section>
