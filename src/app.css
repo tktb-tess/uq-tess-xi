@@ -130,7 +130,8 @@
 	h2,
 	h3,
 	p,
-	ul {
+	ul,
+	ol {
 		@apply mb-3 leading-[1.5];
 	}
 
@@ -152,10 +153,14 @@
 
 	ul {
 		list-style: '\2023';
+	}
 
-		li {
-			@apply ms-3 ps-1;
-		}
+	ol {
+		list-style: decimal;
+	}
+
+	:is(ul, ol) > li {
+		@apply ms-3 ps-1;
 	}
 
 	table {

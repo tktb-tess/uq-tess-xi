@@ -16,7 +16,7 @@
 
 	<div class="table-container">
 		<table
-			class="grid-cols-[repeat(4,auto)] [&_td:is(:first-child,:nth-child(2))]:text-center [&_td:nth-child(3)]:font-ipa"
+			class="grid-cols-[repeat(4,auto)]"
 		>
 			<thead>
 				<tr>
@@ -26,7 +26,7 @@
 					<th scope="col">備考</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="[&_td:not(:last-child)]:text-center [&_td:nth-child(3)]:font-ipa">
 				<tr>
 					<td>A</td>
 					<td>a</td>
