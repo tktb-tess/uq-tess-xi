@@ -63,19 +63,19 @@
 				>
 					<thead>
 						<tr>
-							<th class="font-normal">品詞</th>
-							<th class="font-normal">意味</th>
+							<th class="font-normal bg-transparent text-black">品詞</th>
+							<th class="font-normal bg-transparent text-black">意味</th>
 						</tr>
 					</thead>
 					<tbody>
 						{#each data.today_word.equivalents as translation}
 							<tr>
 								<td
-									class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75]"
+									class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"
 								>
 									{translation.titles.join(', ')}
 								</td>
-								<td class="justify-self-start">{translation.names.join(', ')}</td>
+								<td class="justify-self-start border-none bg-transparent">{translation.names.join(', ')}</td>
 							</tr>
 						{/each}
 					</tbody>
