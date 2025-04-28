@@ -32,7 +32,8 @@
 		※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
 	</p>
 	<p>
-		わたし、斗琴庭暁響（とことばあかね）が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
+		わたし、斗琴庭暁響
+		(とことばあかね)が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
 	</p>
 
 	<section>
@@ -75,7 +76,9 @@
 								>
 									{translation.titles.join(', ')}
 								</td>
-								<td class="justify-self-start border-none bg-transparent">{translation.names.join(', ')}</td>
+								<td class="justify-self-start border-none bg-transparent"
+									>{translation.names.join(', ')}</td
+								>
 							</tr>
 						{/each}
 					</tbody>
@@ -101,11 +104,11 @@
 			<li><a href="/vaes">概説</a></li>
 			<li><a href="/vaes/phonology">音韻論</a></li>
 			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
-			<li>りんごを食べたい58文（準備中）</li>
+			<li>りんごを食べたい58文 (準備中)</li>
 			<li><a href="/vaes/numeral">数詞</a></li>
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
 		</ul>
-		<h3><s>ヤズニェル語 (Ásnélnowy)（凍結）</s></h3>
+		<h3><s>ヤズニェル語 (Ásnélnowy) (凍結)</s></h3>
 		<p class="font-semibold">
 			「まず古語を作り、そこからの音変化を想定して現代語を作る」という方針に変更したため現在制作中断中。
 		</p>
@@ -113,7 +116,7 @@
 			最初に作り始めた言語。単語などは基本現実世界に依存しない、ある程度自然言語らしさを求める芸術言語。日本語の直拗音やロシア語の硬音軟音よろしく、ほとんどの子音に硬口蓋化の有無による対立がある。
 			文法は日本語やフィンランド語などの膠着語といわれる言語を中心に参考にしている。
 		</p>
-		<h3>古ヤズニェル語（?????）</h3>
+		<h3>古ヤズニェル語 (?????)</h3>
 		<p>
 			ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
 		</p>
@@ -122,7 +125,7 @@
 		<h2>言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li><a aria-disabled="true">古英語の動詞活用まとめ（準備中）</a></li>
+			<li>古英語の動詞活用まとめ (準備中)</li>
 			<li>
 				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>
@@ -159,8 +162,8 @@
 		</ul>
 		<h3>雑多</h3>
 		<ul>
-			<li>n次元超立体の命名案（準備中）</li>
-			<li>ジョンソンの立体のcrown jewelsの命名案（準備中）</li>
+			<li>n次元超立体の命名案 (準備中)</li>
+			<li>ジョンソンの立体のcrown jewelsの命名案 (準備中)</li>
 			<li><a href="/others/tools">ツール</a></li>
 			<li>
 				<ExtLink href="https://tktb-tess.github.io/apocaly_romaji/"
@@ -192,9 +195,7 @@
 		<h3>その他</h3>
 		<ul>
 			<li>
-				<ExtLink href="https://tesyrrhaqt.hatenablog.com/">
-					はてなブログ（あかねの多目的室）
-				</ExtLink>
+				<ExtLink href="https://tesyrrhaqt.hatenablog.com/">はてなブログ (あかねの多目的室)</ExtLink>
 			</li>
 			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
 			<li>
@@ -214,7 +215,7 @@
 	<p>
 		※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
 	</p>
-	<p class="">© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
+	<p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
 </footer>
 
 <PageTopBtn />

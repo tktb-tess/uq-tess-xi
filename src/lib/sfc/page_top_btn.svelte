@@ -3,14 +3,9 @@
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { browser } from '$app/environment';
 
-	const is_invisible = $derived.by(() => {
-		// console.log(scrollY.current);
-		if (typeof scrollY.current === 'number') {
-			return scrollY.current < 1000;
-		} else {
-			return true;
-		}
-	});
+	const isInvisible = $derived(
+		(typeof scrollY.current === 'number') ? scrollY.current < 600 : false
+	);
 
 	const onclick: MouseEventHandler<HTMLButtonElement> = () => {
 		if (browser) {
@@ -22,12 +17,12 @@
 <button
 	{onclick}
 	class="
-		block fixed right-5 bottom-5 p-3 rounded-[50%] bg-transparent text-mnlila hover:bg-mnlila hover:text-white
+		block fixed right-5 bottom-5 p-3 rounded-[50%] bg-transparent text-mnlila any-hover:bg-mnlila any-hover:text-white
 		transition-[color,background-color,opacity,visibility] data-invisible:opacity-0 data-invisible:invisible
 	"
 	type="button"
 	aria-label="ページトップへ戻る"
-	data-invisible={is_invisible ? '' : null}
+	data-invisible={isInvisible ? '' : null}
 >
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-8 fill-current">
 		<path

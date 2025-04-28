@@ -5,6 +5,7 @@
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+	import { untrack } from 'svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
 
@@ -12,7 +13,26 @@
 	let drawerIsOpen = $state(false);
 	let headMenuIsOpen = $state(false);
 	let acrdnIsOpen = $state(false);
-	let accordion: HTMLDetailsElement | null = null;
+	let open = $state(false);
+	let dataOpen = $state(false);
+
+	$effect(() => {
+		const offset = 10;
+		const transitionDur = 250;
+
+		if (acrdnIsOpen) {
+			open = true;
+			setTimeout(() => {
+				if (acrdnIsOpen) dataOpen = true;
+			}, offset);
+		} else {
+			dataOpen = false;
+
+			setTimeout(() => {
+				if (!acrdnIsOpen) open = false;
+			}, offset + transitionDur);
+		}
+	});
 
 	const large = $derived(
 		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
@@ -38,29 +58,7 @@
 
 	const onClickDetails: MouseEventHandler<HTMLElement> = async (e) => {
 		e.preventDefault();
-		const offset = 10;
-		const transitionDur = 250;
-
-		if (accordion) {
-			if (!acrdnIsOpen && !accordion.open) {
-				accordion.open = true;
-				await new Promise<void>((resolve) => {
-					setTimeout(() => {
-						acrdnIsOpen = true;
-						resolve();
-					}, offset);
-				});
-			} else if (acrdnIsOpen && accordion.open) {
-				acrdnIsOpen = false;
-
-				await new Promise<void>((resolve) => {
-					setTimeout(() => {
-						if (accordion) accordion.open = false;
-						resolve();
-					}, offset + transitionDur);
-				});
-			}
-		}
+		acrdnIsOpen = !acrdnIsOpen;
 	};
 
 	onNavigate(
@@ -81,12 +79,12 @@
 			<a href="/vaes/phonology">音韻論</a>
 			<a aria-disabled="true">Leipzig–Jakarta List (準備中)</a>
 			<a aria-disabled="true">りんご文 (準備中)</a>
-			<details bind:this={accordion} class="">
+			<details class="" {open}>
 				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
 					<DetailsArrow
 						class="
 							size-4.5 transition-transform duration-250 translate-y-[-1px]
-							{acrdnIsOpen ? 'rotate-x-180' : null}
+							{dataOpen ? 'rotate-x-180' : null}
 						"
 					/>
 					文法 (準備中)
@@ -97,7 +95,7 @@
 						data-open:visible data-open:h-[calc-size(auto,size)] transition-[height,visibility]
 						duration-250
 					"
-					data-open={acrdnIsOpen ? '' : null}
+					data-open={dataOpen ? '' : null}
 				>
 					<a aria-disabled="true">名詞 (準備中)</a>
 					<a href="/vaes/numeral">数詞</a>
