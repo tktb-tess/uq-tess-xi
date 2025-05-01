@@ -62,7 +62,7 @@
 				<h3>読み込み中……</h3>
 			{:then todayWord}
 				{#if todayWord.is_success}
-					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.today_word.name}</h3>
+					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
 					{#if todayWord.pron}
 						<p class="text-black/60 font-ipa">
 							{#if todayWord.pron.includes('/')}
@@ -86,7 +86,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{#each todayWord.today_word.equivalents as translation}
+							{#each todayWord.translations as translation}
 								<tr>
 									<td
 										class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"

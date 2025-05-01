@@ -173,11 +173,11 @@
 		@apply contents;
 	}
 
-	tbody td:first-child {
+	tbody > tr > td:first-child {
 		@apply border-l border-slate-200;
 	}
 
-	tbody td:last-child {
+	tbody > tr > td:last-child {
 		@apply border-r border-slate-200;
 	}
 

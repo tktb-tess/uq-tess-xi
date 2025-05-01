@@ -3,10 +3,13 @@ import { REDIS_URL } from '$env/static/private';
 import type { ZpDICAPIResponseWord } from '$lib/modules/zpdic';
 import { error, json } from '@sveltejs/kit';
 
+type Equivalents = ZpDICAPIResponseWord['equivalents'];
+
 export type WordData =
 	| {
 			is_success: true;
-			today_word: ZpDICAPIResponseWord;
+			word: string;
+			translations: Equivalents;
 			dic_url: string;
 			pron: string;
 			size: 'text-5xl' | 'text-4xl';
@@ -30,6 +33,8 @@ export const GET = async () => {
 		const dic_url = `https://zpdic.ziphil.com/dictionary/633${query}`;
 
 		const pron = today_word.pronunciation;
+		const word = today_word.name;
+		const translations = today_word.equivalents;
 
 		const size = (() => {
 			const len = today_word.name.length;
@@ -38,7 +43,8 @@ export const GET = async () => {
 
 		const body: Readonly<WordData> = {
 			is_success: true,
-			today_word,
+			word,
+			translations,
 			dic_url,
 			pron,
 			size
@@ -46,13 +52,13 @@ export const GET = async () => {
 
 		return json(body, { headers });
 	} catch (e: unknown) {
-		// console.error(e);
+		console.error(e);
 		if (e instanceof Error) {
 			error(500, e);
 		} else if (e instanceof Response) {
 			error(e.status, { message: e.statusText });
 		} else {
-			error(500, { message: 'unidentified error' });
+			error(500, { message: `${e}` });
 		}
 	}
 };
