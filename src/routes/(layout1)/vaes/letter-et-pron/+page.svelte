@@ -295,7 +295,7 @@
 	</p>
 	<div class="table-container">
 		<table
-			class="grid-cols-[repeat(3,auto)] [&_td:first-child]:text-center [&_td:nth-child(2)]:font-ipa"
+			class="grid-cols-[repeat(3,auto)] [&_td:not(:last-child)]:text-center [&_td:nth-child(2)]:font-ipa"
 		>
 			<thead>
 				<tr>
@@ -505,7 +505,7 @@
 		>」という綴りのとき、対応する鼻母音で読む。基本はそのままだが、下に示すように母音が変わるものもある。
 	</p>
 	<div class="table-container">
-		<table class="grid-cols-[repeat(2,auto)] [&_td:nth-child(2)]:font-ipa">
+		<table class="grid-cols-[repeat(2,auto)] [&_td:nth-child(2)]:font-ipa [&_td]:text-center">
 			<thead>
 				<tr>
 					<th>表記</th>

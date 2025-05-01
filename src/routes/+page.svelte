@@ -4,7 +4,7 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { WordData } from './api/v0/today-word/+server';
 
-	const todayWordProm = async (): Promise<WordData> => {
+	const todayWordFunc = async (): Promise<WordData> => {
 		const url = '/api/v0/today-word';
 		const response = await fetch(url);
 
@@ -18,6 +18,7 @@
 
 		return response.json();
 	};
+	let todayWordProm = $state(todayWordFunc());
 
 	BigInt.prototype.toJSON = function () {
 		return {
@@ -65,7 +66,7 @@
 				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
 			"
 		>
-			{#await todayWordProm()}
+			{#await todayWordProm}
 				<h3>読み込み中……</h3>
 			{:then todayWord}
 				{#if todayWord.is_success}

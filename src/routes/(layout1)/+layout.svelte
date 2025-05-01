@@ -14,6 +14,7 @@
 	let acrdnIsOpen = $state(false);
 	let open = $state(false);
 	let dataOpen = $state(false);
+	
 
 	$effect(() => {
 		const offset = 10;
@@ -21,15 +22,20 @@
 
 		if (acrdnIsOpen) {
 			open = true;
-			setTimeout(() => {
-				if (acrdnIsOpen) dataOpen = true;
+			
+			const timeoutID = setTimeout(() => {
+				dataOpen = true;
 			}, offset);
+
+			return () => clearTimeout(timeoutID);
 		} else {
 			dataOpen = false;
 
-			setTimeout(() => {
-				if (!acrdnIsOpen) open = false;
+			const timeoutID = setTimeout(() => {
+				open = false;
 			}, offset + transitionDur);
+
+			return () => clearTimeout(timeoutID);
 		}
 	});
 

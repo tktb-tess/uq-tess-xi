@@ -32,10 +32,6 @@ export const GET = async () => {
 		const query = `?kind=exact&number=${today_word.number}`;
 		const dic_url = `https://zpdic.ziphil.com/dictionary/633${query}`;
 
-		const pron = today_word.pronunciation;
-		const word = today_word.name;
-		const translations = today_word.equivalents;
-
 		const size = (() => {
 			const len = today_word.name.length;
 			return len < 10 ? 'text-5xl' : 'text-4xl';
@@ -43,10 +39,10 @@ export const GET = async () => {
 
 		const body: Readonly<WordData> = {
 			is_success: true,
-			word,
-			translations,
+			word: today_word.name,
+			translations: today_word.equivalents,
 			dic_url,
-			pron,
+			pron: today_word.pronunciation,
 			size
 		};
 
