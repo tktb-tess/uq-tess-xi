@@ -10,7 +10,7 @@ const headers = {
 } as const;
 
 export const GET = async ({ request, fetch: svFetch }) => {
-	/** authorization */
+	/* authorization */
 	if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
 		error(401, { message: 'Unauthorized' });
 	}
@@ -44,6 +44,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
 		/** check */
 		const stored = await redis.json.get('today-word');
+		console.log(stored);
 		return json(stored);
 	} catch (e: unknown) {
 		if (e instanceof Response) {
