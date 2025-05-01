@@ -18,6 +18,13 @@
 
 		return response.json();
 	};
+
+	BigInt.prototype.toJSON = function () {
+		return {
+			type: 'bigint',
+			value: this.toString()
+		};
+	};
 </script>
 
 <svelte:head>

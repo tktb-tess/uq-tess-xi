@@ -8,6 +8,13 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	interface BigInt {
+		toJSON(): {
+			type: 'bigint';
+			value: string;
+		};
+	}
 }
 
 export {};
