@@ -13,34 +13,53 @@
 		<ExtLink href="https://zaslon.info/langcontents/1450/">りんごを食べたい58文</ExtLink>
 		のヴェッセンズラン語による翻訳のリストである。
 	</p>
-	<p>
-		なんか58文より多い気がするが気にしない。
-	</p>
+	<p>なんか58文より多い気がするが気にしない。</p>
 </div>
 
-<ol class="[&_p]:m-0 [&>li:not(:last-child)]:mb-4">
+<ol class="ms-2 [&_p]:m-0 [&>li:not(:last-child)]:mb-4">
 	<li>
 		<p>私はりんごを食べる。</p>
-		<p>訳: Iķ eet änn apbel.</p>
-		<p>説明: iķ は1人称単数の人称代名詞、eet は eatan「食べる」の1人称単数現在、änn は不定冠詞 an の男性対格形。</p>
+		<p>Iķ eet änn apbel.</p>
+		<p>
+			説明: iķ は1人称単数の人称代名詞、eet は eatan「食べる」の1人称単数現在、änn は不定冠詞 an
+			の男性対格形。
+		</p>
 	</li>
 	<li>
 		<p>私はりんごを食べた。</p>
-		<p>訳: Iķ eat änn apbel.</p>
+		<p>Iķ eat änn apbel.</p>
 		<p>説明: eat は eatan の1人称単数過去。</p>
 	</li>
 	<li>
 		<p>彼はりんごを食べている。</p>
-		<p>訳: Hee iss änn abpel eatend.</p>
-		<p>説明: iss はväzan動詞(コピュラ、英語のbe動詞に相当するもの)の3人称単数現在。eatend は eatan の現在分詞。現在分詞 + väzan で「～している」の意味を表す。</p>
+		<p>Hee iss änn abpel eatend.</p>
+		<p>
+			説明: iss はväzan動詞(コピュラ、英語のbe動詞に相当するもの)の3人称単数現在。eatend は eatan
+			の現在分詞。現在分詞 + väzan で「～している」の意味を表す。
+		</p>
 	</li>
+	<li>
+		<p>彼女はりんごを食べ終わっている。</p>
+		<p>Hew haðð änn apbel ģyeaten.</p>
+		<p>
+			説明: haðð は hapban の3人称単数現在形。ģyeaten は eatan の過去分詞。hapban +
+			過去分詞で現在完了形を作り、「(すでに)～してしまった」等を意味する。
+		</p>
+	</li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
 </ol>
 
-
-
-<p>彼女はりんごを食べ終わっている。</p>
-<p>Hew haðð änn apbel ģyeaten.</p>
-<p>説明: haðð は hapban の3人称単数現在形。ģyeaten は eatan の過去分詞。hapban + 過去分詞で現在完了形を作り、「(すでに)～してしまった」等を意味する。</p>
 <p>彼女はりんごを食べ終わっていた。</p>
 <p>Hew hädd änn apbel ģyeaten.</p>
 <p>説明: hädd は hapban の3人称単数過去形。</p>
@@ -64,10 +83,13 @@
 <p>彼は常にりんごを食べている。(四六時中ずっとりんごを食べている)</p>
 <p>りんごが3つある。</p>
 <p>Ðjar sind(licķað) ðrau apblas.</p>
-<p>説明: ðjar + (väzan または licķan) + S (+ 場所を示す語句) で「Sが (～に) ある」という意味の文になる。</p>
+<p>
+	説明: ðjar + (väzan または licķan) + S (+ 場所を示す語句) で「Sが (～に)
+	ある」という意味の文になる。
+</p>
 <p>りんご達がテーブルの上にある。</p>
 <p>On ðan bjodd sind apblas.</p>
-<p>説明: </p>
+<p>説明:</p>
 <p>誰かがあのりんごを食べてしまった。(その結果、あのりんごは今はない)</p>
 <p>Natilķ haðð ðänn apbel ģyeaten.</p>
 <p>誰かがこのりんごを食べそうだ。(推量)</p>
@@ -75,7 +97,12 @@
 <p>誰かがこのりんご、そのりんご、あのりんごを食べたそうだ。(伝聞)</p>
 <p>りんごがひとつもない。</p>
 <p>Ðjar ne’sind nänn apblas naght.</p>
-<p>説明: ヴェッセンズラン語は否定呼応を行う言語である。否定の意味を持つ語を2つ以上つけても「否定の否定」にはならず、否定の強調になる。ne’sind は否定縮約動詞 n’äzan の3人称単数現在形。他に否定冠詞 nan の複数主格形 nänn と否定の副詞 naght が付いて否定が強調されている。</p>
+<p>
+	説明:
+	ヴェッセンズラン語は否定呼応を行う言語である。否定の意味を持つ語を2つ以上つけても「否定の否定」にはならず、否定の強調になる。ne’sind
+	は否定縮約動詞 n’äzan の3人称単数現在形。他に否定冠詞 nan の複数主格形 nänn と否定の副詞 naght
+	が付いて否定が強調されている。
+</p>
 <p>私はりんごを食べない。</p>
 <p>Iķ eet änn apbel naght.</p>
 <p>私はりんごを食べられない。(りんごがないので状況的に食べられない)</p>
@@ -92,7 +119,7 @@
 <p>あのりんごは食べることが可能そうだ。</p>
 <p>あれはりんごではない。</p>
 <p>Ðat n’iss an apbel naght.</p>
-<p>説明: </p>
+<p>説明:</p>
 <p>これはりんごではなくみかんだ。</p>
 <p>あなたはみかんを食べるか?</p>
 <p>Ietst ðaw änn orangan?</p>
@@ -113,7 +140,10 @@
 <p>りんごを頂いても宜しいですか? みかんは差し上げます。</p>
 <p>私は「りんごは食べるな、みかんを食べろ」と言った。</p>
 <p>»Eat nänn apbel naght, agh änn orangan,« quað iķ.</p>
-<p>説明: 引用文自体を第一要素と捉え、V2語順なので動詞 quað (quäðan「～と言う」の過去一人称単数形) が次に来る。</p>
+<p>
+	説明: 引用文自体を第一要素と捉え、V2語順なので動詞 quað (quäðan「～と言う」の過去一人称単数形)
+	が次に来る。
+</p>
 <p>あなたはりんごを食べろと言うのですか?</p>
 <p>貴様はりんごを食べたいと言った。</p>
 <p>私はりんごを食べたいと言った覚えがない。</p>
@@ -127,6 +157,13 @@
 <p>りんごは彼によって私に食べさせられた。</p>
 <p>ここには何もない。</p>
 <p>Nänn ne’sind naght.</p>
-<p>説明: </p>
+<p>説明:</p>
 
 <p class="text-[red] text-xl text-center my-6">工事中……</p>
+
+<style>
+	ol p:nth-child(2)::before {
+		content: '\2014\2014';
+		margin-inline-end: .25rem;
+	}
+</style>
