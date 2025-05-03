@@ -18,6 +18,7 @@
 
 		return response.json();
 	};
+
 	let todayWordProm = $state(todayWordFunc());
 
 	BigInt.prototype.toJSON = function () {
@@ -55,7 +56,7 @@
 	</p>
 	<p>
 		わたし、斗琴庭暁響
-		(とことばあかね)が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
+		(とことばあかね) が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
 	</p>
 
 	<section>
@@ -137,7 +138,7 @@
 			<li><a href="/vaes/numeral">数詞</a></li>
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
 		</ul>
-		<h3><s>ヤズニェル語 (Ásnélnowy) (凍結)</s></h3>
+		<h3><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h3>
 		<p class="font-semibold">
 			「まず古語を作り、そこからの音変化を想定して現代語を作る」という方針に変更したため現在制作中断中。
 		</p>

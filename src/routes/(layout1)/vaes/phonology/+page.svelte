@@ -38,7 +38,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row" class="row-start-2 row-end-5">破裂音</th>
+					<th scope="row" class="row-span-3 grid place-items-center">破裂音</th>
 					<th scope="row">無声</th>
 					<td>p</td>
 					<td></td>
@@ -79,7 +79,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row" class="row-span-3">摩擦音</th>
+					<th scope="row" class="row-span-3 grid place-items-center">摩擦音</th>
 					<th scope="row">無声中央</th>
 					<td></td>
 					<td>f</td>
@@ -130,7 +130,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th scope="row" class="row-span-2">接近音</th>
+					<th scope="row" class="row-span-2 grid place-items-center">接近音</th>
 					<th scope="row">中央</th>
 					<td></td>
 					<td>ʋ</td>
@@ -214,8 +214,8 @@
 				<tr>
 					<th class="row-span-3"></th>
 					<th scope="col" class="col-span-4">前舌</th>
-					<th scope="col" class="row-span-2">中舌</th>
-					<th scope="col" class="col-span-2 row-span-2">後舌</th>
+					<th scope="col" class="row-span-2 grid place-items-center">中舌</th>
+					<th scope="col" class="col-span-2 row-span-2 grid place-items-center">後舌</th>
 				</tr>
 				<tr>
 					<th scope="col" class="col-start-2 col-end-4">非円唇</th>
@@ -293,7 +293,7 @@
 				<tr>
 					<th scope="col" class="row-span-3"></th>
 					<th scope="col" class="col-span-4">前舌</th>
-					<th scope="col" class="col-span-2 row-span-2">後舌</th>
+					<th scope="col" class="col-span-2 row-span-2 grid place-items-center">後舌</th>
 				</tr>
 				<tr>
 					<th scope="col" class="col-start-2 col-end-4">非円唇</th>
@@ -357,7 +357,7 @@
 			</thead>
 			<tbody class="[&_td]:font-ipa [&_td]:text-center">
 				<tr>
-					<th scope="row" class="row-span-2">始点</th>
+					<th scope="row" class="row-span-2 grid place-items-center">始点</th>
 					<th scope="row">半広</th>
 					<td>ɛɪ̯</td>
 					<td>œʏ̯</td>

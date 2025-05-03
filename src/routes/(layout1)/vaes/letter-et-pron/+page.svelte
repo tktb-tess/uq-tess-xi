@@ -26,7 +26,7 @@
 					<th scope="col">備考</th>
 				</tr>
 			</thead>
-			<tbody class="[&_td:not(:last-child)]:text-center [&_td:nth-child(3)]:font-ipa">
+			<tbody class="[&_td:last-child]:text-start [&_td:nth-child(3)]:font-ipa">
 				<tr>
 					<td>A</td>
 					<td>a</td>
@@ -295,7 +295,7 @@
 	</p>
 	<div class="table-container">
 		<table
-			class="grid-cols-[repeat(3,auto)] [&_td:not(:last-child)]:text-center [&_td:nth-child(2)]:font-ipa"
+			class="grid-cols-[repeat(3,auto)]"
 		>
 			<thead>
 				<tr>
@@ -304,7 +304,7 @@
 					<th scope="col">備考</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="[&_td:last-child]:text-start [&_td:nth-child(2)]:font-ipa">
 				<tr>
 					<td>pb</td>
 					<td>/ʔ͡p/</td>

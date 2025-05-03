@@ -187,11 +187,11 @@
 
 	td,
 	th {
-		@apply block font-normal px-2 py-1 text-nowrap;
+		@apply block text-center font-normal px-2 py-1 text-nowrap;
 	}
 
 	tr > td {
-		@apply bg-slate-50;
+		@apply bg-white;
 	}
 
 	tr:nth-child(even) > td {
