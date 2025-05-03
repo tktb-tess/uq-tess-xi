@@ -6,13 +6,18 @@
 	<title>ライセンス</title>
 </svelte:head>
 
-<h2>OFL.txt</h2>
-<ul>
-	<li><ExtLink href="/license/Inter">Inter</ExtLink></li>
-    <li><ExtLink href="/license/CharisSIL">Charis SIL</ExtLink></li>
-</ul>
+<h2 class="text-center my-8">ライセンス</h2>
 
-<h2>FONTLOG.txt</h2>
-<ul>
-	<li><ExtLink href="/license/FONTLOG">FONTLOG</ExtLink></li>
-</ul>
+<section aria-labelledby="ofl">
+	<h3 id="ofl">OFL.txt</h3>
+	<ul>
+		<li><ExtLink href="/license/Inter">Inter</ExtLink></li>
+		<li><ExtLink href="/license/CharisSIL">Charis SIL</ExtLink></li>
+	</ul>
+</section>
+<section aria-labelledby="fontlog">
+	<h3 id="fontlog">FONTLOG.txt</h3>
+	<ul>
+		<li><ExtLink href="/license/FONTLOG">FONTLOG</ExtLink></li>
+	</ul>
+</section>

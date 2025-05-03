@@ -155,52 +155,53 @@
 	</div>
 
 	<h3>説明</h3>
-	<p>破裂音は有声・無声・前声門化の3系列の対立がある。前声門化破裂音は語頭には現れない。</p>
-	<p>
-		無声破裂音 <span class="font-ipa">/p/, /t/, /k/</span> は <span class="font-ipa">/s/</span>
-		の後でない音節頭にある時、帯気する (<span class="font-ipa">[pʰ], [tʰ], [kʰ]</span
-		>)。流音・接近音
-		<span class="font-ipa">/l/, /ɽ/, /j/, /ʋ/</span>
-		が後続する時、後続する音は無声音化する (<span class="font-ipa">[pɽ̊]</span> etc.)。
-	</p>
-	<p>
-		前声門化破裂音は帯気しない。前声門化破裂音の実際の発音は方言や年代によって様々であり、入破音 (<span
-			class="font-ipa">[ɓ], [ɗ], [ɠ]</span
-		>) や放出音 (<span class="font-ipa">[pʼ], [tʼ], [kʼ]</span>)
-		、朝鮮語の濃音に近いような音にもなり得る。
-	</p>
-	<p>
-		<span class="font-ipa">/ð/</span> は歯間〜歯接近音 <span class="font-ipa">[ð̪͆˕ ~ ð̞]</span> である。
-	</p>
-	<div>
-		<p>
+	<ul>
+		<li>破裂音は有声・無声・前声門化の3系列の対立がある。前声門化破裂音は語頭には現れない。</li>
+		<li>
+			無声破裂音 <span class="font-ipa">/p/, /t/, /k/</span> は <span class="font-ipa">/s/</span>
+			の後でない音節頭にある時、帯気する (<span class="font-ipa">[pʰ], [tʰ], [kʰ]</span
+			>)。流音・接近音
+			<span class="font-ipa">/l/, /ɽ/, /j/, /ʋ/</span>
+			が後続する時、後続する音は無声音化する (<span class="font-ipa">[pɽ̊]</span> etc.)。
+		</li>
+		<li>
+			前声門化破裂音は帯気しない。前声門化破裂音の実際の発音は方言や年代によって様々であり、入破音 (<span
+				class="font-ipa">[ɓ], [ɗ], [ɠ]</span
+			>) や放出音 (<span class="font-ipa">[pʼ], [tʼ], [kʼ]</span>)
+			、朝鮮語の濃音に近いような音にもなり得る。
+		</li>
+		<li>
+			<span class="font-ipa">/ð/</span> は歯間〜歯接近音 <span class="font-ipa">[ð̪͆˕ ~ ð̞]</span> である。
+		</li>
+		<li>
 			<span class="font-ipa">/ɽ/</span> は前後の環境により実際の発音が変わり、また前後の子音の発音を変えることもある。
-		</p>
-		<ul>
-			<li>
-				<span class="font-ipa">/d/, /t/, /ʔ͡t/, /n/, /l/, /ɬ/</span> の前ではそり舌接近音
-				<span class="font-ipa">[ɻ]</span>
-				となり、各歯茎音も調音位置が同化して
-				<span class="font-ipa">[ɻɖ], [ɻʈ], [ɻʔ͡ʈ], [ɻɳ], [ɻɭ], [ɻɭ̝̊]</span> のようになる。
-			</li>
-			<li>
-				後に <span class="font-ipa">/s/, /z/</span> があるとき、同化してそれぞれ
-				<span class="font-ipa">[ɽʂ], [ɽʐ]</span> となる。
-			</li>
-			<li>
-				<span class="font-ipa">/ɬɽ/</span> は <span class="font-ipa">[ɭ̝̊ɽ]</span> のようになる。
-			</li>
-			<li>
-				<span class="font-ipa">/ɪ/, /iː/</span> に挟まれた環境では <span class="font-ipa">/ɽ/</span>
-				は歯茎はじき音 <span class="font-ipa">[ɾ]</span> のようになる。
-			</li>
-		</ul>
-	</div>
-	<p>
-		<span class="font-ipa">/x/</span> は実際は前部軟口蓋〜口蓋垂の間で変動する。<span
-			class="font-ipa">[x̟ ~ χ]</span
-		>
-	</p>
+			<ul>
+				<li>
+					<span class="font-ipa">/d/, /t/, /ʔ͡t/, /n/, /l/, /ɬ/</span> の前ではそり舌接近音
+					<span class="font-ipa">[ɻ]</span>
+					となり、各歯茎音も調音位置が同化して
+					<span class="font-ipa">[ɻɖ], [ɻʈ], [ɻʔ͡ʈ], [ɻɳ], [ɻɭ], [ɻɭ̝̊]</span> のようになる。
+				</li>
+				<li>
+					後に <span class="font-ipa">/s/, /z/</span> があるとき、同化してそれぞれ
+					<span class="font-ipa">[ɽʂ], [ɽʐ]</span> となる。
+				</li>
+				<li>
+					<span class="font-ipa">/ɬɽ/</span> は <span class="font-ipa">[ɭ̝̊ɽ]</span> のようになる。
+				</li>
+				<li>
+					<span class="font-ipa">/ɪ/, /iː/</span> に挟まれた環境では
+					<span class="font-ipa">/ɽ/</span>
+					は歯茎はじき音 <span class="font-ipa">[ɾ]</span> のようになる。
+				</li>
+			</ul>
+		</li>
+		<li>
+			<span class="font-ipa">/x/</span> は実際は前部軟口蓋〜口蓋垂の間で変動する。<span
+				class="font-ipa">[x̟ ~ χ]</span
+			>
+		</li>
+	</ul>
 </section>
 
 <section aria-labelledby="vowel">
@@ -374,31 +375,32 @@
 	</div>
 
 	<h3>説明</h3>
-	<p>
-		ヴェッセンズラン語の母音には <strong class="italic">tense</strong> と
+	<ul>
+		<li>
+			ヴェッセンズラン語の母音には <strong class="italic">tense</strong> と
 		<strong class="italic">lax</strong>
 		と呼ばれる区別があり、<i>lax</i> 母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
-		<span class="font-ipa">/ɤ/</span> に限っては語末に来ることができる。
-	</p>
-	<p>二重母音は全て <i>tense</i> 母音である。</p>
-	<p>
-		<span class="font-ipa">/ɛː/</span> は実際は <span class="font-ipa">[ɛæ̯]</span> のような発音である。
-	</p>
-	<p>
-		<span class="font-ipa">/eː/</span> は実際は <span class="font-ipa">[eː] ~ [ei̯]</span> のような発音である。
-	</p>
-	<p>
-		<span class="font-ipa">/oː/</span> は実際は <span class="font-ipa">[oː] ~ [ou̯]</span> のような発音である。
-	</p>
-	<p>
-		<span class="font-ipa">/øː/</span> は実際は <span class="font-ipa">[øː] ~ [øy̯]</span> のような発音である。
-	</p>
-	<p>
-		<span class="font-ipa">/ɤ/</span> はアクセントの無い音節で
-		<span class="font-ipa">/e(ː)/, /ɛ(ː)/</span>
-		の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ] ~ [ɤ̟]</span> である。
-	</p>
-	<p>対応する鼻母音も同様。</p>
+		<span class="font-ipa">/ɤ/</span> に限っては語末に来ることができる。なお、二重母音は全て <i>tense</i> 母音である。
+		</li>
+		<li>
+			<span class="font-ipa">/ɛː/</span> は実際は <span class="font-ipa">[ɛæ̯]</span> のような発音である。
+		</li>
+		<li>
+			<span class="font-ipa">/eː/</span> は実際は <span class="font-ipa">[eː] ~ [ei̯]</span> のような発音である。
+		</li>
+		<li>
+			<span class="font-ipa">/oː/</span> は実際は <span class="font-ipa">[oː] ~ [ou̯]</span> のような発音である。
+		</li>
+		<li>
+			<span class="font-ipa">/øː/</span> は実際は <span class="font-ipa">[øː] ~ [øy̯]</span> のような発音である。
+		</li>
+		<li>
+			<span class="font-ipa">/ɤ/</span> はアクセントの無い音節で
+			<span class="font-ipa">/e(ː)/, /ɛ(ː)/</span>
+			の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ] ~ [ɤ̟]</span> である。
+			対応する鼻母音も同様。
+		</li>
+	</ul>
 </section>
 
 <h4 class="text-center my-8 text-3xl text-[red]">工事中...</h4>

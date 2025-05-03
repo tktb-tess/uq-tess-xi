@@ -11,13 +11,12 @@
 	<p>
 		表記にはラテン文字を使用する。a&ndash;zの26文字に加え、いくつかのダイアクリティカルマークを用いる。
 	</p>
-	<p>備考に特に何も書かれていなければ、ローマ字通りの発音でOK。</p>
-	<p>「発音例」の音声記号は、「音韻論」の項で詳しく説明している。</p>
+	<p>
+		備考に特に何も書かれていなければ、ローマ字通りの発音でOK。「発音例」の音声記号は、「音韻論」の項で詳しく説明している。
+	</p>
 
 	<div class="table-container">
-		<table
-			class="grid-cols-[repeat(4,auto)]"
-		>
+		<table class="grid-cols-[repeat(4,auto)]">
 			<thead>
 				<tr>
 					<th scope="col">大文字</th>
@@ -294,9 +293,7 @@
 		>と呼んでいる。
 	</p>
 	<div class="table-container">
-		<table
-			class="grid-cols-[repeat(3,auto)]"
-		>
+		<table class="grid-cols-[repeat(3,auto)]">
 			<thead>
 				<tr>
 					<th scope="col">文字</th>
@@ -551,18 +548,16 @@
 	</p>
 	<p>
 		また、母音字にオゴネク（“˛”
-		U+0328）が付いた場合、同様に鼻母音で読む。母音の変わり方は上と同様である。
-	</p>
-	<p>
-		なお、<strong>重音字の母音は後ろに <i>m, n</i> が来ても、鼻母音にはならない。</strong
+		U+0328）が付いた場合、同様に鼻母音で読む。母音の変わり方は上と同様である。 なお、<strong
+			>重音字の母音は後ろに <i>m, n</i> が来ても、鼻母音にはならない。</strong
 		>重音字の鼻母音は1番目の母音にオゴネクをつけて表す（「重音字の発音」の項で示したように。）
 	</p>
 </section>
 
 <section aria-labelledby="misc">
 	<h2 id="misc" class="border-b-3 border-double ps-1">その他事項</h2>
-	<p>ドイツ語などのように語末子音が無声化することはなく、文字通りに発音する。</p>
 	<p>
+		ドイツ語などのように語末子音が無声化することはなく、文字通りに発音する。
 		語形変化などによって有声子音の後に無声子音が来るときは、無声化する。<span class="font-ipa"
 			>/ʋ/</span
 		>
