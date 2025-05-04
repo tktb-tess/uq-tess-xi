@@ -2,6 +2,9 @@
 </script>
 
 <svelte:head>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="ヴェッセンズラン語 音韻論 - 悠久肆方体" />
+	<meta property="og:description" content="" />
 	<title>葦語 音韻論</title>
 </svelte:head>
 

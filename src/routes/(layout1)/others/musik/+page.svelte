@@ -3,6 +3,9 @@
 </script>
 
 <svelte:head>
+    <meta property="og:type" content="article" />
+	<meta property="og:title" content="音楽 - 悠久肆方体" />
+	<meta property="og:description" content="作曲は楽しい" />
     <title>音楽</title>
 </svelte:head>
 

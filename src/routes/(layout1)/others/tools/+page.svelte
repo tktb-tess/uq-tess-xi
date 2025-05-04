@@ -3,6 +3,9 @@
 </script>
 
 <svelte:head>
+    <meta property="og:type" content="article" />
+	<meta property="og:title" content="ツール - 悠久肆方体" />
+	<meta property="og:description" content="" />
     <title>ツール</title>
 </svelte:head>
 

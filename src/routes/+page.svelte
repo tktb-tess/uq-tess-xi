@@ -30,6 +30,9 @@
 </script>
 
 <svelte:head>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="悠久肆方体" />
+	<meta property="og:description" content="創作言語など" />
 	<title>悠久肆方体</title>
 </svelte:head>
 
@@ -55,8 +58,8 @@
 		※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
 	</p>
 	<p>
-		わたし、斗琴庭暁響
-		(とことばあかね) が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
+		わたし、斗琴庭暁響 (とことばあかね)
+		が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
 	</p>
 
 	<section>
@@ -203,7 +206,7 @@
 			</li>
 			<li>グレゴリオ聖歌の音階について</li>
 			<li>日本語 チベット文字表記</li>
-			<li><a href="/license">当サイトで使用しているフォントのライセンス</a></li>
+			<li><a href="/others/license">当サイトで使用しているフォントのライセンス</a></li>
 		</ul>
 		<h3>メモ</h3>
 		<ul>

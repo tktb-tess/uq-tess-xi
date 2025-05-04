@@ -3,6 +3,9 @@
 </script>
 
 <svelte:head>
+    <meta property="og:type" content="article" />
+	<meta property="og:title" content="ヴェッセンズラン語 名詞 - 悠久肆方体" />
+	<meta property="og:description" content="" />
     <title>葦語 名詞</title>
 </svelte:head>
 

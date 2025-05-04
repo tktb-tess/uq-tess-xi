@@ -3,10 +3,13 @@
 </script>
 
 <svelte:head>
-	<title>miscellaneous</title>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="その他 - 悠久肆方体" />
+	<meta property="og:description" content="" />
+	<title>その他</title>
 </svelte:head>
 
-<h2 class="my-8 text-center">雑多</h2>
+<h2 class="my-8 text-center">その他項目</h2>
 
 <ul>
 	<li>n次元超立体の命名案 (準備中)</li>
@@ -20,5 +23,5 @@
 	</li>
 	<li>グレゴリオ聖歌の音階について</li>
 	<li>日本語 チベット文字表記</li>
-	<li><a href="/license">当サイトで使用しているフォントのライセンス</a></li>
+	<li><a href="/others/license">当サイトで使用しているフォントのライセンス</a></li>
 </ul>
