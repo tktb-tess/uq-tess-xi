@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { ogpData } from "../../../ogp.svelte";
+    import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'crown jewels の命名案';
-	ogpData.description = '';
+	myContext.title = 'crown jewels の命名案';
 </script>
 
 

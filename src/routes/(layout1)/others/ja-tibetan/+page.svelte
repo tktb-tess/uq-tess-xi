@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { ogpData } from "../../../ogp.svelte";
+    import { myContext } from "../../../global.svelte";
     
-	ogpData.title = '日本語 チベット文字表記';
-	ogpData.description = '';
+	myContext.title = '日本語 チベット文字表記';
 </script>
 
 

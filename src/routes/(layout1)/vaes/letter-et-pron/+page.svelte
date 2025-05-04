@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { ogpData } from "../../../ogp.svelte";
+	import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'Vässenzländisķ 文字と発音';
-	ogpData.description = '';
+	myContext.title = 'Vässenzländisķ 文字と発音';
 </script>
 
 <h2 class="text-center my-8">文字と発音</h2>

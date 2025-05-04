@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { ogpData } from "../../../ogp.svelte";
+    import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'ツール';
-	ogpData.description = '';
+	myContext.title = 'ツール';
 </script>
 
 

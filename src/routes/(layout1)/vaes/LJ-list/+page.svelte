@@ -1,8 +1,7 @@
 <script lang="ts">
-import { ogpData } from "../../../ogp.svelte";
+import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'Vässenzländisķ LJ List';
-	ogpData.description = '';
+	myContext.title = 'Vässenzländisķ LJ List';
 </script>
 
 <h2 class="my-8 text-center">Leipzig&#x2013;Jakarta List</h2>

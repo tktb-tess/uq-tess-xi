@@ -7,7 +7,7 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
-	import { ogpData } from '../ogp.svelte';
+	import { myContext } from '../global.svelte';
 
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
@@ -77,12 +77,7 @@
 </script>
 
 <svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{ogpData.title} - 悠久肆方体" />
-	<meta property="og:description" content={ogpData.description} />
-	<meta name="twitter:title" content="{ogpData.title} - 悠久肆方体" />
-	<meta name="twitter:description" content={ogpData.description} />
-	<title>{ogpData.title} - 悠久肆方体</title>
+	<title>{myContext.title} - 悠久肆方体</title>
 </svelte:head>
 
 {#snippet sideMenu()}

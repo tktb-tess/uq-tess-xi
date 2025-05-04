@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { ogpData } from "../../../ogp.svelte";
+	import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'Vässenzländisķ 数詞';
-	ogpData.description = '';
+	myContext.title = 'Vässenzländisķ 数詞';
 </script>
 
 

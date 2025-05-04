@@ -1,9 +1,8 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import { ogpData } from "../../../ogp.svelte";
+	import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'Vässenzländisķ りんご文';
-	ogpData.description = '';
+	myContext.title = 'Vässenzländisķ りんご文';
 </script>
 
 <h2 class="my-8 text-center">りんごを食べたい58文</h2>

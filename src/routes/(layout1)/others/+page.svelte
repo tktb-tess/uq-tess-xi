@@ -1,9 +1,8 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import { ogpData } from "../../ogp.svelte";
+	import { myContext } from "../../global.svelte";
     
-	ogpData.title = 'その他';
-	ogpData.description = '色々';
+	myContext.title = 'その他';
 </script>
 
 

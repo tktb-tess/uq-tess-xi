@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { ogpData } from "../../../ogp.svelte";
+    import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'n次元超立体の命名案';
-	ogpData.description = '';
+	myContext.title = 'n次元超立体の命名案';
 </script>
 
 

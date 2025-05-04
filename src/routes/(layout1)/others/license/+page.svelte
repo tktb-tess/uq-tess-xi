@@ -1,9 +1,8 @@
 <script>
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import { ogpData } from "../../../ogp.svelte";
+	import { myContext } from "../../../global.svelte";
     
-	ogpData.title = 'ライセンス表示';
-	ogpData.description = '';
+	myContext.title = 'ライセンス表示';
 </script>
 
 <h2 class="text-center my-8">ライセンス</h2>
