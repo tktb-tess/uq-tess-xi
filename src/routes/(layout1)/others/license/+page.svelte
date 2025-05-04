@@ -11,13 +11,13 @@
 <section aria-labelledby="ofl">
 	<h3 id="ofl">OFL.txt</h3>
 	<ul>
-		<li><ExtLink href="/license/Inter">Inter</ExtLink></li>
-		<li><ExtLink href="/license/CharisSIL">Charis SIL</ExtLink></li>
+		<li><ExtLink href="/others/license/Inter">Inter</ExtLink></li>
+		<li><ExtLink href="/others/license/CharisSIL">Charis SIL</ExtLink></li>
 	</ul>
 </section>
 <section aria-labelledby="fontlog">
 	<h3 id="fontlog">FONTLOG.txt</h3>
 	<ul>
-		<li><ExtLink href="/license/FONTLOG">FONTLOG</ExtLink></li>
+		<li><ExtLink href="/others/license/FONTLOG">FONTLOG</ExtLink></li>
 	</ul>
 </section>
