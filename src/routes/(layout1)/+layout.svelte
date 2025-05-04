@@ -7,6 +7,7 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
+	import { ogpData } from '../ogp.svelte';
 
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
@@ -75,6 +76,15 @@
 	);
 </script>
 
+<svelte:head>
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="{ogpData.title} - 悠久肆方体" />
+	<meta property="og:description" content={ogpData.description} />
+	<meta name="twitter:title" content="{ogpData.title} - 悠久肆方体" />
+	<meta name="twitter:description" content={ogpData.description} />
+	<title>{ogpData.title} - 悠久肆方体</title>
+</svelte:head>
+
 {#snippet sideMenu()}
 	<div class="side-menu">
 		<h4 class="text-2xl font-sans text-black font-extralight">VÄSSENZLÄNDISĶ</h4>
@@ -115,7 +125,7 @@
 		<h4 class="text-2xl font-sans text-black font-extralight">MISCELLANEOUS</h4>
 		<div class="flex flex-col">
 			<a href="/data">データ</a>
-			<a href="/others">雑多</a>
+			<a href="/others">その他</a>
 		</div>
 	</div>
 {/snippet}
@@ -123,7 +133,7 @@
 {#snippet links()}
 	<a href="/vaes">Vässenzländisķ</a>
 	<a href="/data">データ</a>
-	<a href="/others">雑多</a>
+	<a href="/others">その他</a>
 {/snippet}
 
 <header

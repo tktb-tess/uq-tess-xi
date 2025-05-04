@@ -1,15 +1,14 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
+	import { ogpData } from "../../ogp.svelte";
+    
+	ogpData.title = 'その他';
+	ogpData.description = '色々';
 </script>
 
-<svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="その他 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>その他</title>
-</svelte:head>
 
-<h2 class="my-8 text-center">その他項目</h2>
+
+<h2 class="my-8 text-center">その他の項目</h2>
 
 <ul>
 	<li>n次元超立体の命名案 (準備中)</li>

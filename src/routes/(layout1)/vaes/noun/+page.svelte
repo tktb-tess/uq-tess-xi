@@ -1,13 +1,9 @@
 <script lang="ts">
+	import { ogpData } from '../../../ogp.svelte';
 
+	ogpData.title = 'Vässenzländisķ 名詞';
+	ogpData.description = '';
 </script>
-
-<svelte:head>
-    <meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 名詞 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-    <title>葦語 名詞</title>
-</svelte:head>
 
 <h2 class="my-8 text-center">名詞</h2>
 <p class="text-red-600 text-xl text-center">工事中……</p>

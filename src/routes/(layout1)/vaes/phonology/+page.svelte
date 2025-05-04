@@ -1,12 +1,9 @@
 <script lang="ts">
+	import { ogpData } from "../../../ogp.svelte";
+    
+	ogpData.title = 'Vässenzländisķ 音韻論';
+	ogpData.description = '';
 </script>
-
-<svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 音韻論 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>葦語 音韻論</title>
-</svelte:head>
 
 <h2 id="subtitle" class="text-center my-8">音韻論</h2>
 <section aria-labelledby="legend">

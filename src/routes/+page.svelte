@@ -33,6 +33,8 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="悠久肆方体" />
 	<meta property="og:description" content="創作言語など" />
+	<meta name="twitter:title" content="悠久肆方体" />
+	<meta name="twitter:description" content="創作言語など" />
 	<title>悠久肆方体</title>
 </svelte:head>
 

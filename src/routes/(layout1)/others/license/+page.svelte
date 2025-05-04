@@ -1,13 +1,15 @@
 <script>
 	import ExtLink from '$lib/sfc/ext_link.svelte';
+	import { ogpData } from "../../../ogp.svelte";
+    
+	ogpData.title = 'ライセンス表示';
+	ogpData.description = '';
 </script>
 
-<svelte:head>
-	<title>ライセンス</title>
-</svelte:head>
-
 <h2 class="text-center my-8">ライセンス</h2>
-
+<div>
+	<p>フォントなどのライセンス表示をまとめたページです。</p>
+</div>
 <section aria-labelledby="ofl">
 	<h3 id="ofl">OFL.txt</h3>
 	<ul>

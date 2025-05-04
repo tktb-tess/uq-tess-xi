@@ -1,12 +1,9 @@
 <script lang="ts">
+	import { ogpData } from "../../../ogp.svelte";
+    
+	ogpData.title = 'Vässenzländisķ 文字と発音';
+	ogpData.description = '';
 </script>
-
-<svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 文字と発音 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>葦語 文字と発音</title>
-</svelte:head>
 
 <h2 class="text-center my-8">文字と発音</h2>
 <section aria-labelledby="letter">

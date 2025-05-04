@@ -1,13 +1,10 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
+	import { ogpData } from "../../../ogp.svelte";
+    
+	ogpData.title = 'Vässenzländisķ りんご文';
+	ogpData.description = '';
 </script>
-
-<svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 りんご文 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>葦語 りんご文</title>
-</svelte:head>
 
 <h2 class="my-8 text-center">りんごを食べたい58文</h2>
 <div>

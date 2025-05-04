@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { ogpData } from "../../ogp.svelte";
+	ogpData.title = 'Vässenzländisķ 概説';
+	ogpData.description = '';
 </script>
 
 <svelte:head>
@@ -8,10 +11,6 @@
 		href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&display=swap"
 		rel="stylesheet"
 	/>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 概説 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>葦語 概説</title>
 </svelte:head>
 
 <h2 class="my-8 text-center">概説</h2>

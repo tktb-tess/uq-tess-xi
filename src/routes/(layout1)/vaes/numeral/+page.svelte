@@ -1,12 +1,10 @@
 <script lang="ts">
+	import { ogpData } from "../../../ogp.svelte";
+    
+	ogpData.title = 'Vässenzländisķ 数詞';
+	ogpData.description = '';
 </script>
 
-<svelte:head>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="ヴェッセンズラン語 数詞 - 悠久肆方体" />
-	<meta property="og:description" content="" />
-	<title>葦語 数詞</title>
-</svelte:head>
 
 <h2 class="text-center my-8">数詞</h2>
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>

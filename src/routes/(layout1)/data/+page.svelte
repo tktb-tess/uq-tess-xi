@@ -1,10 +1,10 @@
 <script lang="ts">
-
+    import { ogpData } from "../../ogp.svelte";
+    
+	ogpData.title = 'データ';
+	ogpData.description = '';
 </script>
 
-<svelte:head>
-    <title>データ</title>
-</svelte:head>
 
 <h2 class="my-8 text-center">データ</h2>
 <ul>
