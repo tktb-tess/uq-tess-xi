@@ -1,8 +1,17 @@
 <script lang="ts">
-	import { myContext } from "../../../global.svelte";
-    
-	myContext.title = 'Vässenzländisķ 音韻論';
+	const ogTitle = 'Vässenzländisķ 音韻論', ogDesc = '';
 </script>
+
+<svelte:head>
+	<meta name="description" content={ogDesc} />
+	<!-- OGP -->
+	<meta property="og:title" content="{ogTitle} - 悠久肆方体" />
+	<meta property="og:description" content={ogDesc} />
+	<!-- twitter card -->
+	<meta name="twitter:title" content="{ogTitle} - 悠久肆方体" />
+	<meta name="twitter:description" content={ogDesc} />
+	<title>{ogTitle} - 悠久肆方体</title>
+</svelte:head>
 
 <h2 id="subtitle" class="text-center my-8">音韻論</h2>
 <section aria-labelledby="legend">

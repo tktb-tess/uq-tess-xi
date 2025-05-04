@@ -7,7 +7,6 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
-	import { myContext } from '../global.svelte';
 
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
@@ -77,7 +76,7 @@
 </script>
 
 <svelte:head>
-	<title>{myContext.title} - 悠久肆方体</title>
+	<meta property="og:type" content="article" />
 </svelte:head>
 
 {#snippet sideMenu()}
