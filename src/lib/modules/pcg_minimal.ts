@@ -53,7 +53,9 @@ export default class PCGXSHRR {
         return rot32(Number(shifted), Number(rot));
     }
 
-    /** 内部状態を1進め、乱数を返す 普通はこれを使う */
+    /** 内部状態を1進め、乱数を返す \
+     *  普通はこれを使う 
+     */
     getRand() {
         this.step();
         return this.value;
