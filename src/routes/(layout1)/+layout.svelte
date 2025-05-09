@@ -14,28 +14,52 @@
 	let acrdnIsOpen = $state(false);
 	let open = $state(false);
 	let dataOpen = $state(false);
-	
+	let acrdnRef = $state<HTMLDivElement>();
 
 	$effect(() => {
-		const offset = 10;
+		// const offset = 10;
 		const transitionDur = 250;
+
+		const animTiming = {
+			duration: transitionDur,
+			easing: 'cubic-bezier(0.4,0,0.2,1)'
+		} as const;
+
+		const closedState = {
+			height: '0px',
+			visibility: 'hidden'
+		};
+		const openedState = {
+			height: `${acrdnRef?.offsetHeight}px`,
+			visibility: 'visible'
+		};
+
+		const opening = [closedState, openedState];
+
+		const closing = [openedState, closedState];
 
 		if (acrdnIsOpen) {
 			open = true;
-			
-			const timeoutID = setTimeout(() => {
-				dataOpen = true;
-			}, offset);
 
-			return () => clearTimeout(timeoutID);
+			dataOpen = true;
+			const animation = acrdnRef?.animate(opening, animTiming);
+
+			return () => {
+				animation?.cancel();
+			};
 		} else {
 			dataOpen = false;
+			const anim = acrdnRef?.animate(closing, animTiming);
 
-			const timeoutID = setTimeout(() => {
-				open = false;
-			}, offset + transitionDur);
+			if (anim) {
+				anim.onfinish = () => {
+					open = false;
+				};
+			}
 
-			return () => clearTimeout(timeoutID);
+			return () => {
+				anim?.cancel();
+			};
 		}
 	});
 
@@ -99,12 +123,10 @@
 					文法 (準備中)
 				</summary>
 				<div
+					bind:this={acrdnRef}
 					class="
-						flex flex-col invisible h-0 overflow-y-hidden
-						data-open:visible data-open:h-[calc-size(auto,size)] transition-[height,visibility]
-						duration-250
+						flex flex-col overflow-y-hidden
 					"
-					data-open={dataOpen ? '' : null}
 				>
 					<a aria-disabled="true">名詞 (準備中)</a>
 					<a href="/vaes/numeral">数詞</a>
@@ -135,7 +157,7 @@
         bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
     "
 >
-	<div class="flex *:flex-[0_0_auto] mx-auto justify-between w-[90%] md:w-[75%] gap-x-5">
+	<div class="flex *:flex-[0_0_auto] mx-auto justify-between w-[90%] gap-x-5">
 		{#if !large}
 			<button
 				class="text-white hover:text-white/70 transition-colors"
