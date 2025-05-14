@@ -33,7 +33,7 @@
 			<a href="/vaes">概説</a>
 			<a href="/vaes/letter-et-pron">文字と発音</a>
 			<a href="/vaes/phonology">音韻論</a>
-			<a aria-disabled="true">Leipzig–Jakarta List (準備中)</a>
+			<a aria-disabled="true">Swadesh List (準備中)</a>
 			<a aria-disabled="true">りんご文 (準備中)</a>
 			<details class="[&[open]_#list-arrow]:rotate-x-180">
 				<summary class="block cursor-pointer user-select-none">
@@ -47,7 +47,7 @@
 							d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"
 						/>
 					</svg>
-					文法 (準備中)
+					文法
 				</summary>
 				<div
 					class="

@@ -69,7 +69,7 @@
 <section aria-labelledby="spec">
 	<h2 id="spec" class="border-b-3 border-double ps-1">具体的な音階</h2>
 	<p>以下に全部書き下す。フィナリスは[]、ドミナントは()で囲う</p>
-	<ol class="[&_p:first-child]:text-lg [&_p]:mb-0 [&>li:not(:last-child)]:mb-4 ms-2">
+	<ol class="[&_p]:mb-0 [&_li:not(:last-child)]:mb-4 ms-2 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila">
 		<li>
 			<p>ドリア</p>
 			<p>[レ] ミ ファ ソ (ラ) シ ド レ</p>

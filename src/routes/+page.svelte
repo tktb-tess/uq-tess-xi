@@ -2,29 +2,10 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-	import type { WordData } from './api/v0/today-word/+server';
 	import Spinner from '$lib/sfc/spinner.svelte';
+	import globalStates from './global.svelte';
 
-	const todayWordFunc = async (): Promise<WordData> => {
-		const url = '/api/v0/today-word';
-		const response = await fetch(url);
-
-		if (!response.ok) {
-			return {
-				is_success: false,
-				status: response.status,
-				message: response.statusText
-			};
-		}
-
-		// await new Promise<void>((resolve) => {
-		// 	setTimeout(resolve, 2000);
-		// });
-
-		return response.json();
-	};
-
-	let todayWordProm = $state(todayWordFunc());
+	const todayWordProm = globalStates.todayWordProm;
 </script>
 
 <svelte:head>
@@ -40,11 +21,11 @@
 </svelte:head>
 
 <header
-	class="min-h-screen bg-linear-to-br/oklch from-title-s to-title-e grid grid-cols-1 gap-y-6 place-content-center place-items-center"
+	class="min-h-screen bg-linear-to-br/oklch from-title-s to-title-e grid grid-cols-1 text-white gap-y-6 place-content-center place-items-center"
 >
-	<TessLogo class="fill-white w-[200px] lg:w-[300px] h-auto" fadein />
+	<TessLogo class="w-[200px] lg:w-[300px] h-auto" fadein />
 	<h1
-		class="text-white font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center"
+		class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center"
 	>
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
@@ -146,8 +127,18 @@
 			<li><a href="/vaes">概説</a></li>
 			<li><a href="/vaes/phonology">音韻論</a></li>
 			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
+			<li>Swadesh List (準備中)</li>
 			<li>りんごを食べたい58文 (準備中)</li>
-			<li><a href="/vaes/numeral">数詞</a></li>
+			<li>
+				文法
+				<ul>
+					<li>名詞 (準備中)</li>
+					<li><a href="/vaes/numeral">数詞</a></li>
+					<li>動詞 (準備中)</li>
+					<li>形容詞 (準備中)</li>
+				</ul>
+			</li>
+			
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
 		</ul>
 		<h3><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h3>
@@ -167,7 +158,7 @@
 		<h2 id="info">言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li>古英語の動詞活用まとめ (準備中)</li>
+			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ (準備中)</a></li>
 			<li>
 				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>

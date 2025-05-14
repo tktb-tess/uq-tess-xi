@@ -34,12 +34,12 @@
 		<li>英: Vessenslandic language / Vessenslandic</li>
 		<li>独: wessensländische Sprache / Wessensländisch</li>
 		<li>仏: le vessenslandais</li>
-		<li class="noto-sans-sc">
-			中(简): 苇森斯兰语 (拼音: <span class="font-ipa">wěi sēn sī lán yǔ</span>) / 西端岛语 (拼音: <span
+		<li>
+			中(<span class="noto-sans-sc">简</span>): <span class="noto-sans-sc">苇森斯兰语</span> (拼音: <span class="font-ipa">wěi sēn sī lán yǔ</span>) / <span class="noto-sans-sc">西端岛语</span> (拼音: <span
 				class="font-ipa">xī duān dǎo yǔ</span
 			>)
 		</li>
-		<li class="noto-sans-tc">中(繁): 葦森斯蘭語 / 西端島語</li>
+		<li>中(<span class="noto-sans-tc">繁</span>): <span class="noto-sans-tc">葦森斯蘭語</span> / <span class="noto-sans-tc">西端島語</span></li>
 	</ul>
 </div>
 <section aria-labelledby="overview">
