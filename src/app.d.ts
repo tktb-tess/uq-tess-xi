@@ -9,12 +9,6 @@ declare global {
 		// interface Platform {}
 	}
 
-	interface BigInt {
-		toJSON(): {
-			type: 'bigint';
-			value: string;
-		};
-	}
 }
 
 export {};

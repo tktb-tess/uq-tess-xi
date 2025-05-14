@@ -3,6 +3,7 @@
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { WordData } from './api/v0/today-word/+server';
+	import Spinner from '$lib/sfc/spinner.svelte';
 
 	const todayWordFunc = async (): Promise<WordData> => {
 		const url = '/api/v0/today-word';
@@ -16,17 +17,14 @@
 			};
 		}
 
+		// await new Promise<void>((resolve) => {
+		// 	setTimeout(resolve, 2000);
+		// });
+
 		return response.json();
 	};
 
 	let todayWordProm = $state(todayWordFunc());
-
-	BigInt.prototype.toJSON = function () {
-		return {
-			type: 'bigint',
-			value: this.toString()
-		};
-	};
 </script>
 
 <svelte:head>
@@ -56,19 +54,22 @@
 	class="
         container mx-auto bg-slate-50 px-3 min-h-screen
         flex flex-col gap-y-10 py-2
+		[&_h2:not(#subtitle)]:text-center [&_h2:not(#subtitle)]:border-b-3 [&_h2:not(#subtitle)]:border-double
     "
 >
-	<h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
-	<p class="text-[red] font-semibold text-xl text-center">
-		※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
-	</p>
-	<p>
-		わたし、斗琴庭暁響 (とことばあかね)
-		が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
-	</p>
+	<div>
+		<h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
+		<p class="text-[red] font-semibold text-xl text-center">
+			※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
+		</p>
+		<p>
+			わたし、斗琴庭暁響 (とことばあかね)
+			が作っている創作言語をはじめとした諸創作物についてをまとめているサイトです。
+		</p>
+	</div>
 
-	<section>
-		<h2 class="text-center">今日の単語</h2>
+	<section aria-labelledby="today-word">
+		<h2 id="today-word" class="text-center">今日の単語</h2>
 		<div
 			class="
 				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl
@@ -76,7 +77,10 @@
 			"
 		>
 			{#await todayWordProm}
-				<h3>読み込み中……</h3>
+				<h3>
+					<Spinner class="size-6" />
+					読み込み中……
+				</h3>
 			{:then todayWord}
 				{#if todayWord.is_success}
 					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
@@ -130,8 +134,8 @@
 			{/await}
 		</div>
 	</section>
-	<section>
-		<h2>創作言語</h2>
+	<section aria-labelledby="conlang">
+		<h2 id="conlang">創作言語</h2>
 		<h3>ヴェッセンズラン語 (Vässenzländisķ)</h3>
 		<p>
 			「もしも古英語の屈折がほとんど残った言語があったら?」というコンセプトでつくられている言語。
@@ -159,8 +163,8 @@
 			ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
 		</p>
 	</section>
-	<section>
-		<h2>言語関連のデータ</h2>
+	<section aria-labelledby="info">
+		<h2 id="info">言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
 			<li>古英語の動詞活用まとめ (準備中)</li>
@@ -169,8 +173,8 @@
 			</li>
 		</ul>
 	</section>
-	<section>
-		<h2>頂いた名前</h2>
+	<section aria-labelledby="haimei">
+		<h2 id="haimei">頂いた名前</h2>
 		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
 		<div class="table-container">
 			<table class="grid-cols-[repeat(2,auto)]">
@@ -189,8 +193,8 @@
 			</table>
 		</div>
 	</section>
-	<section>
-		<h2>その他の活動</h2>
+	<section aria-labelledby="misc">
+		<h2 id="misc">その他の活動</h2>
 		<h3>音楽</h3>
 		<p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
 		<ul>
@@ -222,8 +226,8 @@
 			</li>
 		</ul>
 	</section>
-	<section>
-		<h2>外部リンク</h2>
+	<section aria-labelledby="ext-links">
+		<h2 id="ext-links">外部リンク</h2>
 		<h3>各種SNS</h3>
 		<ul>
 			<li><ExtLink href="https://x.com/triethylamineq">𝕏witter</ExtLink></li>
@@ -246,7 +250,7 @@
 			</li>
 		</ul>
 	</section>
-	<p class="font-serif font-semibold text-[red] text-center text-xl">工事中…</p>
+	<h3 class="text-[red] text-center my-8">工事中……</h3>
 </main>
 
 <footer class="flex flex-col items-center my-5 px-(--gutter)">
@@ -258,9 +262,3 @@
 
 <PageTopBtn />
 
-<style>
-	h2:not(#subtitle) {
-		text-align: center;
-		border-bottom: double 3px currentColor;
-	}
-</style>

@@ -10,7 +10,7 @@ const headers = {
 } as const;
 
 export const GET = async ({ request, fetch: svFetch }) => {
-	/* authorization */
+	// authorization
 	if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
 		error(401, { message: 'Unauthorized' });
 	}
@@ -35,14 +35,14 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	};
 
 	try {
-		/** connect to Redis */
+		// connect to Redis 
 		const redis = await createClient({ url: REDIS_URL }).connect();
         
 		const total = await getTotal();
 		const today_word = (await getWord(getRndInt(0, total))).words[0];
 		await redis.json.set('today-word', '$', today_word);
 
-		/** check */
+		// check
 		const stored = await redis.json.get('today-word');
 		console.log(stored);
 		return json(stored);

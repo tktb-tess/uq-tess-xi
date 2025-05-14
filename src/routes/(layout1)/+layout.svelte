@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onNavigate } from '$app/navigation';
 	import CloseButton from '$lib/sfc/close_button.svelte';
-	import DetailsArrow from '$lib/sfc/details-arrow.svelte';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
 	import Kebab from '$lib/sfc/kebab.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
@@ -11,57 +10,6 @@
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
 	let headMenuIsOpen = $state(false);
-	let acrdnIsOpen = $state(false);
-	let open = $state(false);
-	let dataOpen = $state(false);
-	let acrdnRef = $state<HTMLDivElement>();
-
-	$effect(() => {
-		// const offset = 10;
-		const transitionDur = 250;
-
-		const animTiming = {
-			duration: transitionDur,
-			easing: 'cubic-bezier(0.4,0,0.2,1)'
-		} as const;
-
-		const closedState = {
-			height: '0px',
-			visibility: 'hidden'
-		};
-		const openedState = {
-			height: `${acrdnRef?.offsetHeight}px`,
-			visibility: 'visible'
-		};
-
-		const opening = [closedState, openedState];
-
-		const closing = [openedState, closedState];
-
-		if (acrdnIsOpen) {
-			open = true;
-
-			dataOpen = true;
-			const animation = acrdnRef?.animate(opening, animTiming);
-
-			return () => {
-				animation?.cancel();
-			};
-		} else {
-			dataOpen = false;
-			const anim = acrdnRef?.animate(closing, animTiming);
-
-			if (anim) {
-				anim.onfinish = () => {
-					open = false;
-				};
-			}
-
-			return () => {
-				anim?.cancel();
-			};
-		}
-	});
 
 	const large = $derived(
 		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
@@ -85,18 +33,9 @@
 		}
 	};
 
-	const onClickDetails: MouseEventHandler<HTMLElement> = async (e) => {
-		e.preventDefault();
-		acrdnIsOpen = !acrdnIsOpen;
-	};
-
-	onNavigate(
-		() =>
-			new Promise((resolve) => {
-				drawerIsOpen = false;
-				resolve();
-			})
-	);
+	onNavigate(() => {
+		drawerIsOpen = false;
+	});
 </script>
 
 <svelte:head>
@@ -112,18 +51,21 @@
 			<a href="/vaes/phonology">音韻論</a>
 			<a aria-disabled="true">Leipzig–Jakarta List (準備中)</a>
 			<a aria-disabled="true">りんご文 (準備中)</a>
-			<details class="" {open}>
-				<summary onclick={onClickDetails} class="block cursor-pointer user-select-none">
-					<DetailsArrow
-						class="
-							size-4.5 transition-transform duration-250 translate-y-[-1px]
-							{dataOpen ? 'rotate-x-180' : null}
-						"
-					/>
+			<details class="[&[open]_#list-arrow]:rotate-x-180">
+				<summary class="block cursor-pointer user-select-none">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						class="fill-current inline-block size-4.5 translate-y-[-1px] duration-250"
+						id="list-arrow"
+					>
+						<path
+							d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"
+						/>
+					</svg>
 					文法 (準備中)
 				</summary>
 				<div
-					bind:this={acrdnRef}
 					class="
 						flex flex-col overflow-y-hidden
 					"
