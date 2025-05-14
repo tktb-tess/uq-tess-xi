@@ -9,7 +9,6 @@
 
 	const { children } = $props();
 	let drawerIsOpen = $state(false);
-	let headMenuIsOpen = $state(false);
 
 	const large = $derived(
 		typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false
@@ -17,20 +16,6 @@
 
 	const onClickCloseBtn: MouseEventHandler<HTMLButtonElement> = () => {
 		drawerIsOpen = false;
-	};
-
-	const onClickHeadMenu: MouseEventHandler<HTMLButtonElement> = () => {
-		if (!headMenuIsOpen) {
-			headMenuIsOpen = true;
-
-			setTimeout(() => {
-				const handleClose = () => {
-					headMenuIsOpen = false;
-				};
-
-				window.addEventListener('click', handleClose, { once: true });
-			}, 10);
-		}
 	};
 
 	onNavigate(() => {
@@ -88,18 +73,12 @@
 	</div>
 {/snippet}
 
-{#snippet links()}
-	<a href="/vaes">Vässenzländisķ</a>
-	<a href="/data">データ</a>
-	<a href="/others">その他</a>
-{/snippet}
-
 <header
 	class="
         bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
     "
 >
-	<div class="flex *:flex-[0_0_auto] mx-auto justify-between w-[90%] gap-x-5">
+	<div class="flex *:flex-[0_0_auto] mx-auto justify-start w-[90%] gap-x-5">
 		{#if !large}
 			<button
 				class="text-white hover:text-white/70 transition-colors"
@@ -114,32 +93,7 @@
 		<h1 class="font-serif text-3xl [&_a]:h-[64px]">
 			<a class="flex items-center" href="/.">悠久肆方体</a>
 		</h1>
-		{#if large}
-			<nav
-				class="flex *:flex-[0_0_auto] items-center gap-x-5 [&_a]:h-[64px] [&_a]:flex [&_a]:items-center"
-			>
-				{@render links()}
-			</nav>
-		{:else}
-			<div class="relative ms-auto">
-				<button
-					class="grid h-[64px] place-content-center transition-colors any-hover:text-white/70"
-					onclick={onClickHeadMenu}
-				>
-					<Kebab class="size-5" />
-				</button>
-				<nav
-					class="
-						absolute flex invisible data-open:visible transition-[visibility,scale,translate] flex-col *:block *:text-center *:flex-[0_0_auto]
-						*:bg-mnlila *:px-2 *:py-1 *:rounded-lg gap-y-1 top-[64px] -right-3 w-max scale-y-0
-						-translate-y-[52px] data-open:scale-y-100 data-open:translate-y-0
-					"
-					data-open={headMenuIsOpen ? '' : null}
-				>
-					{@render links()}
-				</nav>
-			</div>
-		{/if}
+	
 	</div>
 </header>
 
@@ -204,6 +158,7 @@
 			transition-timing-function: var(--default-transition-timing-function);
 			transition-duration: var(--default-transition-duration);
 			border-radius: 0.5rem;
+			padding-block: calc(var(--spacing) * 2);
 
 			@media (any-hover: hover) {
 				&:hover {
@@ -214,7 +169,7 @@
 		}
 
 		:where(h4, a, summary) {
-			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+			padding-inline: calc(var(--spacing) * 3);
 		}
 
 		details > div > a {
