@@ -1,5 +1,5 @@
 <script lang="ts">
-	const ogTitle = 'Vässenzländisķ 文字と発音', ogDesc = '';
+	const ogTitle = 'Vässenzländisķ 文字と発音', ogDesc = '文字と発音の解説';
 </script>
 
 <svelte:head>

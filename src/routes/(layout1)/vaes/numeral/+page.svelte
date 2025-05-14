@@ -20,7 +20,7 @@
 	<h2 id="cardinal" class="border-b-3 border-double ps-1">基数詞 (Kardinalraiman)</h2>
 	<h3>0&ndash;19</h3>
 	<div class="table-container">
-		<table class="grid-cols-[repeat(4,auto)]">
+		<table class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end">
 			<thead>
 				<tr>
 					<th scope="col"></th>
@@ -117,7 +117,7 @@
 					<th scope="col">女性</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="[&_td]:text-start">
 				<tr>
 					<th scope="row">主格</th>
 					<td>an</td>
@@ -189,7 +189,7 @@
 	<h3>20&ndash;999</h3>
 
 	<div class="table-container">
-		<table class="grid-cols-[repeat(6,auto)]">
+		<table class="grid-cols-[repeat(6,auto)] [&_td:nth-child(odd)]:text-end">
 			<thead>
 				<tr>
 					<th scope="col"></th>
@@ -319,7 +319,7 @@
 	<h3>1000&ndash;</h3>
 
 	<div class="table-container">
-		<table class="grid-cols-[repeat(2,auto)]">
+		<table class="grid-cols-[repeat(2,auto)] [&_td:first-child]:text-end">
 			<thead>
 				<tr>
 					<th scope="col"></th>
@@ -397,7 +397,7 @@
 	</p>
 	<p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
 	<div class="table-container flex max-md:flex-col max-md:gap-y-2 md:justify-around">
-		<table class="mx-0 grid-cols-[repeat(3,auto)]">
+		<table class="mx-0 grid-cols-[repeat(3,auto)] [&_td]:text-start">
 			<caption>-ljönn</caption>
 			<thead>
 				<tr>
@@ -429,7 +429,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<table class="mx-0 grid-cols-[repeat(3,auto)]">
+		<table class="mx-0 grid-cols-[repeat(3,auto)] [&_td]:text-start">
 			<caption>-ljard</caption>
 			<thead>
 				<tr>
@@ -474,7 +474,7 @@
 <section aria-labelledby="ordinal">
 	<h2 id="ordinal" class="border-b-3 border-double ps-1">序数詞 (Ämbyrdlaiķraiman)</h2>
 	<div class="table-container">
-		<table class="grid-cols-[repeat(4,auto)]">
+		<table class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end">
 			<thead>
 				<tr>
 					<th scope="col"></th>
