@@ -9,7 +9,7 @@
 
 	const onclick: MouseEventHandler<HTMLButtonElement> = () => {
 		if (browser) {
-			window.scroll({ top: 0 });
+			window.scroll({ top: 0, behavior: 'smooth' });
 		}
 	};
 </script>

@@ -2,7 +2,6 @@
 	import { onNavigate } from '$app/navigation';
 	import CloseButton from '$lib/sfc/close_button.svelte';
 	import Hamburger from '$lib/sfc/hamburger.svelte';
-	import Kebab from '$lib/sfc/kebab.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { innerWidth } from 'svelte/reactivity/window';
@@ -166,6 +165,10 @@
 					color: white;
 				}
 			}
+		}
+
+		:where(h4) {
+			padding-block: calc(var(--spacing) * 1);
 		}
 
 		:where(h4, a, summary) {

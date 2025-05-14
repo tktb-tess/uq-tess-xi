@@ -30,15 +30,14 @@
 	<h3>各国語表記</h3>
 	<ul>
 		<li>維: vässenzländisķ spräķ / vässenzländisķ</li>
-		<li>冶: wessenslandenowy</li>
 		<li>日: ヴェッセンズラン語 / 葦語</li>
 		<li>英: Vessenslandic language / Vessenslandic</li>
 		<li>独: wessensländische Sprache / Wessensländisch</li>
 		<li>仏: le vessenslandais</li>
 		<li class="noto-sans-sc">
-			中(简): 苇森斯兰语（拼音：<span class="font-ipa">wěi sēn sī lán yǔ</span>）/ 西端岛语（拼音：<span
+			中(简): 苇森斯兰语 (拼音: <span class="font-ipa">wěi sēn sī lán yǔ</span>) / 西端岛语 (拼音: <span
 				class="font-ipa">xī duān dǎo yǔ</span
-			>）
+			>)
 		</li>
 		<li class="noto-sans-tc">中(繁): 葦森斯蘭語 / 西端島語</li>
 	</ul>
