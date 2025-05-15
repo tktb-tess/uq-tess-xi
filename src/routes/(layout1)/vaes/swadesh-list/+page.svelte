@@ -33,6 +33,8 @@
 
 <h2 class="my-8 text-center">Swadesh List</h2>
 
+<p>まだ未完成。順次追加していきます。</p>
+
 {#await getSwadesh()}
 	<h3 class="text-center">
 		<Spinner class="size-6" />
