@@ -21,7 +21,7 @@ const todayWordFunc = async (): Promise<WordData> => {
 };
 
 const swadeshF = async (): Promise<SwadeshList> => {
-	const url = 'api/v0/swadesh-list';
+	const url = '/api/v0/swadesh-list';
 	const resp = await fetch(url);
 
 	if (!resp.ok) {
