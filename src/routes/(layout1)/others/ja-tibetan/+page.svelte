@@ -1,5 +1,5 @@
 <script lang="ts">
-    const ogTitle = '日本語 チベット文字表記', ogDesc = '';
+    const ogTitle = '日本語 チベット文字表記', ogDesc = '狂気の沙汰';
 </script>
 
 <svelte:head>

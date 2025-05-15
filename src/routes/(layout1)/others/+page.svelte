@@ -27,6 +27,6 @@
 		…舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。
 	</li>
 	<li><a href="/others/gregorian-chants">グレゴリオ聖歌の音階について</a></li>
-	<li>日本語 チベット文字表記</li>
-	<li><a href="/others/license">当サイトで使用しているフォントのライセンス</a></li>
+	<li>日本語 チベット文字表記 (準備中)</li>
+	<li><a href="/others/license">ライセンス</a></li>
 </ul>
