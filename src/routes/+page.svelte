@@ -3,9 +3,9 @@
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
-	import globalStates from './global.svelte';
+	import { todayWordProm as twp } from './global.svelte';
 
-	const todayWordProm = globalStates.todayWordProm;
+	const todayWordProm = twp.value;
 </script>
 
 <svelte:head>

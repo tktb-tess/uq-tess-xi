@@ -1,4 +1,5 @@
 import type { WordData } from "./api/v0/today-word/+server";
+import type { SwadeshList } from "./api/v0/swadesh-list/+server";
 
 const todayWordFunc = async (): Promise<WordData> => {
 	const url = '/api/v0/today-word';
@@ -19,8 +20,27 @@ const todayWordFunc = async (): Promise<WordData> => {
 	return response.json();
 };
 
-const globalStates = $state({
-	todayWordProm: todayWordFunc()
+const swadeshF = async (): Promise<SwadeshList> => {
+	const url = 'api/v0/swadesh-list';
+	const resp = await fetch(url);
+
+	if (!resp.ok) {
+		return {
+			success: false,
+			status: resp.status,
+			message: resp.statusText
+		}
+	}
+
+	return await resp.json();
+};
+
+const todayWordProm = $state({
+	value: todayWordFunc()
 });
 
-export default globalStates;
+const swadeshListProm = $state({
+	value: swadeshF()
+})
+
+export { todayWordProm, swadeshListProm };
