@@ -3,9 +3,26 @@
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
-	import { todayWordProm as twp } from './global.svelte';
+	import type { WordData } from './api/v0/today-word/+server';
 
-	const todayWordProm = twp.value;
+	const todayWordF = async (): Promise<WordData> => {
+		const url = '/api/v0/today-word';
+		const response = await fetch(url);
+
+		if (!response.ok) {
+			return {
+				is_success: false,
+				status: response.status,
+				message: response.statusText
+			};
+		}
+
+		// await new Promise<void>((resolve) => {
+		// 	setTimeout(resolve, 2000);
+		// });
+
+		return response.json();
+	};
 </script>
 
 <svelte:head>
@@ -24,9 +41,7 @@
 	class="min-h-screen bg-linear-to-br/oklch from-title-s to-title-e grid grid-cols-1 text-white gap-y-6 place-content-center place-items-center"
 >
 	<TessLogo class="w-[200px] lg:w-[300px] h-auto" fadein />
-	<h1
-		class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center"
-	>
+	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
 </header>
@@ -57,7 +72,7 @@
 				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
 			"
 		>
-			{#await todayWordProm}
+			{#await todayWordF()}
 				<h3>
 					<Spinner class="size-6" />
 					読み込み中……
@@ -138,7 +153,7 @@
 					<li>形容詞 (準備中)</li>
 				</ul>
 			</li>
-			
+
 			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
 		</ul>
 		<h3><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h3>
