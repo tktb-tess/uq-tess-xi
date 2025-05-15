@@ -1,6 +1,6 @@
 <script lang="ts">
     
-	const ogTitle = 'ツール', ogDesc = '';
+	const ogTitle = 'ツール', ogDesc = '色々な計算';
 </script>
 
 <svelte:head>

@@ -221,7 +221,7 @@
 			</li>
 			<li><a href="/others/gregorian-chants">グレゴリオ聖歌の音階について</a></li>
 			<li>日本語 チベット文字表記</li>
-			<li><a href="/others/license">当サイトで使用しているフォントのライセンス</a></li>
+			<li><a href="/others/license">ライセンス</a></li>
 		</ul>
 		<h3>メモ</h3>
 		<ul>
