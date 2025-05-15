@@ -142,7 +142,7 @@
 			<li><a href="/vaes">概説</a></li>
 			<li><a href="/vaes/phonology">音韻論</a></li>
 			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
-			<li>Swadesh List (準備中)</li>
+			<li><a href="/vaes/swadesh-list">Swadesh List</a></li>
 			<li>りんごを食べたい58文 (準備中)</li>
 			<li>
 				文法

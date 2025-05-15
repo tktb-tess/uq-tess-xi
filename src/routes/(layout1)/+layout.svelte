@@ -33,7 +33,7 @@
 			<a href="/vaes">概説</a>
 			<a href="/vaes/letter-et-pron">文字と発音</a>
 			<a href="/vaes/phonology">音韻論</a>
-			<a aria-disabled="true">Swadesh List (準備中)</a>
+			<a href="/vaes/swadesh-list">Swadesh List</a>
 			<a aria-disabled="true">りんご文 (準備中)</a>
 			<details class="[&[open]_#list-arrow]:rotate-x-180">
 				<summary class="block cursor-pointer user-select-none">

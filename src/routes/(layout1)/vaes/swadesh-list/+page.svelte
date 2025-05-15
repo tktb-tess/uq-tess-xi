@@ -34,15 +34,15 @@
 <h2 class="my-8 text-center">Swadesh List</h2>
 
 {#await getSwadesh()}
-	<h3>
-		<Spinner />
+	<h3 class="text-center">
+		<Spinner class="size-6" />
 		読み込み中……
 	</h3>
 {:then swadeshList}
 	{#if swadeshList.success}
 		{@const [header, ...body] = swadeshList.value}
 		<div class="table-container">
-			<table class="grid-cols-[repeat(4,auto)] [&_td:first-child]:text-end">
+			<table class="grid-cols-[repeat(4,auto)] [&_td]:text-start [&_td:first-child]:text-end">
 				<thead>
 					<tr>
 						{#each header as str}
