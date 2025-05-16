@@ -45,81 +45,79 @@
 	const { forms }: Props = $props();
 </script>
 
-<div class="table-container">
-	<table class="grid-cols-[repeat(3,auto)] [&_td]:text-start">
-		<caption>{forms[0]}</caption>
-		<tbody>
-			<tr>
-				<th scope="row">不定詞</th>
-				<th scope="col">主格</th>
-				<th scope="col">与格</th>
-			</tr>
-			<tr class="*:bg-white">
-                <td></td>
-				<td>{forms[1]}</td>
-				<td>{forms[2]}</td>
-			</tr>
-			<tr>
-				<th scope="row">直説法</th>
-				<th scope="col">現在</th>
-				<th scope="col">過去</th>
-			</tr>
-			<tr class="[&_th]:bg-llila [&_td]:bg-white">
-				<th scope="row">1人称単数</th>
-				<td>{forms[3]}</td>
-				<td>{forms[7]}</td>
-			</tr>
-			<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
-				<th scope="row">2人称単数</th>
-				<td>{forms[4]}</td>
-				<td>{forms[8]}</td>
-			</tr>
-			<tr class="[&_th]:bg-llila [&_td]:bg-white">
-				<th scope="row">3人称単数</th>
-				<td>{forms[5]}</td>
-				<td>{forms[9]}</td>
-			</tr>
-			<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
-				<th scope="row">複数</th>
-				<td>{forms[6]}</td>
-				<td>{forms[10]}</td>
-			</tr>
-			<tr class="*:bg-llila">
-				<th scope="row">接続法</th>
-				<th scope="col">現在</th>
-				<th scope="col">過去</th>
-			</tr>
-			<tr>
-				<th scope="row">単数</th>
-				<td>{forms[11]}</td>
-				<td>{forms[13]}</td>
-			</tr>
-			<tr>
-				<th scope="row">複数</th>
-				<td>{forms[12]}</td>
-				<td>{forms[14]}</td>
-			</tr>
-			<tr>
-				<th scope="colgroup" class="col-span-3">命令法</th>
-			</tr>
-			<tr class="[&_th]:bg-llila [&_td]:bg-white">
-				<th scope="row">単数</th>
-				<td class="col-span-2">{forms[15]}</td>
-			</tr>
-			<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
-				<th scope="row">複数</th>
-				<td class="col-span-2">{forms[16]}</td>
-			</tr>
-			<tr class="*:bg-llila">
-				<th scope="row">分詞</th>
-				<th scope="col">現在</th>
-				<th scope="col">過去</th>
-			</tr>
-			<tr>
-                <td></td>
-				<td>{forms[17]}</td>
-				<td>{forms[18]}</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+<table class="grid-cols-[repeat(3,auto)] [&_td]:text-start">
+	<caption>{forms[0]}</caption>
+	<tbody>
+		<tr>
+			<th scope="row">不定詞</th>
+			<th scope="col">主格</th>
+			<th scope="col">与格</th>
+		</tr>
+		<tr class="*:bg-white">
+			<td></td>
+			<td>{forms[1]}</td>
+			<td>{forms[2]}</td>
+		</tr>
+		<tr>
+			<th scope="row">直説法</th>
+			<th scope="col">現在</th>
+			<th scope="col">過去</th>
+		</tr>
+		<tr class="[&_th]:bg-llila [&_td]:bg-white">
+			<th scope="row">1人称単数</th>
+			<td>{forms[3]}</td>
+			<td>{forms[7]}</td>
+		</tr>
+		<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+			<th scope="row">2人称単数</th>
+			<td>{forms[4]}</td>
+			<td>{forms[8]}</td>
+		</tr>
+		<tr class="[&_th]:bg-llila [&_td]:bg-white">
+			<th scope="row">3人称単数</th>
+			<td>{forms[5]}</td>
+			<td>{forms[9]}</td>
+		</tr>
+		<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+			<th scope="row">複数</th>
+			<td>{forms[6]}</td>
+			<td>{forms[10]}</td>
+		</tr>
+		<tr class="*:bg-llila">
+			<th scope="row">接続法</th>
+			<th scope="col">現在</th>
+			<th scope="col">過去</th>
+		</tr>
+		<tr>
+			<th scope="row">単数</th>
+			<td>{forms[11]}</td>
+			<td>{forms[13]}</td>
+		</tr>
+		<tr>
+			<th scope="row">複数</th>
+			<td>{forms[12]}</td>
+			<td>{forms[14]}</td>
+		</tr>
+		<tr>
+			<th scope="colgroup" class="col-span-3">命令法</th>
+		</tr>
+		<tr class="[&_th]:bg-llila [&_td]:bg-white">
+			<th scope="row">単数</th>
+			<td class="col-span-2">{forms[15]}</td>
+		</tr>
+		<tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+			<th scope="row">複数</th>
+			<td class="col-span-2">{forms[16]}</td>
+		</tr>
+		<tr class="*:bg-llila">
+			<th scope="row">分詞</th>
+			<th scope="col">現在</th>
+			<th scope="col">過去</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>{forms[17]}</td>
+			<td>{forms[18]}</td>
+		</tr>
+	</tbody>
+</table>

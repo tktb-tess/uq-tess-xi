@@ -40,57 +40,58 @@
 		細かい例外もあるが、大まかな各屈折語尾は以下のようになる。上の4グループの語幹をそれぞれ [pre.],
 		[1st.pas.], [2nd.pas.], [p.p.] と示す。なお直説法現在2, 3人称単数は変音することがある。
 	</p>
-
-	<ConjugationTable
-		forms={[
-			'屈折語尾',
-			'[pre.]-an',
-			'[pre.]-enne',
-			'[pre.]-e',
-			'[pre.*]-(e)st',
-			'[pre.*]-(e)þ',
-			'[pre.]-aþ',
-			'[1st.pas.]-∅',
-			'[2nd.pas.]-e',
-			'[1st.pas.]-∅',
-			'[2nd.pas.]-on',
-			'[pre.]-e',
-			'[pre.]-en',
-			'[2nd.pas.]-e',
-			'[2nd.pas.]-en',
-			'[pre.]-∅, -e',
-			'[pre.]-aþ',
-			'[pre.]-ende',
-			'(ġe)-[p.p.]-en'
-		]}
-	/>
+	<div class="table-container">
+		<ConjugationTable
+			forms={[
+				'屈折語尾',
+				'[pre.]-an',
+				'[pre.]-enne',
+				'[pre.]-e',
+				'[pre.*]-(e)st',
+				'[pre.*]-(e)þ',
+				'[pre.]-aþ',
+				'[1st.pas.]-∅',
+				'[2nd.pas.]-e',
+				'[1st.pas.]-∅',
+				'[2nd.pas.]-on',
+				'[pre.]-e',
+				'[pre.]-en',
+				'[2nd.pas.]-e',
+				'[2nd.pas.]-en',
+				'[pre.]-∅, -e',
+				'[pre.]-aþ',
+				'[pre.]-ende',
+				'(ġe)-[p.p.]-en'
+			]}
+		/>
+	</div>
 
 	<h3 id="s-class-i">クラスI</h3>
-
-	<ConjugationTable
-		forms={[
-			'rīdan “to ride”',
-			'rīdan',
-			'rīdenne',
-			'rīde',
-			'rītst',
-			'rītt',
-			'rīdaþ',
-			'rād',
-			'ride',
-			'rād',
-			'ridon',
-			'rīde',
-			'rīden',
-			'ride',
-			'riden',
-			'rīd',
-			'rīdaþ',
-			'rīdende',
-			'(ġe)riden'
-		]}
-	/>
-
+	<div class="table-container">
+		<ConjugationTable
+			forms={[
+				'rīdan “to ride”',
+				'rīdan',
+				'rīdenne',
+				'rīde',
+				'rītst',
+				'rītt',
+				'rīdaþ',
+				'rād',
+				'ride',
+				'rād',
+				'ridon',
+				'rīde',
+				'rīden',
+				'ride',
+				'riden',
+				'rīd',
+				'rīdaþ',
+				'rīdende',
+				'(ġe)riden'
+			]}
+		/>
+	</div>
 	<p>
 		幹母音の変化は <strong>ī - ā - i - i</strong>、現代英語だとride, driveのように
 		<strong>iCe - oCe - iCen</strong> と変化する不規則動詞に相当する。

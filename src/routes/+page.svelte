@@ -173,7 +173,7 @@
 		<h2 id="info">言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li><a href="/data/OE-verb-conj-type">古英語の動詞活用まとめ (準備中)</a></li>
+			<li><a href="/data/OE-verb-conj-type" class="link-disabled">古英語の動詞活用まとめ (準備中)</a></li>
 			<li>
 				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>

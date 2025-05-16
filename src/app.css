@@ -81,6 +81,10 @@
 	scrollbar-width: thin;
 }
 
+@utility link-disabled {
+	@apply pointer-events-none text-neutral-700 any-hover:no-underline;
+}
+
 @custom-variant any-hover {
 	&:hover {
 		@media (any-hover: hover) {
