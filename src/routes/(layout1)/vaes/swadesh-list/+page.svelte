@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Spinner from '$lib/sfc/spinner.svelte';
 	import type { SwadeshList } from '../../../api/v0/swadesh-list/+server';
-	const ogTitle = 'Vässenzländisķ LJ List',
+	const ogTitle = 'Vässenzländisķ Swadesh List',
 		ogDesc = 'すわでしゅ！';
 
 	const getSwadesh = async (): Promise<SwadeshList> => {

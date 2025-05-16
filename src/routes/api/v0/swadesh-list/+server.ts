@@ -19,14 +19,17 @@ export const GET = async ({ fetch: svFetch }) => {
 
 	const resp = await svFetch(url, { method: 'GET' });
 	if (!resp.ok) {
-		error(resp.status, { message: resp.statusText });
+		error(resp.status);
 	}
 
 	const csvStr = await resp.text();
-	const parsed_ = Papa.parse(csvStr, { header: false }).data as string[][];
-	const parsed = parsed_.map((row) => {
-		return row.map((s) => s.replace(/;/, ','));
-	});
+
+	const parsed = (() => {
+		const pre = Papa.parse(csvStr, { header: false }).data as string[][];
+		return pre.map((row) => {
+			return row.map((s) => s.replace(/;/, ','));
+		});
+	})();
 
 	const headers = {
 		'Content-Type': 'application/json'
