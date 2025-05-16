@@ -85,6 +85,10 @@
 	@apply pointer-events-none text-neutral-700 any-hover:no-underline;
 }
 
+@utility grid-cols-auto-* {
+	grid-template-columns: repeat(--value(integer), auto);
+}
+
 @custom-variant any-hover {
 	&:hover {
 		@media (any-hover: hover) {
