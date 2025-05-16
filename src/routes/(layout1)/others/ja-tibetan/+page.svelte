@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ExtLink from '$lib/sfc/ext_link.svelte';
+
 	const ogTitle = '日本語 チベット文字表記',
 		ogDesc = '狂気の沙汰';
 </script>
@@ -30,14 +32,7 @@
 	</p>
 	<p>
 		なお、この音節構造は
-		<a
-			class="external-link"
-			href="https://nihongotopics.github.io/Kyouro/"
-			target="_blank"
-			rel="noreferrer"
-		>
-			教育ローマ字
-		</a>
+		<ExtLink href="https://nihongotopics.github.io/Kyouro/">教育ローマ字</ExtLink>
 		の資料内で提案されているものである。より詳しい話はそちらを直接参照するのが良い。
 	</p>
 	<h3 id="c">C</h3>
@@ -522,14 +517,7 @@
 		<br />ཡུ་ནོ་མི &amp; ནི་ཀ་མོ་ཀྱུ - ཨིཾ་དོ་ཨ་ཀཻ་ན་ར་ ཏོ་ར་རྐུ་མེ་ཨི་ཀཱ དོ་རོ་རྤུ་བུ་བུཾ
 	</h3>
 	<p>
-		<a
-			class="external-link"
-			href="https://youtu.be/su0FCBRwVpE?si=C8f06FSj1__Qb9u2"
-			target="_blank"
-			rel="noreferrer"
-		>
-			ようつべ
-		</a>
+		<ExtLink href="https://youtu.be/su0FCBRwVpE?si=C8f06FSj1__Qb9u2">ようつべ</ExtLink>
 	</p>
 	<p>ཨོ་ཤ་རེ་ནོ་ ཀྱོ་གཅི་ད་ ཕ་རྴོཾ་སེཾ་ཏཱ　o.ša.re.no kyo.k<sup>u</sup>či.da fa.ššon̆.sen̆.tā</p>
 
@@ -569,12 +557,16 @@
 			'Hiragino Mincho', 'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
 	}
 
-	p, td, th, li {
+	p,
+	td,
+	th,
+	li {
 		overflow-y: clip;
 		line-height: 1.6;
 	}
 
-	h2, h3 {
+	h2,
+	h3 {
 		overflow-y: clip;
 		line-height: 2;
 	}
