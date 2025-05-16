@@ -82,7 +82,7 @@
 }
 
 @utility link-disabled {
-	@apply pointer-events-none text-neutral-700 any-hover:no-underline;
+	@apply pointer-events-none text-neutral-600 any-hover:no-underline;
 }
 
 @utility grid-cols-auto-* {
