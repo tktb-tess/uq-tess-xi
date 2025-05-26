@@ -54,6 +54,11 @@
 		url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
 }
 
+@font-face {
+	font-family: 'PhunDot';
+	src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
+}
+
 @theme {
 	--font-sans:
 		'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
@@ -62,6 +67,7 @@
 		'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
 		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
 	--font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
+	--font-phun-dot: 'PhunDot', var(--font-sans);
 	--color-mnlila: oklch(0.18 0.0957 296);
 	--color-title-s: oklch(0.3 0.1469 316);
 	--color-title-e: oklch(0.3 0.1469 276);
