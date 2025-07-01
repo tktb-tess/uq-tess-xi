@@ -192,7 +192,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語・雰名</ExtLink></td>
+						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語 - 雰名</ExtLink></td>
 						<td><span class="font-phun-dot">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
 					</tr>
 				</tbody>

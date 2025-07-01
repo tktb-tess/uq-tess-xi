@@ -12,6 +12,8 @@ export type SwadeshList =
 			message: string;
 	  };
 
+export type MaybePromise<T> = T | Promise<T>;
+
 export const GET = async ({ fetch: svFetch }) => {
 	console.log('received GET request at /swadesh-list');
 	const url =

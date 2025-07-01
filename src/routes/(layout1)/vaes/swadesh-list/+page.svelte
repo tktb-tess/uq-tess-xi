@@ -18,6 +18,7 @@
 
 		return resp.json();
 	};
+
 </script>
 
 <svelte:head>
@@ -44,7 +45,7 @@
 	{#if swadeshList.success}
 		{@const [header, ...body] = swadeshList.value}
 		<div class="table-container">
-			<table class="grid-cols-[repeat(4,auto)] [&_td]:text-start [&_td:first-child]:text-end">
+			<table class="grid-cols-auto-4 [&_td]:text-start [&_td:first-child]:text-end">
 				<thead>
 					<tr>
 						{#each header as str}

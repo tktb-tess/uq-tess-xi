@@ -17,7 +17,7 @@ export const GET = async ({ params, fetch: svFetch }) => {
 				return '/woff2/FONTLOG.txt';
 			}
 			default: {
-				error(404, { message: 'the file was not found' });
+				error(404, { message: 'FileNotFound' });
 			}
 		}
 	})();
