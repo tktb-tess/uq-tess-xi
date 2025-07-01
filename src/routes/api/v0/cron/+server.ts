@@ -4,12 +4,12 @@ import type { ZpDICAPIWordsResponse } from '$lib/modules/zpdic.js';
 import { getRndInt } from '$lib/modules/util';
 import { createClient } from 'redis';
 
-const api_rt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
-const headers = {
-	'X-Api-Key': ZPDIC_API_KEY
-} as const;
-
 export const GET = async ({ request, fetch: svFetch }) => {
+	const api_rt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
+	const headers = {
+		'X-Api-Key': ZPDIC_API_KEY
+	} as const;
+
 	// authorization
 	if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
 		error(401, { message: 'Unauthorized' });
@@ -35,9 +35,9 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	};
 
 	try {
-		// connect to Redis 
+		// connect to Redis
 		const redis = await createClient({ url: REDIS_URL }).connect();
-        
+
 		const total = await getTotal();
 		const today_word = (await getWord(getRndInt(0, total))).words[0];
 		await redis.json.set('today-word', '$', today_word);

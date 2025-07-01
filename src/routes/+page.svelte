@@ -175,7 +175,7 @@
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
 			<li><a href="/data/OE-verb-conj-type" class="link-disabled">古英語の動詞活用まとめ (準備中)</a></li>
 			<li>
-				<ExtLink href="https://conlang-gacha.vercel.app">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
+				<ExtLink href="https://conlang-gacha.tktb-tess.dev">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>
 		</ul>
 	</section>
@@ -183,7 +183,7 @@
 		<h2 id="haimei">頂いた名前</h2>
 		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
 		<div class="table-container">
-			<table class="grid-cols-[repeat(2,auto)]">
+			<table class="grid-cols-auto-2">
 				<thead>
 					<tr>
 						<th>言語</th>
@@ -214,7 +214,7 @@
 			<li>ジョンソンの立体のcrown jewelsの命名案 (準備中)</li>
 			<li><a href="/others/tools">ツール</a></li>
 			<li>
-				<ExtLink href="https://tktb-tess.github.io/apocaly_romaji/">
+				<ExtLink href="https://shuuro.tktb-tess.dev">
 					終末式ローマ字 «Syuğmatusǐkiro–mázi»
 				</ExtLink><br />
 				…舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。
