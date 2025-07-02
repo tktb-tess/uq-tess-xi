@@ -228,4 +228,8 @@
 	caption {
 		@apply block col-span-full mb-1 text-xl font-serif font-medium;
 	}
+
+	textarea {
+		@apply resize-none bg-white border border-slate-300 rounded;
+	}
 }
