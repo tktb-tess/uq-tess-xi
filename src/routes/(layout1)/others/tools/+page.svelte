@@ -1,7 +1,9 @@
 <script lang="ts">
+	import FromBase64 from "./fromBase64.svelte";
 	import ToBase64 from "./toBase64.svelte";
 	const ogTitle = 'ツール',
 		ogDesc = '色々な計算';
+	const { data } = $props();
 </script>
 
 <svelte:head>
@@ -17,4 +19,5 @@
 
 <h2 class="my-8 text-center">ツール</h2>
 
-<ToBase64 />
+<ToBase64 seed={data.seeds[0]} />
+<FromBase64 seed={data.seeds[1]} />
