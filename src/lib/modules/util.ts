@@ -265,8 +265,8 @@ export const factorial = (n_: number) => {
     return odd_part << two_exp;
 };
 
-export const lazyExec = (delay = 2000): Promise<string> => {
-    return new Promise((resolve) => {
+export const lazyExec = (delay = 2000) => {
+    return new Promise<string>((resolve) => {
         setTimeout(() => {
             resolve(`resolved in ${delay} ms`);
         }, delay);
@@ -324,19 +324,19 @@ export const parseCSV = (csv: string) => {
     const rows: string[][] = [];
     let row: string[] = [];
     let currentField = '';
-    let is_inside_of_quote = false;
+    let isInsideOfQuote = false;
 
     for (let i = 0; i < csv.length; i++) {
         const char = csv[i];
 
         if (char === '"' && (i === 0 || csv[i - 1] !== '\\')) { // ダブルクォート（not エスケープ）に入った/出た時にトグル
-            is_inside_of_quote = !is_inside_of_quote;
+            isInsideOfQuote = !isInsideOfQuote;
 
-        } else if (char === ',' && !is_inside_of_quote) {  // クォート内でないコンマ
+        } else if (char === ',' && !isInsideOfQuote) {  // クォート内でないコンマ
             row.push(currentField.trim());           // フィールドを列配列に追加
             currentField = '';                       // クリア
 
-        } else if (char === '\n' && !is_inside_of_quote) { // クォート内でない改行
+        } else if (char === '\n' && !isInsideOfQuote) { // クォート内でない改行
             row.push(currentField.trim());           // フィールドを列配列に追加
             rows.push(row);                          // 列配列を2次元配列に追加
             row = [];                                // 列配列, フィールドをクリア

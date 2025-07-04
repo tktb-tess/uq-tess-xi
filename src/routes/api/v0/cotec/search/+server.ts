@@ -3,7 +3,7 @@ import { getRndInt } from '$lib/modules/util.js';
 import { error, json } from '@sveltejs/kit';
 
 export const GET = async ({ url, fetch: svFetch }) => {
-	console.log('receive GET request');
+	console.log('receive GET request at /cotec');
 	const fetch_url = `https://tktb-tess.github.io/cotec-json-data/parsed-from-conlinguistics-wiki-list.ctc.json`;
 	const resp = await svFetch(fetch_url);
 	if (!resp.ok) error(resp.status);
