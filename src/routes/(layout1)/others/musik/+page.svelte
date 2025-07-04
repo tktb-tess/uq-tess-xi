@@ -1,7 +1,17 @@
 <script lang="ts">
 	const ogTitle = '音楽',
 		ogDesc = '作曲は楽しい';
-	let nowPlaying = $state<HTMLAudioElement | null>(null);
+
+	const loadMusics = async () => {
+		const musicUrl = ['/music/welcome.m4a', '/music/celeste.m4a'];
+		const promises = musicUrl.map(async (url) => {
+			const resp = await fetch(url);
+			if (!resp.ok) throw Error('failed to fetch');
+			return resp.blob();
+		});
+
+		return Promise.all(promises);
+	};
 </script>
 
 <svelte:head>
@@ -16,4 +26,3 @@
 </svelte:head>
 
 <h2 class="my-8 text-center">音楽</h2>
-<p class="text-red-600 text-xl text-center">工事中……</p>
