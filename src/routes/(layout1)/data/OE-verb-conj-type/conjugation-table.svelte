@@ -45,7 +45,7 @@
 	const { forms }: Props = $props();
 </script>
 
-<table class="grid-cols-[repeat(3,auto)] [&_td]:text-start">
+<table class="grid-cols-auto-3 [&_td]:text-start">
 	<caption>{forms[0]}</caption>
 	<tbody>
 		<tr>

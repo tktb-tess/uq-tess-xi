@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ConjugationTable from './conjugation-table.svelte';
-	const ogTitle = 'Ænglisċ 動詞',
-		ogDesc = '';
+	const ogTitle = 'Ænglisċ 動詞活用まとめ',
+		ogDesc = 'こえいご♡';
 </script>
 
 <svelte:head>
@@ -25,8 +25,8 @@
 		<li>c, g の硬口蓋化音はドットで表記し、長母音はマクロンで示す。</li>
 	</ul>
 </div>
-<section aria-labelledby="strong-verb">
-	<h2 id="strong-verb" class="border-b-3 border-double ps-1">強変化動詞</h2>
+<section aria-labelledby="sect1">
+	<h2 id="sect1" class="border-b-3 border-double ps-1">強変化動詞</h2>
 	<p>
 		語幹の母音交替（アプラウトという）を伴う動詞活用を持つ動詞。変化パターンに応じていくつかのクラスに分けられる。
 	</p>

@@ -1,6 +1,7 @@
 <script lang="ts">
-    
-	const ogTitle = '音楽', ogDesc = '';
+	const ogTitle = '音楽',
+		ogDesc = '作曲は楽しい';
+	let nowPlaying = $state<HTMLAudioElement | null>(null);
 </script>
 
 <svelte:head>
