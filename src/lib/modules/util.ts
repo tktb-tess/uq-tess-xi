@@ -98,7 +98,6 @@ export const modPow = (base: bigint, power: bigint, mod: bigint) => {
  * @returns `{x, y, gcd(a, b)}`
  */
 export const exEuclidean = (a: bigint, b: bigint) => {
-    if (typeof a !== 'bigint' || typeof b !== 'bigint') throw TypeError('type of arguments must be Bigint');
 
     // a, b に 0 がある場合の処理
     if (a === 0n && b === 0n) return { x: 0n, y: 0n, gcd: 0n };

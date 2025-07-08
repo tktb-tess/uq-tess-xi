@@ -12,7 +12,7 @@
 			const utf8 = Uint8Array.from(stred, (s) => s.charCodeAt(0));
 			return decoder.decode(utf8);
 		} catch (e) {
-			return `could not convert`;
+			return `invalid string`;
 		}
 	});
 </script>

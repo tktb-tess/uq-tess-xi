@@ -77,7 +77,7 @@
 	--tracking-ultra: 3rem;
 }
 
-@utility user-select-* {
+@utility user-select-* { 
 	user-select: --value('none', 'auto', 'all', 'text');
 	-webkit-user-select: --value('none', 'auto', 'all', 'text');
 }
