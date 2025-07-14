@@ -1,9 +1,11 @@
-const getRandomSeed = () => {
-	const bytes = crypto.getRandomValues(new Uint8Array(24));
-	return Buffer.copyBytesFrom(bytes).toString('base64');
-};
+function* getRandomSeed(max: number) {
+	for (let counter = 0; counter < max; counter++) {
+		const bytes = crypto.getRandomValues(new Uint8Array(24));
+		yield Buffer.copyBytesFrom(bytes).toString('base64');
+	}
+}
 
-const createGF2048 = () => {
+const createGF2048 = (): readonly number[] => {
 	const mod = 0b100000000101;
 	const list: number[] = [];
 	let n = 1;
@@ -17,7 +19,8 @@ const createGF2048 = () => {
 };
 
 export const load = async () => {
-	const seeds = [getRandomSeed(), getRandomSeed()] as const;
+	const seedGen = getRandomSeed(2);
+	const seeds: readonly string[] = Array.from(seedGen);
 
 	return {
 		seeds,
