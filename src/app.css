@@ -77,7 +77,7 @@
 	--tracking-ultra: 3rem;
 }
 
-@utility user-select-* { 
+@utility user-select-* {
 	user-select: --value('none', 'auto', 'all', 'text');
 	-webkit-user-select: --value('none', 'auto', 'all', 'text');
 }
@@ -146,6 +146,10 @@
 	button,
 	input[type='button'] {
 		@apply cursor-pointer;
+	}
+
+	input[type='text'], input[type='number'], textarea {
+		@apply font-mono bg-white border border-slate-300 rounded px-1;
 	}
 
 	h2,
@@ -238,6 +242,6 @@
 	}
 
 	textarea {
-		@apply resize-none bg-white border border-slate-300 rounded px-1;
+		@apply resize-none;
 	}
 }

@@ -2,6 +2,7 @@
 	import FromBase64 from './fromBase64.svelte';
 	import ToBase64 from './toBase64.svelte';
 	import OddCalculator from './oddCalculator.svelte';
+	import PrimGuessr from './primGuessr.svelte';
 	const ogTitle = 'ツール',
 		ogDesc = '色々な計算';
 	const { data } = $props();
@@ -25,5 +26,6 @@
 	<ToBase64 seed={seeds[0]} />
 	<FromBase64 seed={seeds[1]} />
 	<OddCalculator {exps} {logs} seed={seeds[2]} />
+	<PrimGuessr seed={seeds[2]} />
 	<h5 class="text-center text-[red] text-2xl my-8">工事中……</h5>
 </div>

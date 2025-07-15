@@ -25,8 +25,7 @@ const createGF2048 = () => {
 };
 
 export const load = async () => {
-	const seedGen = getRandomSeed(3);
-	const seeds: readonly string[] = Array.from(seedGen);
+	const seeds: readonly string[] = Array.from(getRandomSeed(4));
 	const [exps, logs] = createGF2048();
 
 	return {
