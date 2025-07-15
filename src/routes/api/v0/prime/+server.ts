@@ -9,13 +9,14 @@ export type Primes =
 	  }
 	| {
 			success: false;
-			status: string;
+			status: number;
 			message: string;
 	  };
 
 export const GET = async ({ url }) => {
 	const params = url.searchParams;
 	const LIMIT = 1n << 64n;
+	
 	const min = (() => {
 		const pre = params.get('min');
 		if (!pre) error(400);
@@ -23,6 +24,7 @@ export const GET = async ({ url }) => {
 		if (min < 0n || min >= LIMIT) error(400, { message: 'outOfRange' });
 		return min;
 	})();
+
 	const max = (() => {
 		const pre = params.get('max');
 		if (!pre) error(400);

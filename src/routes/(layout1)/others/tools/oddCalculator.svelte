@@ -59,24 +59,25 @@
 </script>
 
 <section aria-labelledby={seed}>
-	<h2 class="border-b-3 border-double ps-1" id={seed}>変な計算式</h2>
+	<h2 class="border-b-3 border-double ps-1" id={seed}>変な式</h2>
+	
 	<div class="flex justify-center items-center my-5 gap-4">
 		<input
 			type="number"
 			min="0"
 			max="2047"
-			class="text-2xl border border-slate-300 rounded px-1 bg-white"
+			class="border border-slate-300 rounded px-1 bg-white"
 			bind:value={leftVal}
 		/>
-		<button onclick={changeMode} type="button" class="text-2xl btn-2">{mode}</button>
+		<button onclick={changeMode} type="button" class="btn-2">{mode}</button>
 		<input
 			type="number"
 			min="0"
 			max="2047"
-			class="text-2xl border border-slate-300 rounded px-1 bg-white"
+			class="border border-slate-300 rounded px-1 bg-white"
 			bind:value={rightVal}
 		/>
-		<p class="text-2xl m-0">=</p>
-		<textarea class="text-2xl" rows="1" readonly>{result}</textarea>
+		<p class="m-0">=</p>
+		<textarea class="overflow-x-auto" rows="1" readonly>{result}</textarea>
 	</div>
 </section>
