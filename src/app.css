@@ -238,6 +238,6 @@
 	}
 
 	textarea {
-		@apply resize-none bg-white border border-slate-300 rounded;
+		@apply resize-none bg-white border border-slate-300 rounded px-1;
 	}
 }
