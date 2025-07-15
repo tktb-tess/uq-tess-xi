@@ -40,7 +40,8 @@
 </script>
 
 <section aria-labelledby={seed}>
-	<h2 class="border-b-3 border-double ps-1" id={seed}>素数あてクイズ</h2>
+	<h2 class="border-b-3 border-double ps-1" id={seed}>素因数分解クイズ</h2>
+	<p>「表示」を押す度、上限以上、下限未満の2つの素数の積が表示されます。上限下限の範囲は 2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 未満です。</p>
 	<div class="flex flex-col gap-5">
 		<div class="flex justify-center gap-8 h-full max-h-[400px]">
 			<div>
