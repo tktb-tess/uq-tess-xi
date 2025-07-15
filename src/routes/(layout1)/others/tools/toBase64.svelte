@@ -11,6 +11,12 @@
 		const stred = Array.from(utf8, (n) => String.fromCodePoint(n)).join('');
 		return btoa(stred);
 	});
+
+	const copyText = () => {
+		navigator.clipboard.writeText(output)
+		.then(() => alert('copied!'))
+		.catch((e) => alert(`failed to copy: ${e}`));
+	};
 </script>
 
 <section aria-labelledby={seed}>
@@ -23,7 +29,7 @@
 		<p class="text-center m-0">↓</p>
 		<div class="flex flex-col gap-2 items-center">
 			<label for="output-{seed}" class="">Base64</label>
-			<textarea class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
+			<textarea onclick={copyText} class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
 		</div>
 	</div>
 </section>

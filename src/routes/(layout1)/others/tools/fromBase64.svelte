@@ -15,6 +15,12 @@
 			return `invalid string`;
 		}
 	});
+
+	const copyText = () => {
+		navigator.clipboard.writeText(output)
+		.then(() => alert('copied!'))
+		.catch((e) => alert(`failed to copy: ${e}`));
+	};
 </script>
 
 <section aria-labelledby={seed}>
@@ -27,7 +33,7 @@
 		<p class="text-center m-0">↓</p>
 		<div class="flex flex-col gap-2 items-center">
 			<label for="output-{seed}" class="flex-[0_0_auto]">テキスト</label>
-			<textarea class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
+			<textarea onclick={copyText} class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
 		</div>
 	</div>
 </section>
