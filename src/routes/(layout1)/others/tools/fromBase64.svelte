@@ -32,7 +32,7 @@
 		</div>
 		<p class="text-center m-0">↓</p>
 		<div class="flex flex-col gap-2 items-center">
-			<label for="output-{seed}" class="flex-[0_0_auto]">テキスト</label>
+			<label for="output-{seed}" class="flex-[0_0_auto]">元テキスト (枠内をクリックするとコピーできます)</label>
 			<textarea onclick={copyText} class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
 		</div>
 	</div>
