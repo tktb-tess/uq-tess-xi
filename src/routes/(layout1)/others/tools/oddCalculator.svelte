@@ -1,10 +1,82 @@
 <script lang="ts">
-    type Props = {
-        table: number[];
-    }
-    const { table }: Props = $props();
+	type Props = {
+		exps: readonly number[];
+		logs: readonly (number | null)[];
+		seed: string;
+	};
+
+	type Mode = '+' | '\u00D7' | '÷';
+	const { exps, logs, seed }: Props = $props();
+
+	let leftVal = $state(0);
+	let rightVal = $state(0);
+	let mode = $state<Mode>('+');
+
+	const changeMode = () => {
+		switch (mode) {
+			case '+': {
+				mode = '×';
+				break;
+			}
+			case '×': {
+				mode = '÷';
+				break;
+			}
+			case '÷': {
+				mode = '+';
+				break;
+			}
+		}
+	};
+
+	const result = $derived.by(() => {
+		switch (mode) {
+			case '+': {
+				return leftVal ^ rightVal;
+			}
+			case '×': {
+				const l = logs[leftVal];
+				const r = logs[rightVal];
+				if (l === null || r === null) {
+					return 0;
+				}
+				const resExp = (l + r) % 2047;
+				return exps[resExp];
+			}
+			case '÷': {
+				const l = logs[leftVal];
+				const r = logs[rightVal];
+				if (r === null) {
+					return NaN;
+				} else if (l === null) {
+					return 0;
+				}
+				const resExp = (l - r + 2047) % 2047;
+				return exps[resExp];
+			}
+		}
+	});
 </script>
 
-<div class="grid">
-
-</div>
+<section aria-labelledby={seed}>
+	<h2 class="border-b-3 border-double ps-1" id={seed}>変な計算式</h2>
+	<div class="flex justify-center items-center my-5 gap-4">
+		<input
+			type="number"
+			min="0"
+			max="2047"
+			class="text-2xl border border-slate-300 rounded px-1 bg-white"
+			bind:value={leftVal}
+		/>
+		<button onclick={changeMode} type="button" class="text-2xl btn-2">{mode}</button>
+		<input
+			type="number"
+			min="0"
+			max="2047"
+			class="text-2xl border border-slate-300 rounded px-1 bg-white"
+			bind:value={rightVal}
+		/>
+		<p class="text-2xl m-0">=</p>
+		<textarea class="text-2xl" rows="1" readonly>{result}</textarea>
+	</div>
+</section>

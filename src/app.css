@@ -95,6 +95,14 @@
 	grid-template-columns: repeat(--value(integer), auto);
 }
 
+@utility btn-1 {
+	@apply bg-mnlila any-hover:bg-mnlila/70 transition-colors rounded text-white px-3;
+}
+
+@utility btn-2 {
+	@apply bg-white any-hover:bg-llila transition-colors border border-slate-300 rounded px-3;
+}
+
 @custom-variant any-hover {
 	&:hover {
 		@media (any-hover: hover) {

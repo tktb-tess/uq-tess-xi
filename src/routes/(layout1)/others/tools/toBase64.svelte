@@ -13,8 +13,8 @@
 	});
 </script>
 
-<section aria-labelledby="tool1">
-	<h2 class="border-b-3 border-double ps-1" id="tool1">テキスト → Base64 変換</h2>
+<section aria-labelledby={seed}>
+	<h2 class="border-b-3 border-double ps-1" id={seed}>テキスト → Base64 変換</h2>
 	<div class="flex flex-col gap-3">
 		<div class="flex flex-col gap-2 items-center">
 			<label for="input-{seed}" class="">テキスト</label>

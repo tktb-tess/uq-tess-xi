@@ -1,29 +1,37 @@
 function* getRandomSeed(max: number) {
 	for (let counter = 0; counter < max; counter++) {
-		const bytes = crypto.getRandomValues(new Uint8Array(24));
+		const bytes = crypto.getRandomValues(new Uint8Array(8));
 		yield Buffer.copyBytesFrom(bytes).toString('base64');
 	}
 }
 
-const createGF2048 = (): readonly number[] => {
+const createGF2048 = () => {
 	const mod = 0b100000000101;
-	const list: number[] = [];
+	const maps: [number | null, number][] = [];
 	let n = 1;
+	maps.push([null, 0]);
 
 	for (let i = 0; i < 2047; i++) {
-		list.push(n);
+		maps.push([i, n]);
 		const next = n << 1;
 		n = next >>> 11 !== 0 ? next ^ mod : next;
 	}
-	return list;
+	const exps: readonly number[] = maps.slice(1).map(([, i]) => i);
+	const maps2 = maps.toSorted(([, a], [, b]) => {
+		return a - b;
+	});
+	const logs: readonly (number | null)[] = maps2.map(([i, ]) => i);
+	return [exps, logs] as const;
 };
 
 export const load = async () => {
-	const seedGen = getRandomSeed(2);
+	const seedGen = getRandomSeed(3);
 	const seeds: readonly string[] = Array.from(seedGen);
+	const [exps, logs] = createGF2048();
 
 	return {
 		seeds,
-		gf2048List: createGF2048()
+		exps,
+		logs,
 	};
 };
