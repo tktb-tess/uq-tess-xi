@@ -4,6 +4,7 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
 	import type { WordData } from './api/v0/today-word/+server';
+	
 
 	const todayWordF = async (): Promise<WordData> => {
 		const url = '/api/v0/today-word';

@@ -1,5 +1,5 @@
 import { error, json } from '@sveltejs/kit';
-import { getRandPrime } from '$lib/modules/util.js';
+import { getRandPrimeByRange } from '$lib/modules/util.js';
 
 export type Primes =
 	| {
@@ -34,8 +34,8 @@ export const GET = async ({ url }) => {
 	})();
 
 	try {
-		const p = getRandPrime(min, max);
-		const q = getRandPrime(min, max);
+		const p = getRandPrimeByRange(min, max);
+		const q = getRandPrimeByRange(min, max);
 		const headers = {
 			'Content-Type': 'application/json'
 		} as const;

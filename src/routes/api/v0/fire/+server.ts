@@ -1,10 +1,10 @@
-import { getRandPrime } from '$lib/modules/util.js';
+import { getRandPrimeByBitLength } from '$lib/modules/util.js';
 import { json } from '@sveltejs/kit';
 import { Buffer } from 'node:buffer';
 
 const getPrimeB64 = (bit_len: number) => {
 	const p = (() => {
-		const p = getRandPrime(bit_len).toString(16);
+		const p = getRandPrimeByBitLength(bit_len).toString(16);
 		return (p.length & 1) ? `0${p}` : p;
 	})();
 

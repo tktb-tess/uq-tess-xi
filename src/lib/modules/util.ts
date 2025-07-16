@@ -28,7 +28,7 @@ export const toBigInt = (nums: number | number[]) => {
  * @param fixed true: 固定長, false (デフォルト値): `length` ビット以下の可変ビット長
  *
  */
-export const getRandBI = (length: number, fixed = false) => {
+export const getRandBIByBitLength = (length: number, fixed = false) => {
 	if (length <= 0) throw Error('a bit length must be a positive');
 	if (!Number.isFinite(length)) throw Error('a bit length is not a valid number');
 	const div = Math.ceil(length / 32);
@@ -57,7 +57,7 @@ export const getRandBIByRange = (min: bigint, max: bigint) => {
 
 	const res = (() => {
 		while (true) {
-			const res = getRandBI(bitLength);
+			const res = getRandBIByBitLength(bitLength);
 			if (res >= modPow(2n, BigInt(bitLength), diff)) {
 				return res % diff;
 			}
@@ -196,7 +196,7 @@ export const millerRabin = (n_: bigint) => {
 			let b_ = 0n;
 
 			while (b_ < 2n || b_ >= n) {
-				b_ = getRandBI(bit_num);
+				b_ = getRandBIByBitLength(bit_num);
 			}
 
 			if (exEuclidean(b_, n).gcd !== 1n) return false;
@@ -381,9 +381,18 @@ export const parseCSV = (csv: string) => {
  * @param max 上限
  * @returns
  */
-export const getRandPrime = (min: bigint, max: bigint) => {
+export const getRandPrimeByRange = (min: bigint, max: bigint) => {
 	for (let count = 0; count < 100000; count++) {
 		const p = getRandBIByRange(min, max);
+		if (millerRabin(p)) return p;
+	}
+
+	throw Error('noPrimesFound');
+};
+
+export const getRandPrimeByBitLength = (bitLength: number) => {
+	for (let count = 0; count < 100000; count++) {
+		const p = getRandBIByBitLength(bitLength, true);
 		if (millerRabin(p)) return p;
 	}
 

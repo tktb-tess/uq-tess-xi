@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Toasts from '$lib/sfc/toasts.svelte';
 	import '../app.css';
 	const { children } = $props(), linkCardUrl = '/image/link-card.png';
 </script>
@@ -13,5 +14,7 @@
 	<meta name="twitter:site" content="@triethylamineq" />
 	<meta name="twitter:image" content="{linkCardUrl}" />
 </svelte:head>
+
+<Toasts />
 
 {@render children()}

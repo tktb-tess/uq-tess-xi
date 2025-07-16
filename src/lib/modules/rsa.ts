@@ -1,4 +1,4 @@
-import { millerRabin, getRandBI, modPow, exEuclidean } from './util';
+import { millerRabin, getRandBIByBitLength, modPow, exEuclidean } from './util';
 import Base64 from './base64';
 
 const encoder = new TextEncoder();
@@ -26,7 +26,7 @@ export default class RSA {
             let counter = 0;
 
             while (!millerRabin(p_)) {
-                p_ = getRandBI(bits, true);
+                p_ = getRandBIByBitLength(bits, true);
                 counter++;
                 if (counter > 100000) throw Error('failed to construct.');
             }
@@ -34,7 +34,7 @@ export default class RSA {
             counter = 0;
 
             while (!millerRabin(q_)) {
-                q_ = getRandBI(bits, true);
+                q_ = getRandBIByBitLength(bits, true);
                 counter++;
                 if (counter > 100000) throw Error('failed to construct.');
             }

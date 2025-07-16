@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { addToast } from "$lib/sfc/toastStates.svelte";
 	const encoder = new TextEncoder();
 	type Props = {
 		seed: string;
@@ -14,8 +15,8 @@
 
 	const copyText = () => {
 		navigator.clipboard.writeText(output)
-		.then(() => alert('copied!'))
-		.catch((e) => alert(`failed to copy: ${e}`));
+		.then(() => addToast('copied!', 'info', 3000))
+		.catch((e) => addToast(`failed to copy: ${e}`, 'warning', 3000));
 	};
 </script>
 
