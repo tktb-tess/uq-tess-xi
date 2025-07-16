@@ -30,6 +30,8 @@
 	};
 
 	const result = $derived.by(() => {
+		const cond = leftVal >= 0 && leftVal < 2048 && rightVal >= 0 && rightVal < 2048;
+		if (!cond) return NaN;
 		switch (mode) {
 			case '+': {
 				return leftVal ^ rightVal;
@@ -61,23 +63,33 @@
 <section aria-labelledby={seed}>
 	<h2 class="border-b-3 border-double ps-1" id={seed}>変な式</h2>
 	<p><s>この式、なんか変……</s></p>
-	<div class="flex justify-center items-center my-5 gap-4">
+	<div class="flex justify-center *:min-w-0 items-center my-5 gap-4">
 		<input
 			type="number"
 			min="0"
 			max="2047"
-			class="border border-slate-300 rounded px-1 bg-white"
-			bind:value={leftVal}
+			class="border border-slate-300 rounded px-1 bg-white w-20"
+			bind:value={
+				() => leftVal.toString(),
+				(v) => {
+					leftVal = Number.parseInt(v);
+				}
+			}
 		/>
-		<button onclick={changeMode} type="button" class="btn-2">{mode}</button>
+		<button onclick={changeMode} type="button" class="btn-2 text-xl">{mode}</button>
 		<input
 			type="number"
 			min="0"
 			max="2047"
-			class="border border-slate-300 rounded px-1 bg-white"
-			bind:value={rightVal}
+			class="border border-slate-300 rounded px-1 bg-white w-20"
+			bind:value={
+				() => rightVal.toString(),
+				(v) => {
+					rightVal = Number.parseInt(v);
+				}
+			}
 		/>
-		<p class="m-0">=</p>
-		<textarea class="overflow-x-auto" rows="1" readonly>{result}</textarea>
+		<p class="m-0 text-xl">=</p>
+		<textarea class="overflow-x-auto w-20" rows="1" readonly>{result}</textarea>
 	</div>
 </section>

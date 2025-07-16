@@ -43,7 +43,7 @@
 	<h2 class="border-b-3 border-double ps-1" id={seed}>素因数分解クイズ</h2>
 	<p>「表示」を押す度、上限以上、下限未満の2つの素数の積が表示されます。上限下限の範囲は 2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 未満です。</p>
 	<div class="flex flex-col gap-5">
-		<div class="flex justify-center gap-8 h-full max-h-[400px]">
+		<div class="flex justify-center gap-8 *:min-w-0">
 			<div>
 				<label for="{seed}-input1">下限</label>
 				<input
@@ -51,6 +51,7 @@
 					min="2"
 					max={LIMIT}
 					id="{seed}-input1"
+					class="w-38 max-w-full"
 					bind:value={
 						() => min.toString(),
 						(v) => {
@@ -66,6 +67,7 @@
 					min="2"
 					max={LIMIT}
 					id="{seed}-input2"
+					class="w-38 max-w-full"
 					bind:value={
 						() => max.toString(),
 						(v) => {
@@ -91,7 +93,7 @@
 				エラー: {e}
 			{/await}
 		</p>
-		<div class="flex justify-center gap-8 h-full max-h-[400px]">
+		<div class="flex justify-center gap-8 *:min-w-0">
 			<div>
 				<label for="{seed}-input3">素数1</label>
 				<input
@@ -99,6 +101,7 @@
 					min="2"
 					max={LIMIT}
 					id="{seed}-input1"
+					class="w-38 max-w-full"
 					bind:value={
 						() => guessp.toString(),
 						(v) => {
@@ -114,6 +117,7 @@
 					min="2"
 					max={LIMIT}
 					id="{seed}-input2"
+					class="w-38 max-w-full"
 					bind:value={
 						() => guessq.toString(),
 						(v) => {

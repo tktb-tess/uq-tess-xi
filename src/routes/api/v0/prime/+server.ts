@@ -16,12 +16,12 @@ export type Primes =
 export const GET = async ({ url }) => {
 	const params = url.searchParams;
 	const LIMIT = 1n << 64n;
-	
+
 	const min = (() => {
 		const pre = params.get('min');
 		if (!pre) error(400);
 		const min = BigInt(pre);
-		if (min < 0n || min >= LIMIT) error(400, { message: 'outOfRange' });
+		if (min < 0n || min >= LIMIT) error(400);
 		return min;
 	})();
 
@@ -29,21 +29,29 @@ export const GET = async ({ url }) => {
 		const pre = params.get('max');
 		if (!pre) error(400);
 		const max = BigInt(pre);
-		if (max < 2n || max >= LIMIT) error(400, { message: 'outOfRange' });
+		if (max < 2n || max >= LIMIT) error(400);
 		return max;
 	})();
 
-	const p = getRandPrime(min, max);
-	const q = getRandPrime(min, max);
-	const headers = {
-		'Content-Type': 'application/json'
-	} as const;
+	try {
+		const p = getRandPrime(min, max);
+		const q = getRandPrime(min, max);
+		const headers = {
+			'Content-Type': 'application/json'
+		} as const;
 
-	const body: Primes = {
-		success: true,
-		p: p.toString(),
-		q: q.toString()
-	};
+		const body: Primes = {
+			success: true,
+			p: p.toString(),
+			q: q.toString()
+		};
 
-	return json(body, { headers });
+		return json(body, { headers });
+	} catch (e) {
+		if (e instanceof Error) {
+			error(500, { message: `${e}` });
+		} else {
+			error(500);
+		} 
+	}
 };
