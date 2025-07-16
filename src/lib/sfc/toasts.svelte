@@ -1,31 +1,36 @@
 <script lang="ts">
-    import { toastStates, dismissToast } from "./toastStates.svelte";
-    
+	import { toastStates, dismissToast } from './toastStates.svelte';
 </script>
 
-{#each toastStates as [id, toast]}
-    <div class="border border-sky-500 bg-sky-100 rounded fixed z-10000 w-30 top-5 left-[50%] flex gap-5 justify-center items-center">
-        <p class="m-0 text-xl">{toast.message}</p>
-        <button onclick={() => dismissToast(id)} type="button" class="text-xl">×</button>
-    </div>
-{/each}
-
+{#if toastStates.size > 0}
+	<div id="toast-root" class="fixed z-10000 top-5 left-[47%] flex flex-col gap-2 items-center">
+		{#each toastStates as [id, toast]}
+			<div
+				class="max-w-screen px-3 border-2 border-sky-600 bg-sky-100 rounded flex gap-5 justify-center items-center toast-elem"
+			>
+				<p class="m-0 text-xl">{toast.message}</p>
+				<button onclick={() => dismissToast(id)} type="button" class="text-xl">×</button>
+			</div>
+		{/each}
+	</div>
+{/if}
 
 <style>
-    @keyframes fadein {
-        from {
-            opacity: 0;
-            top: 0px;
-        }
-        to {
-            opacity: 1;
-            top: 20px;
-        }
-    }
+	@keyframes fadein {
+		from {
+			opacity: 0;
+			top: -10px;
+		}
+		to {
+			opacity: 1;
+			top: 0;
+		}
+	}
 
-    div {
-        animation-timing-function: var(--default-transition-timing-function);
-        animation-name: fadein;
-        animation-duration: 100ms;
-    }
+	.toast-elem {
+        position: relative;
+		animation-timing-function: cubic-bezier(0, 1, 1, 1);
+		animation-name: fadein;
+		animation-duration: 100ms;
+	}
 </style>

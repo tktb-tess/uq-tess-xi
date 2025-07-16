@@ -1,9 +1,9 @@
-function* getRandomSeed(max: number) {
+const getRandomSeed = function* (max: number) {
 	for (let counter = 0; counter < max; counter++) {
 		const bytes = crypto.getRandomValues(new Uint8Array(8));
 		yield Buffer.copyBytesFrom(bytes).toString('base64');
 	}
-}
+};
 
 const createGF2048 = () => {
 	const mod = 0b100000000101;
@@ -20,7 +20,7 @@ const createGF2048 = () => {
 	const maps2 = maps.toSorted(([, a], [, b]) => {
 		return a - b;
 	});
-	const logs: readonly (number | null)[] = maps2.map(([i, ]) => i);
+	const logs: readonly (number | null)[] = maps2.map(([i]) => i);
 	return [exps, logs] as const;
 };
 
@@ -31,6 +31,6 @@ export const load = async () => {
 	return {
 		seeds,
 		exps,
-		logs,
+		logs
 	};
 };

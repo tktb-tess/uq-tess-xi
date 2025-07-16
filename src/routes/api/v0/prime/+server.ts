@@ -29,7 +29,7 @@ export const GET = async ({ url }) => {
 		const pre = params.get('max');
 		if (!pre) error(400);
 		const max = BigInt(pre);
-		if (max < 2n || max >= LIMIT) error(400);
+		if (max < 0n || max >= LIMIT) error(400);
 		return max;
 	})();
 

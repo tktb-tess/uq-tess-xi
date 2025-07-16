@@ -382,6 +382,9 @@ export const parseCSV = (csv: string) => {
  * @returns
  */
 export const getRandPrimeByRange = (min: bigint, max: bigint) => {
+	if (max < 2n) {
+		throw Error('noPrimesFound');
+	}
 	for (let count = 0; count < 100000; count++) {
 		const p = getRandBIByRange(min, max);
 		if (millerRabin(p)) return p;
@@ -391,6 +394,9 @@ export const getRandPrimeByRange = (min: bigint, max: bigint) => {
 };
 
 export const getRandPrimeByBitLength = (bitLength: number) => {
+	if (bitLength < 2) {
+		throw Error('noPrimesFound');
+	}
 	for (let count = 0; count < 100000; count++) {
 		const p = getRandBIByBitLength(bitLength, true);
 		if (millerRabin(p)) return p;
