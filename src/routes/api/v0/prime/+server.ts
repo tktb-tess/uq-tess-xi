@@ -1,17 +1,10 @@
 import { error, json } from '@sveltejs/kit';
 import { getRandPrimeByRange } from '$lib/modules/util.js';
 
-export type Primes =
-	| {
-			success: true;
-			p: string;
-			q: string;
-	  }
-	| {
-			success: false;
-			status: number;
-			message: string;
-	  };
+export type Primes = {
+	p: string;
+	q: string;
+};
 
 export const GET = async ({ url }) => {
 	const params = url.searchParams;
@@ -41,7 +34,6 @@ export const GET = async ({ url }) => {
 		} as const;
 
 		const body: Primes = {
-			success: true,
 			p: p.toString(),
 			q: q.toString()
 		};
@@ -52,6 +44,6 @@ export const GET = async ({ url }) => {
 			error(500, { message: `${e}` });
 		} else {
 			error(500);
-		} 
+		}
 	}
 };
