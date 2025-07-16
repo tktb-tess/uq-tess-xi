@@ -11,7 +11,7 @@ export const toastStates = new SvelteMap<string, Toast>();
 export const addToast = (message: string, type: string, timeout: number) => {
     const id = crypto.randomUUID();
     toastStates.set(id, { message, type, timeout });
-    console.log(toastStates);
+    // console.log(toastStates);
     setTimeout(() => {
         dismissToast(id);
     }, timeout);

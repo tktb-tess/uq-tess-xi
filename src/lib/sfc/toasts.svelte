@@ -3,10 +3,10 @@
 </script>
 
 {#if toastStates.size > 0}
-	<div id="toast-root" class="fixed z-10000 top-5 left-[47%] flex flex-col gap-2 items-center">
+	<div id="toast-root" class="fixed z-10000 top-5 left-0 right-0 flex flex-col gap-2 items-center *:max-w-full">
 		{#each toastStates as [id, toast]}
 			<div
-				class="max-w-screen px-3 border-2 border-sky-600 bg-sky-100 rounded flex gap-5 justify-center items-center toast-elem"
+				class="px-3 border-2 border-sky-600 bg-sky-100 rounded flex gap-5 justify-center items-center toast-elem"
 			>
 				<p class="m-0 text-xl">{toast.message}</p>
 				<button onclick={() => dismissToast(id)} type="button" class="text-xl">×</button>

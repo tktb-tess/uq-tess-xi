@@ -62,7 +62,7 @@
 
 <section aria-labelledby={seed}>
 	<h2 class="border-b-3 border-double ps-1" id={seed}>変な式</h2>
-	<p><s>この式、なんか変……</s></p>
+	<p class="text-slate-300"><s>この式、なんか変……</s></p>
 	<div class="flex justify-center *:min-w-0 items-center my-5 gap-4">
 		<input
 			type="number"

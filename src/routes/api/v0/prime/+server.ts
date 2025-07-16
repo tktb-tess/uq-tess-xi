@@ -14,7 +14,7 @@ export const GET = async ({ url }) => {
 		const pre = params.get('min');
 		if (!pre) error(400);
 		const min = BigInt(pre);
-		if (min < 0n || min >= LIMIT) error(400);
+		if (min < 0n || min > LIMIT) error(400);
 		return min;
 	})();
 
@@ -22,7 +22,7 @@ export const GET = async ({ url }) => {
 		const pre = params.get('max');
 		if (!pre) error(400);
 		const max = BigInt(pre);
-		if (max < 0n || max >= LIMIT) error(400);
+		if (max < 0n || max > LIMIT) error(400);
 		return max;
 	})();
 
