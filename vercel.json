@@ -1,10 +1,5 @@
 {
-	"headers": [
-		{
-			"source": "/api/(.*)",
-			"headers": []
-		}
-	],
+	"headers": [],
 	"crons": [
 		{
 			"path": "/api/v0/cron",
