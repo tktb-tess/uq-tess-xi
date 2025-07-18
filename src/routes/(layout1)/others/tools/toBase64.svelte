@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { addToast } from "$lib/sfc/toastStates.svelte";
 	const encoder = new TextEncoder();
 	type Props = {
 		seed: string;
@@ -13,10 +14,16 @@
 		const stred = Array.from(utf8, (n) => String.fromCodePoint(n)).join('');
 		return btoa(stred);
 	});
+
+	const copyText = () => {
+		navigator.clipboard.writeText(output)
+		.then(() => addToast('copied Base64!', 'info', 3000))
+		.catch((e) => addToast(`failed to copy: ${e}`, 'warning', 3000));
+	};
 </script>
 
-<section aria-labelledby="tool1">
-	<h2 class="border-b-3 border-double ps-1" id="tool1">テキスト → Base64 変換</h2>
+<section aria-labelledby={seed}>
+	<h2 class="border-b-3 border-double ps-1" id={seed}>テキスト → Base64 変換</h2>
 	<div class="flex flex-col gap-3">
 		<div class="flex flex-col gap-2 items-center">
 			<label for="input-{seed}" class="">テキスト</label>
@@ -24,8 +31,8 @@
 		</div>
 		<p class="text-center m-0">↓</p>
 		<div class="flex flex-col gap-2 items-center">
-			<label for="output-{seed}" class="">Base64</label>
-			<textarea class="w-full h-[8rem]" id="output-{seed}" readonly>{output}</textarea>
+			<label for="output-{seed}" class="">Base64 (枠内をクリックするとコピーできます)</label>
+			<textarea onclick={copyText} class="w-full h-[8rem] cursor-pointer" id="output-{seed}" readonly>{output}</textarea>
 		</div>
 	</div>
 </section>

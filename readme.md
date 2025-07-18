@@ -2,3 +2,10 @@
 
 - 色々変える
 
+```bash
+git clone https://github.com/tktb-tess/uq-tess-xi.git
+cd uq-tess-xi
+npm i
+npm run build && npm run preview
+```
+

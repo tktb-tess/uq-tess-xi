@@ -77,7 +77,7 @@
 	--tracking-ultra: 3rem;
 }
 
-@utility user-select-* { 
+@utility user-select-* {
 	user-select: --value('none', 'auto', 'all', 'text');
 	-webkit-user-select: --value('none', 'auto', 'all', 'text');
 }
@@ -93,6 +93,14 @@
 
 @utility grid-cols-auto-* {
 	grid-template-columns: repeat(--value(integer), auto);
+}
+
+@utility btn-1 {
+	@apply bg-mnlila any-hover:bg-mnlila/70 transition-colors rounded text-white px-2;
+}
+
+@utility btn-2 {
+	@apply bg-white any-hover:bg-llila transition-colors border border-slate-300 rounded px-2;
 }
 
 @custom-variant any-hover {
@@ -138,6 +146,10 @@
 	button,
 	input[type='button'] {
 		@apply cursor-pointer;
+	}
+
+	input[type='text'], input[type='number'], textarea {
+		@apply font-mono bg-white border border-slate-300 rounded px-1;
 	}
 
 	h2,
@@ -230,6 +242,6 @@
 	}
 
 	textarea {
-		@apply resize-none bg-white border border-slate-300 rounded;
+		@apply resize-none;
 	}
 }
