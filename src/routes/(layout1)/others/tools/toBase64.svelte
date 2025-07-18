@@ -7,6 +7,8 @@
 	let input = $state('');
 
 	const output = $derived.by(() => {
+		if (!input) return '';
+
 		const utf8 = encoder.encode(input);
 		const stred = Array.from(utf8, (n) => String.fromCodePoint(n)).join('');
 		return btoa(stred);

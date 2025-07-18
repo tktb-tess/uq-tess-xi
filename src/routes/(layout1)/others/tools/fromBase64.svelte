@@ -8,11 +8,12 @@
 
 	const output = $derived.by(() => {
 		try {
+			if (!input) return '';
 			const stred = atob(input);
 			const utf8 = Uint8Array.from(stred, (s) => s.charCodeAt(0));
 			return decoder.decode(utf8);
 		} catch (e) {
-			return `invalid string`;
+			return `Error: invalid string`;
 		}
 	});
 </script>
