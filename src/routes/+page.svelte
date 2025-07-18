@@ -235,6 +235,9 @@
 			</li>
 		</ul>
 	</section>
+	<section aria-labelledby="sougo-link">
+		<h2 id="sougo-link">相互リンク</h2>
+	</section>
 	<section aria-labelledby="ext-links">
 		<h2 id="ext-links">外部リンク</h2>
 		<h3>各種SNS</h3>

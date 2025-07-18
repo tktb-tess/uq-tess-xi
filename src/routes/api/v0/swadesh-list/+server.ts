@@ -1,16 +1,6 @@
 import { error, json } from '@sveltejs/kit';
 import Papa from 'papaparse';
-
-export type SwadeshList =
-	| {
-			success: true;
-			value: string[][];
-	  }
-	| {
-			success: false;
-			status: number;
-			message: string;
-	  };
+import type { SwadeshList } from '$lib/types/decl';
 
 export type MaybePromise<T> = T | Promise<T>;
 
@@ -38,7 +28,6 @@ export const GET = async ({ fetch: svFetch }) => {
 	} as const;
 
 	const body: SwadeshList = {
-		success: true,
 		value: parsed
 	};
 	return json(body, { headers });
