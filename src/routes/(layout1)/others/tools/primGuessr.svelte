@@ -36,7 +36,7 @@
 
 	const fetchPrimes = async () => {
 		const resp = await fetch(`/api/v0/prime?min=${min}&max=${max}`, { method: 'GET' });
-		console.log(resp);
+		// console.log(resp);
 		if (!resp.ok) {
 			primesPr = Promise.resolve<PrimesR>({
 				success: false,
@@ -58,10 +58,11 @@
 <section aria-labelledby={seed}>
 	<h2 class="border-b-3 border-double ps-1" id={seed}>素因数分解クイズ</h2>
 	<p>
-		「表示」を押す度、下限以上、上限未満の2つの素数の積が表示されます。上限下限に指定できる整数の範囲は 2 以上 2<sup
+		「表示」を押す度に、下限以上、上限未満の2つの素数の積がランダムに表示されます。上限下限に指定できる整数の範囲は 2 以上 2<sup
 			>64</sup
 		> (= 18,446,744,073,709,551,616) 以下です。
 	</p>
+	
 	<div class="flex flex-col gap-5">
 		<div class="flex justify-center gap-8 *:min-w-0">
 			<div>

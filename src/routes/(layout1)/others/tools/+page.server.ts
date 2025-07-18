@@ -1,7 +1,6 @@
-const getRandomSeed = function* (max: number) {
+const getUUID = function* (max: number) {
 	for (let counter = 0; counter < max; counter++) {
-		const bytes = crypto.getRandomValues(new Uint8Array(8));
-		yield Buffer.copyBytesFrom(bytes).toString('base64');
+		yield crypto.randomUUID();
 	}
 };
 
@@ -25,7 +24,7 @@ const createGF2048 = () => {
 };
 
 export const load = async () => {
-	const seeds: readonly string[] = Array.from(getRandomSeed(4));
+	const seeds: readonly string[] = Array.from(getUUID(4));
 	const [exps, logs] = createGF2048();
 
 	return {

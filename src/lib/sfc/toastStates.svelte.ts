@@ -1,26 +1,28 @@
-import { SvelteMap } from "svelte/reactivity";
+import { SvelteMap } from 'svelte/reactivity';
 
 export type Toast = {
-    message: string;
-    type: string;
-    timeout: number;
+	message: string;
+	type: string;
+	timeout: number;
+	timeoutID: NodeJS.Timeout;
 };
 
-export const toastStates = new SvelteMap<string, Toast>();
+type UUID = `${string}-${string}-${string}-${string}-${string}`;
+
+export const toastStates = new SvelteMap<UUID, Toast>();
 
 export const addToast = (message: string, type: string, timeout: number) => {
-    const id = crypto.randomUUID();
-    toastStates.set(id, { message, type, timeout });
-    // console.log(toastStates);
-    setTimeout(() => {
-        dismissToast(id);
-    }, timeout);
-    
+	const key = crypto.randomUUID();
+
+	const timeoutID = setTimeout(() => {
+		dismissToast(key);
+	}, timeout);
+
+	toastStates.set(key, { message, type, timeout, timeoutID });
 };
 
-export const dismissToast = (id: string) => {
-    if (toastStates.has(id)) {
-        toastStates.delete(id);
-    }
+export const dismissToast = (key: UUID) => {
+	if (toastStates.has(key)) {
+		toastStates.delete(key);
+	}
 };
-

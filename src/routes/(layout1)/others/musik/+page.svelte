@@ -1,17 +1,9 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	const ogTitle = '音楽',
 		ogDesc = '作曲は楽しい';
-
-	const loadMusics = async () => {
-		const musicUrl = ['/music/welcome.m4a', '/music/celeste.m4a'];
-		const promises = musicUrl.map(async (url) => {
-			const resp = await fetch(url);
-			if (!resp.ok) throw Error('failed to fetch');
-			return resp.blob();
-		});
-
-		return Promise.all(promises);
-	};
+	const musicNames = ['welcome', 'celeste'];
 </script>
 
 <svelte:head>
@@ -26,3 +18,10 @@
 </svelte:head>
 
 <h2 class="my-8 text-center">音楽</h2>
+
+{#each musicNames as name}
+	<section aria-labelledby={name}>
+		<h3 id={name}>{name}</h3>
+		<audio src="/audio/{name}.m4a" controls></audio>
+	</section>
+{/each}
