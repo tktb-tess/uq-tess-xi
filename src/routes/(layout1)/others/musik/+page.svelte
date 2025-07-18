@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
+	import { nameMap } from "./nameMap";
 	const ogTitle = '音楽',
 		ogDesc = '作曲は楽しい';
-	const musicNames = ['welcome', 'celeste'];
+	
 </script>
 
 <svelte:head>
@@ -19,9 +18,9 @@
 
 <h2 class="my-8 text-center">音楽</h2>
 
-{#each musicNames as name}
-	<section aria-labelledby={name}>
-		<h3 id={name}>{name}</h3>
-		<audio src="/audio/{name}.m4a" controls></audio>
+{#each nameMap as [id, title] (id)}
+	<section aria-labelledby={id}>
+		<h3 {id}>{title}</h3>
+		<audio src="/audio/{id}.m4a" controls></audio>
 	</section>
 {/each}

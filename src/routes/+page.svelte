@@ -140,16 +140,16 @@
 			古英語の他、ゲルマン語派の他言語、特にドイツ語やアイスランド語、古ノルド語を参考にしている。
 		</p>
 		<ul>
-			<li><a href="/vaes">概説</a></li>
-			<li><a href="/vaes/phonology">音韻論</a></li>
-			<li><a href="/vaes/letter-et-pron">文字と発音</a></li>
-			<li><a href="/vaes/swadesh-list">Swadesh List</a></li>
+			<li><a href="/conlang/vaes">概説</a></li>
+			<li><a href="/conlang/vaes/phonology">音韻論</a></li>
+			<li><a href="/conlang/vaes/letter-et-pron">文字と発音</a></li>
+			<li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
 			<li>りんごを食べたい58文 (準備中)</li>
 			<li>
 				文法
 				<ul>
 					<li>名詞 (準備中)</li>
-					<li><a href="/vaes/numeral">数詞</a></li>
+					<li><a href="/conlang/vaes/numeral">数詞</a></li>
 					<li>動詞 (準備中)</li>
 					<li>形容詞 (準備中)</li>
 				</ul>
@@ -184,16 +184,18 @@
 		<h2 id="haimei">頂いた名前</h2>
 		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
 		<div class="table-container">
-			<table class="grid-cols-auto-2">
+			<table class="grid-cols-auto-3">
 				<thead>
 					<tr>
 						<th>言語</th>
+						<th>作者</th>
 						<th>名</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語 - 雰名</ExtLink></td>
+						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
+						<td>かえる</td>
 						<td><span class="font-phun-dot">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
 					</tr>
 				</tbody>

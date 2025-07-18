@@ -30,10 +30,10 @@
 	<div class="side-menu">
 		<h4 class="text-2xl font-sans text-black font-extralight">VÄSSENZLÄNDISĶ</h4>
 		<div class="flex flex-col">
-			<a href="/vaes">概説</a>
-			<a href="/vaes/letter-et-pron">文字と発音</a>
-			<a href="/vaes/phonology">音韻論</a>
-			<a href="/vaes/swadesh-list">Swadesh List</a>
+			<a href="/conlang/vaes">概説</a>
+			<a href="/conlang/vaes/letter-et-pron">文字と発音</a>
+			<a href="/conlang/vaes/phonology">音韻論</a>
+			<a href="/conlang/vaes/swadesh-list">Swadesh List</a>
 			<a aria-disabled="true">りんご文 (準備中)</a>
 			<details class="[&[open]_#list-arrow]:rotate-x-180">
 				<summary class="block cursor-pointer user-select-none">
@@ -55,7 +55,7 @@
 					"
 				>
 					<a aria-disabled="true">名詞 (準備中)</a>
-					<a href="/vaes/numeral">数詞</a>
+					<a href="/conlang/vaes/numeral">数詞</a>
 					<a aria-disabled="true">動詞 (準備中)</a>
 					<a aria-disabled="true">形容詞 (準備中)</a>
 				</div>
