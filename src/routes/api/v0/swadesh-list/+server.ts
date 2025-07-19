@@ -14,13 +14,9 @@ export const GET = async ({ fetch: svFetch }) => {
 		} as const;
 
 		const controller = new AbortController();
-
 		const respPromise = svFetch(url, { method: 'GET', signal: controller.signal });
-
 		const timeoutFunc = setTimeout(() => controller.abort(), 10000);
-
 		const resp = await respPromise;
-
 		clearTimeout(timeoutFunc);
 
 		if (!resp.ok) {

@@ -298,24 +298,10 @@ export const lazify =
 	() =>
 		func(...args);
 
-export const typeOf = (v: unknown) => {
-	if (v === null) {
-		return 'null';
-	} else if (typeof v === 'function') {
-		return `[function ${v.name}]`;
-	} else if (typeof v === 'object') {
-		const name = Object.prototype.toString.call(v);
-		return name;
-	} else {
-		return typeof v;
-	}
-};
-
 export const getRandIntFromDate = async () => {
 	const today = new Date().toDateString();
-	const utf8arr = Buffer.from(today);
+	const utf8arr = Buffer.from(today, 'utf-8');
 	const hashed = new Uint32Array(await crypto.subtle.digest('SHA-256', utf8arr), 0, 1);
-
 	return hashed[0];
 };
 
@@ -404,3 +390,17 @@ export const getRandPrimeByBitLength = (bitLength: number) => {
 
 	throw Error('noPrimesFound');
 };
+
+type ResolveFunc<T> = (value: T) => void;
+type RejectFunc = (error: unknown) => void;
+type PromiseCallback<T> = (resolve: ResolveFunc<T>, reject: RejectFunc) => void;
+
+export class AbortablePromise<T> {
+	readonly promise: Promise<T>;
+	constructor(callback: PromiseCallback<T>, signal: AbortSignal) {
+		this.promise = new Promise<T>((resolve, reject) => {
+			signal.addEventListener('abort', () => reject(signal.reason));
+			callback(resolve, reject);
+		});
+	}
+}

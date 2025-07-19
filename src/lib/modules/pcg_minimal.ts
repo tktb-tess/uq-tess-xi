@@ -1,7 +1,7 @@
 import { rot32 } from './util';
 
 /** シードなし時の静的初期化定数 */
-const initial_state = [0x853c49e6748fea9bn, 0xda3e39cb94b95bdbn] as const;
+const initialState = [0x853c49e6748fea9bn, 0xda3e39cb94b95bdbn] as const;
 
 /** 乗数 */
 const increment = 0x5851f42d4c957f2dn;
@@ -35,8 +35,8 @@ export default class PCGXSHRR {
             this.step();
 
         } else {
-            this.#state[0] = initial_state[0];
-            this.#state[1] = initial_state[1];
+            this.#state[0] = initialState[0];
+            this.#state[1] = initialState[1];
         }
     }
 
@@ -83,7 +83,6 @@ export default class PCGXSHRR {
      * @param bound 
      */
     *genRands(step: number, bound?: number) {
-
         for (let i = 0; i < step; i++) {
             yield bound ? this.getBoundedRand(bound) : this.getRand();
         }

@@ -1,6 +1,6 @@
-import { error, json } from '@sveltejs/kit';
+import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
-import type { ZpDICAPIWordsResponse } from '$lib/modules/zpdic.js';
+import type { ZpDICAPIWordsResponse } from '$lib/types/decl';
 import { getRndInt } from '$lib/modules/util';
 import { createClient } from 'redis';
 
@@ -12,7 +12,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
 	// authorization
 	if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
-		error(401, { message: 'Unauthorized' });
+		error(401);
 	}
 
 	const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIWordsResponse> => {
@@ -47,10 +47,8 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		console.log(stored);
 		return json(stored);
 	} catch (e: unknown) {
-		if (e instanceof Response) {
+		if (isHttpError(e)) {
 			error(e.status);
-		} else if (e instanceof Error) {
-			error(500, { message: e.message });
 		} else {
 			error(500);
 		}
