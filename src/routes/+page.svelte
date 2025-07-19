@@ -3,16 +3,15 @@
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
-	import type { WordData } from './api/v0/today-word/+server';
-	
+	import type { WordData, Success } from '$lib/types/decl';
 
-	const todayWordF = async (): Promise<WordData> => {
+	const todayWordF = async (): Promise<Success<WordData>> => {
 		const url = '/api/v0/today-word';
 		const response = await fetch(url);
 
 		if (!response.ok) {
 			return {
-				is_success: false,
+				success: false,
 				status: response.status,
 				message: response.statusText
 			};
@@ -22,7 +21,11 @@
 		// 	setTimeout(resolve, 2000);
 		// });
 
-		return response.json();
+		const body = await response.json();
+		return {
+			success: true,
+			...body
+		}
 	};
 </script>
 
@@ -79,7 +82,7 @@
 					読み込み中……
 				</h3>
 			{:then todayWord}
-				{#if todayWord.is_success}
+				{#if todayWord.success}
 					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
 					{#if todayWord.pron}
 						<p class="text-black/60 font-ipa">
@@ -120,14 +123,14 @@
 					</table>
 					<p class="self-end me-3"><ExtLink href={todayWord.dic_url}>ZpDIC Online</ExtLink></p>
 				{:else}
-					<h3>データを取得できませんでした</h3>
-					<p>
+					<h3 class="text-[red]">データを取得できませんでした</h3>
+					<p class="text-[red]">
 						{todayWord.status}: {todayWord.message}
 					</p>
 				{/if}
 			{:catch e}
-				<h3>データを取得できませんでした</h3>
-				<p>{e}</p>
+				<h3 class="text-[red]">データを取得できませんでした</h3>
+				<p class="text-[red]">{e}</p>
 			{/await}
 		</div>
 	</section>

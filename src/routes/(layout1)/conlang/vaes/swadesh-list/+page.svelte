@@ -71,12 +71,16 @@
 			</table>
 		</div>
 	{:else}
-		<h3>読み込みに失敗しました</h3>
-		<p>{swadeshList.status}: {swadeshList.message}</p>
+		<div class="text-center *:text-[red]">
+			<h3>読み込みに失敗しました</h3>
+			<p>{swadeshList.status}: {swadeshList.message}</p>
+		</div>
 	{/if}
 {:catch e}
-	<h3>読み込みに失敗しました</h3>
-	<p>{e}</p>
+	<div class="text-center *:text-[red]">
+		<h3>読み込みに失敗しました</h3>
+		<p>{e}</p>
+	</div>
 {/await}
 
 <style>
@@ -97,6 +101,4 @@
 		animation-name: slidein;
 		position: relative;
 	}
-
-
 </style>

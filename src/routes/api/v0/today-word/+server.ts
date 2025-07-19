@@ -1,24 +1,7 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import type { ZpDICAPIResponseWord } from '$lib/modules/zpdic';
-import { error, json } from '@sveltejs/kit';
-
-type Equivalents = ZpDICAPIResponseWord['equivalents'];
-
-export type WordData =
-	| {
-			is_success: true;
-			word: string;
-			translations: Equivalents;
-			dic_url: string;
-			pron: string;
-			size: 'text-5xl' | 'text-4xl';
-	  }
-	| {
-			is_success: false;
-			status: number;
-			message: string;
-	  };
+import type { ZpDICAPIResponseWord, WordData } from '$lib/types/decl';
+import { isHttpError, json, error } from '@sveltejs/kit';
 
 const headers = {
 	'Content-Type': 'application/json'
@@ -26,6 +9,7 @@ const headers = {
 
 export const GET = async () => {
 	console.log('received GET request at /today-word');
+
 	try {
 		const redis = await createClient({ url: REDIS_URL }).connect();
 		const today_word = (await redis.json.get('today-word')) as ZpDICAPIResponseWord;
@@ -38,7 +22,6 @@ export const GET = async () => {
 		})();
 
 		const body: Readonly<WordData> = {
-			is_success: true,
 			word: today_word.name,
 			translations: today_word.equivalents,
 			dic_url,
@@ -47,14 +30,13 @@ export const GET = async () => {
 		};
 
 		return json(body, { headers });
-	} catch (e: unknown) {
-		console.error(e);
-		if (e instanceof Error) {
-			error(500, e);
-		} else if (e instanceof Response) {
-			error(e.status, { message: e.statusText });
+
+	} catch (e) {
+		console.log(e);
+		if (isHttpError(e)) {
+			error(e.status);
 		} else {
-			error(500, { message: `${e}` });
+			error(500);
 		}
 	}
 };
