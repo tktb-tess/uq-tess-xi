@@ -17,16 +17,13 @@
 			};
 		}
 
-		// await new Promise<void>((resolve) => {
-		// 	setTimeout(resolve, 2000);
-		// });
-
 		const body = await response.json();
 		return {
 			success: true,
 			...body
-		}
+		};
 	};
+	const todayWordPromise = $state(todayWordF());
 </script>
 
 <svelte:head>
@@ -42,9 +39,9 @@
 </svelte:head>
 
 <header
-	class="min-h-screen bg-linear-to-br/oklch from-title-s to-title-e grid grid-cols-1 text-white gap-y-6 place-content-center place-items-center"
+	class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
 >
-	<TessLogo class="w-[200px] lg:w-[300px] h-auto" fadein />
+	<TessLogo class="h-auto w-[120px] md:w-[200px] lg:w-[360px] xl:w-[500px]" fadein />
 	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
@@ -76,7 +73,7 @@
 				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
 			"
 		>
-			{#await todayWordF()}
+			{#await todayWordPromise}
 				<h3>
 					<Spinner class="size-6" />
 					読み込み中……
@@ -177,7 +174,9 @@
 		<h2 id="info">言語関連のデータ</h2>
 		<ul>
 			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li><a href="/data/OE-verb-conj-type" class="link-disabled">古英語の動詞活用まとめ (準備中)</a></li>
+			<li>
+				<a href="/data/OE-verb-conj-type" class="link-disabled">古英語の動詞活用まとめ (準備中)</a>
+			</li>
 			<li>
 				<ExtLink href="https://conlang-gacha.tktb-tess.dev">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
 			</li>
@@ -240,6 +239,21 @@
 	</section>
 	<section aria-labelledby="sougo-link">
 		<h2 id="sougo-link">相互リンク</h2>
+		<p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
+		<ul>
+			<li>
+				<a href="https://kaeru2193.net" target="_blank" rel="noopener">
+					<img
+						class="inline align-middle"
+						src="https://kaeru2193.net/banner.png"
+						width="200"
+						height="40"
+						alt="之機堂"
+					/>
+				</a>
+				(かえる)
+			</li>
+		</ul>
 	</section>
 	<section aria-labelledby="ext-links">
 		<h2 id="ext-links">外部リンク</h2>
