@@ -41,7 +41,7 @@
 <header
 	class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
 >
-	<TessLogo class="h-auto w-[120px] md:w-[200px] lg:w-[360px] xl:w-[500px]" fadein />
+	<TessLogo class="h-auto w-[120px] md:w-[240px] lg:w-[360px] 2xl:w-[480px]" fadein />
 	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>

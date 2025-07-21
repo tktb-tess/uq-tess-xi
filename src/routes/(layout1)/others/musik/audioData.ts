@@ -24,4 +24,6 @@ export type TrackParams = TrackData & {
 	currentTime: number;
 	ref?: HTMLAudioElement;
 	loop: boolean;
+	state: 'playing' | 'paused' | 'stopped';
+	duration?: number;
 };
