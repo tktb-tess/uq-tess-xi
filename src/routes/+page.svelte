@@ -4,6 +4,7 @@
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
 	import type { WordData, Success } from '$lib/types/decl';
+	import CardList from '$lib/sfc/cardList.svelte';
 
 	const todayWordF = async (): Promise<Success<WordData>> => {
 		const url = '/api/v0/today-word';
@@ -131,57 +132,17 @@
 			{/await}
 		</div>
 	</section>
-	<section aria-labelledby="conlang">
-		<h2 id="conlang">創作言語</h2>
-		<h3>ヴェッセンズラン語 (Vässenzländisķ)</h3>
-		<p>
-			「もしも古英語の屈折がほとんど残った言語があったら?」というコンセプトでつくられている言語。
-			下位世界の地球のヴェッセンズラン島のヴェッセンズラン共和国で話される、複雑な形態変化を維持した屈折語。
-			古英語の他、ゲルマン語派の他言語、特にドイツ語やアイスランド語、古ノルド語を参考にしている。
-		</p>
-		<ul>
-			<li><a href="/conlang/vaes">概説</a></li>
-			<li><a href="/conlang/vaes/phonology">音韻論</a></li>
-			<li><a href="/conlang/vaes/letter-et-pron">文字と発音</a></li>
-			<li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
-			<li>りんごを食べたい58文 (準備中)</li>
-			<li>
-				文法
-				<ul>
-					<li>名詞 (準備中)</li>
-					<li><a href="/conlang/vaes/numeral">数詞</a></li>
-					<li>動詞 (準備中)</li>
-					<li>形容詞 (準備中)</li>
-				</ul>
-			</li>
+	<section aria-label="menu">
+		<h2 id="menu">メニュー</h2>
+		<CardList
+			contents={[
+				{ title: '人工言語', desc: '斗琴庭暁響が制作している人工言語について。', href: '/conlang' },
+				{ title: 'データ', desc: '言語に関連するデータなど。', href: '/data' },
+				{ title: 'その他', desc: 'その他の話題。', href: '/others' }
+			]}
+		/>
+	</section>
 
-			<li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
-		</ul>
-		<h3><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h3>
-		<p class="font-semibold">
-			「まず古語を作り、そこからの音変化を想定して現代語を作る」という方針に変更したため現在制作中断中。
-		</p>
-		<p>
-			最初に作り始めた言語。単語などは基本現実世界に依存しない、ある程度自然言語らしさを求める芸術言語。日本語の直拗音やロシア語の硬音軟音よろしく、ほとんどの子音に硬口蓋化の有無による対立がある。
-			文法は日本語やフィンランド語などの膠着語といわれる言語を中心に参考にしている。
-		</p>
-		<h3>古ヤズニェル語 (?????)</h3>
-		<p>
-			ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
-		</p>
-	</section>
-	<section aria-labelledby="info">
-		<h2 id="info">言語関連のデータ</h2>
-		<ul>
-			<li><a href="/data/conlang-xcumon">人工言語作成者に50の質問</a></li>
-			<li>
-				<a href="/data/OE-verb-conj-type" class="link-disabled">古英語の動詞活用まとめ (準備中)</a>
-			</li>
-			<li>
-				<ExtLink href="https://conlang-gacha.tktb-tess.dev">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
-			</li>
-		</ul>
-	</section>
 	<section aria-labelledby="haimei">
 		<h2 id="haimei">頂いた名前</h2>
 		<p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
@@ -204,39 +165,7 @@
 			</table>
 		</div>
 	</section>
-	<section aria-labelledby="misc">
-		<h2 id="misc">その他の活動</h2>
-		<h3>音楽</h3>
-		<p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
-		<ul>
-			<li><a href="/others/musik">いくつかの曲</a></li>
-			<li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming">SoundCloud</ExtLink></li>
-			<li><ExtLink href="https://www.youtube.com/@tessyrrhaqt">YouTube</ExtLink></li>
-		</ul>
-		<h3>雑多</h3>
-		<ul>
-			<li>n次元超立体の命名案 (準備中)</li>
-			<li>ジョンソンの立体のcrown jewelsの命名案 (準備中)</li>
-			<li><a href="/others/tools">ツール</a></li>
-			<li>
-				<ExtLink href="https://shuuro.tktb-tess.dev">
-					終末式ローマ字 «Syuğmatusǐkiro–mázi»
-				</ExtLink><br />
-				…舊仮名遣ひと教育ローマ字ベースのアクセント表記を両立した非実用的な日本語のローマ字表記。製作中。
-			</li>
-			<li><a href="/others/gregorian-chants">グレゴリオ聖歌の音階について</a></li>
-			<li><a href="/others/ja-tibetan">日本語 チベット文字表記</a></li>
-			<li><a href="/others/license">ライセンス</a></li>
-		</ul>
-		<h3>メモ</h3>
-		<ul>
-			<li>
-				<ExtLink href="https://gist.github.com/tktb-tess/91f831a1c93d78fe54ad1cec172d08d2">
-					Miller–Rabin 素数判定法
-				</ExtLink>
-			</li>
-		</ul>
-	</section>
+
 	<section aria-labelledby="sougo-link">
 		<h2 id="sougo-link">相互リンク</h2>
 		<p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
