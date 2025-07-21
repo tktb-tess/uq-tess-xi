@@ -77,3 +77,5 @@ export type WordData = {
 	pron: string;
 	size: 'text-5xl' | 'text-4xl';
 };
+
+

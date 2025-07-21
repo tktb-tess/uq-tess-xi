@@ -1,0 +1,27 @@
+export const trackData: readonly TrackData[] = [
+	{
+		id: 'wlcm',
+		title: 'Welcome',
+		composer: 'Tessyrrhaqt',
+		description: 'Psytranceまがいの静かな曲。'
+	},
+	{
+		id: 'clst',
+		title: 'Celeste',
+		composer: 'Tessyrrhaqt',
+		description: 'Youtubeのエンディングテーマみたいなの作りたいなって思ったので作った短い曲。'
+	}
+];
+
+export type TrackData = {
+	readonly id: string;
+	readonly title: string;
+	readonly composer: string;
+	readonly description: string;
+};
+
+export type TrackParams = TrackData & {
+	currentTime: number;
+	ref?: HTMLAudioElement;
+	loop: boolean;
+};
