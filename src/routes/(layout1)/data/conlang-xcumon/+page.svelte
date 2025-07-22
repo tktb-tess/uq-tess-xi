@@ -18,7 +18,7 @@
 <h2 class="my-8 text-center">〜人工言語製作者に50の質問〜</h2>
 
 <p>とりあえずやってみようと思います。</p>
-<ol class="ms-2 [&_p]:mb-0 [&_li:not(:last-child)]:mb-4 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila">
+<ol class="ms-5 [&_p]:mb-0 [&_li:not(:last-child)]:mb-4 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila">
 	<li>
 		<p>まずペンネーム（ハンドルネーム）を教えてください。</p>
 		<p>斗琴庭 暁響（とことば あかね）、またはTessyrrhaqt（テセラクト）です。</p>
