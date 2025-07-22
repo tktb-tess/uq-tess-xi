@@ -117,7 +117,9 @@
 			<li>
 				<ExtLink href="https://tesyrrhaqt.hatenablog.com/">はてなブログ (あかねの多目的室)</ExtLink>
 			</li>
+			<li><ExtLink href="https://youtube.com/@tessyrrhaqt">Youtube</ExtLink></li>
 			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
+			<li><ExtLink href="https://migdal.jp/tessyrrhaqt">Migdal</ExtLink></li>
 			<li>
 				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
