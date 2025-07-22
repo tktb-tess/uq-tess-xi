@@ -120,6 +120,8 @@
 			<li><ExtLink href="https://youtube.com/@tessyrrhaqt">Youtube</ExtLink></li>
 			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
 			<li><ExtLink href="https://migdal.jp/tessyrrhaqt">Migdal</ExtLink></li>
+			<li><ExtLink href="https://github.com/tktb-tess">GitHub</ExtLink></li>
+			<li><ExtLink href="https://tktb-tess.github.io/">GitHub Pages (旧ホームページ, 現リンク集)</ExtLink></li>
 			<li>
 				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
