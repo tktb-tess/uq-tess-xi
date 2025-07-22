@@ -5,26 +5,8 @@
 	import Spinner from '$lib/sfc/spinner.svelte';
 	import type { WordData, Success } from '$lib/types/decl';
 	import CardList from '$lib/sfc/cardList.svelte';
+	import TodayWord from './todayWord.svelte';
 
-	const todayWordF = async (): Promise<Success<WordData>> => {
-		const url = '/api/v0/today-word';
-		const response = await fetch(url);
-
-		if (!response.ok) {
-			return {
-				success: false,
-				status: response.status,
-				message: response.statusText
-			};
-		}
-
-		const body = await response.json();
-		return {
-			success: true,
-			...body
-		};
-	};
-	const todayWordPromise = $state(todayWordF());
 </script>
 
 <svelte:head>
@@ -68,69 +50,7 @@
 
 	<section aria-labelledby="today-word">
 		<h2 id="today-word" class="text-center">今日の単語</h2>
-		<div
-			class="
-				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl
-				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
-			"
-		>
-			{#await todayWordPromise}
-				<h3>
-					<Spinner class="size-6" />
-					読み込み中……
-				</h3>
-			{:then todayWord}
-				{#if todayWord.success}
-					<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
-					{#if todayWord.pron}
-						<p class="text-black/60 font-ipa">
-							{#if todayWord.pron.includes('/')}
-								{todayWord.pron}
-							{:else}
-								{`/${todayWord.pron}/`}
-							{/if}
-						</p>
-					{/if}
-					<p>訳</p>
-					<table
-						class="
-							grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-							[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
-						"
-					>
-						<thead>
-							<tr>
-								<th class="font-normal bg-transparent text-black">品詞</th>
-								<th class="font-normal bg-transparent text-black">意味</th>
-							</tr>
-						</thead>
-						<tbody>
-							{#each todayWord.translations as translation}
-								<tr>
-									<td
-										class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"
-									>
-										{translation.titles.join(', ')}
-									</td>
-									<td class="justify-self-start border-none bg-transparent"
-										>{translation.names.join(', ')}</td
-									>
-								</tr>
-							{/each}
-						</tbody>
-					</table>
-					<p class="self-end me-3"><ExtLink href={todayWord.dic_url}>ZpDIC Online</ExtLink></p>
-				{:else}
-					<h3 class="text-[red]">データを取得できませんでした</h3>
-					<p class="text-[red]">
-						{todayWord.status}: {todayWord.message}
-					</p>
-				{/if}
-			{:catch e}
-				<h3 class="text-[red]">データを取得できませんでした</h3>
-				<p class="text-[red]">{e}</p>
-			{/await}
-		</div>
+		<TodayWord />
 	</section>
 	<section aria-label="menu">
 		<h2 id="menu">メニュー</h2>

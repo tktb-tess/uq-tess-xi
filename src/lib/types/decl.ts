@@ -78,4 +78,4 @@ export type WordData = {
 	size: 'text-5xl' | 'text-4xl';
 };
 
-
+export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
