@@ -152,6 +152,10 @@
 	input[type='number'],
 	textarea {
 		@apply font-mono bg-white border border-slate-300 rounded px-1;
+		
+		&:disabled {
+			@apply text-neutral-500 bg-neutral-50;
+		}
 	}
 
 	h2,

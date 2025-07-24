@@ -391,16 +391,16 @@ export const getRandPrimeByBitLength = (bitLength: number) => {
 	throw Error('noPrimesFound');
 };
 
-type ResolveFunc<T> = (value: T) => void;
+type ResolveFunc<T> = (value: T | PromiseLike<T>) => void;
 type RejectFunc = (error: unknown) => void;
-type PromiseCallback<T> = (resolve: ResolveFunc<T>, reject: RejectFunc) => void;
+export type PromiseCallback<T> = (resolve: ResolveFunc<T>, reject: RejectFunc) => void;
 
-export class AbortablePromise<T> {
-	readonly promise: Promise<T>;
-	constructor(callback: PromiseCallback<T>, signal: AbortSignal) {
-		this.promise = new Promise<T>((resolve, reject) => {
-			signal.addEventListener('abort', () => reject(signal.reason));
-			callback(resolve, reject);
-		});
+export const getHash = async function* (n: number) {
+	for (let i = 0; i < n; i++) {
+		const date = Date.now().toString(16);
+		const a = Uint8Array.from(date.split(/.{2}/g), (s) => Number.parseInt(s, 16));
+		yield Buffer.from(await crypto.subtle.digest('SHA-256', a)).toString('base64');
 	}
-}
+};
+
+
