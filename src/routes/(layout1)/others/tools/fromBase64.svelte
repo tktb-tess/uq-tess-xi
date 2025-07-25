@@ -20,7 +20,7 @@
 
 	const copyText = () => {
 		navigator.clipboard.writeText(output)
-		.then(() => addToast('copied text!', 'info', 3000))
+		.then(() => addToast('Copied!', 'info', 3000))
 		.catch((e) => addToast(`failed to copy: ${e}`, 'warning', 3000));
 	};
 </script>

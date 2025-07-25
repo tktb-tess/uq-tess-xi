@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import Spinner from '$lib/sfc/spinner.svelte';
-	import type { WordData, PromiseState } from '$lib/types/decl';
+	import type { WordData } from '$lib/types/decl';
 
 	const fetchTodayWord = async (): Promise<WordData> => {
 		const url = '/api/v0/today-word';
@@ -49,9 +49,9 @@
 		<p>訳</p>
 		<table
 			class="
-							grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-							[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
-						"
+					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
+					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
+				"
 		>
 			<thead>
 				<tr>

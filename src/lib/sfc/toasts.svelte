@@ -9,8 +9,13 @@
 	>
 		{#each toastStates as [key, toast]}
 			<div
-				class="px-3 border-2 border-sky-600 bg-sky-100 rounded flex
-					gap-5 justify-center items-center toast-elem"
+				class="px-3 border-2 bg-white rounded flex
+					gap-5 justify-center items-center toast-elem
+					{toast.type === 'info'
+					? 'border-sky-400'
+					: toast.type === 'warning'
+						? 'border-red-500'
+						: 'border-green-500'}"
 			>
 				<p class="m-0 text-xl">{toast.message}</p>
 				<button

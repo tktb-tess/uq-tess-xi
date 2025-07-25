@@ -1,6 +1,8 @@
 # 悠久肆方体・改
 
-- 色々変える
+新しいホームページです。
+
+## ローカルで動かしたい方
 
 ```bash
 git clone https://github.com/tktb-tess/uq-tess-xi.git
