@@ -39,6 +39,7 @@
 		<li><a href="/others/gregorian-chants">グレゴリオ聖歌の音階について</a></li>
 		<li><a href="/others/ja-tibetan">日本語 チベット文字表記</a></li>
 		<li><a href="/others/license">ライセンス</a></li>
+		<li><a href="/like-programmer">表示するだけでなんかすごいハッカーみたいなことやってるように見えるページ</a></li>
 	</ul>
 </section>
 <section aria-labelledby="memo">
