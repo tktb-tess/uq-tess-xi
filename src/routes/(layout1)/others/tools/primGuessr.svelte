@@ -12,21 +12,24 @@
 	let guessp = $state(3n);
 	let guessq = $state(19n);
 	let primesPr = $state<Promise<Primes> | null>(null);
+	let judge = $state<boolean | null>(null);
+
 	const LIMIT = 1n << 64n;
 
-	const judgePr = $derived.by(async () => {
-		const p_ = guessp,
-			q_ = guessq;
-		if (!primesPr) return null;
+	const changeGuesses = async () => {
+		if (!primesPr) {
+			judge = null;
+			return;
+		}
 		try {
 			const primes = await primesPr;
 			const p = BigInt(primes.p),
 				q = BigInt(primes.q);
-			return (p === p_ && q === q_) || (p === q_ && q === p_);
+			judge = (p === guessp && q === guessq) || (p === guessq && q === guessp);
 		} catch (_) {
-			return null;
+			judge = null;
 		}
-	});
+	};
 
 	const fetchPrimes = async () => {
 		const resp = await fetch(`/api/v0/prime?min=${min}&max=${max}`, { method: 'GET' });
@@ -105,57 +108,63 @@
 				{e}
 			{/await}
 		</p>
-		{#await judgePr then judge}
-			<div class="flex justify-center gap-8 *:min-w-0">
-				<div>
-					<label for="{seed}-input3">素数1</label>
-					<input
-						type="text"
-						id="{seed}-input1"
-						class="w-38 max-w-full"
-						
-						bind:value={
-							() => guessp.toString(),
-							(v) => {
-								try {
-									const pre = BigInt(v);
-									guessp = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
-								} catch (e) {
-									guessp = 3n;
-								}
+
+		<div class="flex justify-center gap-8 *:min-w-0">
+			<div>
+				<label for="{seed}-input3">素数1</label>
+
+				<input
+					type="text"
+					id="{seed}-input1"
+					class="w-38 max-w-full"
+					disabled={judge === null}
+					bind:value={
+						() => guessp.toString(),
+						(v) => {
+							try {
+								const pre = BigInt(v);
+								guessp = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
+							} catch (e) {
+								guessp = 3n;
 							}
 						}
-					/>
-				</div>
-				<div>
-					<label for="{seed}-input4">素数2</label>
-					<input
-						type="text"
-						id="{seed}-input2"
-						class="w-38 max-w-full"
-						
-						bind:value={
-							() => guessq.toString(),
-							(v) => {
-								try {
-									const pre = BigInt(v);
-									guessq = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
-								} catch (e) {
-									guessq = 19n;
-								}
-							}
-						}
-					/>
-				</div>
+					}
+					onchange={changeGuesses}
+				/>
 			</div>
-			{#if judge !== null}
-				<p
-					class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center
-					{judge ? 'text-[red]' : 'text-[blue]'}"
-				>
-					{judge ? '〇' : '×'}
-				</p>
-			{/if}
-		{/await}
+			<div>
+				<label for="{seed}-input4">素数2</label>
+
+				<input
+					type="text"
+					id="{seed}-input2"
+					class="w-38 max-w-full"
+					disabled={judge === null}
+					bind:value={
+						() => guessq.toString(),
+						(v) => {
+							try {
+								const pre = BigInt(v);
+								guessq = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
+							} catch (e) {
+								guessq = 19n;
+							}
+						}
+					}
+					onchange={changeGuesses}
+				/>
+			</div>
+		</div>
+
+		{#if judge !== null}
+			<p
+				class="
+					my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center
+					{judge ? 'text-[red]' : 'text-[blue]'}
+					"
+			>
+				{judge ? '〇' : '×'}
+			</p>
+		{/if}
 	</div>
 </section>
