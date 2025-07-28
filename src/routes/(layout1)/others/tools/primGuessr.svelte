@@ -40,6 +40,7 @@
 		}
 
 		primesPr = resp.json();
+		await changeGuesses();
 	};
 </script>
 
