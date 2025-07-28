@@ -113,7 +113,7 @@
 						type="text"
 						id="{seed}-input1"
 						class="w-38 max-w-full"
-						disabled={judge === null}
+						
 						bind:value={
 							() => guessp.toString(),
 							(v) => {
@@ -133,7 +133,7 @@
 						type="text"
 						id="{seed}-input2"
 						class="w-38 max-w-full"
-						disabled={judge === null}
+						
 						bind:value={
 							() => guessq.toString(),
 							(v) => {
