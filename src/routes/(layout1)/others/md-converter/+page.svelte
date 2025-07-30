@@ -17,12 +17,12 @@
 	let resultsp = $state<Promise<string[]>>(Promise.resolve([]));
 
 	const fetchData = async (): Promise<string[]> => {
-		const params = urls.map(({ url }) => (url ? `&value=${url}` : '')).join('');
+		const params = urls.map(({ url }) => (url ? `&value=${encodeURIComponent(url)}` : '')).join('');
 
 		if (!params) {
 			return [];
 		}
-		const resp = await fetch(`/api/v0/to-md?${encodeURIComponent(params)}`);
+		const resp = await fetch(`/api/v0/to-md?${params}`);
 		if (!resp.ok) {
 			throw Error(`failed to fetch: ${resp.status} ${resp.statusText}`);
 		}
