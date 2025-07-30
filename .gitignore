@@ -28,3 +28,4 @@ wasm/target/
 .arc/
 .vercel
 openapi_zpdic/
+draft/out/
