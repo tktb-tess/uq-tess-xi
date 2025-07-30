@@ -22,7 +22,7 @@
 		if (!params) {
 			return [];
 		}
-		const resp = await fetch(`/api/v0/to-md?${params}`);
+		const resp = await fetch(`/api/v0/to-md?${encodeURIComponent(params)}`);
 		if (!resp.ok) {
 			throw Error(`failed to fetch: ${resp.status} ${resp.statusText}`);
 		}
