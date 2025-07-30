@@ -1,6 +1,9 @@
 <script lang="ts">
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
+	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+	import Spinner from '$lib/sfc/spinner.svelte';
+	import type { WordData, Success } from '$lib/types/decl';
 	import CardList from '$lib/sfc/cardList.svelte';
 	import TodayWord from './todayWord.svelte';
 	import GithubMark from '$lib/sfc/github-mark.svelte';
@@ -75,7 +78,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><a href="https://kaeru2193.net/phunlang/name/">雰語</a></td>
+						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
 						<td>かえる</td>
 						<td><span class="font-phun-dot">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
 					</tr>
@@ -106,26 +109,26 @@
 		<h2 id="ext-links">外部リンク</h2>
 		<h3>各種SNS</h3>
 		<ul>
-			<li><a href="https://x.com/triethylamineq">𝕏witter</a></li>
-			<li><a href="https://bsky.app/profile/tktb-tess.dev">Bluesky</a></li>
-			<li><a href="https://misskey.io/@tessy_tktb">Misskey.io</a></li>
+			<li><ExtLink href="https://x.com/triethylamineq">𝕏witter</ExtLink></li>
+			<li><ExtLink href="https://bsky.app/profile/tktb-tess.dev">Bluesky</ExtLink></li>
+			<li><ExtLink href="https://misskey.io/@tessy_tktb">Misskey.io</ExtLink></li>
 		</ul>
 		<h3>その他</h3>
 		<ul>
 			<li>
-				<a href="https://tesyrrhaqt.hatenablog.com/">はてなブログ (あかねの多目的室)</a>
+				<ExtLink href="https://tesyrrhaqt.hatenablog.com/">はてなブログ (あかねの多目的室)</ExtLink>
 			</li>
-			<li><a href="https://youtube.com/@tessyrrhaqt">Youtube</a></li>
-			<li><a href="https://rechord.cc/users/triethylamineq">rechord</a></li>
-			<li><a href="https://migdal.jp/tessyrrhaqt">Migdal</a></li>
-			<li><a href="https://github.com/tktb-tess">GitHub</a></li>
-			<li><a href="https://tktb-tess.github.io/">GitHub Pages (旧ホームページ, 現リンク集)</a></li>
+			<li><ExtLink href="https://youtube.com/@tessyrrhaqt">Youtube</ExtLink></li>
+			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
+			<li><ExtLink href="https://migdal.jp/tessyrrhaqt">Migdal</ExtLink></li>
+			<li><ExtLink href="https://github.com/tktb-tess">GitHub</ExtLink></li>
+			<li><ExtLink href="https://tktb-tess.github.io/">GitHub Pages (旧ホームページ, 現リンク集)</ExtLink></li>
 			<li>
-				<a
+				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
 				>
 					Xenharmonic_calc
-				</a>
+				</ExtLink>
 				…各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
 			</li>
 		</ul>
@@ -138,7 +141,7 @@
 		※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
 	</p>
 	<p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
-	<a href="https://github.com/tktb-tess/uq-tess-xi" target="_blank" rel="noopener noreferrer">
+	<a href="https://github.com/tktb-tess/uq-tess-xi" target="_blank" rel="noopener">
 		<GithubMark class="any-hover:opacity-60 size-6" />
 	</a>
 </footer>
