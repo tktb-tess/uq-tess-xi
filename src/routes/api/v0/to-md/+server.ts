@@ -18,14 +18,14 @@ const headers = {
 } as const;
 
 export const GET = async ({ url, fetch: svFetch }) => {
-    console.log(`received /to-md`);
+    console.log(`received GET request at /to-md`);
     const fetchUrls = url.searchParams.getAll('value');
     const decoded = fetchUrls.map((u) => decodeURIComponent(u));
     
     const tasks = decoded.map(async (url) => {
         const resp = await svFetch(url, { method: 'GET' });
         if (!resp.ok) {
-            error(404);
+            error(resp.status);
         }
         const html = await resp.text().then((t) => purifier.sanitize(t));
         const markdown = service.turndown(html);
