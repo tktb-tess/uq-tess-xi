@@ -38,7 +38,7 @@
 			const burl = URL.createObjectURL(blob);
 			const a = document.createElement('a');
 			a.href = burl;
-			a.download = `no${i}`;
+			a.download = `markdown${i + 1}.md`;
 			a.click();
 			URL.revokeObjectURL(burl);
 		});
