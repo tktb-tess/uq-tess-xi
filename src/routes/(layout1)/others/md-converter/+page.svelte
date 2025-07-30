@@ -29,6 +29,22 @@
 
 		return resp.json();
 	};
+
+	const handleDownload = async () => {
+		const mds = await resultsp;
+		if (mds.length === 0) return;
+		const tasks = mds.map(async (text, i) => {
+			const blob = new Blob([text], { type: 'text/markdown' });
+			const burl = URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.href = burl;
+			a.download = `no${i}`;
+			a.click();
+			URL.revokeObjectURL(burl);
+		});
+
+		await Promise.all(tasks);
+	};
 </script>
 
 <svelte:head>
@@ -76,8 +92,10 @@
 		class="btn-1 self-center"
 		onclick={() => {
 			resultsp = fetchData();
-		}}>変換！</button
+		}}
 	>
+		変換！
+	</button>
 	<div class="flex flex-col gap-2">
 		{#await resultsp}
 			<h3 class="text-center">変換中……</h3>
@@ -86,8 +104,10 @@
 				<label for="result-{i}">Markdown</label>
 				<textarea id="result-{i}" class="h-50" readonly>{md}</textarea>
 			{/each}
+			<button type="button" onclick={handleDownload} class="btn-1 self-center {mds.length === 0 ? 'invisible' : ''}">Download</button>
 		{:catch e}
 			<h3 class="text-red-500 text-center">{e}</h3>
 		{/await}
 	</div>
+	<div class="h-50"></div>
 </div>

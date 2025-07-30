@@ -16,7 +16,7 @@
 	let todayWordPromise = $state(fetchTodayWord());
 
 	$effect(() => {
-		todayWordPromise.catch((e) => {
+		todayWordPromise.catch(() => {
 			setTimeout(() => {
 				todayWordPromise = fetchTodayWord();
 			}, 2000);
