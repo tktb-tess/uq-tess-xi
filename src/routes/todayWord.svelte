@@ -1,26 +1,16 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import Spinner from '$lib/sfc/spinner.svelte';
-	import type { WordData } from '$lib/types/decl';
-
-	const fetchTodayWord = async (): Promise<WordData> => {
-		const url = '/api/v0/today-word';
-		const resp = await fetch(url);
-
-		if (!resp.ok) {
-			throw Error(`${resp.status} ${resp.statusText}`);
-		}
-
-		return resp.json();
+	import type { Success, WordData } from '$lib/types/decl';
+	type Props = {
+		todayWord: Success<WordData>;
 	};
-	let todayWordPromise = $state(fetchTodayWord());
+
+	const { todayWord }: Props = $props();
 
 	$effect(() => {
-		todayWordPromise.catch(() => {
-			setTimeout(() => {
-				todayWordPromise = fetchTodayWord();
-			}, 2000);
-		});
+		if (!todayWord.success) {
+			console.error(todayWord.message);
+		}
 	});
 </script>
 
@@ -30,12 +20,7 @@
 				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
 			"
 >
-	{#await todayWordPromise}
-		<h3>
-			<Spinner class="size-6" />
-			読み込み中……
-		</h3>
-	{:then todayWord}
+	{#if todayWord.success}
 		<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
 		{#if todayWord.pron}
 			<p class="text-black/60 font-ipa">
@@ -74,9 +59,11 @@
 				{/each}
 			</tbody>
 		</table>
-		<p class="self-end me-3"><ExtLink href={todayWord.dic_url}>ZpDIC Online</ExtLink></p>
-	{:catch e}
-		<h3 class="text-[red]">データを取得できませんでした</h3>
-		<p class="text-[red]">{e}</p>
-	{/await}
+		<p class="self-end me-3"><ExtLink href={todayWord.dicUrl}>ZpDIC Online</ExtLink></p>
+	{:else}
+		<div class="text-center *:text-[red]">
+			<h3>読み込みに失敗しました</h3>
+			<p>再読み込みしてください</p>
+		</div>
+	{/if}
 </div>

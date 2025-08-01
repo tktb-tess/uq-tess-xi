@@ -14,7 +14,7 @@ export const GET = async () => {
 		const redis = await createClient({ url: REDIS_URL }).connect();
 		const today_word = (await redis.json.get('today-word')) as ZpDICAPIResponseWord;
 		const query = `?kind=exact&number=${today_word.number}`;
-		const dic_url = `https://zpdic.ziphil.com/dictionary/633${query}`;
+		const dicUrl = `https://zpdic.ziphil.com/dictionary/633${query}`;
 
 		const size = (() => {
 			const len = today_word.name.length;
@@ -24,7 +24,7 @@ export const GET = async () => {
 		const body: Readonly<WordData> = {
 			word: today_word.name,
 			translations: today_word.equivalents,
-			dic_url,
+			dicUrl,
 			pron: today_word.pronunciation,
 			size
 		};

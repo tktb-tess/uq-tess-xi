@@ -1,22 +1,21 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
-import type { ZpDICAPIWordsResponse } from '$lib/types/decl';
+import { redisKeys, type ZpDICAPIWordsResponse } from '$lib/types/decl';
 import { getRndInt } from '$lib/modules/util';
 import { createClient } from 'redis';
+import Papa from 'papaparse';
+import { dev } from '$app/environment';
 
 export const GET = async ({ request, fetch: svFetch }) => {
-	const api_rt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
-	const headers = {
+	const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
+	const vaeSwadeshUrl =
+		'https://script.google.com/macros/s/AKfycbwAr_bYLJIm-nZlOdFl9y1V3ZipMMg_2XHFel-p0gqnLfiLnRwSMqbRn-h4RAEjClAK/exec';
+	const zpdicReqHeaders = {
 		'X-Api-Key': ZPDIC_API_KEY
 	} as const;
 
-	// authorization
-	if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
-		error(401);
-	}
-
 	const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIWordsResponse> => {
-		const resp = await svFetch(api_rt + query, { method: 'GET', headers });
+		const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
 		if (!resp.ok) {
 			throw resp;
 		}
@@ -34,17 +33,49 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		return fetchZpDICAPI(query);
 	};
 
-	try {
-		// connect to Redis
-		const redis = await createClient({ url: REDIS_URL }).connect();
-
+	const getTodayWord = async () => {
 		const total = await getTotal();
-		const today_word = (await getWord(getRndInt(0, total))).words[0];
-		await redis.json.set('today-word', '$', today_word);
+		return (await getWord(getRndInt(0, total))).words[0];
+	};
+
+	const getSwadeshListVae = async () => {
+		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET' });
+		const csvStr = await resp.text();
+
+		return (() => {
+			const pre = Papa.parse(csvStr, { header: false }).data as string[][];
+			return pre.map((row) => {
+				return row.map((s) => s.replace(/;/, ','));
+			});
+		})();
+	};
+
+	// authorization
+	if (!dev && request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
+		error(401);
+	}
+
+	try {
+		const [todayWord, swadeshListVae] = await Promise.all([getTodayWord(), getSwadeshListVae()]);
+
+		// connect to Redis
+		const client = await createClient({ url: REDIS_URL }).connect();
+
+		await Promise.all([
+			client.set(redisKeys.todayWord, JSON.stringify(todayWord)),
+			client.set(redisKeys.swadeshVae, JSON.stringify(swadeshListVae))
+		]);
 
 		// check
-		const stored = await redis.json.get('today-word');
-		console.log(stored);
+		const stored = await Promise.all([
+			client.get(redisKeys.todayWord),
+			client.get(redisKeys.swadeshVae)
+		]).then(([twStr, sl1str]) => {
+			if (twStr && sl1str) {
+				return [JSON.parse(twStr), JSON.parse(sl1str)];
+			} else error(500, { message: 'noStoredData' });
+		});
+		console.log(...stored);
 		return json(stored);
 	} catch (e: unknown) {
 		if (isHttpError(e)) {

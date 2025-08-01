@@ -55,27 +55,33 @@ export type ZpDICAPIWordsResponse = {
 };
 
 export type SwadeshList = {
-	value: string[][];
+	readonly value: readonly (readonly string[])[];
 };
 
 export type Success<T extends object> =
 	| (T & {
-			success: true;
+			readonly success: true;
 	  })
 	| {
-			success: false;
-			status: number;
-			message: string;
+			readonly success: false;
+			readonly status?: number;
+			readonly message: string;
+			readonly stack?: string;
 	  };
 
-type Equivalents = ZpDICAPIResponseWord['equivalents'];
+type Equivalent = ZpDICAPIResponseWord['equivalents'][number];
 
 export type WordData = {
-	word: string;
-	translations: Equivalents;
-	dic_url: string;
-	pron: string;
-	size: 'text-5xl' | 'text-4xl';
+	readonly word: string;
+	readonly translations: Readonly<Equivalent>[];
+	readonly dicUrl: string;
+	readonly pron: string;
+	readonly size: 'text-5xl' | 'text-4xl';
 };
 
 export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
+
+export const redisKeys = {
+	todayWord: 'today-word',
+	swadeshVae: 'swadesh-list-vae',
+} as const;

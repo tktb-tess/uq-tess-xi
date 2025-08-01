@@ -2,12 +2,11 @@
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-	import Spinner from '$lib/sfc/spinner.svelte';
-	import type { WordData, Success } from '$lib/types/decl';
 	import CardList from '$lib/sfc/cardList.svelte';
 	import TodayWord from './todayWord.svelte';
 	import GithubMark from '$lib/sfc/github-mark.svelte';
 
+	const { data: todayWord } = $props();
 </script>
 
 <svelte:head>
@@ -51,7 +50,7 @@
 
 	<section aria-labelledby="today-word">
 		<h2 id="today-word" class="text-center">今日の単語</h2>
-		<TodayWord />
+		<TodayWord {todayWord} />
 	</section>
 	<section aria-label="menu">
 		<h2 id="menu">メニュー</h2>
@@ -122,7 +121,11 @@
 			<li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
 			<li><ExtLink href="https://migdal.jp/tessyrrhaqt">Migdal</ExtLink></li>
 			<li><ExtLink href="https://github.com/tktb-tess">GitHub</ExtLink></li>
-			<li><ExtLink href="https://tktb-tess.github.io/">GitHub Pages (旧ホームページ, 現リンク集)</ExtLink></li>
+			<li>
+				<ExtLink href="https://tktb-tess.github.io/"
+					>GitHub Pages (旧ホームページ, 現リンク集)</ExtLink
+				>
+			</li>
 			<li>
 				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
@@ -142,7 +145,7 @@
 	</p>
 	<p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
 	<a href="https://github.com/tktb-tess/uq-tess-xi" target="_blank" rel="noopener">
-		<GithubMark class="any-hover:opacity-60 size-6" />
+		<GithubMark class="any-hover:opacity-60 size-6 transition-opacity" />
 	</a>
 </footer>
 

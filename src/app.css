@@ -139,6 +139,10 @@
 		-webkit-tap-highlight-color: revert;
 	}
 
+	body {
+		@apply bg-llila;
+	}
+
 	a {
 		@apply text-blue-700 any-hover:underline;
 	}

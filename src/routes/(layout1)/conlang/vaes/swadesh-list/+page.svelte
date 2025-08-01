@@ -1,31 +1,8 @@
 <script lang="ts">
-	import Spinner from '$lib/sfc/spinner.svelte';
-	import type { SwadeshList } from '$lib/types/decl';
-
 	const ogTitle = 'Vässenzländisķ Swadesh List',
 		ogDesc = 'すわでしゅ！';
 
-	const getSwadesh = async (): Promise<SwadeshList> => {
-		const url = '/api/v0/swadesh-list';
-		const resp = await fetch(url, { method: 'GET' });
-
-		if (!resp.ok) {
-			throw Error(`${resp.status} ${resp.statusText}`);
-		}
-
-		return resp.json();
-	};
-
-	let swadeshPromise = $state(getSwadesh());
-
-	$effect(() => {
-		swadeshPromise.catch((e) => {
-			console.log(e);
-			setTimeout(() => {
-				swadeshPromise = getSwadesh();
-			}, 2000);
-		});
-	})
+	const { data: swadeshList } = $props();
 </script>
 
 <svelte:head>
@@ -43,12 +20,7 @@
 
 <p>まだ未完成。順次追加していきます。</p>
 
-{#await swadeshPromise}
-	<h3 class="text-center">
-		<Spinner class="size-6" />
-		読み込み中……
-	</h3>
-{:then swadeshList}
+{#if swadeshList.success}
 	{@const [header, ...body] = swadeshList.value}
 	<div class="table-container slidein">
 		<table class="grid-cols-auto-4 [&_td]:text-start [&_td:first-child]:text-end">
@@ -70,12 +42,12 @@
 			</tbody>
 		</table>
 	</div>
-{:catch e}
+{:else}
 	<div class="text-center *:text-[red]">
 		<h3>読み込みに失敗しました</h3>
-		<p>{e}</p>
+		<p>再読み込みしてください</p>
 	</div>
-{/await}
+{/if}
 
 <style>
 	@keyframes slidein {
