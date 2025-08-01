@@ -9,6 +9,7 @@ export const load = async (): Promise<Success<SwadeshList>> => {
 
 		const value = await client.get(redisKeys.swadeshVae).then((swa) => {
 			if (!swa) throw Error('failed to load today-word from redis');
+			// console.log(swa);
 			return JSON.parse(swa) as string[][];
 		});
 

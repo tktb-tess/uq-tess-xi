@@ -11,6 +11,7 @@ export const load = async (): Promise<Success<WordData>> => {
         
         const todayWord = await client.get('today-word').then((word) => {
             if (!word) throw Error('failed to load today-word from redis');
+            console.log(word);
             return JSON.parse(word) as ZpDICAPIResponseWord;
         });
 		
