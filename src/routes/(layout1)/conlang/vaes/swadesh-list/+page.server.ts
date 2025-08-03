@@ -1,7 +1,7 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
 import { redisKeys, type Success, type SwadeshList } from '$lib/types/decl';
-export const prerender = 'auto';
+export const prerender = false;
 
 export const load = async (): Promise<Success<SwadeshList>> => {
 	try {
@@ -9,7 +9,7 @@ export const load = async (): Promise<Success<SwadeshList>> => {
 
 		const value = await client.get(redisKeys.swadeshVae).then((swa) => {
 			if (!swa) throw Error('failed to load today-word from redis');
-			// console.log(swa);
+			
 			return JSON.parse(swa) as string[][];
 		});
 

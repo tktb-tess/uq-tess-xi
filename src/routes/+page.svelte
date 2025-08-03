@@ -24,7 +24,7 @@
 <header
 	class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
 >
-	<TessLogo class="h-auto w-[180px] md:w-[240px] lg:w-[360px] 2xl:w-[480px]" fadein />
+	<TessLogo class="fill-current block size-45 md:size-60 lg:size-90 2xl:size-120 animate-[rotate_3s_cubic-bezier(0,1,1,1),fade-in_3s_cubic-bezier(0,0,1,1)]" />
 	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
