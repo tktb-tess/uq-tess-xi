@@ -19,13 +19,13 @@
 </svelte:head>
 
 <div
-	class="bg-llila min-h-screen flex flex-col justify-center items-center *:max-w-full gap-4 overflow-hidden **:m-0"
+	class="px-3 min-h-screen flex flex-col justify-center items-center *:max-w-full gap-4 overflow-hidden **:m-0"
 >
 	<TessLogo class="size-50 fill-black block animate-[spin_30s_linear_infinite]" />
 	<h2 class="text-6xl font-extralight font-sans">Hoppla!</h2>
-	<p class="">
+	<p class="text-center">
 		{#if page.status === 404}
-			お探しのページは見つかりませんでした。移動あるいは削除された可能性があります。
+			お探しのページは見つかりませんでした。<br class="md:hidden" />移動あるいは削除された可能性があります。
 		{:else}
 			{page.status} {page.error?.message ?? 'No message'}
 		{/if}

@@ -6,8 +6,17 @@
 	import TodayWord from './todayWord.svelte';
 	import GithubMark from '$lib/sfc/github-mark.svelte';
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
+	import { innerWidth } from 'svelte/reactivity/window';
 
 	const { data: todayWord } = $props();
+
+	const Title = $derived.by(() => {
+		if (innerWidth.current && innerWidth.current < 768) {
+			return PUBLIC_SITE_NAME.split('').join('\x20');
+		} else {
+			return PUBLIC_SITE_NAME.split('').join('\u2003');
+		}
+	});
 </script>
 
 <svelte:head>
@@ -28,8 +37,8 @@
 	<TessLogo
 		class="fill-current block size-45 md:size-60 lg:size-90 2xl:size-120 animate-[rotate_3s_cubic-bezier(0,1,1,1),fade-in_3s_cubic-bezier(0,0,1,1)]"
 	/>
-	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
-		{PUBLIC_SITE_NAME.split('').join('\u2003')}
+	<h1 class="font-semibold font-serif text-5xl lg:text-6xl xl:text-7xl text-center">
+		{Title}
 	</h1>
 </header>
 
@@ -142,7 +151,7 @@
 	<h3 class="text-[red] text-center my-8">工事中……</h3>
 </main>
 
-<footer class="flex flex-col items-center my-5 px-(--gutter)">
+<footer class="flex flex-col items-center my-5 px-3">
 	<p>
 		※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
 	</p>
