@@ -1,16 +1,18 @@
 <script lang="ts">
+	import { PUBLIC_SITE_NAME } from "$env/static/public";
+
 	const ogTitle = 'Vässenzländisķ 音韻論', ogDesc = '';
 </script>
 
 <svelte:head>
 	<meta name="description" content={ogDesc} />
 	<!-- OGP -->
-	<meta property="og:title" content="{ogTitle} - 悠久肆方体" />
+	<meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta property="og:description" content={ogDesc} />
 	<!-- twitter card -->
-	<meta name="twitter:title" content="{ogTitle} - 悠久肆方体" />
+	<meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta name="twitter:description" content={ogDesc} />
-	<title>{ogTitle} - 悠久肆方体</title>
+	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <h2 id="subtitle" class="text-center my-8">音韻論</h2>

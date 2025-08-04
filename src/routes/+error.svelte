@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 	import TessLogo from '$lib/sfc/tess_logo.svelte';
 
-	const ogTitle = `${page.status} ${page.error?.message ?? ''}`;
-	const ogDesc = ogTitle;
+	const ogTitle = `${page.status}${page.error ? ` ${page.error.message}` : ''}`;
+	const ogDesc = 'そこに無ければ無いですね';
 </script>
 
 <svelte:head>
 	<meta name="description" content={ogDesc} />
 	<!-- OGP -->
-	<meta property="og:title" content="{ogTitle} - 悠久肆方体" />
+	<meta property="og:title" content="{ogTitle} - {PUBLIC_SITE_NAME}" />
 	<meta property="og:description" content={ogDesc} />
 	<!-- twitter card -->
-	<meta name="twitter:title" content="{ogTitle} - 悠久肆方体" />
+	<meta name="twitter:title" content="{ogTitle} - {PUBLIC_SITE_NAME}" />
 	<meta name="twitter:description" content={ogDesc} />
-	<title>{ogTitle} - 悠久肆方体</title>
+	<title>{ogTitle} - {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <div
@@ -29,7 +30,7 @@
 			{page.status} {page.error?.message ?? 'No message'}
 		{/if}
 	</p>
-	<a href="/." class="block bg-mnlila hover:bg-mnlila/60 transition-colors no-underline text-white px-2 text-lg rounded">トップに戻る</a>
+	<a href="/." class="block btn-1">トップに戻る</a>
 </div>
 
 <style>

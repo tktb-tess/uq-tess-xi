@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 	import Spinner from '$lib/sfc/spinner.svelte';
 	import { addToast } from '$lib/sfc/toastStates.svelte';
 	import TrashIcon from '$lib/sfc/trashIcon.svelte';
 
-	const ogTitle = 'URL to Markdown',
-		ogDesc = 'サイトURLからMarkdown形式に変換します。';
+	const ogTitle = 'URL to Markdown';
+	const ogDesc = 'サイトURLからMarkdown形式に変換します。';
+
 	type UUID = ReturnType<typeof crypto.randomUUID>;
 	type URLInput = {
 		id: UUID;
@@ -62,12 +64,12 @@
 <svelte:head>
 	<meta name="description" content={ogDesc} />
 	<!-- OGP -->
-	<meta property="og:title" content="{ogTitle} - 悠久肆方体" />
+	<meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta property="og:description" content={ogDesc} />
 	<!-- twitter card -->
-	<meta name="twitter:title" content="{ogTitle} - 悠久肆方体" />
+	<meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta name="twitter:description" content={ogDesc} />
-	<title>{ogTitle} - 悠久肆方体</title>
+	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <h2 class="text-center my-8">{ogTitle}</h2>

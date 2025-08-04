@@ -10,11 +10,11 @@
 	<!-- OGP -->
 	<meta property="og:url" content="https://tktb-tess.dev" />
 	<meta property="og:site_name" content={PUBLIC_SITE_NAME} />
-	<meta property="og:image" content="{linkCardUrl}" />
+	<meta property="og:image" content={linkCardUrl} />
 	<!-- Twitter card -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@triethylamineq" />
-	<meta name="twitter:image" content="{linkCardUrl}" />
+	<meta name="twitter:image" content={linkCardUrl} />
 </svelte:head>
 
 <Toasts />

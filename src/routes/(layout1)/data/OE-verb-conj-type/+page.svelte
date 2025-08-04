@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 	import ConjugationTable from './conjugation-table.svelte';
 	const ogTitle = 'Ænglisċ 動詞活用まとめ',
 		ogDesc = 'こえいご♡';
@@ -7,12 +8,12 @@
 <svelte:head>
 	<meta name="description" content={ogDesc} />
 	<!-- OGP -->
-	<meta property="og:title" content="{ogTitle} - 悠久肆方体" />
+	<meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta property="og:description" content={ogDesc} />
 	<!-- twitter card -->
-	<meta name="twitter:title" content="{ogTitle} - 悠久肆方体" />
+	<meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
 	<meta name="twitter:description" content={ogDesc} />
-	<title>{ogTitle} - 悠久肆方体</title>
+	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <h2 class="my-8 text-center">古英語 動詞活用まとめ</h2>
