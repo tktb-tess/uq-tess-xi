@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://www.tktb-tess.dev/</loc>
+  <lastmod>2025-08-04T02:56:37+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang</loc>
+  <lastmod>2025-08-04T02:56:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/data</loc>
+  <lastmod>2025-08-04T02:56:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others</loc>
+  <lastmod>2025-08-04T02:56:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/.</loc>
+  <lastmod>2025-08-04T02:56:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang/vaes</loc>
+  <lastmod>2025-08-04T02:56:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang/vaes/letter-et-pron</loc>
+  <lastmod>2025-08-04T02:56:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang/vaes/phonology</loc>
+  <lastmod>2025-08-04T02:56:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang/vaes/swadesh-list</loc>
+  <lastmod>2025-08-04T02:56:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/conlang/vaes/numeral</loc>
+  <lastmod>2025-08-04T02:56:33+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/data/conlang-xcumon</loc>
+  <lastmod>2025-08-04T02:56:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/data/OE-verb-conj-type</loc>
+  <lastmod>2025-08-04T02:56:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/musik</loc>
+  <lastmod>2025-08-04T02:56:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/tools</loc>
+  <lastmod>2025-08-04T02:56:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/gregorian-chants</loc>
+  <lastmod>2025-08-04T02:56:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/ja-tibetan</loc>
+  <lastmod>2025-08-04T02:56:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/license</loc>
+  <lastmod>2025-08-04T02:56:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/others/md-converter</loc>
+  <lastmod>2025-08-04T02:56:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.tktb-tess.dev/like-programmer</loc>
+  <lastmod>2025-08-04T02:56:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
