@@ -13,7 +13,6 @@ node_modules/
 Thumbs.db
 
 # Env
-.env
 .env.*
 !.env.example
 !.env.test
@@ -25,7 +24,7 @@ vite.config.ts.timestamp-*
 # Rust
 wasm/target/
 
+# Misc
 .arc/
 .vercel
-openapi_zpdic/
 draft/out/
