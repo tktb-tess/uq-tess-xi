@@ -5,6 +5,7 @@
 	import CardList from '$lib/sfc/cardList.svelte';
 	import TodayWord from './todayWord.svelte';
 	import GithubMark from '$lib/sfc/github-mark.svelte';
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 
 	const { data: todayWord } = $props();
 </script>
@@ -13,18 +14,20 @@
 	<meta name="description" content="創作言語など" />
 	<!-- OGP -->
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="悠久肆方体" />
+	<meta property="og:title" content={PUBLIC_SITE_NAME} />
 	<meta property="og:description" content="創作言語など" />
 	<!-- twitter card -->
-	<meta name="twitter:title" content="悠久肆方体" />
+	<meta name="twitter:title" content={PUBLIC_SITE_NAME} />
 	<meta name="twitter:description" content="創作言語など" />
-	<title>悠久肆方体</title>
+	<title>{PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <header
 	class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
 >
-	<TessLogo class="fill-current block size-45 md:size-60 lg:size-90 2xl:size-120 animate-[rotate_3s_cubic-bezier(0,1,1,1),fade-in_3s_cubic-bezier(0,0,1,1)]" />
+	<TessLogo
+		class="fill-current block size-45 md:size-60 lg:size-90 2xl:size-120 animate-[rotate_3s_cubic-bezier(0,1,1,1),fade-in_3s_cubic-bezier(0,0,1,1)]"
+	/>
 	<h1 class="font-semibold font-serif text-3xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
 		悠&emsp;久&emsp;肆&emsp;方&emsp;体
 	</h1>
