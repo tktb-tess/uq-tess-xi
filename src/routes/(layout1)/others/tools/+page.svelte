@@ -4,8 +4,8 @@
 	import OddCalculator from './oddCalculator.svelte';
 	import PrimGuessr from './primGuessr.svelte';
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
-	const ogTitle = 'ツール',
-		ogDesc = '色々な計算';
+	const ogTitle = 'ツール';
+	const ogDesc = '色々な計算';
 	const { data } = $props();
 	const { seeds, exps, logs } = data;
 </script>
