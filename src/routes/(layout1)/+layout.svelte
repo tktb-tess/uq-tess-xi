@@ -18,7 +18,10 @@
 	};
 
 	onNavigate(() => {
-		drawerIsOpen = false;
+		return new Promise((res) => {
+			drawerIsOpen = false;
+			res();
+		});
 	});
 </script>
 
@@ -92,7 +95,6 @@
 		<h1 class="font-serif text-3xl [&_a]:h-[64px]">
 			<a class="flex items-center" href="/.">悠久肆方体</a>
 		</h1>
-	
 	</div>
 </header>
 

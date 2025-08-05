@@ -27,6 +27,7 @@ export const GET = async ({ url, fetch: svFetch }) => {
         if (!resp.ok) {
             error(resp.status);
         }
+
         const html = await resp.text().then((t) => purifier.sanitize(t));
         const markdown = service.turndown(html);
         return markdown;
