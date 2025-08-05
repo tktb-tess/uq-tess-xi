@@ -1,4 +1,3 @@
-
 declare module '@joplin/turndown' {
 	export { default } from 'turndown';
 }
