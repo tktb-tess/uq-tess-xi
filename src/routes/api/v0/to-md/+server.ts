@@ -14,7 +14,7 @@ service.use(gfm);
 const win = new JSDOM('').window;
 const purifier = DOMPurify(win);
 const headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
 } as const;
 
 export const GET = async ({ url, fetch: svFetch }) => {

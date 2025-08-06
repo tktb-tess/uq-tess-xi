@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_SITE_NAME } from "$env/static/public";
 
-	const ogTitle = 'Vässenzländisķ 概説', ogDesc = '';
+	const ogTitle = 'Vässenzländisķ 概説', ogDesc = 'がいせーつ';
 </script>
 
 <svelte:head>
