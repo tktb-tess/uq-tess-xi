@@ -2,7 +2,7 @@
 	import { PUBLIC_SITE_NAME } from "$env/static/public";
 
 	const ogTitle = 'グレゴリオ聖歌について',
-		ogDesc = '';
+		ogDesc = 'グレゴリオ聖歌の音階の話';
 </script>
 
 <svelte:head>

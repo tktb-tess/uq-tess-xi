@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_SITE_NAME } from "$env/static/public";
 
-    const ogTitle = 'crown jewels の命名案', ogDesc = '';
+    const ogTitle = 'crown jewels の命名案', ogDesc = 'crown jewels の命名案';
 </script>
 
 <svelte:head>

@@ -5,7 +5,7 @@
 	import TrashIcon from '$lib/sfc/trashIcon.svelte';
 
 	const ogTitle = 'URL to Markdown';
-	const ogDesc = 'サイトURLからMarkdown形式に変換します。';
+	const ogDesc = 'サイトURLからMarkdown形式に変換する';
 
 	type UUID = ReturnType<typeof crypto.randomUUID>;
 	type URLInput = {

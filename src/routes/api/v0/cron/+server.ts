@@ -17,7 +17,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIWordsResponse> => {
 		const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
 		if (!resp.ok) {
-			throw resp;
+			error(404, { message: 'cannotAccessZpdicApi' });
 		}
 		return resp.json();
 	};
@@ -41,13 +41,11 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	const getSwadeshListVae = async () => {
 		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET' });
 		const csvStr = await resp.text();
+		const pre = Papa.parse(csvStr, { header: false }).data as string[][];
 
-		return (() => {
-			const pre = Papa.parse(csvStr, { header: false }).data as string[][];
-			return pre.map((row) => {
-				return row.map((s) => s.replace(/;/, ','));
-			});
-		})();
+		return pre.map((row) => {
+			return row.map((s) => s.replace(/;/, ','));
+		});
 	};
 
 	// authorization
@@ -72,16 +70,16 @@ export const GET = async ({ request, fetch: svFetch }) => {
 			client.get(redisKeys.swadeshVae)
 		]).then(([twStr, sl1str]) => {
 			if (twStr && sl1str) {
-				return [JSON.parse(twStr), JSON.parse(sl1str)];
+				return [JSON.parse(twStr), JSON.parse(sl1str)] as const;
 			} else error(500, { message: 'noStoredData' });
 		});
 		console.log(...stored);
 		return json(stored);
 	} catch (e: unknown) {
 		if (isHttpError(e)) {
-			error(e.status);
+			error(e.status, { message: e.body.message });
 		} else {
-			error(500);
+			error(500, { message: 'unidentifiedError' });
 		}
 	}
 };
