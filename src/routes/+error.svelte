@@ -21,7 +21,9 @@
 <div
 	class="px-3 min-h-screen flex flex-col justify-center items-center *:max-w-full gap-4 overflow-hidden **:m-0"
 >
-	<UqTessLogo_2 class="size-50 fill-black block animate-[spin_30s_linear_infinite]" />
+	<div class="animate-[up-down_3s_cubic-bezier(.4,0,.6,1)_infinite_alternate]">
+		<UqTessLogo_2 class="size-50 fill-black block animate-[spin_40s_linear_infinite]" />
+	</div>
 	<h2 class="text-6xl font-extralight font-sans">Hoppla!</h2>
 	<p class="text-center">
 		{#if page.status === 404}

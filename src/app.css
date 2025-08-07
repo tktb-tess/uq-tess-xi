@@ -76,12 +76,12 @@
 	--link-transition-dur: 120ms;
 	--tracking-ultra: 3rem;
 
-	@keyframes rotate {
+	@keyframes slide-in {
 		from {
-			transform: rotate(-1440deg);
+			transform: translateY(-70px) rotate(-120deg);
 		}
 		to {
-			transform: rotate(0);
+			transform: translateY(0) rotate(0);
 		}
 	}
 
@@ -91,6 +91,15 @@
 		}
 		to {
 			opacity: 1;
+		}
+	}
+
+	@keyframes up-down {
+		from {
+			transform: translateY(-10px);
+		}
+		to {
+			transform: translateY(10px);
 		}
 	}
 }
