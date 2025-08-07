@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
-	import TessLogo from '$lib/sfc/tess_logo.svelte';
+	import UqTessLogo_2 from '$lib/sfc/uq-tess-logo-2.svelte';
 
 	const ogTitle = `${page.status}${page.error ? ` ${page.error.message}` : ''}`;
 	const ogDesc = 'そこに無ければ無いですね';
@@ -21,7 +21,7 @@
 <div
 	class="px-3 min-h-screen flex flex-col justify-center items-center *:max-w-full gap-4 overflow-hidden **:m-0"
 >
-	<TessLogo class="size-50 fill-black block animate-[spin_30s_linear_infinite]" />
+	<UqTessLogo_2 class="size-50 fill-black block animate-[spin_30s_linear_infinite]" />
 	<h2 class="text-6xl font-extralight font-sans">Hoppla!</h2>
 	<p class="text-center">
 		{#if page.status === 404}
