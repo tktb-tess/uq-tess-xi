@@ -3,7 +3,7 @@
 	import Toasts from '$lib/sfc/toasts.svelte';
 	import '../app.css';
 	const { children } = $props();
-	const linkCardUrl = new URL('/image/link-card.png', PUBLIC_BASE_URL).href;
+	const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
 </script>
 
 <svelte:head>
