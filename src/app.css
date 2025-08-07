@@ -78,7 +78,7 @@
 
 	@keyframes rotate {
 		from {
-			transform: rotate(-720deg);
+			transform: rotate(-1440deg);
 		}
 		to {
 			transform: rotate(0);
