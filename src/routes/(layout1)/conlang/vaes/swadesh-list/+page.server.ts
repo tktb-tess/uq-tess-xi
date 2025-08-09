@@ -1,9 +1,9 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import { redisKeys, type Success, type SwadeshList } from '$lib/types/decl';
+import { redisKeys, type Result, type SwadeshList } from '$lib/types/decl';
 export const prerender = false;
 
-export const load = async (): Promise<Success<SwadeshList>> => {
+export const load = async (): Promise<Result<SwadeshList>> => {
 	try {
 		const client = await createClient({ url: REDIS_URL }).connect();
 
@@ -15,7 +15,9 @@ export const load = async (): Promise<Success<SwadeshList>> => {
 
 		return {
 			success: true,
-			value
+			result: {
+				value
+			}
 		};
 	} catch (e) {
 		if (e instanceof Error) {
