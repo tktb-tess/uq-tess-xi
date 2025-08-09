@@ -28,3 +28,4 @@ wasm/target/
 .arc/
 .vercel
 draft/out/
+static/sitemap.xml
