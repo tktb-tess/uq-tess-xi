@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ExtLink from '$lib/sfc/ext_link.svelte';
-	import type { Success, WordData } from '$lib/types/decl';
+	import type { Result, WordData } from '$lib/types/decl';
 	type Props = {
-		todayWord: Success<WordData>;
+		todayWord: Result<WordData>;
 	};
 
 	const { todayWord }: Props = $props();
@@ -21,13 +21,14 @@
 			"
 >
 	{#if todayWord.success}
-		<h3 class="font-serif font-normal {todayWord.size}">{todayWord.word}</h3>
-		{#if todayWord.pron}
+		{@const { result } = todayWord}
+		<h3 class="font-serif font-normal {result.size}">{result.word}</h3>
+		{#if result.pron}
 			<p class="text-black/60 font-ipa">
-				{#if todayWord.pron.includes('/')}
-					{todayWord.pron}
+				{#if result.pron.includes('/')}
+					{result.pron}
 				{:else}
-					{`/${todayWord.pron}/`}
+					{`/${result.pron}/`}
 				{/if}
 			</p>
 		{/if}
@@ -45,7 +46,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each todayWord.translations as translation}
+				{#each result.translations as translation}
 					<tr>
 						<td
 							class="justify-self-end bg-mnlila text-white rounded-[500px] px-3 text-base/[1.75] border-none"
@@ -59,7 +60,7 @@
 				{/each}
 			</tbody>
 		</table>
-		<p class="self-end me-3"><ExtLink href={todayWord.dicUrl}>ZpDIC Online</ExtLink></p>
+		<p class="self-end me-3"><ExtLink href={result.dicUrl}>ZpDIC Online</ExtLink></p>
 	{:else}
 		<div class="text-center *:text-[red]">
 			<h3>読み込みに失敗しました</h3>
