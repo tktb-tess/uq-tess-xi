@@ -28,7 +28,7 @@ const generateXml = async () => {
 	const lastmod = new Date().toISOString();
 
 	const urls = paths.map(
-		(p) => `<url>
+		(p) => `	<url>
     	<loc>${new URL(p, 'https://www.tktb-tess.dev').href}</loc>
     	<lastmod>${lastmod}</lastmod>
 	</url>`
@@ -36,7 +36,7 @@ const generateXml = async () => {
 
 	const text = `<?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${urls.join('\n')}
+${urls.join('\n')}
 </urlset>`;
 
 	await writeFile('./static/sitemap.xml', text);
