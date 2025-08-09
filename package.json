@@ -5,14 +5,15 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "npx tsx .other-scripts/xml-generate.ts && vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint . && prettier --check .",
 		"format": "prettier --write .",
-		"convert": "npx tsx draft/convert.ts"
+		"convert": "npx tsx draft/convert.ts",
+		"xml-generate": "npx tsx .other-scripts/xml-generate.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
