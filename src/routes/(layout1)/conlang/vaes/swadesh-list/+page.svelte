@@ -23,7 +23,7 @@
 <p>まだ未完成。順次追加していきます。</p>
 
 {#if swadeshList.success}
-	{@const [header, ...body] = swadeshList.value}
+	{@const [header, ...body] = swadeshList.result.value}
 	<div class="table-container slidein">
 		<table class="grid-cols-auto-4 [&_td]:text-start [&_td:first-child]:text-end">
 			<thead>

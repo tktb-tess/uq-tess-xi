@@ -58,10 +58,11 @@ export type SwadeshList = {
 	readonly value: readonly (readonly string[])[];
 };
 
-export type Success<T extends object> =
-	| (T & {
+export type Result<T extends object> =
+	| {
 			readonly success: true;
-	  })
+			readonly result: T;
+	  }
 	| {
 			readonly success: false;
 			readonly status?: number;
@@ -83,5 +84,5 @@ export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
 
 export const redisKeys = {
 	todayWord: 'today-word',
-	swadeshVae: 'swadesh-list-vae',
+	swadeshVae: 'swadesh-list-vae'
 } as const;

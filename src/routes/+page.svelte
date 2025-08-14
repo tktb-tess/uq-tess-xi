@@ -139,6 +139,9 @@
 				>
 			</li>
 			<li>
+				<ExtLink href="https://apps.tktb-tess.dev/">τὰ συστήματα (作ったアプリたち)</ExtLink>
+			</li>
+			<li>
 				<ExtLink
 					href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
 				>
