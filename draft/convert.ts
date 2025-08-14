@@ -2,7 +2,7 @@ import { marked } from 'marked';
 import { readFile, writeFile } from 'node:fs/promises';
 
 const main = async () => {
-	const names = ['xen'] as const;
+	const names = ['miller-rabin'] as const;
 
 	const readProms = names.map(async (name) => {
 		const file = await readFile(`draft/${name}.md`, { encoding: 'utf-8' });

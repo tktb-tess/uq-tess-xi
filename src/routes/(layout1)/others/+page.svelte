@@ -43,7 +43,7 @@
 		<li><a href="/others/md-converter">URLからMarkdown変換</a></li>
 		<li><a href="/like-programmer">表示するだけでなんかすごいハッカーみたいなことやってるように見えるページ</a></li>
 		<li>
-			<ExtLink href="https://apps.tktb-tess.dev">アプリ置き場</ExtLink>
+			<ExtLink href="https://apps.tktb-tess.dev/">τὰ συστήματα (作ったアプリたち)</ExtLink>
 		</li>
 	</ul>
 </section>
