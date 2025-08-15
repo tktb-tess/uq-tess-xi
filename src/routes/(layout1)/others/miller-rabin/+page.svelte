@@ -25,7 +25,7 @@
 
 <h2 class="text-center my-8">{ogTitle}</h2>
 <section aria-labelledby="pree">
-	<h2 id="pree">前提知識</h2>
+	<h2 class="border-b-3 border-double ps-1" id="pree">前提知識</h2>
 	<p>
 		<Katex math="p" /> を奇素数とする。フェルマーの小定理より、 <Katex math="p" /> と互いに素な正整数
 		<Katex math="a" /> について
@@ -102,7 +102,7 @@
 	<p>がいえる。</p>
 </section>
 <section aria-labelledby="judge">
-	<h2 id="judge">判定法</h2>
+	<h2 class="border-b-3 border-double ps-1" id="judge">判定法</h2>
 	<p>
 		定理②を用いて確率的な素数判定をするものが <strong>Miller–Rabin</strong> 素数判定法である。
 	</p>
@@ -135,7 +135,7 @@
 	</p>
 </section>
 <section aria-labelledby="jissou">
-	<h2 id="jissou">実装例</h2>
+	<h2 class="border-b-3 border-double ps-1" id="jissou">実装例</h2>
 	<h3>TypeScript</h3>
 	<pre class="bg-slate-200 px-3"><code>{`/**
  * Miller-Rabin 素数判定法 (n < 2^64 の場合決定的に判定)
