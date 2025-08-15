@@ -41,7 +41,11 @@
 		<li><a href="/others/ja-tibetan">日本語 チベット文字表記</a></li>
 		<li><a href="/others/license">ライセンス</a></li>
 		<li><a href="/others/md-converter">URLからMarkdown変換</a></li>
-		<li><a href="/like-programmer">表示するだけでなんかすごいハッカーみたいなことやってるように見えるページ</a></li>
+		<li>
+			<a href="/like-programmer"
+				>表示するだけでなんかすごいハッカーみたいなことやってるように見えるページ</a
+			>
+		</li>
 		<li>
 			<ExtLink href="https://apps.tktb-tess.dev/">τὰ συστήματα (作ったアプリたち)</ExtLink>
 		</li>
@@ -51,9 +55,7 @@
 	<h2 class="border-b-3 border-double ps-1" id="memo">メモ</h2>
 	<ul>
 		<li>
-			<ExtLink href="https://gist.github.com/tktb-tess/91f831a1c93d78fe54ad1cec172d08d2">
-				Miller–Rabin 素数判定法
-			</ExtLink>
+			<a href="/others/miller-rabin">Miller–Rabin 素数判定法</a>
 		</li>
 	</ul>
 </section>

@@ -236,7 +236,7 @@
 	}
 
 	:is(ul, ol) > li {
-		@apply ms-3 ps-1;
+		@apply ms-5 ps-1;
 	}
 
 	table {

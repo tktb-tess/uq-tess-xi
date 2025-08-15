@@ -154,7 +154,6 @@ export const exEuclidean = (a: bigint, b: bigint) => {
  * @param n_ 判定したい整数
  */
 export const millerRabin = (n_: bigint) => {
-	if (typeof n_ !== 'bigint') throw TypeError('引数型は `bigint` でなければなりません');
 	if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
 	const n = n_;
 
