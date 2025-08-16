@@ -31,6 +31,8 @@ const generateXml = async () => {
 		(p) => `	<url>
     	<loc>${new URL(p, 'https://www.tktb-tess.dev').href}</loc>
     	<lastmod>${lastmod}</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>${p === '/' ? 1 : 0.8}</priority>
 	</url>`
 	);
 

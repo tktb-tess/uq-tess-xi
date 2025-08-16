@@ -24,7 +24,7 @@
 
 {#if swadeshList.success}
 	{@const [header, ...body] = swadeshList.result.value}
-	<div class="table-container slidein">
+	<div class="table-container animate-[slide-in-2_.4s_cubic-bezier(0,1,1,1),fade-in_.4s_linear]">
 		<table class="grid-cols-auto-4 [&_td]:text-start [&_td:first-child]:text-end">
 			<thead>
 				<tr>
@@ -52,21 +52,5 @@
 {/if}
 
 <style>
-	@keyframes slidein {
-		from {
-			opacity: 0;
-			top: 15px;
-		}
-		to {
-			opacity: 1;
-			top: 0;
-		}
-	}
-
-	.slidein {
-		animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
-		animation-duration: 400ms;
-		animation-name: slidein;
-		position: relative;
-	}
+	
 </style>
