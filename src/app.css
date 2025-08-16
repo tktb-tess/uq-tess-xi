@@ -85,6 +85,15 @@
 		}
 	}
 
+	@keyframes slide-in-2 {
+		from {
+			transform: translateY(15px);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
 	@keyframes fade-in {
 		from {
 			opacity: 0;
