@@ -59,16 +59,16 @@
 		<h3>証明</h3>
 		<p><Katex math={`a^{2^{s-1} d} \\pmod p`} /> の値について考える。</p>
 		<p>
-			<Katex math={`a^{2^s d}`} /> の平方根なので、 <Katex math={`(2)`} /> よりこれは <Katex
-				math={`1`}
-			/> または <Katex math={`-1`} /> と合同である。
+			<Katex math={`a^{2^s d}`} /> の平方根なので、 <Katex math="(2)" /> よりこれは <Katex
+				math="1"
+			/> または <Katex math="-1" /> と合同である。
 		</p>
 		<p><Katex math="-1" /> と合同なら <Katex math={`\\mathrm{(a)}`} /> が成立。</p>
 		<p>
 			<Katex math="1" /> と合同なら平方根 <Katex math={`a^{2^{s-2} d}`} /> を再びとり、同じように考える。
 		</p>
 		<p>
-			<Katex math="0 \\le r \\le s-1" /> の間で <Katex math="-1" /> と合同なものがあれば <Katex
+			<Katex math="0 \le r \le s-1" /> の間で <Katex math="-1" /> と合同なものがあれば <Katex
 				math={`\\mathrm{(a)}`}
 			/> が成立する。
 		</p>
@@ -88,17 +88,14 @@
 		<p>
 			<Katex math={`n-1 = 2^{s} d`} /> 、ただし <Katex math="d" /> は正奇数、 <Katex math="s" /> は正整数としたとき、
 		</p>
-
 		<Katex
-			math={`\\forall r \\in \\mathbb{Z}(0 ≤ r ≤ s-1)\\ \\ a^{2^r d} \\not\\equiv {-1} \\pmod n \\qquad \\mathrm{(c)}`}
+			math={`\\forall r \\in \\mathbb{Z}(0\\le r\\le s-1)\\ \\ a^{2^r d} \\not\\equiv {-1} \\pmod n \\qquad \\mathrm{(c)}`}
 			displayMode
 		/>
-
 		<p>かつ</p>
 		<Katex math={`a^d \\not\\equiv 1 \\pmod n \\quad \\mathrm{(d)}`} displayMode />
 		<p>ならば、 <Katex math="n" /> は合成数</p>
 	</div>
-
 	<p>がいえる。</p>
 </section>
 <section aria-labelledby="judge">
@@ -109,14 +106,25 @@
 	<p>具体的には、 n を素数判定したい正整数とすると、</p>
 	<div class="bg-sky-50 rounded-lg border border-black/20 px-3 flow-root pt-3 mb-3">
 		<ol>
-			<li><Katex math="n-1" /> を <Katex math="2" /> の冪 <Katex math="2^s" /> と奇数 <Katex math="d" /> の積に分解する</li>
+			<li>
+				<Katex math="n-1" /> を <Katex math="2" /> の冪 <Katex math="2^s" /> と奇数 <Katex
+					math="d"
+				/> の積に分解する
+			</li>
 			<li>
 				以下の試行を何回か繰り返す
 				<ol class="list-[lower-roman]">
-					<li>正整数 <Katex math='0 &lt; a \\le n-1' /> をランダムに選ぶ</li>
-					<li><Katex math="a" /> と <Katex math="n" /> が互いに素でないなら <Katex math="n" /> は合成数。<em>終了</em></li>
+					<li>正整数 <Katex math="0 < a \le n-1" /> をランダムに選ぶ</li>
 					<li>
-						上の条件 <Katex math={`\\mathrm{(c)}, \\mathrm{(d)}`} /> をともに満たす場合、 <Katex math="n" /> は合成数。<em>終了</em>
+						<Katex math="a" /> と <Katex math="n" /> が互いに素でないなら <Katex math="n" /> は合成数。<em
+						>
+							終了
+						</em>
+					</li>
+					<li>
+						上の条件 <Katex math={`\\mathrm{(c)}, \\mathrm{(d)}`} /> をともに満たす場合、 <Katex
+							math="n"
+						/> は合成数。<em>終了</em>
 					</li>
 					<li>i. に戻る</li>
 				</ol>
@@ -126,18 +134,23 @@
 	</div>
 
 	<p>
-		ここで、定理②の逆は成り立たない。つまり <Katex math="n" /> が合成数でも上の2つの条件 <Katex math={`\\mathrm{(c)}, \\mathrm{(d)}`} />
+		ここで、定理②の逆は成り立たない。つまり <Katex math="n" /> が合成数でも上の2つの条件 <Katex
+			math={`\\mathrm{(c)}, \\mathrm{(d)}`}
+		/>
 		を満たさない場合がある。
 	</p>
 	<p>
-		しかし <Katex math="a" /> を様々に変えて試行すれば、いつかは <Katex math={`\\mathrm{(c)}, \\mathrm{(d)}`} /> を満たす <Katex math="a" /> が見つかる可能性が上がる。つまり
+		しかし <Katex math="a" /> を様々に変えて試行すれば、いつかは <Katex
+			math={`\\mathrm{(c)}, \\mathrm{(d)}`}
+		/> を満たす <Katex math="a" /> が見つかる可能性が上がる。つまり
 		<Katex math="n" /> を合成数と判定できる確率が上がる。
 	</p>
 </section>
 <section aria-labelledby="jissou">
 	<h2 class="border-b-3 border-double ps-1" id="jissou">実装例</h2>
 	<h3>TypeScript</h3>
-	<pre class="bg-slate-200 px-3"><code>{`/**
+	<pre class="bg-slate-200 px-3"><code
+			>{`/**
  * Miller-Rabin 素数判定法 (n < 2^64 の場合決定的に判定)
  * @param n 判定したい整数
  */
@@ -204,7 +217,8 @@ export const millerRabin = (n: bigint) => {
 		}
 		return true;
 	}
-};`}</code></pre>
+};`}</code
+		></pre>
 </section>
 
 <div class="h-10"></div>

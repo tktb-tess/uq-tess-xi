@@ -4,13 +4,14 @@
 	import PlayFill from '$lib/sfc/play-fill.svelte';
 	import Repeat from '$lib/sfc/repeat.svelte';
 	import StopFill from '$lib/sfc/stop-fill.svelte';
-	import { trackData, type TrackParams } from './audioData';
+	import type { TrackParams } from './+page.server';
 
-	const ogTitle = '音楽',
-		ogDesc = '作曲は楽しい';
+	const ogTitle = '音楽';
+	const ogDesc = '作曲は楽しい';
+	const { data } = $props();
 
 	const tracks = $state<TrackParams[]>(
-		trackData.map((data) => ({
+		data.trackData.map((data) => ({
 			...data,
 			currentTime: 0,
 			loop: false,
@@ -64,7 +65,9 @@
 	};
 
 	const toTime = (time: number) => {
-		if (!Number.isFinite(time)) return '-:--';
+		if (!Number.isFinite(time)) {
+			return '-:--';
+		}
 		const minutes = (time / 60) | 0;
 		const seconds = ((time | 0) % 60).toString().padStart(2, '0');
 		return `${minutes}:${seconds}`;
