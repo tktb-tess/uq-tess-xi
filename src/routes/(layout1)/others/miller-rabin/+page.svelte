@@ -44,7 +44,7 @@
 		<p>各変数を上のように定義したとき、</p>
 
 		<Katex
-			math={`\\exists r\\in \\mathbb(0 \\le r \\le s-1) \\ \\ a^{2^r d} \\equiv {-1} \\pmod p \\qquad \\mathrm{(a)}`}
+			math={`\\exists r\\in \\mathbb{Z}(0 \\le r \\le s-1) \\ \\ a^{2^r d} \\equiv {-1} \\pmod p \\qquad \\mathrm{(a)}`}
 			displayMode
 		/>
 
@@ -145,15 +145,22 @@
 		/> を満たす <Katex math="a" /> が見つかる可能性が上がる。つまり
 		<Katex math="n" /> を合成数と判定できる確率が上がる。
 	</p>
+	<h3>条件付き決定的判定</h3>
+	<p>
+		また、特定の底 <Katex math="a" /> について判定を行えば、ある範囲では素数であると決定的に判定できるような
+		<Katex math="a" /> と範囲がいくつか発見されている。
+	</p>
+	<p>
+		例えば、 <Katex math={`2^{64}`} /> 未満の数は、 <Katex
+			math={`a=2,325,9375,28178,450775,9780504,1795265022`}
+		/> の7つの底について判定を行えば、素数であると決定的に判定できることが分かっている。
+	</p>
 </section>
 <section aria-labelledby="jissou">
 	<h2 class="border-b-3 border-double ps-1" id="jissou">実装例</h2>
 	<h3>TypeScript</h3>
 	<pre class="bg-slate-200 px-3"><code
-			>{`/**
- * Miller-Rabin 素数判定法 (n < 2^64 の場合決定的に判定)
- * @param n 判定したい整数
- */
+			>{`
 export const millerRabin = (n: bigint) => {
 	if (n < 0n) throw Error('引数は正の整数でなければなりません');
 
@@ -163,8 +170,8 @@ export const millerRabin = (n: bigint) => {
 
 	const bit_num = n.toString(2).length;
 
-	// 0 の長さ
-	const s = BigInt((n - 1n).toString(2).match(/0+/g)?.[0].length ?? 0);
+
+	const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
 	const d = (n - 1n) >> s;
 
 	if (n < 2n ** 64n) {
@@ -198,7 +205,7 @@ export const millerRabin = (n: bigint) => {
 			let b_ = 0n;
 
 			while (b_ < 2n || b_ >= n) {
-				b_ = getRandBIByBitLength(bit_num);
+				b_ = getRandBIByBitLength(bit_num); // bit_num ビット以下の乱数を出力
 			}
 
 			if (exEuclidean(b_, n).gcd !== 1n) return false;
@@ -217,7 +224,9 @@ export const millerRabin = (n: bigint) => {
 		}
 		return true;
 	}
-};`}</code
+};
+
+`}</code
 		></pre>
 </section>
 

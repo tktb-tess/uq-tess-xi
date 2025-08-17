@@ -157,6 +157,7 @@ export const millerRabin = (n_: bigint) => {
 	if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
 	const n = n_;
 
+	// 2, 2の倍数 の場合の判定
 	if (n === 2n) return true;
 	if (n === 1n || n % 2n === 0n) return false;
 
@@ -222,7 +223,7 @@ export const millerRabin = (n_: bigint) => {
  * @returns 引数の階乗
  */
 export const factorial = (n_: number) => {
-	if (!Number.isFinite(n_)) throw Error(`not a number`);
+	if (!Number.isFinite(n_)) throw Error(`invalid number`);
 	if (n_ < 0) throw Error(`number must be non-negative`);
 	if (n_ === 0) return 1n;
 
@@ -390,16 +391,7 @@ export const getRandPrimeByBitLength = (bitLength: number) => {
 	throw Error('noPrimesFound');
 };
 
-type ResolveFunc<T> = (value: T | PromiseLike<T>) => void;
-type RejectFunc = (error: unknown) => void;
-export type PromiseCallback<T> = (resolve: ResolveFunc<T>, reject: RejectFunc) => void;
-
-export const getHash = async function* (n: number) {
-	for (let i = 0; i < n; i++) {
-		const date = Date.now().toString(16);
-		const a = Uint8Array.from(date.split(/.{2}/g), (s) => Number.parseInt(s, 16));
-		yield Buffer.from(await crypto.subtle.digest('SHA-256', a)).toString('base64');
-	}
+export const getHash = async (str: string, algorithm: AlgorithmIdentifier) => {
+	const utf8 = Buffer.from(str, 'utf8');
+	return crypto.subtle.digest(algorithm, utf8).then((hash) => Buffer.from(hash));
 };
-
-
