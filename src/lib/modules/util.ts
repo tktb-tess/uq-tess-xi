@@ -29,8 +29,8 @@ export const toBigInt = (nums: number | number[]) => {
  *
  */
 export const getRandBIByBitLength = (length: number, fixed = false) => {
-	if (length <= 0) throw Error('a bit length must be a positive');
-	if (!Number.isFinite(length)) throw Error('a bit length is not a valid number');
+	if (length <= 0) throw Error('A bit length must be a positive');
+	if (!Number.isFinite(length)) throw Error('A bit length is not a valid number');
 	const div = Math.ceil(length / 32);
 
 	const typed_arr = crypto.getRandomValues(new Uint32Array(div));
@@ -56,12 +56,14 @@ export const getRandBIByRange = (min: bigint, max: bigint) => {
 	const bitLength = diff.toString(2).length;
 
 	const res = (() => {
-		while (true) {
+		const limit = 100000;
+		for (let i = 0; i < limit; i++) {
 			const res = getRandBIByBitLength(bitLength);
 			if (res >= modPow(2n, BigInt(bitLength), diff)) {
 				return res % diff;
 			}
 		}
+		throw Error('Failed to generate a random bigint');
 	})();
 
 	return min + res;
