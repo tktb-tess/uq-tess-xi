@@ -28,5 +28,5 @@
 	<FromBase64 seed={seeds[1]} />
 	<OddCalculator {exps} {logs} seed={seeds[2]} />
 	<PrimGuessr seed={seeds[2]} />
-	<h5 class="text-center text-[red] text-2xl my-8">工事中……</h5>
+	<h5 class="text-center text-red-600 text-2xl my-8">工事中……</h5>
 </div>

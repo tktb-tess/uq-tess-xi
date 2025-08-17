@@ -1,5 +1,5 @@
 export type TrackData = {
-	readonly id: string;
+	readonly path: string;
 	readonly title: string;
 	readonly composer: string;
 	readonly description: string;
@@ -16,13 +16,13 @@ export type TrackParams = TrackData & {
 export const load = async () => {
 	const trackData: ReadonlyArray<TrackData> = [
 		{
-			id: 'wlcm',
+			path: 'wlcm.m4a',
 			title: 'Welcome',
 			composer: 'Tessyrrhaqt',
 			description: 'Psytranceまがいの静かな曲。'
 		},
 		{
-			id: 'clst',
+			path: 'clst.m4a',
 			title: 'Celeste',
 			composer: 'Tessyrrhaqt',
 			description: 'Youtubeのエンディングテーマみたいなの作りたいなって思ったので作った短い曲。'
