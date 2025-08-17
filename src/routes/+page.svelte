@@ -51,7 +51,7 @@
 >
 	<div>
 		<h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
-		<p class="text-[red] font-semibold text-xl text-center">
+		<p class="text-red-600 font-semibold text-xl text-center">
 			※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
 		</p>
 		<p>
@@ -151,7 +151,7 @@
 			</li>
 		</ul>
 	</section>
-	<h3 class="text-[red] text-center my-8">工事中……</h3>
+	<h3 class="text-red-600 text-center my-8">工事中……</h3>
 </main>
 
 <footer class="flex flex-col items-center my-5 px-3">
@@ -159,7 +159,7 @@
 		※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
 	</p>
 	<p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
-	<a href="https://github.com/tktb-tess/uq-tess-xi" target="_blank" rel="noopener">
+	<a href="https://github.com/tktb-tess/uq-tess-xi" target="_blank" rel="noopener" aria-label="Link to the GitHub Repository">
 		<GithubMark class="any-hover:opacity-60 size-6 transition-opacity" />
 	</a>
 </footer>

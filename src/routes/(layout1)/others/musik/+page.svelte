@@ -5,7 +5,7 @@
 	import Repeat from '$lib/sfc/repeat.svelte';
 	import StopFill from '$lib/sfc/stop-fill.svelte';
 	import type { TrackParams } from './+page.server';
-
+	
 	const ogTitle = '音楽';
 	const ogDesc = '作曲は楽しい';
 	const { data } = $props();
@@ -21,7 +21,7 @@
 
 	const handlePlay = async (i: number) => {
 		if (!tracks[i].ref) {
-			console.log(tracks[i].id, ' empty');
+			console.log(tracks[i].path, ' empty');
 			return;
 		}
 
@@ -53,7 +53,7 @@
 
 	const handleStop = async (i: number) => {
 		if (!tracks[i].ref) {
-			console.log(tracks[i].id, ' empty');
+			console.log(tracks[i].path, ' empty');
 			return;
 		}
 
@@ -90,7 +90,7 @@
 	<p class="text-center">作曲は楽しいぞ</p>
 </div>
 
-{#each tracks as track, i (track.id)}
+{#each tracks as track, i (track.path)}
 	<div
 		class="bg-white rounded-lg border border-slate-300 drop-shadow flex flex-col gap-3 px-5 py-2 *:m-0"
 	>
@@ -129,7 +129,7 @@
 		</div>
 
 		<audio
-			src="/audio/{track.id}.m4a"
+			src="/audio/{track.path}"
 			loop={track.loop}
 			bind:this={tracks[i].ref}
 			bind:currentTime={tracks[i].currentTime}

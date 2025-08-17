@@ -15,4 +15,4 @@
 	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
-<h3 class="text-center text-[red] my-8">工事中……</h3>
+<h3 class="text-center text-red-600 my-8">工事中……</h3>
