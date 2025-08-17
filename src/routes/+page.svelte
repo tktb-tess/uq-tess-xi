@@ -51,7 +51,7 @@
 >
 	<div>
 		<h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
-		<p class="text-red-500 font-semibold text-xl text-center">
+		<p class="text-red-600 font-semibold text-xl text-center">
 			※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
 		</p>
 		<p>
@@ -151,7 +151,7 @@
 			</li>
 		</ul>
 	</section>
-	<h3 class="text-[red] text-center my-8">工事中……</h3>
+	<h3 class="text-red-600 text-center my-8">工事中……</h3>
 </main>
 
 <footer class="flex flex-col items-center my-5 px-3">
