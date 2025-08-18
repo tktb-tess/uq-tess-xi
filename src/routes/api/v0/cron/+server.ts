@@ -64,7 +64,11 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	}
 
 	try {
-		const [todayWord, swadeshListVae, rsaKey] = await Promise.all([getTodayWord(), getSwadeshListVae(), genRsaKey()]);
+		const [todayWord, swadeshListVae, rsaKey] = await Promise.all([
+			getTodayWord(),
+			getSwadeshListVae(),
+			genRsaKey()
+		]);
 
 		// connect to Redis
 		const client = await createClient({ url: REDIS_URL }).connect();
@@ -78,14 +82,15 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		// check
 		const stored = await Promise.all([
 			client.get(redisKeys.todayWord),
-			client.get(redisKeys.swadeshVae)
-		]).then(([twStr, sl1str]) => {
-			if (twStr && sl1str) {
-				return [JSON.parse(twStr), JSON.parse(sl1str)] as const;
+			client.get(redisKeys.swadeshVae),
+			client.get(redisKeys.rsaKey)
+		]).then(([twStr, sl1str, rsaStr]) => {
+			if (twStr && sl1str && rsaStr) {
+				return [JSON.parse(twStr), JSON.parse(sl1str), JSON.parse(rsaStr)] as const;
 			} else error(500, { message: 'noStoredData' });
 		});
 		console.log(...stored);
-		return json(stored);
+		return json(stored, { headers: { 'Content-Type': 'application/json' } });
 	} catch (e: unknown) {
 		if (isHttpError(e)) {
 			error(e.status, { message: e.body.message });

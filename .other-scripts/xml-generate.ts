@@ -21,7 +21,8 @@ const paths: readonly string[] = [
 	'others/license/FONTLOG',
 	'others/md-converter',
 	'others/musik',
-	'others/tools'
+	'others/tools',
+	'others/miller-rabin',
 ];
 
 const generateXml = async () => {
