@@ -454,7 +454,12 @@ export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
 	}
 };
 
-const millerRabinTemp = (n: bigint) => {
+/**
+ * 一時的
+ * @param n 
+ * @returns 
+ */
+export const millerRabinTemp = (n: bigint) => {
 	if (n <= 0n) throw Error('`n` must be positive');
 
 	if (n < 2n ** 64n) {

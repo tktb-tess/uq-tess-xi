@@ -1,6 +1,6 @@
 // used in server-side
 
-import { millerRabin, getRandBIByBitLength, modPow, exEuclidean } from './util';
+import { millerRabinTemp, getRandBIByBitLength, modPow, exEuclidean } from './util';
 
 const e = 65537n;
 
@@ -21,7 +21,7 @@ export default class RSA {
 			let [p_, q_] = [1n, 1n];
 			let counter = 0;
 
-			while (!millerRabin(p_)) {
+			while (!millerRabinTemp(p_)) {
 				p_ = getRandBIByBitLength(bits, true);
 				counter++;
 				if (counter > 100000) throw Error('failed to construct.');
@@ -29,7 +29,7 @@ export default class RSA {
 
 			counter = 0;
 
-			while (!millerRabin(q_)) {
+			while (!millerRabinTemp(q_)) {
 				q_ = getRandBIByBitLength(bits, true);
 				counter++;
 				if (counter > 100000) throw Error('failed to construct.');
