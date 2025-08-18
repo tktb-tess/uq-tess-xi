@@ -61,7 +61,7 @@ export default class PCGXSHRR {
         return this.value;
     }
 
-    /** bound 以下の乱数を返す */
+    /** `bound` 以下の乱数を返す */
     getBoundedRand(bound: number) {
 
         /** 32bit 上限 */

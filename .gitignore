@@ -29,3 +29,4 @@ wasm/target/
 .vercel
 draft/out/
 static/sitemap.xml
+test.ts

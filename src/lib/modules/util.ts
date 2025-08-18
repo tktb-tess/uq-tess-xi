@@ -29,8 +29,8 @@ export const toBigInt = (nums: number | number[]) => {
  *
  */
 export const getRandBIByBitLength = (length: number, fixed = false) => {
-	if (length <= 0) throw Error('a bit length must be a positive');
-	if (!Number.isFinite(length)) throw Error('a bit length is not a valid number');
+	if (length <= 0) throw Error('A bit length must be a positive');
+	if (!Number.isFinite(length)) throw Error('A bit length is not a valid number');
 	const div = Math.ceil(length / 32);
 
 	const typed_arr = crypto.getRandomValues(new Uint32Array(div));
@@ -56,12 +56,14 @@ export const getRandBIByRange = (min: bigint, max: bigint) => {
 	const bitLength = diff.toString(2).length;
 
 	const res = (() => {
-		while (true) {
+		const limit = 100000;
+		for (let i = 0; i < limit; i++) {
 			const res = getRandBIByBitLength(bitLength);
 			if (res >= modPow(2n, BigInt(bitLength), diff)) {
 				return res % diff;
 			}
 		}
+		throw Error('Failed to generate a random bigint');
 	})();
 
 	return min + res;
@@ -147,74 +149,6 @@ export const exEuclidean = (a: bigint, b: bigint) => {
 	}
 
 	return { x: x_2, y: y_2, gcd: c_2 };
-};
-
-/**
- * Miller-Rabin 素数判定法 (n < 2^64 の場合決定的に判定)
- * @param n_ 判定したい整数
- */
-export const millerRabin = (n_: bigint) => {
-	if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
-	const n = n_;
-
-	// 2, 2の倍数 の場合の判定
-	if (n === 2n) return true;
-	if (n === 1n || n % 2n === 0n) return false;
-
-	const bit_num = n.toString(2).length;
-	const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
-	const d = (n - 1n) >> s;
-
-	if (n < 2n ** 64n) {
-		/** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
-		const bases_under_64 = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n] as const;
-
-		challenge: for (const b_ of bases_under_64) {
-			const base = b_ >= n ? b_ % n : b_;
-
-			if (base === 0n) continue challenge;
-
-			if (exEuclidean(base, n).gcd != 1n) return false;
-
-			let y = modPow(base, d, n);
-
-			if (y === 1n) continue challenge;
-
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge;
-
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	} else {
-		/** 試行回数 */
-		const max_rot = 40;
-
-		challenge2: for (let i = 0; i < max_rot; i++) {
-			let b_ = 0n;
-
-			while (b_ < 2n || b_ >= n) {
-				b_ = getRandBIByBitLength(bit_num);
-			}
-
-			if (exEuclidean(b_, n).gcd !== 1n) return false;
-
-			const base = b_;
-
-			let y = modPow(base, d, n);
-
-			if (y === 1n) continue challenge2;
-
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge2;
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	}
 };
 
 /**
@@ -373,7 +307,7 @@ export const getRandPrimeByRange = (min: bigint, max: bigint) => {
 	}
 	for (let count = 0; count < 100000; count++) {
 		const p = getRandBIByRange(min, max);
-		if (millerRabin(p)) return p;
+		if (millerRabinTemp(p)) return p;
 	}
 
 	throw Error('noPrimesFound');
@@ -385,7 +319,7 @@ export const getRandPrimeByBitLength = (bitLength: number) => {
 	}
 	for (let count = 0; count < 100000; count++) {
 		const p = getRandBIByBitLength(bitLength, true);
-		if (millerRabin(p)) return p;
+		if (millerRabinTemp(p)) return p;
 	}
 
 	throw Error('noPrimesFound');
@@ -394,4 +328,139 @@ export const getRandPrimeByBitLength = (bitLength: number) => {
 export const getHash = async (str: string, algorithm: AlgorithmIdentifier) => {
 	const utf8 = Buffer.from(str, 'utf8');
 	return crypto.subtle.digest(algorithm, utf8).then((hash) => Buffer.from(hash));
+};
+
+/**
+ * ヤコビ記号
+ * @param a 正の整数
+ * @param n 正の奇数
+ */
+export const jacobiSymbol = (a: bigint, n: bigint) => {
+	while (a < 0n) {
+		a += n;
+	}
+	a %= n;
+
+	let result = 1n;
+	while (a !== 0n) {
+		while (a % 2n === 0n) {
+			a /= 2n;
+			const nMod8 = n % 8n;
+			if (nMod8 === 3n || nMod8 === 5n) {
+				result *= -1n;
+			}
+		}
+		[a, n] = [n, a];
+
+		if (a % 4n === 3n && n % 4n === 3n) {
+			result *= -1n;
+		}
+		a %= n;
+	}
+
+	return n === 1n ? result : 0n;
+};
+
+/**
+ * 平方数かの判定
+ * @param n
+ * @returns
+ */
+export const isSquare = (n: bigint) => {
+	if (n < 0n) return false;
+	if (n === 0n) return true;
+	let x = 1n;
+	let y = n;
+	while (x + 1n < y) {
+		const mid = (x + y) / 2n;
+
+		if (mid ** 2n < n) {
+			x = mid;
+		} else {
+			y = mid;
+		}
+	}
+	return n === x ** 2n || n === (x + 1n) ** 2n;
+};
+
+type MillerRabinConfig =
+	| {
+			mode: 'fixed';
+			bases: readonly bigint[];
+	  }
+	| {
+			mode: 'random';
+			cycle: number;
+	  };
+
+/**
+ * Miller-Rabin テスト
+ * @param n 判定する整数
+ * @param config 設定
+ * @returns
+ */
+export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
+	if (n === 1n) return false;
+	if (n % 2n === 0n) return n === 2n;
+	let d_ = n - 1n;
+	let s_ = 0n;
+
+	while (d_ % 2n === 0n) {
+		d_ >>= 1n;
+		s_ += 1n;
+	}
+	const [d, s] = [d_, s_];
+
+	const isPPrime = (a_: bigint) => {
+		const a = a_ >= n ? a_ % n : a_;
+		if (a === 0n) return true;
+		let y = modPow(a, d, n);
+
+		if (y === 1n) {
+			return true;
+		}
+
+		for (let i = 0n; i < s; i++) {
+			if (y === n - 1n) {
+				return true;
+			}
+			y = (y * y) % n;
+		}
+		return false;
+	};
+
+	switch (config.mode) {
+		case 'fixed': {
+			const { bases } = config;
+
+			for (const base of bases) {
+				if (!isPPrime(base)) {
+					return false;
+				}
+			}
+			return true;
+		}
+		case 'random': {
+			const { cycle } = config;
+
+			for (let i = 0; i < cycle; i++) {
+				const base = getRandBIByRange(2n, n);
+				if (!isPPrime(base)) {
+					return false;
+				}
+			}
+			return true;
+		}
+	}
+};
+
+const millerRabinTemp = (n: bigint) => {
+	if (n <= 0n) throw Error('`n` must be positive');
+
+	if (n < 2n ** 64n) {
+		const bases: readonly bigint[] = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n];
+		return millerRabin(n, { mode: 'fixed', bases });
+	} else {
+		return millerRabin(n, { mode: 'random', cycle: 40 });
+	}
 };
