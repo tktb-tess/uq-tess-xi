@@ -1,9 +1,37 @@
-// used in server-side
+// assume to be used in server-side
 
-import { bailliePSW } from './baillie-psw';
-import { getRandBIByBitLength, modPow, exEuclidean } from './util';
+import { getRandPrimeByBitLength } from './baillie-psw';
+import { modPow, exEuclidean, residue } from './util';
 
 const e = 65537n;
+
+export type RSAData = {
+	name: 'RSA';
+	p: string;
+	q: string;
+	d: string;
+};
+
+/**
+ * bigint -> Base64URL
+ * @param bigint
+ * @returns
+ */
+const BIToBase64URL = (bigint: bigint) => {
+	let str = bigint.toString(16);
+	if (str.length % 2 === 1) str = '0' + str;
+	return Buffer.from(str, 'hex').toString('base64url');
+};
+
+/**
+ * Base64URL -> bigint
+ * @param base64
+ * @returns
+ */
+const Base64URLToBI = (base64: string) => {
+	const hexStr = Buffer.from(base64, 'base64url').toString('hex');
+	return BigInt('0x' + hexStr);
+};
 
 export default class RSA {
 	readonly #p;
@@ -14,36 +42,22 @@ export default class RSA {
 		return RSA.name;
 	}
 
-	/**
-	 * @param bits 素数のビット数
-	 */
-	constructor(bits: number) {
+	private constructor(p: bigint, q: bigint, d: bigint) {
+		this.#p = p;
+		this.#q = q;
+		this.#d = d;
+	}
+
+	static generate() {
 		loop: while (true) {
-			let [p_, q_] = [1n, 1n];
-			let counter = 0;
-
-			while (!bailliePSW(p_)) {
-				p_ = getRandBIByBitLength(bits, true);
-				counter++;
-				if (counter > 100000) throw Error('failed to construct.');
-			}
-
-			counter = 0;
-
-			while (!bailliePSW(q_)) {
-				q_ = getRandBIByBitLength(bits, true);
-				counter++;
-				if (counter > 100000) throw Error('failed to construct.');
-			}
-
-			this.#p = p_;
-			this.#q = q_;
+			const p = getRandPrimeByBitLength(1024, true);
+			const q = getRandPrimeByBitLength(1024, true);
 
 			// λ(pq) = LCM(p-1, q-1) = (p-1) * (q-1) / GCD(p-1, q-1)
 
 			const lambda = (() => {
-				const phi = (p_ - 1n) * (q_ - 1n);
-				const { gcd } = exEuclidean(p_ - 1n, q_ - 1n);
+				const phi = (p - 1n) * (q - 1n);
+				const { gcd } = exEuclidean(p - 1n, q - 1n);
 
 				return phi / gcd;
 			})();
@@ -53,112 +67,100 @@ export default class RSA {
 			// 互いに素でなければ選びなおし
 			if (gcd !== 1n) continue loop;
 
-			this.#d = (() => {
-				let d_ = x;
-				while (d_ < 0n) d_ += lambda;
-				return d_;
-			})();
+			const d = residue(x, lambda);
 
-			break loop;
+			return new RSA(p, q, d);
 		}
 	}
 
 	/**
-	 * @param radix
+	 *
+	 * @param text
 	 * @returns
 	 */
-	toString(radix?: number) {
-		const n = this.#p * this.#q;
-		return `n: ${n.toString(radix)}\ne: ${e.toString(radix)}`;
+	static parse(text: string) {
+		const parsed = JSON.parse(text);
+		const { p, q, d, name } = parsed;
+		if (name !== 'RSA') throw Error('cannot parse');
+		if (typeof p === 'string' && typeof q === 'string' && typeof d === 'string') {
+			return new RSA(Base64URLToBI(p), Base64URLToBI(q), Base64URLToBI(d));
+		} else {
+			throw Error('cannot parse');
+		}
 	}
 
-	toJSON() {
-		let n_hexstr = (this.#p * this.#q).toString(16);
-		if (n_hexstr.length % 2 === 1) n_hexstr = '0' + n_hexstr;
-
-		const n_bin = Uint8Array.from(n_hexstr.match(/.{2}/g) ?? [], (d) => Number.parseInt(d, 16));
-
-		let e_hexstr = e.toString(16);
-		if (e_hexstr.length % 2 === 1) e_hexstr = '0' + e_hexstr;
-		const e_bin = Uint8Array.from(e_hexstr.match(/.{2}/g) ?? [], (d) => Number.parseInt(d, 16));
-
+	toJSON(): RSAData {
 		return {
-			n: Buffer.copyBytesFrom(n_bin).toString('base64'),
-			e: Buffer.copyBytesFrom(e_bin).toString('base64')
+			name: 'RSA',
+			p: BIToBase64URL(this.#p),
+			q: BIToBase64URL(this.#q),
+			d: BIToBase64URL(this.#d)
 		};
 	}
 
 	/**
 	 * 暗号化
 	 * @param text 平文
-	 * @returns Base64形式の暗号文
+	 * @returns Base64URL形式の暗号文
 	 */
 	encrypt(text: string) {
-		const radix = this.#p * this.#q;
-		const utf8 = Buffer.from(text, 'utf-8');
-		const m_hexstr = Array.from(utf8, (n) => n.toString(16).padStart(2, '0')).join('');
-		let m_bigint = BigInt('0x' + m_hexstr);
+		const mRadix = 1n << 2046n;
+		const eRadix = 1n << 2048n;
+		const n = this.#p * this.#q;
 
-		const c_arr: bigint[] = [];
+		const buf = Buffer.from(text, 'utf8');
 
-		while (m_bigint > 0n) {
-			const m_one = m_bigint % radix;
+		let mBI = BigInt('0x' + buf.toString('hex'));
 
-			const c_one = modPow(m_one, e, radix);
+		const cArr: bigint[] = [];
 
-			c_arr.push(c_one);
-
-			m_bigint /= radix;
+		while (mBI > 0n) {
+			const mDigit = mBI & (mRadix - 1n);
+			const cDigit = modPow(mDigit, e, n);
+			cArr.push(cDigit);
+			mBI >>= 2046n;
 		}
 
-		let c_bigint = 0n;
+		const cBI = cArr
+			.map((cDigit, i) => cDigit * eRadix ** BigInt(i))
+			.reduce((prev, cur) => prev + cur, 0n);
 
-		for (let i = 0n; i < c_arr.length; i++) {
-			c_bigint += c_arr[Number(i)] * radix ** i;
-		}
+		let cHexStr = cBI.toString(16);
+		if (cHexStr.length % 2 === 1) cHexStr = '0' + cHexStr;
 
-		let c_hexstr = c_bigint.toString(16);
-		if (c_hexstr.length % 2 === 1) c_hexstr = '0' + c_hexstr;
-		const c_bin = Uint8Array.from(c_hexstr.match(/.{2}/g) ?? [], (n) => Number.parseInt(n, 16));
-		return Buffer.copyBytesFrom(c_bin).toString('base64');
+		return Buffer.from(cHexStr, 'hex').toString('base64url');
 	}
 
 	/**
 	 * 復号
-	 * @param base64 Base64形式の暗号文
+	 * @param base64 Base64URL形式の暗号文
 	 * @returns 平文
 	 */
 	decrypt(base64: string) {
-		const radix = this.#p * this.#q;
-		const buf = Buffer.from(base64, 'base64');
-		const c_bin = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
-		const c_hexstr = Array.from(c_bin, (n) => n.toString(16).padStart(2, '0')).join('');
-		let c_bigint = BigInt('0x' + c_hexstr);
+		const mRadix = 1n << 2046n;
+		const eRadix = 1n << 2048n;
+		const n = this.#p * this.#q;
 
-		const m_arr: bigint[] = [];
+		const buf = Buffer.from(base64, 'base64url');
+		let cBI = BigInt('0x' + buf.toString('hex'));
 
-		while (c_bigint > 0n) {
-			const c_one = c_bigint % radix;
+		const mArr: bigint[] = [];
 
-			const m_one = modPow(c_one, this.#d, radix);
-
-			m_arr.push(m_one);
-
-			c_bigint /= radix;
+		while (cBI > 0n) {
+			const cDigit = cBI & (eRadix - 1n);
+			const mDigit = modPow(cDigit, this.#d, n);
+			mArr.push(mDigit);
+			cBI >>= 2048n;
 		}
 
-		let m_bigint = 0n;
+		const mBI = mArr
+			.map((mDigit, i) => mDigit * mRadix ** BigInt(i))
+			.reduce((prev, cur) => prev + cur, 0n);
 
-		for (let i = 0n; i < m_arr.length; i++) {
-			m_bigint += m_arr[Number(i)] * radix ** i;
-		}
+		let mHexStr = mBI.toString(16);
 
-		let m_hexstr = m_bigint.toString(16);
+		if (mHexStr.length % 2 === 1) mHexStr = '0' + mHexStr;
 
-		if (m_hexstr.length & 1) m_hexstr = '0' + m_hexstr;
-
-		const utf8 = Uint8Array.from(m_hexstr.match(/.{2}/g) ?? [], (n) => Number.parseInt(n, 16));
-
-		return Buffer.copyBytesFrom(utf8).toString('utf-8');
+		return Buffer.from(mHexStr, 'hex').toString('utf8');
 	}
 }

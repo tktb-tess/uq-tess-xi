@@ -39,7 +39,7 @@ const DChooser = (n: bigint): [bigint, bigint] => {
  * @returns
  */
 const div2Mod = (x: bigint, n: bigint) => {
-	return residue(x, 2n) === 1n ? residue((x + n) >> 1n, n) : residue(x >> 1n, n);
+	return (x & 1n) === 1n ? residue((x + n) >> 1n, n) : residue(x >> 1n, n);
 };
 
 /**
@@ -147,9 +147,7 @@ export const bailliePSW = (n: bigint) => {
 
 	for (const p of smallPrimes) {
 		if (n % p === 0n) {
-			const isP = n === p;
-			// console.log(n, 'small-primes', isP);
-			return isP;
+			return n === p;
 		}
 	}
 
@@ -163,9 +161,8 @@ export const bailliePSW = (n: bigint) => {
 
 	const Q = (1n - D) / 4n;
 	//console.log('n:', n, 'D:', D, 'P:', 1n, 'Q:', Q);
-	const res = lucasSPP(n, D, 1n, Q);
+	return lucasSPP(n, D, 1n, Q);
 	// console.log(n, 'Lucas-Strong', res);
-	return res;
 };
 
 /**
@@ -193,10 +190,11 @@ export const getRandPrimeByRange = (min: bigint, max: bigint) => {
  * @returns
  */
 export const getRandPrimeByBitLength = (bitLength: number, fixed = false) => {
+	const LIMIT = 100000;
 	if (bitLength < 2) {
 		throw Error('noPrimesFound');
 	}
-	for (let count = 0; count < 100000; count++) {
+	for (let count = 0; count < LIMIT; count++) {
 		const p = getRandBIByBitLength(bitLength, fixed);
 		if (bailliePSW(p)) return p;
 	}

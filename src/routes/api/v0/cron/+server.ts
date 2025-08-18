@@ -5,6 +5,7 @@ import { getRndInt } from '$lib/modules/util';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
 import { dev } from '$app/environment';
+import RSA from '$lib/modules/rsa.js';
 
 export const GET = async ({ request, fetch: svFetch }) => {
 	const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
@@ -40,12 +41,21 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
 	const getSwadeshListVae = async () => {
 		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET' });
-		const csvStr = await resp.text();
-		const pre = Papa.parse(csvStr, { header: false }).data as string[][];
+		if (!resp.ok) {
+			error(404, { message: 'cannotAccessSwadeshListVae' });
+		}
+
+		const pre = await resp
+			.text()
+			.then((csvStr) => Papa.parse<string[]>(csvStr, { header: false }).data);
 
 		return pre.map((row) => {
 			return row.map((s) => s.replace(/;/, ','));
 		});
+	};
+
+	const genRsaKey = async () => {
+		return RSA.generate();
 	};
 
 	// authorization
@@ -54,14 +64,15 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	}
 
 	try {
-		const [todayWord, swadeshListVae] = await Promise.all([getTodayWord(), getSwadeshListVae()]);
+		const [todayWord, swadeshListVae, rsaKey] = await Promise.all([getTodayWord(), getSwadeshListVae(), genRsaKey()]);
 
 		// connect to Redis
 		const client = await createClient({ url: REDIS_URL }).connect();
 
 		await Promise.all([
 			client.set(redisKeys.todayWord, JSON.stringify(todayWord)),
-			client.set(redisKeys.swadeshVae, JSON.stringify(swadeshListVae))
+			client.set(redisKeys.swadeshVae, JSON.stringify(swadeshListVae)),
+			client.set(redisKeys.rsaKey, JSON.stringify(rsaKey))
 		]);
 
 		// check
