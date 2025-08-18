@@ -22,9 +22,8 @@
 			return;
 		}
 		try {
-			const primes = await primesPr;
-			const p = BigInt(primes.p),
-				q = BigInt(primes.q);
+			const [p, q] = await primesPr.then(({ p, q }) => [BigInt(p), BigInt(q)] as const);
+
 			judge = (p === guessp && q === guessq) || (p === guessq && q === guessp);
 		} catch (_) {
 			judge = null;

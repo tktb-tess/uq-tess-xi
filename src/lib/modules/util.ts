@@ -295,36 +295,6 @@ export const parseCSV = (csv: string) => {
 	return rows;
 };
 
-/**
- * 指定範囲内の確率的素数を返す (64ビット未満は確定的)
- * @param min 下限
- * @param max 上限
- * @returns
- */
-export const getRandPrimeByRange = (min: bigint, max: bigint) => {
-	if (max < 2n) {
-		throw Error('noPrimesFound');
-	}
-	for (let count = 0; count < 100000; count++) {
-		const p = getRandBIByRange(min, max);
-		if (millerRabinTemp(p)) return p;
-	}
-
-	throw Error('noPrimesFound');
-};
-
-export const getRandPrimeByBitLength = (bitLength: number) => {
-	if (bitLength < 2) {
-		throw Error('noPrimesFound');
-	}
-	for (let count = 0; count < 100000; count++) {
-		const p = getRandBIByBitLength(bitLength, true);
-		if (millerRabinTemp(p)) return p;
-	}
-
-	throw Error('noPrimesFound');
-};
-
 export const getHash = async (str: string, algorithm: AlgorithmIdentifier) => {
 	const utf8 = Buffer.from(str, 'utf8');
 	return crypto.subtle.digest(algorithm, utf8).then((hash) => Buffer.from(hash));
@@ -454,7 +424,12 @@ export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
 	}
 };
 
-const millerRabinTemp = (n: bigint) => {
+/**
+ * 一時的
+ * @param n 
+ * @returns 
+ */
+export const millerRabinTemp = (n: bigint) => {
 	if (n <= 0n) throw Error('`n` must be positive');
 
 	if (n < 2n ** 64n) {
@@ -463,4 +438,15 @@ const millerRabinTemp = (n: bigint) => {
 	} else {
 		return millerRabin(n, { mode: 'random', cycle: 40 });
 	}
+};
+
+/**
+ * 剰余、ただし正の範囲の値を返す
+ * @param n 
+ * @param mod 
+ * @returns 
+ */
+export const residue = (n: bigint, mod: bigint) => {
+	const ans = n % mod;
+	return ans < 0n ? ans + mod : ans;
 };

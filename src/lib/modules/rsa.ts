@@ -1,6 +1,7 @@
 // used in server-side
 
-import { millerRabin, getRandBIByBitLength, modPow, exEuclidean } from './util';
+import { bailliePSW } from './baillie-psw';
+import { getRandBIByBitLength, modPow, exEuclidean } from './util';
 
 const e = 65537n;
 
@@ -21,7 +22,7 @@ export default class RSA {
 			let [p_, q_] = [1n, 1n];
 			let counter = 0;
 
-			while (!millerRabin(p_)) {
+			while (!bailliePSW(p_)) {
 				p_ = getRandBIByBitLength(bits, true);
 				counter++;
 				if (counter > 100000) throw Error('failed to construct.');
@@ -29,7 +30,7 @@ export default class RSA {
 
 			counter = 0;
 
-			while (!millerRabin(q_)) {
+			while (!bailliePSW(q_)) {
 				q_ = getRandBIByBitLength(bits, true);
 				counter++;
 				if (counter > 100000) throw Error('failed to construct.');
@@ -129,7 +130,7 @@ export default class RSA {
 	 */
 	decrypt(base64: string) {
 		const radix = this.#p * this.#q;
-        const buf = Buffer.from(base64, 'base64');
+		const buf = Buffer.from(base64, 'base64');
 		const c_bin = new Uint8Array(buf.buffer, buf.byteOffset, buf.byteLength);
 		const c_hexstr = Array.from(c_bin, (n) => n.toString(16).padStart(2, '0')).join('');
 		let c_bigint = BigInt('0x' + c_hexstr);

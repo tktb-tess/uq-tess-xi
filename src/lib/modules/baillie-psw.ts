@@ -1,12 +1,18 @@
-import { millerRabin, modPow, jacobiSymbol, isSquare } from './util';
+import {
+	millerRabin,
+	modPow,
+	jacobiSymbol,
+	isSquare,
+	residue,
+	getRandBIByBitLength,
+	getRandBIByRange
+} from './util';
 
 /**
  * translated from python codes in
  * https://github.com/armchaircaver/Baillie-PSW/blob/623b2541b8c659dcb4312a3ddc6c00802e34f1a1/baillie_psw.py
  *
  */
-
-
 
 const DChooser = (n: bigint): [bigint, bigint] => {
 	let D = 5n;
@@ -27,13 +33,13 @@ const DChooser = (n: bigint): [bigint, bigint] => {
 };
 
 /**
- * `n` を法として `x` を2で割った値
+ * `n` を法として `x` を2で割った値 (`n` は奇数を想定)
  * @param x
  * @param n
  * @returns
  */
 const div2Mod = (x: bigint, n: bigint) => {
-	return x % 2n === 1n ? ((x + n) >> 1n) % n : (x >> 1n) % n;
+	return residue(x, 2n) === 1n ? residue((x + n) >> 1n, n) : residue(x >> 1n, n);
 };
 
 /**
@@ -50,7 +56,7 @@ const UVSubscript = (k: bigint, n: bigint, P: bigint, D: bigint): [bigint, bigin
 	const digits = k.toString(2).slice(1);
 
 	for (const digit of digits) {
-		[U, V] = [(U * V) % n, div2Mod(V * V + D * U * U, n)];
+		[U, V] = [residue(U * V, n), div2Mod(V * V + D * U * U, n)];
 
 		if (digit === '1') {
 			[U, V] = [div2Mod(P * U + V, n), div2Mod(D * U + P * V, n)];
@@ -77,17 +83,22 @@ const lucasSPP = (n: bigint, D: bigint, P: bigint, Q: bigint) => {
 		d >>= 1n;
 		s += 1n;
 	}
+	//console.log('d:', d, 's:', s);
 
 	const [U, V_] = UVSubscript(d, n, P, D);
 	let V = V_;
 
+	//console.log('U:', U, 'V:', V);
+
 	if (U === 0n) return true;
+
 	Q = modPow(Q, d, n);
 
 	for (let i = 0n; i < s; i++) {
+		//console.log(i, V, Q);
 		if (V === 0n) return true;
 
-		V = (V * V - 2n * Q) % n;
+		V = residue(V * V - 2n * Q, n);
 		Q = modPow(Q, 2n, n);
 	}
 	return false;
@@ -137,20 +148,58 @@ export const bailliePSW = (n: bigint) => {
 	for (const p of smallPrimes) {
 		if (n % p === 0n) {
 			const isP = n === p;
-			console.log(n, 'small-primes', isP);
+			// console.log(n, 'small-primes', isP);
 			return isP;
 		}
 	}
 
 	if (!millerRabin(n, { mode: 'fixed', bases: [2n] })) {
-		console.log(n, 'Miller-Rabin', false);
+		// console.log(n, 'Miller-Rabin', false);
 		return false;
 	}
 
 	const [D, j] = DChooser(n);
 	if (j === 0n) return false;
 
-	const res = lucasSPP(n, D, 1n, (1n - D) / 4n);
-	console.log(n, 'Lucas-Strong', res);
+	const Q = (1n - D) / 4n;
+	//console.log('n:', n, 'D:', D, 'P:', 1n, 'Q:', Q);
+	const res = lucasSPP(n, D, 1n, Q);
+	// console.log(n, 'Lucas-Strong', res);
 	return res;
+};
+
+/**
+ * 指定範囲内の確率的素数を返す
+ * @param min 下限
+ * @param max 上限
+ * @returns
+ */
+export const getRandPrimeByRange = (min: bigint, max: bigint) => {
+	if (max < 2n) {
+		throw Error('noPrimesFound');
+	}
+	for (let count = 0; count < 100000; count++) {
+		const p = getRandBIByRange(min, max);
+		if (bailliePSW(p)) return p;
+	}
+
+	throw Error('noPrimesFound');
+};
+
+/**
+ * 指定ビットの確率的素数を返す
+ * @param bitLength ビット長
+ * @param fixed true: 固定長, false (デフォルト値): `length` ビット以下の可変ビット長
+ * @returns
+ */
+export const getRandPrimeByBitLength = (bitLength: number, fixed = false) => {
+	if (bitLength < 2) {
+		throw Error('noPrimesFound');
+	}
+	for (let count = 0; count < 100000; count++) {
+		const p = getRandBIByBitLength(bitLength, fixed);
+		if (bailliePSW(p)) return p;
+	}
+
+	throw Error('noPrimesFound');
 };
