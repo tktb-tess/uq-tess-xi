@@ -1,4 +1,4 @@
-import { getRandPrimeByBitLength } from '$lib/modules/util.js';
+import { getRandPrimeByBitLength } from '$lib/modules/baillie-psw';
 import { json } from '@sveltejs/kit';
 import { Buffer } from 'node:buffer';
 
