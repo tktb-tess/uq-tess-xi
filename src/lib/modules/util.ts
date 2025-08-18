@@ -11,6 +11,17 @@ export const getRndInt = (min: number, max: number) => {
 };
 
 /**
+ * 剰余、ただし正の範囲の値を返す
+ * @param n
+ * @param mod
+ * @returns
+ */
+export const residue = (n: bigint, mod: bigint) => {
+	const ans = n % mod;
+	return ans < 0n ? ans + mod : ans;
+};
+
+/**
  *
  * @param nums
  */
@@ -386,14 +397,10 @@ export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
 		if (a === 0n) return true;
 		let y = modPow(a, d, n);
 
-		if (y === 1n) {
-			return true;
-		}
+		if (y === 1n) return true;
 
 		for (let i = 0n; i < s; i++) {
-			if (y === n - 1n) {
-				return true;
-			}
+			if (y === n - 1n) return true;
 			y = (y * y) % n;
 		}
 		return false;
@@ -422,31 +429,4 @@ export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
 			return true;
 		}
 	}
-};
-
-/**
- * 一時的
- * @param n 
- * @returns 
- */
-export const millerRabinTemp = (n: bigint) => {
-	if (n <= 0n) throw Error('`n` must be positive');
-
-	if (n < 2n ** 64n) {
-		const bases: readonly bigint[] = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n];
-		return millerRabin(n, { mode: 'fixed', bases });
-	} else {
-		return millerRabin(n, { mode: 'random', cycle: 40 });
-	}
-};
-
-/**
- * 剰余、ただし正の範囲の値を返す
- * @param n 
- * @param mod 
- * @returns 
- */
-export const residue = (n: bigint, mod: bigint) => {
-	const ans = n % mod;
-	return ans < 0n ? ans + mod : ans;
 };
