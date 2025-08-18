@@ -1,5 +1,5 @@
+import { getRandPrimeByRange } from '$lib/modules/baillie-psw';
 import { error, json } from '@sveltejs/kit';
-import { getRandPrimeByRange } from '$lib/modules/util.js';
 
 export type Primes = {
 	p: string;
@@ -41,7 +41,7 @@ export const GET = async ({ url }) => {
 		return json(body, { headers });
 	} catch (e) {
 		if (e instanceof Error) {
-			error(500, { message: e.stack || `${e}` });
+			error(500, { message: e.message || `${e}` });
 		} else {
 			error(500);
 		}
