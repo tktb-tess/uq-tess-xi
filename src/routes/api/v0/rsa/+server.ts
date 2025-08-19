@@ -11,7 +11,9 @@ const headers = {
 export const GET = async ({ request }) => {
 	try {
 		const input = await request.text();
-		if (typeof input !== 'string') error(400);
+		if (typeof input !== 'string' || !input) {
+			error(400);
+		}
 
 		const client = await createClient({ url: REDIS_URL }).connect();
 
