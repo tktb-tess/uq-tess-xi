@@ -110,9 +110,8 @@ const lucasSPP = (n: bigint, D: bigint, P: bigint, Q: bigint) => {
  * @returns
  */
 export const bailliePSW = (n: bigint) => {
-	if (n <= 0n) throw Error('`n` must be positive');
 
-	if (n === 1n) return false;
+	if (n <= 1n) return false;
 	if (n % 2n === 0n) return n === 2n;
 
 	// 小さな素数で試し割り
