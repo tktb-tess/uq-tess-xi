@@ -8,7 +8,7 @@ const headers = {
 	'Content-Type': 'application/json'
 } as const;
 
-export const GET = async ({ request }) => {
+export const POST = async ({ request }) => {
 	try {
 		const input = await request.text();
 		if (typeof input !== 'string' || !input) {
