@@ -22,15 +22,12 @@ export const residue = (n: bigint, mod: bigint) => {
 };
 
 /**
- *
+ * number を bigint に変換
  * @param nums
+ * @returns
  */
-export const toBigInt = (nums: number | number[]) => {
-	if (typeof nums === 'number') {
-		return BigInt(nums);
-	} else {
-		return nums.map((n) => BigInt(n));
-	}
+export const toBigInt = (...nums: number[]) => {
+	return nums.map((n) => BigInt(n));
 };
 
 /**
@@ -40,16 +37,13 @@ export const toBigInt = (nums: number | number[]) => {
  *
  */
 export const getRandBIByBitLength = (length: number, fixed = false) => {
-	if (length <= 0) throw Error('A bit length must be a positive');
-	if (!Number.isFinite(length)) throw Error('A bit length is not a valid number');
+	if (!Number.isFinite(length)) throw Error('`length` is not a valid number');
+	if (length <= 0) throw Error('`length` must be positive');
+
 	const div = Math.ceil(length / 32);
-
-	const typed_arr = crypto.getRandomValues(new Uint32Array(div));
-
-	let result = Array.from(typed_arr, (n) => n.toString(2).padStart(32, '0')).join('');
-
+	const u32Arr = crypto.getRandomValues(new Uint32Array(div));
+	let result = Array.from(u32Arr, (n) => n.toString(2).padStart(32, '0')).join('');
 	result = result.slice(0, length);
-
 	if (fixed) result = result.replace(/^./, '1');
 	// console.log(result);
 	return BigInt('0b' + result);
@@ -85,8 +79,7 @@ export const getRandBIByRange = (min: bigint, max: bigint) => {
  * @returns
  */
 export const isEqArray = <T>(arr1: T[], arr2: T[]) => {
-	if (!Array.isArray(arr1) || !Array.isArray(arr2))
-		throw TypeError('引数は配列でなければなりません');
+	
 	if (arr1.length !== arr2.length) return false;
 	else {
 		for (let i = 0; i < arr1.length; i++) {
@@ -124,7 +117,7 @@ export const modPow = (base: bigint, power: bigint, mod: bigint) => {
 };
 
 /**
- * 拡張ユークリッドの互除法
+ * 拡張ユークリッドの互除法 \
  * 参考: https://qiita.com/angel_p_57/items/56a902cbd1fe519747bd
  *
  * @description `ax - by = gcd(a, b)`
@@ -163,7 +156,8 @@ export const exEuclidean = (a: bigint, b: bigint) => {
 };
 
 /**
- * 階乗を計算する 参考: https://qiita.com/AkariLuminous/items/1b2e964ebabde9419224
+ * 階乗を計算する \
+ * 参考: https://qiita.com/AkariLuminous/items/1b2e964ebabde9419224
  * @param n_ 整数
  * @returns 引数の階乗
  */
@@ -317,6 +311,9 @@ export const getHash = async (str: string, algorithm: AlgorithmIdentifier) => {
  * @param n 正の奇数
  */
 export const jacobiSymbol = (a: bigint, n: bigint) => {
+	if (n < 1n || n % 2n === 0n) {
+		throw Error('`n` is invalid');
+	}
 	while (a < 0n) {
 		a += n;
 	}
@@ -364,69 +361,13 @@ export const isSquare = (n: bigint) => {
 	return n === x ** 2n || n === (x + 1n) ** 2n;
 };
 
-type MillerRabinConfig =
-	| {
-			mode: 'fixed';
-			bases: readonly bigint[];
-	  }
-	| {
-			mode: 'random';
-			cycle: number;
-	  };
+export const BItoBuffer = (n: bigint) => {
+	let str = n.toString(16);
+	if (str.length & 1) str = '0' + str;
+	return Buffer.from(str, 'hex');
+};
 
-/**
- * Miller-Rabin テスト
- * @param n 判定する整数
- * @param config 設定
- * @returns
- */
-export const millerRabin = (n: bigint, config: MillerRabinConfig) => {
-	if (n === 1n) return false;
-	if (n % 2n === 0n) return n === 2n;
-	let d_ = n - 1n;
-	let s_ = 0n;
-
-	while (d_ % 2n === 0n) {
-		d_ >>= 1n;
-		s_ += 1n;
-	}
-	const [d, s] = [d_, s_];
-
-	const isPPrime = (a_: bigint) => {
-		const a = a_ >= n ? a_ % n : a_;
-		if (a === 0n) return true;
-		let y = modPow(a, d, n);
-
-		if (y === 1n) return true;
-
-		for (let i = 0n; i < s; i++) {
-			if (y === n - 1n) return true;
-			y = (y * y) % n;
-		}
-		return false;
-	};
-
-	switch (config.mode) {
-		case 'fixed': {
-			const { bases } = config;
-
-			for (const base of bases) {
-				if (!isPPrime(base)) {
-					return false;
-				}
-			}
-			return true;
-		}
-		case 'random': {
-			const { cycle } = config;
-
-			for (let i = 0; i < cycle; i++) {
-				const base = getRandBIByRange(2n, n);
-				if (!isPPrime(base)) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
+export const bufferToBI = (buf: Buffer) => {
+	const str = buf.toString('hex') || '00';
+	return BigInt('0x' + str);
 };

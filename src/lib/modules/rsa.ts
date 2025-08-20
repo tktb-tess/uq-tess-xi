@@ -13,23 +13,23 @@ export type RSAData = {
 };
 
 /**
- * bigint -> Base64URL
+ * bigint -> Buffer
  * @param bigint
  * @returns
  */
-const BIToBase64URL = (bigint: bigint) => {
+const BIToBuf = (bigint: bigint) => {
 	let str = bigint.toString(16);
 	if (str.length % 2 === 1) str = '0' + str;
-	return Buffer.from(str, 'hex').toString('base64url');
+	return Buffer.from(str, 'hex');
 };
 
 /**
- * Base64URL -> bigint
+ * Buffer -> bigint
  * @param base64
  * @returns
  */
-const Base64URLToBI = (base64: string) => {
-	const hexStr = Buffer.from(base64, 'base64url').toString('hex');
+const bufToBI = (buf: Buffer) => {
+	const hexStr = buf.toString('hex') || '00';
 	return BigInt('0x' + hexStr);
 };
 
@@ -49,23 +49,28 @@ export default class RSA {
 	}
 
 	static generate() {
-		loop: while (true) {
+		while (true) {
 			const p = getRandPrimeByBitLength(1024, true);
-			const q = getRandPrimeByBitLength(1024, true);
+
+			const q = (() => {
+				while (true) {
+					const q = getRandPrimeByBitLength(1024, true);
+					if (p !== q) return q;
+				}
+			})();
 
 			// λ(pq) = LCM(p-1, q-1) = (p-1) * (q-1) / GCD(p-1, q-1)
 
 			const lambda = (() => {
 				const phi = (p - 1n) * (q - 1n);
 				const { gcd } = exEuclidean(p - 1n, q - 1n);
-
 				return phi / gcd;
 			})();
 
 			const { x, gcd } = exEuclidean(e, lambda);
 
 			// 互いに素でなければ選びなおし
-			if (gcd !== 1n) continue loop;
+			if (gcd !== 1n) continue;
 
 			const d = residue(x, lambda);
 
@@ -83,7 +88,10 @@ export default class RSA {
 		const { p, q, d, name } = parsed;
 		if (name !== 'RSA') throw Error('cannot parse');
 		if (typeof p === 'string' && typeof q === 'string' && typeof d === 'string') {
-			return new RSA(Base64URLToBI(p), Base64URLToBI(q), Base64URLToBI(d));
+			const p_ = bufToBI(Buffer.from(p, 'base64url'));
+			const q_ = bufToBI(Buffer.from(q, 'base64url'));
+			const d_ = bufToBI(Buffer.from(d, 'base64url'));
+			return new RSA(p_, q_, d_);
 		} else {
 			throw Error('cannot parse');
 		}
@@ -92,9 +100,9 @@ export default class RSA {
 	toJSON(): RSAData {
 		return {
 			name: 'RSA',
-			p: BIToBase64URL(this.#p),
-			q: BIToBase64URL(this.#q),
-			d: BIToBase64URL(this.#d)
+			p: BIToBuf(this.#p).toString('base64url'),
+			q: BIToBuf(this.#q).toString('base64url'),
+			d: BIToBuf(this.#d).toString('base64url')
 		};
 	}
 
@@ -110,7 +118,7 @@ export default class RSA {
 
 		const buf = Buffer.from(text, 'utf8');
 
-		let mBI = BigInt('0x' + buf.toString('hex'));
+		let mBI = bufToBI(buf);
 
 		const cArr: bigint[] = [];
 
@@ -124,11 +132,8 @@ export default class RSA {
 		const cBI = cArr
 			.map((cDigit, i) => cDigit * eRadix ** BigInt(i))
 			.reduce((prev, cur) => prev + cur, 0n);
-
-		let cHexStr = cBI.toString(16);
-		if (cHexStr.length % 2 === 1) cHexStr = '0' + cHexStr;
-
-		return Buffer.from(cHexStr, 'hex').toString('base64url');
+		
+		return BIToBuf(cBI).toString('base64url');
 	}
 
 	/**
@@ -141,8 +146,8 @@ export default class RSA {
 		const eRadix = 1n << 2048n;
 		const n = this.#p * this.#q;
 
-		const buf = Buffer.from(base64, 'base64url');
-		let cBI = BigInt('0x' + buf.toString('hex'));
+		const cBuf = Buffer.from(base64, 'base64url');
+		let cBI = bufToBI(cBuf);
 
 		const mArr: bigint[] = [];
 
@@ -157,10 +162,6 @@ export default class RSA {
 			.map((mDigit, i) => mDigit * mRadix ** BigInt(i))
 			.reduce((prev, cur) => prev + cur, 0n);
 
-		let mHexStr = mBI.toString(16);
-
-		if (mHexStr.length % 2 === 1) mHexStr = '0' + mHexStr;
-
-		return Buffer.from(mHexStr, 'hex').toString('utf8');
+		return BIToBuf(mBI).toString('utf8');
 	}
 }

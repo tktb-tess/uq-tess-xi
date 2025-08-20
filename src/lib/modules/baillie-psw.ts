@@ -1,5 +1,4 @@
 import {
-	millerRabin,
 	modPow,
 	jacobiSymbol,
 	isSquare,
@@ -13,6 +12,36 @@ import {
  * https://github.com/armchaircaver/Baillie-PSW/blob/623b2541b8c659dcb4312a3ddc6c00802e34f1a1/baillie_psw.py
  *
  */
+
+/**
+ * Miller-Rabin テスト (底2)
+ * @param n 判定する整数
+ * 
+ * @returns
+ */
+const millerRabinAtBase2 = (n: bigint) => {
+	if (n <= 1n) return false;
+	if (n % 2n === 0n) return n === 2n;
+	let d_ = n - 1n;
+	let s_ = 0n;
+
+	while (d_ % 2n === 0n) {
+		d_ >>= 1n;
+		s_ += 1n;
+	}
+	const [d, s] = [d_, s_];
+
+	const a = 2n;
+	let y = modPow(a, d, n);
+
+	if (y === 1n) return true;
+
+	for (let i = 0n; i < s; i++) {
+		if (y === n - 1n) return true;
+		y = (y * y) % n;
+	}
+	return false;
+};
 
 const DChooser = (n: bigint): [bigint, bigint] => {
 	let D = 5n;
@@ -110,7 +139,6 @@ const lucasSPP = (n: bigint, D: bigint, P: bigint, Q: bigint) => {
  * @returns
  */
 export const bailliePSW = (n: bigint) => {
-
 	if (n <= 1n) return false;
 	if (n % 2n === 0n) return n === 2n;
 
@@ -150,7 +178,7 @@ export const bailliePSW = (n: bigint) => {
 		}
 	}
 
-	if (!millerRabin(n, { mode: 'fixed', bases: [2n] })) {
+	if (!millerRabinAtBase2(n)) {
 		// console.log(n, 'Miller-Rabin', false);
 		return false;
 	}
@@ -171,10 +199,11 @@ export const bailliePSW = (n: bigint) => {
  * @returns
  */
 export const getRandPrimeByRange = (min: bigint, max: bigint) => {
+	const LIMIT = 100000;
 	if (max < 2n) {
 		throw Error('noPrimesFound');
 	}
-	for (let count = 0; count < 100000; count++) {
+	for (let count = 0; count < LIMIT; count++) {
 		const p = getRandBIByRange(min, max);
 		if (bailliePSW(p)) return p;
 	}
