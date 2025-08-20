@@ -185,8 +185,12 @@
 		@apply font-sans;
 	}
 
-	:lang(x-v3-karphnpn) {
+	[lang='x-v3-karphnpn'] {
 		@apply font-phun-dot;
+
+		:not(pre, code, body, html) {
+			@apply font-[inherit];
+		}
 	}
 
 	body {
