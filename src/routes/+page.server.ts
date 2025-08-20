@@ -1,6 +1,7 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
 import type { ZpDICAPIResponseWord, WordData, Result } from '$lib/types/decl';
+import { redisKeys } from '$lib/types/decl';
 
 export const prerender = false;
 
@@ -8,7 +9,7 @@ export const load = async (): Promise<Result<WordData>> => {
 	try {
 		const client = await createClient({ url: REDIS_URL }).connect();
 
-		const todayWord = await client.get('today-word').then((word) => {
+		const todayWord = await client.get(redisKeys.todayWord).then((word) => {
 			if (!word) throw Error('failed to load today-word from redis');
 
 			return JSON.parse(word) as ZpDICAPIResponseWord;

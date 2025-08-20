@@ -75,7 +75,7 @@ export default class RSA {
 
 	/**
 	 *
-	 * @param text
+	 * @param text JSON string
 	 * @returns
 	 */
 	static parse(text: string) {

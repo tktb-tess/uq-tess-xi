@@ -5,35 +5,35 @@ import { JSDOM } from 'jsdom';
 import DOMPurify from 'dompurify';
 
 const service = new TurndownService({
-    headingStyle: 'atx',
-    emDelimiter: '*',
-    bulletListMarker: '-',
-    hr: '---',
+	headingStyle: 'atx',
+	emDelimiter: '*',
+	bulletListMarker: '-',
+	hr: '---'
 });
 service.use(gfm);
 const win = new JSDOM('').window;
 const purifier = DOMPurify(win);
 const headers = {
-    'Content-Type': 'application/json'
+	'Content-Type': 'application/json'
 } as const;
 
 export const GET = async ({ url, fetch: svFetch }) => {
-    console.log(`received GET request at /to-md`);
-    const fetchUrls = url.searchParams.getAll('value');
-    const decoded = fetchUrls.map((u) => decodeURIComponent(u));
-    
-    const tasks = decoded.map(async (url) => {
-        const resp = await svFetch(url, { method: 'GET' });
-        if (!resp.ok) {
-            error(resp.status);
-        }
+	console.log(`received GET request at /to-md`);
+	const fetchUrls = url.searchParams.getAll('value');
+	const decoded = fetchUrls.map((u) => decodeURIComponent(u));
 
-        const html = await resp.text().then((t) => purifier.sanitize(t));
-        const markdown = service.turndown(html);
-        return markdown;
-    });
+	const tasks = decoded.map(async (url) => {
+		const resp = await svFetch(url, { method: 'GET' });
+		if (!resp.ok) {
+			error(resp.status);
+		}
 
-    const mds = await Promise.all(tasks);
-    
-    return json(mds, { headers });
-}
+		const text = await resp.text();
+		const purified = purifier.sanitize(text);
+		return service.turndown(purified);
+	});
+
+	const mds = await Promise.all(tasks);
+
+	return json(mds, { headers });
+};
