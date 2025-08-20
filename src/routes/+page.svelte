@@ -91,7 +91,7 @@
 					<tr>
 						<td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
 						<td>かえる</td>
-						<td><span class="font-phun-dot">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
+						<td><span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
 					</tr>
 				</tbody>
 			</table>

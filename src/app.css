@@ -182,6 +182,11 @@
 	html,
 	:host {
 		-webkit-tap-highlight-color: revert;
+		@apply font-sans;
+	}
+
+	:lang(x-v3-karphnpn) {
+		@apply font-phun-dot;
 	}
 
 	body {
