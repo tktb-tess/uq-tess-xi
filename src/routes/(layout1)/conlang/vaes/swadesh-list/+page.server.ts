@@ -4,8 +4,9 @@ import { redisKeys, type Result, type SwadeshList } from '$lib/types/decl';
 export const prerender = false;
 
 export const load = async (): Promise<Result<SwadeshList>> => {
+	const client = await createClient({ url: REDIS_URL }).connect();
 	try {
-		const client = await createClient({ url: REDIS_URL }).connect();
+		
 
 		const value = await client.get(redisKeys.swadeshVae).then((swa) => {
 			if (!swa) throw Error('failed to load swadeshlist-vae from redis');
@@ -34,5 +35,7 @@ export const load = async (): Promise<Result<SwadeshList>> => {
 				message: 'unidentified error'
 			};
 		}
+	} finally {
+		await client.close();
 	}
 };

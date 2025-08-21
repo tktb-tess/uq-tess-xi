@@ -41,7 +41,7 @@ export const GET = async ({ url }) => {
 		return json(body, { headers });
 	} catch (e) {
 		if (e instanceof Error) {
-			error(500, { message: e.message || `${e}` });
+			error(500, { message: `${e.name}: ${e.message}` });
 		} else {
 			error(500);
 		}
