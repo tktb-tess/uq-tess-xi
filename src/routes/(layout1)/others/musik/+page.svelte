@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
+	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PauseFill from '$lib/sfc/pause-fill.svelte';
 	import PlayFill from '$lib/sfc/play-fill.svelte';
 	import Repeat from '$lib/sfc/repeat.svelte';
 	import StopFill from '$lib/sfc/stop-fill.svelte';
 	import type { TrackParams } from './+page.server';
-	
+
 	const ogTitle = '音楽';
 	const ogDesc = '作曲は楽しい';
 	const { data } = $props();
@@ -88,6 +89,22 @@
 <div>
 	<h2 class="my-8 text-center">音楽</h2>
 	<p class="text-center">作曲は楽しいぞ</p>
+	<p>
+		作った曲です。特別な追加の記載がない限り、これらの Tessyrrhaqt による曲は
+		<ExtLink href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</ExtLink>
+		<img
+			src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+			alt="Creative Commons License Mark"
+			class="inline-block max-w-4 max-h-4 ms-1"
+		/>
+		<img
+			src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+			alt="Creative Commons License BY Mark"
+			class="inline-block max-w-4 max-h-4 ms-1"
+		/>
+		ライセンスの下公開されます。
+	</p>
+	<p><ExtLink href="https://github.com/tktb-tess/uq-tess-xi/tree/main/static/audio">ダウンロードはこちらから</ExtLink></p>
 </div>
 
 {#each tracks as track, i (track.path)}
