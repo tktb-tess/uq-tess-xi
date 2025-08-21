@@ -55,7 +55,7 @@ export type ZpDICAPIWordsResponse = {
 };
 
 export type SwadeshList = {
-	readonly value: readonly (readonly string[])[];
+	readonly value: ReadonlyArray<ReadonlyArray<string>>;
 };
 
 export type Result<T extends object> =
@@ -74,7 +74,7 @@ type Equivalent = ZpDICAPIResponseWord['equivalents'][number];
 
 export type WordData = {
 	readonly word: string;
-	readonly translations: Readonly<Equivalent>[];
+	readonly translations: readonly Readonly<Equivalent>[];
 	readonly dicUrl: string;
 	readonly pron: string;
 	readonly size: 'text-5xl' | 'text-4xl';
@@ -86,4 +86,7 @@ export const redisKeys = {
 	todayWord: 'today-word',
 	swadeshVae: 'swadesh-list-vae',
 	rsaKey: 'rsa-key',
+	lastUpdate: 'last-update'
 } as const;
+
+export type RedisKeys = typeof redisKeys;

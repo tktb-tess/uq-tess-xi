@@ -50,7 +50,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 			.then((csvStr) => Papa.parse<string[]>(csvStr, { header: false }).data);
 
 		return pre.map((row) => {
-			return row.map((s) => s.replace(/;/, ','));
+			return row.map((s) => s.replace(/;/, ',').trim());
 		});
 	};
 
@@ -76,24 +76,26 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		await Promise.all([
 			client.set(redisKeys.todayWord, JSON.stringify(todayWord)),
 			client.set(redisKeys.swadeshVae, JSON.stringify(swadeshListVae)),
-			client.set(redisKeys.rsaKey, JSON.stringify(rsaKey))
+			client.set(redisKeys.rsaKey, JSON.stringify(rsaKey)),
+			client.set(redisKeys.lastUpdate, JSON.stringify({ value: new Date() }))
 		]);
 
 		// check
-		const stored = await Promise.all([
-			client.get(redisKeys.todayWord),
-			client.get(redisKeys.swadeshVae),
-			client.get(redisKeys.rsaKey)
-		]).then(([twStr, sl1str, rsaStr]) => {
-			if (twStr && sl1str && rsaStr) {
-				return [JSON.parse(twStr), JSON.parse(sl1str), JSON.parse(rsaStr)] as const;
-			} else error(500, { message: 'noStoredData' });
-		});
-		console.log(...stored);
+		const stored = await Promise.all(
+			Object.entries(redisKeys).map(async ([key, value]) => {
+				const json = await client.get(value);
+				if (!json) error(404, { message: 'dataNotFound' });
+				return [key, JSON.parse(json) as object] as const;
+			})
+		).then((entries) => Object.fromEntries(entries));
+
+		console.log(...Object.values(stored));
 		return json(stored, { headers: { 'Content-Type': 'application/json' } });
 	} catch (e: unknown) {
 		if (isHttpError(e)) {
 			error(e.status, { message: e.body.message });
+		} else if (e instanceof Error) {
+			error(500, { message: `${e.name}: ${e.message}` });
 		} else {
 			error(500, { message: 'unidentifiedError' });
 		}
