@@ -63,15 +63,15 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		error(401);
 	}
 
+	// connect to Redis
+	const client = await createClient({ url: REDIS_URL }).connect();
+
 	try {
 		const [todayWord, swadeshListVae, rsaKey] = await Promise.all([
 			getTodayWord(),
 			getSwadeshListVae(),
 			genRsaKey()
 		]);
-
-		// connect to Redis
-		const client = await createClient({ url: REDIS_URL }).connect();
 
 		await Promise.all([
 			client.set(redisKeys.todayWord, JSON.stringify(todayWord)),
@@ -99,5 +99,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		} else {
 			error(500, { message: 'unidentifiedError' });
 		}
+	} finally {
+		await client.close();
 	}
 };

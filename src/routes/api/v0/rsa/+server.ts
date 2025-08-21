@@ -9,13 +9,12 @@ const headers = {
 } as const;
 
 export const POST = async ({ request }) => {
+	const client = await createClient({ url: REDIS_URL }).connect();
 	try {
 		const input = await request.text();
 		if (typeof input !== 'string' || !input) {
 			error(400);
 		}
-
-		const client = await createClient({ url: REDIS_URL }).connect();
 
 		const rsa = await client.get(redisKeys.rsaKey).then((d) => {
 			if (!d) error(404);
@@ -34,10 +33,11 @@ export const POST = async ({ request }) => {
 			return error(e.status, e.body);
 		} else if (e instanceof Error) {
 			const { message } = e;
-
 			return error(500, { message });
 		} else {
-			return error(500);
+			return error(500, { message: 'unidentifiedError' });
 		}
+	} finally {
+		await client.close();
 	}
 };
