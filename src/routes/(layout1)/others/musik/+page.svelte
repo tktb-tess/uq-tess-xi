@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_SITE_NAME } from '$env/static/public';
+	import DownloadIcon from '$lib/sfc/download-icon.svelte';
 	import ExtLink from '$lib/sfc/ext_link.svelte';
 	import PauseFill from '$lib/sfc/pause-fill.svelte';
 	import PlayFill from '$lib/sfc/play-fill.svelte';
@@ -22,7 +23,7 @@
 
 	const handlePlay = async (i: number) => {
 		if (!tracks[i].ref) {
-			console.log(tracks[i].path, ' empty');
+			console.log(tracks[i].path, 'empty');
 			return;
 		}
 
@@ -65,8 +66,8 @@
 		}
 	};
 
-	const toTime = (time: number) => {
-		if (!Number.isFinite(time)) {
+	const toTime = (time?: number) => {
+		if (time === undefined || !Number.isFinite(time)) {
 			return '-:--';
 		}
 		const minutes = (time / 60) | 0;
@@ -104,7 +105,6 @@
 		/>
 		ライセンスの下公開されます。
 	</p>
-	<p><ExtLink href="https://github.com/tktb-tess/uq-tess-xi/tree/main/static/audio">ダウンロードはこちらから</ExtLink></p>
 </div>
 
 {#each tracks as track, i (track.path)}
@@ -142,7 +142,15 @@
 			>
 				<Repeat class="fill-current inline-block size-6" />
 			</button>
-			<p class="m-0">{toTime(track.currentTime)}/{toTime(tracks[i].duration ?? NaN)}</p>
+			<a
+				type="button"
+				class="no-underline text-mnlila bg-transparent any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg"
+				href="/audio/{track.path}"
+				download={track.path}
+			>
+				<DownloadIcon class="fill-current inline-block size-6" />
+			</a>
+			<p class="m-0">{toTime(track.currentTime)}/{toTime(tracks[i].duration)}</p>
 		</div>
 
 		<audio
