@@ -1,7 +1,6 @@
 // assume to be used in server-side
 
-import { getRandPrimeByBitLength } from './baillie-psw';
-import { modPow, exEuclidean, residue } from './util';
+import { getRandPrimeByBitLength, modPow, exEuclidean, residue } from '@tktb-tess/util-fns';
 
 const e = 65537n;
 
