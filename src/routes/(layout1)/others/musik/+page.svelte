@@ -55,7 +55,7 @@
 
 	const handleStop = async (i: number) => {
 		if (!tracks[i].ref) {
-			console.log(tracks[i].path, ' empty');
+			console.log(tracks[i].path, 'empty');
 			return;
 		}
 
@@ -138,7 +138,7 @@
 						{track.loop ? `text-white bg-mnlila` : `text-mnlila bg-transparent`}
 						any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg
 					"
-				onclick={() => (tracks[i].loop = !tracks[i].loop)}
+				onclick={() => { tracks[i].loop = !tracks[i].loop }}
 			>
 				<Repeat class="fill-current inline-block size-6" />
 			</button>

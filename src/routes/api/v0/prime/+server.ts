@@ -1,4 +1,4 @@
-import { getRandPrimeByRange } from '$lib/modules/baillie-psw';
+import { getRandPrimeByRange } from '@tktb-tess/util-fns';
 import { error, json } from '@sveltejs/kit';
 
 export type Primes = {

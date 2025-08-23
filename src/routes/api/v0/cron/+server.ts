@@ -1,11 +1,11 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
 import { redisKeys, type ZpDICAPIWordsResponse } from '$lib/types/decl';
-import { getRndInt } from '$lib/modules/util';
+import { getRndInt } from '@tktb-tess/util-fns';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
 import { dev } from '$app/environment';
-import RSA from '$lib/modules/rsa.js';
+import RSA from '$lib/modules/rsa';
 
 export const GET = async ({ request, fetch: svFetch }) => {
 	const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
