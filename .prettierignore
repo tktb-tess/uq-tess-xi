@@ -6,4 +6,7 @@ bun.lock
 bun.lockb
 
 # Misc
+node_modules/
 .arc/
+.vercel/
+.svelte-kit/
