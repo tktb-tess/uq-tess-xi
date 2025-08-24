@@ -3,6 +3,6 @@ declare module '@joplin/turndown' {
 }
 
 declare module '@joplin/turndown-plugin-gfm' {
-	import type { Plugin } from "turndown";
+	import type { Plugin } from 'turndown';
 	const gfm: Plugin;
 }

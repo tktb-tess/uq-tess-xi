@@ -16,23 +16,21 @@ $$a^{2^s d} \equiv 1 \pmod p \qquad (2)$$
 
 このとき、次の定理が成り立つ。
 
-
 - 定理①
 
   各変数を上のように定義したとき、
-  
+
   $$\exists r\in ℤ(0 \le r \le s-1) \ \ a^{2^r d} \equiv {-1} \pmod p \qquad \mathrm{(a)}$$
-  
+
   または
-  
+
   $$a^d \equiv 1 \pmod p \qquad \mathrm{(b)}$$
-  
+
   が成り立つ。
 
-----
+---
 
 以下これを示す。
-
 
 ### 証明
 
@@ -52,26 +50,25 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
 
 となるので $\mathrm{(b)}$ が成立。
 
-----
+---
 
 これの対偶を取ると、
-
 
 - 定理②
 
   $n$ を正整数、 $a$ を $n$ と互いに素な正整数として、
-  
+
   $n-1 = 2^{s} d$ 、ただし $d$ は正奇数、 $s$ は正整数としたとき、
-  
+
   $$\forall r \in ℤ(0 ≤ r ≤ s-1)\ \ a^{2^r d} \not\equiv {-1} \pmod n \qquad \mathrm{(c)}$$
-  
+
   かつ
-  
+
   $$a^d \not\equiv 1 \pmod n \quad \mathrm{(d)}$$
-  
+
   ならば、 $n$ は合成数
 
-----
+---
 
 がいえる。
 
@@ -83,16 +80,15 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
 
 1. $n-1$ を $2$ の冪 $2^s$ と奇数 $d$ の積に分解する
 2. 以下の試行を何回か繰り返す
-    1. 正整数 $0 \< a \le n\-1$ をランダムに選ぶ
-    2. $a$ と $n$ が互いに素でないなら $n$ は合成数。*終了*
-    3. 上の条件 $\mathrm{(c)}, \mathrm{(d)}$ をともに満たす場合、 $n$ は合成数。*終了*
-    4. i\. に戻る
-3. 試行に引っかからなかった場合、 $n$ は確率的素数である。*終了*
+   1. 正整数 $0 \< a \le n\-1$ をランダムに選ぶ
+   2. $a$ と $n$ が互いに素でないなら $n$ は合成数。_終了_
+   3. 上の条件 $\mathrm{(c)}, \mathrm{(d)}$ をともに満たす場合、 $n$ は合成数。_終了_
+   4. i\. に戻る
+3. 試行に引っかからなかった場合、 $n$ は確率的素数である。_終了_
 
 ここで、定理②の逆は成り立たない。つまり $n$ が合成数でも上の2つの条件 $\mathrm{(c)}, \mathrm{(d)}$ を満たさない場合がある。
 
 しかし $a$ を様々に変えて試行すれば、いつかは $\mathrm{(c)}, \mathrm{(d)}$ を満たす $a$ が見つかる可能性が上がる。つまり $n$ を合成数と判定できる確率が上がる。
-
 
 ## 実装例
 
@@ -104,65 +100,63 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
  * @param {bigint} n_ 判定したい整数
  */
 const millerRabin = (n_) => {
-    if (typeof n_ !== 'bigint') throw TypeError('引数型は \`bigint\` でなければなりません');
-    if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
-    const n = n_;
+	if (typeof n_ !== 'bigint') throw TypeError('引数型は \`bigint\` でなければなりません');
+	if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
+	const n = n_;
 
-    if (n === 2n) return true;
-    if (n === 1n || n % 2n === 0n) return false;
+	if (n === 2n) return true;
+	if (n === 1n || n % 2n === 0n) return false;
 
-    const bit_num = n.toString(2).length;
-    const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
-    const d = (n - 1n) >> s;
+	const bit_num = n.toString(2).length;
+	const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
+	const d = (n - 1n) >> s;
 
-    if (n < 2n ** 64n) {
-        /** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
-        const bases_under_64 = Object.freeze([2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n]);
+	if (n < 2n ** 64n) {
+		/** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
+		const bases_under_64 = Object.freeze([2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n]);
 
-        challenge: for (const b_ of bases_under_64) {
-            const base = (b_ >= n) ? b_ % n : b_;
-            if (base === 0n) continue challenge;
-            if (exEuclidean(base, n).gcd != 1n) return false;
+		challenge: for (const b_ of bases_under_64) {
+			const base = b_ >= n ? b_ % n : b_;
+			if (base === 0n) continue challenge;
+			if (exEuclidean(base, n).gcd != 1n) return false;
 
-            let y = modPow(base, d, n);
-            if (y === 1n) continue challenge;
+			let y = modPow(base, d, n);
+			if (y === 1n) continue challenge;
 
-            for (let i = 0n; i < s; i++) {
-                if (y === n - 1n) continue challenge;
-                y = y * y % n;
-            }
-            return false;
+			for (let i = 0n; i < s; i++) {
+				if (y === n - 1n) continue challenge;
+				y = (y * y) % n;
+			}
+			return false;
+		}
+		return true;
+	} else {
+		/** 試行回数 */
+		const max_rot = 40;
 
-        }
-        return true;
+		challenge2: for (let i = 0; i < max_rot; i++) {
+			let b_ = 0n;
 
-    } else {
-        /** 試行回数 */
-        const max_rot = 40;
+			while (b_ < 2n || b_ >= n) {
+				b_ = getRandBI(bit_num); // 2以上n未満の乱数を取得
+			}
 
-        challenge2: for (let i = 0; i < max_rot; i++) {
-            let b_ = 0n;
+			// 最大公約数が1でない (互いに素でない) なら合成数
+			if (exEuclidean(b_, n).gcd !== 1n) return false;
 
-            while (b_ < 2n || b_ >= n) {
-                b_ = getRandBI(bit_num); // 2以上n未満の乱数を取得
-            }
-            
-            // 最大公約数が1でない (互いに素でない) なら合成数
-            if (exEuclidean(b_, n).gcd !== 1n) return false;
+			const base = b_;
 
-            const base = b_;
+			let y = modPow(base, d, n);
 
-            let y = modPow(base, d, n);
+			if (y === 1n) continue challenge2;
 
-            if (y === 1n) continue challenge2;
-
-            for (let i = 0n; i < s; i++) {
-                if (y === n - 1n) continue challenge2;
-                y = y * y % n;
-            }
-            return false;
-        }
-        return true;
-    }
-}
+			for (let i = 0n; i < s; i++) {
+				if (y === n - 1n) continue challenge2;
+				y = (y * y) % n;
+			}
+			return false;
+		}
+		return true;
+	}
+};
 ```

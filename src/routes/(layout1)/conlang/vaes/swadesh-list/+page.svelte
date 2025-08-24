@@ -52,5 +52,4 @@
 {/if}
 
 <style>
-	
 </style>

@@ -3,7 +3,7 @@
 
 	const ogTitle = '表示するだけでなんかすごいハッカーみたいなことやってるように見えるページ';
 	const ogDesc = 'なんかすごい';
-	
+
 	const initialize = () => {
 		const i = crypto.getRandomValues(new BigUint64Array(200));
 		return Array.from(i, (n) => n.toString(2).padStart(64, '0')).join('');

@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { PUBLIC_SITE_NAME } from "$env/static/public";
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-	const ogTitle = 'Vässenzländisķ 音韻論', ogDesc = 'おにんろん！';
+	const ogTitle = 'Vässenzländisķ 音韻論',
+		ogDesc = 'おにんろん！';
 </script>
 
 <svelte:head>
@@ -184,7 +185,8 @@
 			<span class="font-ipa">/ð/</span> は歯間〜歯接近音 <span class="font-ipa">[ð̪͆˕ ~ ð̞]</span> である。
 		</li>
 		<li>
-			<span class="font-ipa">/ɽ/</span> は前後の環境により実際の発音が変わり、また前後の子音の発音を変えることもある。
+			<span class="font-ipa">/ɽ/</span>
+			は前後の環境により実際の発音が変わり、また前後の子音の発音を変えることもある。
 			<ul>
 				<li>
 					<span class="font-ipa">/d/, /t/, /ʔ͡t/, /n/, /l/, /ɬ/</span> の前ではそり舌接近音
@@ -388,9 +390,11 @@
 	<ul>
 		<li>
 			ヴェッセンズラン語の母音には <strong class="italic">tense</strong> と
-		<strong class="italic">lax</strong>
-		と呼ばれる区別があり、<i>lax</i> 母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
-		<span class="font-ipa">/ɤ/</span> に限っては語末に来ることができる。なお、二重母音は全て <i>tense</i> 母音である。
+			<strong class="italic">lax</strong>
+			と呼ばれる区別があり、<i>lax</i>
+			母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
+			<span class="font-ipa">/ɤ/</span> に限っては語末に来ることができる。なお、二重母音は全て
+			<i>tense</i> 母音である。
 		</li>
 		<li>
 			<span class="font-ipa">/ɛː/</span> は実際は <span class="font-ipa">[ɛæ̯]</span> のような発音である。
@@ -407,8 +411,7 @@
 		<li>
 			<span class="font-ipa">/ɤ/</span> はアクセントの無い音節で
 			<span class="font-ipa">/e(ː)/, /ɛ(ː)/</span>
-			の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ] ~ [ɤ̟]</span> である。
-			対応する鼻母音も同様。
+			の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ] ~ [ɤ̟]</span> である。 対応する鼻母音も同様。
 		</li>
 	</ul>
 </section>

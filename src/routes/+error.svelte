@@ -27,7 +27,9 @@
 	<h2 class="text-6xl font-extralight font-sans">Hoppla!</h2>
 	<p class="text-center">
 		{#if page.status === 404}
-			お探しのページは見つかりませんでした。<br class="md:hidden" />移動あるいは削除された可能性があります。
+			お探しのページは見つかりませんでした。<br
+				class="md:hidden"
+			/>移動あるいは削除された可能性があります。
 		{:else}
 			{page.status} {page.error?.message ?? 'No message'}
 		{/if}

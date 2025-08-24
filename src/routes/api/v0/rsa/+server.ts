@@ -1,5 +1,5 @@
 import { REDIS_URL } from '$env/static/private';
-import RSA from '$lib/modules/rsa.js';
+import RSA from '$lib/modules/rsa';
 import { redisKeys } from '$lib/types/decl.js';
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { createClient } from 'redis';
@@ -12,7 +12,7 @@ export const POST = async ({ request }) => {
 	const client = await createClient({ url: REDIS_URL }).connect();
 	try {
 		const input = await request.text();
-		if (typeof input !== 'string' || !input) {
+		if (!input) {
 			error(400);
 		}
 
@@ -30,12 +30,12 @@ export const POST = async ({ request }) => {
 		return json(body, { headers });
 	} catch (e) {
 		if (isHttpError(e)) {
-			return error(e.status, e.body);
+			error(e.status, e.body);
 		} else if (e instanceof Error) {
-			const { message } = e;
-			return error(500, { message });
+			const { message, name } = e;
+			error(500, { message: `${name}: ${message}` });
 		} else {
-			return error(500, { message: 'unidentifiedError' });
+			error(500, { message: 'unidentifiedError' });
 		}
 	} finally {
 		await client.close();

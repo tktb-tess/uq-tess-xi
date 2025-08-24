@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PUBLIC_SITE_NAME } from "$env/static/public";
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 
 	const ogTitle = 'グレゴリオ聖歌について',
 		ogDesc = 'グレゴリオ聖歌の音階の話';
@@ -29,8 +29,8 @@
 	<p>
 		旋法は8つあるが、これらは4つの<strong>正格旋法</strong>と対応する4つの<strong>変格旋法</strong
 		>（プラガル旋法）というのに分けられる。<br />
-		変格は対応する正格とフィナリスが同じだが、音高の範囲（<strong>アンビトゥス</strong
-		> (ambitus) という）とドミナントが違う。<br />
+		変格は対応する正格とフィナリスが同じだが、音高の範囲（<strong>アンビトゥス</strong> (ambitus)
+		という）とドミナントが違う。<br />
 		変格には対応する正格の名前に<strong>ヒュポ</strong>（hypo-）をつける。
 	</p>
 	<p>旋法は順番に</p>
@@ -71,7 +71,9 @@
 <section aria-labelledby="spec">
 	<h2 id="spec" class="border-b-3 border-double ps-1">具体的な音階</h2>
 	<p>以下に全部書き下す。フィナリスは[]、ドミナントは()で囲う</p>
-	<ol class="[&_p]:mb-0 [&_li:not(:last-child)]:mb-4 ms-2 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila">
+	<ol
+		class="[&_p]:mb-0 [&_li:not(:last-child)]:mb-4 ms-2 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila"
+	>
 		<li>
 			<p>ドリア</p>
 			<p>[レ] ミ ファ ソ (ラ) シ ド レ</p>

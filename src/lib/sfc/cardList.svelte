@@ -16,9 +16,7 @@
 			{href}
 		>
 			<h3 class="text-white m-0 text-nowrap flex-[0_0_140px]">{title}</h3>
-			<p
-				class="text-white m-0 min-w-0"
-			>
+			<p class="text-white m-0 min-w-0">
 				{desc}
 			</p>
 		</a>

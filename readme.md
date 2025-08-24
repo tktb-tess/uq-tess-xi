@@ -10,4 +10,3 @@ cd uq-tess-xi
 npm i
 npm run dev
 ```
-

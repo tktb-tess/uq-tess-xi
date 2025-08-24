@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { PUBLIC_SITE_NAME } from "$env/static/public";
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-	const ogTitle = 'Vässenzländisķ 数詞', ogDesc = 'かず！';
+	const ogTitle = 'Vässenzländisķ 数詞',
+		ogDesc = 'かず！';
 </script>
 
 <svelte:head>
@@ -14,7 +15,6 @@
 	<meta name="twitter:description" content={ogDesc} />
 	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
-
 
 <h2 class="text-center my-8">数詞</h2>
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>

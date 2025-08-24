@@ -131,7 +131,7 @@ export default class RSA {
 		const cBI = cArr
 			.map((cDigit, i) => cDigit * eRadix ** BigInt(i))
 			.reduce((prev, cur) => prev + cur, 0n);
-		
+
 		return BIToBuf(cBI).toString('base64url');
 	}
 

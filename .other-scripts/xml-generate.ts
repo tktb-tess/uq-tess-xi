@@ -22,7 +22,7 @@ const paths: readonly string[] = [
 	'others/md-converter',
 	'others/musik',
 	'others/tools',
-	'others/miller-rabin',
+	'others/miller-rabin'
 ];
 
 const generateXml = async () => {
