@@ -9,7 +9,7 @@ export type Toast = {
 	timeoutID: NodeJS.Timeout;
 };
 
-type UUID = `${string}-${string}-${string}-${string}-${string}`;
+type UUID = ReturnType<typeof crypto.randomUUID>;
 
 export const toastStates = new SvelteMap<UUID, Toast>();
 
