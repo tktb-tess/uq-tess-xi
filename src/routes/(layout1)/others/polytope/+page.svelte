@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { PUBLIC_SITE_NAME } from "$env/static/public";
+	import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-    
-	const ogTitle = 'n次元超立体の命名案', ogDesc = 'n次元超立体の命名案';
+	const ogTitle = 'n次元超立体の命名案',
+		ogDesc = 'n次元超立体の命名案';
 </script>
 
 <svelte:head>

@@ -6,11 +6,9 @@ export const prerender = false;
 export const load = async (): Promise<Result<SwadeshList>> => {
 	const client = await createClient({ url: REDIS_URL }).connect();
 	try {
-		
-
 		const value = await client.get(redisKeys.swadeshVae).then((swa) => {
 			if (!swa) throw Error('failed to load swadeshlist-vae from redis');
-			
+
 			return JSON.parse(swa) as string[][];
 		});
 
@@ -28,7 +26,6 @@ export const load = async (): Promise<Result<SwadeshList>> => {
 				message,
 				stack
 			};
-            
 		} else {
 			return {
 				success: false,

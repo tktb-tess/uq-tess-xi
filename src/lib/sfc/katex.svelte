@@ -10,7 +10,7 @@
 	const rendered = $derived.by(() => {
 		try {
 			const ren_ = renderToString(math, { displayMode });
-			
+
 			return ren_;
 		} catch (e) {
 			if (e instanceof ParseError) {

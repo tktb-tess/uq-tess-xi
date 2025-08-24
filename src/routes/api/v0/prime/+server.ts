@@ -5,10 +5,9 @@ export type Primes = {
 	p: string;
 	q: string;
 };
-
+const LIMIT = 1n << 64n;
 export const GET = async ({ url }) => {
 	const params = url.searchParams;
-	const LIMIT = 1n << 64n;
 
 	const min = (() => {
 		const pre = params.get('min');

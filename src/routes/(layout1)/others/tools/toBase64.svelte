@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { addToast } from "$lib/sfc/toastStates.svelte";
+	import { addToast } from '$lib/sfc/toastStates.svelte';
 	const encoder = new TextEncoder();
 	type Props = {
 		seed: string;
@@ -16,9 +16,10 @@
 	});
 
 	const copyText = () => {
-		navigator.clipboard.writeText(output)
-		.then(() => addToast('Copied to Clipboard!', 'info', 3000))
-		.catch((e) => addToast(`failed to copy: ${e}`, 'warning', 3000));
+		navigator.clipboard
+			.writeText(output)
+			.then(() => addToast('Copied to Clipboard!', 'info', 3000))
+			.catch((e) => addToast(`failed to copy: ${e}`, 'warning', 3000));
 	};
 </script>
 
@@ -32,7 +33,12 @@
 		<p class="text-center m-0">↓</p>
 		<div class="flex flex-col gap-2 items-center">
 			<label for="output-{seed}" class="">Base64 (枠内をクリックするとコピーできます)</label>
-			<textarea onclick={copyText} class="w-full h-[8rem] cursor-pointer" id="output-{seed}" readonly>{output}</textarea>
+			<textarea
+				onclick={copyText}
+				class="w-full h-[8rem] cursor-pointer"
+				id="output-{seed}"
+				readonly>{output}</textarea
+			>
 		</div>
 	</div>
 </section>

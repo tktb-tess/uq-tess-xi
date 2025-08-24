@@ -32,10 +32,10 @@
 		}
 	}
 
-    svg:not(.stop) {
-        animation-name: spin;
-        animation-duration: 1.5s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
+	svg:not(.stop) {
+		animation-name: spin;
+		animation-duration: 1.5s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
 </style>

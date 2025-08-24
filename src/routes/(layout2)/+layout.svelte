@@ -1,9 +1,7 @@
 <script lang="ts">
-    const { children } = $props();
+	const { children } = $props();
 </script>
 
-
-
 <div class="min-h-screen bg-black w-full">
-    {@render children()}
+	{@render children()}
 </div>

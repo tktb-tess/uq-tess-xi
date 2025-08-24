@@ -5,6 +5,5 @@ const headers = {
 } as const;
 
 export const GET = () => {
-	
 	return json({ message: 'fire!' }, { headers });
 };

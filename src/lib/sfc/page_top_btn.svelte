@@ -3,9 +3,7 @@
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { browser } from '$app/environment';
 
-	const isInvisible = $derived(
-		(typeof scrollY.current === 'number') ? scrollY.current < 600 : false
-	);
+	const isInvisible = $derived(typeof scrollY.current === 'number' ? scrollY.current < 600 : false);
 
 	const onclick: MouseEventHandler<HTMLButtonElement> = () => {
 		if (browser) {

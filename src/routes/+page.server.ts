@@ -8,8 +8,6 @@ export const prerender = false;
 export const load = async (): Promise<Result<WordData>> => {
 	const client = await createClient({ url: REDIS_URL }).connect();
 	try {
-		
-
 		const todayWord = await client.get(redisKeys.todayWord).then((word) => {
 			if (!word) throw Error('failed to load today-word from redis');
 
