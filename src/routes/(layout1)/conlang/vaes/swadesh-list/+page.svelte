@@ -25,7 +25,7 @@
 {#if swadeshList.success}
 	{@const [header, ...body] = swadeshList.result.value}
 	<div class="table-container animate-[slide-in-2_.4s_cubic-bezier(0,1,1,1),fade-in_.4s_linear]">
-		<table class="grid-cols-auto-5 [&_td]:text-start [&_td:first-child]:text-end">
+		<table class="grid-cols-auto-5 [&_td]:text-start [&_td:first-child]:text-end [&_td:nth-child(4)]:font-ipa">
 			<thead>
 				<tr>
 					{#each header as str}
