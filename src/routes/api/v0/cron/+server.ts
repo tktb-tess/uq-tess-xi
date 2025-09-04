@@ -40,9 +40,16 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	};
 
 	const getSwadeshListVae = async () => {
-		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET' });
+		const controller = new AbortController();
+
+		const id = setTimeout(() => controller.abort(), 20000);
+
+		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET', signal: controller.signal });
+
+		clearTimeout(id);
+
 		if (!resp.ok) {
-			error(404, { message: 'cannotAccessSwadeshListVae' });
+			throw Error('cannotAccessSwadeshListVae');
 		}
 
 		const pre = await resp
@@ -50,7 +57,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 			.then((csvStr) => Papa.parse<string[]>(csvStr, { header: false }).data);
 
 		return pre.map((row) => {
-			return row.map((s) => s.replace(/;/, ',').trim());
+			return row.map((s) => s.replaceAll(';', ',').trim());
 		});
 	};
 
@@ -67,30 +74,56 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	const client = await createClient({ url: REDIS_URL }).connect();
 
 	try {
-		const [todayWord, swadeshListVae, rsaKey] = await Promise.all([
-			getTodayWord(),
-			getSwadeshListVae(),
-			genRsaKey()
-		]);
+		const taskTodayWord = async () => {
+			try {
+				const result = await getTodayWord();
+				await client.set(redisKeys.todayWord, JSON.stringify(result));
+			} catch (e) {
+				console.error(e);
+			}
+		};
 
-		await Promise.all([
-			client.set(redisKeys.todayWord, JSON.stringify(todayWord)),
-			client.set(redisKeys.swadeshVae, JSON.stringify(swadeshListVae)),
-			client.set(redisKeys.rsaKey, JSON.stringify(rsaKey)),
-			client.set(redisKeys.lastUpdate, JSON.stringify({ value: new Date() }))
-		]);
+		const taskSwadeshVae = async () => {
+			try {
+				const result = await getSwadeshListVae();
+				await client.set(redisKeys.swadeshVae, JSON.stringify(result));
+			} catch (e) {
+				console.error(e);
+			}
+		};
+
+		const taskRsaKey = async () => {
+			try {
+				const result = await genRsaKey();
+				await client.set(redisKeys.rsaKey, JSON.stringify(result));
+			} catch (e) {
+				console.error(e);
+			}
+		};
+
+		const taskLastUpdate = async () => {
+			try {
+				const result = new Date().toISOString();
+				await client.set(redisKeys.todayWord, JSON.stringify(result));
+			} catch (e) {
+				console.error(e);
+			}
+		};
+
+		await Promise.all([taskTodayWord(), taskSwadeshVae(), taskRsaKey(), taskLastUpdate()]);
 
 		// check
 		const stored = await Promise.all(
 			Object.entries(redisKeys).map(async ([key, value]) => {
 				const json = await client.get(value);
 				if (!json) error(404, { message: 'dataNotFound' });
-				return [key, JSON.parse(json) as object] as const;
+				return [key, JSON.parse(json) as unknown] as const;
 			})
 		).then((entries) => Object.fromEntries(entries));
 
 		console.log(...Object.values(stored));
-		return json(stored, { headers: { 'Content-Type': 'application/json' } });
+		return json(stored);
+
 	} catch (e: unknown) {
 		if (isHttpError(e)) {
 			error(e.status, { message: e.body.message });
