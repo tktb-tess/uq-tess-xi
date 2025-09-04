@@ -40,7 +40,14 @@ export const GET = async ({ request, fetch: svFetch }) => {
 	};
 
 	const getSwadeshListVae = async () => {
-		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET' });
+		const controller = new AbortController();
+
+		const id = setTimeout(() => controller.abort(), 20000);
+
+		const resp = await svFetch(vaeSwadeshUrl, { method: 'GET', signal: controller.signal });
+
+		clearTimeout(id);
+
 		if (!resp.ok) {
 			throw Error('cannotAccessSwadeshListVae');
 		}
@@ -116,7 +123,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
 		console.log(...Object.values(stored));
 		return json(stored);
-		
+
 	} catch (e: unknown) {
 		if (isHttpError(e)) {
 			error(e.status, { message: e.body.message });
