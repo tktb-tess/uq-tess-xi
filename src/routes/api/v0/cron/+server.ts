@@ -61,7 +61,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		});
 	};
 
-	const genRsaKey = async () => {
+	const genRsaKey = () => {
 		return RSA.generate();
 	};
 
@@ -94,7 +94,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
 		const taskRsaKey = async () => {
 			try {
-				const result = await genRsaKey();
+				const result = genRsaKey();
 				await client.set(redisKeys.rsaKey, JSON.stringify(result));
 			} catch (e) {
 				console.error(e);
@@ -104,7 +104,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 		const taskLastUpdate = async () => {
 			try {
 				const result = new Date().toISOString();
-				await client.set(redisKeys.todayWord, JSON.stringify(result));
+				await client.set(redisKeys.lastUpdate, JSON.stringify(result));
 			} catch (e) {
 				console.error(e);
 			}
