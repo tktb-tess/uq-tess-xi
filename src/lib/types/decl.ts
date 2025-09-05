@@ -8,85 +8,85 @@ export type ZpDICOTM = typeof otm_json;
 type Catalog = 'zpdicDaily' | 'appleAlpha' | 'appleBeta' | 'appleGamma' | 'survival' | 'weaving';
 
 export type ZpDICAPIResponseWord = {
-	id: string;
-	number: number;
-	name: string;
-	pronunciation: string;
-	equivalents: {
-		titles: string[];
-		names: string[];
-		nameString: string;
-		ignoredPattern: string;
-	}[];
-	tags: string[];
-	informations: {
-		title: string;
-		text: string;
-	}[];
-	variations: {
-		title?: string;
-		name: string;
-	}[];
-	relations: {
-		titles?: string[];
-		number: number;
-		name?: string;
-	}[];
-	examples: {
-		id: string;
-		number: number;
-		sentence: string;
-		translation: string;
-		supplement: string;
-		tags: string[];
-		words: {
-			number: number;
-		}[];
-		offer: {
-			catalog: Catalog;
-			number: number;
-		} | null;
-	};
+  id: string;
+  number: number;
+  name: string;
+  pronunciation: string;
+  equivalents: {
+    titles: string[];
+    names: string[];
+    nameString: string;
+    ignoredPattern: string;
+  }[];
+  tags: string[];
+  informations: {
+    title: string;
+    text: string;
+  }[];
+  variations: {
+    title?: string;
+    name: string;
+  }[];
+  relations: {
+    titles?: string[];
+    number: number;
+    name?: string;
+  }[];
+  examples: {
+    id: string;
+    number: number;
+    sentence: string;
+    translation: string;
+    supplement: string;
+    tags: string[];
+    words: {
+      number: number;
+    }[];
+    offer: {
+      catalog: Catalog;
+      number: number;
+    } | null;
+  };
 };
 
 export type ZpDICAPIWordsResponse = {
-	words: ZpDICAPIResponseWord[];
-	total: number;
+  words: ZpDICAPIResponseWord[];
+  total: number;
 };
 
 export type SwadeshList = {
-	readonly value: ReadonlyArray<ReadonlyArray<string>>;
+  readonly value: ReadonlyArray<ReadonlyArray<string>>;
 };
 
 export type Result<T extends object> =
-	| {
-			readonly success: true;
-			readonly result: T;
-	  }
-	| {
-			readonly success: false;
-			readonly status?: number;
-			readonly message: string;
-			readonly stack?: string;
-	  };
+  | {
+      readonly success: true;
+      readonly result: T;
+    }
+  | {
+      readonly success: false;
+      readonly status?: number;
+      readonly message: string;
+      readonly stack?: string;
+    };
 
 type Equivalent = ZpDICAPIResponseWord['equivalents'][number];
 
 export type WordData = {
-	readonly word: string;
-	readonly translations: readonly Readonly<Equivalent>[];
-	readonly dicUrl: string;
-	readonly pron: string;
-	readonly size: 'text-5xl' | 'text-4xl';
+  readonly word: string;
+  readonly translations: readonly Readonly<Equivalent>[];
+  readonly dicUrl: string;
+  readonly pron: string;
+  readonly size: 'text-5xl' | 'text-4xl';
 };
 
 export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
 
 export const redisKeys = {
-	todayWord: 'today-word',
-	swadeshVae: 'swadesh-list-vae',
-	rsaKey: 'rsa-key',
-	lastUpdate: 'last-update'
+  todayWord: 'today-word',
+  swadeshVae: 'swadesh-list-vae',
+  rsaKey: 'rsa-key',
+  lastUpdate: 'last-update',
 } as const;
 
 export type RedisKeys = typeof redisKeys;

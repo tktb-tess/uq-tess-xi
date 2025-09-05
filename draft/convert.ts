@@ -1,17 +1,19 @@
-import { marked } from 'marked';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mdToHtml } from '../src/lib/modules/md-html';
+import { readFileSync, writeFileSync } from 'node:fs';
 
-const names = ['miller-rabin'] as const;
+const urls = ['miller-rabin', 'test', 'xen'] as const;
 
 const main = async () => {
-	const tasks = names.map(async (name) => {
-		const file = await readFile(`draft/${name}.md`, { encoding: 'utf-8' });
-		const htmlParsed = marked.parse(file, { breaks: true, async: false, gfm: true });
-		await writeFile(`draft/out/${name}.html`, htmlParsed);
-		console.log(`${name}: successfully finished`);
-	});
-	await Promise.all(tasks);
-	console.log('all tasks are successfully finished');
+  const tasks = urls.map(async (url) => {
+    const md = readFileSync(`./draft/${url}.md`, { encoding: 'utf8' });
+    const html = await mdToHtml(md);
+    writeFileSync(`./draft/out/${url}.html`, html);
+    console.log(url, 'success');
+  });
+
+  await Promise.all(tasks);
+
+  console.log('all converting were succeeded');
 };
 
 main();

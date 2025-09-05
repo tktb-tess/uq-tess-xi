@@ -1,19 +1,19 @@
 <script lang="ts">
-	import { PUBLIC_SITE_NAME } from '$env/static/public';
+  import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-	const ogTitle = 'Vässenzländisķ 名詞',
-		ogDesc = 'めいし！';
+  const ogTitle = 'Vässenzländisķ 名詞',
+    ogDesc = 'めいし！';
 </script>
 
 <svelte:head>
-	<meta name="description" content={ogDesc} />
-	<!-- OGP -->
-	<meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-	<meta property="og:description" content={ogDesc} />
-	<!-- twitter card -->
-	<meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-	<meta name="twitter:description" content={ogDesc} />
-	<title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
+  <meta name="description" content={ogDesc} />
+  <!-- OGP -->
+  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
+  <meta property="og:description" content={ogDesc} />
+  <!-- twitter card -->
+  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
+  <meta name="twitter:description" content={ogDesc} />
+  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <h2 class="my-8 text-center">名詞</h2>
