@@ -1,6 +1,7 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
-import { redisKeys, type ZpDICAPIWordsResponse } from '$lib/types/decl';
+import { redisKeys } from '$lib/types/decl';
+import { zpdicApiResponseSchema, type ZpDICAPIResponse } from '$lib/types/zpdic-api.js';
 import { getRndInt } from '@tktb-tess/util-fns';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
@@ -15,12 +16,12 @@ export const GET = async ({ request, fetch: svFetch }) => {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
 
-  const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIWordsResponse> => {
+  const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIResponse> => {
     const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
     if (!resp.ok) {
       error(404, { message: 'cannotAccessZpdicApi' });
     }
-    return resp.json();
+    return resp.json().then((j) => zpdicApiResponseSchema.parse(j));
   };
 
   const getTotal = async () => {
@@ -36,7 +37,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
   const getTodayWord = async () => {
     const total = await getTotal();
-    return (await getWord(getRndInt(0, total))).words[0];
+    return (await getWord(getRndInt(0, total))).words.at(0);
   };
 
   const getSwadeshListVae = async () => {
@@ -77,6 +78,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
     const taskTodayWord = async () => {
       try {
         const result = await getTodayWord();
+        if (!result) throw Error('todayWord is undefined');
         await client.set(redisKeys.todayWord, JSON.stringify(result));
       } catch (e) {
         console.error(e);

@@ -1,6 +1,7 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import type { ZpDICAPIResponseWord, WordData, Result } from '$lib/types/decl';
+import type { WordData, Result } from '$lib/types/decl';
+import { zpdicWordSchema } from '$lib/types/zpdic-api';
 import { redisKeys } from '$lib/types/decl';
 
 export const prerender = false;
@@ -11,7 +12,7 @@ export const load = async (): Promise<Result<WordData>> => {
     const todayWord = await client.get(redisKeys.todayWord).then((word) => {
       if (!word) throw Error('failed to load today-word from redis');
 
-      return JSON.parse(word) as ZpDICAPIResponseWord;
+      return zpdicWordSchema.parse(JSON.parse(word));
     });
 
     const query = `?kind=exact&number=${todayWord.number}`;
