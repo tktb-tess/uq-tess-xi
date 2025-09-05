@@ -8,9 +8,10 @@ export const equivalentSchema = z.object({
   hidden: z.boolean(),
 });
 
+// eslint-disable-next-line
 declare const __obj_id_brand: unique symbol;
 
-export const objectIDSchema = z.string().brand(__obj_id_brand);
+export const objectIDSchema = z.string().brand<typeof __obj_id_brand>();
 
 export type ObjectID = z.infer<typeof objectIDSchema>;
 
@@ -87,6 +88,7 @@ export const exampleSchema = z.object({
 
 export type Example = z.infer<typeof exampleSchema>;
 
+// eslint-disable-next-line
 declare const __zpdic_word_brand: unique symbol;
 
 export const zpdicWordSchema = z
@@ -102,7 +104,7 @@ export const zpdicWordSchema = z
     relations: relationSchema.array(),
     examples: exampleSchema.array(),
   })
-  .brand(__zpdic_word_brand);
+  .brand<typeof __zpdic_word_brand>();
 
 export type ZpDICWord = z.infer<typeof zpdicWordSchema>;
 
