@@ -44,7 +44,7 @@ export const variationSchema = z.object({
 export type Variation = z.infer<typeof variationSchema>;
 
 export const relationSchema = z.object({
-  titles: z.string(),
+  titles: z.string().array(),
   number: z.number(),
   name: z.string(),
 });

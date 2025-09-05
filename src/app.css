@@ -156,6 +156,16 @@
   }
 }
 
+@custom-variant d {
+  @media (prefers-color-scheme: dark) {
+    @slot;
+  }
+
+  &:where(html[data-color-scheme="dark"] &) {
+    @slot;
+  }
+}
+
 @property --lght {
   syntax: '<number>';
   inherits: false;

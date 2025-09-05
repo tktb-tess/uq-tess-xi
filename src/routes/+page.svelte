@@ -7,6 +7,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
   import UqTessLogo_2 from '$lib/sfc/uq-tess-logo-2.svelte';
+  import { onMount } from 'svelte';
 
   const { data: todayWord } = $props();
 
@@ -15,6 +16,12 @@
       return PUBLIC_SITE_NAME.split('').join('\x20');
     } else {
       return PUBLIC_SITE_NAME.split('').join('\u2003');
+    }
+  });
+
+  onMount(() => {
+    if (!todayWord.success) {
+      console.log(todayWord.message)
     }
   });
 </script>
@@ -64,7 +71,7 @@
     <h2 id="today-word" class="text-center">今日の単語</h2>
     <TodayWord {todayWord} />
   </section>
-  <section aria-label="menu">
+  <section aria-labelledby="menu">
     <h2 id="menu">メニュー</h2>
     <CardList
       contents={[
