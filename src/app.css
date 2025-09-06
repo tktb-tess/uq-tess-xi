@@ -285,7 +285,8 @@
     @apply contents;
   }
 
-  thead, tbody {
+  thead,
+  tbody {
     & > tr > td:first-child {
       @apply border-l border-slate-200 d:border-slate-700;
     }

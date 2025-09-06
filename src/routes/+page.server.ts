@@ -20,10 +20,10 @@ export const load = async (): Promise<Result<WordData>> => {
       return {
         success: false,
         message: z.prettifyError(result.error),
-        cause: result.error.issues
-      }
+        cause: result.error.issues,
+      };
     }
-    
+
     const todayWord = result.data;
 
     const query = `?kind=exact&number=${todayWord.number}`;
