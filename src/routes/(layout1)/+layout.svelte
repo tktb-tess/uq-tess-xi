@@ -2,9 +2,12 @@
   import { onNavigate } from '$app/navigation';
   import CloseButton from '$lib/sfc/close_button.svelte';
   import Hamburger from '$lib/sfc/hamburger.svelte';
+  import MoonIcon from '$lib/sfc/moon-icon.svelte';
   import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
+  import SunIcon from '$lib/sfc/sun-icon.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import { innerWidth } from 'svelte/reactivity/window';
+  import { siteConfig, key } from '$lib/modules/site-config.svelte';
 
   const { children } = $props();
   let drawerIsOpen = $state(false);
@@ -23,6 +26,10 @@
       res();
     });
   });
+
+  $effect(() => {
+    localStorage.setItem(key, JSON.stringify(siteConfig));
+  });
 </script>
 
 <svelte:head>
@@ -30,8 +37,14 @@
 </svelte:head>
 
 {#snippet sideMenu()}
-  <div class="side-menu">
-    <h4 class="text-2xl font-sans text-black font-extralight">VÄSSENZLÄNDISĶ</h4>
+  <div
+    class="
+      side-menu [&_a]:text-black [&_a]:d:text-white [&_a]:no-underline
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem] [&_:where(a,summary)]:hover:bg-mnlila
+      [&_:where(a,summary)]:hover:text-white [&_:where(a,summary)]:d:hover:bg-white [&_:where(a,summary)]:d:hover:text-mnlila
+    "
+  >
+    <h4 class="text-2xl font-sans text-black d:text-white font-extralight">VÄSSENZLÄNDISĶ</h4>
     <div class="flex flex-col">
       <a href="/conlang/vaes">概説</a>
       <a href="/conlang/vaes/letter-et-pron">文字と発音</a>
@@ -66,8 +79,14 @@
     </div>
   </div>
   <hr class="border-black/30 w-15 mx-auto my-4" />
-  <div class="side-menu">
-    <h4 class="text-2xl font-sans text-black font-extralight">MISCELLANEOUS</h4>
+  <div
+    class="
+      side-menu [&_a]:text-black [&_a]:d:text-white [&_a]:no-underline
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem] [&_:where(a,summary)]:hover:bg-mnlila
+      [&_:where(a,summary)]:hover:text-white [&_:where(a,summary)]:d:hover:bg-white [&_:where(a,summary)]:d:hover:text-mnlila
+    "
+  >
+    <h4 class="text-2xl font-sans text-black d:text-white font-extralight">MISCELLANEOUS</h4>
     <div class="flex flex-col">
       <a href="/data">データ</a>
       <a href="/others">その他</a>
@@ -95,6 +114,20 @@
     <h1 class="font-serif text-3xl [&_a]:h-[64px]">
       <a class="flex items-center" href="/.">悠久肆方体</a>
     </h1>
+    <button
+      aria-label="toggle color scheme"
+      class="text-white ms-auto"
+      onclick={() => {
+        const isDark = siteConfig.colorScheme === 'dark';
+        siteConfig.colorScheme = isDark ? 'light' : 'dark';
+      }}
+    >
+      {#if siteConfig.colorScheme === 'light'}
+        <MoonIcon class="fill-current inline-block size-6" />
+      {:else}
+        <SunIcon class="fill-current inline-block size-6" />
+      {/if}
+    </button>
   </div>
 </header>
 
@@ -114,7 +147,7 @@
       data-open={drawerIsOpen ? '' : null}
       aria-label="close sidemenu"
     ></button>
-    <nav class="drawer" data-open={drawerIsOpen ? '' : null}>
+    <nav class="drawer bg-llila d:bg-mnlila" data-open={drawerIsOpen ? '' : null}>
       <div class="flex justify-end px-4">
         <button
           type="button"
@@ -129,7 +162,9 @@
     </nav>
   {/if}
 
-  <main class="flex-[1_0_0] bg-slate-50 d:bg-zinc-900 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]">
+  <main
+    class="flex-[1_0_0] bg-slate-50 d:bg-zinc-900 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]"
+  >
     {@render children()}
   </main>
 </div>
@@ -147,26 +182,6 @@
 
     > * {
       margin-inline: var(--spacing);
-    }
-
-    :where(a) {
-      color: var(--color-black);
-      text-decoration: none;
-    }
-
-    :where(a, summary) {
-      transition-property: color, background-color;
-      transition-timing-function: var(--default-transition-timing-function);
-      transition-duration: var(--default-transition-duration);
-      border-radius: 0.5rem;
-      padding-block: calc(var(--spacing) * 2);
-
-      @media (any-hover: hover) {
-        &:hover {
-          background-color: var(--color-mnlila);
-          color: white;
-        }
-      }
     }
 
     :where(h4) {
@@ -224,7 +239,6 @@
     top: 0;
     left: 0;
     width: 18rem;
-    background-color: var(--color-llila);
     transition-property: transform, visibility;
     transform: translate(-100%);
     transition-timing-function: cubic-bezier(0, 0, 1, 0);

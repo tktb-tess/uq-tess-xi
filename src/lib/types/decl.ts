@@ -20,6 +20,7 @@ export type Result<T extends { [k: string]: unknown }> =
       readonly status?: number;
       readonly message: string;
       readonly stack?: string;
+      readonly cause?: unknown;
     };
 
 export type WordData = {

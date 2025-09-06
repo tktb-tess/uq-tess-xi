@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import { writeFileSync } from 'node:fs';
 
 const paths: readonly string[] = [
   '/',
@@ -25,16 +25,16 @@ const paths: readonly string[] = [
   'others/miller-rabin',
 ];
 
-const generateXml = async () => {
+const generateXml = () => {
   const lastmod = new Date().toISOString();
 
   const urls = paths.map(
-    (p) => `	<url>
-    	<loc>${new URL(p, 'https://www.tktb-tess.dev').href}</loc>
+    (p) => `  <url>
+      <loc>${new URL(p, 'https://www.tktb-tess.dev').href}</loc>
     	<lastmod>${lastmod}</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>${p === '/' ? 1 : 0.8}</priority>
-	</url>`,
+    <changefreq>weekly</changefreq>
+    <priority>${p === '/' ? 1 : 0.8}</priority>
+  </url>`,
   );
 
   const text = `<?xml version="1.0" encoding="utf-8" ?>
@@ -42,7 +42,7 @@ const generateXml = async () => {
 ${urls.join('\n')}
 </urlset>`;
 
-  await writeFile('./static/sitemap.xml', text);
+  writeFileSync('./static/sitemap.xml', text);
   console.log('sitemap.xml was successfully generated');
 };
 
