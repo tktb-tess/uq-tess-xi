@@ -25,7 +25,7 @@
     },
   ]);
 
-  let resultsp = $state<Promise<MdResult[]>>(Promise.resolve([]));
+  let resultsp: Promise<MdResult[]> = $state(Promise.resolve([]));
 
   const fetchData = async (): Promise<MdResult[]> => {
     const urls1 = urls.map(({ url }) => url);
@@ -78,16 +78,16 @@
     URLを入力し、「変換！」を押すと、該当ページのHTMLをMarkdownに変換したものが得られます。一度に複数個変換できます。
   </p>
   <p>
-    Markdown部分をクリックするとコピーでき、また「Download all」より .md
+    Markdown部分をクリックするとコピーでき、また「Download all」より Markdown
     ファイルを一括ダウンロードできます。
   </p>
 </div>
 <div class="flex flex-col gap-4">
   <div class="flex flex-col gap-2">
-    {#each urls as { id }, i (id)}
+    {#each urls as url, i (url.id)}
       <div class="flex justify-center gap-2 *:min-w-0">
-        <label for="input-{id}">URL</label>
-        <input type="url" id="input-{id}" bind:value={urls[i].url} />
+        <label for="input-{url.id}">URL</label>
+        <input type="url" id="input-{url.id}" bind:value={url.url} />
         <button
           type="button"
           class="btn-1"
@@ -125,9 +125,9 @@
         変換中……
       </h3>
     {:then mds}
-      {#each mds as { md, url }, i}
+      {#each mds as { md, url } (url)}
         <div class="flex flex-col gap-2">
-          <label class="block text-center font-serif text-xl" for="result-{i}">{url}</label>
+          <label class="block text-center font-serif text-xl" for="result-{url}">{url}</label>
           <textarea
             onclick={() => {
               navigator.clipboard
@@ -135,7 +135,7 @@
                 .then(() => addToast('Copied to Clipboard!', 'info', 5000))
                 .catch(() => addToast('failed to copy', 'warning', 5000));
             }}
-            id="result-{i}"
+            id="result-{url}"
             class="h-50 cursor-pointer"
             readonly>{md}</textarea
           >

@@ -8,6 +8,7 @@
   import { innerWidth } from 'svelte/reactivity/window';
   import UqTessLogo_2 from '$lib/sfc/uq-tess-logo-2.svelte';
   import { onMount } from 'svelte';
+  import ToggleColorSchemeBtn from '$lib/sfc/toggle-color-scheme-btn.svelte';
 
   const { data: todayWord } = $props();
 
@@ -51,14 +52,15 @@
 
 <main
   class="
-        container mx-auto bg-slate-50 px-3 min-h-screen
+        container mx-auto bg-slate-50 d:bg-zinc-900 transition-colors px-3 min-h-screen
         flex flex-col gap-y-10 py-2
 		[&_h2:not(#subtitle)]:text-center [&_h2:not(#subtitle)]:border-b-3 [&_h2:not(#subtitle)]:border-double
     "
 >
   <div>
+    <ToggleColorSchemeBtn />
     <h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
-    <p class="text-red-600 font-semibold text-xl text-center">
+    <p class="text-danger font-semibold text-xl text-center">
       ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
     </p>
     <p>

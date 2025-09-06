@@ -1,18 +1,6 @@
 import { error, json } from '@sveltejs/kit';
-import TurndownService from '@joplin/turndown';
-import { gfm } from '@joplin/turndown-plugin-gfm';
-import { JSDOM } from 'jsdom';
-import DOMPurify from 'dompurify';
+import { htmlToMd } from '$lib/modules/md-html';
 
-const service = new TurndownService({
-  headingStyle: 'atx',
-  emDelimiter: '*',
-  bulletListMarker: '-',
-  hr: '---',
-});
-service.use(gfm);
-const win = new JSDOM('').window;
-const purifier = DOMPurify(win);
 const headers = {
   'Content-Type': 'application/json',
 } as const;
@@ -25,15 +13,18 @@ export const GET = async ({ url, fetch: svFetch }) => {
   const tasks = decoded.map(async (url) => {
     const resp = await svFetch(url, { method: 'GET' });
     if (!resp.ok) {
-      error(resp.status);
+      console.error(resp.url, resp.status, resp.statusText);
+      error(404, { message: `failed to fetch` });
     }
 
     const text = await resp.text();
-    const purified = purifier.sanitize(text);
-    return service.turndown(purified);
+
+    return htmlToMd(text);
   });
 
-  const mds = await Promise.all(tasks);
+  const mds = (await Promise.allSettled(tasks))
+    .filter((r) => r.status === 'fulfilled')
+    .map(({ value }) => value);
 
   return json(mds, { headers });
 };

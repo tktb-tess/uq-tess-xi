@@ -129,7 +129,7 @@
     </nav>
   {/if}
 
-  <main class="flex-[1_0_0] bg-slate-50 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]">
+  <main class="flex-[1_0_0] bg-slate-50 d:bg-zinc-900 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]">
     {@render children()}
   </main>
 </div>

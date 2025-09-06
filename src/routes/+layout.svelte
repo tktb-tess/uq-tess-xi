@@ -2,6 +2,8 @@
   import { PUBLIC_SITE_NAME, PUBLIC_BASE_URL } from '$env/static/public';
   import Toasts from '$lib/sfc/toasts.svelte';
   import '../app.css';
+  import { siteConfig } from '$lib/modules/site-config.svelte';
+
   const { children } = $props();
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
 </script>
@@ -17,6 +19,7 @@
   <meta name="twitter:image" content={linkCardUrl} />
 </svelte:head>
 
-<Toasts />
-
-{@render children()}
+<div data-color-scheme={siteConfig.colorScheme} class="contents">
+  <Toasts />
+  {@render children()}
+</div>
