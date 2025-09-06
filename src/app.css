@@ -3,310 +3,340 @@
 /* font-face settings */
 
 @font-face {
-	font-family: 'InterVariable';
-	font-style: normal;
-	src:
-		local('Inter'),
-		url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations');
+  font-family: 'InterVariable';
+  font-style: normal;
+  src:
+    local('Inter'),
+    url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations');
 }
 
 @font-face {
-	font-family: 'InterVariable';
-	font-style: italic;
-	src:
-		local('Inter Italic'),
-		url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2-variations');
+  font-family: 'InterVariable';
+  font-style: italic;
+  src:
+    local('Inter Italic'),
+    url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2-variations');
 }
 
 @font-face {
-	font-family: 'CharisSIL';
-	font-weight: 100 500;
-	font-style: normal;
-	src:
-		local('Charis SIL'),
-		url('/woff2/CharisSIL-Regular.woff2') format('woff2');
+  font-family: 'CharisSIL';
+  font-weight: 100 500;
+  font-style: normal;
+  src:
+    local('Charis SIL'),
+    url('/woff2/CharisSIL-Regular.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: 'CharisSIL';
-	font-weight: 100 500;
-	font-style: italic;
-	src:
-		local('Charis SIL Italic'),
-		url('/woff2/CharisSIL-Italic.woff2') format('woff2');
+  font-family: 'CharisSIL';
+  font-weight: 100 500;
+  font-style: italic;
+  src:
+    local('Charis SIL Italic'),
+    url('/woff2/CharisSIL-Italic.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: 'CharisSIL';
-	font-weight: 600 900;
-	font-style: normal;
-	src:
-		local('Charis SIL Bold'),
-		url('/woff2/CharisSIL-Bold.woff2') format('woff2');
+  font-family: 'CharisSIL';
+  font-weight: 600 900;
+  font-style: normal;
+  src:
+    local('Charis SIL Bold'),
+    url('/woff2/CharisSIL-Bold.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: 'CharisSIL';
-	font-weight: 600 900;
-	font-style: italic;
-	src:
-		local('Charis SIL Bold Italic'),
-		url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
+  font-family: 'CharisSIL';
+  font-weight: 600 900;
+  font-style: italic;
+  src:
+    local('Charis SIL Bold Italic'),
+    url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: 'PhunDot';
-	src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
+  font-family: 'PhunDot';
+  src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
 @theme {
-	--font-sans:
-		'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
-		'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
-	--font-serif:
-		'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
-		'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
-	--font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
-	--font-phun-dot: 'PhunDot', var(--font-sans);
-	--color-mnlila: oklch(0.18 0.0957 296);
-	--color-title-s: oklch(0.3 0.1469 316);
-	--color-title-e: oklch(0.3 0.1469 276);
-	--color-llila: oklch(0.91 0.0488 296);
-	--color-llila-2: oklch(0.85 0.0836 296);
-	--link-transition-dur: 120ms;
-	--tracking-ultra: 3rem;
+  --font-sans:
+    'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+  --font-serif:
+    'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
+    'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+  --font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
+  --font-phun-dot: 'PhunDot', var(--font-sans);
+  --color-mnlila: oklch(0.18 0.0957 296);
+  --color-title-s: oklch(0.3 0.1469 316);
+  --color-title-e: oklch(0.3 0.1469 276);
+  --color-llila: oklch(0.91 0.0488 296);
+  --color-llila-2: oklch(0.85 0.0836 296);
+  --link-transition-dur: 120ms;
+  --tracking-ultra: 3rem;
 
-	@keyframes slide-in {
-		from {
-			transform: translateY(-70px) rotate(-120deg);
-		}
-		to {
-			transform: translateY(0) rotate(0);
-		}
-	}
+  @keyframes slide-in {
+    from {
+      transform: translateY(-70px) rotate(-120deg);
+    }
+    to {
+      transform: translateY(0) rotate(0);
+    }
+  }
 
-	@keyframes slide-in-2 {
-		from {
-			transform: translateY(15px);
-		}
-		to {
-			transform: translateY(0);
-		}
-	}
+  @keyframes slide-in-2 {
+    from {
+      transform: translateY(15px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 
-	@keyframes fade-in {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
-	@keyframes up-down {
-		from {
-			transform: translateY(-15px);
-		}
-		to {
-			transform: translateY(15px);
-		}
-	}
+  @keyframes up-down {
+    from {
+      transform: translateY(-15px);
+    }
+    to {
+      transform: translateY(15px);
+    }
+  }
 
-	@keyframes rot-y {
-		from {
-			transform: rotateY(0);
-		}
-		to {
-			transform: rotateY(360deg);
-		}
-	}
+  @keyframes rot-y {
+    from {
+      transform: rotateY(0);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
 }
 
 @utility user-select-* {
-	user-select: --value('none', 'auto', 'all', 'text');
-	-webkit-user-select: --value('none', 'auto', 'all', 'text');
+  user-select: --value('none', 'auto', 'all', 'text');
+  -webkit-user-select: --value('none', 'auto', 'all', 'text');
 }
 
 @utility table-container {
-	@apply overflow-x-auto my-8;
-	scrollbar-width: thin;
+  @apply overflow-x-auto my-8;
+  scrollbar-width: thin;
 }
 
 @utility link-disabled {
-	@apply pointer-events-none text-neutral-600 any-hover:no-underline;
+  @apply pointer-events-none text-neutral-600 any-hover:no-underline;
 }
 
 @utility grid-cols-auto-* {
-	grid-template-columns: repeat(--value(integer), auto);
+  grid-template-columns: repeat(--value(integer), auto);
 }
 
 @utility btn-1 {
-	@apply bg-mnlila any-hover:bg-mnlila/70 transition-colors rounded text-white px-2 no-underline;
+  @apply bg-mnlila d:bg-white any-hover:bg-mnlila/70 any-hover:d:bg-neutral-200 transition-colors rounded text-white d:text-black px-2 no-underline;
 }
 
 @utility btn-2 {
-	@apply bg-white any-hover:bg-llila transition-colors border border-slate-300 rounded px-2;
+  @apply bg-white any-hover:bg-llila transition-colors border border-slate-300 rounded px-2;
+}
+
+@utility text-danger {
+  @apply text-red-600 d:text-yellow-200;
 }
 
 @custom-variant any-hover {
-	&:hover {
-		@media (any-hover: hover) {
-			@slot;
-		}
-	}
+  &:hover {
+    @media (any-hover: hover) {
+      @slot;
+    }
+  }
+}
+
+@custom-variant d {
+  @media (prefers-color-scheme: dark) {
+    @slot;
+  }
+
+  &:where(
+    [data-color-scheme='dark'],
+    [data-color-scheme='dark'] &,
+    :has([data-color-scheme='dark'])
+  ) {
+    @slot;
+  }
 }
 
 @property --lght {
-	syntax: '<number>';
-	inherits: false;
-	initial-value: 0;
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
 }
 
 @property --chrm {
-	syntax: '<number>';
-	inherits: false;
-	initial-value: 0;
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
 }
 
 @property --hue {
-	syntax: '<number>';
-	inherits: false;
-	initial-value: 296;
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 296;
 }
 
 @layer base {
-	* {
-		font-optical-sizing: auto;
-	}
+  * {
+    font-optical-sizing: auto;
+  }
 
-	html,
-	:host {
-		-webkit-tap-highlight-color: revert;
-		@apply font-sans;
-	}
+  html,
+  :host {
+    -webkit-tap-highlight-color: revert;
+    @apply font-sans;
+  }
 
-	[lang='x-v3-karphnpn'] {
-		@apply font-phun-dot;
+  [lang='x-v3-karphnpn'] {
+    @apply font-phun-dot;
 
-		:not(pre, code, body, html) {
-			@apply font-[inherit];
-		}
-	}
+    :not(pre, code, body, html) {
+      @apply font-[inherit];
+    }
+  }
 
-	body {
-		@apply bg-llila;
-	}
+  body {
+    @apply bg-llila d:bg-mnlila text-black d:text-white;
+  }
 
-	a {
-		@apply text-blue-700 any-hover:underline;
-	}
+  a {
+    @apply text-blue-700 d:text-cyan-400 any-hover:underline;
+  }
 
-	button,
-	input[type='button'] {
-		@apply cursor-pointer;
-	}
+  button,
+  input[type='button'] {
+    @apply cursor-pointer;
+  }
 
-	input[type='text'],
-	input[type='number'],
-	input[type='url'],
-	textarea {
-		@apply font-mono bg-white border border-slate-300 rounded px-1;
+  input[type='text'],
+  input[type='number'],
+  input[type='url'],
+  textarea {
+    @apply font-mono bg-white border border-slate-300 rounded px-1;
 
-		&:disabled {
-			@apply text-neutral-500 bg-neutral-50;
-		}
-	}
+    &:disabled {
+      @apply text-neutral-500 bg-neutral-50;
+    }
+  }
 
-	h2,
-	h3,
-	p,
-	ul,
-	ol {
-		@apply mb-3;
-	}
+  h2,
+  h3,
+  p,
+  ul,
+  ol {
+    @apply mb-3;
+  }
 
-	li > ul {
-		@apply mb-0;
-	}
+  li > ul {
+    @apply mb-0;
+  }
 
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-mnlila font-serif;
-	}
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-mnlila d:text-white font-serif;
+  }
 
-	h2 {
-		@apply text-3xl;
-	}
+  h2 {
+    @apply text-3xl;
+  }
 
-	h3 {
-		@apply text-2xl;
-	}
+  h3 {
+    @apply text-2xl;
+  }
 
-	ul {
-		list-style: '\2023';
-	}
+  ul {
+    list-style: '\2023';
+  }
 
-	ol {
-		list-style: decimal;
-	}
+  ol {
+    list-style: decimal;
+  }
 
-	:is(ul, ol) > li {
-		@apply ms-5 ps-1;
-	}
+  :is(ul, ol) > li {
+    @apply ms-5 ps-1;
+  }
 
-	table {
-		@apply grid md:place-content-center;
-	}
+  table {
+    @apply grid md:place-content-center;
+  }
 
-	thead,
-	tbody,
-	tr {
-		@apply contents;
-	}
+  thead,
+  tbody,
+  tr {
+    @apply contents;
+  }
 
-	tbody {
-		& > tr > td:first-child {
-			@apply border-l border-slate-200;
-		}
+  thead, tbody {
+    & > tr > td:first-child {
+      @apply border-l border-slate-200 d:border-slate-700;
+    }
 
-		& > tr > td:last-child {
-			@apply border-r border-slate-200;
-		}
+    & > tr > td:last-child {
+      @apply border-r border-slate-200 d:border-slate-700;
+    }
 
-		& > tr:last-child > td {
-			@apply border-b border-slate-200;
-		}
-	}
+    & > tr:last-child > td {
+      @apply border-b border-slate-200 d:border-slate-700;
+    }
 
-	td,
-	th {
-		@apply block text-center font-normal px-2 py-1 text-nowrap;
-	}
+    & > tr > th:first-child {
+      @apply d:border-l d:border-slate-700;
+    }
 
-	tr > td {
-		@apply bg-white;
-	}
+    & > tr > th:last-child {
+      @apply d:border-r d:border-slate-700;
+    }
 
-	tr:nth-child(even) > td {
-		@apply bg-slate-200;
-	}
+    & > tr:first-child > th {
+      @apply d:border-t d:border-slate-700;
+    }
+  }
 
-	th {
-		@apply bg-llila;
-	}
+  td,
+  th {
+    @apply block text-center font-normal px-2 py-1 text-nowrap;
+  }
 
-	tr:nth-child(even) > th {
-		@apply bg-llila-2;
-	}
+  tr > td {
+    @apply bg-white d:bg-black;
+  }
 
-	caption {
-		@apply block col-span-full mb-1 text-xl font-serif font-medium;
-	}
+  tr:nth-child(even) > td {
+    @apply bg-slate-200 d:bg-slate-800;
+  }
 
-	textarea {
-		@apply resize-none;
-	}
+  th {
+    @apply bg-llila d:bg-mnlila;
+  }
+
+  tr:nth-child(even) > th {
+    @apply bg-llila-2 d:bg-title-e;
+  }
+
+  caption {
+    @apply block col-span-full mb-1 text-xl font-serif font-medium;
+  }
+
+  textarea {
+    @apply resize-none;
+  }
 }

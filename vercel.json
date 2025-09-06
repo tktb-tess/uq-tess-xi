@@ -1,9 +1,9 @@
 {
-	"headers": [],
-	"crons": [
-		{
-			"path": "/api/v0/cron",
-			"schedule": "0 15 * * *"
-		}
-	]
+  "headers": [],
+  "crons": [
+    {
+      "path": "/api/v0/cron",
+      "schedule": "0 15 * * *"
+    }
+  ]
 }

@@ -100,63 +100,63 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
  * @param {bigint} n_ 判定したい整数
  */
 const millerRabin = (n_) => {
-	if (typeof n_ !== 'bigint') throw TypeError('引数型は \`bigint\` でなければなりません');
-	if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
-	const n = n_;
+  if (typeof n_ !== 'bigint') throw TypeError('引数型は \`bigint\` でなければなりません');
+  if (n_ < 0n) throw Error('引数は正の整数でなければなりません');
+  const n = n_;
 
-	if (n === 2n) return true;
-	if (n === 1n || n % 2n === 0n) return false;
+  if (n === 2n) return true;
+  if (n === 1n || n % 2n === 0n) return false;
 
-	const bit_num = n.toString(2).length;
-	const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
-	const d = (n - 1n) >> s;
+  const bit_num = n.toString(2).length;
+  const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
+  const d = (n - 1n) >> s;
 
-	if (n < 2n ** 64n) {
-		/** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
-		const bases_under_64 = Object.freeze([2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n]);
+  if (n < 2n ** 64n) {
+    /** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
+    const bases_under_64 = Object.freeze([2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n]);
 
-		challenge: for (const b_ of bases_under_64) {
-			const base = b_ >= n ? b_ % n : b_;
-			if (base === 0n) continue challenge;
-			if (exEuclidean(base, n).gcd != 1n) return false;
+    challenge: for (const b_ of bases_under_64) {
+      const base = b_ >= n ? b_ % n : b_;
+      if (base === 0n) continue challenge;
+      if (exEuclidean(base, n).gcd != 1n) return false;
 
-			let y = modPow(base, d, n);
-			if (y === 1n) continue challenge;
+      let y = modPow(base, d, n);
+      if (y === 1n) continue challenge;
 
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge;
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	} else {
-		/** 試行回数 */
-		const max_rot = 40;
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge;
+        y = (y * y) % n;
+      }
+      return false;
+    }
+    return true;
+  } else {
+    /** 試行回数 */
+    const max_rot = 40;
 
-		challenge2: for (let i = 0; i < max_rot; i++) {
-			let b_ = 0n;
+    challenge2: for (let i = 0; i < max_rot; i++) {
+      let b_ = 0n;
 
-			while (b_ < 2n || b_ >= n) {
-				b_ = getRandBI(bit_num); // 2以上n未満の乱数を取得
-			}
+      while (b_ < 2n || b_ >= n) {
+        b_ = getRandBI(bit_num); // 2以上n未満の乱数を取得
+      }
 
-			// 最大公約数が1でない (互いに素でない) なら合成数
-			if (exEuclidean(b_, n).gcd !== 1n) return false;
+      // 最大公約数が1でない (互いに素でない) なら合成数
+      if (exEuclidean(b_, n).gcd !== 1n) return false;
 
-			const base = b_;
+      const base = b_;
 
-			let y = modPow(base, d, n);
+      let y = modPow(base, d, n);
 
-			if (y === 1n) continue challenge2;
+      if (y === 1n) continue challenge2;
 
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge2;
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	}
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge2;
+        y = (y * y) % n;
+      }
+      return false;
+    }
+    return true;
+  }
 };
 ```

@@ -1,39 +1,30 @@
 import { error, json } from '@sveltejs/kit';
-import TurndownService from '@joplin/turndown';
-import { gfm } from '@joplin/turndown-plugin-gfm';
-import { JSDOM } from 'jsdom';
-import DOMPurify from 'dompurify';
+import { htmlToMd } from '$lib/modules/md-html';
 
-const service = new TurndownService({
-	headingStyle: 'atx',
-	emDelimiter: '*',
-	bulletListMarker: '-',
-	hr: '---'
-});
-service.use(gfm);
-const win = new JSDOM('').window;
-const purifier = DOMPurify(win);
 const headers = {
-	'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
 } as const;
 
 export const GET = async ({ url, fetch: svFetch }) => {
-	console.log(`received GET request at /to-md`);
-	const fetchUrls = url.searchParams.getAll('value');
-	const decoded = fetchUrls.map((u) => decodeURIComponent(u));
+  console.log(`received GET request at /to-md`);
+  const fetchUrls = url.searchParams.getAll('value');
+  const decoded = fetchUrls.map((u) => decodeURIComponent(u));
 
-	const tasks = decoded.map(async (url) => {
-		const resp = await svFetch(url, { method: 'GET' });
-		if (!resp.ok) {
-			error(resp.status);
-		}
+  const tasks = decoded.map(async (url) => {
+    const resp = await svFetch(url, { method: 'GET' });
+    if (!resp.ok) {
+      console.error(resp.url, resp.status, resp.statusText);
+      error(404, { message: `failed to fetch` });
+    }
 
-		const text = await resp.text();
-		const purified = purifier.sanitize(text);
-		return service.turndown(purified);
-	});
+    const text = await resp.text();
 
-	const mds = await Promise.all(tasks);
+    return htmlToMd(text);
+  });
 
-	return json(mds, { headers });
+  const mds = (await Promise.allSettled(tasks))
+    .filter((r) => r.status === 'fulfilled')
+    .map(({ value }) => value);
+
+  return json(mds, { headers });
 };

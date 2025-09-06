@@ -1,51 +1,64 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import type { ZpDICAPIResponseWord, WordData, Result } from '$lib/types/decl';
+import type { WordData, Result } from '$lib/types/decl';
+import { zpdicWordSchema } from '$lib/types/zpdic-api';
 import { redisKeys } from '$lib/types/decl';
+import z from 'zod';
 
 export const prerender = false;
 
 export const load = async (): Promise<Result<WordData>> => {
-	const client = await createClient({ url: REDIS_URL }).connect();
-	try {
-		const todayWord = await client.get(redisKeys.todayWord).then((word) => {
-			if (!word) throw Error('failed to load today-word from redis');
+  const client = await createClient({ url: REDIS_URL }).connect();
+  try {
+    const result = await client.get(redisKeys.todayWord).then((word) => {
+      if (!word) throw Error('failed to load today-word from redis');
 
-			return JSON.parse(word) as ZpDICAPIResponseWord;
-		});
+      return zpdicWordSchema.safeParse(JSON.parse(word));
+    });
 
-		const query = `?kind=exact&number=${todayWord.number}`;
-		const dicUrl = `https://zpdic.ziphil.com/dictionary/633${query}`;
+    if (!result.success) {
+      return {
+        success: false,
+        message: z.prettifyError(result.error),
+        cause: result.error.issues
+      }
+    }
+    
+    const todayWord = result.data;
 
-		const size = (() => {
-			const len = todayWord.name.length;
-			return len < 10 ? 'text-5xl' : 'text-4xl';
-		})();
+    const query = `?kind=exact&number=${todayWord.number}`;
+    const dicUrl = `https://zpdic.ziphil.com/dictionary/633${query}`;
 
-		return {
-			success: true,
-			result: {
-				word: todayWord.name,
-				translations: todayWord.equivalents,
-				dicUrl,
-				pron: todayWord.pronunciation,
-				size
-			}
-		};
-	} catch (e) {
-		if (e instanceof Error) {
-			return {
-				success: false,
-				message: e.message,
-				stack: e.stack
-			};
-		} else {
-			return {
-				success: false,
-				message: 'unidentified error'
-			};
-		}
-	} finally {
-		await client.close();
-	}
+    const size = (() => {
+      const len = todayWord.name.length;
+      return len < 10 ? 'text-5xl' : 'text-4xl';
+    })();
+
+    return {
+      success: true,
+      result: {
+        word: todayWord.name,
+        translations: todayWord.equivalents,
+        dicUrl,
+        pron: todayWord.pronunciation,
+        size,
+      },
+    };
+  } catch (e) {
+    if (e instanceof Error) {
+      return {
+        success: false,
+        message: e.message,
+        stack: e.stack,
+      };
+    } else {
+      return {
+        success: false,
+        message: 'unidentified error',
+        cause: e,
+      };
+    }
+  } finally {
+    await client.close();
+  }
 };
