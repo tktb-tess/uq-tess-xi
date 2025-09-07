@@ -109,14 +109,15 @@
 
 {#each tracks as track, i (track.path)}
   <div
-    class="bg-white rounded-lg border border-slate-300 drop-shadow flex flex-col gap-3 px-5 py-2 *:m-0"
+    class="bgc-textinv rounded-lg border border-slate-300 drop-shadow flex flex-col gap-3 px-5 py-2 *:m-0"
   >
     <h3>{track.composer} - {track.title}</h3>
     <p class="ps-1">{track.description}</p>
     <div class="flex gap-2 items-center">
       <button
         type="button"
-        class="text-mnlila bg-transparent any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg"
+        class="textc-highlight bg-transparent any-hover:bgc-highlight any-hover:textc-textinv transition-colors rounded px-2 py-1 text-lg"
+        aria-label="play/pause button"
         onclick={() => handlePlay(i)}
       >
         {#if track.state === 'playing'}
@@ -127,7 +128,8 @@
       </button>
       <button
         type="button"
-        class="text-mnlila bg-transparent any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg"
+        class="textc-highlight bg-transparent any-hover:bgc-highlight any-hover:textc-textinv transition-colors rounded px-2 py-1 text-lg"
+        aria-label="stop button"
         onclick={() => handleStop(i)}
       >
         <StopFill class="fill-current inline-block size-6" />
@@ -135,33 +137,35 @@
       <button
         type="button"
         class="
-						{track.loop ? `text-white bg-mnlila` : `text-mnlila bg-transparent`}
-						any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg
+						{track.loop ? `textc-textinv bgc-highlight` : `textc-highlight bg-transparent`}
+						any-hover:bgc-highlight any-hover:textc-textinv transition-colors rounded px-2 py-1 text-lg
 					"
+        aria-label="loop button"
         onclick={() => {
-          tracks[i].loop = !tracks[i].loop;
+          track.loop = !track.loop;
         }}
       >
         <Repeat class="fill-current inline-block size-6" />
       </button>
       <a
         type="button"
-        class="no-underline text-mnlila bg-transparent any-hover:bg-mnlila any-hover:text-white transition-colors rounded px-2 py-1 text-lg"
+        class="no-underline textc-highlight bg-transparent any-hover:bgc-highlight any-hover:textc-textinv transition-colors rounded px-2 py-1 text-lg"
         href="/audio/{track.path}"
+        aria-label="download button"
         download={track.path}
       >
         <DownloadIcon class="fill-current inline-block size-6" />
       </a>
-      <p class="m-0">{toTime(track.currentTime)}/{toTime(tracks[i].duration)}</p>
+      <p class="m-0">{toTime(track.currentTime)}/{toTime(track.duration)}</p>
     </div>
 
     <audio
       src="/audio/{track.path}"
       loop={track.loop}
-      bind:this={tracks[i].ref}
-      bind:currentTime={tracks[i].currentTime}
+      bind:this={track.ref}
+      bind:currentTime={track.currentTime}
       onended={() => handleStop(i)}
-      bind:duration={tracks[i].duration}
+      bind:duration={track.duration}
     ></audio>
   </div>
 {/each}

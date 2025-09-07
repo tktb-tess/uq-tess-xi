@@ -329,6 +329,21 @@
           <td>〃</td>
         </tr>
         <tr>
+          <td>sp</td>
+          <td>/sʔ͡p/</td>
+          <td>s の後の p, t, k は前声門化音になる。</td>
+        </tr>
+        <tr>
+          <td>st</td>
+          <td>/sʔ͡t/</td>
+          <td>〃</td>
+        </tr>
+        <tr>
+          <td>sk</td>
+          <td>/sʔ͡k/</td>
+          <td>〃</td>
+        </tr>
+        <tr>
           <td>同じ子音字 × 2</td>
           <td>&#x2013;</td>
           <td>直前の母音が短母音であることを表す。ただし <i>mm, nn</i> を除く</td>
@@ -344,13 +359,18 @@
           <td>喉の奥から勢いよくハ行を言う感じ。ドイツ語の <i>ch</i> などに近い</td>
         </tr>
         <tr>
-          <td>語末のmb</td>
+          <td>語末の mb</td>
           <td>/m/</td>
           <td>bは読まない</td>
         </tr>
         <tr>
-          <td>語末のnd</td>
+          <td>語末の nd</td>
           <td>/n/</td>
+          <td>dは読まない</td>
+        </tr>
+        <tr>
+          <td>語末の ld</td>
+          <td>/l/</td>
           <td>dは読まない</td>
         </tr>
         <tr>
@@ -585,4 +605,4 @@
   </p>
 </section>
 
-<h5 class="text-center text-[red] text-3xl my-8">工事中...</h5>
+<h5 class="text-center text-danger text-3xl my-8">工事中...</h5>

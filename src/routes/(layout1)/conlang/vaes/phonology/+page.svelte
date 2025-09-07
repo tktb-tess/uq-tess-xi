@@ -34,7 +34,7 @@
   <h2 id="consonant" class="border-b-3 border-double ps-1">子音</h2>
 
   <div class="table-container">
-    <table class="grid-cols-[repeat(9,auto)] [&_td]:font-ipa [&_td]:text-center">
+    <table class="grid-cols-auto-9 [&_td]:font-ipa [&_td]:text-center">
       <thead>
         <tr>
           <th scope="col" class="col-span-2"></th>
@@ -170,8 +170,9 @@
     <li>破裂音は有声・無声・前声門化の3系列の対立がある。前声門化破裂音は語頭には現れない。</li>
     <li>
       無声破裂音 <span class="font-ipa">/p/, /t/, /k/</span> は <span class="font-ipa">/s/</span>
-      の後でない音節頭にある時、帯気する (<span class="font-ipa">[pʰ], [tʰ], [kʰ]</span
-      >)。流音・接近音
+      の後でない音節頭にある時、帯気する (<span class="font-ipa">[pʰ], [tʰ], [kʰ]</span>)。
+      <span class="font-ipa">/s/</span>
+      の後ろには前声門化音しか来ない。流音・接近音
       <span class="font-ipa">/l/, /ɽ/, /j/, /ʋ/</span>
       が後続する時、後続する音は無声音化する (<span class="font-ipa">[pɽ̊]</span> etc.)。
     </li>
@@ -416,4 +417,4 @@
   </ul>
 </section>
 
-<h4 class="text-center my-8 text-3xl text-[red]">工事中...</h4>
+<h4 class="text-center my-8 text-3xl text-danger">工事中...</h4>

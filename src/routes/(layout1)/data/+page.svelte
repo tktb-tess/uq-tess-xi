@@ -2,8 +2,8 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/sfc/ext_link.svelte';
 
-  const ogTitle = 'データ',
-    ogDesc = '';
+  const ogTitle = 'データ';
+  const ogDesc = 'でーた！';
 </script>
 
 <svelte:head>

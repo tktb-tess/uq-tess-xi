@@ -149,7 +149,7 @@
         Download all
       </button>
     {:catch e}
-      <h3 class="text-red-500 text-center">{e}</h3>
+      <h3 class="text-danger text-center">{e}</h3>
     {/await}
   </div>
   <div class="h-50"></div>

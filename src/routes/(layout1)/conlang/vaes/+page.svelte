@@ -70,7 +70,7 @@
   </p>
 </section>
 
-<h3 class="text-center text-[red] my-5">工事中...</h3>
+<h3 class="text-center text-danger my-5">工事中...</h3>
 
 <style>
   .noto-sans-sc {

@@ -52,7 +52,7 @@
 
 <main
   class="
-        container mx-auto bg-slate-50 d:bg-zinc-900 px-3 min-h-screen
+        container mx-auto bgc-main px-3 min-h-screen
         flex flex-col gap-y-10 py-2
 		[&_h2:not(#subtitle)]:text-center [&_h2:not(#subtitle)]:border-b-3 [&_h2:not(#subtitle)]:border-double
     "
@@ -160,7 +160,7 @@
       </li>
     </ul>
   </section>
-  <h3 class="text-red-600 text-center my-8">工事中……</h3>
+  <h3 class="text-danger text-center my-8">工事中……</h3>
 </main>
 
 <footer class="flex flex-col items-center my-5 px-3">
@@ -174,7 +174,7 @@
     rel="noopener"
     aria-label="Link to the GitHub Repository"
   >
-    <GithubMark class="any-hover:opacity-60 size-6 transition-opacity" />
+    <GithubMark class="inline-block any-hover:opacity-60 size-6 transition-opacity" />
   </a>
 </footer>
 

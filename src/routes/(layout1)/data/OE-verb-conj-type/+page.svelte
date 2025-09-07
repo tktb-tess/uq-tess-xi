@@ -1,8 +1,8 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ConjugationTable from './conjugation-table.svelte';
-  const ogTitle = 'Ænglisċ 動詞活用まとめ',
-    ogDesc = 'こえいご♡';
+  const ogTitle = 'Ænglisċ 動詞活用まとめ';
+  const ogDesc = 'こえいご♡';
 </script>
 
 <svelte:head>
