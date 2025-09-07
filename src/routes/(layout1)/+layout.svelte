@@ -94,9 +94,7 @@
   </div>
 {/snippet}
 
-<header
-  class="bg-highlight text-white h-16 flex items-center"
->
+<header class="bg-highlight text-white h-16 flex items-center">
   <div class="flex *:flex-[0_0_auto] mx-auto justify-start w-[90%] gap-x-5">
     {#if !large}
       <button
@@ -111,7 +109,10 @@
       </button>
     {/if}
     <h1 class="font-serif text-3xl">
-      <a class="flex items-center text-white no-underline any-hover:bg-white/20 transition-colors" href="/.">悠久肆方体</a>
+      <a
+        class="flex items-center text-white no-underline any-hover:bg-white/20 transition-colors"
+        href="/.">悠久肆方体</a
+      >
     </h1>
     <button
       aria-label="toggle color scheme"
