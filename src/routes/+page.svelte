@@ -52,7 +52,7 @@
 
 <main
   class="
-        container mx-auto bg-slate-50 d:bg-zinc-900 transition-colors px-3 min-h-screen
+        container mx-auto bg-slate-50 d:bg-zinc-900 px-3 min-h-screen
         flex flex-col gap-y-10 py-2
 		[&_h2:not(#subtitle)]:text-center [&_h2:not(#subtitle)]:border-b-3 [&_h2:not(#subtitle)]:border-double
     "

@@ -39,7 +39,7 @@
   <Katex math={`a^{2^s d} \\equiv 1 \\pmod p \\qquad (2)`} displayMode />
   <p>と表せる。</p>
   <p>このとき、次の定理が成り立つ。</p>
-  <div class="bg-sky-50 rounded-lg border border-black/20 px-3 flow-root pt-3 mb-3">
+  <div class="rounded-lg border-2 border-slate-500 d:border-slate-300 px-3 flow-root pt-3 mb-3">
     <h3>定理①</h3>
     <p>各変数を上のように定義したとき、</p>
 
@@ -49,13 +49,15 @@
     />
 
     <p>または</p>
+
     <Katex math={`a^d \\equiv 1 \\pmod p \\qquad \\mathrm{(b)}`} displayMode />
+
     <p>が成り立つ。</p>
   </div>
 
   <p>以下これを示す。</p>
 
-  <div class="bg-fuchsia-50 rounded-lg border border-black/20 px-3 flow-root pt-3 mb-3">
+  <div class="rounded-lg border-2 border-slate-500 d:border-slate-300 px-3 flow-root pt-3 mb-3">
     <h3>証明</h3>
     <p><Katex math={`a^{2^{s-1} d} \\pmod p`} /> の値について考える。</p>
     <p>
@@ -80,7 +82,7 @@
   </div>
 
   <p>これの対偶を取ると、</p>
-  <div class="bg-sky-50 rounded-lg border border-black/20 px-3 flow-root pt-3 mb-3">
+  <div class="rounded-lg border-2 border-slate-500 d:border-slate-300 px-3 flow-root pt-3 mb-3">
     <h3>定理②</h3>
     <p>
       <Katex math="n" /> を正整数、 <Katex math="a" /> を <Katex math="n" /> と互いに素な正整数として、
@@ -104,7 +106,7 @@
     定理②を用いて確率的な素数判定をするものが <strong>Miller–Rabin</strong> 素数判定法である。
   </p>
   <p>具体的には、 n を素数判定したい正整数とすると、</p>
-  <div class="bg-sky-50 rounded-lg border border-black/20 px-3 flow-root pt-3 mb-3">
+  <div class="rounded-lg border-2 border-slate-500 d:border-slate-300 px-3 flow-root pt-3 mb-3">
     <ol>
       <li>
         <Katex math="n-1" /> を <Katex math="2" /> の冪 <Katex math="2^s" /> と奇数 <Katex
@@ -159,7 +161,7 @@
 <section aria-labelledby="jissou">
   <h2 class="border-b-3 border-double ps-1" id="jissou">実装例</h2>
   <h3>TypeScript</h3>
-  <pre class="bg-slate-200 px-3"><code
+  <pre class="bg-slate-200 d:bg-slate-800  px-3"><code
       >{`
 export const millerRabin = (n: bigint) => {
 	if (n < 0n) throw Error('引数は正の整数でなければなりません');
