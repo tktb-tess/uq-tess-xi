@@ -15,7 +15,7 @@
 <button
   {onclick}
   class="
-		block fixed right-5 bottom-5 p-3 rounded-[50%] bg-transparent text-mnlila any-hover:bg-mnlila any-hover:text-white
+		block fixed right-5 bottom-5 p-3 rounded-[50%] bg-transparent textc-highlight any-hover:bgc-highlight any-hover:textc-textinv
 		transition-[color,background-color,opacity,visibility] data-invisible:opacity-0 data-invisible:invisible
 	"
   type="button"

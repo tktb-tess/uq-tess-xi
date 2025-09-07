@@ -7,6 +7,4 @@ export const init: ServerInit = async () => {
 
 export const handleError: HandleServerError = async ({ error, status, event, message }) => {
   console.error(status, message, error, event);
-
-  return Error(`${status} ${message}`, { cause: JSON.stringify({ event, error }) });
 };

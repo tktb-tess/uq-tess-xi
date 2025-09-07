@@ -39,12 +39,12 @@
 {#snippet sideMenu()}
   <div
     class="
-      side-menu [&_a]:text-black [&_a]:d:text-white [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem] [&_:where(a,summary)]:hover:bg-mnlila
-      [&_:where(a,summary)]:hover:text-white [&_:where(a,summary)]:d:hover:bg-white [&_:where(a,summary)]:d:hover:text-mnlila
+      side-menu [&_a]:textc-text [&_a]:no-underline
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem]
+      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
     "
   >
-    <h4 class="text-2xl font-sans text-black d:text-white font-extralight">VÄSSENZLÄNDISĶ</h4>
+    <h4 class="text-2xl font-sans textc-text font-extralight">VÄSSENZLÄNDISĶ</h4>
     <div class="flex flex-col">
       <a href="/conlang/vaes">概説</a>
       <a href="/conlang/vaes/letter-et-pron">文字と発音</a>
@@ -81,12 +81,12 @@
   <hr class="border-black/30 w-15 mx-auto my-4" />
   <div
     class="
-      side-menu [&_a]:text-black [&_a]:d:text-white [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem] [&_:where(a,summary)]:hover:bg-mnlila
-      [&_:where(a,summary)]:hover:text-white [&_:where(a,summary)]:d:hover:bg-white [&_:where(a,summary)]:d:hover:text-mnlila
+      side-menu [&_a]:textc-text [&_a]:no-underline
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem]
+      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
     "
   >
-    <h4 class="text-2xl font-sans text-black d:text-white font-extralight">MISCELLANEOUS</h4>
+    <h4 class="text-2xl font-sans textc-text font-extralight">MISCELLANEOUS</h4>
     <div class="flex flex-col">
       <a href="/data">データ</a>
       <a href="/others">その他</a>
@@ -95,15 +95,14 @@
 {/snippet}
 
 <header
-  class="
-        bg-mnlila text-white [&_a]:text-white [&_a]:no-underline [&_a]:any-hover:text-white/70 [&_a]:transition-colors
-    "
+  class="bg-highlight text-white h-16 flex items-center"
 >
   <div class="flex *:flex-[0_0_auto] mx-auto justify-start w-[90%] gap-x-5">
     {#if !large}
       <button
-        class="text-white hover:text-white/70 transition-colors"
+        class="text-white any-hover:bg-white/20 transition-colors"
         type="button"
+        aria-label="hamburger button"
         onclick={() => {
           drawerIsOpen = true;
         }}
@@ -111,8 +110,8 @@
         <Hamburger class="size-6" />
       </button>
     {/if}
-    <h1 class="font-serif text-3xl [&_a]:h-[64px]">
-      <a class="flex items-center" href="/.">悠久肆方体</a>
+    <h1 class="font-serif text-3xl">
+      <a class="flex items-center text-white no-underline any-hover:bg-white/20 transition-colors" href="/.">悠久肆方体</a>
     </h1>
     <button
       aria-label="toggle color scheme"
@@ -123,9 +122,9 @@
       }}
     >
       {#if siteConfig.colorScheme === 'light'}
-        <MoonIcon class="fill-current inline-block size-6" />
+        <MoonIcon class="fill-current inline-block size-5" />
       {:else}
-        <SunIcon class="fill-current inline-block size-6" />
+        <SunIcon class="fill-current inline-block size-5" />
       {/if}
     </button>
   </div>
@@ -147,7 +146,7 @@
       data-open={drawerIsOpen ? '' : null}
       aria-label="close sidemenu"
     ></button>
-    <nav class="drawer bg-llila d:bg-mnlila" data-open={drawerIsOpen ? '' : null}>
+    <nav class="drawer bgc-body" data-open={drawerIsOpen ? '' : null}>
       <div class="flex justify-end px-4">
         <button
           type="button"

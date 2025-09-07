@@ -161,7 +161,7 @@
 <section aria-labelledby="jissou">
   <h2 class="border-b-3 border-double ps-1" id="jissou">実装例</h2>
   <h3>TypeScript</h3>
-  <pre class="bg-slate-200 d:bg-slate-800  px-3"><code
+  <pre class="bg-slate-200 d:bg-slate-800 px-3"><code
       >{`
 export const millerRabin = (n: bigint) => {
 	if (n < 0n) throw Error('引数は正の整数でなければなりません');

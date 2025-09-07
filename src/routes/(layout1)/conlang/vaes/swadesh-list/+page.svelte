@@ -47,7 +47,7 @@
     </table>
   </div>
 {:else}
-  <div class="text-center *:text-[red]">
+  <div class="text-center *:text-danger">
     <h3>読み込みに失敗しました</h3>
     <p>再読み込みしてください</p>
   </div>

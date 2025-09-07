@@ -53,7 +53,7 @@
       <th scope="col">主格</th>
       <th scope="col">与格</th>
     </tr>
-    <tr class="*:bg-white">
+    <tr class="*:bgc-td1">
       <td></td>
       <td>{forms[1]}</td>
       <td>{forms[2]}</td>
@@ -63,27 +63,27 @@
       <th scope="col">現在</th>
       <th scope="col">過去</th>
     </tr>
-    <tr class="[&_th]:bg-llila [&_td]:bg-white">
+    <tr class="[&_th]:bgc-th1 [&_td]:bgc-td1">
       <th scope="row">1人称単数</th>
       <td>{forms[3]}</td>
       <td>{forms[7]}</td>
     </tr>
-    <tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+    <tr class="[&_th]:bgc-th2 [&_td]:bgc-td2">
       <th scope="row">2人称単数</th>
       <td>{forms[4]}</td>
       <td>{forms[8]}</td>
     </tr>
-    <tr class="[&_th]:bg-llila [&_td]:bg-white">
+    <tr class="[&_th]:bgc-th1 [&_td]:bgc-td1">
       <th scope="row">3人称単数</th>
       <td>{forms[5]}</td>
       <td>{forms[9]}</td>
     </tr>
-    <tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+    <tr class="[&_th]:bgc-th2 [&_td]:bgc-td2">
       <th scope="row">複数</th>
       <td>{forms[6]}</td>
       <td>{forms[10]}</td>
     </tr>
-    <tr class="*:bg-llila">
+    <tr class="*:bgc-th1">
       <th scope="row">接続法</th>
       <th scope="col">現在</th>
       <th scope="col">過去</th>
@@ -101,15 +101,15 @@
     <tr>
       <th scope="colgroup" class="col-span-3">命令法</th>
     </tr>
-    <tr class="[&_th]:bg-llila [&_td]:bg-white">
+    <tr class="[&_th]:bgc-th1 [&_td]:bgc-td1">
       <th scope="row">単数</th>
       <td class="col-span-2">{forms[15]}</td>
     </tr>
-    <tr class="[&_th]:bg-llila-2 [&_td]:bg-slate-200">
+    <tr class="[&_th]:bgc-th2 [&_td]:bgc-td2">
       <th scope="row">複数</th>
       <td class="col-span-2">{forms[16]}</td>
     </tr>
-    <tr class="*:bg-llila">
+    <tr class="*:bgc-th1">
       <th scope="row">分詞</th>
       <th scope="col">現在</th>
       <th scope="col">過去</th>

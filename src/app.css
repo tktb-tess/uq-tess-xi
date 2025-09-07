@@ -69,12 +69,34 @@
   --font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
   --font-phun-dot: 'PhunDot', var(--font-sans);
   --color-mnlila: oklch(0.18 0.0957 296);
+  --color-mnlila-2: oklch(0.2774 0.1512 296);
   --color-title-s: oklch(0.3 0.1469 316);
   --color-title-e: oklch(0.3 0.1469 276);
   --color-llila: oklch(0.91 0.0488 296);
   --color-llila-2: oklch(0.85 0.0836 296);
   --link-transition-dur: 120ms;
   --tracking-ultra: 3rem;
+
+  --color-body: var(--color-llila);
+  --color-d-body: var(--color-mnlila);
+  --color-main: var(--color-slate-50);
+  --color-d-main: var(--color-zinc-900);
+  --color-text: var(--color-black);
+  --color-d-text: var(--color-white);
+  --color-highlight: var(--color-mnlila);
+  --color-d-highlight: var(--color-llila);
+  --color-th1: var(--color-llila);
+  --color-d-th1: var(--color-mnlila);
+  --color-th2: var(--color-llila-2);
+  --color-d-th2: var(--color-mnlila-2);
+  --color-td1: var(--color-white);
+  --color-d-td1: var(--color-black);
+  --color-td2: var(--color-slate-200);
+  --color-d-td2: var(--color-slate-700);
+  --color-link: var(--color-blue-700);
+  --color-d-link: var(--color-cyan-300);
+  --color-textinv: var(--color-white);
+  --color-d-textinv: var(--color-black);
 
   @keyframes slide-in {
     from {
@@ -119,6 +141,55 @@
     to {
       transform: rotateY(360deg);
     }
+  }
+}
+
+/* todo: color-theme */
+@utility bgc-* {
+  background-color: --value(--color-*);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: --value(--color-d- *);
+  }
+
+  &:where(
+    [data-color-scheme='dark'],
+    [data-color-scheme='dark'] &,
+    :has([data-color-scheme='dark'])
+  ) {
+    background-color: --value(--color-d-*);
+  }
+}
+
+@utility textc-* {
+  color: --value(--color-*);
+
+  @media (prefers-color-scheme: dark) {
+    color: --value(--color-d- *);
+  }
+
+  &:where(
+    [data-color-scheme='dark'],
+    [data-color-scheme='dark'] &,
+    :has([data-color-scheme='dark'])
+  ) {
+    color: --value(--color-d-*);
+  }
+}
+
+@utility borderc-* {
+  border-color: --value(--color-*);
+
+  @media (prefers-color-scheme: dark) {
+    border-color: --value(--color-d- *);
+  }
+
+  &:where(
+    [data-color-scheme='dark'],
+    [data-color-scheme='dark'] &,
+    :has([data-color-scheme='dark'])
+  ) {
+    border-color: --value(--color-d-*);
   }
 }
 
@@ -212,11 +283,11 @@
   }
 
   body {
-    @apply bg-llila d:bg-mnlila text-black d:text-white;
+    @apply bgc-body textc-text;
   }
 
   a {
-    @apply text-blue-700 d:text-cyan-400 any-hover:underline;
+    @apply textc-link any-hover:underline;
   }
 
   button,
@@ -252,7 +323,7 @@
   h4,
   h5,
   h6 {
-    @apply text-mnlila d:text-white font-serif;
+    @apply textc-highlight font-serif;
   }
 
   h2 {
@@ -288,15 +359,15 @@
   thead,
   tbody {
     & > tr > td:first-child {
-      @apply border-l border-slate-200 d:border-slate-700;
+      @apply border-l borderc-td2;
     }
 
     & > tr > td:last-child {
-      @apply border-r border-slate-200 d:border-slate-700;
+      @apply border-r borderc-td2;
     }
 
     & > tr:last-child > td {
-      @apply border-b border-slate-200 d:border-slate-700;
+      @apply border-b borderc-td2;
     }
 
     & > tr > th:first-child {
@@ -306,10 +377,10 @@
     & > tr > th:last-child {
       @apply d:border-r d:border-slate-700;
     }
+  }
 
-    & > tr:first-child > th {
-      @apply d:border-t d:border-slate-700;
-    }
+  thead > tr:first-child > th {
+    @apply d:border-t d:border-slate-700;
   }
 
   td,
@@ -318,19 +389,19 @@
   }
 
   tr > td {
-    @apply bg-white d:bg-black;
+    @apply bgc-td1;
   }
 
   tr:nth-child(even) > td {
-    @apply bg-slate-200 d:bg-slate-700;
+    @apply bgc-td2;
   }
 
   th {
-    @apply bg-llila d:bg-mnlila;
+    @apply bgc-th1;
   }
 
   tr:nth-child(even) > th {
-    @apply bg-llila-2 d:bg-title-e;
+    @apply bgc-th2;
   }
 
   caption {

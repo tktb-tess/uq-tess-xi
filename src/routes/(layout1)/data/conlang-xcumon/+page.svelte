@@ -2,7 +2,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/sfc/ext_link.svelte';
   const ogTitle = '人工言語製作者に50の質問',
-    ogDesc = '';
+    ogDesc = 'しつもん！';
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@
 
 <p>とりあえずやってみようと思います。</p>
 <ol
-  class="ms-5 [&_p]:mb-0 [&_li:not(:last-child)]:mb-4 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila"
+  class="ms-5 [&_p]:mb-0 [&_li:not(:last-child)]:mb-4 [&_p:first-child]:font-semibold [&_p:first-child]:textc-highlight"
 >
   <li>
     <p>まずペンネーム（ハンドルネーム）を教えてください。</p>
@@ -141,8 +141,8 @@
   <li>
     <p>発音しにくい、または、意外な読みをする単語はありますか?</p>
     <p>
-      古英語の綴りをある程度踏襲しているので、sķ <span class="ipa">[ɬ̠]</span> や ģ
-      <span class="ipa">[j]</span>
+      古英語の綴りをある程度踏襲しているので、sķ <span class="font-ipa">[ɬ̠]</span> や ģ
+      <span class="font-ipa">[j]</span>
       が直感に反していて、また前者は発音も少し難しいかもしれません。
     </p>
   </li>
@@ -159,7 +159,7 @@
     <p>英語のように無変化で名詞→動詞に派生などは行わないので多くはないですが、あると思います。</p>
   </li>
   <li>
-    <p>collegeとuniversityのように微妙にニュアンスが違う単語はありますか?</p>
+    <p>college と university のように微妙にニュアンスが違う単語はありますか?</p>
     <p>あります。例は後で</p>
   </li>
   <li>
@@ -225,7 +225,7 @@
   </li>
   <li>
     <p>理想の「完成形」はどんな形ですか?</p>
-    <p>その世界観の言語として矛盾がない、「リアリティ」がある、など</p>
+    <p>その世界観の言語として矛盾がない、「リアリティ」がある、などです。ただ、目標はあれど「完成」はしないものだと思っています。</p>
   </li>
   <li>
     <p>誰かにこの言語を学んでほしいですか?</p>
@@ -250,7 +250,7 @@
   <li>
     <p>その言語であなた自身を短く語ってください。和訳もお願いします。</p>
     <p>
-      <span lang="art"
+      <span lang="x-conl-vl"
         >Güddenn däģ. Iķ byküwm Akane Tokotoba ģynamod. Mee laikeð myzikan sķyzning.</span
       ><br />
       和訳: こんにちは。私は斗琴庭暁響といいます。音楽を聴くのが好きです。

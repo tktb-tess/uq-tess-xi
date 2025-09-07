@@ -559,7 +559,7 @@
   <p>序数詞を形容詞として使うときは、<em>fyrest, uwðer</em> を除き弱変化のみとなる。</p>
 </section>
 
-<h4 class="text-center my-8 text-[red] text-2xl">工事中…</h4>
+<h4 class="text-center my-8 text-danger text-2xl">工事中…</h4>
 
 <style>
 </style>
