@@ -322,7 +322,7 @@
   }
 
   tr:nth-child(even) > td {
-    @apply bg-slate-200 d:bg-slate-800;
+    @apply bg-slate-200 d:bg-slate-700;
   }
 
   th {

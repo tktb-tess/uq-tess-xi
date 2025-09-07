@@ -116,7 +116,7 @@
     </h1>
     <button
       aria-label="toggle color scheme"
-      class="text-white ms-auto"
+      class="text-white ms-auto any-hover:bg-white/20 px-1 transition-colors"
       onclick={() => {
         const isDark = siteConfig.colorScheme === 'dark';
         siteConfig.colorScheme = isDark ? 'light' : 'dark';

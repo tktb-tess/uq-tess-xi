@@ -16,8 +16,8 @@
 
 <div
   class="
-				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-300 rounded-xl
-				[:where(&_*)]:m-0 gap-y-6 py-6 bg-white d:bg-mnlila bg-linear-to-b from-transparent to-black/3 shadow-sm mt-12
+				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-500 d:border-slate-300 rounded-xl
+				[:where(&_*)]:m-0 gap-y-6 py-6 bg-linear-to-b from-white d:from-zinc-900 to-neutral-50 d:to-black shadow-sm d:shadow-white mt-12
 			"
 >
   {#if todayWord.success}
