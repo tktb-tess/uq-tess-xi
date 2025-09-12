@@ -1,12 +1,10 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
 import { redisKeys } from '$lib/types/decl';
-import { zpdicApiResponseSchema, type ZpDICAPIResponse } from '$lib/types/zpdic-api.js';
 import { getRndInt } from '@tktb-tess/util-fns';
-// import { ZpDIC } from '@tktb-tess/my-zod-schema';
+import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
-import { dev } from '$app/environment';
 import RSA from '$lib/modules/rsa';
 
 export const GET = async ({ request, fetch: svFetch }) => {
@@ -17,13 +15,12 @@ export const GET = async ({ request, fetch: svFetch }) => {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
 
-
-  const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIResponse> => {
+  const fetchZpDICAPI = async (query: string): Promise<ZpDIC.MWWEResponse> => {
     const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
     if (!resp.ok) {
       error(404, { message: 'cannotAccessZpdicApi' });
     }
-    return resp.json().then((j) => zpdicApiResponseSchema.parse(j));
+    return resp.json().then((j) => ZpDIC.mwweResponseSchema.parse(j));
   };
 
   const getTotal = async () => {
@@ -69,7 +66,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
   };
 
   // authorization
-  if (!dev && request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
+  if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
     error(401);
   }
 
@@ -126,6 +123,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
     ).then((entries) => Object.fromEntries(entries));
 
     console.log(...Object.values(stored));
+
     return json(stored);
   } catch (e: unknown) {
     if (isHttpError(e)) {
