@@ -3,6 +3,7 @@ import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
 import { redisKeys } from '$lib/types/decl';
 import { zpdicApiResponseSchema, type ZpDICAPIResponse } from '$lib/types/zpdic-api.js';
 import { getRndInt } from '@tktb-tess/util-fns';
+// import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
 import { dev } from '$app/environment';
@@ -15,6 +16,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
   const zpdicReqHeaders = {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
+
 
   const fetchZpDICAPI = async (query: string): Promise<ZpDICAPIResponse> => {
     const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
