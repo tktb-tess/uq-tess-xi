@@ -1,4 +1,4 @@
-import { getRandPrimeByRange, initWasm } from '@tktb-tess/util-fns';
+import { getRandPrimeByRange } from '@tktb-tess/util-fns';
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { z } from 'zod';
 
@@ -12,7 +12,6 @@ const LIMIT = 1n << 64n;
 const paramSchema = z.coerce.bigint().gte(0n).lte(LIMIT);
 
 export const GET = async ({ url }) => {
-  await initWasm();
   const params = url.searchParams;
 
   const min = (() => {

@@ -1,12 +1,6 @@
 // assume to be used in server-side
 
-import {
-  getRandPrimeByBitLength,
-  modPow,
-  initWasm,
-  exEuclidean,
-  residue,
-} from '@tktb-tess/util-fns';
+import { getRandPrimeByBitLength, modPow, exEuclidean, residue } from '@tktb-tess/util-fns';
 
 const e = 65537n;
 
@@ -53,9 +47,7 @@ export default class RSA {
     this.#d = d;
   }
 
-  static async generate() {
-    await initWasm();
-
+  static generate() {
     while (true) {
       const p = getRandPrimeByBitLength(1024, true);
 
