@@ -93,10 +93,18 @@
   --color-d-td1: var(--color-black);
   --color-td2: var(--color-slate-200);
   --color-d-td2: var(--color-slate-700);
+  --color-border: var(--color-slate-200);
+  --color-d-border: var(--color-slate-700);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-cyan-300);
   --color-textinv: var(--color-white);
   --color-d-textinv: var(--color-black);
+  --color-btn1: var(--color-mnlila);
+  --color-d-btn1: var(--color-white);
+  --color-btn2: var(--color-white);
+  --color-d-btn2: var(--color-black);
+  --color-btn2-h: var(--color-llila);
+  --color-d-btn2-h: var(--color-slate-800);
 
   @keyframes slide-in {
     from {
@@ -144,7 +152,6 @@
   }
 }
 
-/* todo: color-theme */
 @utility bgc-* {
   background-color: --value(--color-*);
 
@@ -212,15 +219,15 @@
 }
 
 @utility btn-1 {
-  @apply bg-mnlila d:bg-white any-hover:bg-mnlila/70 any-hover:d:bg-neutral-200 transition-colors rounded text-white d:text-black px-2 no-underline;
+  @apply bgc-btn1 any-hover:opacity-70 transition-opacity rounded textc-textinv px-2 no-underline;
 }
 
 @utility btn-2 {
-  @apply bg-white any-hover:bg-llila transition-colors border border-slate-300 rounded px-2;
+  @apply bgc-btn2 any-hover:bgc-btn2-h transition-colors border borderc-border rounded px-2;
 }
 
 @utility text-danger {
-  @apply text-red-600 d:text-yellow-200;
+  @apply text-red-600 d:text-[#ff0];
 }
 
 @custom-variant any-hover {
@@ -359,15 +366,15 @@
   thead,
   tbody {
     & > tr > td:first-child {
-      @apply border-l borderc-td2;
+      @apply border-l borderc-border;
     }
 
     & > tr > td:last-child {
-      @apply border-r borderc-td2;
+      @apply border-r borderc-border;
     }
 
     & > tr:last-child > td {
-      @apply border-b borderc-td2;
+      @apply border-b borderc-border;
     }
 
     & > tr > th:first-child {

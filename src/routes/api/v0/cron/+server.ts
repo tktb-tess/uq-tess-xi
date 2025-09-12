@@ -96,7 +96,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
     const taskRsaKey = async () => {
       try {
-        const result = await genRsaKey();
+        const result = genRsaKey();
         await client.set(redisKeys.rsaKey, JSON.stringify(result));
       } catch (e) {
         console.error(e);
