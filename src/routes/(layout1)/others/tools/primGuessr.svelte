@@ -25,7 +25,8 @@
       const [p, q] = await primesPr.then(({ p, q }) => [BigInt(p), BigInt(q)] as const);
 
       judge = (p === guessp && q === guessq) || (p === guessq && q === guessp);
-    } catch (_) {
+    } catch (e) {
+      console.error(e);
       judge = null;
     }
   };
@@ -64,7 +65,8 @@
               try {
                 const pre = BigInt(v);
                 min = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
-              } catch (_) {
+              } catch (e) {
+                console.error(e);
                 min = 2n;
               }
             }
@@ -83,7 +85,8 @@
               try {
                 const pre = BigInt(v);
                 max = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
-              } catch (_) {
+              } catch (e) {
+                console.error(e);
                 max = 1024n;
               }
             }
@@ -125,6 +128,7 @@
                 const pre = BigInt(v);
                 guessp = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
               } catch (e) {
+                console.error(e);
                 guessp = 3n;
               }
             }
@@ -147,6 +151,7 @@
                 const pre = BigInt(v);
                 guessq = pre < 0n ? 0n : pre > LIMIT ? LIMIT : pre;
               } catch (e) {
+                console.error(e);
                 guessq = 19n;
               }
             }
