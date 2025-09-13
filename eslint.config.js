@@ -1,3 +1,4 @@
+// @ts-check
 import prettier from 'eslint-config-prettier';
 import js from '@eslint/js';
 import { includeIgnoreFile } from '@eslint/compat';
