@@ -110,54 +110,54 @@ const millerRabin = (n_: bigint) => {
   const d = (n - 1n) >> s;
 
   if (n < 2n ** 64n) {
-	  /** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
-	  const bases_under_64 = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n] as const;
+    /** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
+    const bases_under_64 = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n] as const;
 
-	  challenge: for (const b_ of bases_under_64) {
-	    const base = b_ >= n ? b_ % n : b_;
-
-	    if (base === 0n) continue challenge;
-
-	    if (exEuclidean(base, n).gcd != 1n) return false;
-
-	    let y = modPow(base, d, n);
-
-	    if (y === 1n) continue challenge;
-
-	    for (let i = 0n; i < s; i++) {
-		    if (y === n - 1n) continue challenge;
-
-		    y = (y * y) % n;
-		  }
-	    return false;
-	  }
+    challenge: for (const b_ of bases_under_64) {
+      const base = b_ >= n ? b_ % n : b_;
+  
+      if (base === 0n) continue challenge;
+  
+      if (exEuclidean(base, n).gcd != 1n) return false;
+  
+      let y = modPow(base, d, n);
+  
+      if (y === 1n) continue challenge;
+  
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge;
+  
+        y = (y * y) % n;
+      }
+      return false;
+    }
     return true;
   } else {
-	  /** 試行回数 */
-	  const max_rot = 40;
+    /** 試行回数 */
+    const max_rot = 40;
 
-	  challenge2: for (let i = 0; i < max_rot; i++) {
-		  let b_ = 0n;
+    challenge2: for (let i = 0; i < max_rot; i++) {
+      let b_ = 0n;
 
-		  while (b_ < 2n || b_ >= n) {
-			  b_ = getRandBIByBitLength(bit_num); // bit_num ビット以下の乱数を出力
-		  }
+      while (b_ < 2n || b_ >= n) {
+        b_ = getRandBIByBitLength(bit_num); // bit_num ビット以下の乱数を出力
+      }
 
-		  if (exEuclidean(b_, n).gcd !== 1n) return false;
+      if (exEuclidean(b_, n).gcd !== 1n) return false;
 
-		  const base = b_;
+      const base = b_;
 
-		  let y = modPow(base, d, n);
+      let y = modPow(base, d, n);
 
-		  if (y === 1n) continue challenge2;
+      if (y === 1n) continue challenge2;
 
-		  for (let i = 0n; i < s; i++) {
-			  if (y === n - 1n) continue challenge2;
-			  y = (y * y) % n;
-		  }
-		  return false;
-	  }
-	  return true;
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge2;
+        y = (y * y) % n;
+      }
+      return false;
+    }
+    return true;
   }
 };
 ```
