@@ -9,24 +9,31 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeParse from 'rehype-parse';
 import remarkStringify from 'remark-stringify';
 import rehypeSanitize from 'rehype-sanitize';
+import rehypeShiki from '@shikijs/rehype';
 
-export const mdToHtml = (markdown: string) =>
-  unified()
+export const mdToHtml = async (markdown: string) => {
+  const vFile = await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype)
     .use(rehypeKatex)
+    .use(rehypeShiki, {
+      theme: 'github-dark',
+    })
     .use(rehypeStringify)
-    .process(markdown)
-    .then((v) => v.toString());
+    .process(markdown);
+  return vFile.toString();
+};
 
-export const htmlToMd = (html: string) =>
-  unified()
+export const htmlToMd = async (html: string) => {
+  const vFile = await unified()
     .use(rehypeParse)
     .use(rehypeSanitize)
     .use(rehypeRemark)
     .use(remarkGfm)
     .use(remarkStringify)
-    .process(html)
-    .then((v) => v.toString());
+    .process(html);
+
+  return vFile.toString();
+};

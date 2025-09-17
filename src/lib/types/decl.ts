@@ -10,7 +10,7 @@ export type SwadeshList = {
   readonly value: ReadonlyArray<ReadonlyArray<string>>;
 };
 
-export type Result<T extends { [k: string]: unknown }> =
+export type Result<T> =
   | {
       readonly success: true;
       readonly result: T;
@@ -21,6 +21,7 @@ export type Result<T extends { [k: string]: unknown }> =
       readonly message: string;
       readonly stack?: string;
       readonly cause?: unknown;
+      readonly name?: string;
     };
 
 export type WordData = {
