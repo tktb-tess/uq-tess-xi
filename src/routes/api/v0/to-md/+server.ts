@@ -22,9 +22,7 @@ export const GET = async ({ url, fetch: svFetch }) => {
     return htmlToMd(text);
   });
 
-  const mds = (await Promise.allSettled(tasks))
-    .filter((r) => r.status === 'fulfilled')
-    .map(({ value }) => value);
+  const mds = await Promise.allSettled(tasks);
 
   return json(mds, { headers });
 };

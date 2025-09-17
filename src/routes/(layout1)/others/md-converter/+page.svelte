@@ -12,10 +12,17 @@
     id: UUID;
     url: string;
   };
-  type MdResult = {
-    url: string;
-    md: string;
-  };
+  type MdResult =
+    | {
+        success: true;
+        url: string;
+        md: string;
+      }
+    | {
+        success: false;
+        url: string;
+        error: unknown;
+      };
 
   const exam = 'https://example.com';
   const urls = $state<URLInput[]>([
@@ -39,23 +46,42 @@
       throw Error(`failed to fetch: ${resp.status} ${resp.statusText}`);
     }
 
-    const mds: string[] = await resp.json();
+    const mds: PromiseSettledResult<string>[] = await resp.json();
 
-    return mds.map((md, i) => ({ url: urls1[i], md }));
+    return mds.map((res, i): MdResult => {
+      switch (res.status) {
+        case 'rejected': {
+          return {
+            success: false,
+            url: urls[i].url,
+            error: res.reason,
+          };
+        }
+        case 'fulfilled': {
+          return {
+            success: true,
+            url: urls[i].url,
+            md: res.value,
+          };
+        }
+      }
+    });
   };
 
   const handleDownload = async () => {
     const mds = await resultsp;
     if (mds.length === 0) return;
-    const tasks = mds.map(async ({ md, url }) => {
-      const blob = new Blob([md], { type: 'text/markdown' });
-      const burl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = burl;
-      a.download = `${url.replaceAll(/[./:]+/g, '_')}.md`;
-      a.click();
-      URL.revokeObjectURL(burl);
-    });
+    const tasks = mds
+      .filter((r) => r.success)
+      .map(async ({ md, url }) => {
+        const blob = new Blob([md], { type: 'text/markdown' });
+        const burl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = burl;
+        a.download = `${url.replaceAll(/[./:]+/g, '_')}.md`;
+        a.click();
+        URL.revokeObjectURL(burl);
+      });
 
     await Promise.all(tasks);
   };
@@ -125,21 +151,30 @@
         変換中……
       </h3>
     {:then mds}
-      {#each mds as { md, url } (url)}
-        <div class="flex flex-col gap-2">
-          <label class="block text-center font-serif text-xl" for="result-{url}">{url}</label>
-          <textarea
-            onclick={() => {
-              navigator.clipboard
-                .writeText(md)
-                .then(() => addToast('Copied to Clipboard!', 'info', 5000))
-                .catch(() => addToast('failed to copy', 'warning', 5000));
-            }}
-            id="result-{url}"
-            class="h-50 cursor-pointer"
-            readonly>{md}</textarea
-          >
-        </div>
+      {#each mds as md (md.url)}
+        {#if md.success}
+          <div class="flex flex-col gap-2">
+            <label class="block text-center font-serif text-xl" for="result-{md.url}"
+              >{md.url}</label
+            >
+            <textarea
+              onclick={() => {
+                navigator.clipboard
+                  .writeText(md.md)
+                  .then(() => addToast('Copied to Clipboard!', 'info', 5000))
+                  .catch(() => addToast('failed to copy', 'warning', 5000));
+              }}
+              id="result-{md.url}"
+              class="h-50 cursor-pointer"
+              readonly>{md.md}</textarea
+            >
+          </div>
+        {:else}
+          <div class="flex flex-col gap-2">
+            <h3 class="text-danger text-center">{md.url}</h3>
+            <p class="text-danger text-center">{md.error}</p>
+          </div>
+        {/if}
       {/each}
       <button
         type="button"
