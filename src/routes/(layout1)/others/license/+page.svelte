@@ -1,8 +1,8 @@
 <script>
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/sfc/ext_link.svelte';
-  const ogTitle = 'ライセンス表示',
-    ogDesc = 'ライセンス表示';
+  const ogTitle = 'ライセンス表示';
+  const ogDesc = 'ライセンス表示';
 </script>
 
 <svelte:head>

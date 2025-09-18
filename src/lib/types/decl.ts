@@ -16,12 +16,12 @@ export type Result<T> =
       readonly result: T;
     }
   | {
+      readonly name: string;
       readonly success: false;
       readonly status?: number;
       readonly message: string;
       readonly stack?: string;
       readonly cause?: unknown;
-      readonly name?: string;
     };
 
 export type WordData = {

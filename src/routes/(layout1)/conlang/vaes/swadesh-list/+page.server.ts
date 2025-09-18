@@ -20,15 +20,17 @@ export const load = async (): Promise<Result<SwadeshList>> => {
     };
   } catch (e) {
     if (e instanceof Error) {
-      const { message, stack } = e;
+      const { message, stack, name } = e;
       return {
         success: false,
+        name,
         message,
         stack,
       };
     } else {
       return {
         success: false,
+        name: 'UnidentifiedError',
         message: 'unidentified error',
       };
     }
