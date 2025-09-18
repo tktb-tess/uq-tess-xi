@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/state';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import UqTessLogo_2 from '$lib/sfc/uq-tess-logo-2.svelte';
+  import UqTessLogo from '$lib/sfc/uq-tess-logo.svelte';
 
   const ogTitle = `${page.status}${page.error ? ` ${page.error.message}` : ''}`;
   const ogDesc = 'そこに無ければ無いですね';
@@ -22,7 +22,7 @@
   class="px-3 min-h-screen flex flex-col justify-center items-center *:max-w-full gap-4 overflow-hidden **:m-0"
 >
   <div class="animate-[up-down_1.5s_cubic-bezier(.5,0,.5,1)_infinite_alternate]">
-    <UqTessLogo_2 class="size-50 fill-black block animate-[rot-y_20s_linear_infinite]" />
+    <UqTessLogo class="size-50 fill-black block animate-[rot-y_20s_linear_infinite]" />
   </div>
   <h2 class="text-6xl font-extralight font-sans">Hoppla!</h2>
   <p class="text-center">

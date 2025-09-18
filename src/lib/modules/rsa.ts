@@ -1,5 +1,4 @@
 // assume to be used in server-side
-
 import { getRandPrimeByBitLength, modPow, exEuclidean, residue } from '@tktb-tess/util-fns';
 
 const e = 65537n;

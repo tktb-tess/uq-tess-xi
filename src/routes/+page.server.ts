@@ -18,6 +18,7 @@ export const load = async (): Promise<Result<WordData>> => {
 
     if (!result.success) {
       return {
+        name: result.error.name,
         success: false,
         message: z.prettifyError(result.error),
         cause: result.error.issues,
@@ -48,12 +49,14 @@ export const load = async (): Promise<Result<WordData>> => {
     if (e instanceof Error) {
       return {
         success: false,
+        name: e.name,
         message: e.message,
         stack: e.stack,
       };
     } else {
       return {
         success: false,
+        name: 'UnidentifiedError',
         message: 'unidentified error',
         cause: e,
       };

@@ -12,20 +12,20 @@ const paths: readonly string[] = [
   '/data',
   '/data/conlang-xcumon',
   '/data/OE-verb-conj-type',
-  'others',
-  'others/gregorian-chants',
-  'others/ja-tibetan',
-  'others/license',
-  'others/license/Inter',
-  'others/license/CharisSIL',
-  'others/license/FONTLOG',
-  'others/md-converter',
-  'others/musik',
-  'others/tools',
-  'others/miller-rabin',
+  '/others',
+  '/others/gregorian-chants',
+  '/others/ja-tibetan',
+  '/others/license',
+  '/others/license/Inter',
+  '/others/license/CharisSIL',
+  '/others/license/FONTLOG',
+  '/others/md-converter',
+  '/others/musik',
+  '/others/tools',
+  '/others/miller-rabin',
 ];
 
-const generateXml = () => {
+const main = () => {
   const lastmod = new Date().toISOString();
 
   const urls = paths.map(
@@ -46,4 +46,4 @@ ${urls.join('\n')}
   console.log('sitemap.xml was successfully generated');
 };
 
-generateXml();
+main();

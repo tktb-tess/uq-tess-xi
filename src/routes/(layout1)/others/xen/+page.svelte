@@ -1,8 +1,8 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-  const ogTitle = '微分音での様々な概念について',
-    ogDesc = '微分音での様々な概念について';
+  const ogTitle = '微分音での様々な概念について';
+  const ogDesc = '微分音での様々な概念について';
 </script>
 
 <svelte:head>

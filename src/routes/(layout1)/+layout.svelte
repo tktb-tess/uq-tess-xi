@@ -166,6 +166,7 @@
     class="flex-[1_0_0] bg-slate-50 d:bg-zinc-900 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]"
   >
     {@render children()}
+    <div class="h-5"></div>
   </main>
 </div>
 
