@@ -1,11 +1,15 @@
 <script lang="ts">
   import { mdToHtml } from '$lib/modules/md-html';
-  const { markdown = '' } = $props();
-  const phtml = $derived(mdToHtml(markdown));
+  const { mdText = '' } = $props();
+  const phtml = $derived(mdToHtml(mdText));
+
+  $effect(() => {
+    phtml.catch((e) => console.log(e));
+  });
 </script>
 
-{#await phtml then html}
-  {@html html}
-{:catch e}
-  <p class="text-danger">{e}</p>
+{#await phtml then htmlText}
+  {@html htmlText}
+{:catch}
+  <p class="text-danger">Error: Failed to convert markdown</p>
 {/await}

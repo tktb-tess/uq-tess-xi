@@ -6,7 +6,7 @@
   import GithubMark from '$lib/sfc/github-mark.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
-  import UqTessLogo_2 from '$lib/sfc/uq-tess-logo-2.svelte';
+  import UqTessLogo from '$lib/sfc/uq-tess-logo.svelte';
   import { onMount } from 'svelte';
   import ToggleColorSchemeBtn from '$lib/sfc/toggle-color-scheme-btn.svelte';
 
@@ -42,7 +42,7 @@
 <header
   class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
 >
-  <UqTessLogo_2
+  <UqTessLogo
     class="fill-current block size-40 md:size-55 lg:size-85 2xl:size-115 animate-[slide-in_3.5s_cubic-bezier(0,1,1,1),fade-in_3.5s_linear]"
   />
   <h1 class="font-semibold font-serif text-5xl lg:text-6xl xl:text-7xl text-center">
