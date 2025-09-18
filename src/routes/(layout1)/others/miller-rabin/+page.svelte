@@ -29,6 +29,6 @@
     {@html data.result}
   </div>
 {:else}
-  <p class="text-danger text-center">{data.name} {data.message}</p>
+  <pre class="text-danger text-center">{data.name} {data.status} {data.message}</pre>
 {/if}
 <div class="h-10"></div>

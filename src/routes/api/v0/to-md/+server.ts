@@ -8,9 +8,8 @@ const headers = {
 export const GET = async ({ url, fetch: svFetch }) => {
   console.log(`received GET request at /to-md`);
   const fetchUrls = url.searchParams.getAll('value');
-  const decoded = fetchUrls.map((u) => decodeURIComponent(u));
 
-  const tasks = decoded.map(async (url) => {
+  const tasks = fetchUrls.map(async (url) => {
     const resp = await svFetch(url, { method: 'GET' });
     if (!resp.ok) {
       console.error(resp.url, resp.status, resp.statusText);

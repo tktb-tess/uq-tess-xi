@@ -24,23 +24,24 @@
         error: unknown;
       };
 
-  const exam = 'https://example.com';
-  const urls = $state<URLInput[]>([
+  const exampleCom = 'https://example.com';
+  const urlInputs = $state<URLInput[]>([
     {
       id: crypto.randomUUID(),
-      url: exam,
+      url: exampleCom,
     },
   ]);
 
   let resultsp: Promise<MdResult[]> = $state(Promise.resolve([]));
 
   const fetchData = async (): Promise<MdResult[]> => {
-    const urls1 = urls.map(({ url }) => url);
-    const params = urls1.map((url) => (url ? `&value=${encodeURIComponent(url)}` : '')).join('');
+    const urls = urlInputs.map(({ url }) => url);
+    const params_ = urls.map((u) => ['value', u]);
+    const params = new URLSearchParams(params_);
+    
+    if (params.size === 0) return [];
 
-    if (!params) return [];
-
-    const resp = await fetch(`/api/v0/to-md?${params}`, { method: 'GET' });
+    const resp = await fetch(`/api/v0/to-md?${params.toString()}`, { method: 'GET' });
 
     if (!resp.ok) {
       throw Error(`failed to fetch: ${resp.status} ${resp.statusText}`);
@@ -53,14 +54,14 @@
         case 'rejected': {
           return {
             success: false,
-            url: urls[i].url,
+            url: urls.at(i) ?? '',
             error: res.reason,
           };
         }
         case 'fulfilled': {
           return {
             success: true,
-            url: urls[i].url,
+            url: urls.at(i) ?? '',
             md: res.value,
           };
         }
@@ -110,7 +111,7 @@
 </div>
 <div class="flex flex-col gap-4">
   <div class="flex flex-col gap-2">
-    {#each urls as url, i (url.id)}
+    {#each urlInputs as url, i (url.id)}
       <div class="flex justify-center gap-2 *:min-w-0">
         <label for="input-{url.id}">URL</label>
         <input type="url" id="input-{url.id}" bind:value={url.url} />
@@ -118,7 +119,7 @@
           type="button"
           class="btn-1"
           onclick={() => {
-            urls.splice(i, 1);
+            urlInputs.splice(i, 1);
           }}
         >
           <TrashIcon class="size-4" />
@@ -129,7 +130,7 @@
       type="button"
       class="btn-1 self-center"
       onclick={() => {
-        urls.push({ id: crypto.randomUUID(), url: exam });
+        urlInputs.push({ id: crypto.randomUUID(), url: exampleCom });
       }}
     >
       +

@@ -1,15 +1,16 @@
 import { mdToHtml } from '$lib/modules/md-html';
 import type { Result } from '$lib/types/decl';
-import { isHttpError } from '@sveltejs/kit';
+import { error, isHttpError } from '@sveltejs/kit';
 export const prerender = true;
 
-export type ReturnT = Promise<Result<string>>;
-
-export const load = async ({ fetch: svFetch }): ReturnT => {
-  const resp = await svFetch('/markdown/miller-rabin.md').then((r) => r.text());
-
+export const load = async ({ fetch: svFetch }): Promise<Result<string>> => {
   try {
-    const ht = await mdToHtml(resp);
+    const resp = await svFetch('/markdown/miller-rabin.md');
+    if (!resp.ok) {
+      error(resp.status, { message: resp.statusText });
+    }
+
+    const ht = await resp.text().then((md) => mdToHtml(md));
     return {
       success: true,
       result: ht,
