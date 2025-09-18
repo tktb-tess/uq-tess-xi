@@ -6,7 +6,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite dev",
-    "build": "tsx .other-scripts/xml-generate.ts && vite build",
+    "build": "tsx .prebuilds/xml-generate.ts && vite build",
     "lbuild": "rm -r -f .vercel && pnpm build",
     "start": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
