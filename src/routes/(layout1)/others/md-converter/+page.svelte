@@ -38,7 +38,7 @@
     const urls = urlInputs.map(({ url }) => url);
     const params_ = urls.map((u) => ['value', u]);
     const params = new URLSearchParams(params_);
-    
+
     if (params.size === 0) return [];
 
     const resp = await fetch(`/api/v0/to-md?${params.toString()}`, { method: 'GET' });

@@ -102,65 +102,65 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
 const millerRabin = (n_: bigint) => {
   if (n < 0n) throw Error('引数は正の整数でなければなりません');
 
-	// 2, 2の倍数 の場合の判定
-	if (n === 2n) return true;
-	if (n === 1n || n % 2n === 0n) return false;
+  // 2, 2の倍数 の場合の判定
+  if (n === 2n) return true;
+  if (n === 1n || n % 2n === 0n) return false;
 
-	const bit_num = n.toString(2).length;
+  const bit_num = n.toString(2).length;
 
-	const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
-  
-	const d = (n - 1n) >> s;
+  const s = BigInt((n - 1n).toString(2).match(/0+$/g)?.[0].length ?? 0);
 
-	if (n < 2n ** 64n) {
-		/** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
-		const bases_under_64 = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n] as const;
+  const d = (n - 1n) >> s;
 
-		challenge: for (const b_ of bases_under_64) {
-			const base = b_ >= n ? b_ % n : b_;
+  if (n < 2n ** 64n) {
+    /** n が 2^64 未満の時、決定的に判定できる 参考: https://miller-rabin.appspot.com/#bases7 */
+    const bases_under_64 = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n] as const;
 
-			if (base === 0n) continue challenge;
+    challenge: for (const b_ of bases_under_64) {
+      const base = b_ >= n ? b_ % n : b_;
 
-			if (exEuclidean(base, n).gcd != 1n) return false;
+      if (base === 0n) continue challenge;
 
-			let y = modPow(base, d, n);
+      if (exEuclidean(base, n).gcd != 1n) return false;
 
-			if (y === 1n) continue challenge;
+      let y = modPow(base, d, n);
 
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge;
+      if (y === 1n) continue challenge;
 
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	} else {
-		/** 試行回数 */
-		const max_rot = 40;
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge;
 
-		challenge2: for (let i = 0; i < max_rot; i++) {
-			let b_ = 0n;
+        y = (y * y) % n;
+      }
+      return false;
+    }
+    return true;
+  } else {
+    /** 試行回数 */
+    const max_rot = 40;
 
-			while (b_ < 2n || b_ >= n) {
-				b_ = getRandBIByBitLength(bit_num); // bit_num ビット以下の乱数を出力
-			}
+    challenge2: for (let i = 0; i < max_rot; i++) {
+      let b_ = 0n;
 
-			if (exEuclidean(b_, n).gcd !== 1n) return false;
+      while (b_ < 2n || b_ >= n) {
+        b_ = getRandBIByBitLength(bit_num); // bit_num ビット以下の乱数を出力
+      }
 
-			const base = b_;
+      if (exEuclidean(b_, n).gcd !== 1n) return false;
 
-			let y = modPow(base, d, n);
+      const base = b_;
 
-			if (y === 1n) continue challenge2;
+      let y = modPow(base, d, n);
 
-			for (let i = 0n; i < s; i++) {
-				if (y === n - 1n) continue challenge2;
-				y = (y * y) % n;
-			}
-			return false;
-		}
-		return true;
-	}
+      if (y === 1n) continue challenge2;
+
+      for (let i = 0n; i < s; i++) {
+        if (y === n - 1n) continue challenge2;
+        y = (y * y) % n;
+      }
+      return false;
+    }
+    return true;
+  }
 };
 ```

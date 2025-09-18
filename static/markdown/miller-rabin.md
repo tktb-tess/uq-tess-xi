@@ -26,7 +26,6 @@ $$a^{2^s d} \equiv 1 \pmod p \qquad (2)$$
 
   が成り立つ。
 
-
 以下これを示す。
 
 ### 証明
@@ -47,7 +46,6 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
 
 となるので $\mathrm{(b)}$ が成立。
 
-
 これの対偶を取ると、
 
 - 定理②
@@ -63,7 +61,6 @@ $$a^{2^0 d} \equiv a^d \equiv 1 \pmod p$$
   $$a^d \not\equiv 1 \pmod n \quad \mathrm{(d)}$$
 
   ならば、 $n$ は合成数
-
 
 がいえる。
 
@@ -113,18 +110,18 @@ const millerRabin = (n_: bigint) => {
 
     challenge: for (const b_ of bases_under_64) {
       const base = b_ >= n ? b_ % n : b_;
-  
+
       if (base === 0n) continue challenge;
-  
+
       if (exEuclidean(base, n).gcd != 1n) return false;
-  
+
       let y = modPow(base, d, n);
-  
+
       if (y === 1n) continue challenge;
-  
+
       for (let i = 0n; i < s; i++) {
         if (y === n - 1n) continue challenge;
-  
+
         y = (y * y) % n;
       }
       return false;
