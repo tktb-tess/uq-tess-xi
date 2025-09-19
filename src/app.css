@@ -1,22 +1,5 @@
 @import 'tailwindcss';
-
-/* font-face settings */
-
-@font-face {
-  font-family: 'InterVariable';
-  font-style: normal;
-  src:
-    local('Inter'),
-    url('/woff2/Inter-VariableFont_opsz,wght.woff2') format('woff2-variations');
-}
-
-@font-face {
-  font-family: 'InterVariable';
-  font-style: italic;
-  src:
-    local('Inter Italic'),
-    url('/woff2/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2-variations');
-}
+@import './inter.css';
 
 @font-face {
   font-family: 'CharisSIL';
@@ -230,6 +213,10 @@
   @apply text-red-600 d:text-[#ff0];
 }
 
+@utility f-tnum {
+  font-feature-settings: "tnum";
+}
+
 @custom-variant any-hover {
   &:hover {
     @media (any-hover: hover) {
@@ -252,24 +239,6 @@
   }
 }
 
-@property --lght {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --chrm {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 0;
-}
-
-@property --hue {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 296;
-}
-
 @layer base {
   * {
     font-optical-sizing: auto;
@@ -279,6 +248,8 @@
   :host {
     -webkit-tap-highlight-color: revert;
     @apply font-sans;
+    font-variant-alternates: character-variant(alt-1, alt-double-s, uc-i-with-serif, lc-l-with-tail);
+    font-feature-settings: "case", "ss03", "ss07";
   }
 
   [lang='x-v3-karphnpn'] {
