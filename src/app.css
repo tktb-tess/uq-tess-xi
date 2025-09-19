@@ -177,7 +177,7 @@
 }
 
 @utility f-tnum {
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
 }
 
 @custom-variant any-hover {

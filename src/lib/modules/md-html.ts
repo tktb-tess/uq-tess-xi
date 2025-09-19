@@ -23,7 +23,7 @@ export const mdToHtml = async (markdown: string) => {
     })
     .use(rehypeStringify)
     .process(markdown);
-    
+
   return vFile.toString();
 };
 

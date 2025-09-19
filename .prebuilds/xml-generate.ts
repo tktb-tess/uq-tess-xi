@@ -16,13 +16,11 @@ const paths: readonly string[] = [
   '/others/gregorian-chants',
   '/others/ja-tibetan',
   '/others/license',
-  '/others/license/Inter',
-  '/others/license/CharisSIL',
-  '/others/license/FONTLOG',
   '/others/md-converter',
   '/others/musik',
   '/others/tools',
   '/others/miller-rabin',
+  '/others/like-programmer',
 ];
 
 const main = () => {

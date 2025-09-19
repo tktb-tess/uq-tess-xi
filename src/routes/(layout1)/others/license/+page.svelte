@@ -23,7 +23,11 @@
 <section aria-labelledby="ofl">
   <h3 id="ofl">OFL.txt</h3>
   <ul>
-    <li><ExtLink href="https://tktb-tess.github.io/resources/fonts/Inter/OFL.txt">Inter</ExtLink></li>
-    <li><ExtLink href="https://tktb-tess.github.io/resources/fonts/Charis/OFL.txt">Charis</ExtLink></li>
+    <li>
+      <ExtLink href="https://tktb-tess.github.io/resources/fonts/Inter/OFL.txt">Inter</ExtLink>
+    </li>
+    <li>
+      <ExtLink href="https://tktb-tess.github.io/resources/fonts/Charis/OFL.txt">Charis</ExtLink>
+    </li>
   </ul>
 </section>

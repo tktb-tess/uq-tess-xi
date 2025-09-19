@@ -22,7 +22,9 @@
   <h2 id="cardinal" class="border-b-3 border-double ps-1">基数詞 (Kardinalraiman)</h2>
   <h3>0&ndash;19</h3>
   <div class="table-container">
-    <table class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum">
+    <table
+      class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
+    >
       <thead>
         <tr>
           <th scope="col"></th>
@@ -191,7 +193,9 @@
   <h3>20&ndash;999</h3>
 
   <div class="table-container">
-    <table class="grid-cols-[repeat(6,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum">
+    <table
+      class="grid-cols-[repeat(6,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
+    >
       <thead>
         <tr>
           <th scope="col"></th>
@@ -476,7 +480,9 @@
 <section aria-labelledby="ordinal">
   <h2 id="ordinal" class="border-b-3 border-double ps-1">序数詞 (Ämbyrdlaiķraiman)</h2>
   <div class="table-container">
-    <table class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum">
+    <table
+      class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
+    >
       <thead>
         <tr>
           <th scope="col"></th>
