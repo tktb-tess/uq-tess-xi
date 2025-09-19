@@ -1,41 +1,4 @@
 @import 'tailwindcss';
-@import './inter.css';
-
-@font-face {
-  font-family: 'CharisSIL';
-  font-weight: 100 500;
-  font-style: normal;
-  src:
-    local('Charis SIL'),
-    url('/woff2/CharisSIL-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'CharisSIL';
-  font-weight: 100 500;
-  font-style: italic;
-  src:
-    local('Charis SIL Italic'),
-    url('/woff2/CharisSIL-Italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'CharisSIL';
-  font-weight: 600 900;
-  font-style: normal;
-  src:
-    local('Charis SIL Bold'),
-    url('/woff2/CharisSIL-Bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'CharisSIL';
-  font-weight: 600 900;
-  font-style: italic;
-  src:
-    local('Charis SIL Bold Italic'),
-    url('/woff2/CharisSIL-BoldItalic.woff2') format('woff2');
-}
 
 @font-face {
   font-family: 'PhunDot';
@@ -44,10 +7,10 @@
 
 @theme {
   --font-sans:
-    'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
+    'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
   --font-serif:
-    'CharisSIL', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
+    'Charis-Web', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
     'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
   --font-ipa: 'CharisSIL', 'Times New Roman', serif, system-ui;
   --font-phun-dot: 'PhunDot', var(--font-sans);
@@ -248,8 +211,6 @@
   :host {
     -webkit-tap-highlight-color: revert;
     @apply font-sans;
-    font-variant-alternates: character-variant(alt-1, alt-double-s, uc-i-with-serif, lc-l-with-tail);
-    font-feature-settings: "case", "ss03", "ss07";
   }
 
   [lang='x-v3-karphnpn'] {
