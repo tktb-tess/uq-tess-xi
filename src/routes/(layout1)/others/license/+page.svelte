@@ -23,13 +23,7 @@
 <section aria-labelledby="ofl">
   <h3 id="ofl">OFL.txt</h3>
   <ul>
-    <li><ExtLink href="/others/license/Inter">Inter</ExtLink></li>
-    <li><ExtLink href="/others/license/CharisSIL">Charis SIL</ExtLink></li>
-  </ul>
-</section>
-<section aria-labelledby="fontlog">
-  <h3 id="fontlog">FONTLOG.txt</h3>
-  <ul>
-    <li><ExtLink href="/others/license/FONTLOG">FONTLOG</ExtLink></li>
+    <li><ExtLink href="https://tktb-tess.github.io/resources/fonts/Inter/OFL.txt">Inter</ExtLink></li>
+    <li><ExtLink href="https://tktb-tess.github.io/resources/fonts/Charis/OFL.txt">Charis</ExtLink></li>
   </ul>
 </section>
