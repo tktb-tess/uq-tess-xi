@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev": "vite dev",
     "build": "tsx .prebuilds/xml-generate.ts && vite build",
     "lbuild": "rm -r -f .vercel && pnpm build",
