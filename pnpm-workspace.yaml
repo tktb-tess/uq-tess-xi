@@ -1,5 +1,6 @@
+minimumReleaseAge: 2880
+
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
+  - '@vercel/speed-insights'
   - esbuild
-
-minimumReleaseAge: 2880

@@ -5,7 +5,7 @@
   src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
-@theme {
+@theme inline {
   --font-sans:
     'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
