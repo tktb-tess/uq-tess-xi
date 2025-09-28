@@ -3,11 +3,9 @@
   import Toasts from '$lib/sfc/toasts.svelte';
   import '../app.css';
   import { siteConfig } from '$lib/modules/site-config.svelte';
-  import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
 
   const { children } = $props();
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
-  injectSpeedInsights();
 </script>
 
 <svelte:head>
