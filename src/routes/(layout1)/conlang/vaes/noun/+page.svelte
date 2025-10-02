@@ -53,7 +53,7 @@
   <p>móder(母) を例にしてみてみると、</p>
   <ul>
     <li>主格: <strong>Säw móder</strong> ietð änn apbel. —— 母はリンゴを食べる。</li>
-    <li>属格: Ðis iss säw orlöź <strong>ðiar meder</strong>. —— これは母の腕時計だ。</li>
+    <li>属格: Ðis iss säw orlözķ <strong>ðiar meder</strong>. —— これは母の腕時計だ。</li>
     <li>与格: Sä fader jaav <strong>ðiar meder</strong> änn bóck. —— 父は母に本をあげた。</li>
     <li>対格: Ðat mejden ðankð <strong>ða móder</strong>. —— 娘は母に感謝する。</li>
   </ul>

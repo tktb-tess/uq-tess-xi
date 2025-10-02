@@ -4,28 +4,46 @@ import type { WordData, Result } from '$lib/types/decl';
 import { zpdicWordSchema } from '$lib/types/zpdic-api';
 import { redisKeys } from '$lib/types/decl';
 import z from 'zod';
+import { err, ResultAsync } from 'neverthrow';
+import { NamedError, safeResultParse } from '$lib/modules/util';
 
 export const prerender = false;
 
 export const load = async (): Promise<Result<WordData>> => {
-  const client = await createClient({ url: REDIS_URL }).connect();
+  const client = createClient({ url: REDIS_URL });
   try {
-    const result = await client.get(redisKeys.todayWord).then((word) => {
-      if (!word) throw Error('failed to load today-word from redis');
-
-      return zpdicWordSchema.safeParse(JSON.parse(word));
+    await client.connect();
+    const result = await ResultAsync.fromPromise(client.get(redisKeys.todayWord), (e) => {
+      return NamedError.from('RedisError', 'failed to load today-word from redis', e);
+    }).andThen((word) => {
+      if (!word) {
+        return err(NamedError.from('RedisError', 'failed to load today-word from redis'));
+      }
+      return safeResultParse(zpdicWordSchema, word);
     });
 
-    if (!result.success) {
-      return {
-        name: result.error.name,
-        success: false,
-        message: z.prettifyError(result.error),
-        cause: result.error.issues,
-      };
+    if (result.isErr()) {
+      const e = result.error;
+
+      if (e instanceof z.ZodError) {
+        return {
+          name: e.name,
+          success: false,
+          message: z.prettifyError(e),
+          cause: e.issues,
+        };
+      } else {
+        const { name, message, cause } = e;
+        return {
+          name,
+          success: false,
+          message,
+          cause,
+        };
+      }
     }
 
-    const todayWord = result.data;
+    const todayWord = result.value;
 
     const query = `?kind=exact&number=${todayWord.number}`;
     const dicUrl = `https://zpdic.ziphil.com/dictionary/633${query}`;
