@@ -137,7 +137,7 @@
     border-color: --value(--color-d- *);
   }
 
-  &:where(
+  &:is(
     [data-color-scheme='dark'],
     [data-color-scheme='dark'] &,
     :has([data-color-scheme='dark'])

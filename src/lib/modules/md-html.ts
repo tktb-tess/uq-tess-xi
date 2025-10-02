@@ -33,7 +33,10 @@ export const htmlToMd = async (html: string) => {
     .use(rehypeSanitize)
     .use(rehypeRemark)
     .use(remarkGfm)
-    .use(remarkStringify)
+    .use(remarkStringify, {
+      bullet: '-',
+      rule: '-'
+    })
     .process(html);
 
   return vFile.toString();

@@ -3,7 +3,7 @@ import { REDIS_URL } from '$env/static/private';
 import { redisKeys, type Result, type SwadeshList } from '$lib/types/decl';
 import z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
-import { safeResultParse, NamedError } from '$lib/modules/util';
+import { parseAndValidate, NamedError } from '$lib/modules/util';
 export const prerender = false;
 
 const listSchema = z.string().array().array();
@@ -30,7 +30,7 @@ export const load = async (): Promise<Result<SwadeshList>> => {
           return err(NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis'));
         }
 
-        return safeResultParse(listSchema, swa);
+        return parseAndValidate(listSchema, swa);
       });
 
     if (result.isErr()) {
@@ -61,22 +61,6 @@ export const load = async (): Promise<Result<SwadeshList>> => {
         value,
       },
     };
-  } catch (e) {
-    if (e instanceof Error) {
-      const { message, stack, name } = e;
-      return {
-        success: false,
-        name,
-        message,
-        stack,
-      };
-    } else {
-      return {
-        success: false,
-        name: 'UnidentifiedError',
-        message: 'unidentified error',
-      };
-    }
   } finally {
     await client.close();
   }

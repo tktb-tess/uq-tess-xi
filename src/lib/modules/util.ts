@@ -33,7 +33,7 @@ export const JSONSafeParse: (
   return NamedError.from('ParseError', 'failed to parse');
 });
 
-export const safeResultParse = <TSchema extends z.ZodType>(schema: TSchema, json: string) => {
+export const parseAndValidate = <TSchema extends z.ZodType>(schema: TSchema, json: string) => {
   return JSONSafeParse(json).andThen(
     (obj): Result<z.infer<TSchema>, z.ZodError<z.infer<TSchema>>> => {
       const r = schema.safeParse(obj);
