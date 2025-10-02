@@ -35,7 +35,7 @@ export const htmlToMd = async (html: string) => {
     .use(remarkGfm)
     .use(remarkStringify, {
       bullet: '-',
-      rule: '-'
+      rule: '-',
     })
     .process(html);
 

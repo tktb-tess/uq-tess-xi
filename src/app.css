@@ -137,11 +137,7 @@
     border-color: --value(--color-d- *);
   }
 
-  &:is(
-    [data-color-scheme='dark'],
-    [data-color-scheme='dark'] &,
-    :has([data-color-scheme='dark'])
-  ) {
+  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
     border-color: --value(--color-d-*);
   }
 }
