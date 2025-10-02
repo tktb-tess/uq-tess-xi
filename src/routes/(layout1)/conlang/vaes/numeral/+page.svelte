@@ -50,7 +50,7 @@
           <td>2</td>
           <td>tvęģ</td>
           <td>12</td>
-          <td>tvälv</td>
+          <td>tvälf</td>
         </tr>
         <tr>
           <td>3</td>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
           <td>5</td>
-          <td>faiv</td>
+          <td>faif</td>
           <td>15</td>
           <td>faiftųy</td>
         </tr>
@@ -249,9 +249,9 @@
         </tr>
         <tr>
           <td>25</td>
-          <td>faiv-and-tvintaģ</td>
+          <td>faif-and-tvintaģ</td>
           <td>35</td>
-          <td>faiv-and-ðraitaģ</td>
+          <td>faif-and-ðraitaģ</td>
           <td>90</td>
           <td>newntaģ</td>
         </tr>
@@ -308,8 +308,8 @@
     10の位の数詞は概ね対応する1の位の数詞に <em>-taģ</em> をつけたものであるが、ほとんどは1の位の数詞と微妙に異なるので注意。
   </p>
   <p>
-    つまり上記のことを踏まえると、105は <em>(an-)hundred-faiv,</em> 115は <em>faiv-and-änlftaģ,</em>
-    125は <em>faiv-and-tvälftaģ,</em> 135は <em>(an-)hundred-faiv-and-ðraitaģ</em> となる。
+    つまり上記のことを踏まえると、105は <em>(an-)hundred-faif,</em> 115は <em>faif-and-änlftaģ,</em>
+    125は <em>faif-and-tvälftaģ,</em> 135は <em>(an-)hundred-faif-and-ðraitaģ</em> となる。
   </p>
   <p>
     20以上の数詞が名詞を修飾する場合、<strong>その名詞は複数属格になる</strong
@@ -472,7 +472,7 @@
   <p class="text-black/10">
     1,145,141,919,810<br />
     <em>
-      an biljönn an-hundred-faiv-and-fewrtaģ miljardan an-hundred-an-and-fewrtaģ miljonnan
+      an biljönn an-hundred-faif-and-fewrtaģ miljardan an-hundred-an-and-fewrtaģ miljonnan
       nięw-hundred-newntųy ðawzend aght-hundred-tųy
     </em>
   </p>
@@ -558,7 +558,7 @@
 
   <p>
     序数詞は1&ndash;3は特殊な語形で、4以降は基数詞に <em>-ðe</em> をつける。ただし5, 11, 12など
-    <em>-v</em>
+    <em>-f, -v</em>
     で終わる数詞は <em>-fte</em> に変え、6.は <em>sighte</em> と例外的に変化するので注意。
   </p>
   <p>8. <em>aghtðe</em> の <em>t</em> は読まなくてもよい。</p>
@@ -566,6 +566,3 @@
 </section>
 
 <h4 class="text-center my-8 text-danger text-2xl">工事中…</h4>
-
-<style>
-</style>

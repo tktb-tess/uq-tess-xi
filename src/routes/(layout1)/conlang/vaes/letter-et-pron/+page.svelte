@@ -46,7 +46,7 @@
         <tr>
           <td>Ä</td>
           <td>ä</td>
-          <td>/ɛ(ː)/, /ɤ/</td>
+          <td>/ɛ(ː)/, /ə/</td>
           <td>少し広めの「エ」</td>
         </tr>
         <tr>
@@ -58,7 +58,7 @@
         <tr>
           <td>Ą̈</td>
           <td>ą̈</td>
-          <td>/ɛ̃(ː)/, /ɤ̃/</td>
+          <td>/ɛ̃(ː)/, /ə̃/</td>
           <td>鼻に息を通しながら「エ」</td>
         </tr>
         <tr>
@@ -88,13 +88,13 @@
         <tr>
           <td>E</td>
           <td>e</td>
-          <td>/e(ː)/, /ɤ/</td>
+          <td>/e(ː)/, /ə/</td>
           <td> <i>ä</i> より口を狭めた「エ」</td>
         </tr>
         <tr>
           <td>Ę</td>
           <td>ę</td>
-          <td>/ẽ(ː)/, /ɤ̃/</td>
+          <td>/ẽ(ː)/, /ə̃/</td>
           <td>鼻に息を通しながら <i>e</i>。<i>ą̈</i> より狭い</td>
         </tr>
         <tr>
@@ -252,7 +252,7 @@
         <tr>
           <td>V</td>
           <td>v</td>
-          <td>/ʋ/, /f/</td>
+          <td>/ʋ/</td>
           <td>英語の <i>v</i> よりも摩擦が弱い。ワ行にも聞こえる</td>
         </tr>
         <tr>
@@ -282,7 +282,7 @@
         <tr>
           <td>Z</td>
           <td>z</td>
-          <td>/z/, /s/</td>
+          <td>/z/</td>
           <td></td>
         </tr>
         <tr>
@@ -547,7 +547,7 @@
         </tr>
         <tr>
           <td>in, im</td>
-          <td>/ẽ(ː)/, /ɤ̃/</td>
+          <td>/ẽ(ː)/, /ə̃/</td>
         </tr>
         <tr>
           <td>yn, ün, ym, üm</td>
@@ -575,7 +575,7 @@
   </p>
   <p>
     例. <i>lüvjan</i> <span class="font-ipa">/ˈlyːʋjõː/</span>（「愛する」原形不定詞） vs.
-    <i>tu lüvjenn</i> <span class="font-ipa">/tʊ ˈlyːʋjɤn/</span>（tu不定詞）
+    <i>tu lüvjenn</i> <span class="font-ipa">/tʊ ˈlyːʋjən/</span>（tu不定詞）
   </p>
   <p>
     また、母音字にオゴネク（“˛”

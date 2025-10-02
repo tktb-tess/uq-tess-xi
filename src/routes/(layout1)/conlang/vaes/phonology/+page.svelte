@@ -272,7 +272,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td>(ɤ)</td>
+          <td>(ə)</td>
           <td></td>
           <td></td>
         </tr>
@@ -337,7 +337,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td>(ɤ̃)</td>
+          <td>(ə̃)</td>
           <td></td>
           <td></td>
         </tr>
@@ -394,7 +394,7 @@
       <strong class="italic">lax</strong>
       と呼ばれる区別があり、<i>lax</i>
       母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
-      <span class="font-ipa">/ɤ/</span> に限っては語末に来ることができる。なお、二重母音は全て
+      <span class="font-ipa">/ə/</span> に限っては語末に来ることができる。なお、二重母音は全て
       <i>tense</i> 母音である。
     </li>
     <li>
@@ -410,9 +410,9 @@
       <span class="font-ipa">/øː/</span> は実際は <span class="font-ipa">[øː] ~ [øy̯]</span> のような発音である。
     </li>
     <li>
-      <span class="font-ipa">/ɤ/</span> はアクセントの無い音節で
-      <span class="font-ipa">/e(ː)/, /ɛ(ː)/</span>
-      の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ] ~ [ɤ̟]</span> である。 対応する鼻母音も同様。
+      <span class="font-ipa">/ə/</span> はアクセントの無い音節で
+      <span class="font-ipa">/e(ː)/, /ɛ(ː)/, /ɔ/, /oː/</span>
+      の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ]</span> である。 対応する鼻母音も同様。
     </li>
   </ul>
 </section>

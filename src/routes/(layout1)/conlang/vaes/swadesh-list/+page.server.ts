@@ -1,16 +1,49 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
 import { redisKeys, type Result, type SwadeshList } from '$lib/types/decl';
+import z from 'zod';
+import { err, ResultAsync } from 'neverthrow';
+import { safeResultParse, NamedError } from '$lib/modules/util';
 export const prerender = false;
 
-export const load = async (): Promise<Result<SwadeshList>> => {
-  const client = await createClient({ url: REDIS_URL }).connect();
-  try {
-    const value = await client.get(redisKeys.swadeshVae).then((swa) => {
-      if (!swa) throw Error('failed to load swadeshlist-vae from redis');
+const listSchema = z.string().array().array();
 
-      return JSON.parse(swa) as string[][];
+export const load = async (): Promise<Result<SwadeshList>> => {
+  const client = createClient({ url: REDIS_URL });
+  try {
+    await client.connect();
+    const result = await ResultAsync.fromPromise(client.get(redisKeys.swadeshVae), (e) => {
+      return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis', e);
+    }).andThen((swa) => {
+      if (!swa) {
+        return err(NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis'));
+      }
+
+      return safeResultParse(listSchema, swa);
     });
+
+    if (result.isErr()) {
+      const e = result.error;
+
+      if (e instanceof z.ZodError) {
+        return {
+          success: false,
+          name: e.name,
+          message: z.prettifyError(e),
+          cause: e.issues
+        }
+      } else {
+        const { name, message, cause } = e;
+        return {
+          success: false,
+          name,
+          message,
+          cause
+        }
+      }
+    }
+
+    const { value } = result;
 
     return {
       success: true,

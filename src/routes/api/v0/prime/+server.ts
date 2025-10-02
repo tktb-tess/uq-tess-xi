@@ -14,17 +14,16 @@ const paramSchema = z.coerce.bigint().gte(0n).lte(LIMIT);
 export const GET = async ({ url }) => {
   const params = url.searchParams;
 
-  const min = (() => {
-    const pre = params.get('min');
-    return paramSchema.parse(pre);
-  })();
-
-  const max = (() => {
-    const pre = params.get('max');
-    return paramSchema.parse(pre);
-  })();
-
   try {
+    const min = (() => {
+      const pre = params.get('min');
+      return paramSchema.parse(pre);
+    })();
+
+    const max = (() => {
+      const pre = params.get('max');
+      return paramSchema.parse(pre);
+    })();
     const p = getRandPrimeByRange(min, max);
     const q = getRandPrimeByRange(min, max);
 
@@ -39,11 +38,11 @@ export const GET = async ({ url }) => {
       error(e.status, e.body);
     } else if (e instanceof z.ZodError) {
       const { name, issues } = e;
-      const { errors } = z.treeifyError(e);
+      const message = z.prettifyError(e);
       const err = {
         name,
         issues,
-        errors,
+        message,
       } as const;
       return json(err, { status: 400 });
     } else if (e instanceof Error) {
