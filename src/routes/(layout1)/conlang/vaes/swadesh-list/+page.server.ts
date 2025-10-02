@@ -13,13 +13,16 @@ export const load = async (): Promise<Result<SwadeshList>> => {
   try {
     const result = await ResultAsync.fromPromise(client.connect(), (e) => {
       if (e instanceof Error) {
-        return NamedError.from('RedisError', e.message, e);
+        return NamedError.from('RedisError', e.message);
       }
-      return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis', e);
+      return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis');
     })
       .andThen(() =>
         ResultAsync.fromPromise(client.get(redisKeys.swadeshVae), (e) => {
-          return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis', e);
+          if (e instanceof Error) {
+            return NamedError.from('RedisError', e.message);
+          }
+          return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis');
         }),
       )
       .andThen((swa) => {
@@ -41,12 +44,11 @@ export const load = async (): Promise<Result<SwadeshList>> => {
           cause: e.issues,
         };
       } else {
-        const { name, message, cause } = e;
+        const { name, message } = e;
         return {
           success: false,
           name,
           message,
-          cause,
         };
       }
     }

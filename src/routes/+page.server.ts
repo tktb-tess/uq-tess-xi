@@ -14,16 +14,16 @@ export const load = async (): Promise<Result<WordData>> => {
   try {
     const result = await ResultAsync.fromPromise(client.connect(), (e) => {
       if (e instanceof Error) {
-        return NamedError.from('RedisError', e.message, e);
+        return NamedError.from('RedisError', e.message);
       }
-      return NamedError.from('RedisError', 'cannot connect to database', e);
+      return NamedError.from('RedisError', 'cannot connect to database');
     })
       .andThen(() =>
         ResultAsync.fromPromise(client.get(redisKeys.todayWord), (e) => {
           if (e instanceof Error) {
-            return NamedError.from('RedisError', e.message, e);
+            return NamedError.from('RedisError', e.message);
           }
-          return NamedError.from('RedisError', 'failed to load today-word from redis', e);
+          return NamedError.from('RedisError', 'failed to load today-word from redis');
         }),
       )
       .andThen((word) => {
@@ -44,12 +44,11 @@ export const load = async (): Promise<Result<WordData>> => {
           cause: e.issues,
         };
       } else {
-        const { name, message, cause } = e;
+        const { name, message } = e;
         return {
           name,
           success: false,
           message,
-          cause,
         };
       }
     }

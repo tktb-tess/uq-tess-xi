@@ -125,7 +125,6 @@ export const GET = async ({ request, fetch: svFetch }) => {
     console.log(stored);
 
     return json(stored);
-    
   } catch (e: unknown) {
     if (isHttpError(e)) {
       error(e.status, { message: e.body.message });
