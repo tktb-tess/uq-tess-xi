@@ -11,16 +11,27 @@ const listSchema = z.string().array().array();
 export const load = async (): Promise<Result<SwadeshList>> => {
   const client = createClient({ url: REDIS_URL });
   try {
-    await client.connect();
-    const result = await ResultAsync.fromPromise(client.get(redisKeys.swadeshVae), (e) => {
-      return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis', e);
-    }).andThen((swa) => {
-      if (!swa) {
-        return err(NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis'));
+    const result = await ResultAsync.fromPromise(client.connect(), (e) => {
+      if (e instanceof Error) {
+        return NamedError.from('RedisError', e.message);
       }
+      return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis');
+    })
+      .andThen(() =>
+        ResultAsync.fromPromise(client.get(redisKeys.swadeshVae), (e) => {
+          if (e instanceof Error) {
+            return NamedError.from('RedisError', e.message);
+          }
+          return NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis');
+        }),
+      )
+      .andThen((swa) => {
+        if (!swa) {
+          return err(NamedError.from('RedisError', 'failed to load swadeshlist-vae from redis'));
+        }
 
-      return safeResultParse(listSchema, swa);
-    });
+        return safeResultParse(listSchema, swa);
+      });
 
     if (result.isErr()) {
       const e = result.error;
@@ -30,16 +41,15 @@ export const load = async (): Promise<Result<SwadeshList>> => {
           success: false,
           name: e.name,
           message: z.prettifyError(e),
-          cause: e.issues
-        }
+          cause: e.issues,
+        };
       } else {
-        const { name, message, cause } = e;
+        const { name, message } = e;
         return {
           success: false,
           name,
           message,
-          cause
-        }
+        };
       }
     }
 

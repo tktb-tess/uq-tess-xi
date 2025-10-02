@@ -26,8 +26,11 @@ export { NamedError };
 export const JSONSafeParse: (
   text: string,
   reviver?: (this: unknown, key: string, value: unknown) => unknown,
-) => Result<unknown, NamedError<'ParseError', unknown>> = Result.fromThrowable(JSON.parse, (e) => {
-  return NamedError.from('ParseError', 'failed to parse', e);
+) => Result<unknown, NamedError<'ParseError'>> = Result.fromThrowable(JSON.parse, (e) => {
+  if (e instanceof Error) {
+    return NamedError.from('ParseError', e.message);
+  }
+  return NamedError.from('ParseError', 'failed to parse');
 });
 
 export const safeResultParse = <TSchema extends z.ZodType>(schema: TSchema, json: string) => {

@@ -6,12 +6,6 @@
   };
 
   const { todayWord }: Props = $props();
-
-  $effect(() => {
-    if (!todayWord.success) {
-      console.error(todayWord.message);
-    }
-  });
 </script>
 
 <div

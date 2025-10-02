@@ -22,7 +22,7 @@
 
   onMount(() => {
     if (!todayWord.success) {
-      console.log(todayWord.message);
+      console.error(todayWord);
     }
   });
 </script>

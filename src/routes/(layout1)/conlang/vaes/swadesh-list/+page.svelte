@@ -1,10 +1,17 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
+  import { onMount } from 'svelte';
 
   const ogTitle = 'Vässenzländisķ Swadesh List',
     ogDesc = 'すわでしゅ！';
 
   const { data: swadeshList } = $props();
+
+  onMount(() => {
+    if (!swadeshList.success) {
+      console.error(swadeshList);
+    }
+  });
 </script>
 
 <svelte:head>
