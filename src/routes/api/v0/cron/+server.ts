@@ -70,10 +70,12 @@ export const GET = async ({ request, fetch: svFetch }) => {
     error(401);
   }
 
-  // connect to Redis
-  const client = await createClient({ url: REDIS_URL }).connect();
+  const client = createClient({ url: REDIS_URL });
 
   try {
+    // connect to Redis
+    await client.connect();
+
     const taskTodayWord = async () => {
       try {
         const result = await getTodayWord();
@@ -114,18 +116,18 @@ export const GET = async ({ request, fetch: svFetch }) => {
     await Promise.all([taskTodayWord(), taskSwadeshVae(), taskRsaKey(), taskLastUpdate()]);
 
     // check
-    const stored = await Promise.all(
-      Object.entries(redisKeys).map(async ([key, value]) => {
-        const json = await client.get(value);
-        if (!json) error(404, { message: 'dataNotFound' });
-        return [key, JSON.parse(json) as unknown] as const;
-      }),
-    ).then((entries) => Object.fromEntries(entries));
+    const tasks = Object.entries(redisKeys).map(async ([key, value]) => {
+      const json = await client.get(value);
+      if (!json) error(404, { message: 'dataNotFound' });
+      return [key, JSON.parse(json) as unknown] as const;
+    });
+
+    const stored = await Promise.all(tasks).then((entries) => Object.fromEntries(entries));
 
     console.log(stored);
 
     return json(stored);
-  } catch (e: unknown) {
+  } catch (e) {
     if (isHttpError(e)) {
       error(e.status, { message: e.body.message });
     } else if (e instanceof Error) {

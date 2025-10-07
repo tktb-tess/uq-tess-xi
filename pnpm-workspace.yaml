@@ -1,6 +1,11 @@
 minimumReleaseAge: 2880
 
+minimumReleaseAgeExclude:
+  - '@tktb-tess/my-zod-schema'
+  - '@tktb-tess/util-fns'
+
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
+  - '@tktb-tess/my-zod-schema'
   - '@vercel/speed-insights'
   - esbuild

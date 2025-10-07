@@ -5,7 +5,7 @@ import { zpdicWordSchema } from '$lib/types/zpdic-api';
 import { redisKeys } from '$lib/types/decl';
 import z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
-import { NamedError, safeResultParse } from '$lib/modules/util';
+import { NamedError, parseAndValidate } from '$lib/modules/util';
 
 export const prerender = false;
 
@@ -30,7 +30,7 @@ export const load = async (): Promise<Result<WordData>> => {
         if (!word) {
           return err(NamedError.from('RedisError', 'failed to load today-word from redis'));
         }
-        return safeResultParse(zpdicWordSchema, word);
+        return parseAndValidate(zpdicWordSchema, word);
       });
 
     if (result.isErr()) {
@@ -73,22 +73,6 @@ export const load = async (): Promise<Result<WordData>> => {
         size,
       },
     };
-  } catch (e) {
-    if (e instanceof Error) {
-      return {
-        success: false,
-        name: e.name,
-        message: e.message,
-        stack: e.stack,
-      };
-    } else {
-      return {
-        success: false,
-        name: 'UnidentifiedError',
-        message: 'unidentified error',
-        cause: e,
-      };
-    }
   } finally {
     await client.close();
   }
