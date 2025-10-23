@@ -10,7 +10,7 @@ export type SwadeshList = {
   readonly value: ReadonlyArray<ReadonlyArray<string>>;
 };
 
-export type Result<T> =
+export type LoadResult<T> =
   | {
       readonly success: true;
       readonly result: T;

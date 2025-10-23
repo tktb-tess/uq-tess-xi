@@ -1,6 +1,6 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import type { WordData, Result } from '$lib/types/decl';
+import type { WordData, LoadResult } from '$lib/types/decl';
 import { zpdicWordSchema } from '$lib/types/zpdic-api';
 import { redisKeys } from '$lib/types/decl';
 import z from 'zod';
@@ -9,7 +9,7 @@ import { NamedError, parseAndValidate } from '$lib/modules/util';
 
 export const prerender = false;
 
-export const load = async (): Promise<Result<WordData>> => {
+export const load = async (): Promise<LoadResult<WordData>> => {
   const client = createClient({ url: REDIS_URL });
   try {
     const result = await ResultAsync.fromPromise(client.connect(), (e) => {

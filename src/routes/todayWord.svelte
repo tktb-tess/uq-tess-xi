@@ -1,8 +1,8 @@
 <script lang="ts">
   import ExtLink from '$lib/sfc/ext_link.svelte';
-  import type { Result, WordData } from '$lib/types/decl';
+  import type { LoadResult, WordData } from '$lib/types/decl';
   type Props = {
-    todayWord: Result<WordData>;
+    todayWord: LoadResult<WordData>;
   };
 
   const { todayWord }: Props = $props();

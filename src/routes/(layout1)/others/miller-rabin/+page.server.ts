@@ -1,9 +1,9 @@
 import { mdToHtml } from '$lib/modules/md-html';
-import type { Result } from '$lib/types/decl';
+import type { LoadResult } from '$lib/types/decl';
 import { isHttpError } from '@sveltejs/kit';
 export const prerender = true;
 
-export const load = async ({ fetch: svFetch }): Promise<Result<string>> => {
+export const load = async ({ fetch: svFetch }): Promise<LoadResult<string>> => {
   try {
     const resp = await svFetch('/markdown/miller-rabin.md');
 
