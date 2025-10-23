@@ -24,11 +24,11 @@
   <div
     class="flex *:flex-[0_0_auto] mx-auto w-[75%] justify-between gap-x-5 [&_a]:flex [&_a]:items-center"
   >
-    <h1 class="font-serif text-3xl [&_a]:h-[64px]">
+    <h1 class="font-serif text-3xl [&_a]:h-16">
       <a href="/.">悠久肆方体</a>
     </h1>
     {#if large}
-      <nav class="flex *:flex-[0_0_auto] items-center gap-x-5 [&_a]:h-[64px]">
+      <nav class="flex *:flex-[0_0_auto] items-center gap-x-5 [&_a]:h-16">
         {@render links()}
       </nav>
     {:else}
@@ -46,7 +46,7 @@
             }
           }}
           type="button"
-          class="h-[64px] mx-auto flex items-center hover:text-white/70 transition-colors"
+          class="h-16 mx-auto flex items-center hover:text-white/70 transition-colors"
         >
           <Kebab />
         </button>

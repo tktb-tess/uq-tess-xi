@@ -1,5 +1,5 @@
 import { Result, ok, err } from 'neverthrow';
-import z from 'zod';
+import * as z from 'zod';
 
 type NamedError<EName extends string | symbol, TCause = undefined> = {
   readonly name: EName;

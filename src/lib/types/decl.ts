@@ -37,7 +37,6 @@ export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
 export const redisKeys = {
   todayWord: 'today-word',
   swadeshVae: 'swadesh-list-vae',
-  rsaKey: 'rsa-key',
   lastUpdate: 'last-update',
 } as const;
 

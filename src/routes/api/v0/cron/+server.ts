@@ -5,7 +5,6 @@ import { getRndInt } from '@tktb-tess/util-fns';
 import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
-import RSA from '$lib/modules/rsa';
 
 export const GET = async ({ request, fetch: svFetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
@@ -61,10 +60,6 @@ export const GET = async ({ request, fetch: svFetch }) => {
     });
   };
 
-  const genRsaKey = () => {
-    return RSA.generate();
-  };
-
   // authorization
   if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
     error(401);
@@ -95,15 +90,6 @@ export const GET = async ({ request, fetch: svFetch }) => {
       }
     };
 
-    const taskRsaKey = async () => {
-      try {
-        const result = genRsaKey();
-        await client.set(redisKeys.rsaKey, JSON.stringify(result));
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
     const taskLastUpdate = async () => {
       try {
         const result = new Date().toISOString();
@@ -113,7 +99,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
       }
     };
 
-    await Promise.all([taskTodayWord(), taskSwadeshVae(), taskRsaKey(), taskLastUpdate()]);
+    await Promise.all([taskTodayWord(), taskSwadeshVae(), taskLastUpdate()]);
 
     // check
     const tasks = Object.entries(redisKeys).map(async ([key, value]) => {
