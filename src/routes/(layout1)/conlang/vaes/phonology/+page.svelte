@@ -1,8 +1,8 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-  const ogTitle = 'Vässenzländisķ 音韻論',
-    ogDesc = 'おにんろん！';
+  const ogTitle = 'Vässenzländisķ 音韻論';
+  const ogDesc = 'おにんろん！';
 </script>
 
 <svelte:head>

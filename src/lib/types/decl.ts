@@ -1,5 +1,5 @@
 import otm_json from '../assets/vl-ja.otm.json';
-import type { Equivalent } from './zpdic-api';
+import type { ZpDIC } from '@tktb-tess/my-zod-schema';
 
 export type ZpDICWord = (typeof otm_json.words)[0];
 export type ZpDICExample = (typeof otm_json.examples)[0];
@@ -26,7 +26,7 @@ export type LoadResult<T> =
 
 export type WordData = {
   readonly word: string;
-  readonly translations: readonly Readonly<Equivalent>[];
+  readonly translations: readonly Readonly<ZpDIC.Equivalent>[];
   readonly dicUrl: string;
   readonly pron: string;
   readonly size: 'text-5xl' | 'text-4xl';

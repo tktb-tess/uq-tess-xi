@@ -1,15 +1,14 @@
+import { json } from '@sveltejs/kit';
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import type { WordData, LoadResult } from '$lib/types/decl';
+import type { WordData } from '$lib/types/decl';
 import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { redisKeys } from '$lib/types/decl';
 import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
 import { NamedError, parseAndValidate } from '$lib/modules/util';
 
-export const prerender = false;
-
-export const load = async (): Promise<LoadResult<WordData>> => {
+export const GET = async () => {
   const client = createClient({ url: REDIS_URL });
   try {
     const result = await ResultAsync.fromPromise(client.connect(), (e) => {
@@ -37,19 +36,19 @@ export const load = async (): Promise<LoadResult<WordData>> => {
       const e = result.error;
 
       if (e instanceof z.ZodError) {
-        return {
+        const err = {
           name: e.name,
-          success: false,
           message: z.prettifyError(e),
           cause: e.issues,
         };
+        return json(err, { status: 500 });
       } else {
         const { name, message } = e;
-        return {
+        const err = {
           name,
-          success: false,
           message,
         };
+        return json(err, { status: 500 });
       }
     }
 
@@ -63,16 +62,15 @@ export const load = async (): Promise<LoadResult<WordData>> => {
       return len < 10 ? 'text-5xl' : 'text-4xl';
     })();
 
-    return {
-      success: true,
-      result: {
-        word: todayWord.name,
-        translations: todayWord.equivalents,
-        dicUrl,
-        pron: todayWord.pronunciation,
-        size,
-      },
+    const body: WordData = {
+      word: todayWord.name,
+      translations: todayWord.equivalents,
+      dicUrl,
+      pron: todayWord.pronunciation,
+      size,
     };
+
+    return json(body);
   } finally {
     await client.close();
   }

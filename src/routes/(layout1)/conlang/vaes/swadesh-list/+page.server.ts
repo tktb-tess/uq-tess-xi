@@ -1,7 +1,7 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
 import { redisKeys, type LoadResult, type SwadeshList } from '$lib/types/decl';
-import z from 'zod';
+import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
 import { parseAndValidate, NamedError } from '$lib/modules/util';
 export const prerender = false;

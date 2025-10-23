@@ -1,17 +1,17 @@
-export type TrackData = {
+export interface TrackData {
   readonly path: string;
   readonly title: string;
   readonly composer: string;
   readonly description: string;
-};
+}
 
-export type TrackParams = TrackData & {
+export interface TrackParams extends TrackData {
   currentTime: number;
   ref?: HTMLAudioElement;
   loop: boolean;
   state: 'playing' | 'paused' | 'stopped';
   duration?: number;
-};
+}
 
 export const load = async () => {
   const trackData: ReadonlyArray<TrackData> = [

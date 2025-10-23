@@ -1,6 +1,6 @@
 import { getRandPrimeByRange } from '@tktb-tess/util-fns';
 import { error, isHttpError, json } from '@sveltejs/kit';
-import { z } from 'zod';
+import * as z from 'zod';
 
 export type Primes = {
   p: string;

@@ -40,7 +40,7 @@
   <div
     class="
       side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem]
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
       [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
     "
   >
@@ -56,7 +56,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            class="fill-current inline-block size-4.5 translate-y-[-1px] duration-250"
+            class="fill-current inline-block size-4.5 -translate-y-px duration-250"
             id="list-arrow"
           >
             <path
@@ -82,7 +82,7 @@
   <div
     class="
       side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-[.5rem]
+      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
       [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
     "
   >
