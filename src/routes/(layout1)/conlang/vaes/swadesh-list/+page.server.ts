@@ -1,14 +1,14 @@
 import { createClient } from 'redis';
 import { REDIS_URL } from '$env/static/private';
-import { redisKeys, type Result, type SwadeshList } from '$lib/types/decl';
-import z from 'zod';
+import { redisKeys, type LoadResult, type SwadeshList } from '$lib/types/decl';
+import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
 import { parseAndValidate, NamedError } from '$lib/modules/util';
 export const prerender = false;
 
 const listSchema = z.string().array().array();
 
-export const load = async (): Promise<Result<SwadeshList>> => {
+export const load = async (): Promise<LoadResult<SwadeshList>> => {
   const client = createClient({ url: REDIS_URL });
   try {
     const result = await ResultAsync.fromPromise(client.connect(), (e) => {

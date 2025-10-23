@@ -7,22 +7,13 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
   import UqTessLogo from '$lib/sfc/uq-tess-logo.svelte';
-  import { onMount } from 'svelte';
   import ToggleColorSchemeBtn from '$lib/sfc/toggle-color-scheme-btn.svelte';
-
-  const { data: todayWord } = $props();
 
   const Title = $derived.by(() => {
     if (innerWidth.current && innerWidth.current < 768) {
       return PUBLIC_SITE_NAME.split('').join('\x20');
     } else {
       return PUBLIC_SITE_NAME.split('').join('\u2003');
-    }
-  });
-
-  onMount(() => {
-    if (!todayWord.success) {
-      console.error(todayWord);
     }
   });
 </script>
@@ -71,7 +62,7 @@
 
   <section aria-labelledby="today-word">
     <h2 id="today-word" class="text-center">今日の単語</h2>
-    <TodayWord {todayWord} />
+    <TodayWord />
   </section>
   <section aria-labelledby="menu">
     <h2 id="menu">メニュー</h2>

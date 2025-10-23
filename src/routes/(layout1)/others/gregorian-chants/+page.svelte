@@ -1,8 +1,8 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
 
-  const ogTitle = 'グレゴリオ聖歌について',
-    ogDesc = 'グレゴリオ聖歌の音階の話';
+  const ogTitle = 'グレゴリオ聖歌について';
+  const ogDesc = 'グレゴリオ聖歌の音階の話';
 </script>
 
 <svelte:head>

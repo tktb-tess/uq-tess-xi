@@ -1,8 +1,8 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/sfc/ext_link.svelte';
-  const ogTitle = 'Vässenzländisķ りんご文',
-    ogDesc = 'りんご文です。';
+  const ogTitle = 'Vässenzländisķ りんご文';
+  const ogDesc = 'りんご文です。';
 </script>
 
 <svelte:head>

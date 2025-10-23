@@ -9,7 +9,6 @@ export default defineConfig({
     exclude: [],
   },
   test: {
-    environment: 'jsdom',
     testTimeout: 15000,
   },
 });

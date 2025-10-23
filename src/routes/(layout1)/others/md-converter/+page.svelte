@@ -60,7 +60,6 @@
         });
 
       await Promise.all(tasks);
-
     } catch {
       return;
     }

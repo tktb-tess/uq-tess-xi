@@ -1,5 +1,5 @@
 import otm_json from '../assets/vl-ja.otm.json';
-import type { Equivalent } from './zpdic-api';
+import type { ZpDIC } from '@tktb-tess/my-zod-schema';
 
 export type ZpDICWord = (typeof otm_json.words)[0];
 export type ZpDICExample = (typeof otm_json.examples)[0];
@@ -10,7 +10,7 @@ export type SwadeshList = {
   readonly value: ReadonlyArray<ReadonlyArray<string>>;
 };
 
-export type Result<T> =
+export type LoadResult<T> =
   | {
       readonly success: true;
       readonly result: T;
@@ -26,7 +26,7 @@ export type Result<T> =
 
 export type WordData = {
   readonly word: string;
-  readonly translations: readonly Readonly<Equivalent>[];
+  readonly translations: readonly Readonly<ZpDIC.Equivalent>[];
   readonly dicUrl: string;
   readonly pron: string;
   readonly size: 'text-5xl' | 'text-4xl';
@@ -37,7 +37,6 @@ export type PromiseState = 'pending' | 'fulfilled' | 'rejected';
 export const redisKeys = {
   todayWord: 'today-word',
   swadeshVae: 'swadesh-list-vae',
-  rsaKey: 'rsa-key',
   lastUpdate: 'last-update',
 } as const;
 

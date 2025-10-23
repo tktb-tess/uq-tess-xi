@@ -1,4 +1,4 @@
-import z from 'zod';
+import * as z from 'zod';
 
 export const siteConfigSchema = z.object({
   colorScheme: z.union([z.literal('light'), z.literal('dark')]),
