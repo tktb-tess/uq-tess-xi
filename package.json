@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "tsx .prebuilds/xml-generate.ts && vite build",
     "lbuild": "rm -r -f .vercel && pnpm build",
-    "start": "vite preview",
+    "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
