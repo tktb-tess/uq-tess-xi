@@ -66,7 +66,13 @@
         <h3>読み込みに失敗しました</h3>
         <p>再読み込みしてください</p>
       </div>
-      <button class="btn-1" type="button" onclick={() => fetchTodayWord()}>再読み込み</button>
+      <button
+        class="btn-1"
+        type="button"
+        onclick={() => {
+          resultAsy = fetchTodayWord();
+        }}>再読み込み</button
+      >
     {/if}
   {/await}
 </div>
