@@ -10,7 +10,7 @@
 
   const ogTitle = '音楽';
   const ogDesc = '作曲は楽しい';
-  const { data } = $props();
+  const { data = $bindable() } = $props();
 
   const tracks = $state<TrackParams[]>(
     data.trackData.map((data) => ({

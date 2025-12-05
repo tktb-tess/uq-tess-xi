@@ -6,7 +6,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   const ogTitle = 'ツール';
   const ogDesc = '色々な計算';
-  const { data } = $props();
+  const { data = $bindable() } = $props();
   const { seeds, exps, logs } = data;
 </script>
 
