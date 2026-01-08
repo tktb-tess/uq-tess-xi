@@ -23,12 +23,12 @@ export const load = async (): Promise<LoadResult<WordData>> => {
           if (e instanceof Error) {
             return NamedError.from('RedisError', e.message);
           }
-          return NamedError.from('RedisError', 'failed to load today-word from redis');
+          return NamedError.from('RedisError', 'Failed to load today-word from redis');
         }),
       )
       .andThen((word) => {
         if (!word) {
-          return err(NamedError.from('RedisError', 'failed to load today-word from redis'));
+          return err(NamedError.from('RedisError', 'Failed to load today-word from redis'));
         }
         return parseAndValidate(ZpDIC.wordSchema, word);
       });

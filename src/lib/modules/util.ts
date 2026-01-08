@@ -1,18 +1,18 @@
 import { Result, ok, err, ResultAsync } from 'neverthrow';
 import * as z from 'zod';
 
-type NamedError<EName extends string | symbol, TCause = undefined> = {
+type NamedError<EName extends string | symbol> = {
   readonly name: EName;
   readonly message: string;
-  readonly cause?: TCause;
+  readonly cause?: unknown;
 };
 
 const NamedError = {
-  from<EName extends string | symbol, TCause = undefined>(
+  from<EName extends string | symbol>(
     name: EName,
     message: string = '',
-    cause?: TCause,
-  ): NamedError<EName, TCause> {
+    cause?: unknown,
+  ): NamedError<EName> {
     return {
       name,
       message,
