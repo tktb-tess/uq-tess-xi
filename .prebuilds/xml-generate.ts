@@ -1,6 +1,6 @@
 import { writeFileSync, globSync } from 'node:fs';
 
-const paths = (() => {
+const paths: readonly string[] = (() => {
   const gl_ = globSync(`./src/routes/**/+page.svelte`);
   const paths = gl_.map((p) => {
     return p.match(/src\/routes\/(?:\(layout[12]\))?((?:\/[^/]+)+\/)\+page\.svelte/u)?.[1] ?? '/';
@@ -8,8 +8,9 @@ const paths = (() => {
   return paths.sort();
 })();
 
-const lastmod = new Date().toISOString();
+console.log('paths:\n', paths);
 
+const lastmod = new Date().toISOString();
 const urls = paths.map(
   (p) => `  <url>
     <loc>${new URL(p, 'https://www.tktb-tess.dev').href}</loc>
