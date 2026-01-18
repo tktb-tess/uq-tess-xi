@@ -12,9 +12,6 @@ export default defineConfig({
   preview: {
     port: 8000,
   },
-  optimizeDeps: {
-    exclude: [],
-  },
   test: {
     testTimeout: 15000,
   },
