@@ -13,4 +13,4 @@ pnpm i --frozen-lockfile
 pnpm run dev
 ```
 
-その後、 `localhost:5173` にアクセスします。
+その後、 `localhost:8000` にアクセスします。
