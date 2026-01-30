@@ -21,12 +21,7 @@
   });
 </script>
 
-<div
-  class="
-				w-full max-w-[720px] mx-auto flex flex-col items-center border border-slate-500 d:border-slate-300 rounded-xl
-				[:where(&_*)]:m-0 gap-y-6 py-6 bg-linear-to-b from-white d:from-zinc-900 to-neutral-50 d:to-black shadow-sm d:shadow-white mt-12
-			"
->
+<div id="today-word-root" class="">
   {#await resultAsy}
     <div class="flex gap-2 items-center">
       <Spinner class="size-6" />
@@ -93,3 +88,19 @@
     {/if}
   {/await}
 </div>
+
+<style lang="postcss">
+  @reference '../app.css';
+  @layer components {
+    #today-word-root {
+      @apply w-full max-w-180 mx-auto flex flex-col items-center border 
+      border-slate-500 d:border-slate-300 rounded-xl
+			gap-y-6 py-6 bg-linear-to-b from-white d:from-zinc-900 to-neutral-50 d:to-black 
+      shadow-sm d:shadow-white mt-12;
+
+      :where(*) {
+        @apply m-0;
+      }
+    }
+  }
+</style>

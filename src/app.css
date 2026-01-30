@@ -16,6 +16,7 @@
   --font-phun-dot: 'PhunDot', var(--font-sans);
   --color-mnlila: oklch(0.18 0.0957 296);
   --color-mnlila-2: oklch(0.2774 0.1512 296);
+  --color-mnlila-100: var(--color-violet-950);
   --color-title-s: oklch(0.3 0.1469 316);
   --color-title-e: oklch(0.3 0.1469 276);
   --color-llila: oklch(0.91 0.0488 296);
@@ -51,6 +52,8 @@
   --color-d-btn2: var(--color-black);
   --color-btn2-h: var(--color-llila);
   --color-d-btn2-h: var(--color-slate-800);
+  --color-danger: var(--color-red-600);
+  --color-d-denger: #ee0;
 
   @keyframes slide-in {
     from {
@@ -168,20 +171,8 @@
   @apply bgc-btn2 any-hover:bgc-btn2-h transition-colors border borderc-border rounded px-2;
 }
 
-@utility text-danger {
-  @apply text-red-600 d:text-[#ff0];
-}
-
 @utility f-tnum {
   font-feature-settings: 'tnum';
-}
-
-@custom-variant any-hover {
-  &:hover {
-    @media (any-hover: hover) {
-      @slot;
-    }
-  }
 }
 
 @custom-variant d {
@@ -200,6 +191,8 @@
 
 @layer base {
   * {
+    @apply wrap-anywhere hyphens-auto;
+    line-break: strict;
     font-optical-sizing: auto;
   }
 
