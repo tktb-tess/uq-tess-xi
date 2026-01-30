@@ -5,7 +5,7 @@
   src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
-@theme inline {
+@theme {
   --font-sans:
     'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
@@ -21,14 +21,15 @@
   --color-title-e: oklch(0.3 0.1469 276);
   --color-llila: oklch(0.91 0.0488 296);
   --color-llila-2: oklch(0.85 0.0836 296);
-  --link-transition-dur: 120ms;
-  --tracking-ultra: 3rem;
-  --default-transition-duration: 110ms;
+  --color-violet-1000-d: color-mix(in oklch, var(--color-violet-950) 50%, #000);
+  --color-violet-950-d: oklch(from var(--color-violet-950) l .08 h);
+  --color-violet-900-d: oklch(from var(--color-violet-900) l .11 h);
+  --color-violet-800-d: oklch(from var(--color-violet-800) l .13 h);
 
-  --color-body: var(--color-llila);
-  --color-d-body: var(--color-mnlila);
-  --color-main: var(--color-slate-50);
-  --color-d-main: var(--color-zinc-900);
+  --color-body: var(--color-violet-50);
+  --color-d-body: var(--color-violet-950-d);
+  --color-main: #fff;
+  --color-d-main: var(--color-violet-1000-d);
   --color-text: var(--color-black);
   --color-d-text: var(--color-white);
   --color-highlight: var(--color-mnlila);
@@ -55,6 +56,10 @@
   --color-d-btn2-h: var(--color-slate-800);
   --color-danger: var(--color-red-600);
   --color-d-denger: #ee0;
+
+  --link-transition-dur: 120ms;
+  --tracking-ultra: 3rem;
+  --default-transition-duration: 110ms;
 
   @keyframes slide-in {
     from {

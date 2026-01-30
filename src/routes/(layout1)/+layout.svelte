@@ -174,89 +174,79 @@
 
 <style lang="postcss">
   @reference '../../app.css';
-  .side-menu {
-    @apply flex flex-col;
+  @layer components {
+    .side-menu {
+      @apply flex flex-col;
 
-    > * {
-      @apply mx-1;
+      > * {
+        @apply mx-1;
+      }
+
+      :where(h4) {
+        @apply py-1;
+      }
+
+      :where(h4, a, summary) {
+        @apply px-3;
+      }
+
+      details > div > a {
+        @apply ps-5;
+      }
     }
 
-    :where(h4) {
-      @apply py-1;
+    .drawer-backdrop {
+      @apply block cursor-[initial] fixed invisible inset-0 z-10 bg-transparent
+      transition-[visibility,background-color] overflow-x-hidden;
+
+      &[data-open] {
+        @apply visible bg-black/50;
+      }
     }
 
-    :where(h4, a, summary) {
-      @apply px-3;
+    .drawer,
+    .non-drawer {
+      display: flex;
+      flex-direction: column;
+      row-gap: calc(var(--spacing) * 1);
+      padding-block: calc(var(--spacing) * 4);
     }
 
-    details > div > a {
-      @apply ps-5;
-    }
-  }
+    .drawer {
+      height: 100vh;
+      position: fixed;
+      overflow-y: auto;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      width: 18rem;
+      transition-property: transform, visibility;
+      transform: translate(-100%);
+      transition-timing-function: cubic-bezier(0, 0, 1, 0);
 
-  .drawer-backdrop {
-    display: block;
-    cursor: initial;
-    position: fixed;
-    text-align: start;
-    inset: 0;
-    visibility: hidden;
-    z-index: 10;
-    background-color: transparent;
-    transition-property: visibility, background-color;
-    transition-timing-function: cubic-bezier(0, 0.2, 1, 0);
-    overflow-x: hidden;
-
-    &[data-open] {
-      visibility: visible;
-      transition-timing-function: cubic-bezier(0, 1, 0.8, 1);
-      background-color: color-mix(in oklch, black 50%, transparent);
-    }
-  }
-
-  .drawer,
-  .non-drawer {
-    display: flex;
-    flex-direction: column;
-    row-gap: calc(var(--spacing) * 1);
-    padding-block: calc(var(--spacing) * 4);
-    scrollbar-width: thin;
-  }
-
-  .drawer {
-    height: 100vh;
-    position: fixed;
-    overflow-y: auto;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    width: 18rem;
-    transition-property: transform, visibility;
-    transform: translate(-100%);
-    transition-timing-function: cubic-bezier(0, 0, 1, 0);
-
-    &[data-open] {
-      transition-timing-function: cubic-bezier(0, 1, 1, 1);
-      transform: translate(0);
-    }
-  }
-
-  .non-drawer {
-    height: 100vh;
-    overflow-y: auto;
-    position: sticky;
-    top: 0;
-  }
-
-  div:has(> .non-drawer) {
-    flex: 0 0 calc(6 / 24 * 100%);
-
-    @media (width >= 80rem) {
-      flex: 0 0 calc(5 / 24 * 100%);
+      &[data-open] {
+        transition-timing-function: cubic-bezier(0, 1, 1, 1);
+        transform: translate(0);
+      }
     }
 
-    @media (width >= 96rem) {
-      flex: 0 0 calc(4 / 24 * 100%);
+    .non-drawer {
+      height: 100vh;
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+    }
+
+    div:has(> .non-drawer) {
+      flex: 0 0 calc(6 / 24 * 100%);
+
+      @media (width >= 80rem) {
+        flex: 0 0 calc(5 / 24 * 100%);
+      }
+
+      @media (width >= 96rem) {
+        flex: 0 0 calc(4 / 24 * 100%);
+      }
     }
   }
 </style>
