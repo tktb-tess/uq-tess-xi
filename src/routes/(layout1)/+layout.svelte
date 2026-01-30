@@ -172,35 +172,26 @@
 
 <PageTopBtn />
 
-<style>
+<style lang="postcss">
+  @reference '../../app.css';
   .side-menu {
-    display: flex;
-    flex-direction: column;
-
-    * {
-      overflow-wrap: break-word;
-    }
+    @apply flex flex-col;
 
     > * {
-      margin-inline: var(--spacing);
+      @apply mx-1;
     }
 
     :where(h4) {
-      padding-block: calc(var(--spacing) * 1);
+      @apply py-1;
     }
 
     :where(h4, a, summary) {
-      padding-inline: calc(var(--spacing) * 3);
+      @apply px-3;
     }
 
     details > div > a {
-      padding-inline-start: calc(var(--spacing) * 5);
+      @apply ps-5;
     }
-  }
-
-  .drawer,
-  .drawer-backdrop {
-    transition-duration: var(--default-transition-duration);
   }
 
   .drawer-backdrop {
