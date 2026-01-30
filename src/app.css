@@ -23,6 +23,7 @@
   --color-llila-2: oklch(0.85 0.0836 296);
   --link-transition-dur: 120ms;
   --tracking-ultra: 3rem;
+  --default-transition-duration: 110ms;
 
   --color-body: var(--color-llila);
   --color-d-body: var(--color-mnlila);
@@ -173,6 +174,14 @@
 
 @utility f-tnum {
   font-feature-settings: 'tnum';
+}
+
+@custom-variant any-hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
 }
 
 @custom-variant d {
