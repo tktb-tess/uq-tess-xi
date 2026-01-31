@@ -21,45 +21,44 @@
   --color-title-e: oklch(0.3 0.1469 276);
   --color-llila: oklch(0.91 0.0488 296);
   --color-llila-2: oklch(0.85 0.0836 296);
-  --color-violet-1000-d: color-mix(in oklch, var(--color-violet-950) 50%, #000);
-  --color-violet-950-d: oklch(from var(--color-violet-950) l .08 h);
-  --color-violet-900-d: oklch(from var(--color-violet-900) l .11 h);
-  --color-violet-800-d: oklch(from var(--color-violet-800) l .13 h);
+  --color-violet-1000-d: oklch(from var(--color-violet-950) 15% 0.06 h);
+  --color-violet-950-d: oklch(from var(--color-violet-950) l 0.08 h);
+  --color-violet-900-d: oklch(from var(--color-violet-900) l 0.11 h);
+  --color-violet-800-d: oklch(from var(--color-violet-800) l 0.13 h);
 
   --color-body: var(--color-violet-50);
   --color-d-body: var(--color-violet-950-d);
   --color-main: #fff;
   --color-d-main: var(--color-violet-1000-d);
-  --color-text: var(--color-black);
-  --color-d-text: var(--color-white);
-  --color-highlight: var(--color-mnlila);
-  --color-d-highlight: var(--color-llila);
-  --color-th1: var(--color-llila);
-  --color-d-th1: var(--color-mnlila);
-  --color-th2: var(--color-llila-2);
-  --color-d-th2: var(--color-mnlila-2);
-  --color-td1: var(--color-white);
-  --color-d-td1: var(--color-black);
-  --color-td2: var(--color-slate-200);
-  --color-d-td2: var(--color-slate-700);
-  --color-border: var(--color-slate-200);
-  --color-d-border: var(--color-slate-700);
+  --color-text: #000;
+  --color-d-text: #fff;
+  --color-textinv: #fff;
+  --color-d-textinv: #000;
+  --color-accent: var(--color-violet-950-d);
+  --color-d-accent: var(--color-violet-50);
+  --color-accent2: var(--color-violet-900-d);
+  --color-d-accent2: var(--color-violet-100);
+  --color-border: var(--color-slate-400);
+  --color-d-border: var(--color-slate-500);
+  --color-border2: var(--color-slate-600);
+  --color-d-border2: var(--color-slate-300);
   --color-link: var(--color-blue-700);
-  --color-d-link: var(--color-cyan-300);
-  --color-textinv: var(--color-white);
-  --color-d-textinv: var(--color-black);
-  --color-btn1: var(--color-mnlila);
-  --color-d-btn1: var(--color-white);
-  --color-btn2: var(--color-white);
-  --color-d-btn2: var(--color-black);
-  --color-btn2-h: var(--color-llila);
-  --color-d-btn2-h: var(--color-slate-800);
-  --color-danger: var(--color-red-600);
-  --color-d-denger: #ee0;
+  --color-d-link: var(--color-blue-400);
+  --color-caution: var(--color-red-600);
+  --color-d-caution: var(--color-yellow-300);
+
+  --grad-top-caption: linear-gradient(
+    to bottom right in oklch,
+    var(--color-blue-950),
+    var(--color-violet-950)
+  );
+  --grad-d-top-caption: var(--grad-top-caption);
 
   --link-transition-dur: 120ms;
   --tracking-ultra: 3rem;
   --default-transition-duration: 110ms;
+  --s-paragraph: 0.75rem;
+  --s-heading: 2.5rem;
 
   @keyframes slide-in {
     from {
@@ -107,39 +106,67 @@
   }
 }
 
-@utility bgc-* {
+@utility cbg-* {
   background-color: --value(--color-*);
 
   @media (prefers-color-scheme: dark) {
     background-color: --value(--color-d- *);
   }
 
-  &:where(
-    [data-color-scheme='dark'],
-    [data-color-scheme='dark'] &,
-    :has([data-color-scheme='dark'])
+  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+    background-color: --value(--color-d-*);
+  }
+
+  &:is(
+    [data-color-scheme='light'],
+    [data-color-scheme='light'] &,
+    :has([data-color-scheme='light'])
   ) {
     background-color: --value(--color-d-*);
   }
 }
 
-@utility textc-* {
+@utility gbg-* {
+  background-image: --value(--grad-*);
+
+  @media (prefers-color-scheme: dark) {
+    background-image: --value(--grad-d- *);
+  }
+
+  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+    background-image: --value(--grad-d-*);
+  }
+
+  &:is(
+    [data-color-scheme='light'],
+    [data-color-scheme='light'] &,
+    :has([data-color-scheme='light'])
+  ) {
+    background-image: --value(--grad-d-*);
+  }
+}
+
+@utility ctext-* {
   color: --value(--color-*);
 
   @media (prefers-color-scheme: dark) {
     color: --value(--color-d- *);
   }
 
-  &:where(
-    [data-color-scheme='dark'],
-    [data-color-scheme='dark'] &,
-    :has([data-color-scheme='dark'])
+  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+    color: --value(--color-d-*);
+  }
+
+  &:is(
+    [data-color-scheme='light'],
+    [data-color-scheme='light'] &,
+    :has([data-color-scheme='light'])
   ) {
     color: --value(--color-d-*);
   }
 }
 
-@utility borderc-* {
+@utility cborder-* {
   border-color: --value(--color-*);
 
   @media (prefers-color-scheme: dark) {
@@ -147,6 +174,14 @@
   }
 
   &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+    border-color: --value(--color-d-*);
+  }
+
+  &:is(
+    [data-color-scheme='light'],
+    [data-color-scheme='light'] &,
+    :has([data-color-scheme='light'])
+  ) {
     border-color: --value(--color-d-*);
   }
 }
@@ -170,11 +205,11 @@
 }
 
 @utility btn-1 {
-  @apply bgc-btn1 any-hover:opacity-70 transition-opacity rounded textc-textinv px-2 no-underline;
+  @apply cbg-accent any-hover:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
 }
 
 @utility btn-2 {
-  @apply bgc-btn2 any-hover:bgc-btn2-h transition-colors border borderc-border rounded px-2;
+  @apply cbg-accent2 any-hover:opacity-70 transition-opacity border cborder-border rounded px-2;
 }
 
 @utility f-tnum {
@@ -194,11 +229,7 @@
     @slot;
   }
 
-  &:where(
-    [data-color-scheme='dark'],
-    [data-color-scheme='dark'] &,
-    :has([data-color-scheme='dark'])
-  ) {
+  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
     @slot;
   }
 }
@@ -213,23 +244,23 @@
   html,
   :host {
     -webkit-tap-highlight-color: revert;
-    @apply font-sans;
+    @apply font-sans max-sm:text-sm;
+  }
+
+  :not(pre, code, body, html) {
+    @apply font-[inherit];
   }
 
   [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
-
-    :not(pre, code, body, html) {
-      @apply font-[inherit];
-    }
   }
 
   body {
-    @apply bgc-body textc-text;
+    @apply cbg-body ctext-text;
   }
 
   a {
-    @apply textc-link any-hover:underline;
+    @apply ctext-link any-hover:underline;
   }
 
   button,
@@ -241,32 +272,21 @@
   input[type='number'],
   input[type='url'],
   textarea {
-    @apply font-mono bg-white border border-slate-300 rounded px-1;
+    @apply font-mono border cborder-border rounded px-1;
 
     &:disabled {
       @apply text-neutral-500 bg-neutral-50;
     }
   }
 
-  h2,
-  h3,
-  p,
-  ul,
-  ol {
-    @apply mb-3;
-  }
-
   li > ul {
     @apply mb-0;
   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply textc-highlight font-serif;
+  :is(h2, h3, h4, h5, h6) {
+    @apply ctext-accent font-serif;
   }
+  
 
   h2 {
     @apply text-3xl;
@@ -276,78 +296,28 @@
     @apply text-2xl;
   }
 
+  h4 {
+    @apply text-xl;
+  }
+
+  :is(h2, h3, h4) {
+    @apply mt-(--s-heading);
+  }
+
+  :is(h5, h6, p, ul, ol, pre) {
+    @apply mt-(--s-paragraph);
+  }
+
   ul {
     list-style: '\2023';
   }
 
   ol {
-    list-style: decimal;
+    @apply list-decimal;
   }
 
   :is(ul, ol) > li {
     @apply ms-5 ps-1;
-  }
-
-  table {
-    @apply grid md:place-content-center;
-  }
-
-  thead,
-  tbody,
-  tr {
-    @apply contents;
-  }
-
-  thead,
-  tbody {
-    & > tr > td:first-child {
-      @apply border-l borderc-border;
-    }
-
-    & > tr > td:last-child {
-      @apply border-r borderc-border;
-    }
-
-    & > tr:last-child > td {
-      @apply border-b borderc-border;
-    }
-
-    & > tr > th:first-child {
-      @apply d:border-l d:border-slate-700;
-    }
-
-    & > tr > th:last-child {
-      @apply d:border-r d:border-slate-700;
-    }
-  }
-
-  thead > tr:first-child > th {
-    @apply d:border-t d:border-slate-700;
-  }
-
-  td,
-  th {
-    @apply block text-center font-normal px-2 py-1 text-nowrap;
-  }
-
-  tr > td {
-    @apply bgc-td1;
-  }
-
-  tr:nth-child(even) > td {
-    @apply bgc-td2;
-  }
-
-  th {
-    @apply bgc-th1;
-  }
-
-  tr:nth-child(even) > th {
-    @apply bgc-th2;
-  }
-
-  caption {
-    @apply block col-span-full mb-1 text-xl font-serif font-medium;
   }
 
   textarea {

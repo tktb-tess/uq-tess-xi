@@ -1,13 +1,13 @@
 <script lang="ts">
-  import ExtLink from '$lib/sfc/ext_link.svelte';
-  import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-  import CardList from '$lib/sfc/cardList.svelte';
+  import ExtLink from '$lib/components/ext_link.svelte';
+  import PageTopBtn from '$lib/components/page_top_btn.svelte';
+  import CardList from '$lib/components/cardList.svelte';
   import TodayWord from './todayWord.svelte';
-  import GithubMark from '$lib/sfc/github-mark.svelte';
+  import GithubMark from '$lib/components/github-mark.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
-  import UqTessLogo from '$lib/sfc/uq-tess-logo.svelte';
-  import ToggleColorSchemeBtn from '$lib/sfc/toggle-color-scheme-btn.svelte';
+  import UqTessLogo from '$lib/components/uq-tess-logo.svelte';
+  import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
 
   const Title = $derived.by(() => {
     if (innerWidth.current && innerWidth.current < 768) {

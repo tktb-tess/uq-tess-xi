@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Spinner from '$lib/sfc/spinner.svelte';
+  import Spinner from '$lib/components/spinner.svelte';
   import type { Primes } from '../../../api/v0/prime/+server';
 
   type Props = {
@@ -96,7 +96,7 @@
     </div>
     <button onclick={fetchPrimes} type="button" class="btn-1 text-xl self-center">表示</button>
     <p
-      class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center text-center min-w-0 max-w-full break-words"
+      class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center text-center min-w-0 max-w-full"
     >
       {#await primesPr}
         <Spinner class="size-6" />

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import ExtLink from '$lib/sfc/ext_link.svelte';
+  import ExtLink from '$lib/components/ext_link.svelte';
 
   const ogTitle = '日本語 チベット文字表記';
   const ogDesc = '狂気の沙汰';

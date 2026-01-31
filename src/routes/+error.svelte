@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from '$app/state';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import UqTessLogo from '$lib/sfc/uq-tess-logo.svelte';
+  import UqTessLogo from '$lib/components/uq-tess-logo.svelte';
 
   const ogTitle = `${page.status}${page.error ? ` ${page.error.message}` : ''}`;
   const ogDesc = 'そこに無ければ無いですね';

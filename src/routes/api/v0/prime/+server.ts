@@ -49,7 +49,7 @@ export const GET = async ({ url }) => {
       console.error(e.name, e.message);
       error(500, { message: `${e.name}: ${e.message}` });
     } else {
-      error(500, { message: 'unidentified error' });
+      error(500, { message: 'Unidentified error' });
     }
   }
 };

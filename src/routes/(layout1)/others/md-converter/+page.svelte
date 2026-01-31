@@ -1,9 +1,9 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { NamedError } from '$lib/modules/util';
-  import Spinner from '$lib/sfc/spinner.svelte';
-  import { addToast } from '$lib/sfc/toastStates.svelte';
-  import TrashIcon from '$lib/sfc/trashIcon.svelte';
+  import Spinner from '$lib/components/spinner.svelte';
+  import { addToast } from '$lib/components/toastStates.svelte';
+  import TrashIcon from '$lib/components/trashIcon.svelte';
   import type { MdResult } from '../../../api/v0/to-md/+server';
 
   const ogTitle = 'URL to Markdown';

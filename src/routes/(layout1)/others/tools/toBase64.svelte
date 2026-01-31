@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { addToast } from '$lib/sfc/toastStates.svelte';
+  import { addToast } from '$lib/components/toastStates.svelte';
   const encoder = new TextEncoder();
   type Props = {
     seed: string;
@@ -28,14 +28,14 @@
   <div class="flex flex-col gap-3">
     <div class="flex flex-col gap-2 items-center">
       <label for="input-{seed}" class="">テキスト</label>
-      <textarea class="w-full h-[8rem]" id="input-{seed}" bind:value={input}></textarea>
+      <textarea class="w-full h-32" id="input-{seed}" bind:value={input}></textarea>
     </div>
     <p class="text-center m-0">↓</p>
     <div class="flex flex-col gap-2 items-center">
       <label for="output-{seed}" class="">Base64 (枠内をクリックするとコピーできます)</label>
       <textarea
         onclick={copyText}
-        class="w-full h-[8rem] cursor-pointer"
+        class="w-full h-32 cursor-pointer"
         id="output-{seed}"
         readonly>{output}</textarea
       >

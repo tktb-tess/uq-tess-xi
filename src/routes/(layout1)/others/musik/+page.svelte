@@ -1,11 +1,11 @@
 <script lang="ts">
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import DownloadIcon from '$lib/sfc/download-icon.svelte';
-  import ExtLink from '$lib/sfc/ext_link.svelte';
-  import PauseFill from '$lib/sfc/pause-fill.svelte';
-  import PlayFill from '$lib/sfc/play-fill.svelte';
-  import Repeat from '$lib/sfc/repeat.svelte';
-  import StopFill from '$lib/sfc/stop-fill.svelte';
+  import DownloadIcon from '$lib/components/download-icon.svelte';
+  import ExtLink from '$lib/components/ext_link.svelte';
+  import PauseFill from '$lib/components/pause-fill.svelte';
+  import PlayFill from '$lib/components/play-fill.svelte';
+  import Repeat from '$lib/components/repeat.svelte';
+  import StopFill from '$lib/components/stop-fill.svelte';
   import type { TrackParams } from './+page.server';
 
   const ogTitle = '音楽';

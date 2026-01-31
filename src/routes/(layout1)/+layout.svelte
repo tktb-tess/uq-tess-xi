@@ -1,10 +1,10 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import CloseButton from '$lib/sfc/close_button.svelte';
-  import Hamburger from '$lib/sfc/hamburger.svelte';
-  import MoonIcon from '$lib/sfc/moon-icon.svelte';
-  import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-  import SunIcon from '$lib/sfc/sun-icon.svelte';
+  import CloseButton from '$lib/components/close_button.svelte';
+  import Hamburger from '$lib/components/hamburger.svelte';
+  import MoonIcon from '$lib/components/moon-icon.svelte';
+  import PageTopBtn from '$lib/components/page_top_btn.svelte';
+  import SunIcon from '$lib/components/sun-icon.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import { innerWidth } from 'svelte/reactivity/window';
   import { siteConfig, key } from '$lib/modules/site-config.svelte';

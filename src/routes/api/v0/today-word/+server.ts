@@ -54,8 +54,13 @@ export const GET = async () => {
 
     const todayWord = result.value;
 
-    const query = `?kind=exact&number=${todayWord.number}`;
-    const dicUrl = `https://zpdic.ziphil.com/dictionary/633${query}`;
+    // const query = `?kind=exact&number=${todayWord.number}`;
+    const query = new URLSearchParams({
+      kind: 'exact',
+      number: `${todayWord.number}`,
+    });
+
+    const dicUrl = `https://zpdic.ziphil.com/dictionary/633?${query}`;
 
     const size = (() => {
       const len = todayWord.name.length;

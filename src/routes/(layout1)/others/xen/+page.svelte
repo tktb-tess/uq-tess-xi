@@ -16,4 +16,4 @@
   <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
-<h3 class="text-center text-danger my-8">工事中……</h3>
+<h3 class="text-center ctext-caution my-8">工事中……</h3>
