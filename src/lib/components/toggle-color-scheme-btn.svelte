@@ -13,8 +13,20 @@
     type="button"
     class="btn-1 px-2 py-1"
     onclick={() => {
-      const isDark = siteConfig.colorScheme === 'dark';
-      siteConfig.colorScheme = isDark ? 'light' : 'dark';
+      switch (siteConfig.colorScheme) {
+        case 'default': {
+          siteConfig.colorScheme = 'light';
+          break;
+        }
+        case 'light': {
+          siteConfig.colorScheme = 'dark';
+          break;
+        }
+        case 'dark': {
+          siteConfig.colorScheme = 'default';
+          break;
+        }
+      }
     }}
   >
     {#if siteConfig.colorScheme === 'light'}

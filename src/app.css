@@ -40,8 +40,8 @@
   --color-d-accent2: var(--color-violet-100);
   --color-border: var(--color-slate-400);
   --color-d-border: var(--color-slate-500);
-  --color-border2: var(--color-slate-600);
-  --color-d-border2: var(--color-slate-300);
+  --color-border-dark: var(--color-slate-600);
+  --color-d-border-dark: var(--color-slate-300);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-400);
   --color-caution: var(--color-red-600);
@@ -59,6 +59,11 @@
   --default-transition-duration: 110ms;
   --s-paragraph: 0.75rem;
   --s-heading: 2.5rem;
+  --s-figure: 2rem;
+  --w-main: 80rem;
+  --w-side: 18rem;
+  --cols-main: minimax(min(var(--w-side), 50%), 1fr) minimax(0, var(--w-main))
+    minimax(min(var(--w-side), 50%), 1fr);
 
   @keyframes slide-in {
     from {
@@ -241,13 +246,12 @@
     font-optical-sizing: auto;
   }
 
-  html,
-  :host {
+  :where(html, :host) {
     -webkit-tap-highlight-color: revert;
     @apply font-sans max-sm:text-sm;
   }
 
-  :not(pre, code, body, html) {
+  :where(:not(pre, code, body, html)) {
     @apply font-[inherit];
   }
 
@@ -286,7 +290,6 @@
   :is(h2, h3, h4, h5, h6) {
     @apply ctext-accent font-serif;
   }
-  
 
   h2 {
     @apply text-3xl;
@@ -308,6 +311,39 @@
     @apply mt-(--s-paragraph);
   }
 
+  li > :where(ul, ol, p) {
+    @apply mt-0;
+  }
+
+  img,
+  .table-container:has(> table) {
+    @apply my-(--s-figure);
+  }
+
+  img {
+    @apply mx-auto w-max max-w-full;
+  }
+
+  .table-container:has(> table) {
+    @apply overflow-x-auto max-w-full;
+  }
+
+  table {
+    @apply text-nowrap w-max max-w-full;
+
+    :where(td, th) {
+      @apply px-2 py-1;
+    }
+
+    :where(> thead > tr:last-child) {
+      @apply cborder-border-dark;
+    }
+
+    :where(> tbody > tr:not(:last-child)) {
+      @apply cborder-border;
+    }
+  }
+
   ul {
     list-style: '\2023';
   }
@@ -316,8 +352,8 @@
     @apply list-decimal;
   }
 
-  :is(ul, ol) > li {
-    @apply ms-5 ps-1;
+  :is(b, strong) {
+    @apply font-semibold;
   }
 
   textarea {

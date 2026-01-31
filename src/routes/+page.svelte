@@ -6,7 +6,6 @@
   import GithubMark from '$lib/components/github-mark.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
-  import UqTessLogo from '$lib/components/uq-tess-logo.svelte';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
 
   const Title = $derived.by(() => {
@@ -30,28 +29,11 @@
   <title>{PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
-<header
-  class="h-screen bg-linear-to-br/oklch from-title-s to-title-e flex flex-col gap-6 text-white justify-center overflow-x-clip items-center"
->
-  <UqTessLogo
-    class="fill-current block size-40 md:size-55 lg:size-85 2xl:size-115 animate-[slide-in_3.5s_cubic-bezier(0,1,1,1),fade-in_3.5s_linear]"
-  />
-  <h1 class="font-semibold font-serif text-5xl lg:text-6xl xl:text-7xl text-center">
-    {Title}
-  </h1>
-</header>
-
-<main
-  class="
-        container mx-auto bgc-main px-3 min-h-screen
-        flex flex-col gap-y-10 py-2
-		[&_h2:not(#subtitle)]:text-center [&_h2:not(#subtitle)]:border-b-3 [&_h2:not(#subtitle)]:border-double
-    "
->
+<main>
   <div>
     <ToggleColorSchemeBtn />
-    <h2 id="subtitle" class="text-center my-8">〜ようこそ〜</h2>
-    <p class="text-danger font-semibold text-xl text-center">
+    <h2 id="subtitle">〜ようこそ〜</h2>
+    <p>
       ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。
     </p>
     <p>
@@ -61,7 +43,7 @@
   </div>
 
   <section aria-labelledby="today-word">
-    <h2 id="today-word" class="text-center">今日の単語</h2>
+    <h2 id="today-word">今日の単語</h2>
     <TodayWord />
   </section>
   <section aria-labelledby="menu">
@@ -78,8 +60,8 @@
   <section aria-labelledby="haimei">
     <h2 id="haimei">頂いた名前</h2>
     <p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
-    <div class="table-container">
-      <table class="grid-cols-auto-3">
+    <div>
+      <table>
         <thead>
           <tr>
             <th>言語</th>
@@ -104,13 +86,7 @@
     <ul>
       <li>
         <a href="https://kaeru2193.net" target="_blank" rel="noopener">
-          <img
-            class="inline align-middle"
-            src="https://kaeru2193.net/banner.png"
-            width="200"
-            height="40"
-            alt="之機堂"
-          />
+          <img src="https://kaeru2193.net/banner.png" width="200" height="40" alt="之機堂" />
         </a>
         (かえる)
       </li>
@@ -151,10 +127,10 @@
       </li>
     </ul>
   </section>
-  <h3 class="text-danger text-center my-8">工事中……</h3>
+  <h3>工事中……</h3>
 </main>
 
-<footer class="flex flex-col items-center my-5 px-3">
+<footer>
   <p>
     ※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
   </p>
@@ -162,11 +138,20 @@
   <a
     href="https://github.com/tktb-tess/uq-tess-xi"
     target="_blank"
-    rel="noopener"
-    aria-label="Link to the GitHub Repository"
+    rel="noopener noreferrer"
+    title="Link to the GitHub Repository"
   >
-    <GithubMark class="inline-block any-hover:opacity-60 size-6 transition-opacity" />
+    <GithubMark class="size-6" />
   </a>
 </footer>
 
 <PageTopBtn />
+
+<style lang="postcss">
+  @reference '../app.css';
+  @layer components {
+    main {
+      @apply cbg-main;
+    }
+  }
+</style>

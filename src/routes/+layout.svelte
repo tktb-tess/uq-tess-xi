@@ -17,7 +17,6 @@
 
 <svelte:head>
   <!-- OGP -->
-  <meta property="og:url" content="https://tktb-tess.dev" />
   <meta property="og:site_name" content={PUBLIC_SITE_NAME} />
   <meta property="og:image" content={linkCardUrl} />
   <meta property="og:type" content="website" />

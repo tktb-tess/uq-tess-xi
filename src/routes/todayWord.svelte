@@ -21,7 +21,7 @@
   });
 </script>
 
-<div id="today-word-root" class="">
+<div id="today-word-root">
   {#await resultAsy}
     <div class="flex gap-2 items-center">
       <Spinner class="size-6" />
@@ -31,9 +31,9 @@
     {#if result.isOk()}
       {@const { value } = result}
       {#if value}
-        <h3 class="font-serif font-normal text-mnlila d:text-white {value.size}">{value.word}</h3>
+        <h3 class="font-serif font-normal {value.size}">{value.word}</h3>
         {#if value.pron}
-          <p class="text-black/60 d:text-white/60 font-ipa">
+          <p class="font-ipa">
             {#if value.pron.includes('/')}
               {value.pron}
             {:else}
@@ -41,7 +41,7 @@
             {/if}
           </p>
         {/if}
-        <p class="d:text-white">訳</p>
+        <p>訳</p>
         <table
           class="
 					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
@@ -94,9 +94,7 @@
   @layer components {
     #today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border 
-      border-slate-500 d:border-slate-300 rounded-xl
-			gap-y-6 py-6 bg-linear-to-b from-white d:from-zinc-900 to-neutral-50 d:to-black 
-      shadow-sm d:shadow-white mt-12;
+      cborder-border rounded-xl gap-y-6 py-6 bg-linear-to-b shadow-sm;
 
       :where(*) {
         @apply m-0;
