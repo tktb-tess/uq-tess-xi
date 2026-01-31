@@ -13,6 +13,25 @@
 </script>
 
 <header>
-  <UqTessLogo class="" />
-  <h1>{title}</h1>
+  <div id="top-logo">
+    <UqTessLogo class="h-full" />
+  </div>
+  <h1 id="top-title-text">{title}</h1>
 </header>
+
+<style lang="postcss">
+  @reference '../../app.css';
+  @layer components {
+    header {
+      @apply grid h-lvh content-center place-items-center gbg-top-caption text-white;
+    }
+
+    #top-logo {
+      @apply animate-top-logo h-[55vh] max-h-140;
+    }
+
+    #top-title-text {
+      @apply font-serif font-bold text-[calc(2.75rem+1.75vw)];
+    }
+  }
+</style>

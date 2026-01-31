@@ -7,6 +7,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
+    import TopHeader from '$lib/components/TopHeader.svelte';
 
   const Title = $derived.by(() => {
     if (innerWidth.current && innerWidth.current < 768) {
@@ -30,6 +31,7 @@
 </svelte:head>
 
 <main>
+  <TopHeader />
   <div>
     <ToggleColorSchemeBtn />
     <h2 id="subtitle">〜ようこそ〜</h2>
@@ -85,9 +87,9 @@
     <p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
     <ul>
       <li>
-        <a href="https://kaeru2193.net" target="_blank" rel="noopener">
+        <ExtLink href="https://kaeru2193.net" noIcon>
           <img src="https://kaeru2193.net/banner.png" width="200" height="40" alt="之機堂" />
-        </a>
+        </ExtLink>
         (かえる)
       </li>
     </ul>
@@ -135,14 +137,13 @@
     ※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
   </p>
   <p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
-  <a
+  <ExtLink
     href="https://github.com/tktb-tess/uq-tess-xi"
-    target="_blank"
-    rel="noopener noreferrer"
     title="Link to the GitHub Repository"
+    noIcon
   >
     <GithubMark class="size-6" />
-  </a>
+  </ExtLink>
 </footer>
 
 <PageTopBtn />

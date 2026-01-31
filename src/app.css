@@ -48,9 +48,9 @@
   --color-d-caution: var(--color-yellow-300);
 
   --grad-top-caption: linear-gradient(
-    to bottom right in oklch,
-    var(--color-blue-950),
-    var(--color-violet-950)
+    to right in oklch,
+    #0000ff,
+    #cc00ee
   );
   --grad-d-top-caption: var(--grad-top-caption);
 
@@ -64,13 +64,17 @@
   --w-side: 18rem;
   --cols-main: minimax(min(var(--w-side), 50%), 1fr) minimax(0, var(--w-main))
     minimax(min(var(--w-side), 50%), 1fr);
+  --tf-ease-out: cubic-bezier(0, 0.5, 0.5, 1);
+  --animate-top-logo: --a-top-logo 4s var(--tf-ease-out);
 
-  @keyframes slide-in {
+  @keyframes --a-top-logo {
     from {
       transform: translateY(-70px) rotate(-120deg);
+      opacity: 0;
     }
     to {
       transform: translateY(0) rotate(0);
+      opacity: 1;
     }
   }
 
