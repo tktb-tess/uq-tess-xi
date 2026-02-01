@@ -60,7 +60,7 @@
             {/each}
           </tbody>
         </table>
-        <p><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
+        <p class="__to-zpdic"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
       {/if}
     {:else}
       <div class="text-center *:ctext-caution">
@@ -85,7 +85,7 @@
   @layer components {
     #today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border 
-      cborder-border rounded-xl gap-y-6 py-6 bg-linear-to-b shadow-sm;
+      cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
 
       :where(*) {
         @apply m-0;
@@ -99,8 +99,24 @@
         @apply font-sans text-base;
       }
 
-      .__yaku-table {
-        @apply ;
+      :where(.__yaku-table) {
+        @apply grid grid-cols-[minmax(max-content,1fr)minmax(0,max-content)] gap-2 place-items-center;
+
+        :where(thead, tbody, tr) {
+          @apply contents;
+        }
+
+        :where(th, td) {
+          @apply block;
+        }
+
+        :where(& > tbody > tr > td:first-child) {
+          @apply cbg-accent ctext-textinv rounded-full;
+        }
+      }
+
+      :where(.__to-zpdic) {
+        @apply self-end-safe;
       }
     }
   }

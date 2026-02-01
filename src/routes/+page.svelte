@@ -4,18 +4,10 @@
   import CardList from '$lib/components/cardList.svelte';
   import TodayWord from './todayWord.svelte';
   import GithubMark from '$lib/components/github-mark.svelte';
+  import XSection from '$lib/components/XSection.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import { innerWidth } from 'svelte/reactivity/window';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
-
-  const Title = $derived.by(() => {
-    if (innerWidth.current && innerWidth.current < 768) {
-      return PUBLIC_SITE_NAME.split('').join('\x20');
-    } else {
-      return PUBLIC_SITE_NAME.split('').join('\u2003');
-    }
-  });
 </script>
 
 <svelte:head>
@@ -34,7 +26,7 @@
 
 <main>
   <div>
-    <div class="block">
+    <div class="m-2 flex justify-end">
       <ToggleColorSchemeBtn />
     </div>
     <h2 id="subtitle">〜ようこそ〜</h2>
@@ -47,12 +39,10 @@
     </p>
   </div>
 
-  <section aria-labelledby="today-word">
-    <h2 id="today-word">今日の単語</h2>
+  <XSection title="今日の単語">
     <TodayWord />
-  </section>
-  <section aria-labelledby="menu">
-    <h2 id="menu">メニュー</h2>
+  </XSection>
+  <XSection title="メニュー">
     <CardList
       contents={[
         { title: '人工言語', desc: '斗琴庭暁響が制作している人工言語について。', href: '/conlang' },
@@ -60,10 +50,8 @@
         { title: 'その他', desc: 'その他の話題。', href: '/others' },
       ]}
     />
-  </section>
-
-  <section aria-labelledby="haimei">
-    <h2 id="haimei">頂いた名前</h2>
+  </XSection>
+  <XSection title="頂いた名前">
     <p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
     <div>
       <table>
@@ -83,10 +71,8 @@
         </tbody>
       </table>
     </div>
-  </section>
-
-  <section aria-labelledby="sougo-link">
-    <h2 id="sougo-link">相互リンク</h2>
+  </XSection>
+  <XSection title="相互リンク">
     <p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
     <ul>
       <li>
@@ -96,9 +82,8 @@
         (かえる)
       </li>
     </ul>
-  </section>
-  <section aria-labelledby="ext-links">
-    <h2 id="ext-links">外部リンク</h2>
+  </XSection>
+  <XSection title="外部リンク">
     <h3>各種SNS</h3>
     <ul>
       <li><ExtLink href="https://x.com/triethylamineq">𝕏witter</ExtLink></li>
@@ -131,8 +116,8 @@
         …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
       </li>
     </ul>
-  </section>
-  <h3>工事中……</h3>
+  </XSection>
+  <h3 class="ctext-caution">工事中……</h3>
 </main>
 
 <footer>

@@ -47,8 +47,10 @@
   --color-caution: var(--color-red-600);
   --color-d-caution: var(--color-yellow-300);
 
-  --grad-top-caption: linear-gradient(to right in oklch, #0000e0, #c000e0);
+  --grad-top-caption: linear-gradient(to bottom right in oklch, #0000e0, #c000e0);
   --grad-d-top-caption: var(--grad-top-caption);
+  --grad-today-word: linear-gradient(to bottom in oklch, #fff, var(--color-violet-50));
+  --grad-d-today-word: linear-gradient(to bottom in oklch, var(--color-violet-950-d), #000);
 
   --link-transition-dur: 120ms;
   --tracking-ultra: 3rem;
