@@ -8,7 +8,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
-  import XTable from '$lib/components/XTable.svelte';
+  import LinkList from './LinkList.svelte';
 </script>
 
 <svelte:head>
@@ -28,7 +28,7 @@
 <main>
   <div>
     <div class="m-2 flex justify-end">
-      <ToggleColorSchemeBtn />
+      <ToggleColorSchemeBtn class="btn-1 px-2 py-1" />
     </div>
     <h2 id="subtitle">〜ようこそ〜</h2>
     <p>
@@ -92,47 +92,40 @@
   </XSection>
   <XSection title="外部リンク">
     <h3>各種SNS</h3>
-    <ul>
-      <li><ExtLink href="https://x.com/triethylamineq">𝕏witter</ExtLink></li>
-      <li><ExtLink href="https://bsky.app/profile/tktb-tess.dev">Bluesky</ExtLink></li>
-      <li><ExtLink href="https://misskey.io/@tessy_tktb">Misskey.io</ExtLink></li>
-    </ul>
+    <LinkList
+      links={[
+        ['https://x.com/triethylamineq', '𝕏witter'],
+        ['https://bsky.app/profile/tktb-tess.dev', 'Bluesky'],
+        ['https://misskey.io/@tessy_tktb', 'Misskey.io'],
+      ]}
+    />
     <h3>その他</h3>
-    <ul>
-      <li>
-        <ExtLink href="https://tesyrrhaqt.hatenablog.com/">はてなブログ (あかねの多目的室)</ExtLink>
-      </li>
-      <li><ExtLink href="https://youtube.com/@tessyrrhaqt">Youtube</ExtLink></li>
-      <li><ExtLink href="https://rechord.cc/users/triethylamineq">rechord</ExtLink></li>
-      <li><ExtLink href="https://migdal.jp/tessyrrhaqt">Migdal</ExtLink></li>
-      <li><ExtLink href="https://github.com/tktb-tess">GitHub</ExtLink></li>
-      <li>
-        <ExtLink href="https://tktb-tess.github.io/"
-          >GitHub Pages (旧ホームページ, 現リンク集)</ExtLink
-        >
-      </li>
-      <li>
-        <ExtLink href="https://apps.tktb-tess.dev/">τὰ συστήματα (作ったアプリたち)</ExtLink>
-      </li>
-      <li>
-        <ExtLink
-          href="https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing"
-        >
-          Xenharmonic_calc
-        </ExtLink>
-        …各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。
-      </li>
-    </ul>
+    <LinkList
+      links={[
+        ['https://tesyrrhaqt.hatenablog.com/', 'はてなブログ (あかねの多目的室)'],
+        ['https://youtube.com/@tessyrrhaqt', 'Youtube'],
+        ['https://rechord.cc/users/triethylamineq', 'rechord'],
+        ['https://migdal.jp/tessyrrhaqt', 'Migdal'],
+        ['https://github.com/tktb-tess', 'GitHub'],
+        ['https://tktb-tess.github.io/', 'GitHub Pages (旧ホームページ, 現リンク集)'],
+        ['https://apps.tktb-tess.dev/', 'τὰ συστήματα (作ったアプリたち)'],
+        [
+          'https://docs.google.com/spreadsheets/d/1rxeounm1eLGbv_KaIC7LGAdRiBZIWSWZON2EQZz6Y-0/edit?usp=sharing',
+          'Xenharmonic_calc',
+          '…各平均律の特定音程への近似度合い、特定コンマをテンパーアウトするかどうかの計算ができるスプレッドシート。',
+        ],
+      ]}
+    />
   </XSection>
   <h3 class="ctext-caution text-center my-8">工事中……</h3>
 </main>
 
-<footer>
+<footer class="text-center">
   <p>
     ※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
   </p>
   <p>© 2024-2026 Tessyrrhaqt / 斗琴庭暁響</p>
-  <div class="__github-icon">
+  <div class="mt-(--s-paragraph)">
     <ExtLink
       href="https://github.com/tktb-tess/uq-tess-xi"
       title="Link to the GitHub Repository"
@@ -152,15 +145,7 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply mx-auto max-w-7xl shadow-sm l:shadow-black/15 d:shadow-white/15 [&_:where(h2)]:text-center;
-    }
-
-    footer {
-      @apply text-center;
-
-      > .__github-icon {
-        @apply block mt-3;
-      }
+      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light [&_:where(h2)]:text-center;
     }
   }
 </style>

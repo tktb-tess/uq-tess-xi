@@ -4,6 +4,13 @@
   import SunIcon from './sun-icon.svelte';
   import DevicesIcon from './DevicesIcon.svelte';
 
+  interface Props {
+    class?: string;
+  }
+
+  const { class: cName }: Props = $props();
+
+
   $effect(() => {
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });
@@ -11,7 +18,9 @@
 
 <button
   id="toggle-color-scheme-btn"
+  title="Toggle Color Scheme"
   type="button"
+  class={cName}
   onclick={() => {
     switch (siteConfig.colorScheme) {
       case 'default': {
@@ -40,9 +49,4 @@
 
 <style lang="postcss">
   @reference '../../app.css';
-  @layer components {
-    #toggle-color-scheme-btn {
-      @apply btn-1 px-2 py-1;
-    }
-  }
 </style>
