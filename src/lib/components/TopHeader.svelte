@@ -23,7 +23,7 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply grid h-lvh content-center place-items-center gbg-top-caption text-white;
+      @apply grid h-lvh content-center place-items-center gbg-vivid text-white;
     }
 
     #top-logo {

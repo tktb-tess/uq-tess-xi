@@ -8,6 +8,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
+  import XTable from '$lib/components/XTable.svelte';
 </script>
 
 <svelte:head>
@@ -53,7 +54,7 @@
   </XSection>
   <XSection title="頂いた名前">
     <p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
-    <div>
+    <div class="table-container">
       <table>
         <thead>
           <tr>
@@ -76,8 +77,14 @@
     <p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
     <ul>
       <li>
-        <ExtLink href="https://kaeru2193.net" noIcon>
-          <img src="https://kaeru2193.net/banner.png" width="200" height="40" alt="之機堂" />
+        <ExtLink href="https://kaeru2193.net" noIcon class="no-underline">
+          <img
+            class="inline-block m-0"
+            src="https://kaeru2193.net/banner.png"
+            width="200"
+            height="40"
+            alt="之機堂"
+          />
         </ExtLink>
         (かえる)
       </li>
@@ -117,22 +124,27 @@
       </li>
     </ul>
   </XSection>
-  <h3 class="ctext-caution">工事中……</h3>
+  <h3 class="ctext-caution text-center my-8">工事中……</h3>
 </main>
 
 <footer>
   <p>
     ※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
   </p>
-  <p>© 2024-2025 Tessyrrhaqt / 斗琴庭暁響</p>
-  <ExtLink
-    href="https://github.com/tktb-tess/uq-tess-xi"
-    title="Link to the GitHub Repository"
-    noIcon
-  >
-    <GithubMark class="size-6" />
-  </ExtLink>
+  <p>© 2024-2026 Tessyrrhaqt / 斗琴庭暁響</p>
+  <div class="__github-icon">
+    <ExtLink
+      href="https://github.com/tktb-tess/uq-tess-xi"
+      title="Link to the GitHub Repository"
+      class="any-hover:opacity-60 transition-opacity"
+      noIcon
+    >
+      <GithubMark class="size-6 inline-block" />
+    </ExtLink>
+  </div>
 </footer>
+
+<div class="h-6"></div>
 
 <PageTopBtn />
 
@@ -140,7 +152,15 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply cbg-main;
+      @apply mx-auto max-w-7xl shadow-sm l:shadow-black/15 d:shadow-white/15 [&_:where(h2)]:text-center;
+    }
+
+    footer {
+      @apply text-center;
+
+      > .__github-icon {
+        @apply block mt-3;
+      }
     }
   }
 </style>

@@ -547,14 +547,15 @@
   <p>エビデイ エビナイ トラックメイカー</p>
 </section>
 
-<style>
+<style lang="postcss">
+  @reference '../../../../app.css';
   :global(:root) {
     --font-sans:
-      'InterVariable', 'Arial', 'Helvetica Neue', 'Noto Serif Tibetan', 'Noto Sans JP',
+      'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto Serif Tibetan', 'Noto Sans JP',
       'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI',
       'Yu Gothic UI', system-ui;
     --font-serif:
-      'CharisSIL', 'Times New Roman', 'Noto Serif Tibetan', 'Noto Serif JP', 'BIZ UDPMincho',
+      'Charis-SIL', 'Times New Roman', 'Noto Serif Tibetan', 'Noto Serif JP', 'BIZ UDPMincho',
       'Hiragino Mincho', 'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
   }
 

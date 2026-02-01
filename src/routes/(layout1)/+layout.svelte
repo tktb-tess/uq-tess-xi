@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import CloseButton from '$lib/components/close_button.svelte';
-  import Hamburger from '$lib/components/hamburger.svelte';
+  import CloseBtnIcon from '$lib/components/close_button.svelte';
+  import HamburgerIcon from '$lib/components/hamburger.svelte';
   import MoonIcon from '$lib/components/moon-icon.svelte';
   import PageTopBtn from '$lib/components/page_top_btn.svelte';
   import SunIcon from '$lib/components/sun-icon.svelte';
+  import SideMenu from '$lib/components/SideMenu.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import { innerWidth } from 'svelte/reactivity/window';
   import { siteConfig, key } from '$lib/modules/site-config.svelte';
@@ -29,64 +30,6 @@
   });
 </script>
 
-{#snippet sideMenu()}
-  <div
-    class="
-      side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
-      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
-    "
-  >
-    <h4 class="text-2xl font-sans textc-text font-extralight">VÄSSENZLÄNDISĶ</h4>
-    <div class="flex flex-col">
-      <a href="/conlang/vaes">概説</a>
-      <a href="/conlang/vaes/letter-et-pron">文字と発音</a>
-      <a href="/conlang/vaes/phonology">音韻論</a>
-      <a href="/conlang/vaes/swadesh-list">Swadesh List</a>
-      <a aria-disabled="true">りんご文 (準備中)</a>
-      <details class="[&[open]_#list-arrow]:rotate-x-180">
-        <summary class="block cursor-pointer user-select-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="fill-current inline-block size-4.5 -translate-y-px duration-250"
-            id="list-arrow"
-          >
-            <path
-              d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"
-            />
-          </svg>
-          文法
-        </summary>
-        <div
-          class="
-						flex flex-col overflow-y-hidden
-					"
-        >
-          <a aria-disabled="true">名詞 (準備中)</a>
-          <a href="/conlang/vaes/numeral">数詞</a>
-          <a aria-disabled="true">動詞 (準備中)</a>
-          <a aria-disabled="true">形容詞 (準備中)</a>
-        </div>
-      </details>
-    </div>
-  </div>
-  <hr class="border-black/30 w-15 mx-auto my-4" />
-  <div
-    class="
-      side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
-      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
-    "
-  >
-    <h4 class="text-2xl font-sans textc-text font-extralight">MISCELLANEOUS</h4>
-    <div class="flex flex-col">
-      <a href="/data">データ</a>
-      <a href="/others">その他</a>
-    </div>
-  </div>
-{/snippet}
-
 <header class="bg-highlight text-white h-16 flex items-center">
   <div class="flex *:flex-[0_0_auto] mx-auto justify-start w-[90%] gap-x-5">
     {#if !large}
@@ -98,7 +41,7 @@
           drawerIsOpen = true;
         }}
       >
-        <Hamburger class="size-6" />
+        <HamburgerIcon class="size-6" />
       </button>
     {/if}
     <h1 class="font-serif text-3xl">
@@ -128,7 +71,7 @@
   {#if large}
     <div>
       <nav class="non-drawer">
-        {@render sideMenu()}
+        <SideMenu />
       </nav>
     </div>
   {:else}
@@ -147,11 +90,11 @@
           onclick={onClickCloseBtn}
           class="transition-colors any-hover:text-black/60"
         >
-          <CloseButton class="size-6" />
+          <CloseBtnIcon class="size-6" />
         </button>
       </div>
 
-      {@render sideMenu()}
+      <SideMenu />
     </nav>
   {/if}
 
@@ -168,25 +111,6 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
-    .side-menu {
-      @apply flex flex-col;
-
-      > * {
-        @apply mx-1;
-      }
-
-      :where(h4) {
-        @apply py-1;
-      }
-
-      :where(h4, a, summary) {
-        @apply px-3;
-      }
-
-      details > div > a {
-        @apply ps-5;
-      }
-    }
 
     .drawer-backdrop {
       @apply block cursor-[initial] fixed invisible inset-0 z-10 bg-transparent

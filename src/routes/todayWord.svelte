@@ -84,7 +84,7 @@
   @reference '../app.css';
   @layer components {
     #today-word-root {
-      @apply w-full max-w-180 mx-auto flex flex-col items-center border 
+      @apply w-full max-w-180 mx-auto flex flex-col items-center border my-(--s-figure)
       cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
 
       :where(*) {
