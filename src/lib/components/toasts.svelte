@@ -9,15 +9,14 @@
   >
     {#each toastStates as [key, toast]}
       <div
-        class="px-3 border-2 bg-white rounded flex
-					gap-5 justify-center items-center toast-elem
+        class="__toast-elem
 					{toast.type === 'info'
           ? 'border-sky-400'
           : toast.type === 'warning'
             ? 'border-red-500'
             : 'border-green-500'}"
       >
-        <p class="m-0 text-xl">{toast.message}</p>
+        <p>{toast.message}</p>
         <button
           onclick={() => {
             clearTimeout(toast.timeoutID);
@@ -33,22 +32,20 @@
   </div>
 {/if}
 
-<style>
-  @keyframes fadein {
-    from {
-      opacity: 0;
-      top: -10px;
-    }
-    to {
-      opacity: 1;
-      top: 0;
-    }
-  }
+<style lang="postcss">
+  @reference '../../app.css';
+  @layer components {
+    .__toast-elem {
+      @apply px-3 border-2 cbg-body rounded flex
+		  gap-5 justify-center items-center relative animate-toast;
 
-  .toast-elem {
-    position: relative;
-    animation-timing-function: cubic-bezier(0, 1, 1, 1);
-    animation-name: fadein;
-    animation-duration: 100ms;
+      :where(p, button) {
+        @apply m-0;
+      }
+
+      :where(p) {
+        @apply text-xl;
+      }
+    }
   }
 </style>

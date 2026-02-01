@@ -1,24 +1,44 @@
 <script lang="ts">
-  type Props = {
-    contents: {
+  interface Props {
+    readonly contents: {
       readonly title: string;
       readonly desc: string;
       readonly href: string;
     }[];
-  };
+  }
   const { contents }: Props = $props();
 </script>
 
-<div class="flex flex-col gap-3 w-full max-w-190 mx-auto">
+<div class="__card-list">
   {#each contents as { title, desc, href }}
-    <a
-      class="flex items-center group rounded-sm bg-linear-to-b from-mnlila/80 d:from-white to-mnlila d:to-llila drop-shadow-sm no-underline px-4 py-2 scale-98 any-hover:scale-100 transition-transform"
-      {href}
-    >
-      <h3 class="textc-textinv m-0 text-nowrap flex-[0_0_140px]">{title}</h3>
-      <p class="textc-textinv m-0 min-w-0">
+    <a {href}>
+      <h3>{title}</h3>
+      <p>
         {desc}
       </p>
     </a>
   {/each}
 </div>
+
+<style lang="postcss">
+  @reference '../../app.css';
+  @layer components {
+    .__card-list {
+      @apply flex flex-col gap-3 w-full max-w-190 mx-auto;
+
+      > :where(a) {
+        @apply grid grid-cols-[8.75rem_1fr] *:min-w-0 items-center
+        rounded-sm no-underline px-4 py-2 
+        scale-98 any-hover:scale-100 transition-transform;
+
+        > :where(h3, p) {
+          @apply ctext-textinv m-0;
+        }
+
+        > :where(h3) {
+          @apply text-nowrap;
+        }
+      }
+    }
+  }
+</style>

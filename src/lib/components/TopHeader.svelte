@@ -31,7 +31,7 @@
     }
 
     #top-title-text {
-      @apply font-serif font-bold -skew-x-24 -skew-y-4 text-[calc(2.75rem+1.75vw)];
+      @apply font-serif font-bold -skew-x-20 -skew-y-4 text-[calc(2.75rem+1.75vw)];
     }
   }
 </style>

@@ -20,21 +20,14 @@
     drawerIsOpen = false;
   };
 
-  onNavigate(() => {
-    return new Promise((res) => {
-      drawerIsOpen = false;
-      res();
-    });
+  onNavigate(async () => {
+    drawerIsOpen = false;
   });
 
   $effect(() => {
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });
 </script>
-
-<svelte:head>
-  <meta property="og:type" content="article" />
-</svelte:head>
 
 {#snippet sideMenu()}
   <div

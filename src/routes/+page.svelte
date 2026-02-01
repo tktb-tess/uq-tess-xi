@@ -7,7 +7,7 @@
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { innerWidth } from 'svelte/reactivity/window';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
-    import TopHeader from '$lib/components/TopHeader.svelte';
+  import TopHeader from '$lib/components/TopHeader.svelte';
 
   const Title = $derived.by(() => {
     if (innerWidth.current && innerWidth.current < 768) {
@@ -30,10 +30,13 @@
   <title>{PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
+<TopHeader />
+
 <main>
-  <TopHeader />
   <div>
-    <ToggleColorSchemeBtn />
+    <div class="block">
+      <ToggleColorSchemeBtn />
+    </div>
     <h2 id="subtitle">〜ようこそ〜</h2>
     <p>
       ※ただいま大改訂中です。現行のバージョンではここに書かれている内容と大きく異なる可能性があります。

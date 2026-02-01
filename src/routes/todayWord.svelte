@@ -31,9 +31,9 @@
     {#if result.isOk()}
       {@const { value } = result}
       {#if value}
-        <h3 class="font-serif font-normal {value.size}">{value.word}</h3>
+        <h3 class="__entry {value.size}">{value.word}</h3>
         {#if value.pron}
-          <p class="font-ipa">
+          <p class="__pronunciation">
             {#if value.pron.includes('/')}
               {value.pron}
             {:else}
@@ -41,38 +41,29 @@
             {/if}
           </p>
         {/if}
-        <p>訳</p>
-        <table
-          class="
-					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
-				"
-        >
+        <h3 class="__yaku-title">訳</h3>
+        <table class="__yaku-table">
           <thead>
             <tr>
-              <th class="font-normal bg-transparent d:text-white border-none">品詞</th>
-              <th class="font-normal bg-transparent d:text-white border-none">意味</th>
+              <th>品詞</th>
+              <th>意味</th>
             </tr>
           </thead>
           <tbody>
             {#each value.translations as translation}
               <tr>
-                <td
-                  class="justify-self-end bg-mnlila text-white d:bg-white d:text-black rounded-[500px] px-3 text-base/[1.75] border-none"
-                >
+                <td>
                   {translation.titles.join(', ')}
                 </td>
-                <td class="justify-self-start border-none bg-transparent d:text-white"
-                  >{translation.names.join(', ')}</td
-                >
+                <td>{translation.names.join(', ')}</td>
               </tr>
             {/each}
           </tbody>
         </table>
-        <p class="self-end me-3"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
+        <p><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
       {/if}
     {:else}
-      <div class="text-center *:text-danger">
+      <div class="text-center *:ctext-caution">
         <h3>読み込みに失敗しました</h3>
         <p>再読み込みしてください</p>
       </div>
@@ -98,6 +89,18 @@
 
       :where(*) {
         @apply m-0;
+      }
+
+      .__pronunciation {
+        @apply font-ipa opacity-50;
+      }
+
+      .__yaku-title {
+        @apply font-sans text-base;
+      }
+
+      .__yaku-table {
+        @apply ;
       }
     }
   }
