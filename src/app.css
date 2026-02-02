@@ -404,10 +404,6 @@
     @apply list-decimal;
   }
 
-  :is(b, strong) {
-    @apply font-semibold;
-  }
-
   textarea {
     @apply resize-none;
   }

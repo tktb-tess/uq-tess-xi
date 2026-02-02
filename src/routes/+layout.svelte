@@ -5,13 +5,16 @@
   import { siteConfig, key, type SiteConfig } from '$lib/modules/site-config.svelte';
   import { onMount } from 'svelte';
 
-  const { children } = $props();
+  const { children, data } = $props();
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
   onMount(() => {
     const str = window.localStorage.getItem(key);
     if (!str) return;
     const conf: SiteConfig = JSON.parse(str);
     siteConfig.colorScheme = conf.colorScheme;
+  });
+  $effect(() => {
+    console.log(data);
   });
 </script>
 

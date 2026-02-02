@@ -9,6 +9,7 @@
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
   import LinkList from './LinkList.svelte';
+  const { data } = $props();
 </script>
 
 <svelte:head>

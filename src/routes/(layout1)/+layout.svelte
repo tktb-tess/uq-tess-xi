@@ -1,17 +1,15 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import CloseBtnIcon from '$lib/components/close_button.svelte';
   import HamburgerIcon from '$lib/components/hamburger.svelte';
-  import MoonIcon from '$lib/components/moon-icon.svelte';
   import PageTopBtn from '$lib/components/page_top_btn.svelte';
-  import SunIcon from '$lib/components/sun-icon.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import type { MouseEventHandler } from 'svelte/elements';
   import { innerWidth } from 'svelte/reactivity/window';
   import { siteConfig, key } from '$lib/modules/site-config.svelte';
+    import BreadCrumb from '$lib/components/BreadCrumb.svelte';
 
-  const { children } = $props();
+  const { children, data } = $props();
   let drawerIsOpen = $state(false);
 
   const large = $derived(
@@ -50,44 +48,27 @@
     <ToggleColorSchemeBtn />
   </div>
 </header>
-
-<div>
-  {#if large}
-    <div>
-      <nav>
-        <SideMenu />
-      </nav>
-    </div>
-  {:else}
-    <!-- drawer backdrop -->
-    <button
-      type="button"
-      onclick={onClickCloseBtn}
-      data-open={drawerIsOpen ? '' : null}
-      aria-label="close sidemenu"
-    ></button>
-    <nav data-open={drawerIsOpen ? '' : null}>
-      <div>
-        <button type="button" onclick={onClickCloseBtn}>
-          <CloseBtnIcon />
-        </button>
-      </div>
-
-      <SideMenu />
-    </nav>
-  {/if}
-
-  <main>
+<main>
+  <aside>
+    <SideMenu />
+  </aside>
+  <section>
+    <BreadCrumb path={data.path} />
     {@render children()}
-    <div></div>
-  </main>
-</div>
+  </section>
+</main>
 
 <PageTopBtn />
 
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
-    
+    main {
+      @apply grid grid-cols-(--cols-main);
+
+      > :where(aside, section) {
+        @apply flow-root;
+      }
+    }
   }
 </style>
