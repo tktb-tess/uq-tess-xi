@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import DownloadIcon from '$lib/components/download-icon.svelte';
   import ExtLink from '$lib/components/ext_link.svelte';
   import PauseFill from '$lib/components/pause-fill.svelte';
@@ -8,8 +7,6 @@
   import StopFill from '$lib/components/stop-fill.svelte';
   import type { TrackParams } from './+page.server';
 
-  const ogTitle = '音楽';
-  const ogDesc = '作曲は楽しい';
   const { data = $bindable() } = $props();
 
   const tracks = $state<TrackParams[]>(
@@ -76,10 +73,7 @@
   };
 </script>
 
-
-
 <div>
-  <h2 class="my-8 text-center">音楽</h2>
   <p class="text-center">作曲は楽しいぞ</p>
   <p>
     作った曲です。特別な追加の記載がない限り、これらの Tessyrrhaqt による曲は

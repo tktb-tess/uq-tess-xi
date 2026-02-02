@@ -1,12 +1,6 @@
-<script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'Vässenzländisķ 数詞';
-  const ogDesc = 'かず！';
-</script>
 
 
-<h2 class="text-center my-8">数詞</h2>
+
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
 <section aria-labelledby="cardinal">
   <h2 id="cardinal" class="border-b-3 border-double ps-1">基数詞 (Kardinalraiman)</h2>

@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'Vässenzländisķ 名詞';
-  const ogDesc = 'めいし！';
 </script>
 
 
 
-<h2 class="my-8 text-center">名詞</h2>
 <section aria-labelledby="noun-gender">
   <h3 id="noun-gender">名詞の性</h3>
   <p>

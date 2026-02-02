@@ -1,13 +1,7 @@
-<script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'Vässenzländisķ 音韻論';
-  const ogDesc = 'おにんろん！';
-</script>
 
 
 
-<h2 id="subtitle" class="text-center my-8">音韻論</h2>
+
 <section aria-labelledby="legend">
   <h2 id="legend" class="border-b-3 border-double ps-1">凡例</h2>
 

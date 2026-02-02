@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
-  const ogTitle = 'Vässenzländisķ りんご文';
-  const ogDesc = 'りんご文です。';
 </script>
 
 
-
-<h2 class="my-8 text-center">りんごを食べたい58文</h2>
 <div>
   <p>
     以下は、ざすろん氏により作成された

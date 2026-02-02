@@ -1,14 +1,10 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
 
-  const ogTitle = 'データ';
-  const ogDesc = 'でーた！';
 </script>
 
 
 
-<h2 class="my-8 text-center">データ</h2>
 <ul>
   <li><a href="/data/conlang-xcumon">人工言語製作者に50の質問</a></li>
   <li>

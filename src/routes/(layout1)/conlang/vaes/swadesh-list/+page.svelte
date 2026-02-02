@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { onMount } from 'svelte';
 
-  const ogTitle = 'Vässenzländisķ Swadesh List';
-  const ogDesc = 'すわでしゅ！';
 
   const { data: swadeshList } = $props();
 
@@ -16,7 +13,6 @@
 
 
 
-<h2 class="my-8 text-center">Swadesh List</h2>
 
 <p>まだ未完成。順次追加していきます。</p>
 

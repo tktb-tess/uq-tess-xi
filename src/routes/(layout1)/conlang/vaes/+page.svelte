@@ -11,7 +11,6 @@
   />
 </svelte:head>
 
-<h2 class="my-8 text-center">概説</h2>
 <div>
   <p>
     <strong>ヴェッセンズラン語</strong>、または<strong>ヴェッセンズランド語</strong

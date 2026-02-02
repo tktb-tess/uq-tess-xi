@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
 
-  const ogTitle = '日本語 チベット文字表記';
-  const ogDesc = '狂気の沙汰';
 </script>
 
 <svelte:head>
@@ -15,7 +12,6 @@
   />
 </svelte:head>
 
-<h2 class="text-center my-8">ནི་ཧོཾ་གོ</h2>
 <section aria-label="音節構造">
   <h2 class="border-b-3 border-double ps-1" id="syllable-structure">音節構造　ཨོཾ་སེ་ཛཀཽ་ཛཽ</h2>
   <p>先に音節構造の話からする。</p>

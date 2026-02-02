@@ -1,13 +1,10 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { NamedError } from '$lib/modules/util';
   import Spinner from '$lib/components/spinner.svelte';
   import { addToast } from '$lib/components/toastStates.svelte';
   import TrashIcon from '$lib/components/trashIcon.svelte';
   import type { MdResult } from '../../../api/v0/to-md/+server';
 
-  const ogTitle = 'URL to Markdown';
-  const ogDesc = 'サイトURLからMarkdown形式に変換する';
 
   type UUID = ReturnType<typeof crypto.randomUUID>;
   type URLInput = {
@@ -67,8 +64,6 @@
 </script>
 
 
-
-<h2 class="text-center my-8">{ogTitle}</h2>
 <div>
   <p>
     URLを入力し、「変換！」を押すと、該当ページのHTMLをMarkdownに変換したものが得られます。一度に複数個変換できます。

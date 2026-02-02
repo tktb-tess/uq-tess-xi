@@ -88,7 +88,7 @@ const pages: PageData[] = [
     private: true,
   },
   {
-    title: '斗琴庭暁響に100の質問',
+    title: '人工言語作者にに50の質問',
     path: '/data/conlang-xcumon',
   },
   {

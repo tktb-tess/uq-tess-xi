@@ -1,12 +1,6 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
-  const ogTitle = '人工言語製作者に50の質問';
-  const ogDesc = 'しつもん！';
 </script>
-
-
-<h2 class="my-8 text-center">〜人工言語製作者に50の質問〜</h2>
 
 <p>とりあえずやってみようと思います。</p>
 <ol

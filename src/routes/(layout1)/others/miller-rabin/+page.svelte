@@ -1,9 +1,5 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   const { data } = $props();
-
-  const ogTitle = 'Miller–Rabin 素数判定法';
-  const ogDesc = '確率的素数判定法';
 </script>
 
 <svelte:head>
@@ -15,7 +11,6 @@
   />
 </svelte:head>
 
-<h2 class="text-center my-8">{ogTitle}</h2>
 {#if data.success}
   <div
     class="flex flex-col w-full gap-2 [&_pre]:px-3 [&_pre]:py-2 [&_pre]:max-w-7xl [&_pre]:overflow-x-auto"

@@ -1,13 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'グレゴリオ聖歌について';
-  const ogDesc = 'グレゴリオ聖歌の音階の話';
 </script>
 
 
 
-<h2 class="text-center my-8" id="title">グレゴリオ聖歌の音階</h2>
 
 <p>
   まず、グレゴリオ聖歌の教会旋法には大事な音が2つあり、それが<strong>フィナリス</strong
