@@ -39,4 +39,4 @@
   <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
-<pre class="break-words whitespace-pre-wrap text-[lime]">{str}</pre>
+<pre class="break-all whitespace-pre-wrap text-[lime]">{str}</pre>

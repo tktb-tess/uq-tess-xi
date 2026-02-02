@@ -311,6 +311,10 @@
     @apply ctext-link any-hover:underline;
   }
 
+  :is(b, strong) {
+    @apply font-semibold;
+  }
+
   button,
   input[type='button'] {
     @apply cursor-pointer;
