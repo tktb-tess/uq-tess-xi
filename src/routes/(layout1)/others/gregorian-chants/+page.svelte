@@ -5,16 +5,7 @@
   const ogDesc = 'グレゴリオ聖歌の音階の話';
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
+
 
 <h2 class="text-center my-8" id="title">グレゴリオ聖歌の音階</h2>
 

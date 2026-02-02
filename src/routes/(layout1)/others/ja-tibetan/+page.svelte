@@ -13,14 +13,6 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@100..900&display=swap"
     rel="stylesheet"
   />
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
 <h2 class="text-center my-8">ནི་ཧོཾ་གོ</h2>

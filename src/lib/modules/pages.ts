@@ -1,4 +1,4 @@
-type PageData = {
+export type PageData = {
   readonly title: string;
   readonly path: string;
   readonly longTitle?: string;

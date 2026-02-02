@@ -100,17 +100,17 @@
       }
 
       :where(.__yaku-table) {
-        @apply grid grid-cols-[minmax(max-content,1fr)minmax(0,max-content)] gap-2 place-items-center;
+        @apply grid grid-cols-[minmax(max-content,1fr)minmax(0,max-content)] gap-2 place-items-center border-none;
 
         :where(thead, tbody, tr) {
           @apply contents;
         }
 
         :where(th, td) {
-          @apply block;
+          @apply block bg-transparent;
         }
 
-        :where(& > tbody > tr > td:first-child) {
+        > :where(tbody) > :where(tr) > :where(td):first-child {
           @apply cbg-accent ctext-textinv rounded-full;
         }
       }

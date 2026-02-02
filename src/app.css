@@ -40,14 +40,22 @@
   --color-d-accent2: var(--color-violet-100);
   --color-border: var(--color-slate-400);
   --color-d-border: var(--color-slate-500);
-  --color-border-light: var(--color-slate-200);
-  --color-d-border-light: var(--color-slate-800);
+  --color-border-light: var(--color-slate-300);
+  --color-d-border-light: var(--color-slate-700);
   --color-border-dark: var(--color-slate-600);
   --color-d-border-dark: var(--color-slate-300);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-400);
   --color-caution: var(--color-red-600);
   --color-d-caution: var(--color-yellow-300);
+  --color-td1: var(--color-main);
+  --color-td2: var(--color-slate-200);
+  --color-th1: var(--color-violet-50);
+  --color-th2: var(--color-violet-200);
+  --color-d-td1: var(--color-d-main);
+  --color-d-td2: var(--color-slate-800);
+  --color-d-th1: var(--color-violet-950-d);
+  --color-d-th2: var(--color-violet-800-d);
 
   --grad-vivid: linear-gradient(to bottom right in oklch, #0000e0, #c000e0);
   --grad-d-vivid: var(--grad-vivid);
@@ -385,10 +393,26 @@
   }
 
   table {
-    @apply text-nowrap w-max max-w-full;
+    @apply text-nowrap w-max max-w-full border cborder-border;
 
     :where(td, th) {
       @apply px-2 py-1;
+    }
+
+    :where(td:nth-child(odd)) {
+      @apply cbg-td1;
+    }
+
+    :where(td:nth-child(even)) {
+      @apply cbg-td2;
+    }
+
+    :where(th:nth-child(odd)) {
+      @apply cbg-th1;
+    }
+
+    :where(th:nth-child(even)) {
+      @apply cbg-th2;
     }
 
     :where(& > thead > tr:last-child) {
