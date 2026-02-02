@@ -1,24 +1,62 @@
-<script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'Vässenzländisķ 文字と発音';
-  const ogDesc = '文字と発音の解説';
+<script>
+  import XSection from '$lib/components/XSection.svelte';
+  import XTable from '$lib/components/XTable.svelte';
 </script>
 
-
-
-<h2 class="text-center my-8">文字と発音</h2>
-<section aria-labelledby="letter">
-  <h2 id="letter" class="border-b-3 border-double ps-1">単独字の発音</h2>
+<XSection title="単独字の発音">
   <p>
-    表記にはラテン文字を使用する。a&ndash;zの26文字に加え、いくつかのダイアクリティカルマークを用いる。
+    表記にはラテン文字を使用する。a–zの26文字に加え、いくつかのダイアクリティカルマークを用いる。
   </p>
   <p>
     備考に特に何も書かれていなければ、ローマ字通りの発音でOK。「発音例」の音声記号は、「音韻論」の項で詳しく説明している。
   </p>
-
+  <XTable
+    headRows={1}
+    class="[&_:where(tbody_td:nth-child(3))]:font-ipa"
+    data={[
+      ['大文字', '小文字', '発音例', '備考'],
+      ['A', 'a', '/ä/, /ɑː/', ''],
+      ['B', 'b', '/b/', ''],
+      ['C', 'c', '/k/', ''],
+      ['Ç', 'ç', '/ɕ/', ''],
+      ['D', 'd', '/d/', ''],
+      ['E', 'e', '/ɛ/', '広めの「エ」'],
+      ['É', 'é', '/e/', '狭めの「エ」'],
+      ['F', 'f', '/f/', ''],
+      ['G', 'g', '/ɡ/', ''],
+      ['Ģ', 'ģ', '/j/', 'Gの上下にコンマがつく。j と同じ'],
+      ['H', 'h', '/ɦ/', ''],
+      ['I', 'i', '/ɪ/, /iː/', ''],
+      ['J', 'j', '/j/', 'ヤ行の子音'],
+      ['K', 'k', '/k/', ''],
+      ['L', 'l', '/l/', ''],
+      ['M', 'm', '/m/', ''],
+      ['N', 'n', '/n/, /ŋ/', ''],
+      ['O', 'o', '/ɔ/', '広い「オ」'],
+      ['Ó', 'ó', '/o/', '狭い「オ」'],
+      ['P', 'p', '/p/', ''],
+      [
+        'Q',
+        'q',
+        '/k/',
+        [
+          '基本 qu のセットで使われ、<span class="font-ipa">/kʋ/</span>という音を表す。',
+          { rawHTML: true },
+        ],
+      ],
+      ['R', 'r', '', ''],
+      ['S', 's', '', ''],
+      ['T', 't', '', ''],
+      ['U', 'u', '', ''],
+      ['V', 'v', '', ''],
+      ['W', 'w', '', ''],
+      ['X', 'x', '', ''],
+      ['Y', 'y', '', ''],
+      ['Z', 'z', '', ''],
+    ]}
+  />
   <div class="table-container">
-    <table class="grid-cols-[repeat(4,auto)]">
+    <table>
       <thead>
         <tr>
           <th scope="col">大文字</th>
@@ -27,7 +65,7 @@
           <th scope="col">備考</th>
         </tr>
       </thead>
-      <tbody class="[&_td:last-child]:text-start [&_td:nth-child(3)]:font-ipa">
+      <tbody>
         <tr>
           <td>A</td>
           <td>a</td>
@@ -98,7 +136,7 @@
           <td>G</td>
           <td>g</td>
           <td>/ɡ/, /ʑ/</td>
-          <td><span class="font-ipa">/ʑ/</span> は外来語に現れる</td>
+          <td><span>/ʑ/</span> は外来語に現れる</td>
         </tr>
         <tr>
           <td>Ģ</td>
@@ -194,9 +232,7 @@
           <td>Q</td>
           <td>q</td>
           <td>&#x2013;</td>
-          <td
-            >基本 <i>qu</i> のセットで使われ、発音は <span class="font-ipa">/kʋ/</span>。<i>kv</i> と同じ
-          </td>
+          <td>基本 <i>qu</i> のセットで使われ、発音は <span>/kʋ/</span>。<i>kv</i> と同じ </td>
         </tr>
         <tr>
           <td>R</td>
@@ -285,17 +321,16 @@
       </tbody>
     </table>
   </div>
-</section>
+</XSection>
 
-<section aria-labelledby="digraph">
-  <h2 id="digraph" class="border-b-3 border-double ps-1">重音字の発音</h2>
+<XSection title="重音字の発音">
   <p>
-    いくつかの子音や母音は二文字以上の文字の組み合わせで表される。ここでは、そのようなものを<span
-      class="font-bold">重音字</span
+    いくつかの子音や母音は二文字以上の文字の組み合わせで表される。ここでは、そのようなものを<strong
+      >重音字</strong
     >と呼んでいる。
   </p>
-  <div class="table-container">
-    <table class="grid-cols-[repeat(3,auto)]">
+  <div>
+    <table>
       <thead>
         <tr>
           <th scope="col">文字</th>
@@ -303,7 +338,7 @@
           <th scope="col">備考</th>
         </tr>
       </thead>
-      <tbody class="[&_td:last-child]:text-start [&_td:nth-child(2)]:font-ipa">
+      <tbody>
         <tr>
           <td>pb</td>
           <td>/ʔ͡p/</td>
@@ -367,9 +402,7 @@
         <tr>
           <td>ng</td>
           <td>/ŋ/</td>
-          <td
-            >ング。英語の <i>ng</i> とほぼ変わらない。<span class="font-ipa">/ŋɡ/</span> ではないので注意</td
-          >
+          <td>ング。英語の <i>ng</i> とほぼ変わらない。<span>/ŋɡ/</span> ではないので注意</td>
         </tr>
         <tr>
           <td>nj</td>
@@ -514,17 +547,16 @@
       </tbody>
     </table>
   </div>
-</section>
+</XSection>
 
-<section aria-labelledby="nasal">
-  <h2 id="nasal" class="border-b-3 border-double ps-1">鼻母音の表記について</h2>
+<XSection title="鼻母音の表記について">
   <p>
     基本は、「母音字 + <i>m</i>」or「母音字 +
     <i>n</i
     >」という綴りのとき、対応する鼻母音で読む。基本はそのままだが、下に示すように母音が変わるものもある。
   </p>
-  <div class="table-container">
-    <table class="grid-cols-[repeat(2,auto)] [&_td:nth-child(2)]:font-ipa [&_td]:text-center">
+  <div>
+    <table>
       <thead>
         <tr>
           <th>表記</th>
@@ -559,14 +591,12 @@
     <li><i>mm, nn</i> と二重に綴ってある場合</li>
   </ul>
   <p>
-    は鼻母音にはならず、普通に <span class="font-ipa">/Vm/, /Vn/, /Vŋ/</span>（<span
-      class="font-ipa">/V/</span
-    >
+    は鼻母音にはならず、普通に <span>/Vm/, /Vn/, /Vŋ/</span>（<span>/V/</span>
     は任意の母音）などと読む。
   </p>
   <p>
-    例. <i>lüvjan</i> <span class="font-ipa">/ˈlyːʋjõː/</span>（「愛する」原形不定詞） vs.
-    <i>tu lüvjenn</i> <span class="font-ipa">/tʊ ˈlyːʋjən/</span>（tu不定詞）
+    例. <i>lüvjan</i> <span>/ˈlyːʋjõː/</span>（「愛する」原形不定詞） vs.
+    <i>tu lüvjenn</i> <span>/tʊ ˈlyːʋjən/</span>（tu不定詞）
   </p>
   <p>
     また、母音字にオゴネク（“˛”
@@ -574,26 +604,23 @@
       >重音字の母音は後ろに <i>m, n</i> が来ても、鼻母音にはならない。</strong
     >重音字の鼻母音は1番目の母音にオゴネクをつけて表す（「重音字の発音」の項で示したように。）
   </p>
-</section>
+</XSection>
 
-<section aria-labelledby="misc">
-  <h2 id="misc" class="border-b-3 border-double ps-1">その他事項</h2>
+<XSection title="その他事項">
   <p>
     ドイツ語などのように語末子音が無声化することはなく、文字通りに発音する。
-    語形変化などによって有声子音の後に無声子音が来るときは、無声化する。<span class="font-ipa"
-      >/ʋ/</span
-    >
-    は <span class="font-ipa">/f/</span> となる。
+    語形変化などによって有声子音の後に無声子音が来るときは、無声化する。<span>/ʋ/</span>
+    は <span>/f/</span> となる。
   </p>
   <p>
-    例. <i>flewgan</i> <span class="font-ipa">/ˈflɪɔɡõː/</span>（「飛ぶ」原形不定詞）→
+    例. <i>flewgan</i> <span>/ˈflɪɔɡõː/</span>（「飛ぶ」原形不定詞）→
     <i>fljagst</i>
-    <span class="font-ipa">/flɪɐkst/</span>（直説法過去2人称単数）
+    <span>/flɪɐkst/</span>（直説法過去2人称単数）
   </p>
   <p>
-    例2. <i>draivan</i> <span class="font-ipa">/ˈdɽaɪʋõː/</span>（「運転する」原形不定詞）→
-    <i>draivst</i> <span class="font-ipa">/dɽaɪfst/</span>（直説法現在2人称単数）
+    例2. <i>draivan</i> <span>/ˈdɽaɪʋõː/</span>（「運転する」原形不定詞）→
+    <i>draivst</i> <span>/dɽaɪfst/</span>（直説法現在2人称単数）
   </p>
-</section>
+</XSection>
 
-<h5 class="text-center text-danger text-3xl my-8">工事中...</h5>
+<h3 class="ctext-caution">工事中...</h3>

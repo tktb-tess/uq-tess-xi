@@ -7,9 +7,9 @@
     readonly class?: string;
     readonly children: Snippet;
   }
-
+  const en = new TextEncoder();
   const { title, class: className, children }: Props = $props();
-  const id = 'section-' + toBase64(crypto.getRandomValues(new Uint8Array(12)));
+  const id = $derived('section-' + toBase64(en.encode(title)));
 </script>
 
 <section aria-labelledby={id} class={className}>

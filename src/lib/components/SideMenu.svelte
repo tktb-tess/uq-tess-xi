@@ -4,10 +4,10 @@
   interface Props {
     readonly class?: string;
   }
-  const {}: Props = $props();
+  const { class: cName }: Props = $props();
 </script>
 
-<ul>
+<ul id="sidemenu" class={cName}>
   <li>
     <h4>VESSENZLENDISÇ</h4>
     <ul>
@@ -19,7 +19,7 @@
       <li>
         <details>
           <summary>
-            <ArrowIcon class="inline-block" />
+            <ArrowIcon class="inline-block size-6 in-[details[open]]:rotate-x-180 transition-transform" />
             <span>文法</span>
           </summary>
           <ul>
@@ -44,12 +44,32 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
+    a {
+      @apply no-underline ctext-text;
+    }
+
+    :is(a, summary) {
+      @apply block px-3 py-1.5 rounded;
+    }
+
+    :is(a:where(:not([aria-disabled='true'])), summary) {
+      @apply any-hover:ctext-textinv any-hover:cbg-accent transition-colors;
+    }
+
     ul {
-      @apply flex ps-0 mt-0;
+      @apply flex flex-col list-none ps-0 mt-0 **:mt-0;
+    }
+
+    #sidemenu {
+      @apply px-1 py-3 gap-6;
     }
 
     h4 {
-      @apply mt-0;
+      @apply font-sans font-extralight text-2xl px-2;
+    }
+
+    summary {
+      @apply block user-select-none;
     }
   }
 </style>

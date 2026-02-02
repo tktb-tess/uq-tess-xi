@@ -38,12 +38,12 @@
   --color-d-accent: var(--color-violet-50);
   --color-accent2: var(--color-violet-900-d);
   --color-d-accent2: var(--color-violet-100);
-  --color-border: var(--color-slate-400);
-  --color-d-border: var(--color-slate-500);
-  --color-border-light: var(--color-slate-300);
-  --color-d-border-light: var(--color-slate-700);
-  --color-border-dark: var(--color-slate-600);
-  --color-d-border-dark: var(--color-slate-300);
+  --color-border: #00000040;
+  --color-border-light: #00000020;
+  --color-border-dark: #00000070;
+  --color-d-border: #ffffff40;
+  --color-d-border-light: #ffffff20;
+  --color-d-border-dark: #ffffff70;
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-400);
   --color-caution: var(--color-red-600);
@@ -79,6 +79,7 @@
   --s-heading: 2.5rem;
   --s-gutter: 1rem;
   --s-figure: 2rem;
+  --s-header: 3rem;
   --w-main: 96rem;
   --w-side: 18rem;
   --cols-main: minmax(min(var(--w-side), 100%), 1fr) minmax(0, var(--w-main));
@@ -393,7 +394,7 @@
   }
 
   table {
-    @apply text-nowrap w-max max-w-full border cborder-border;
+    @apply text-nowrap w-max max-w-full border cborder-border text-center;
 
     :where(td, th) {
       @apply px-2 py-1;
@@ -416,7 +417,7 @@
     }
 
     :where(& > thead > tr:last-child) {
-      @apply border-b cborder-border-dark;
+      @apply border-b-3 border-double cborder-border-dark;
     }
 
     :where(& > tbody > tr:not(:last-child)) {

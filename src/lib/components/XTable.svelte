@@ -3,6 +3,7 @@
     readonly cols?: number;
     readonly rows?: number;
     readonly class?: string;
+    readonly rawHTML?: boolean;
   }
 
   type CellData = string | [string, Config];
@@ -21,7 +22,7 @@
 
 <div class="table-container">
   <table class={className}>
-    {#if headRows > 0}
+    {#if headData.length > 0}
       <thead>
         {#each headData as row}
           <tr>
@@ -30,7 +31,13 @@
                 <th>{cell}</th>
               {:else}
                 {@const [text, conf] = cell}
-                <th colspan={conf.cols} rowspan={conf.rows} class={conf.class}>{text}</th>
+                <th colspan={conf.cols} rowspan={conf.rows} class={conf.class}>
+                  {#if conf.rawHTML}
+                    {@html text}
+                  {:else}
+                    {text}
+                  {/if}
+                </th>
               {/if}
             {/each}
           </tr>
@@ -45,7 +52,13 @@
               <td>{cell}</td>
             {:else}
               {@const [text, conf] = cell}
-              <td colspan={conf.cols} rowspan={conf.rows} class={conf.class}>{text}</td>
+              <td colspan={conf.cols} rowspan={conf.rows} class={conf.class}>
+                {#if conf.rawHTML}
+                  {@html text}
+                {:else}
+                  {text}
+                {/if}
+              </td>
             {/if}
           {/each}
         </tr>

@@ -10,7 +10,6 @@
 
   const { class: cName }: Props = $props();
 
-
   $effect(() => {
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });
@@ -46,7 +45,3 @@
     <DevicesIcon class="size-4 inline-block" />
   {/if}
 </button>
-
-<style lang="postcss">
-  @reference '../../app.css';
-</style>

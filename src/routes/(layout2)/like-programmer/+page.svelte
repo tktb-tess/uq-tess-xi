@@ -23,4 +23,13 @@
   }, 1);
 </script>
 
-<pre class="break-all whitespace-pre-wrap text-[lime]">{str}</pre>
+<pre class="__like-program">{str}</pre>
+
+<style lang="postcss">
+  @reference '../../../app.css';
+  @layer components {
+    .__like-program {
+      @apply break-all whitespace-pre-wrap text-[lime];
+    }
+  }
+</style>

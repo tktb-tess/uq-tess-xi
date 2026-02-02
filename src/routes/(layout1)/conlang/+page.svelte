@@ -1,16 +1,9 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
-  const ogTitle = '創作言語';
-  const ogDesc = 'こんらんぐ！';
+  import XSection from '$lib/components/XSection.svelte';
 </script>
 
-
-
-<h2 class="my-8 text-center" id="conlang">創作言語</h2>
-
-<section aria-labelledby="vaes">
-  <h2 class="border-b-3 border-double ps-1" id="vaes">ヴェッセンズラン語 (Vässenzländisķ)</h2>
+<XSection title="ヴェッセンズラン語 (Vessenzlendisç)">
   <p>
     「もしも古英語の屈折がほとんど残った言語があったら?」というコンセプトでつくられている言語。
     下位世界の地球のヴェッセンズラン島のヴェッセンズラン共和国で話される、複雑な形態変化を維持した屈折語。
@@ -34,10 +27,12 @@
 
     <li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
   </ul>
-</section>
+</XSection>
+
+<section aria-labelledby="vaes"></section>
 <section aria-labelledby="jaes">
-  <h2 class="border-b-3 border-double ps-1" id="jaes"><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h2>
-  <p class="font-semibold">
+  <h2 id="jaes"><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h2>
+  <p>
     「まず古語を作り、そこからの音変化を想定して現代語を作る」という方針に変更したため現在制作中断中。
   </p>
   <p>
@@ -46,7 +41,7 @@
   </p>
 </section>
 <section aria-labelledby="old-jaes">
-  <h2 class="border-b-3 border-double ps-1" id="old-jaes">古ヤズニェル語 (?????)</h2>
+  <h2 id="old-jaes">古ヤズニェル語 (?????)</h2>
   <p>
     ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
   </p>
