@@ -1,20 +1,17 @@
-<script>
+<script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
+  const {} = $props();
 </script>
 
-
-
-<div>
-  <p>フォントなどのライセンス表示をまとめたページです。</p>
-</div>
+<p>フォントなどのライセンス表示をまとめたページです。</p>
 <section aria-labelledby="ofl">
   <h2 id="ofl">OFL.txt</h2>
   <ul>
     <li>
-      <ExtLink href="https://tktb-tess.github.io/resources/fonts/Inter/OFL.txt">Inter</ExtLink>
+      <ExtLink href="https://api.tktb-tess.dev/fonts/Inter/OFL.txt">Inter</ExtLink>
     </li>
     <li>
-      <ExtLink href="https://tktb-tess.github.io/resources/fonts/Charis/OFL.txt">Charis</ExtLink>
+      <ExtLink href="https://api.tktb-tess.dev/fonts/Charis/OFL.txt">Charis</ExtLink>
     </li>
   </ul>
 </section>
