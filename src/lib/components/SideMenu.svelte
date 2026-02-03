@@ -69,7 +69,7 @@
     }
 
     summary {
-      @apply block user-select-none;
+      @apply block user-select-none cursor-pointer;
     }
   }
 </style>
