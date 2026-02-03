@@ -1,22 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'グレゴリオ聖歌について';
-  const ogDesc = 'グレゴリオ聖歌の音階の話';
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
 
-<h2 class="text-center my-8" id="title">グレゴリオ聖歌の音階</h2>
+
 
 <p>
   まず、グレゴリオ聖歌の教会旋法には大事な音が2つあり、それが<strong>フィナリス</strong
@@ -25,7 +11,7 @@
   ドミナントは旋律内で繰り返し使われまくる軸になる音、現代の属音に相当……というわけでもなく結構違う。
 </p>
 <section aria-labelledby="eight-modes">
-  <h2 id="eight-modes" class="border-b-3 border-double ps-1">8つの旋法</h2>
+  <h2 id="eight-modes" >8つの旋法</h2>
   <p>
     旋法は8つあるが、これらは4つの<strong>正格旋法</strong>と対応する4つの<strong>変格旋法</strong
     >（プラガル旋法）というのに分けられる。<br />
@@ -47,7 +33,7 @@
   <p>※イオニア（長調）ionian とアエオリア（短調）aeolian、ロクリア locrian は初期はない</p>
 </section>
 <section aria-labelledby="rules">
-  <h2 id="rules" class="border-b-3 border-double ps-1">基本ルール</h2>
+  <h2 id="rules" >基本ルール</h2>
   <p>フィナリスは</p>
   <ul>
     <li>ドリアがレ</li>
@@ -69,7 +55,7 @@
   </p>
 </section>
 <section aria-labelledby="spec">
-  <h2 id="spec" class="border-b-3 border-double ps-1">具体的な音階</h2>
+  <h2 id="spec" >具体的な音階</h2>
   <p>以下に全部書き下す。フィナリスは[]、ドミナントは()で囲う</p>
   <ol
     class="[&_p]:mb-0 [&_li:not(:last-child)]:mb-4 ms-2 [&_p:first-child]:font-semibold [&_p:first-child]:text-mnlila"
@@ -110,7 +96,7 @@
   </ol>
 </section>
 <section aria-labelledby="suppliment">
-  <h2 id="suppliment" class="border-b-3 border-double ps-1">補足</h2>
+  <h2 id="suppliment" >補足</h2>
   <ul>
     <li>（ヒュポ）ドリアと（ヒュポ）リュディアではシが半音下がってシ♭になることがまあまあある</li>
     <li>音高範囲は絶対でなく1, 2音上下にはみ出ることもある</li>

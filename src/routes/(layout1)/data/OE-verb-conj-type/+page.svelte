@@ -1,22 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ConjugationTable from './conjugation-table.svelte';
-  const ogTitle = 'Ænglisċ 動詞活用まとめ';
-  const ogDesc = 'こえいご♡';
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
 
-<h2 class="my-8 text-center">古英語 動詞活用まとめ</h2>
 <div>
   <ul>
     <li>
@@ -27,7 +13,7 @@
   </ul>
 </div>
 <section aria-labelledby="sect1">
-  <h2 id="sect1" class="border-b-3 border-double ps-1">強変化動詞</h2>
+  <h2 id="sect1" >強変化動詞</h2>
   <p>
     語幹の母音交替（アプラウトという）を伴う動詞活用を持つ動詞。変化パターンに応じていくつかのクラスに分けられる。
   </p>

@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { onMount } from 'svelte';
 
-  const ogTitle = 'Vässenzländisķ Swadesh List';
-  const ogDesc = 'すわでしゅ！';
 
   const { data: swadeshList } = $props();
 
@@ -14,18 +11,8 @@
   });
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
 
-<h2 class="my-8 text-center">Swadesh List</h2>
+
 
 <p>まだ未完成。順次追加していきます。</p>
 

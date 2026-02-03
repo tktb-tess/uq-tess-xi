@@ -6,6 +6,12 @@ import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
 import Papa from 'papaparse';
 
+type ZpDICQuery = {
+  readonly text: string;
+  readonly skip?: number;
+  readonly limit?: number;
+}
+
 export const GET = async ({ request, fetch: svFetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
   const vaeSwadeshUrl =
@@ -14,22 +20,43 @@ export const GET = async ({ request, fetch: svFetch }) => {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
 
-  const fetchZpDICAPI = async (query: string): Promise<ZpDIC.MWWEResponse> => {
-    const resp = await svFetch(zpdicApiRt + query, { method: 'GET', headers: zpdicReqHeaders });
+  const fetchZpDICAPI = async (params: ZpDICQuery): Promise<ZpDIC.MWWEResponse> => {
+    const pa = new URLSearchParams();
+  
+    for (const [key, value] of Object.entries(params)) {
+      if (typeof value === 'string') {
+        pa.set(key, value);
+      } else if (typeof value === 'number') {
+        pa.set(key, value.toString());
+      }
+    }
+
+    const resp = await svFetch(`${zpdicApiRt}?${pa.toString()}`, {
+      method: 'GET',
+      headers: zpdicReqHeaders,
+    });
+
     if (!resp.ok) {
       error(404, { message: 'cannotAccessZpdicApi' });
     }
+
     return resp.json().then((j) => ZpDIC.mwweResponseSchema.parse(j));
   };
 
   const getTotal = async () => {
-    const query = `?text=`;
+    const query = {
+      text: '',
+    };
     const json = await fetchZpDICAPI(query);
     return json.total;
   };
 
   const getWord = async (index: number) => {
-    const query = `?text=&limit=1&skip=${index}`;
+    const query: ZpDICQuery = {
+      text: '',
+      limit: 1,
+      skip: index,
+    };
     return fetchZpDICAPI(query);
   };
 
@@ -72,34 +99,24 @@ export const GET = async ({ request, fetch: svFetch }) => {
     await client.connect();
 
     const taskTodayWord = async () => {
-      try {
-        const result = await getTodayWord();
-        if (!result) throw Error('todayWord is undefined');
-        await client.set(redisKeys.todayWord, JSON.stringify(result));
-      } catch (e) {
-        console.error(e);
-      }
+      const result = await getTodayWord();
+      if (!result) throw Error('todayWord is undefined');
+      await client.set(redisKeys.todayWord, JSON.stringify(result));
     };
 
     const taskSwadeshVae = async () => {
-      try {
-        const result = await getSwadeshListVae();
-        await client.set(redisKeys.swadeshVae, JSON.stringify(result));
-      } catch (e) {
-        console.error(e);
-      }
+      const result = await getSwadeshListVae();
+      await client.set(redisKeys.swadeshVae, JSON.stringify(result));
     };
 
     const taskLastUpdate = async () => {
-      try {
-        const result = new Date().toISOString();
-        await client.set(redisKeys.lastUpdate, JSON.stringify(result));
-      } catch (e) {
-        console.error(e);
-      }
+      const result = new Date().toISOString();
+      await client.set(redisKeys.lastUpdate, JSON.stringify(result));
     };
 
-    await Promise.all([taskTodayWord(), taskSwadeshVae(), taskLastUpdate()]);
+    await Promise.allSettled([taskTodayWord(), taskSwadeshVae(), taskLastUpdate()]).then((res) => {
+      res.filter((r) => r.status === 'rejected').forEach((r) => console.error(r.reason));
+    });
 
     // check
     const tasks = Object.entries(redisKeys).map(async ([key, value]) => {

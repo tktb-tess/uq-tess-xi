@@ -1,7 +1,7 @@
 <script lang="ts">
   import { NamedError, safeFetchJson } from '$lib/modules/util';
-  import ExtLink from '$lib/sfc/ext_link.svelte';
-  import Spinner from '$lib/sfc/spinner.svelte';
+  import ExtLink from '$lib/components/ExtLink.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
   import type { WordData } from '$lib/types/decl';
   import { okAsync, type ResultAsync } from 'neverthrow';
   import { onMount } from 'svelte';
@@ -21,7 +21,7 @@
   });
 </script>
 
-<div id="today-word-root" class="">
+<div id="today-word-root">
   {#await resultAsy}
     <div class="flex gap-2 items-center">
       <Spinner class="size-6" />
@@ -31,9 +31,9 @@
     {#if result.isOk()}
       {@const { value } = result}
       {#if value}
-        <h3 class="font-serif font-normal text-mnlila d:text-white {value.size}">{value.word}</h3>
+        <h3 class="__entry {value.size}">{value.word}</h3>
         {#if value.pron}
-          <p class="text-black/60 d:text-white/60 font-ipa">
+          <p class="__pronunciation">
             {#if value.pron.includes('/')}
               {value.pron}
             {:else}
@@ -41,38 +41,29 @@
             {/if}
           </p>
         {/if}
-        <p class="d:text-white">訳</p>
-        <table
-          class="
-					grid grid-cols-[repeat(2,auto)] place-content-center place-items-center
-					[&_:where(thead,tbody,tr)]:contents [&_:where(th,td)]:block gap-5
-				"
-        >
+        <h3 class="__yaku-title">訳</h3>
+        <table class="__yaku-table">
           <thead>
             <tr>
-              <th class="font-normal bg-transparent d:text-white border-none">品詞</th>
-              <th class="font-normal bg-transparent d:text-white border-none">意味</th>
+              <th>品詞</th>
+              <th>意味</th>
             </tr>
           </thead>
           <tbody>
             {#each value.translations as translation}
               <tr>
-                <td
-                  class="justify-self-end bg-mnlila text-white d:bg-white d:text-black rounded-[500px] px-3 text-base/[1.75] border-none"
-                >
+                <td>
                   {translation.titles.join(', ')}
                 </td>
-                <td class="justify-self-start border-none bg-transparent d:text-white"
-                  >{translation.names.join(', ')}</td
-                >
+                <td>{translation.names.join(', ')}</td>
               </tr>
             {/each}
           </tbody>
         </table>
-        <p class="self-end me-3"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
+        <p class="__to-zpdic"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
       {/if}
     {:else}
-      <div class="text-center *:text-danger">
+      <div class="text-center *:ctext-caution">
         <h3>読み込みに失敗しました</h3>
         <p>再読み込みしてください</p>
       </div>
@@ -93,13 +84,39 @@
   @reference '../app.css';
   @layer components {
     #today-word-root {
-      @apply w-full max-w-180 mx-auto flex flex-col items-center border 
-      border-slate-500 d:border-slate-300 rounded-xl
-			gap-y-6 py-6 bg-linear-to-b from-white d:from-zinc-900 to-neutral-50 d:to-black 
-      shadow-sm d:shadow-white mt-12;
+      @apply w-full max-w-180 mx-auto flex flex-col items-center border my-(--s-figure)
+      cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
 
       :where(*) {
         @apply m-0;
+      }
+
+      .__pronunciation {
+        @apply font-ipa opacity-50;
+      }
+
+      .__yaku-title {
+        @apply font-sans text-base;
+      }
+
+      :where(.__yaku-table) {
+        @apply grid grid-cols-[minmax(max-content,1fr)minmax(0,max-content)] gap-2 place-items-center border-none;
+
+        :where(thead, tbody, tr) {
+          @apply contents;
+        }
+
+        :where(th, td) {
+          @apply block bg-transparent;
+        }
+
+        > :where(tbody) > :where(tr) > :where(td):first-child {
+          @apply cbg-accent ctext-textinv rounded-full;
+        }
+      }
+
+      :where(.__to-zpdic) {
+        @apply self-end-safe;
       }
     }
   }

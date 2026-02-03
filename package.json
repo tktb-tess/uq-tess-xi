@@ -8,13 +8,12 @@
     "build": "tsx .prebuilds/xml-generate.ts && vite build",
     "lbuild": "rm -r -f .vercel && pnpm build",
     "preview": "vite preview",
-    "build-preview": "pnpm build && vite preview",
+    "build-preview": "pnpm lbuild && vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "convert": "tsx draft/convert.ts",
     "test": "vitest run"
   },
   "volta": {

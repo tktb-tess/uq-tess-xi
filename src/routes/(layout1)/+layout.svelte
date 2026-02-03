@@ -1,172 +1,82 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import CloseButton from '$lib/sfc/close_button.svelte';
-  import Hamburger from '$lib/sfc/hamburger.svelte';
-  import MoonIcon from '$lib/sfc/moon-icon.svelte';
-  import PageTopBtn from '$lib/sfc/page_top_btn.svelte';
-  import SunIcon from '$lib/sfc/sun-icon.svelte';
-  import type { MouseEventHandler } from 'svelte/elements';
-  import { innerWidth } from 'svelte/reactivity/window';
-  import { siteConfig, key } from '$lib/modules/site-config.svelte';
+  import HamburgerIcon from '$lib/components/HamburgerIcon.svelte';
+  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
+  import SideMenu from '$lib/components/SideMenu.svelte';
+  import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
+  import BreadCrumb from '$lib/components/BreadCrumb.svelte';
+  import CloseIcon from '$lib/components/CloseIcon.svelte';
+  import pages, { type PageData } from '$lib/modules/pages.js';
 
-  const { children } = $props();
+  const { children, data } = $props();
   let drawerIsOpen = $state(false);
-
-  const large = $derived(
-    typeof innerWidth.current === 'number' ? innerWidth.current > 1024 : false,
-  );
-
-  const onClickCloseBtn: MouseEventHandler<HTMLButtonElement> = () => {
-    drawerIsOpen = false;
-  };
-
-  onNavigate(() => {
-    return new Promise((res) => {
-      drawerIsOpen = false;
-      res();
-    });
+  const title = $derived.by(() => {
+    const fallBack: PageData = {
+      title: '[NO DATA]',
+      path: '/',
+    };
+    const pageData = pages.find((d) => d.path === data.path) ?? fallBack;
+    return pageData.title;
   });
 
-  $effect(() => {
-    localStorage.setItem(key, JSON.stringify(siteConfig));
+  onNavigate(() => {
+    drawerIsOpen = false;
   });
 </script>
 
-<svelte:head>
-  <meta property="og:type" content="article" />
-</svelte:head>
-
-{#snippet sideMenu()}
-  <div
-    class="
-      side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
-      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
-    "
+<header>
+  <button
+    type="button"
+    id="drawer-open-btn"
+    title="Open Sidemenu"
+    onclick={() => {
+      drawerIsOpen = true;
+    }}
   >
-    <h4 class="text-2xl font-sans textc-text font-extralight">VÄSSENZLÄNDISĶ</h4>
-    <div class="flex flex-col">
-      <a href="/conlang/vaes">概説</a>
-      <a href="/conlang/vaes/letter-et-pron">文字と発音</a>
-      <a href="/conlang/vaes/phonology">音韻論</a>
-      <a href="/conlang/vaes/swadesh-list">Swadesh List</a>
-      <a aria-disabled="true">りんご文 (準備中)</a>
-      <details class="[&[open]_#list-arrow]:rotate-x-180">
-        <summary class="block cursor-pointer user-select-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="fill-current inline-block size-4.5 -translate-y-px duration-250"
-            id="list-arrow"
-          >
-            <path
-              d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"
-            />
-          </svg>
-          文法
-        </summary>
-        <div
-          class="
-						flex flex-col overflow-y-hidden
-					"
-        >
-          <a aria-disabled="true">名詞 (準備中)</a>
-          <a href="/conlang/vaes/numeral">数詞</a>
-          <a aria-disabled="true">動詞 (準備中)</a>
-          <a aria-disabled="true">形容詞 (準備中)</a>
-        </div>
-      </details>
-    </div>
-  </div>
-  <hr class="border-black/30 w-15 mx-auto my-4" />
-  <div
-    class="
-      side-menu [&_a]:textc-text [&_a]:no-underline
-      [&_:where(a,summary)]:transition-colors [&_:where(a,summary)]:py-2 [&_:where(a,summary)]:rounded-lg
-      [&_:where(a,summary)]:hover:bgc-highlight [&_:where(a,summary)]:hover:textc-textinv
-    "
-  >
-    <h4 class="text-2xl font-sans textc-text font-extralight">MISCELLANEOUS</h4>
-    <div class="flex flex-col">
-      <a href="/data">データ</a>
-      <a href="/others">その他</a>
-    </div>
-  </div>
-{/snippet}
-
-<header class="bg-highlight text-white h-16 flex items-center">
-  <div class="flex *:flex-[0_0_auto] mx-auto justify-start w-[90%] gap-x-5">
-    {#if !large}
-      <button
-        class="text-white any-hover:bg-white/20 transition-colors"
-        type="button"
-        aria-label="hamburger button"
-        onclick={() => {
-          drawerIsOpen = true;
-        }}
-      >
-        <Hamburger class="size-6" />
-      </button>
-    {/if}
-    <h1 class="font-serif text-3xl">
-      <a
-        class="flex items-center text-white no-underline any-hover:bg-white/20 transition-colors"
-        href="/.">悠久肆方体</a
-      >
-    </h1>
-    <button
-      aria-label="toggle color scheme"
-      class="text-white ms-auto any-hover:bg-white/20 px-1 transition-colors"
-      onclick={() => {
-        const isDark = siteConfig.colorScheme === 'dark';
-        siteConfig.colorScheme = isDark ? 'light' : 'dark';
-      }}
-    >
-      {#if siteConfig.colorScheme === 'light'}
-        <MoonIcon class="fill-current inline-block size-5" />
-      {:else}
-        <SunIcon class="fill-current inline-block size-5" />
-      {/if}
-    </button>
+    <HamburgerIcon class="size-6 inline-block" />
+  </button>
+  <h1>
+    <a href="/.">悠久肆方体</a>
+  </h1>
+  <div class="__btn-x">
+    <ToggleColorSchemeBtn class="h-full leading-0" />
   </div>
 </header>
-
-<div class="flex flex-wrap *:min-w-0 overflow-x-clip">
-  {#if large}
-    <div>
-      <nav class="non-drawer">
-        {@render sideMenu()}
-      </nav>
-    </div>
-  {:else}
-    <!-- drawer backdrop -->
+<div class="__main-root">
+  <div id="drawer-root" data-drawer-open={drawerIsOpen || null}>
     <button
-      type="button"
-      onclick={onClickCloseBtn}
-      class="drawer-backdrop"
-      data-open={drawerIsOpen ? '' : null}
-      aria-label="close sidemenu"
+      id="drawer-backdrop"
+      title="Close Drawer"
+      onclick={(ev) => {
+        if (ev.target !== ev.currentTarget) return;
+        drawerIsOpen = false;
+      }}
     ></button>
-    <nav class="drawer bgc-body" data-open={drawerIsOpen ? '' : null}>
-      <div class="flex justify-end px-4">
+    <aside id="drawer">
+      <div>
         <button
           type="button"
-          onclick={onClickCloseBtn}
-          class="transition-colors any-hover:text-black/60"
+          title="Close Drawer"
+          id="drawer-close-btn"
+          onclick={() => {
+            drawerIsOpen = false;
+          }}
         >
-          <CloseButton class="size-6" />
+          <CloseIcon class="size-6" />
         </button>
       </div>
+      <SideMenu />
+    </aside>
+  </div>
 
-      {@render sideMenu()}
-    </nav>
-  {/if}
-
-  <main
-    class="flex-[1_0_0] bg-slate-50 d:bg-zinc-900 px-4 flex flex-col gap-y-5 min-h-[calc(100vh-64px)]"
-  >
+  <aside>
+    <SideMenu />
+  </aside>
+  <main>
+    <BreadCrumb path={data.path} />
+    <h2 id="subtitle">{title}</h2>
     {@render children()}
-    <div class="h-5"></div>
+    <div class="h-12"></div>
   </main>
 </div>
 
@@ -174,89 +84,73 @@
 
 <style lang="postcss">
   @reference '../../app.css';
-  .side-menu {
-    @apply flex flex-col;
+  @layer components {
+    header {
+      @apply flex h-(--s-header) items-center px-6 bg-(image:--grad-accent) sticky top-0;
 
-    > * {
-      @apply mx-1;
+      :where(a, .__btn-x, #drawer-open-btn) {
+        @apply flex items-center h-(--s-header) text-2xl font-serif no-underline px-1 
+        text-textinv any-hover:text-text any-hover:bg-textinv transition-colors;
+      }
+
+      :where(.__btn-x) {
+        @apply ms-auto;
+      }
+    }
+    .__main-root {
+      @apply flow-root lg:grid lg:grid-cols-(--cols-main) min-h-lvh;
+
+      > :where(aside:not(#drawer)) {
+        @apply hidden lg:flow-root sticky top-(--s-header)
+        max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+      }
+
+      > :where(main) {
+        @apply flow-root cbg-main;
+      }
+
+      :where(#subtitle) {
+        @apply text-center ps-0 border-none mb-(--s-heading);
+      }
     }
 
-    :where(h4) {
-      @apply py-1;
+    #drawer-open-btn {
+      @apply block lg:hidden leading-0;
     }
 
-    :where(h4, a, summary) {
-      @apply px-3;
+    #drawer-root {
+      @apply flow-root invisible fixed inset-0 z-1000
+      duration-200 ease-(--tf-ease-in);
+
+      &[data-drawer-open] {
+        @apply visible bg-black/15 transition-[background-color,visibility]
+         ease-(--tf-ease-out);
+      }
     }
 
-    details > div > a {
-      @apply ps-5;
-    }
-  }
-
-  .drawer-backdrop {
-    display: block;
-    cursor: initial;
-    position: fixed;
-    text-align: start;
-    inset: 0;
-    visibility: hidden;
-    z-index: 10;
-    background-color: transparent;
-    transition-property: visibility, background-color;
-    transition-timing-function: cubic-bezier(0, 0.2, 1, 0);
-    overflow-x: hidden;
-
-    &[data-open] {
-      visibility: visible;
-      transition-timing-function: cubic-bezier(0, 1, 0.8, 1);
-      background-color: color-mix(in oklch, black 50%, transparent);
-    }
-  }
-
-  .drawer,
-  .non-drawer {
-    display: flex;
-    flex-direction: column;
-    row-gap: calc(var(--spacing) * 1);
-    padding-block: calc(var(--spacing) * 4);
-    scrollbar-width: thin;
-  }
-
-  .drawer {
-    height: 100vh;
-    position: fixed;
-    overflow-y: auto;
-    z-index: 20;
-    top: 0;
-    left: 0;
-    width: 18rem;
-    transition-property: transform, visibility;
-    transform: translate(-100%);
-    transition-timing-function: cubic-bezier(0, 0, 1, 0);
-
-    &[data-open] {
-      transition-timing-function: cubic-bezier(0, 1, 1, 1);
-      transform: translate(0);
-    }
-  }
-
-  .non-drawer {
-    height: 100vh;
-    overflow-y: auto;
-    position: sticky;
-    top: 0;
-  }
-
-  div:has(> .non-drawer) {
-    flex: 0 0 calc(6 / 24 * 100%);
-
-    @media (width >= 80rem) {
-      flex: 0 0 calc(5 / 24 * 100%);
+    #drawer-backdrop {
+      @apply cursor-auto fixed inset-0;
     }
 
-    @media (width >= 96rem) {
-      flex: 0 0 calc(4 / 24 * 100%);
+    #drawer {
+      @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side) overflow-y-auto
+      cbg-body -translate-x-full in-data-drawer-open:translate-x-0
+      transition-[translate,visibility]
+      ease-(--tf-ease-in) in-data-drawer-open:ease-(--tf-ease-out)
+      duration-200;
+
+      > :where(div) {
+        @apply flex justify-end;
+      }
+
+      :where(#drawer-close-btn) {
+        @apply leading-0 p-2 m-1 rounded-[50%] any-hover:ctext-textinv
+        any-hover:cbg-accent transition-colors;
+      }
+    }
+
+    :global(:is(html, body):has([data-drawer-open])) {
+      @apply overflow-y-clip;
     }
   }
 </style>

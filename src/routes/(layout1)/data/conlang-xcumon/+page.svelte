@@ -1,22 +1,6 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import ExtLink from '$lib/sfc/ext_link.svelte';
-  const ogTitle = '人工言語製作者に50の質問';
-  const ogDesc = 'しつもん！';
+  import ExtLink from '$lib/components/ExtLink.svelte';
 </script>
-
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
-
-<h2 class="my-8 text-center">〜人工言語製作者に50の質問〜</h2>
 
 <p>とりあえずやってみようと思います。</p>
 <ol

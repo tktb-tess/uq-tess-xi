@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = 'Vässenzländisķ 概説';
-  const ogDesc = 'がいせーつ';
+  const {} = $props();
 </script>
 
 <svelte:head>
@@ -12,17 +9,8 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&display=swap"
     rel="stylesheet"
   />
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
 </svelte:head>
 
-<h2 class="my-8 text-center">概説</h2>
 <div>
   <p>
     <strong>ヴェッセンズラン語</strong>、または<strong>ヴェッセンズランド語</strong
@@ -32,7 +20,7 @@
   </p>
   <h3>各国語表記</h3>
   <ul>
-    <li>維: vässenzländisķ spräķ / vässenzländisķ</li>
+    <li>葦: vessenzlendisç spreç / vessenzlendisç</li>
     <li>日: ヴェッセンズラン語 / 葦語</li>
     <li>英: Vessenslandic language / Vessenslandic</li>
     <li>独: wessensländische Sprache / Wessensländisch</li>
@@ -49,7 +37,7 @@
   </ul>
 </div>
 <section aria-labelledby="overview">
-  <h2 id="overview" class="border-b-3 border-double ps-1">概要</h2>
+  <h2 id="overview">概要</h2>
   <p>古英語以降英語と分岐した言語であり、言語系統的には英語にかなり近い。</p>
   <p>
     英語の語形変化がフランス語との接触などの要因により大幅に簡略化したのに対し、ヴェッセンズラン語は、古英語の語形変化のほとんどを今なお維持していることが特徴である。
@@ -60,7 +48,7 @@
 </section>
 
 <section aria-labelledby="history">
-  <h2 id="history" class="border-b-3 border-double ps-1">歴史</h2>
+  <h2 id="history">歴史</h2>
   <p>
     古英語の時代&#9608;&#9608;世紀ごろに、当時のウェセックスとノーサンブリア地方にいたアングロ・サクソン人がヴェッセンズラン島に移り住んだのが最初である。
     この大規模な移住の理由は詳しくは分かっていない。
@@ -70,14 +58,15 @@
   </p>
 </section>
 
-<h3 class="text-center text-danger my-5">工事中...</h3>
+<style lang="postcss">
+  @reference '../../../../app.css';
+  @layer components {
+    .noto-sans-sc {
+      font-family: 'Noto Sans SC', sans-serif;
+    }
 
-<style>
-  .noto-sans-sc {
-    font-family: 'Noto Sans SC', sans-serif;
-  }
-
-  .noto-sans-tc {
-    font-family: 'Noto Sans TC', sans-serif;
+    .noto-sans-tc {
+      font-family: 'Noto Sans TC', sans-serif;
+    }
   }
 </style>

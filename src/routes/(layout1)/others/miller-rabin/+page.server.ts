@@ -1,17 +1,16 @@
 import { mdToHtml } from '$lib/modules/md-html';
 import type { LoadResult } from '$lib/types/decl';
 import { isHttpError } from '@sveltejs/kit';
+import { readFile } from 'node:fs/promises';
 export const prerender = true;
 
-export const load = async ({ fetch: svFetch }): Promise<LoadResult<string>> => {
+export const load = async (): Promise<LoadResult<string>> => {
   try {
-    const resp = await svFetch('/markdown/miller-rabin.md');
+    const resp = await readFile('./src/routes/(layout1)/others/miller-rabin/test.md', {
+      encoding: 'utf-8',
+    });
 
-    if (!resp.ok) {
-      throw Error(`failed to fetch: ${resp.status} ${resp.statusText}`);
-    }
-
-    const ht = await resp.text().then((md) => mdToHtml(md));
+    const ht = await mdToHtml(resp);
 
     return {
       success: true,

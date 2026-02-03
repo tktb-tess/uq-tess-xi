@@ -3,7 +3,11 @@ import { writeFileSync, globSync } from 'node:fs';
 const paths: readonly string[] = (() => {
   const gl_ = globSync(`./src/routes/**/+page.svelte`);
   const paths = gl_.map((p) => {
-    return p.match(/src\/routes\/(?:\(layout[12]\))?((?:\/[^/]+)+\/)\+page\.svelte/u)?.[1] ?? '/';
+    const pa = p
+      .split('/')
+      .slice(2, -1)
+      .filter((s) => !/\([^)]+\)/.test(s));
+    return '/' + pa.join('/');
   });
   return paths.sort();
 })();

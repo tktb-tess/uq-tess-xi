@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Spinner from '$lib/sfc/spinner.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
   import type { Primes } from '../../../api/v0/prime/+server';
 
   type Props = {
@@ -14,6 +14,7 @@
   let primesPr = $state<Promise<Primes> | null>(null);
   let judge = $state<boolean | null>(null);
 
+  /** 2^64 */
   const LIMIT = 1n << 64n;
 
   const changeGuesses = async () => {
@@ -45,7 +46,7 @@
 </script>
 
 <section aria-labelledby={seed}>
-  <h2 class="border-b-3 border-double ps-1" id={seed}>素因数分解クイズ</h2>
+  <h2 id={seed}>素因数分解クイズ</h2>
   <p>
     「表示」を押す度に、下限以上、上限未満の2つの素数の積がランダムに表示されます。上限下限に指定できる整数の範囲は
     2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 以下です。
@@ -58,7 +59,7 @@
         <input
           type="text"
           id="{seed}-input1"
-          class="w-38 max-w-full"
+          class="w-40 max-w-full"
           bind:value={
             () => min.toString(),
             (v) => {
@@ -78,7 +79,7 @@
         <input
           type="text"
           id="{seed}-input2"
-          class="w-38 max-w-full"
+          class="w-40 max-w-full"
           bind:value={
             () => max.toString(),
             (v) => {
@@ -96,7 +97,7 @@
     </div>
     <button onclick={fetchPrimes} type="button" class="btn-1 text-xl self-center">表示</button>
     <p
-      class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center text-center min-w-0 max-w-full break-words"
+      class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center text-center min-w-0 max-w-full"
     >
       {#await primesPr}
         <Spinner class="size-6" />

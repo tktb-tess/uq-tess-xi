@@ -1,13 +1,9 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import { NamedError } from '$lib/modules/util';
-  import Spinner from '$lib/sfc/spinner.svelte';
-  import { addToast } from '$lib/sfc/toastStates.svelte';
-  import TrashIcon from '$lib/sfc/trashIcon.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
+  import { addToast } from '$lib/components/toastStates.svelte';
+  import TrashIcon from '$lib/components/TrashIcon.svelte';
   import type { MdResult } from '../../../api/v0/to-md/+server';
-
-  const ogTitle = 'URL to Markdown';
-  const ogDesc = 'サイトURLからMarkdown形式に変換する';
 
   type UUID = ReturnType<typeof crypto.randomUUID>;
   type URLInput = {
@@ -26,8 +22,8 @@
   let resultsp: Promise<MdResult[]> = $state(Promise.resolve([]));
 
   const fetchData = async (): Promise<MdResult[]> => {
-    const urls = urlInputs.map(({ url }) => url);
-    const params_ = urls.map((u) => ['value', u]);
+    const urls = urlInputs.map((i) => i.url);
+    const params_ = urls.map((u): [string, string] => ['value', u]);
     const params = new URLSearchParams(params_);
 
     if (params.size === 0) return [];
@@ -66,18 +62,6 @@
   };
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
-
-<h2 class="text-center my-8">{ogTitle}</h2>
 <div>
   <p>
     URLを入力し、「変換！」を押すと、該当ページのHTMLをMarkdownに変換したものが得られます。一度に複数個変換できます。
@@ -166,5 +150,4 @@
       <h3 class="text-danger text-center">Error</h3>
     {/await}
   </div>
-  <div class="h-50"></div>
 </div>

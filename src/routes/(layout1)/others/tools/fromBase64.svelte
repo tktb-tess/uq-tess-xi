@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { addToast } from '$lib/sfc/toastStates.svelte';
+  import { addToast } from '$lib/components/toastStates.svelte';
   type Props = {
     seed: string;
   };
@@ -26,23 +26,20 @@
   };
 </script>
 
-<section aria-labelledby={seed}>
-  <h2 class="border-b-3 border-double ps-1" id={seed}>Base64 → テキスト 変換</h2>
-  <div class="flex flex-col gap-3">
+<section aria-labelledby={seed} class="">
+  <h2  id={seed}>Base64 → テキスト 変換</h2>
+  <div class="flex flex-col gap-3 my-(--s-figure)">
     <div class="flex flex-col gap-2 items-center">
       <label for="input-{seed}" class="flex-[0_0_auto]">Base64</label>
-      <textarea class="w-full h-[8rem]" id="input-{seed}" bind:value={input}></textarea>
+      <textarea class="w-full h-32" id="input-{seed}" bind:value={input}></textarea>
     </div>
     <p class="text-center m-0">↓</p>
     <div class="flex flex-col gap-2 items-center">
       <label for="output-{seed}" class="flex-[0_0_auto]"
         >元テキスト (枠内をクリックするとコピーできます)</label
       >
-      <textarea
-        onclick={copyText}
-        class="w-full h-[8rem] cursor-pointer"
-        id="output-{seed}"
-        readonly>{output}</textarea
+      <textarea onclick={copyText} class="w-full h-32 cursor-pointer" id="output-{seed}" readonly
+        >{output}</textarea
       >
     </div>
   </div>

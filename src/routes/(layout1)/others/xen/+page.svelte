@@ -1,19 +1,11 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-
-  const ogTitle = '微分音での様々な概念について';
-  const ogDesc = '微分音での様々な概念について';
+  import KaTeXCSS from '$lib/components/KaTeXCSS.svelte';
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  const { data } = $props();
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
+<KaTeXCSS />
 
-<h3 class="text-center text-danger my-8">工事中……</h3>
+{@html data.rawHTML}
+
+<UnderConstruction />

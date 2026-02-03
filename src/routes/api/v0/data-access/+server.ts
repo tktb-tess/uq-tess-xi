@@ -26,7 +26,7 @@ export const GET = async () => {
     } else if (e instanceof Error) {
       error(500, { message: `${e.name}: ${e.message}` });
     } else {
-      error(500, { message: 'unidentified error' });
+      error(500, { message: 'Unidentified error' });
     }
   } finally {
     await client.close();

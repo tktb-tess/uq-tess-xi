@@ -1,22 +1,8 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import ExtLink from '$lib/sfc/ext_link.svelte';
-  const ogTitle = 'Vässenzländisķ りんご文';
-  const ogDesc = 'りんご文です。';
+  import ExtLink from '$lib/components/ExtLink.svelte';
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
 
-<h2 class="my-8 text-center">りんごを食べたい58文</h2>
 <div>
   <p>
     以下は、ざすろん氏により作成された
