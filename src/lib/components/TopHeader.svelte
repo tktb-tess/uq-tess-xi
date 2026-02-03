@@ -18,7 +18,7 @@
     }
 
     #top-logo {
-      @apply animate-top-logo h-[50vh] w-auto max-w-[90lvw];
+      @apply animate-top-logo h-[55vh] w-auto max-w-[90lvw];
     }
 
     #top-title-text {

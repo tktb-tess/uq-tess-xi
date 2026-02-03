@@ -65,7 +65,7 @@
     }
 
     h4 {
-      @apply font-sans font-extralight text-2xl px-2;
+      @apply font-sans font-extralight text-2xl px-2 py-1;
     }
 
     summary {

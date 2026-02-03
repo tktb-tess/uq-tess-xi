@@ -7,26 +7,27 @@
   import pages, { type PageData } from '$lib/modules/pages';
 
   const { children, data } = $props();
+
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
   const fallBack: PageData = {
     title: '???',
     path: '/',
   };
+
   const pageData = $derived(pages.find((d) => d.path === data.path) ?? fallBack);
   const ogDesc = $derived(pageData.description ?? pageData.title);
   const ogUrl = $derived(new URL(data.path, PUBLIC_BASE_URL));
   const ogTitle = $derived(
     data.path === '/' ? pageData.title : `${pageData.title} | ${PUBLIC_SITE_NAME}`,
   );
+
   onMount(() => {
     const str = window.localStorage.getItem(key);
-    if (!str) {
-      console.log(window);
-      return;
-    }
+    if (!str) return;
     const conf: SiteConfig = JSON.parse(str);
     siteConfig.colorScheme = conf.colorScheme;
   });
+
   $effect(() => {
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });

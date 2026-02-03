@@ -3,7 +3,7 @@
 </script>
 
 <section aria-labelledby="music">
-  <h2 class="border-b-3 border-double ps-1" id="music">音楽</h2>
+  <h2 id="music">音楽</h2>
   <p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
   <ul>
     <li><a href="/others/musik">いくつかの曲</a></li>
@@ -12,7 +12,7 @@
   </ul>
 </section>
 <section aria-labelledby="zatta">
-  <h2 class="border-b-3 border-double ps-1" id="zatta">雑多</h2>
+  <h2 id="zatta">雑多</h2>
   <ul>
     <li>n次元超立体の命名案 (準備中)</li>
     <li>ジョンソンの立体のcrown jewelsの命名案 (準備中)</li>
@@ -37,7 +37,7 @@
   </ul>
 </section>
 <section aria-labelledby="memo">
-  <h2 class="border-b-3 border-double ps-1" id="memo">メモ</h2>
+  <h2 id="memo">メモ</h2>
   <ul>
     <li>
       <a href="/others/miller-rabin">Miller–Rabin 素数判定法</a>

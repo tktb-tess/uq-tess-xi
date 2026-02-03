@@ -139,7 +139,7 @@ const pages: PageData[] = [
     path: '/others/tools',
   },
   {
-    title: '???',
+    title: '微分音理論における諸概念',
     path: '/others/xen',
   },
 ];

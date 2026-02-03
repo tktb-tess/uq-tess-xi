@@ -5,7 +5,6 @@
   import TrashIcon from '$lib/components/trashIcon.svelte';
   import type { MdResult } from '../../../api/v0/to-md/+server';
 
-
   type UUID = ReturnType<typeof crypto.randomUUID>;
   type URLInput = {
     id: UUID;
@@ -23,8 +22,8 @@
   let resultsp: Promise<MdResult[]> = $state(Promise.resolve([]));
 
   const fetchData = async (): Promise<MdResult[]> => {
-    const urls = urlInputs.map(({ url }) => url);
-    const params_ = urls.map((u) => ['value', u]);
+    const urls = urlInputs.map((i) => i.url);
+    const params_ = urls.map((u): [string, string] => ['value', u]);
     const params = new URLSearchParams(params_);
 
     if (params.size === 0) return [];
@@ -62,7 +61,6 @@
     }
   };
 </script>
-
 
 <div>
   <p>
@@ -152,5 +150,4 @@
       <h3 class="text-danger text-center">Error</h3>
     {/await}
   </div>
-  <div class="h-50"></div>
 </div>

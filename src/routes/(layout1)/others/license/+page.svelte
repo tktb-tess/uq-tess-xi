@@ -8,7 +8,7 @@
   <p>フォントなどのライセンス表示をまとめたページです。</p>
 </div>
 <section aria-labelledby="ofl">
-  <h3 id="ofl">OFL.txt</h3>
+  <h2 id="ofl">OFL.txt</h2>
   <ul>
     <li>
       <ExtLink href="https://tktb-tess.github.io/resources/fonts/Inter/OFL.txt">Inter</ExtLink>
