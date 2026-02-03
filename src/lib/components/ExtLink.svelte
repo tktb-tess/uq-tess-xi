@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import ExtLinkIcon from './BoxArrowIcon.svelte';
+  import BoxArrowIcon from './BoxArrowIcon.svelte';
 
   type Props = {
     href: string;
@@ -18,7 +18,7 @@
     {@render children()}
   {/if}
   {#if !noIcon}
-    <ExtLinkIcon class="inline-block w-[.75em] h-auto align-baseline" />
+    <BoxArrowIcon class="inline-block w-[.75em] h-auto align-baseline" />
   {/if}
 </a>
 
