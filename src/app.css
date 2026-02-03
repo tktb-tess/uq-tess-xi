@@ -36,8 +36,8 @@
   --color-d-textinv: #000;
   --color-accent: var(--color-violet-950-d);
   --color-d-accent: var(--color-violet-50);
-  --color-accent2: var(--color-violet-900-d);
-  --color-d-accent2: var(--color-violet-100);
+  --color-accent2: var(--color-violet-100);
+  --color-d-accent2: var(--color-violet-900-d);
   --color-border: #00000040;
   --color-border-light: #00000020;
   --color-border-dark: #00000080;

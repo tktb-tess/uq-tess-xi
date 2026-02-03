@@ -76,7 +76,7 @@
         }
       }
     />
-    <button onclick={changeMode} type="button" class="btn-2 text-xl">{mode}</button>
+    <button onclick={changeMode} type="button" class="__calc-btn">{mode}</button>
     <input
       type="number"
       min="0"
@@ -93,3 +93,14 @@
     <textarea class="overflow-x-auto w-20" rows="1" readonly>{result}</textarea>
   </div>
 </section>
+
+<style lang="postcss">
+  @reference '../../../../app.css';
+  @layer components {
+    .__calc-btn {
+      @apply leading-none px-2 py-1 rounded border cborder-border
+      any-hover:cbg-accent2 transition-colors;
+    }
+  }
+</style>
+
