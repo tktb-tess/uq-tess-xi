@@ -23,7 +23,7 @@
     }
 
     #top-title-text {
-      @apply font-serif font-bold text-[calc(2.75rem+1.75vw)] w-[85lvw] max-w-170 -skew-x-20 -skew-y-3;
+      @apply font-serif font-bold text-[calc(2.75rem+1.75vw)] w-[85lvw] max-w-200 -skew-x-20 -skew-y-3;
       text-align-last: justify;
     }
   }
