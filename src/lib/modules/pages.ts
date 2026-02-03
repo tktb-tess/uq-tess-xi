@@ -101,7 +101,7 @@ const pages: PageData[] = [
     path: '/others',
   },
   {
-    title: '???',
+    title: 'Crown Jewels の命名案',
     path: '/others/crown-jewels',
     private: true,
   },
@@ -131,11 +131,12 @@ const pages: PageData[] = [
     path: '/others/musik',
   },
   {
-    title: '???',
+    title: 'ポリトープの命名案',
     path: '/others/polytope',
   },
   {
-    title: '???',
+    title: 'ツール',
+    description: 'つーる♡',
     path: '/others/tools',
   },
   {

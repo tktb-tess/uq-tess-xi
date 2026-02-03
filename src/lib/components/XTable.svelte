@@ -10,11 +10,12 @@
 
   interface Props {
     readonly data: CellData[][];
+    readonly caption?: string;
     readonly headRows?: number;
     readonly class?: string;
   }
 
-  const { data, headRows = 0, class: className }: Props = $props();
+  const { data, headRows = 0, class: className, caption }: Props = $props();
 
   const headData = $derived(data.slice(0, headRows));
   const bodyData = $derived(data.slice(headRows));
@@ -22,6 +23,9 @@
 
 <div class="table-container">
   <table class={className}>
+    {#if typeof caption === 'string'}
+      <caption>{caption}</caption>
+    {/if}
     {#if headData.length > 0}
       <thead>
         {#each headData as row}

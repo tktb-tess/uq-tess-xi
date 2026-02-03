@@ -320,7 +320,7 @@
     @apply ctext-link any-hover:underline;
   }
 
-  :is(b, strong) {
+  :is(b, strong, th) {
     @apply font-semibold;
   }
 
@@ -422,6 +422,10 @@
 
     :where(& > tbody > tr:not(:last-child)) {
       @apply border-b cborder-border;
+    }
+
+    :where(caption) {
+      @apply font-serif text-lg pb-1;
     }
   }
 

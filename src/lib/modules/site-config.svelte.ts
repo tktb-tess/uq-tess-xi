@@ -1,5 +1,3 @@
-
-
 export type SiteConfig = {
   colorScheme: 'default' | 'light' | 'dark';
 };

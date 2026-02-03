@@ -5,6 +5,7 @@
   import SideMenu from '$lib/components/SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
+  import CloseIcon from '$lib/components/CloseIcon.svelte';
   import pages, { type PageData } from '$lib/modules/pages.js';
 
   const { children, data } = $props();
@@ -42,19 +43,32 @@
   </div>
 </header>
 <div class="__main-root">
-  <button
-    type="button"
-    id="drawer-backdrop"
-    data-drawer-open={drawerIsOpen || null}
-    onclick={(ev) => {
-      if (ev.target !== ev.currentTarget) return;
-      drawerIsOpen = false;
-    }}
-  >
+  <div id="drawer-root" data-drawer-open={drawerIsOpen || null}>
+    <button
+      id="drawer-backdrop"
+      title="Close Drawer"
+      onclick={(ev) => {
+        if (ev.target !== ev.currentTarget) return;
+        drawerIsOpen = false;
+      }}
+    ></button>
     <aside id="drawer">
+      <div>
+        <button
+          type="button"
+          title="Close Drawer"
+          id="drawer-close-btn"
+          onclick={() => {
+            drawerIsOpen = false;
+          }}
+        >
+          <CloseIcon class="size-6" />
+        </button>
+      </div>
       <SideMenu />
     </aside>
-  </button>
+  </div>
+
   <aside>
     <SideMenu />
   </aside>
@@ -72,7 +86,7 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply flex h-(--s-header) items-center px-6 bg-accent sticky top-0;
+      @apply flex h-(--s-header) items-center px-6 bg-(image:--grad-accent) sticky top-0;
 
       :where(a, .__btn-x, #drawer-open-btn) {
         @apply flex items-center h-(--s-header) text-2xl font-serif no-underline px-1 
@@ -86,7 +100,7 @@
     .__main-root {
       @apply flow-root lg:grid lg:grid-cols-(--cols-main) min-h-lvh;
 
-      > :where(aside) {
+      > :where(aside:not(#drawer)) {
         @apply hidden lg:flow-root sticky top-(--s-header)
         max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
       }
@@ -104,18 +118,35 @@
       @apply block lg:hidden leading-0;
     }
 
-    #drawer-backdrop {
-      @apply cursor-auto text-start flow-root invisible fixed inset-0 z-1000;
+    #drawer-root {
+      @apply flow-root invisible fixed inset-0 z-1000
+      duration-200 ease-(--tf-ease-in);
 
       &[data-drawer-open] {
-        @apply visible bg-black/5;
+        @apply visible bg-black/15 transition-[background-color,visibility]
+         ease-(--tf-ease-out);
       }
+    }
+
+    #drawer-backdrop {
+      @apply cursor-auto fixed inset-0;
     }
 
     #drawer {
       @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side) overflow-y-auto
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
-      transition-[translate,visibility];
+      transition-[translate,visibility]
+      ease-(--tf-ease-in) in-data-drawer-open:ease-(--tf-ease-out)
+      duration-200;
+
+      > :where(div) {
+        @apply flex justify-end;
+      }
+
+      :where(#drawer-close-btn) {
+        @apply leading-0 p-2 m-1 rounded-[50%] any-hover:ctext-textinv
+        any-hover:cbg-accent transition-colors;
+      }
     }
 
     :global(:is(html, body):has([data-drawer-open])) {
