@@ -15,11 +15,11 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply grid h-dvh place-items-center gbg-vivid text-white;
+      @apply grid h-svh place-items-center gbg-vivid text-white;
     }
 
     #top-logo {
-      @apply animate-top-logo h-[55vh] w-auto max-w-[90lvw];
+      @apply animate-top-logo h-[55svh] w-auto max-w-[90lvw];
     }
 
     #top-title-text {
