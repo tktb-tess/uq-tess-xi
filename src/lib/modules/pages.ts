@@ -18,9 +18,9 @@ const pages: PageData[] = [
     description: 'こんらんぐ！',
   },
   {
-    title: '葦語 概説',
-    longTitle: 'Vessenzlendisç 概説',
-    description: 'がいせーつ',
+    title: '葦語',
+    longTitle: 'Vessenzlendisç',
+    description: 'げんご①',
     path: '/conlang/vaes',
   },
 

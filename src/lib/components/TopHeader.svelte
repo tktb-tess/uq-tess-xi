@@ -1,37 +1,29 @@
 <script>
   import UqTessLogo from './UQTessLogo.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  import { innerWidth } from 'svelte/reactivity/window';
-
-  const title = $derived.by(() => {
-    if (innerWidth.current && innerWidth.current < 768) {
-      return PUBLIC_SITE_NAME.split('').join('\x20');
-    } else {
-      return PUBLIC_SITE_NAME.split('').join('\u2003');
-    }
-  });
 </script>
 
 <header>
   <div id="top-logo">
-    <UqTessLogo class="h-full" />
+    <UqTessLogo class="size-full" />
   </div>
-  <h1 id="top-title-text">{title}</h1>
+  <h1 id="top-title-text">{PUBLIC_SITE_NAME}</h1>
 </header>
 
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
     header {
-      @apply grid h-lvh content-center place-items-center gbg-vivid text-white;
+      @apply grid h-lvh place-items-center gbg-vivid text-white;
     }
 
     #top-logo {
-      @apply animate-top-logo h-[55vh] max-h-140;
+      @apply animate-top-logo h-[50vh] w-auto max-w-[90lvw];
     }
 
     #top-title-text {
-      @apply font-serif font-bold -skew-x-20 -skew-y-4 text-[calc(2.75rem+1.75vw)];
+      @apply font-serif font-bold text-[calc(2.75rem+1.75vw)] w-[85lvw] max-w-170 -skew-x-20 -skew-y-3;
+      text-align-last: justify;
     }
   }
 </style>

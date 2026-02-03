@@ -53,6 +53,7 @@
     <BreadCrumb path={data.path} />
     <h2 id="subtitle">{title}</h2>
     {@render children()}
+    <div class="h-12"></div>
   </main>
 </div>
 
@@ -89,7 +90,7 @@
       }
 
       :where(#subtitle) {
-        @apply text-center;
+        @apply text-center ps-0 border-none mb-(--s-heading);
       }
     }
 

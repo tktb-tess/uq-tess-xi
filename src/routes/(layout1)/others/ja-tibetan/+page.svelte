@@ -13,7 +13,7 @@
 </svelte:head>
 
 <section aria-label="音節構造">
-  <h2 class="border-b-3 border-double ps-1" id="syllable-structure">音節構造　ཨོཾ་སེ་ཛཀཽ་ཛཽ</h2>
+  <h2  id="syllable-structure">音節構造　ཨོཾ་སེ་ཛཀཽ་ཛཽ</h2>
   <p>先に音節構造の話からする。</p>
   <p>
     日本語の音節構造は最大で C<sub>1</sub>C<sub>2</sub>G<sub>1</sub>VG<sub>2</sub> である。 ここで、C
@@ -71,7 +71,7 @@
   <p>長子音は2重にすることで示し、長母音は上にマクロンを付すことで示す。</p>
 </section>
 <section aria-label="文字">
-  <h2 class="border-b-3 border-double ps-1" id="letters">文字　མོ་ཇི</h2>
+  <h2  id="letters">文字　མོ་ཇི</h2>
   <p>音節は <em>tseg</em>「་」で区切る。</p>
   <p>基本的な文字は以下の通り。</p>
 
@@ -357,7 +357,7 @@
   <p>「畢竟 (h<sup>i</sup>kkyō)」は ཧྱརྐྱཽ, ཧཡརྐྱཽ, ཧཡརཀྱཽ, ཧཡརཀཡཽ の全てが許される。</p>
 </section>
 <section aria-label="音節核の見分け方">
-  <h2 class="border-b-3 border-double ps-1" id="distinguish">
+  <h2  id="distinguish">
     音節核の見分け方　ཨོཾ་སེ་ཛཀ་ཀུ་ནོ་ མི་ཝ་ཀེ་ཀ་ཏ
   </h2>
   <p><em>tseg</em> の中が1文字の時、それが音節核である。</p>
@@ -369,7 +369,7 @@
   </p>
 </section>
 <section aria-label="分かち書き">
-  <h2 class="border-b-3 border-double ps-1" id="wakachigaki">分かち書き　ཝ་ཀ་ཅི་ག་ཀི</h2>
+  <h2  id="wakachigaki">分かち書き　ཝ་ཀ་ཅི་ག་ཀི</h2>
   <p>
     チベット語において通常分かち書きはしないが、この表記では文節毎にスペースを入れることも可能とする。（入れなくてもよい）
     ただし末尾に <em>tseg</em> を付ける。
@@ -384,7 +384,7 @@
 </section>
 
 <section aria-label="例 単語">
-  <h2 class="border-b-3 border-double ps-1" id="ex-words">例 単語　རཻ ཏཾ་གོ</h2>
+  <h2  id="ex-words">例 単語　རཻ ཏཾ་གོ</h2>
   <div class="table-container">
     <table class="grid-cols-auto-3">
       <thead>
@@ -500,7 +500,7 @@
   </div>
 </section>
 <section aria-label="例文">
-  <h2 class="border-b-3 border-double ps-1" id="ex-sentence">例文　རཻ་བུཾ</h2>
+  <h2  id="ex-sentence">例文　རཻ་བུཾ</h2>
   <h3 id="indoorkei-nara-trackmaker">
     Yunomi &amp; Nicamoq - インドア系ならトラックメイカー ドロップ部分
     <br />ཡུ་ནོ་མི &amp; ནི་ཀ་མོ་ཀྱུ - ཨིཾ་དོ་ཨ་ཀཻ་ན་ར་ ཏོ་ར་རྐུ་མེ་ཨི་ཀཱ དོ་རོ་རྤུ་བུ་བུཾ

@@ -5,24 +5,11 @@
   import TodayWord from './todayWord.svelte';
   import GithubMark from '$lib/components/github-mark.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
   import LinkList from './LinkList.svelte';
-  const { data } = $props();
+  const {} = $props();
 </script>
-
-<svelte:head>
-  <meta name="description" content="創作言語など" />
-  <!-- OGP -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={PUBLIC_SITE_NAME} />
-  <meta property="og:description" content="創作言語など" />
-  <!-- twitter card -->
-  <meta name="twitter:title" content={PUBLIC_SITE_NAME} />
-  <meta name="twitter:description" content="創作言語など" />
-  <title>{PUBLIC_SITE_NAME}</title>
-</svelte:head>
 
 <TopHeader />
 
@@ -47,7 +34,7 @@
   <XSection title="メニュー">
     <CardList
       contents={[
-        { title: '人工言語', desc: '斗琴庭暁響が制作している人工言語について。', href: '/conlang' },
+        { title: '創作言語', desc: '斗琴庭暁響が制作している人工言語について。', href: '/conlang' },
         { title: 'データ', desc: '言語に関連するデータなど。', href: '/data' },
         { title: 'その他', desc: 'その他の話題。', href: '/others' },
       ]}
@@ -146,7 +133,8 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light [&_:where(h2)]:text-center;
+      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light 
+      [&_:where(h2)]:text-center [&_:where(h2)]:ps-0;
     }
   }
 </style>

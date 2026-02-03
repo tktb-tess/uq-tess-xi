@@ -16,7 +16,7 @@
   {onclick}
   id="to-page-top-btn"
   type="button"
-  aria-label="ページトップへ戻る"
+  title="ページトップへ戻る"
   data-invisible={isInvisible ? '' : null}
 >
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

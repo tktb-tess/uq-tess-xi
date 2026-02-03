@@ -40,7 +40,7 @@
   --color-d-accent2: var(--color-violet-100);
   --color-border: #00000040;
   --color-border-light: #00000020;
-  --color-border-dark: #00000070;
+  --color-border-dark: #00000080;
   --color-d-border: #ffffff40;
   --color-d-border-light: #ffffff20;
   --color-d-border-dark: #ffffff70;
@@ -48,10 +48,10 @@
   --color-d-link: var(--color-blue-400);
   --color-caution: var(--color-red-600);
   --color-d-caution: var(--color-yellow-300);
-  --color-td1: var(--color-main);
-  --color-td2: var(--color-slate-200);
-  --color-th1: var(--color-violet-50);
-  --color-th2: var(--color-violet-200);
+  --color-td1: transparent;
+  --color-td2: color-mix(in oklch, var(--color-slate-950) 5%, transparent);
+  --color-th1: color-mix(in oklch, var(--color-violet-600) 5%, transparent);
+  --color-th2: color-mix(in oklch, var(--color-violet-600) 12%, transparent);
   --color-d-td1: var(--color-d-main);
   --color-d-td2: var(--color-slate-800);
   --color-d-th1: var(--color-violet-950-d);
@@ -349,7 +349,7 @@
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-3xl ps-1 pb-1 border-b cborder-border-dark;
   }
 
   h3 {

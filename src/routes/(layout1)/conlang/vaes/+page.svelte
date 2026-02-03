@@ -20,7 +20,7 @@
   </p>
   <h3>各国語表記</h3>
   <ul>
-    <li>維: vässenzländisķ spräķ / vässenzländisķ</li>
+    <li>葦: vessenzlendisç spreç / vessenzlendisç</li>
     <li>日: ヴェッセンズラン語 / 葦語</li>
     <li>英: Vessenslandic language / Vessenslandic</li>
     <li>独: wessensländische Sprache / Wessensländisch</li>
@@ -37,7 +37,7 @@
   </ul>
 </div>
 <section aria-labelledby="overview">
-  <h2 id="overview" class="border-b-3 border-double ps-1">概要</h2>
+  <h2 id="overview">概要</h2>
   <p>古英語以降英語と分岐した言語であり、言語系統的には英語にかなり近い。</p>
   <p>
     英語の語形変化がフランス語との接触などの要因により大幅に簡略化したのに対し、ヴェッセンズラン語は、古英語の語形変化のほとんどを今なお維持していることが特徴である。
@@ -48,7 +48,7 @@
 </section>
 
 <section aria-labelledby="history">
-  <h2 id="history" class="border-b-3 border-double ps-1">歴史</h2>
+  <h2 id="history">歴史</h2>
   <p>
     古英語の時代&#9608;&#9608;世紀ごろに、当時のウェセックスとノーサンブリア地方にいたアングロ・サクソン人がヴェッセンズラン島に移り住んだのが最初である。
     この大規模な移住の理由は詳しくは分かっていない。
@@ -58,14 +58,15 @@
   </p>
 </section>
 
-<h3 class="text-center text-danger my-5">工事中...</h3>
+<style lang="postcss">
+  @reference '../../../../app.css';
+  @layer components {
+    .noto-sans-sc {
+      font-family: 'Noto Sans SC', sans-serif;
+    }
 
-<style>
-  .noto-sans-sc {
-    font-family: 'Noto Sans SC', sans-serif;
-  }
-
-  .noto-sans-tc {
-    font-family: 'Noto Sans TC', sans-serif;
+    .noto-sans-tc {
+      font-family: 'Noto Sans TC', sans-serif;
+    }
   }
 </style>

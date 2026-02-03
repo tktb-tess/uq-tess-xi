@@ -1,22 +1,7 @@
 <script lang="ts">
-  import { PUBLIC_SITE_NAME } from '$env/static/public';
   import ExtLink from '$lib/components/ext_link.svelte';
-  const ogTitle = 'その他';
-  const ogDesc = 'いろいろな話題';
 </script>
 
-<svelte:head>
-  <meta name="description" content={ogDesc} />
-  <!-- OGP -->
-  <meta property="og:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta property="og:description" content={ogDesc} />
-  <!-- twitter card -->
-  <meta name="twitter:title" content="{ogTitle} | {PUBLIC_SITE_NAME}" />
-  <meta name="twitter:description" content={ogDesc} />
-  <title>{ogTitle} | {PUBLIC_SITE_NAME}</title>
-</svelte:head>
-
-<h2 class="my-8 text-center">その他の項目</h2>
 <section aria-labelledby="music">
   <h2 class="border-b-3 border-double ps-1" id="music">音楽</h2>
   <p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>

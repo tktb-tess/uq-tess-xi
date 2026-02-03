@@ -11,7 +11,7 @@ import remarkStringify from 'remark-stringify';
 import rehypeSanitize from 'rehype-sanitize';
 import rehypeShiki from '@shikijs/rehype';
 
-export const mdToHtml = async (markdown: string) => {
+export const mdToHtml = async (md: string) => {
   const vFile = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -22,7 +22,7 @@ export const mdToHtml = async (markdown: string) => {
       theme: 'github-dark',
     })
     .use(rehypeStringify)
-    .process(markdown);
+    .process(md);
 
   return vFile.toString();
 };

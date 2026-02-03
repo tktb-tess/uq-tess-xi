@@ -1,9 +1,5 @@
-
-
-
-
 <section aria-labelledby="legend">
-  <h2 id="legend" class="border-b-3 border-double ps-1">凡例</h2>
+  <h2 id="legend">凡例</h2>
 
   <ul>
     <li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
@@ -16,7 +12,7 @@
 </section>
 
 <section aria-labelledby="consonant">
-  <h2 id="consonant" class="border-b-3 border-double ps-1">子音</h2>
+  <h2 id="consonant">子音</h2>
 
   <div class="table-container">
     <table class="grid-cols-auto-9 [&_td]:font-ipa [&_td]:text-center">
@@ -203,7 +199,7 @@
 </section>
 
 <section aria-labelledby="vowel">
-  <h2 id="vowel" class="border-b-3 border-double ps-1">母音</h2>
+  <h2 id="vowel">母音</h2>
   <h3 class="ms-1">単母音</h3>
 
   <div class="table-container">

@@ -20,9 +20,15 @@
   );
   onMount(() => {
     const str = window.localStorage.getItem(key);
-    if (!str) return;
+    if (!str) {
+      console.log(window);
+      return;
+    }
     const conf: SiteConfig = JSON.parse(str);
     siteConfig.colorScheme = conf.colorScheme;
+  });
+  $effect(() => {
+    localStorage.setItem(key, JSON.stringify(siteConfig));
   });
 </script>
 

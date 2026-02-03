@@ -27,7 +27,7 @@
 </script>
 
 <section aria-labelledby={seed}>
-  <h2 class="border-b-3 border-double ps-1" id={seed}>Base64 → テキスト 変換</h2>
+  <h2  id={seed}>Base64 → テキスト 変換</h2>
   <div class="flex flex-col gap-3">
     <div class="flex flex-col gap-2 items-center">
       <label for="input-{seed}" class="flex-[0_0_auto]">Base64</label>

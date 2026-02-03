@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { siteConfig, key } from '$lib/modules/site-config.svelte';
+  import { siteConfig } from '$lib/modules/site-config.svelte';
   import MoonIcon from './moon-icon.svelte';
   import SunIcon from './sun-icon.svelte';
   import DevicesIcon from './DevicesIcon.svelte';
@@ -9,10 +9,6 @@
   }
 
   const { class: cName }: Props = $props();
-
-  $effect(() => {
-    localStorage.setItem(key, JSON.stringify(siteConfig));
-  });
 </script>
 
 <button
