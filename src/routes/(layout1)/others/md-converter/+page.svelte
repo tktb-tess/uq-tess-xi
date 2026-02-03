@@ -1,8 +1,8 @@
 <script lang="ts">
   import { NamedError } from '$lib/modules/util';
-  import Spinner from '$lib/components/spinner.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
   import { addToast } from '$lib/components/toastStates.svelte';
-  import TrashIcon from '$lib/components/trashIcon.svelte';
+  import TrashIcon from '$lib/components/TrashIcon.svelte';
   import type { MdResult } from '../../../api/v0/to-md/+server';
 
   type UUID = ReturnType<typeof crypto.randomUUID>;

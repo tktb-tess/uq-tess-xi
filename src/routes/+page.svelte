@@ -1,11 +1,11 @@
 <script lang="ts">
-  import ExtLink from '$lib/components/ext_link.svelte';
-  import PageTopBtn from '$lib/components/page_top_btn.svelte';
-  import CardList from '$lib/components/cardList.svelte';
+  import ExtLink from '$lib/components/ExtLink.svelte';
+  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
+  import CardList from '$lib/components/CardList.svelte';
   import TodayWord from './todayWord.svelte';
-  import GithubMark from '$lib/components/github-mark.svelte';
+  import GithubMark from '$lib/components/GitHubIcon.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
+  import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import TopHeader from '$lib/components/TopHeader.svelte';
   import LinkList from './LinkList.svelte';
   const {} = $props();

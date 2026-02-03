@@ -1,7 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import { PUBLIC_SITE_NAME, PUBLIC_BASE_URL } from '$env/static/public';
-  import Toasts from '$lib/components/toasts.svelte';
+  import Toasts from '$lib/components/Toasts.svelte';
   import { siteConfig, key, type SiteConfig } from '$lib/modules/site-config.svelte';
   import { onMount } from 'svelte';
   import pages, { type PageData } from '$lib/modules/pages';

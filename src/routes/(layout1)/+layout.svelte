@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import HamburgerIcon from '$lib/components/hamburger.svelte';
-  import PageTopBtn from '$lib/components/page_top_btn.svelte';
+  import HamburgerIcon from '$lib/components/HamburgerIcon.svelte';
+  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
-  import ToggleColorSchemeBtn from '$lib/components/toggle-color-scheme-btn.svelte';
+  import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
   import pages, { type PageData } from '$lib/modules/pages.js';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { NamedError, safeFetchJson } from '$lib/modules/util';
-  import ExtLink from '$lib/components/ext_link.svelte';
-  import Spinner from '$lib/components/spinner.svelte';
+  import ExtLink from '$lib/components/ExtLink.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
   import type { WordData } from '$lib/types/decl';
   import { okAsync, type ResultAsync } from 'neverthrow';
   import { onMount } from 'svelte';

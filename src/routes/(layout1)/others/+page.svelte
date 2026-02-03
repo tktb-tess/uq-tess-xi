@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ExtLink from '$lib/components/ext_link.svelte';
+  import ExtLink from '$lib/components/ExtLink.svelte';
 </script>
 
 <section aria-labelledby="music">

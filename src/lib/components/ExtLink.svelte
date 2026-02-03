@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import ExtLinkIcon from './ext_link_icon.svelte';
+  import ExtLinkIcon from './BoxArrowIcon.svelte';
 
   type Props = {
     href: string;
@@ -10,7 +10,7 @@
     noIcon?: boolean;
   };
 
-  const { href, children, class: className = '', noIcon = false, title }: Props = $props();
+  const { href, children, class: className, noIcon = false, title }: Props = $props();
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer" class={className} {title}>

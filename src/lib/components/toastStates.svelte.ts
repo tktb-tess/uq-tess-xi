@@ -3,10 +3,10 @@ import { SvelteMap } from 'svelte/reactivity';
 export type ToastType = 'info' | 'warning' | 'hint';
 
 export type Toast = {
-  message: string;
-  type: ToastType;
-  timeout: number;
-  timeoutID: NodeJS.Timeout;
+  readonly message: string;
+  readonly type: ToastType;
+  readonly timeout: number;
+  readonly timeoutID: NodeJS.Timeout;
 };
 
 type UUID = ReturnType<typeof crypto.randomUUID>;

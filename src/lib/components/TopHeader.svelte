@@ -1,6 +1,7 @@
 <script>
   import UqTessLogo from './UQTessLogo.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
+  const {} = $props();
 </script>
 
 <header>
@@ -14,7 +15,7 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply grid h-lvh place-items-center gbg-vivid text-white;
+      @apply grid h-dvh place-items-center gbg-vivid text-white;
     }
 
     #top-logo {

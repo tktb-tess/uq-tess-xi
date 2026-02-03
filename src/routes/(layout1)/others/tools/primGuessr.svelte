@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Spinner from '$lib/components/spinner.svelte';
+  import Spinner from '$lib/components/Spinner.svelte';
   import type { Primes } from '../../../api/v0/prime/+server';
 
   type Props = {

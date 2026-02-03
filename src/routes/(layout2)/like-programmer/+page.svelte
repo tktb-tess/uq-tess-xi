@@ -3,7 +3,9 @@
     const i = crypto.getRandomValues(new BigUint64Array(200));
     return Array.from(i, (n) => n.toString(2).padStart(64, '0')).join('');
   };
+
   let str = $state(initialize());
+
   const addStr = () => {
     const s = (() => {
       const num = crypto.getRandomValues(new Uint16Array(1))[0];
@@ -29,7 +31,7 @@
   @reference '../../../app.css';
   @layer components {
     .__like-program {
-      @apply break-all whitespace-pre-wrap text-[lime];
+      @apply break-all whitespace-pre-wrap text-[#0f0];
     }
   }
 </style>

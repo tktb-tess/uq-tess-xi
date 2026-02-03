@@ -1,10 +1,10 @@
 <script lang="ts">
-  import DownloadIcon from '$lib/components/download-icon.svelte';
-  import ExtLink from '$lib/components/ext_link.svelte';
-  import PauseFill from '$lib/components/pause-fill.svelte';
-  import PlayFill from '$lib/components/play-fill.svelte';
-  import Repeat from '$lib/components/repeat.svelte';
-  import StopFill from '$lib/components/stop-fill.svelte';
+  import DownloadIcon from '$lib/components/DownloadIcon.svelte';
+  import ExtLink from '$lib/components/ExtLink.svelte';
+  import PauseFill from '$lib/components/PauseIcon.svelte';
+  import PlayFill from '$lib/components/PlayIcon.svelte';
+  import Repeat from '$lib/components/RepeatIcon.svelte';
+  import StopFill from '$lib/components/StopIcon.svelte';
   import type { TrackParams } from './+page.server';
 
   const { data = $bindable() } = $props();
