@@ -6,7 +6,7 @@ export type PageData = {
   readonly private?: boolean;
 };
 
-const pages: PageData[] = [
+const pages: readonly PageData[] = [
   {
     title: '悠久肆方体',
     path: '/',
