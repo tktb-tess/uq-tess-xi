@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
   import UqTessLogo from './UQTessLogo.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   const {} = $props();
 </script>
+
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet" />
+</svelte:head>
 
 <header>
   <div id="top-logo">
@@ -15,7 +19,7 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply grid h-svh place-items-center gbg-vivid text-white;
+      @apply grid h-svh place-items-center content-center gbg-vivid text-white;
     }
 
     #top-logo {
@@ -23,7 +27,8 @@
     }
 
     #top-title-text {
-      @apply font-serif font-bold text-[calc(2.75rem+1.75vw)] w-[85lvw] max-w-200 -skew-x-20 -skew-y-3;
+      @apply font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-20 -skew-y-3;
+      font-family: 'Yuji Syuku', serif;
       text-align-last: justify;
     }
   }
