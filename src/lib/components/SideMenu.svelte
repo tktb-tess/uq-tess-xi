@@ -35,7 +35,7 @@
               }
             }}
           >
-            <ArrowIcon class="inline-block size-6 in-data-open:rotate-x-180 transition-transform" />
+            <ArrowIcon class="inline-block size-6 in-data-open:rotate-x-180 transition-transform duration-200" />
             <span>文法</span>
           </summary>
           <ul>

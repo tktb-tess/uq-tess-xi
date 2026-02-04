@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ExtLink from '$lib/components/ExtLink.svelte';
+  import XSection from '$lib/components/XSection.svelte';
   const {} = $props();
 </script>
 
@@ -36,6 +38,24 @@
     </li>
   </ul>
 </div>
+<XSection title="各ページリンク">
+  <ul>
+    <li><a href="/conlang/vaes/phonology">音韻論</a></li>
+    <li><a href="/conlang/vaes/letter-et-pron">文字と発音</a></li>
+    <li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
+    <li>りんごを食べたい58文 (準備中)</li>
+    <li>
+      文法
+      <ul>
+        <li>名詞 (準備中)</li>
+        <li><a href="/conlang/vaes/numeral">数詞</a></li>
+        <li>動詞 (準備中)</li>
+        <li>形容詞 (準備中)</li>
+      </ul>
+    </li>
+    <li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
+  </ul>
+</XSection>
 <section aria-labelledby="overview">
   <h2 id="overview">概要</h2>
   <p>古英語以降英語と分岐した言語であり、言語系統的には英語にかなり近い。</p>
@@ -47,11 +67,10 @@
   </p>
 </section>
 
-<section aria-labelledby="history">
-  <h2 id="history">歴史</h2>
+<section aria-labelledby="histoire">
+  <h2 id="histoire">歴史</h2>
   <p>
     古英語の時代&#9608;&#9608;世紀ごろに、当時のウェセックスとノーサンブリア地方にいたアングロ・サクソン人がヴェッセンズラン島に移り住んだのが最初である。
-    この大規模な移住の理由は詳しくは分かっていない。
   </p>
   <p>
     その後、グレートブリテン島ではノルマン・コンクエストなどの様々な出来事が起こり、英語の形態は大きく変化していくが、ヴェッセンズラン語はそのような変化をあまり被らなかった。

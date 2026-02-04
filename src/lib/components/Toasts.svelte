@@ -1,12 +1,10 @@
 <script lang="ts">
   import { toastStates, dismissToast } from './toastStates.svelte';
+  const {}: {} = $props();
 </script>
 
 {#if toastStates.size > 0}
-  <div
-    id="toast-root"
-    class="fixed z-10000 top-5 left-0 right-0 flex flex-col gap-2 items-center *:max-w-full"
-  >
+  <div id="toast-root">
     {#each toastStates as [key, toast]}
       <div
         class="__toast-elem
@@ -35,6 +33,11 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
+    #toast-root {
+      @apply fixed z-10000 top-5 left-0 right-0 flex flex-col
+      gap-2 items-center *:max-w-full;
+    }
+
     .__toast-elem {
       @apply px-3 border-2 cbg-body rounded flex
 		  gap-5 justify-center items-center relative animate-toast;

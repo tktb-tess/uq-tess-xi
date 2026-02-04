@@ -1,5 +1,6 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
+  import MDComponent from '$lib/components/MDComponent.svelte';
   import XSection from '$lib/components/XSection.svelte';
 </script>
 
@@ -28,8 +29,6 @@
     <li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
   </ul>
 </XSection>
-
-<section aria-labelledby="vaes"></section>
 <section aria-labelledby="jaes">
   <h2 id="jaes"><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h2>
   <p>
@@ -46,3 +45,4 @@
     ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
   </p>
 </section>
+

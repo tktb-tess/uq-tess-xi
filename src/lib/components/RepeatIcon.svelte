@@ -1,6 +1,6 @@
 <script lang="ts">
   interface Props {
-    class?: string;
+    readonly class?: string;
   }
   const { class: className }: Props = $props();
 </script>
