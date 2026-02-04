@@ -1,9 +1,6 @@
-
-
-
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
 <section aria-labelledby="cardinal">
-  <h2 id="cardinal" >基数詞 (Kardinalraiman)</h2>
+  <h2 id="cardinal">基数詞 (Kardinalraiman)</h2>
   <h3>0&ndash;19</h3>
   <div class="table-container">
     <table
@@ -462,7 +459,7 @@
   </p>
 </section>
 <section aria-labelledby="ordinal">
-  <h2 id="ordinal" >序数詞 (Ämbyrdlaiķraiman)</h2>
+  <h2 id="ordinal">序数詞 (Ämbyrdlaiķraiman)</h2>
   <div class="table-container">
     <table
       class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"

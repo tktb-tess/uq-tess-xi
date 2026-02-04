@@ -9,7 +9,8 @@
 
     return dirs.map((_, i) => {
       const href = `/${dirs.slice(0, i).join('/')}`;
-      const text = href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : 'Top';
+      const text =
+        href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : 'Top';
       return { href, text } as const;
     });
   });

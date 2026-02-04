@@ -61,7 +61,7 @@
 </script>
 
 <section aria-labelledby={seed}>
-  <h2  id={seed}>変な式</h2>
+  <h2 id={seed}>変な式</h2>
   <p class="text-slate-300"><s>この式、なんか変……</s></p>
   <div class="flex justify-center *:min-w-0 items-center my-5 gap-4">
     <input
@@ -103,4 +103,3 @@
     }
   }
 </style>
-

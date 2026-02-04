@@ -100,4 +100,3 @@ export const safeFetchJson = (input: RequestInfo | URL, init?: RequestInit) => {
         }),
     );
 };
-

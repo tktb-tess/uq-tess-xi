@@ -5,7 +5,7 @@
   import { siteConfig, key, type SiteConfig } from '$lib/modules/site-config.svelte';
   import { onMount } from 'svelte';
   import pages, { type PageData } from '$lib/modules/pages';
-    import Loads from './Loads.svelte';
+  import Loads from './Loads.svelte';
 
   const { children, data } = $props();
 

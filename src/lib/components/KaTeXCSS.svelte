@@ -2,7 +2,6 @@
   const {} = $props();
 </script>
 
-
 <svelte:head>
   <link
     rel="stylesheet"

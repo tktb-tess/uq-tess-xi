@@ -21,5 +21,3 @@
   <meta name="twitter:description" content={description} />
   <title>{fullTitle}</title>
 </svelte:head>
-
-

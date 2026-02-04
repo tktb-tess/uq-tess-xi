@@ -10,7 +10,7 @@ type ZpDICQuery = {
   readonly text: string;
   readonly skip?: number;
   readonly limit?: number;
-}
+};
 
 export const GET = async ({ request, fetch: svFetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
@@ -22,7 +22,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
 
   const fetchZpDICAPI = async (params: ZpDICQuery): Promise<ZpDIC.MWWEResponse> => {
     const pa = new URLSearchParams();
-  
+
     for (const [key, value] of Object.entries(params)) {
       if (typeof value === 'string') {
         pa.set(key, value);

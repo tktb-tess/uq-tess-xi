@@ -1,9 +1,6 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
-
 </script>
-
-
 
 <ul>
   <li><a href="/data/conlang-xcumon">人工言語製作者に50の質問</a></li>
