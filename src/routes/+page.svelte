@@ -1,7 +1,7 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
-  import CardList from '$lib/components/CardList.svelte';
+  import CardList from './CardList.svelte';
   import TodayWord from './todayWord.svelte';
   import GithubMark from '$lib/components/GitHubIcon.svelte';
   import XSection from '$lib/components/XSection.svelte';

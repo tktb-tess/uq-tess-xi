@@ -5,13 +5,23 @@
   src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'Noto-Sans-JP';
+  src: local('Noto Sans JP'), local('Noto Sans CJK JP Regular');
+}
+
+@font-face {
+  font-family: 'Noto-Serif-JP';
+  src: local('Noto Serif JP'), local('Noto Serif CJK JP Regular');
+}
+
 @theme {
   --font-sans:
-    'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto Sans JP', 'BIZ UDPGothic',
-    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+    'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto-Sans-JP', 'BIZ UDPGothic',
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', system-ui;
   --font-serif:
-    'Charis-Web', 'Times New Roman', 'Noto Serif JP', 'BIZ UDPMincho', 'Hiragino Mincho',
-    'Hiragino Serif', serif, 'Segoe UI', 'Yu Gothic UI', system-ui;
+    'Charis-Web', 'Times New Roman', 'Noto-Serif-JP', 'BIZ UDPMincho', 'Hiragino Mincho',
+    'Hiragino Serif', serif, 'Segoe UI', system-ui;
   --font-ipa: 'Charis-Web', 'Times New Roman', serif, system-ui;
   --font-phun-dot: 'PhunDot', var(--font-sans);
 
@@ -283,18 +293,14 @@
 }
 
 @layer base {
-  * {
-    @apply wrap-anywhere hyphens-auto;
-    line-break: strict;
-    font-optical-sizing: auto;
-  }
-
   :where(html, :host) {
     -webkit-tap-highlight-color: revert;
-    @apply font-sans max-sm:text-sm;
+    font-optical-sizing: auto;
+    line-break: strict;
+    @apply font-sans max-sm:text-sm wrap-anywhere hyphens-auto;
   }
 
-  :where(:not(pre, code, body, html)) {
+  :where(:not(pre, code, body, html, input, textarea)) {
     @apply font-[inherit];
   }
 
@@ -303,11 +309,11 @@
   }
 
   body {
-    @apply cbg-body ctext-text;
+    @apply flow-root cbg-body ctext-text min-h-lvh;
   }
 
   main {
-    @apply flow-root cbg-main px-(--s-gutter);
+    @apply flow-root cbg-main px-(--s-gutter) min-h-lvh;
   }
 
   a {
@@ -388,7 +394,7 @@
   }
 
   table {
-    @apply text-nowrap w-max max-w-full border cborder-border text-center;
+    @apply whitespace-nowrap break-keep w-max max-w-full border cborder-border text-center;
 
     :where(td, th) {
       @apply px-2 py-1;
