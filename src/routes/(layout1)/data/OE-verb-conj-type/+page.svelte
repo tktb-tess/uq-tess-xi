@@ -2,7 +2,6 @@
   import ConjugationTable from './conjugation-table.svelte';
 </script>
 
-
 <div>
   <ul>
     <li>
@@ -13,7 +12,7 @@
   </ul>
 </div>
 <section aria-labelledby="sect1">
-  <h2 id="sect1" >強変化動詞</h2>
+  <h2 id="sect1">強変化動詞</h2>
   <p>
     語幹の母音交替（アプラウトという）を伴う動詞活用を持つ動詞。変化パターンに応じていくつかのクラスに分けられる。
   </p>

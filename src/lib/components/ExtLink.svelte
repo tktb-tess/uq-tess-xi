@@ -21,4 +21,3 @@
     <BoxArrowIcon class="inline-block w-[.75em] h-auto align-baseline" />
   {/if}
 </a>
-

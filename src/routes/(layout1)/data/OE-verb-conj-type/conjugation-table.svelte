@@ -126,7 +126,6 @@
   @reference '../../../../app.css';
   @layer components {
     table {
-      
     }
   }
 </style>

@@ -2,7 +2,6 @@
   import ExtLink from '$lib/components/ExtLink.svelte';
 </script>
 
-
 <div>
   <p>
     以下は、ざすろん氏により作成された

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-
   const { data: swadeshList } = $props();
 
   onMount(() => {
@@ -10,9 +9,6 @@
     }
   });
 </script>
-
-
-
 
 <p>まだ未完成。順次追加していきます。</p>
 

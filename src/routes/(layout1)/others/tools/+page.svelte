@@ -7,7 +7,6 @@
   const { seeds, exps, logs } = data;
 </script>
 
-
 <div class="flex flex-col gap-8">
   <ToBase64 seed={seeds[0]} />
   <FromBase64 seed={seeds[1]} />

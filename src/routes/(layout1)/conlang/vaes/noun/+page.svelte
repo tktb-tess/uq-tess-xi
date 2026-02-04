@@ -1,7 +1,3 @@
-
-
-
-
 <section aria-labelledby="noun-gender">
   <h3 id="noun-gender">名詞の性</h3>
   <p>
