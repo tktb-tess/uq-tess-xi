@@ -8,11 +8,19 @@
     {#each toastStates as [key, toast]}
       <div
         class="__toast-elem
-					{toast.type === 'info'
-          ? 'border-sky-400'
-          : toast.type === 'warning'
-            ? 'border-red-500'
-            : 'border-green-500'}"
+					{(() => {
+          switch (toast.type) {
+            case 'info': {
+              return 'border-sky-500';
+            }
+            case 'warning': {
+              return 'border-red-600';
+            }
+            case 'hint': {
+              return 'border-green-500';
+            }
+          }
+        })()}"
       >
         <p>{toast.message}</p>
         <button
@@ -39,7 +47,7 @@
     }
 
     .__toast-elem {
-      @apply px-3 border-2 cbg-body rounded flex
+      @apply px-3 border-2 cbg-main rounded flex
 		  gap-5 justify-center items-center relative animate-toast;
 
       :where(p, button) {
