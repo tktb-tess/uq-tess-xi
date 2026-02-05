@@ -5,9 +5,12 @@
     readonly class?: string;
   }
   const { class: cName }: Props = $props();
-  let isVisuallyOpen = $state(false);
   let isOpen = $state(false);
   const duration = 200;
+  const option: KeyframeAnimationOptions = {
+    duration: 200,
+    easing: 'var(--tf-ease-in-out)'
+  };
 </script>
 
 <ul id="sidemenu" class={cName}>
@@ -20,18 +23,14 @@
       <li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
       <li><a aria-disabled="true">りんご文 (準備中)</a></li>
       <li>
-        <details bind:open={isOpen} data-open={isVisuallyOpen || null}>
+        <details bind:open={isOpen}>
           <summary
             onclick={(ev) => {
               ev.preventDefault();
               if (!isOpen) {
                 isOpen = true;
-                isVisuallyOpen = true;
               } else {
-                isVisuallyOpen = false;
-                setTimeout(() => {
-                  isOpen = false;
-                }, duration);
+                isOpen = false;
               }
             }}
           >
@@ -102,7 +101,7 @@
       @apply h-(--_close-height) overflow-y-clip
       transition-[height] duration-200;
 
-      &[data-open] {
+      &[open] {
         @apply h-(--_open-height);
       }
     }
