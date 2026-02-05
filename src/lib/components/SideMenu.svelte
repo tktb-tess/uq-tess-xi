@@ -6,10 +6,22 @@
   }
   const { class: cName }: Props = $props();
   let isOpen = $state(false);
-  const duration = 200;
-  const option: KeyframeAnimationOptions = {
-    duration: 200,
-    easing: 'var(--tf-ease-in-out)'
+  let details: HTMLDetailsElement;
+  let content: HTMLUListElement | undefined = $state();
+  let isRunning = $state(false);
+  const openingAnimation = $derived.by((): Keyframe[] | undefined => {
+    if (!content) return;
+    return [{ height: '0' }, { height: `${content.scrollHeight}px` }];
+  });
+
+  const closingAnimation = $derived.by((): Keyframe[] | undefined => {
+    if (!content) return;
+    return [{ height: `${content.scrollHeight}px` }, { height: 0 }];
+  });
+
+  const animationOptions: KeyframeAnimationOptions = {
+    duration: 240,
+    easing: 'cubic-bezier(0.6, 0, 0.4, 1)',
   };
 </script>
 
@@ -23,21 +35,36 @@
       <li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
       <li><a aria-disabled="true">りんご文 (準備中)</a></li>
       <li>
-        <details bind:open={isOpen}>
+        <details bind:this={details} data-opened={isOpen || null}>
           <summary
             onclick={(ev) => {
               ev.preventDefault();
-              if (!isOpen) {
-                isOpen = true;
-              } else {
+              if (!content || !openingAnimation || !closingAnimation || !details) return;
+              if (isRunning) return;
+              isRunning = true;
+              if (details.open) {
                 isOpen = false;
+                const anim = content.animate(closingAnimation, animationOptions);
+                anim.onfinish = () => {
+                  details.open = false;
+                  isRunning = false;
+                };
+              } else {
+                details.open = true;
+                isOpen = true;
+                const anim = content.animate(openingAnimation, animationOptions);
+                anim.onfinish = () => {
+                  isRunning = false;
+                };
               }
             }}
           >
-            <ArrowIcon class="inline-block size-6 in-data-open:rotate-x-180 transition-transform duration-200" />
+            <ArrowIcon
+              class="inline-block size-6 in-data-opened:rotate-x-180 transition-transform duration-240"
+            />
             <span>文法</span>
           </summary>
-          <ul>
+          <ul bind:this={content} class={isRunning ? 'overflow-y-clip' : null}>
             <li><a href="/conlang/vaes/noun">名詞 (準備中)</a></li>
             <li><a href="/conlang/vaes/numeral">数詞</a></li>
             <li><a aria-disabled="true">動詞 (準備中)</a></li>
@@ -87,22 +114,13 @@
       @apply font-sans font-extralight text-2xl px-2 py-1;
     }
 
-    summary {
-      @apply block user-select-none cursor-pointer;
-    }
-
     details {
-      --_c: calc(1lh + var(--spacing) * 3);
-      --_link-number: 5;
-      --_o: calc(var(--_c) * var(--_link-number));
-      --_gutter: 0.5rem;
-      --_close-height: calc(var(--_c) + var(--_gutter));
-      --_open-height: calc(var(--_o) + var(--_gutter));
-      @apply h-(--_close-height) overflow-y-clip
-      transition-[height] duration-200;
+      summary {
+        @apply block user-select-none cursor-pointer;
 
-      &[open] {
-        @apply h-(--_open-height);
+        &::-webkit-details-marker {
+          @apply hidden;
+        }
       }
     }
   }
