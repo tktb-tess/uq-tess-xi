@@ -30,14 +30,12 @@
   <h2 id={seed}>Base64 → テキスト 変換</h2>
   <div class="flex flex-col gap-3 my-(--s-figure)">
     <div class="flex flex-col gap-2 items-center">
-      <label for="input-{seed}" class="flex-[0_0_auto]">Base64</label>
+      <label for="input-{seed}">Base64</label>
       <textarea class="w-full h-32" id="input-{seed}" bind:value={input}></textarea>
     </div>
     <p class="text-center m-0">↓</p>
     <div class="flex flex-col gap-2 items-center">
-      <label for="output-{seed}" class="flex-[0_0_auto]"
-        >元テキスト (枠内をクリックするとコピーできます)</label
-      >
+      <label for="output-{seed}">元テキスト (枠内をクリックするとコピーできます)</label>
       <textarea onclick={copyText} class="w-full h-32 cursor-pointer" id="output-{seed}" readonly
         >{output}</textarea
       >

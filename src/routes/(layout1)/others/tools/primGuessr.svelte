@@ -52,7 +52,7 @@
     2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 以下です。
   </p>
 
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-5 my-(--s-figure)">
     <div class="flex justify-center gap-8 *:min-w-0">
       <div>
         <label for="{seed}-input1">下限</label>
@@ -97,7 +97,7 @@
     </div>
     <button onclick={fetchPrimes} type="button" class="btn-1 text-xl self-center">表示</button>
     <p
-      class="my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center text-center min-w-0 max-w-full"
+      class="my-4 border cborder-border-dark px-2 rounded text-2xl font-mono self-center text-center min-w-0 max-w-full"
     >
       {#await primesPr}
         <Spinner class="size-6" />
@@ -165,8 +165,8 @@
     {#if judge !== null}
       <p
         class="
-					my-4 border bg-white px-2 rounded border-slate-300 text-2xl font-mono self-center
-					{judge ? 'text-[red]' : 'text-[blue]'}
+					my-4 border px-2 rounded text-2xl font-mono self-center cborder-border-dark
+					{judge ? 'text-red-600' : 'text-blue-600'}
 					"
       >
         {judge ? '〇' : '×'}

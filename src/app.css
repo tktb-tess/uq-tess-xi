@@ -34,9 +34,13 @@
   --color-body: var(--color-violet-50);
   --color-d-body: var(--color-violet-950-d);
   --color-main: #fff;
+  --color-main-pale: var(--color-slate-100);
   --color-d-main: var(--color-violet-1000-d);
+  --color-d-main-pale: var(--color-zinc-800);
   --color-text: #000;
   --color-d-text: #fff;
+  --color-text-pale: color-mix(in oklch, var(--color-text) 40%, transparent);
+  --color-d-text-pale: color-mix(in oklch, var(--color-d-text) 40%, transparent);
   --color-textinv: #fff;
   --color-d-textinv: #000;
   --color-accent: var(--color-violet-950-d);
@@ -278,7 +282,7 @@
     @apply font-sans max-sm:text-sm wrap-anywhere hyphens-auto;
   }
 
-  :where(:not(pre, code, body, html, input, textarea)) {
+  :not(pre, code, body, html, input, textarea) {
     @apply font-[inherit];
   }
 
@@ -303,18 +307,23 @@
   }
 
   button,
-  input[type='button'] {
+  input:is([type='button'], [type='checkbox'], [type='radio'], [type='submit'], [type='reset']) {
     @apply cursor-pointer;
   }
 
-  input[type='text'],
-  input[type='number'],
-  input[type='url'],
+  input:is(
+    [type='text'],
+    [type='number'],
+    [type='url'],
+    [type='email'],
+    [type='search'],
+    [type='tel']
+  ),
   textarea {
     @apply font-mono border cborder-border rounded px-1;
 
     &:disabled {
-      @apply text-neutral-500 bg-neutral-50;
+      @apply ctext-text-pale cbg-main-pale;
     }
   }
 
