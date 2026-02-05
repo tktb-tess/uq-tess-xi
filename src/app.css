@@ -283,7 +283,7 @@
 }
 
 @layer base {
-  :is(html, :host, .__OVERWRITE__.__OVERWRITE__) {
+  :is(html, :host, #__OVERWRITE__) {
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
