@@ -24,6 +24,7 @@
     'Hiragino Serif', serif, 'Segoe UI', system-ui;
   --font-ipa: 'Charis-Web', 'Times New Roman', serif, system-ui;
   --font-phun-dot: 'PhunDot', var(--font-sans);
+  --font-title: 'Yuji Syuku', serif;
 
   --color-violet-1000-d: oklch(from var(--color-violet-950) 15% 0.06 h);
   --color-violet-950-d: oklch(from var(--color-violet-950) l 0.08 h);

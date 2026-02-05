@@ -27,8 +27,7 @@
     }
 
     #top-title-text {
-      @apply font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-15;
-      font-family: 'Yuji Syuku', serif;
+      @apply font-title font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-15;
       text-align-last: justify;
     }
   }

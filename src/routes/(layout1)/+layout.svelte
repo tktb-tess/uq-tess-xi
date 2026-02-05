@@ -35,8 +35,10 @@
   >
     <HamburgerIcon class="size-6 inline-block" />
   </button>
-  <h1>
-    <a href="/.">悠久肆方体</a>
+  <h1 id="title">
+    <a href="/." title="トップページに戻る">
+      <span>悠久肆方体</span>
+    </a>
   </h1>
   <div class="__btn-x">
     <ToggleColorSchemeBtn class="h-full leading-0" />
@@ -86,10 +88,24 @@
   @reference '../../app.css';
   @layer components {
     header {
-      @apply flex h-(--s-header) items-center px-6 bg-(image:--grad-accent) sticky top-0;
+      @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0;
+
+      :where(#title) {
+        @apply font-title font-normal;
+      }
+
+      :where(#title > a) {
+        @apply grid place-items-center no-underline leading-none;
+
+        > :where(span) {
+          @apply pb-1;
+        }
+      }
+
+      
 
       :where(a, .__btn-x, #drawer-open-btn) {
-        @apply flex items-center h-(--s-header) text-2xl font-serif no-underline px-1 
+        @apply h-(--s-header) text-2xl px-1
         text-textinv any-hover:text-text any-hover:bg-textinv transition-colors;
       }
 
@@ -97,6 +113,7 @@
         @apply ms-auto;
       }
     }
+
     .__main-root {
       @apply flow-root lg:grid lg:grid-cols-(--cols-main) min-h-lvh;
 
