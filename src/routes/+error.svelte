@@ -25,7 +25,7 @@
   <h2>Hoppla!</h2>
   <p>
     {#if page.status === 404}
-      お探しのページは見つかりませんでした。<wbr />移動あるいは削除された可能性があります。
+      お探しのページは見つかりませんでした。移動あるいは削除された可能性があります。
     {:else}
       {page.status} {page.error?.message ?? 'No message'}
     {/if}
@@ -45,11 +45,11 @@
       }
 
       :where(h2) {
-        @apply text-6xl font-extralight font-sans;
+        @apply text-6xl font-extralight font-sans border-none;
       }
 
       :where(p) {
-        @apply text-nowrap text-center;
+        @apply break-keep wrap-normal text-center;
       }
 
       :where(a) {

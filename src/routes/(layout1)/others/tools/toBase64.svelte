@@ -30,7 +30,7 @@
 </script>
 
 <XSection {title}>
-  <div class="flex flex-col gap-3 my-(--s-heading)">
+  <div class="flex flex-col gap-3 my-(--s-figure)">
     <div class="flex flex-col gap-2 text-center">
       <label for="input-{b64}">テキスト</label>
       <textarea class="w-full h-32" id="input-{b64}" bind:value={input}></textarea>

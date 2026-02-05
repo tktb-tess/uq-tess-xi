@@ -62,13 +62,13 @@
 
 <section aria-labelledby={seed}>
   <h2 id={seed}>変な式</h2>
-  <p class="text-slate-300"><s>この式、なんか変……</s></p>
-  <div class="flex justify-center *:min-w-0 items-center my-5 gap-4">
+  <p><s class="ctext-text-pale">この式、なんか変……</s></p>
+  <div class="flex justify-center *:min-w-0 items-center my-(--s-figure) gap-4">
     <input
       type="number"
       min="0"
       max="2047"
-      class="border border-slate-300 rounded px-1 bg-white w-20"
+      class="border rounded px-1 w-20"
       bind:value={
         () => leftVal.toString(),
         (v) => {
@@ -81,7 +81,7 @@
       type="number"
       min="0"
       max="2047"
-      class="border border-slate-300 rounded px-1 bg-white w-20"
+      class="border rounded px-1 w-20"
       bind:value={
         () => rightVal.toString(),
         (v) => {
