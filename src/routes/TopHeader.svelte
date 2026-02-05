@@ -1,5 +1,5 @@
 <script lang="ts">
-  import UqTessLogo from './UQTessLogo.svelte';
+  import UqTessLogo from '$lib/components/UQTessLogo.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   const {} = $props();
 </script>
@@ -16,7 +16,7 @@
 </header>
 
 <style lang="postcss">
-  @reference '../../app.css';
+  @reference '../app.css';
   @layer components {
     header {
       @apply grid h-svh place-items-center content-center gbg-vivid text-white;
@@ -27,7 +27,7 @@
     }
 
     #top-title-text {
-      @apply font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-20 -skew-y-3;
+      @apply font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-15;
       font-family: 'Yuji Syuku', serif;
       text-align-last: justify;
     }

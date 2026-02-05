@@ -147,15 +147,11 @@
     background-color: --value(--color-d- *);
   }
 
-  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+  [data-color-scheme='dark'] & {
     background-color: --value(--color-d-*);
   }
 
-  &:is(
-    [data-color-scheme='light'],
-    [data-color-scheme='light'] &,
-    :has([data-color-scheme='light'])
-  ) {
+  [data-color-scheme='light'] & {
     background-color: --value(--color-*);
   }
 }
@@ -167,15 +163,11 @@
     background-image: --value(--grad-d- *);
   }
 
-  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+  [data-color-scheme='dark'] & {
     background-image: --value(--grad-d-*);
   }
 
-  &:is(
-    [data-color-scheme='light'],
-    [data-color-scheme='light'] &,
-    :has([data-color-scheme='light'])
-  ) {
+  [data-color-scheme='light'] & {
     background-image: --value(--grad-*);
   }
 }
@@ -187,15 +179,11 @@
     color: --value(--color-d- *);
   }
 
-  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+  [data-color-scheme='dark'] & {
     color: --value(--color-d-*);
   }
 
-  &:is(
-    [data-color-scheme='light'],
-    [data-color-scheme='light'] &,
-    :has([data-color-scheme='light'])
-  ) {
+  [data-color-scheme='light'] & {
     color: --value(--color-*);
   }
 }
@@ -207,15 +195,11 @@
     border-color: --value(--color-d- *);
   }
 
-  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+  [data-color-scheme='dark'] & {
     border-color: --value(--color-d-*);
   }
 
-  &:is(
-    [data-color-scheme='light'],
-    [data-color-scheme='light'] &,
-    :has([data-color-scheme='light'])
-  ) {
+  [data-color-scheme='light'] & {
     border-color: --value(--color-*);
   }
 }
@@ -265,7 +249,7 @@
     @slot;
   }
 
-  &:is([data-color-scheme='dark'], [data-color-scheme='dark'] &, :has([data-color-scheme='dark'])) {
+  [data-color-scheme='dark'] & {
     @slot;
   }
 }
@@ -273,11 +257,7 @@
 @custom-variant l {
   @slot;
 
-  &:is(
-    [data-color-scheme='light'],
-    [data-color-scheme='light'] &,
-    :has([data-color-scheme='light'])
-  ) {
+  [data-color-scheme='light'] & {
     @slot;
   }
 }
