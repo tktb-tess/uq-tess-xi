@@ -23,13 +23,15 @@
   );
 
   onMount(() => {
-    const str = window.localStorage.getItem(key);
+    const str = localStorage.getItem(key);
     if (!str) return;
     const conf: SiteConfig = JSON.parse(str);
     siteConfig.colorScheme = conf.colorScheme;
   });
 
   $effect(() => {
+    const root = document.documentElement;
+    root.dataset.colorScheme = siteConfig.colorScheme;
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });
 </script>
@@ -54,7 +56,5 @@
   <title>{ogTitle}</title>
 </svelte:head>
 
-<div data-color-scheme={siteConfig.colorScheme} class="contents">
-  <Toasts />
-  {@render children()}
-</div>
+<Toasts />
+{@render children()}

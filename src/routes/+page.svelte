@@ -6,7 +6,7 @@
   import GithubMark from '$lib/components/GitHubIcon.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
-  import TopHeader from '$lib/components/TopHeader.svelte';
+  import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
   const {} = $props();
 </script>

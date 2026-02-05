@@ -118,10 +118,6 @@ const pages: readonly PageData[] = [
     path: '/others/license',
   },
   {
-    title: 'HTMLからMarkdownへ変換',
-    path: '/others/md-converter',
-  },
-  {
     title: 'Miller-Rabin 確率的素数判定法',
     path: '/others/miller-rabin',
   },
