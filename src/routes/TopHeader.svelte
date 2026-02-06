@@ -4,10 +4,6 @@
   const {} = $props();
 </script>
 
-<svelte:head>
-  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet" />
-</svelte:head>
-
 <header>
   <div id="top-logo">
     <UqTessLogo class="size-full" />

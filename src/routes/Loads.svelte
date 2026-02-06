@@ -3,6 +3,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link rel="preconnect" href="https://api.tktb-tess.dev" crossorigin="anonymous" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet" />
   <!-- my font-face -->
   <link
     rel="stylesheet"
