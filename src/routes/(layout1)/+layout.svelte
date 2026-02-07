@@ -102,8 +102,6 @@
         }
       }
 
-      
-
       :where(a, .__btn-x, #drawer-open-btn) {
         @apply h-(--s-header) text-2xl px-1
         text-textinv any-hover:text-text any-hover:bg-textinv transition-colors;

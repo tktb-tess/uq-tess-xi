@@ -1,47 +1,50 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
   const { data: swadeshList } = $props();
-
-  onMount(() => {
-    if (!swadeshList.success) {
-      console.error(swadeshList);
-    }
-  });
+  const [header, ...body] = $derived(swadeshList.value);
 </script>
 
 <p>まだ未完成。順次追加していきます。</p>
 
-{#if swadeshList.success}
-  {@const [header, ...body] = swadeshList.result.value}
-  <div class="table-container animate-[slide-in-2_.4s_cubic-bezier(0,1,1,1),fade-in_.4s_linear]">
-    <table
-      class="grid-cols-auto-5 [&_td]:text-start [&_td:first-child]:text-end [&_td:first-child]:f-tnum [&_td:nth-child(4)]:font-ipa"
-    >
-      <thead>
+<div class="table-container">
+  <table class="__swadesh-table">
+    <thead>
+      <tr>
+        {#each header as str}
+          <th>{str}</th>
+        {/each}
+      </tr>
+    </thead>
+    <tbody>
+      {#each body as row}
         <tr>
-          {#each header as str}
-            <th>{str}</th>
+          {#each row as str}
+            <td>{str}</td>
           {/each}
         </tr>
-      </thead>
-      <tbody>
-        {#each body as row}
-          <tr>
-            {#each row as str}
-              <td>{str}</td>
-            {/each}
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
-{:else}
-  <div class="text-center *:text-danger">
-    <h3>読み込みに失敗しました</h3>
-    <p>再読み込みしてください</p>
-  </div>
-{/if}
+      {/each}
+    </tbody>
+  </table>
+</div>
 
-<style>
+<style lang="postcss">
+  @reference '../../../../../app.css';
+  @layer components {
+    .table-container {
+      @apply animate-swa;
+    }
+
+    .__swadesh-table :where(td) {
+      &:where(:not(:first-child)) {
+        @apply text-start;
+      }
+
+      &:where(:first-child) {
+        @apply text-end f-tnum;
+      }
+
+      &:where(:nth-child(4)) {
+        @apply font-ipa;
+      }
+    }
+  }
 </style>

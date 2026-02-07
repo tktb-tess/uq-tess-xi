@@ -1,4 +1,4 @@
-import { Result, ok, err, ResultAsync } from 'neverthrow';
+import { Result, ok, err, ResultAsync, okAsync, errAsync } from 'neverthrow';
 import * as z from 'zod';
 
 type NamedError<EName extends string | symbol> = {
@@ -21,82 +21,65 @@ const NamedError = {
   },
 };
 
+const msgs = {
+  parseError: 'Failed to parse JSON',
+  fetchError: 'Failed to fetch',
+} as const;
+
 export { NamedError };
 
-export const JSONSafeParse: (
+export const safeJSONParse: (
   text: string,
   reviver?: (this: unknown, key: string, value: unknown) => unknown,
 ) => Result<unknown, NamedError<'ParseError'>> = Result.fromThrowable(JSON.parse, (e) => {
-  if (e instanceof Error) {
-    return NamedError.from('ParseError', e.message);
-  }
-  return NamedError.from('ParseError', 'failed to parse');
+  const message = e instanceof Error ? e.message : msgs.parseError;
+  return NamedError.from('ParseError', message);
 });
 
-export const parseAndValidate = <TSchema extends z.ZodType>(schema: TSchema, json: string) => {
-  return JSONSafeParse(json).andThen(
-    (obj): Result<z.infer<TSchema>, z.ZodError<z.infer<TSchema>>> => {
-      const r = schema.safeParse(obj);
-
-      return r.success ? ok(r.data) : err(r.error);
-    },
-  );
+export const safeValidate = <TSchema extends z.ZodType>(
+  schema: TSchema,
+  data: unknown,
+): Result<z.infer<TSchema>, z.ZodError<z.infer<TSchema>>> => {
+  const result = schema.safeParse(data);
+  return result.success ? ok(result.data) : err(result.error);
 };
 
-export const safeFetchJsonWithValidate = <TSchema extends z.ZodType>(
+export const safeFetch = (
+  input: RequestInfo | URL,
+  init?: RequestInit,
+): ResultAsync<Response, NamedError<'FetchError'>> => {
+  return ResultAsync.fromPromise(fetch(input, init), (e) => {
+    const m = e instanceof Error ? e.message : msgs.fetchError;
+    return NamedError.from('FetchError', m);
+  }).andThen((resp) => {
+    if (!resp.ok) {
+      const m = `Failed to fetch: ${resp.status} ${resp.statusText}`;
+      return errAsync(NamedError.from('FetchError', m));
+    }
+    return okAsync(resp);
+  });
+};
+
+export const safeFetchJson = (
+  input: RequestInfo | URL,
+  init?: RequestInit,
+): ResultAsync<unknown, NamedError<'ParseError'> | NamedError<'FetchError'>> => {
+  return safeFetch(input, init).andThen((res) => {
+    return ResultAsync.fromPromise(res.json(), (e) => {
+      const m = e instanceof Error ? e.message : msgs.parseError;
+      return NamedError.from('ParseError', m);
+    });
+  });
+};
+
+export const safeParseAndValidate = <TSchema extends z.ZodType>(schema: TSchema, json: string) => {
+  return safeJSONParse(json).andThen((data) => safeValidate(schema, data));
+};
+
+export const safeFetchJsonAndValidate = <TSchema extends z.ZodType>(
   input: RequestInfo | URL,
   schema: TSchema,
   init?: RequestInit,
 ) => {
-  const ra1 = ResultAsync.fromPromise(fetch(input, init), (e) => {
-    return NamedError.from('FetchError', e instanceof Error ? e.message : 'Failed to fetch');
-  });
-
-  const ra2 = ra1.andThen((res) => {
-    if (!res.ok) {
-      return err(NamedError.from('FetchError', `Failed to fetch: ${res.status} ${res.statusText}`));
-    }
-    return ok(res);
-  });
-
-  const ra3 = ra2
-    .andThen((res) =>
-      ResultAsync.fromPromise(res.json(), (e) => {
-        return NamedError.from(
-          'ParseError',
-          e instanceof Error ? e.message : 'Failed to parse JSON',
-        );
-      }),
-    )
-    .andThen((obj) => {
-      const r = schema.safeParse(obj);
-      if (!r.success) {
-        return err(r.error);
-      }
-      return ok(r.data);
-    });
-  return ra3;
-};
-
-export const safeFetchJson = (input: RequestInfo | URL, init?: RequestInit) => {
-  return ResultAsync.fromPromise(fetch(input, init), (e) => {
-    return NamedError.from('FetchError', e instanceof Error ? e.message : 'Failed to fetch');
-  })
-    .andThen((res) => {
-      if (!res.ok) {
-        return err(
-          NamedError.from('FetchError', `Failed to fetch: ${res.status} ${res.statusText}`),
-        );
-      }
-      return ok(res);
-    })
-    .andThen(
-      (res): ResultAsync<unknown, NamedError<'ParseError'>> =>
-        ResultAsync.fromPromise(res.json(), (e) => {
-          return NamedError.from(
-            'ParseError',
-            e instanceof Error ? e.message : 'Failed to parse JSON',
-          );
-        }),
-    );
+  return safeFetchJson(input, init).andThen((data) => safeValidate(schema, data));
 };

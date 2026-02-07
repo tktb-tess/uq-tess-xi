@@ -6,7 +6,7 @@ import { createClient } from 'redis';
 const headers = {
   'Content-Type': 'application/json; charset=utf-8',
   'Access-Control-Allow-Origin': 'https://www.tktb-tess.dev',
-} as const;
+} as const satisfies HeadersInit;
 
 export const GET = async () => {
   const client = createClient({ url: REDIS_URL });
