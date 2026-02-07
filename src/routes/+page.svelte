@@ -16,7 +16,7 @@
 <main>
   <div>
     <div class="m-2 flex justify-end">
-      <ToggleColorSchemeBtn class="btn-1 px-2 py-1" />
+      <ToggleColorSchemeBtn class="btn-1 p-2" />
     </div>
     <h2 id="subtitle">〜ようこそ〜</h2>
     <p>

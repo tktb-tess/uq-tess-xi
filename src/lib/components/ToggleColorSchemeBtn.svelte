@@ -41,3 +41,12 @@
     <DevicesIcon class="size-4 inline-block" />
   {/if}
 </button>
+
+<style lang="postcss">
+  @reference '../../app.css';
+  @layer components {
+    #toggle-color-scheme-btn {
+      @apply grid place-content-center;
+    }
+  }
+</style>

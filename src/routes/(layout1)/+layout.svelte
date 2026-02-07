@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import HamburgerIcon from '$lib/components/HamburgerIcon.svelte';
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
-  import CloseIcon from '$lib/components/CloseIcon.svelte';
+  import Drawer from './Drawer.svelte';
+  import DrawerBtn from './DrawerBtn.svelte';
   import pages, { type PageData } from '$lib/modules/pages.js';
 
   const { children, data } = $props();
@@ -25,51 +25,14 @@
 </script>
 
 <header>
-  <button
-    type="button"
-    id="drawer-open-btn"
-    title="Open Sidemenu"
-    onclick={() => {
-      drawerIsOpen = true;
-    }}
-  >
-    <HamburgerIcon class="size-6 inline-block" />
-  </button>
-  <h1 id="title">
-    <a href="/." title="トップページに戻る">
-      <span>悠久肆方体</span>
-    </a>
-  </h1>
-  <div class="__btn-x">
-    <ToggleColorSchemeBtn class="h-full leading-0" />
-  </div>
+  <DrawerBtn bind:drawerIsOpen />
+  <a id="to-top" href="/." title="トップページに戻る">
+    <span>悠久肆方体</span>
+  </a>
+  <ToggleColorSchemeBtn />
 </header>
 <div class="__main-root">
-  <div id="drawer-root" data-drawer-open={drawerIsOpen || null}>
-    <button
-      id="drawer-backdrop"
-      title="Close Drawer"
-      onclick={(ev) => {
-        if (ev.target !== ev.currentTarget) return;
-        drawerIsOpen = false;
-      }}
-    ></button>
-    <aside id="drawer">
-      <div>
-        <button
-          type="button"
-          title="Close Drawer"
-          id="drawer-close-btn"
-          onclick={() => {
-            drawerIsOpen = false;
-          }}
-        >
-          <CloseIcon class="size-6" />
-        </button>
-      </div>
-      <SideMenu />
-    </aside>
-  </div>
+  <Drawer bind:drawerIsOpen />
 
   <aside>
     <SideMenu />
@@ -90,25 +53,21 @@
     header {
       @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0;
 
-      :where(#title) {
-        @apply font-title font-normal;
+      > :global(*) {
+        @apply h-full text-2xl px-1
+        text-textinv any-hover:text-text any-hover:bg-textinv transition-colors leading-none;
       }
 
-      :where(#title > a) {
-        @apply grid place-items-center no-underline leading-none;
+      > :global(:where(:nth-child(3))) {
+        @apply ms-auto;
+      }
+
+      :where(#to-top) {
+        @apply grid place-items-center no-underline leading-none font-title font-normal;
 
         > :where(span) {
-          @apply pb-1;
+          @apply pb-0.75;
         }
-      }
-
-      :where(a, .__btn-x, #drawer-open-btn) {
-        @apply h-(--s-header) text-2xl px-1
-        text-textinv any-hover:text-text any-hover:bg-textinv transition-colors;
-      }
-
-      :where(.__btn-x) {
-        @apply ms-auto;
       }
     }
 
@@ -127,45 +86,6 @@
       :where(#subtitle) {
         @apply text-center ps-0 border-none mb-(--s-heading);
       }
-    }
-
-    #drawer-open-btn {
-      @apply block lg:hidden leading-0;
-    }
-
-    #drawer-root {
-      @apply flow-root invisible fixed inset-0 z-1000
-      duration-200 ease-(--tf-ease-in);
-
-      &[data-drawer-open] {
-        @apply visible bg-black/15 transition-[background-color,visibility]
-         ease-(--tf-ease-out);
-      }
-    }
-
-    #drawer-backdrop {
-      @apply cursor-auto fixed inset-0;
-    }
-
-    #drawer {
-      @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side) overflow-y-auto
-      cbg-body -translate-x-full in-data-drawer-open:translate-x-0
-      transition-[translate,visibility]
-      ease-(--tf-ease-in) in-data-drawer-open:ease-(--tf-ease-out)
-      duration-200;
-
-      > :where(div) {
-        @apply flex justify-end;
-      }
-
-      :where(#drawer-close-btn) {
-        @apply leading-0 p-2 m-1 rounded-[50%] any-hover:ctext-textinv
-        any-hover:cbg-accent transition-colors;
-      }
-    }
-
-    :global(:is(html, body):has([data-drawer-open])) {
-      @apply overflow-y-clip;
     }
   }
 </style>

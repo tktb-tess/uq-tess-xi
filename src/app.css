@@ -406,7 +406,7 @@
   }
 
   table {
-    @apply whitespace-nowrap break-keep w-max max-w-full;
+    @apply whitespace-nowrap break-keep w-max max-w-full text-center;
 
     :where(td, th) {
       @apply px-2 py-1;
