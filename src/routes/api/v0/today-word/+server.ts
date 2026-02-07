@@ -6,7 +6,7 @@ import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { redisKeys } from '$lib/types/decl';
 import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
-import { NamedError, parseAndValidate } from '$lib/modules/util';
+import { NamedError, safeParseAndValidate } from '$lib/modules/util';
 
 export const GET = async () => {
   const client = createClient({ url: REDIS_URL });
@@ -29,7 +29,7 @@ export const GET = async () => {
         if (!word) {
           return err(NamedError.from('RedisError', 'failed to load today-word from redis'));
         }
-        return parseAndValidate(ZpDIC.wordSchema, word);
+        return safeParseAndValidate(ZpDIC.wordSchema, word);
       });
 
     if (result.isErr()) {

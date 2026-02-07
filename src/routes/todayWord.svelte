@@ -1,13 +1,17 @@
 <script lang="ts">
-  import { NamedError, safeFetchJson } from '$lib/modules/util';
+  import { NamedError, safeFetchJsonAndValidate } from '$lib/modules/util';
   import ExtLink from '$lib/components/ExtLink.svelte';
   import Spinner from '$lib/components/Spinner.svelte';
-  import type { WordData } from '$lib/types/decl';
+  import { wordDataSchema, type WordData } from '$lib/types/decl';
   import { okAsync, type ResultAsync } from 'neverthrow';
   import { onMount } from 'svelte';
+  import type * as z from 'zod';
 
-  const fetchTodayWord = () => safeFetchJson('/api/v0/today-word').map((r) => r as WordData);
-  type TWord = ResultAsync<WordData | null, NamedError<'FetchError'> | NamedError<'ParseError'>>;
+  const fetchTodayWord = () => safeFetchJsonAndValidate('/api/v0/today-word', wordDataSchema);
+  type TWord = ResultAsync<
+    WordData | null,
+    NamedError<'FetchError'> | NamedError<'ParseError'> | z.ZodError<WordData>
+  >;
   let resultAsy: TWord = $state(okAsync(null));
 
   onMount(async () => {

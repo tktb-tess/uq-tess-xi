@@ -143,6 +143,25 @@
   }
 
   --animate-toast: --k-toast-fadein 0.1s var(--tf-ease-out);
+
+  @keyframes --k-swa-slide-in {
+    from {
+      translate: 0 1rem;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes --k-swa-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  --animate-swa: --k-swa-slide-in 300ms var(--tf-ease-out), --k-swa-fade-in 300ms linear;
 }
 
 @utility cbg-* {

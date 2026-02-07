@@ -4,7 +4,6 @@ import { redisKeys } from '$lib/types/decl';
 import { getRndInt } from '@tktb-tess/util-fns';
 import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
-import Papa from 'papaparse';
 
 type ZpDICQuery = {
   readonly text: string;
@@ -14,8 +13,7 @@ type ZpDICQuery = {
 
 export const GET = async ({ request, fetch: svFetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
-  const vaeSwadeshUrl =
-    'https://script.google.com/macros/s/AKfycbwAr_bYLJIm-nZlOdFl9y1V3ZipMMg_2XHFel-p0gqnLfiLnRwSMqbRn-h4RAEjClAK/exec';
+
   const zpdicReqHeaders = {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
@@ -65,28 +63,6 @@ export const GET = async ({ request, fetch: svFetch }) => {
     return (await getWord(getRndInt(0, total))).words.at(0);
   };
 
-  const getSwadeshListVae = async () => {
-    const controller = new AbortController();
-
-    const id = setTimeout(() => controller.abort(), 20000);
-
-    const resp = await svFetch(vaeSwadeshUrl, { method: 'GET', signal: controller.signal });
-
-    clearTimeout(id);
-
-    if (!resp.ok) {
-      throw Error('cannotAccessSwadeshListVae');
-    }
-
-    const pre = await resp
-      .text()
-      .then((csvStr) => Papa.parse<string[]>(csvStr, { header: false }).data);
-
-    return pre.map((row) => {
-      return row.map((s) => s.replaceAll(';', ',').trim());
-    });
-  };
-
   // authorization
   if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
     error(401);
@@ -105,8 +81,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
     };
 
     const taskSwadeshVae = async () => {
-      const result = await getSwadeshListVae();
-      await client.set(redisKeys.swadeshVae, JSON.stringify(result));
+      await client.set(redisKeys.swadeshVae, '');
     };
 
     const taskLastUpdate = async () => {
