@@ -54,7 +54,9 @@
   --color-d-border-light: #ffffff20;
   --color-d-border-dark: #ffffff70;
   --color-link: var(--color-blue-700);
-  --color-d-link: var(--color-blue-400);
+  --color-d-link: var(--color-blue-300);
+  --color-link-disabled: var(--color-zinc-500);
+  --color-d-link-disabled: var(--color-zinc-300);
   --color-caution: var(--color-red-600);
   --color-d-caution: var(--color-yellow-300);
   --color-td1: transparent;
@@ -294,7 +296,7 @@
 }
 
 @layer base {
-  :is(html, :host, #__OVERWRITE__) {
+  :is(html, :host) {
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
@@ -319,6 +321,10 @@
 
   a {
     @apply ctext-link any-hover:underline;
+
+    &[aria-disabled='true'] {
+      @apply ctext-link-disabled no-underline;
+    }
   }
 
   :is(b, strong, th) {
@@ -400,26 +406,10 @@
   }
 
   table {
-    @apply whitespace-nowrap break-keep w-max max-w-full border cborder-border text-center;
+    @apply whitespace-nowrap break-keep w-max max-w-full;
 
     :where(td, th) {
       @apply px-2 py-1;
-    }
-
-    :where(td:nth-child(odd)) {
-      @apply cbg-td1;
-    }
-
-    :where(td:nth-child(even)) {
-      @apply cbg-td2;
-    }
-
-    :where(th:nth-child(odd)) {
-      @apply cbg-th1;
-    }
-
-    :where(th:nth-child(even)) {
-      @apply cbg-th2;
     }
 
     :where(& > thead > tr:last-child) {
@@ -436,7 +426,7 @@
   }
 
   ul {
-    list-style: '\2023\0020';
+    list-style-type: '\2023\0020';
   }
 
   ol {
