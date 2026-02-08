@@ -52,11 +52,12 @@
     }
 
     #drawer {
-      @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side) overflow-y-auto
+      @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side-max) overflow-y-auto
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
       transition-[translate,visibility]
       ease-(--tf-ease-in) in-data-drawer-open:ease-(--tf-ease-out)
       duration-200;
+      scrollbar-width: thin;
 
       > :where(div) {
         @apply flex justify-end;

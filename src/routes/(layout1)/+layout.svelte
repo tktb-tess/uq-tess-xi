@@ -24,25 +24,27 @@
   });
 </script>
 
-<header>
-  <DrawerBtn bind:drawerIsOpen />
-  <a id="to-top" href="/." title="トップページに戻る">
-    <span>悠久肆方体</span>
-  </a>
-  <ToggleColorSchemeBtn />
-</header>
-<div class="__main-root">
+<div class="__container">
+  <header>
+    <DrawerBtn bind:drawerIsOpen />
+    <a id="to-top" href="/." title="トップページに戻る">
+      <span>悠久肆方体</span>
+    </a>
+    <ToggleColorSchemeBtn />
+  </header>
   <Drawer bind:drawerIsOpen />
 
-  <aside>
+  <aside class="__lside">
     <SideMenu />
   </aside>
   <main>
     <BreadCrumb path={data.path} />
-    <h2 id="subtitle">{title}</h2>
+    <h2 id="title">{title}</h2>
     {@render children()}
     <div class="h-12"></div>
   </main>
+  <aside class="__rside"></aside>
+  <footer></footer>
 </div>
 
 <PageTopBtn />
@@ -50,41 +52,67 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
-    header {
-      @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0;
+    .__container {
+      grid-template-areas:
+        'header header header'
+        'lside main rside'
+        'footer footer footer';
 
-      > :global(*) {
-        @apply h-full text-2xl px-1
+      grid-template-columns:
+        minmax(min(var(--w-side-max), 30%), 1fr)
+        minmax(0, var(--w-main-min))
+        minmax(min(var(--w-side-max), 30%), 1fr);
+
+      grid-template-rows: auto 1fr auto;
+
+      @apply max-lg:flow-root lg:grid min-h-lvh;
+
+      > header {
+        grid-area: header;
+        @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0;
+
+        > :global(*) {
+          @apply h-full text-2xl px-1
         text-textinv any-hover:text-text any-hover:bg-textinv transition-colors leading-none;
-      }
+        }
 
-      > :global(:where(:nth-child(3))) {
-        @apply ms-auto;
-      }
+        > :global(:where(:nth-child(3))) {
+          @apply ms-auto;
+        }
 
-      :where(#to-top) {
-        @apply grid place-items-center no-underline leading-none font-title font-normal;
+        :where(#to-top) {
+          @apply grid place-items-center no-underline leading-none font-title font-normal;
 
-        > :where(span) {
-          @apply pb-0.75;
+          > :where(span) {
+            @apply pb-0.75;
+          }
         }
       }
-    }
 
-    .__main-root {
-      @apply flow-root lg:grid lg:grid-cols-(--cols-main) min-h-lvh;
-
-      > :where(aside:not(#drawer)) {
+      > .__lside {
+        grid-area: lside;
         @apply hidden lg:flow-root sticky top-(--s-header)
         max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+        scrollbar-width: thin;
       }
 
-      > :where(main) {
+      > .__rside {
+        grid-area: rside;
+        @apply max-lg:hidden invisible;
+      }
+
+      > main {
+        grid-area: main;
         @apply flow-root cbg-main;
+
+        :where(#title) {
+          @apply text-center ps-0 border-none mb-(--s-heading);
+        }
       }
 
-      :where(#subtitle) {
-        @apply text-center ps-0 border-none mb-(--s-heading);
+      > footer {
+        grid-area: footer;
+        @apply flow-root h-(--s-header);
       }
     }
   }
