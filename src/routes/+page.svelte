@@ -8,7 +8,7 @@
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
-  const {} = $props();
+  const { data: _ } = $props();
 </script>
 
 <TopHeader />
@@ -133,8 +133,11 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light 
-      [&_:where(h2)]:text-center [&_:where(h2)]:ps-0;
+      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light;
+
+      :global(:where(h2)) {
+        @apply text-center ps-0;
+      }
     }
   }
 </style>
