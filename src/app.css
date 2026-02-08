@@ -91,8 +91,8 @@
   --s-gutter: 1rem;
   --s-figure: 2rem;
   --s-header: 3rem;
-  --w-main: 96rem;
-  --w-side: 18rem;
+  --w-main-min: 96rem;
+  --w-side-max: 18rem;
   --cols-main: minmax(min(var(--w-side), 100%), 1fr) minmax(0, var(--w-main));
   --tf-ease-out: cubic-bezier(0, 0.5, 0.5, 1);
   --tf-ease-in: cubic-bezier(0.5, 0, 1, 0.5);
