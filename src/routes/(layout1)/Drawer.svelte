@@ -38,7 +38,7 @@
   @reference '../../app.css';
   @layer components {
     #drawer-root {
-      @apply flow-root invisible fixed inset-0 z-1000
+      @apply max-lg:flow-root lg:hidden invisible fixed inset-0 z-1000
       duration-200 ease-(--tf-ease-in);
 
       &[data-drawer-open] {
