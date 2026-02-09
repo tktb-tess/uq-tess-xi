@@ -29,6 +29,7 @@
 
 <style lang="postcss">
   @reference '../../app.css';
+  @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
       @apply block fixed right-5 bottom-5 p-0.5 rounded-[50%] bg-transparent ctext-accent any-hover:cbg-accent any-hover:ctext-textinv
