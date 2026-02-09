@@ -8,6 +8,7 @@
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
+  import MyFooter from '$lib/components/MyFooter.svelte';
   const { data: _ } = $props();
 </script>
 
@@ -108,26 +109,7 @@
   <h3 class="ctext-caution text-center my-8">工事中……</h3>
 </main>
 
-<footer class="text-center">
-  <p>
-    ※当サイトで紹介・解説されている言語や文化などは、一部の解説中に出てきたものを除き、すべて著者の創作です。実在は一切しませんのでお気を付けください。
-  </p>
-  <p>© 2024-2026 Tessyrrhaqt / 斗琴庭暁響</p>
-  <div class="mt-(--s-paragraph)">
-    <ExtLink
-      href="https://github.com/tktb-tess/uq-tess-xi"
-      title="Link to the GitHub Repository"
-      class="any-hover:opacity-60 transition-opacity"
-      noIcon
-    >
-      <GithubMark class="size-6 inline-block" />
-    </ExtLink>
-  </div>
-</footer>
-
-<div class="h-6"></div>
-
-<PageTopBtn />
+<MyFooter />
 
 <style lang="postcss">
   @reference '../app.css';

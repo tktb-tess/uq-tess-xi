@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
-  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
   import Drawer from './Drawer.svelte';
   import DrawerBtn from './DrawerBtn.svelte';
   import pages, { type PageData } from '$lib/modules/pages.js';
+  import MyFooter from '$lib/components/MyFooter.svelte';
 
   const { children, data } = $props();
   let drawerIsOpen = $state(false);
@@ -44,10 +44,8 @@
     <div class="h-12"></div>
   </main>
   <aside class="__rside"></aside>
-  <footer></footer>
+  <MyFooter />
 </div>
-
-<PageTopBtn />
 
 <style lang="postcss">
   @reference '../../app.css';
@@ -73,7 +71,7 @@
 
         > :global(*) {
           @apply h-full text-2xl px-1
-        text-textinv any-hover:text-text any-hover:bg-textinv transition-colors leading-none;
+          text-textinv any-hover:text-text any-hover:bg-textinv transition-colors leading-none;
         }
 
         > :global(:where(:nth-child(3))) {
@@ -91,7 +89,7 @@
 
       > .__lside {
         grid-area: lside;
-        @apply hidden lg:flow-root sticky top-(--s-header)
+        @apply max-lg:hidden lg:flow-root sticky top-(--s-header)
         max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
         scrollbar-width: thin;
       }
@@ -110,9 +108,9 @@
         }
       }
 
-      > footer {
+      > :global(footer) {
         grid-area: footer;
-        @apply flow-root h-(--s-header);
+        @apply flow-root;
       }
     }
   }
