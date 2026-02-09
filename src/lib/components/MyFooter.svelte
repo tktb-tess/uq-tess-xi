@@ -28,7 +28,7 @@
   @reference '../../app.css';
   @layer components {
     footer {
-      @apply my-(--s-paragraph) text-center;
+      @apply my-(--s-paragraph) text-center break-keep px-(--s-gutter);
 
       > div {
         @apply mt-(--s-paragraph);

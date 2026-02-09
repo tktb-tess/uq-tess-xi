@@ -35,7 +35,9 @@
   <Drawer bind:drawerIsOpen />
 
   <aside class="__lside">
-    <SideMenu />
+    <nav class="__sticky-cont">
+      <SideMenu />
+    </nav>
   </aside>
   <main>
     <BreadCrumb path={data.path} />
@@ -51,15 +53,18 @@
   @reference '../../app.css';
   @layer components {
     .__container {
+      --min-w-main: 96rem;
+      --max-w-side: 18rem;
+
       grid-template-areas:
         'header header header'
         'lside main rside'
         'footer footer footer';
 
       grid-template-columns:
-        minmax(min(var(--w-side-max), 30%), 1fr)
-        minmax(0, var(--w-main-min))
-        minmax(min(var(--w-side-max), 30%), 1fr);
+        minmax(min(var(--max-w-side), 50%), 1fr)
+        minmax(0, var(--min-w-main))
+        minmax(min(var(--max-w-side), 50%), 1fr);
 
       grid-template-rows: auto 1fr auto;
 
@@ -89,9 +94,12 @@
 
       > .__lside {
         grid-area: lside;
-        @apply max-lg:hidden lg:flow-root sticky top-(--s-header)
-        max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+        @apply max-lg:hidden lg:flow-root;
         scrollbar-width: thin;
+
+        > .__sticky-cont {
+          @apply sticky top-(--s-header) max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+        }
       }
 
       > .__rside {
