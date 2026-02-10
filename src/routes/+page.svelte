@@ -3,7 +3,6 @@
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
   import CardList from './CardList.svelte';
   import TodayWord from './todayWord.svelte';
-  import GithubMark from '$lib/components/GitHubIcon.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import TopHeader from './TopHeader.svelte';
@@ -110,6 +109,7 @@
 </main>
 
 <MyFooter />
+<PageTopBtn />
 
 <style lang="postcss">
   @reference '../app.css';

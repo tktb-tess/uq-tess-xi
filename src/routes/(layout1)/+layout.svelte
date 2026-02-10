@@ -7,6 +7,8 @@
   import DrawerBtn from './DrawerBtn.svelte';
   import pages, { type PageData } from '$lib/modules/pages.js';
   import MyFooter from '$lib/components/MyFooter.svelte';
+  import Toasts from '$lib/components/Toasts.svelte';
+  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
 
   const { children, data } = $props();
   let drawerIsOpen = $state(false);
@@ -49,12 +51,15 @@
   <MyFooter />
 </div>
 
+<Toasts />
+<PageTopBtn />
+
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
     .__container {
-      --min-w-main: 96rem;
-      --max-w-side: 18rem;
+      --max-w-main: 96rem;
+      --min-w-side: 17rem;
 
       grid-template-areas:
         'header header header'
@@ -62,9 +67,9 @@
         'footer footer footer';
 
       grid-template-columns:
-        minmax(min(var(--max-w-side), 50%), 1fr)
-        minmax(0, var(--min-w-main))
-        minmax(min(var(--max-w-side), 50%), 1fr);
+        minmax(min(var(--min-w-side), 50%), 1fr)
+        minmax(0, var(--max-w-main))
+        minmax(min(var(--min-w-side), 50%), 1fr);
 
       grid-template-rows: auto 1fr auto;
 

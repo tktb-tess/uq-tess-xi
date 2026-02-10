@@ -1,18 +1,16 @@
 <script lang="ts">
   import '../app.css';
   import { PUBLIC_SITE_NAME, PUBLIC_BASE_URL } from '$env/static/public';
-  import Toasts from '$lib/components/Toasts.svelte';
   import { siteConfig, key, schema } from '$lib/modules/site-config.svelte';
   import { onMount } from 'svelte';
   import pages, { type PageData } from '$lib/modules/pages';
   import Loads from './Loads.svelte';
-  import PageTopBtn from '$lib/components/PageTopBtn.svelte';
 
   const { children, data } = $props();
 
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
   const fallBack: PageData = {
-    title: '???',
+    title: '[NO DATA]',
     path: '/',
   };
 
@@ -57,6 +55,4 @@
   <title>{ogTitle}</title>
 </svelte:head>
 
-<Toasts />
 {@render children()}
-<PageTopBtn />
