@@ -104,6 +104,7 @@
 
         > .__sticky-cont {
           @apply sticky top-(--s-header) max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+          scrollbar-width: thin;
         }
       }
 

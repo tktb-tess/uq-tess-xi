@@ -39,7 +39,7 @@
       }
 
       &:where(:first-child) {
-        @apply text-end f-tnum;
+        @apply text-end font-feat-['tnum'];
       }
 
       &:where(:nth-child(4)) {

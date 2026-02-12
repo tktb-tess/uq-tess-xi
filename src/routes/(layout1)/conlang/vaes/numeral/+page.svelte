@@ -1,17 +1,21 @@
+<script>
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+
+  const {} = $props();
+</script>
+
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
 <section aria-labelledby="cardinal">
   <h2 id="cardinal">基数詞 (Kardinalraiman)</h2>
   <h3>0&ndash;19</h3>
   <div class="table-container">
-    <table
-      class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
-    >
+    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
+          <th></th>
+          <th>数詞</th>
+          <th></th>
+          <th>数詞</th>
         </tr>
       </thead>
       <tbody>
@@ -96,39 +100,39 @@
     <table class="grid-cols-[repeat(4,auto)]">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">男性</th>
-          <th scope="col">中性</th>
-          <th scope="col">女性</th>
+          <th></th>
+          <th>男性</th>
+          <th>中性</th>
+          <th>女性</th>
         </tr>
       </thead>
       <tbody class="[&_td]:text-start">
         <tr>
-          <th scope="row">主格</th>
+          <th>主格</th>
           <td>an</td>
           <td>an</td>
           <td>an</td>
         </tr>
         <tr>
-          <th scope="row">属格</th>
+          <th>属格</th>
           <td>anes</td>
           <td>anes</td>
           <td>anr</td>
         </tr>
         <tr>
-          <th scope="row">与格</th>
+          <th>与格</th>
           <td>anum</td>
           <td>anum</td>
           <td>anr</td>
         </tr>
         <tr>
-          <th scope="row">対格</th>
+          <th>対格</th>
           <td>änn</td>
           <td>an</td>
           <td>änn</td>
         </tr>
         <tr>
-          <th scope="row">具格<sup>※</sup></th>
+          <th>具格<sup>※</sup></th>
           <td>änn</td>
           <td>änn</td>
           <td>anr</td>
@@ -137,19 +141,19 @@
     </table>
   </div>
 
-  <p class="text-center text-[0.8rem]">※具格は通常使われず、代わりに与格が使われる</p>
+  <p class="text-sm">※具格は通常使われず、代わりに与格が使われる</p>
   <p>
     また、2 <em>tvęģ</em> は性によって変化する。
   </p>
 
   <p>変化表は以下。</p>
   <div class="table-container">
-    <table class="grid-cols-[repeat(3,auto)]">
+    <table class="">
       <thead>
         <tr>
-          <th scope="col">男性</th>
-          <th scope="col">中性</th>
-          <th scope="col">女性</th>
+          <th>男性</th>
+          <th>中性</th>
+          <th>女性</th>
         </tr>
       </thead>
       <tbody>
@@ -174,17 +178,15 @@
   <h3>20&ndash;999</h3>
 
   <div class="table-container">
-    <table
-      class="grid-cols-[repeat(6,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
-    >
+    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
+          <th></th>
+          <th>数詞</th>
+          <th></th>
+          <th>数詞</th>
+          <th></th>
+          <th>数詞</th>
         </tr>
       </thead>
       <tbody>
@@ -306,11 +308,11 @@
   <h3>1000&ndash;</h3>
 
   <div class="table-container">
-    <table class="grid-cols-[repeat(2,auto)] [&_td:first-child]:text-end [&_td:first-child]:f-tnum">
+    <table class="[&_td:first-child]:text-end [&_td:first-child]:font-feat-['tnum']">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
+          <th></th>
+          <th>数詞</th>
         </tr>
       </thead>
       <tbody>
@@ -383,71 +385,75 @@
     <em>-ljönn, -ljard</em> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
   </p>
   <p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
-  <div class="table-container flex max-md:flex-col max-md:gap-y-2 md:justify-around">
-    <table class="mx-0 grid-cols-[repeat(3,auto)] [&_td]:text-start">
-      <caption>-ljönn</caption>
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">単数</th>
-          <th scope="col">複数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">主格</th>
-          <td>-ljönn</td>
-          <td>-ljonnan</td>
-        </tr>
-        <tr>
-          <th scope="row">属格</th>
-          <td>-ljonnan</td>
-          <td>-ljonne</td>
-        </tr>
-        <tr>
-          <th scope="row">与格</th>
-          <td>-ljonnan</td>
-          <td>-ljonnum</td>
-        </tr>
-        <tr>
-          <th scope="row">対格</th>
-          <td>-ljonnan</td>
-          <td>-ljonnan</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="mx-0 grid-cols-[repeat(3,auto)] [&_td]:text-start">
-      <caption>-ljard</caption>
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">単数</th>
-          <th scope="col">複数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">主格</th>
-          <td>-ljard</td>
-          <td>-ljardan</td>
-        </tr>
-        <tr>
-          <th scope="row">属格</th>
-          <td>-ljardan</td>
-          <td>-ljardne</td>
-        </tr>
-        <tr>
-          <th scope="row">与格</th>
-          <td>-ljardan</td>
-          <td>-ljardum</td>
-        </tr>
-        <tr>
-          <th scope="row">対格</th>
-          <td>-ljardan</td>
-          <td>-ljardan</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="flex max-md:flex-col">
+    <div class="table-container">
+      <table class="[&_td]:text-start">
+        <caption>-ljönn</caption>
+        <thead>
+          <tr>
+            <th></th>
+            <th>単数</th>
+            <th>複数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>主格</th>
+            <td>-ljönn</td>
+            <td>-ljonnan</td>
+          </tr>
+          <tr>
+            <th>属格</th>
+            <td>-ljonnan</td>
+            <td>-ljonne</td>
+          </tr>
+          <tr>
+            <th>与格</th>
+            <td>-ljonnan</td>
+            <td>-ljonnum</td>
+          </tr>
+          <tr>
+            <th>対格</th>
+            <td>-ljonnan</td>
+            <td>-ljonnan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-container">
+      <table class="[&_td]:text-start">
+        <caption>-ljard</caption>
+        <thead>
+          <tr>
+            <th></th>
+            <th>単数</th>
+            <th>複数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>主格</th>
+            <td>-ljard</td>
+            <td>-ljardan</td>
+          </tr>
+          <tr>
+            <th>属格</th>
+            <td>-ljardan</td>
+            <td>-ljardne</td>
+          </tr>
+          <tr>
+            <th>与格</th>
+            <td>-ljardan</td>
+            <td>-ljardum</td>
+          </tr>
+          <tr>
+            <th>対格</th>
+            <td>-ljardan</td>
+            <td>-ljardan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <p class="text-black/10">
@@ -461,15 +467,13 @@
 <section aria-labelledby="ordinal">
   <h2 id="ordinal">序数詞 (Ämbyrdlaiķraiman)</h2>
   <div class="table-container">
-    <table
-      class="grid-cols-[repeat(4,auto)] [&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:f-tnum"
-    >
+    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
-          <th scope="col"></th>
-          <th scope="col">数詞</th>
+          <th></th>
+          <th>数詞</th>
+          <th></th>
+          <th>数詞</th>
         </tr>
       </thead>
       <tbody>
@@ -546,4 +550,4 @@
   <p>序数詞を形容詞として使うときは、<em>fyrest, uwðer</em> を除き弱変化のみとなる。</p>
 </section>
 
-<h4 class="text-center my-8 text-danger text-2xl">工事中…</h4>
+<UnderConstruction />
