@@ -296,15 +296,16 @@
 }
 
 @layer base {
-  :is(html, :host) {
+  :is(:root, :host) {
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
+    scrollbar-gutter: stable;
     @apply font-sans max-sm:text-sm wrap-anywhere hyphens-auto;
   }
 
-  :not(pre, code, body, html, input, textarea) {
-    @apply font-[inherit];
+  :not(pre, code, body, html) {
+    @apply font-[unset];
   }
 
   :lang(x-v3-karphnpn) {
