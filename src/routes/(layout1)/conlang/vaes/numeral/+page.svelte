@@ -1,13 +1,14 @@
 <script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
 
-  const {} = $props();
+  const {}: {} = $props();
 </script>
 
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
-<section aria-labelledby="cardinal">
-  <h2 id="cardinal">基数詞 (Kardinalraiman)</h2>
+
+<XSection title="基数詞 (Cardinalrajman)">
   <h3>0 〜 19</h3>
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end
@@ -99,13 +100,13 @@
     >-(10の位)」とハイフンで繋いで書く。
   </p>
   <p>
-    110&ndash;129が特殊なので注意（20&ndash;99と同様に、「(1の位)-<i>and</i>-(<i>änlftaģ</i> or
+    110 〜 129が特殊なので注意（20 〜 99と同様に、「(1の位)-<i>and</i>-(<i>änlftaģ</i> or
     <i>tvälftaģ</i>)」という風に書く。）
   </p>
   <p>
-    101&ndash;109、および130以降は 245 <i>taw-hundred-faif-and-fewrtaģ</i> のように「(100の位)-<i
+    101 〜 109、および130以降は 245 <i>taw-hundred-faif-and-fewrtaģ</i> のように「(100の位)-<i
       >hundred</i
-    >-(1&ndash;99の数詞)」と繋げて書く。ただし、100の位が1のとき、<i>an</i> は省略できる。
+    >-(1 〜 99の数詞)」と繋げて書く。ただし、100の位が1のとき、<i>an</i> は省略できる。
   </p>
   <p>
     10の位の数詞は概ね対応する1の位の数詞に <i>-taģ</i> をつけたものであるが、ほとんどは1の位の数詞と微妙に異なるので注意。
@@ -196,9 +197,8 @@
       nięw-hundred-newntųj ðawzend aght-hundred-tųj
     </i>
   </p>
-</section>
-<section aria-labelledby="ordinal">
-  <h2 id="ordinal">序数詞 (Embyrdlajçrajman)</h2>
+</XSection>
+<XSection title="序数詞 (Embyrdlajçrajman)">
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end 
       [&_:where(td:nth-child(even))]:text-start 
@@ -218,7 +218,7 @@
   />
 
   <p>
-    序数詞は1&ndash;3は特殊な語形で、4以降は基数詞に <i>-ðe</i> をつける。ただし、 <i>-f, -v</i>
+    序数詞は1 〜 3は特殊な語形で、4以降は基数詞に <i>-ðe</i> をつける。ただし、 <i>-f, -v</i>
     で終わる 5. 11. 12. は
     <i>-fte</i>
     になり、6.は
@@ -226,6 +226,6 @@
   </p>
   <p>8. <i>aghtðe</i> の <i>t</i> は読まなくてもよい。</p>
   <p>序数詞を形容詞として使うときは、<i>fyrest, óðer</i> を除き弱変化のみとなる。</p>
-</section>
+</XSection>
 
 <UnderConstruction />

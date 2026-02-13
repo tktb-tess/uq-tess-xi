@@ -1,11 +1,12 @@
 <script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
+
+  const {}: {} = $props();
 </script>
 
-<section aria-labelledby="legend">
-  <h2 id="legend">凡例</h2>
-
+<XSection title="凡例">
   <ul>
     <li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
     <li>
@@ -14,11 +15,9 @@
       > で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
     </li>
   </ul>
-</section>
+</XSection>
 
-<section aria-labelledby="consonant">
-  <h2 id="consonant">子音</h2>
-
+<XSection title="子音">
   <XTable
     headRows={1}
     headCols={[2, 1, 1, 2, 1, 1, 1, 1, 2, 1]}
@@ -89,10 +88,8 @@
       >
     </li>
   </ul>
-</section>
-
-<section aria-labelledby="vowel">
-  <h2 id="vowel">母音</h2>
+</XSection>
+<XSection title="母音">
   <h3 class="ms-1">単母音</h3>
   <div class="grid grid-cols-auto-fill-110">
     <XTable
@@ -165,6 +162,6 @@
       <i>tense</i> 母音である。
     </li>
   </ul>
-</section>
+</XSection>
 
 <UnderConstruction />

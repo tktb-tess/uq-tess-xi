@@ -5,7 +5,7 @@
   interface Props {
     readonly title: string;
     readonly class?: string;
-    readonly children: Snippet;
+    readonly children?: Snippet;
   }
   const en = new TextEncoder();
   const { title, class: className, children }: Props = $props();
@@ -14,5 +14,5 @@
 
 <section aria-labelledby={id} class={className}>
   <h2 {id}>{title}</h2>
-  {@render children()}
+  {@render children?.()}
 </section>
