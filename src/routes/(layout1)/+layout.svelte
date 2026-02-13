@@ -77,7 +77,7 @@
 
       > header {
         grid-area: header;
-        @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0;
+        @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0 z-(--z-header);
 
         > :global(*) {
           @apply h-full text-2xl px-1
@@ -103,7 +103,7 @@
         scrollbar-width: thin;
 
         > .__sticky-cont {
-          @apply sticky top-(--s-header) max-h-[calc(100lvh-var(--s-header))] overflow-y-auto;
+          @apply sticky top-(--s-header) max-h-[calc(100lvh-var(--s-header))] overflow-y-auto z-(--z-sidemenu);
           scrollbar-width: thin;
         }
       }

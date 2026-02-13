@@ -5,10 +5,19 @@
   interface Props {
     summary?: string;
     children?: Snippet;
+    duration?: number;
+    easing?: string;
     class?: string;
   }
 
-  const { children, class: cName, summary }: Props = $props();
+  const {
+    children,
+    class: cName,
+    summary,
+    duration = 240,
+    easing = 'cubic-bezier(0.6, 0, 0.4, 1)',
+  }: Props = $props();
+
   let isOpen = $state(false);
   let details: HTMLDetailsElement | undefined = $state();
   let content: HTMLDivElement | undefined = $state();
@@ -20,12 +29,13 @@
 
   const closingAni = $derived.by((): Keyframe[] | undefined => {
     if (!content) return;
-    return [{ height: `${content.scrollHeight}px` }, { height: 0 }];
+    return [{ height: `${content.scrollHeight}px` }, { height: '0' }];
   });
-  const aniOptions: KeyframeAnimationOptions = {
-    duration: 240,
-    easing: 'cubic-bezier(0.6, 0, 0.4, 1)',
-  };
+
+  const aniOptions: KeyframeAnimationOptions = $derived({
+    duration,
+    easing,
+  });
 </script>
 
 <details
@@ -34,6 +44,7 @@
   bind:this={details}
   data-opened={isOpen || null}
   data-running={isRunning || null}
+  style:--d-icon-rotate={`${duration}ms`}
 >
   <summary
     onclick={(ev) => {
@@ -60,7 +71,9 @@
       }
     }}
   >
-    <ArrowIcon class="inline-block h-6 in-data-opened:rotate-x-180 transition-transform duration-240" />
+    <ArrowIcon
+      class="inline-block h-6 in-data-opened:rotate-x-180 transition-transform duration-(--d-icon-rotate)"
+    />
     <span>{summary}</span>
   </summary>
   <div class="__details-content" bind:this={content}>
@@ -72,7 +85,7 @@
   @reference '../../app.css';
   @layer components {
     summary {
-      @apply block user-select-none cursor-pointer;
+      @apply block cursor-pointer;
 
       &::-webkit-details-marker {
         @apply hidden;
