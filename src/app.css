@@ -273,6 +273,10 @@
   font-feature-settings: --value([*]);
 }
 
+@utility cont-vis-* {
+  content-visibility: --value('visible', 'hidden', 'auto');
+}
+
 @custom-variant any-hover {
   @media (any-hover: hover) {
     &:hover {

@@ -10,7 +10,9 @@
   <h2 id="cardinal">基数詞 (Kardinalraiman)</h2>
   <h3>0 〜 19</h3>
   <XTable
-    class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']"
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
     data={[
       ['0', 'zéro', '10', 'tųj'],
       ['1', 'an', '11', 'ęlęv'],
@@ -39,7 +41,6 @@
   <XTable
     headCols={1}
     headRows={1}
-    class=""
     data={[
       ['＼', '男性', '中性', '女性'],
       ['主格', ['an', { cols: 3 }]],
@@ -75,7 +76,9 @@
 
   <h3>20 〜 999</h3>
   <XTable
-    class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(even)]:text-start [&_td:nth-child(odd)]:font-feat-['tnum']"
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
     data={[
       ['20', 'tvintaģ', '30', 'ðraitaģ', '40', 'fewrtaģ'],
       ['21', 'an-and-tvintaģ', '31', 'an-and-ðraitaģ', '50', 'fajftaģ'],
@@ -123,7 +126,9 @@
   </p>
   <h3>1000 〜</h3>
   <XTable
-    class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(even)]:text-start [&_td:nth-child(odd)]:font-feat-['tnum']"
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
     data={[
       ['1,000', '(an) ðawzend'],
       ['10,000', 'taw ðawzend'],

@@ -119,7 +119,7 @@
 
         <input
           type="text"
-          id="{seed}-input1"
+          id="{seed}-input3"
           class="w-38 max-w-full"
           disabled={judge === null}
           bind:value={
@@ -142,7 +142,7 @@
 
         <input
           type="text"
-          id="{seed}-input2"
+          id="{seed}-input4"
           class="w-38 max-w-full"
           disabled={judge === null}
           bind:value={
