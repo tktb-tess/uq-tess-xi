@@ -1,11 +1,12 @@
 <script lang="ts">
   import Spinner from '$lib/components/Spinner.svelte';
+  import XSection from '$lib/components/XSection.svelte';
+  import { toBase64 } from '@tktb-tess/util-fns';
   import type { Primes } from '../../../api/v0/prime/+server';
 
-  type Props = {
-    seed: string;
-  };
-  const { seed }: Props = $props();
+  const en = new TextEncoder();
+  const title = '素因数分解クイズ';
+  const seed = toBase64(en.encode(title));
 
   let min = $state(2n);
   let max = $state(1024n);
@@ -45,8 +46,7 @@
   };
 </script>
 
-<section aria-labelledby={seed}>
-  <h2 id={seed}>素因数分解クイズ</h2>
+<XSection {title}>
   <p>
     「表示」を押す度に、下限以上、上限未満の2つの素数の積がランダムに表示されます。上限下限に指定できる整数の範囲は
     2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 以下です。
@@ -173,4 +173,4 @@
       </p>
     {/if}
   </div>
-</section>
+</XSection>

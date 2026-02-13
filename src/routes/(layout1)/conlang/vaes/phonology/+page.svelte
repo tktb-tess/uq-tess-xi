@@ -67,10 +67,10 @@
       は前後の環境により実際の発音が変わり、また前後の子音の発音を変えることもある。
       <ul>
         <li>
-          <span class="font-ipa">/d/, /t/, /ʔ͡t/, /n/, /l/, /ɬ/</span> の前ではそり舌接近音
+          <span class="font-ipa">/d/, /tʰ/, /tʼ/, /n/, /l/, /ɬ/</span> の前ではそり舌接近音
           <span class="font-ipa">[ɻ]</span>
           となり、各歯茎音も調音位置が同化して
-          <span class="font-ipa">[ɻɖ], [ɻʈ], [ɻʔ͡ʈ], [ɻɳ], [ɻɭ], [ɻɭ̝̊]</span> のようになる。
+          <span class="font-ipa">[ɻɖ], [ɻʈʰ], [ɻʈʼ], [ɻɳ], [ɻɭ], [ɻɭ̝̊]</span> のようになる。
         </li>
         <li>
           後に <span class="font-ipa">/s/, /z/</span> があるとき、同化してそれぞれ
@@ -94,63 +94,65 @@
 <section aria-labelledby="vowel">
   <h2 id="vowel">母音</h2>
   <h3 class="ms-1">単母音</h3>
+  <div class="grid grid-cols-auto-fill-110">
+    <XTable
+      headRows={3}
+      headCols={1}
+      caption="口母音"
+      class="[&_:where(td)]:font-ipa"
+      data={[
+        [['＼', { rows: 3 }], ['前舌', { cols: 4 }], '中舌', ['後舌', { cols: 2 }]],
+        [['非円唇', { cols: 2 }], ['円唇', { cols: 2 }], '非円唇', ['円唇', { cols: 2 }]],
+        ['tense', 'lax', 'tense', 'lax', 'lax', 'tense', 'lax'],
+        ['狭', 'iː', 'ɪ', 'yː', 'ʏ', '', 'uː', 'ʊ'],
+        ['半狭', 'eː', 'e', 'øː', '', '', 'oː', ''],
+        ['半広', 'ɛː', 'ɛ', '', 'œ', '', '', 'ɔ'],
+        ['広', '', '', '', '', 'ä', '', 'ɑː'],
+      ]}
+    />
 
-  <XTable
-    headRows={3}
-    headCols={1}
-    caption="口母音"
-    class="[&_:where(td)]:font-ipa"
-    data={[
-      [['＼', { rows: 3 }], ['前舌', { cols: 4 }], '中舌', ['後舌', { cols: 2 }]],
-      [['非円唇', { cols: 2 }], ['円唇', { cols: 2 }], '非円唇', ['円唇', { cols: 2 }]],
-      ['tense', 'lax', 'tense', 'lax', 'lax', 'tense', 'lax'],
-      ['狭', 'iː', 'ɪ', 'yː', 'ʏ', '', 'uː', 'ʊ'],
-      ['半狭', 'eː', 'e', 'øː', '', '', 'oː', ''],
-      ['半広', 'ɛː', 'ɛ', '', 'œ', '', '', 'ɔ'],
-      ['広', '', '', '', '', 'ä', '', 'ɑː'],
-    ]}
-  />
-
-  <XTable
-    caption="鼻母音"
-    headRows={2}
-    headCols={1}
-    class="[&_:where(td)]:font-ipa"
-    data={[
-      [['＼', { rows: 2 }], '前舌', '中舌', '後舌'],
-      ['非円唇', '円唇', '円唇'],
-      ['狭', 'ẽː', 'ø̃ː', 'õː'],
-      ['広', 'ɛ̃ː', '', 'ɑ̃ː'],
-    ]}
-  />
+    <XTable
+      caption="鼻母音"
+      headRows={2}
+      headCols={1}
+      class="[&_:where(td)]:font-ipa"
+      data={[
+        [['＼', { rows: 2 }], '前舌', '中舌', '後舌'],
+        ['非円唇', '円唇', '円唇'],
+        ['狭', 'ẽː', 'ø̃ː', 'õː'],
+        ['広', 'ɛ̃ː', '', 'ɑ̃ː'],
+      ]}
+    />
+  </div>
 
   <p>※鼻母音は全て <em>tense</em> 母音である。</p>
 
   <h3>二重母音</h3>
+  <div class="grid grid-cols-auto-fill-75">
+    <XTable
+      caption="口母音"
+      headRows={1}
+      headCols={1}
+      class="[&_:where(td,th:not(:first-child))]:font-ipa"
+      data={[
+        ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
+        ['半広', 'ɛɪ̯', 'œʏ̯', ''],
+        ['広', 'aɪ̯', '', 'ɑʊ̯'],
+      ]}
+    />
 
-  <XTable
-    caption="口母音"
-    headRows={1}
-    headCols={1}
-    class="[&_:where(td,th:not(:first-child))]:font-ipa"
-    data={[
-      ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
-      ['半広', 'ɛɪ̯', 'œʏ̯', ''],
-      ['広', 'aɪ̯', '', 'ɑʊ̯'],
-    ]}
-  />
-
-  <XTable
-    caption="鼻母音"
-    headRows={1}
-    headCols={1}
-    class="[&_:where(td,th:not(:first-child))]:font-ipa"
-    data={[
-      ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
-      ['半広', 'ɛ̃ɪ̯̃', 'œ̃ʏ̯̃', ''],
-      ['広', 'ãɪ̯̃', '', 'ɑ̃ʊ̯̃'],
-    ]}
-  />
+    <XTable
+      caption="鼻母音"
+      headRows={1}
+      headCols={1}
+      class="[&_:where(td,th:not(:first-child))]:font-ipa"
+      data={[
+        ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
+        ['半広', 'ɛ̃ɪ̯̃', 'œ̃ʏ̯̃', ''],
+        ['広', 'ãɪ̯̃', '', 'ɑ̃ʊ̯̃'],
+      ]}
+    />
+  </div>
 
   <h3>説明</h3>
   <ul>

@@ -1,11 +1,13 @@
 <script lang="ts">
   import { addToast } from '$lib/components/toastStates.svelte';
-  type Props = {
-    seed: string;
-  };
-  const { seed }: Props = $props();
+  import XSection from '$lib/components/XSection.svelte';
+  import { toBase64 } from '@tktb-tess/util-fns';
+
   const decoder = new TextDecoder();
+  const en = new TextEncoder();
   let input = $state('');
+  const title = 'Base64 → テキスト 変換';
+  const seed = toBase64(en.encode(title));
 
   const output = $derived.by(() => {
     try {
@@ -26,8 +28,7 @@
   };
 </script>
 
-<section aria-labelledby={seed} class="">
-  <h2 id={seed}>Base64 → テキスト 変換</h2>
+<XSection {title}>
   <div class="flex flex-col gap-3 my-(--s-figure)">
     <div class="flex flex-col gap-2 items-center">
       <label for="input-{seed}">Base64</label>
@@ -41,4 +42,4 @@
       >
     </div>
   </div>
-</section>
+</XSection>

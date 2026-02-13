@@ -1,9 +1,3 @@
-const getUUID = function* (max: number) {
-  for (let counter = 0; counter < max; counter++) {
-    yield crypto.randomUUID();
-  }
-};
-
 const createGF2048 = () => {
   const mod = 0b100000000101;
   const maps: [number | null, number][] = [];
@@ -24,11 +18,9 @@ const createGF2048 = () => {
 };
 
 export const load = async () => {
-  const seeds: readonly string[] = Array.from(getUUID(4));
   const [exps, logs] = createGF2048();
 
   return {
-    seeds,
     exps,
     logs,
   };

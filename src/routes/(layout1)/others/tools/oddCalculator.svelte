@@ -1,12 +1,17 @@
 <script lang="ts">
+  import XSection from '$lib/components/XSection.svelte';
+  import { toBase64 } from '@tktb-tess/util-fns';
+
   type Props = {
     exps: readonly number[];
     logs: readonly (number | null)[];
-    seed: string;
   };
 
   type Mode = '+' | '\u00D7' | '÷';
-  const { exps, logs, seed }: Props = $props();
+  const { exps, logs }: Props = $props();
+  const en = new TextEncoder();
+  const title = '変な式';
+  const seed = toBase64(en.encode(title));
 
   let leftVal = $state(0);
   let rightVal = $state(0);
@@ -60,8 +65,7 @@
   });
 </script>
 
-<section aria-labelledby={seed}>
-  <h2 id={seed}>変な式</h2>
+<XSection {title}>
   <p><s class="ctext-text-pale">この式、なんか変……</s></p>
   <div class="flex justify-center *:min-w-0 items-center my-(--s-figure) gap-4">
     <input
@@ -92,9 +96,10 @@
       }
     />
     <p class="m-0 text-xl">=</p>
-    <textarea name="計算結果" class="overflow-x-auto w-20" rows="1" readonly value={result}></textarea>
+    <textarea name="計算結果" class="overflow-x-auto w-20" rows="1" readonly value={result}
+    ></textarea>
   </div>
-</section>
+</XSection>
 
 <style lang="postcss">
   @reference '../../../../app.css';

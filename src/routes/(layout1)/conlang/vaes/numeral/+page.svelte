@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XTable from '$lib/components/XTable.svelte';
 
@@ -29,7 +29,8 @@
   <p>19までの数詞は上のようになる。0はフランス語由来の <i>zéro</i> である。</p>
   <p>
     それ以外は、11, 12が独自の単語で13以降が「1の位 +
-    10」になる所など、他のゲルマン諸語と似たようなものとなっている。ただし15&ndash;19は若干変則的なので注意。
+    10」になる所など、他のゲルマン諸語と似たようなものとなっている。ただし15 〜
+    19は若干変則的なので注意。
   </p>
   <p>
     1 <i>an</i> は不定冠詞 <i>an</i>
@@ -133,15 +134,15 @@
       ['1,000', '(an) ðawzend'],
       ['10,000', 'taw ðawzend'],
       ['100,000', '(an-)hundred ðawzend'],
-      ['10^6', '(an) miljœn'],
-      ['10^7', 'taw milljonan'],
-      ['10^8', '(an)hundred miljonnan'],
-      ['10^9', '(an) miliard'],
-      ['10^10', 'taw miljardan'],
-      ['10^12', 'biljœn'],
-      ['10^15', 'biliard'],
-      ['10^18', 'triljœn'],
-      ['10^21', 'triliard'],
+      [['10<sup>6</sup>', { rawHTML: true }], '(an) miljœn'],
+      [['10<sup>7</sup>', { rawHTML: true }], 'taw milljonan'],
+      [['10<sup>8</sup>', { rawHTML: true }], '(an)hundred miljonnan'],
+      [['10<sup>9</sup>', { rawHTML: true }], '(an) miliard'],
+      [['10<sup>10</sup>', { rawHTML: true }], 'taw miljardan'],
+      [['10<sup>12</sup>', { rawHTML: true }], 'biljœn'],
+      [['10<sup>15</sup>', { rawHTML: true }], 'biliard'],
+      [['10<sup>18</sup>', { rawHTML: true }], 'triljœn'],
+      [['10<sup>21</sup>', { rawHTML: true }], 'triliard'],
       ['・・・', '・・・'],
     ]}
   />

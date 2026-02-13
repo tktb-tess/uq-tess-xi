@@ -17,7 +17,7 @@
   const currentText = $derived(pages.find((d) => d.path === path)?.title ?? '[NO DATA]');
 </script>
 
-<ol id="breadcrumb">
+<ol id="breadcrumb" aria-label="パンくずリスト">
   {#each links as link}
     <li><a href={link.href}>{link.text}</a></li>
   {/each}
