@@ -12,13 +12,19 @@
     readonly data: CellData[][];
     readonly caption?: string;
     readonly headRows?: number;
+    readonly headCols?: number | number[];
     readonly class?: string;
   }
 
-  const { data, headRows = 0, class: className, caption }: Props = $props();
+  const { data, headRows = 0, headCols: h_ = [], class: className, caption }: Props = $props();
 
   const headData = $derived(data.slice(0, headRows));
   const bodyData = $derived(data.slice(headRows));
+  const headCols = $derived.by(() => {
+    if (typeof h_ === 'number') {
+      return [...Array(data.length)].map(() => h_);
+    } else return h_;
+  });
 </script>
 
 <div class="table-container">
@@ -49,9 +55,26 @@
       </thead>
     {/if}
     <tbody>
-      {#each bodyData as row}
+      {#each bodyData as row, i}
+        {@const cols = headCols.at(i) ?? 0}
+        {@const ths = row.slice(0, cols)}
+        {@const tds = row.slice(cols)}
         <tr>
-          {#each row as cell}
+          {#each ths as cell}
+            {#if typeof cell === 'string'}
+              <th>{cell}</th>
+            {:else}
+              {@const [text, conf] = cell}
+              <th colspan={conf.cols} rowspan={conf.rows} class={conf.class}>
+                {#if conf.rawHTML}
+                  {@html text}
+                {:else}
+                  {text}
+                {/if}
+              </th>
+            {/if}
+          {/each}
+          {#each tds as cell}
             {#if typeof cell === 'string'}
               <td>{cell}</td>
             {:else}

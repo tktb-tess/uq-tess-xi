@@ -1,4 +1,5 @@
 <script lang="ts">
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XTable from '$lib/components/XTable.svelte';
 </script>
 
@@ -20,19 +21,28 @@
 
   <XTable
     headRows={1}
-    class="[&_:where(td:not(:first-child):not(:nth-child(2)))]:font-ipa [&_:where(td:first-child,td:nth-child(2))]:font-semibold"
+    headCols={[2, 1, 1, 2, 1, 1, 1, 1, 2, 1]}
+    class="[&_:where(td)]:font-ipa"
     data={[
-      ['＼', '', '両唇', '唇歯', '歯, 歯茎', '後部歯茎, そり舌, 硬口蓋', '軟口蓋', '声門'],
-      ['破裂音', '有気', 'pʰ', '', 'tʰ', '', 'kʰ', ''],
-      ['', '有声', 'b', '', 'd', '', 'ɡ', ''],
-      ['', '喉頭化', 'ɓ', '', 'tʼ', '', 'kʼ', ''],
-      ['摩擦音', '無声中央', '', 'f', 's', 'ɕ', 'x', ''],
-      ['', '有声中央', '', '', 'z', 'ʑ', '', 'ɦ'],
-      ['', '無声側面', '', '', 'ɬ', '', '', ''],
+      [
+        ['＼', { cols: 2 }],
+        '両唇',
+        '唇歯',
+        '歯, 歯茎',
+        '後部歯茎, そり舌, 硬口蓋',
+        '軟口蓋',
+        '声門',
+      ],
+      [['破裂音', { rows: 3 }], '有気', 'pʰ', '', 'tʰ', '', 'kʰ', ''],
+      ['有声', 'b', '', 'd', '', 'ɡ', ''],
+      ['喉頭化', 'ɓ', '', 'tʼ', '', 'kʼ', ''],
+      [['摩擦音', { rows: 3 }], '無声中央', '', 'f', 's', 'ɕ', 'x', ''],
+      ['有声中央', '', '', 'z', 'ʑ', '', 'ɦ'],
+      ['無声側面', '', '', 'ɬ', '', '', ''],
       ['鼻音', '', 'm', '', 'n', '', 'ŋ', ''],
       ['はじき音', '', '', '', '', 'ɽ', '', ''],
-      ['接近音', '中央', '', 'ʋ', 'ð', 'j', '', ''],
-      ['', '側面', '', '', 'l', '', '', ''],
+      [['接近音', { rows: 2 }], '中央', '', 'ʋ', 'ð', 'j', '', ''],
+      ['側面', '', '', 'l', '', '', ''],
     ]}
   />
 
@@ -87,12 +97,13 @@
 
   <XTable
     headRows={3}
+    headCols={1}
     caption="口母音"
-    class="[&_:where(td:not(:first-child))]:font-ipa [&_:where(td:first-child)]:font-semibold"
+    class="[&_:where(td)]:font-ipa"
     data={[
-      ['＼', '前舌', '', '中舌', '', '中舌', '後舌', ''],
-      ['', '非円唇', '', '円唇', '', '非円唇', '円唇', ''],
-      ['', 'tense', 'lax', 'tense', 'lax', 'lax', 'tense', 'lax'],
+      [['＼', { rows: 3 }], ['前舌', { cols: 4 }], '中舌', ['後舌', { cols: 2 }]],
+      [['非円唇', { cols: 2 }], ['円唇', { cols: 2 }], '非円唇', ['円唇', { cols: 2 }]],
+      ['tense', 'lax', 'tense', 'lax', 'lax', 'tense', 'lax'],
       ['狭', 'iː', 'ɪ', 'yː', 'ʏ', '', 'uː', 'ʊ'],
       ['半狭', 'eː', 'e', 'øː', '', '', 'oː', ''],
       ['半広', 'ɛː', 'ɛ', '', 'œ', '', '', 'ɔ'],
@@ -103,10 +114,11 @@
   <XTable
     caption="鼻母音"
     headRows={2}
-    class="[&_:where(td:not(:first-child))]:font-ipa [&_:where(td:first-child)]:font-semibold"
+    headCols={1}
+    class="[&_:where(td)]:font-ipa"
     data={[
-      ['＼', '前舌', '中舌', '後舌'],
-      ['', '非円唇', '円唇', '円唇'],
+      [['＼', { rows: 2 }], '前舌', '中舌', '後舌'],
+      ['非円唇', '円唇', '円唇'],
       ['狭', 'ẽː', 'ø̃ː', 'õː'],
       ['広', 'ɛ̃ː', '', 'ɑ̃ː'],
     ]}
@@ -119,7 +131,8 @@
   <XTable
     caption="口母音"
     headRows={1}
-    class="[&_:where(:is(td,th):not(:first-child))]:font-ipa [&_:where(td:first-child)]:font-semibold"
+    headCols={1}
+    class="[&_:where(td,th:not(:first-child))]:font-ipa"
     data={[
       ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
       ['半広', 'ɛɪ̯', 'œʏ̯', ''],
@@ -130,7 +143,8 @@
   <XTable
     caption="鼻母音"
     headRows={1}
-    class="[&_:where(:is(td,th):not(:first-child))]:font-ipa [&_:where(td:first-child)]:font-semibold"
+    headCols={1}
+    class="[&_:where(td,th:not(:first-child))]:font-ipa"
     data={[
       ['核母音 ＼ オフグライド', 'ɪ', 'ʏ', 'ʊ'],
       ['半広', 'ɛ̃ɪ̯̃', 'œ̃ʏ̯̃', ''],
@@ -148,24 +162,7 @@
       <span class="font-ipa">/ə/</span> に限っては語末に来ることができる。なお、二重母音は全て
       <i>tense</i> 母音である。
     </li>
-    <li>
-      <span class="font-ipa">/ɛː/</span> は実際は <span class="font-ipa">[ɛæ̯]</span> のような発音である。
-    </li>
-    <li>
-      <span class="font-ipa">/eː/</span> は実際は <span class="font-ipa">[eː] ~ [ei̯]</span> のような発音である。
-    </li>
-    <li>
-      <span class="font-ipa">/oː/</span> は実際は <span class="font-ipa">[oː] ~ [ou̯]</span> のような発音である。
-    </li>
-    <li>
-      <span class="font-ipa">/øː/</span> は実際は <span class="font-ipa">[øː] ~ [øy̯]</span> のような発音である。
-    </li>
-    <li>
-      <span class="font-ipa">/ə/</span> はアクセントの無い音節で
-      <span class="font-ipa">/e(ː)/, /ɛ(ː)/, /ɔ/, /oː/</span>
-      の異音 (allophone) として現れ、実際の音声は <span class="font-ipa">[ɘ]</span> である。 対応する鼻母音も同様。
-    </li>
   </ul>
 </section>
 
-<h4 class="text-center my-8 text-3xl text-danger">工事中...</h4>
+<UnderConstruction />
