@@ -65,6 +65,7 @@
   <p><s class="ctext-text-pale">この式、なんか変……</s></p>
   <div class="flex justify-center *:min-w-0 items-center my-(--s-figure) gap-4">
     <input
+      name="左側"
       type="number"
       min="0"
       max="2047"
@@ -76,8 +77,9 @@
         }
       }
     />
-    <button onclick={changeMode} type="button" class="__calc-btn">{mode}</button>
+    <button name="計算記号" onclick={changeMode} type="button" class="__calc-btn">{mode}</button>
     <input
+      name="右側"
       type="number"
       min="0"
       max="2047"
@@ -90,7 +92,7 @@
       }
     />
     <p class="m-0 text-xl">=</p>
-    <textarea class="overflow-x-auto w-20" rows="1" readonly>{result}</textarea>
+    <textarea name="計算結果" class="overflow-x-auto w-20" rows="1" readonly value={result}></textarea>
   </div>
 </section>
 

@@ -1,5 +1,6 @@
 <script>
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  import XTable from '$lib/components/XTable.svelte';
 
   const {} = $props();
 </script>
@@ -7,292 +8,110 @@
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>
 <section aria-labelledby="cardinal">
   <h2 id="cardinal">基数詞 (Kardinalraiman)</h2>
-  <h3>0&ndash;19</h3>
-  <div class="table-container">
-    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
-      <thead>
-        <tr>
-          <th></th>
-          <th>数詞</th>
-          <th></th>
-          <th>数詞</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>0</td>
-          <td>zero</td>
-          <td>10</td>
-          <td>tųy</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>an</td>
-          <td>11</td>
-          <td>änlöv</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>tvęģ</td>
-          <td>12</td>
-          <td>tvälf</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>ðrau</td>
-          <td>13</td>
-          <td>ðrautųy</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>fewr</td>
-          <td>14</td>
-          <td>fewrtųy</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>faif</td>
-          <td>15</td>
-          <td>faiftųy</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>six</td>
-          <td>16</td>
-          <td>sightųy</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>sövon</td>
-          <td>17</td>
-          <td>söftųy</td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>aght</td>
-          <td>18</td>
-          <td>aghdtųy</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>nięw</td>
-          <td>19</td>
-          <td>newntųy</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p>19までの数詞は上のようになる。0はフランス語由来の <em>zero</em> である。</p>
+  <h3>0 〜 19</h3>
+  <XTable
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
+    data={[
+      ['0', 'zéro', '10', 'tųj'],
+      ['1', 'an', '11', 'ęlęv'],
+      ['2', 'tvęģ', '12', 'tvelf'],
+      ['3', 'ðrao', '13', 'ðraotųj'],
+      ['4', 'fewr', '14', 'fewrtųj'],
+      ['5', 'fajf', '15', 'fajftųj'],
+      ['6', 'six', '16', 'sightųj'],
+      ['7', 'sœvon', '17', 'sœftųj'],
+      ['8', 'aght', '18', 'aghtdųj'],
+      ['9', 'nięw', '19', 'newntųj'],
+    ]}
+  />
+  <p>19までの数詞は上のようになる。0はフランス語由来の <i>zéro</i> である。</p>
   <p>
     それ以外は、11, 12が独自の単語で13以降が「1の位 +
     10」になる所など、他のゲルマン諸語と似たようなものとなっている。ただし15&ndash;19は若干変則的なので注意。
   </p>
   <p>
-    1 <em>an</em> は不定冠詞 <em>an</em>
+    1 <i>an</i> は不定冠詞 <i>an</i>
     と共通で、修飾する名詞の性・格に合わせて変化する。しかし、後ろに他の数詞が来るときは名詞の性にかかわらず主格形
-    <em>an</em> が使われる。
+    <i>an</i> が使われる。
   </p>
-  <p>物を数えるときなど、単独で使う場合も <em>an</em> を使う。</p>
+  <p>物を数えるときなど、単独で使う場合も <i>an</i> を使う。</p>
   <p>変化表は以下。</p>
-
-  <div class="table-container">
-    <table class="grid-cols-[repeat(4,auto)]">
-      <thead>
-        <tr>
-          <th></th>
-          <th>男性</th>
-          <th>中性</th>
-          <th>女性</th>
-        </tr>
-      </thead>
-      <tbody class="[&_td]:text-start">
-        <tr>
-          <th>主格</th>
-          <td>an</td>
-          <td>an</td>
-          <td>an</td>
-        </tr>
-        <tr>
-          <th>属格</th>
-          <td>anes</td>
-          <td>anes</td>
-          <td>anr</td>
-        </tr>
-        <tr>
-          <th>与格</th>
-          <td>anum</td>
-          <td>anum</td>
-          <td>anr</td>
-        </tr>
-        <tr>
-          <th>対格</th>
-          <td>änn</td>
-          <td>an</td>
-          <td>änn</td>
-        </tr>
-        <tr>
-          <th>具格<sup>※</sup></th>
-          <td>änn</td>
-          <td>änn</td>
-          <td>anr</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <XTable
+    headCols={1}
+    headRows={1}
+    data={[
+      ['＼', '男性', '中性', '女性'],
+      ['主格', ['an', { cols: 3 }]],
+      ['属格', ['anes', { cols: 2 }], 'anr'],
+      ['与格', ['anum', { cols: 2 }], 'anr'],
+      ['対格', 'en', 'an', 'en'],
+      ['具格※', ['en', { cols: 2 }], 'anr'],
+    ]}
+  />
 
   <p class="text-sm">※具格は通常使われず、代わりに与格が使われる</p>
   <p>
-    また、2 <em>tvęģ</em> は性によって変化する。
+    また、2 <i>tvęģ</i> は性によって変化する。
   </p>
 
   <p>変化表は以下。</p>
-  <div class="table-container">
-    <table class="">
-      <thead>
-        <tr>
-          <th>男性</th>
-          <th>中性</th>
-          <th>女性</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>tvęģ</td>
-          <td>taw</td>
-          <td>tva</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <XTable
+    headRows={1}
+    data={[
+      ['男性', '中性', '女性'],
+      ['tvęģ', 'taw', 'tva'],
+    ]}
+  />
 
-  <p>ただし、後ろに他の数詞が来るときは名詞の性にかかわらず中性形の <em>taw</em> が使用される。</p>
-  <p>単独で使う場合は男性形 <em>tvęģ</em> を使う。</p>
+  <p>ただし、後ろに他の数詞が来るときは名詞の性にかかわらず中性形の <i>taw</i> が使用される。</p>
+  <p>単独で使う場合は男性形 <i>tvęģ</i> を使う。</p>
   <p>
-    例. <em>Inr bylding sind taw ðawzend hunde.</em> &#8213; その建物の中には2000匹の犬がいる。
+    例. <i>Inr bylding sind taw ðawzend hunde.</i> &#8213; その建物の中には2000匹の犬がいる。
   </p>
   <p>
-    例2. <em>Inr bylding sind ðawzend tvęģ hundas.</em> &#8213; その建物の中には1002匹の犬がいる。
+    例2. <i>Inr bylding sind ðawzend tvęģ hundas.</i> &#8213; その建物の中には1002匹の犬がいる。
   </p>
 
-  <h3>20&ndash;999</h3>
-
-  <div class="table-container">
-    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
-      <thead>
-        <tr>
-          <th></th>
-          <th>数詞</th>
-          <th></th>
-          <th>数詞</th>
-          <th></th>
-          <th>数詞</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>20</td>
-          <td>tvintaģ</td>
-          <td>30</td>
-          <td>ðraitaģ</td>
-          <td>40</td>
-          <td>fewrtaģ</td>
-        </tr>
-        <tr>
-          <td>21</td>
-          <td>an-and-tvintaģ</td>
-          <td>31</td>
-          <td>an-and-ðräitaģ</td>
-          <td>50</td>
-          <td>faiftaģ</td>
-        </tr>
-        <tr>
-          <td>22</td>
-          <td>taw-and-tvintaģ</td>
-          <td>32</td>
-          <td>taw-and-ðraitaģ</td>
-          <td>60</td>
-          <td>sightaģ</td>
-        </tr>
-        <tr>
-          <td>23</td>
-          <td>ðrau-and-tvintaģ</td>
-          <td>33</td>
-          <td>ðrau-and-ðraitaģ</td>
-          <td>70</td>
-          <td>söftaģ</td>
-        </tr>
-        <tr>
-          <td>24</td>
-          <td>fewr-and-tvintaģ</td>
-          <td>34</td>
-          <td>fewr-and-ðraitaģ</td>
-          <td>80</td>
-          <td>aghdtaģ</td>
-        </tr>
-        <tr>
-          <td>25</td>
-          <td>faif-and-tvintaģ</td>
-          <td>35</td>
-          <td>faif-and-ðraitaģ</td>
-          <td>90</td>
-          <td>newntaģ</td>
-        </tr>
-        <tr>
-          <td>26</td>
-          <td>siks-and-tvintaģ</td>
-          <td>36</td>
-          <td>siks-and-ðraitaģ</td>
-          <td>100</td>
-          <td>(an-)hundred</td>
-        </tr>
-        <tr>
-          <td>27</td>
-          <td>sövon-and-tvintaģ</td>
-          <td>37</td>
-          <td>sövon-and-ðraitaģ</td>
-          <td>110</td>
-          <td>änlftaģ</td>
-        </tr>
-        <tr>
-          <td>28</td>
-          <td>aght-and-tvintaģ</td>
-          <td>38</td>
-          <td>aght-and-ðraitaģ</td>
-          <td>120</td>
-          <td>tvälftaģ</td>
-        </tr>
-        <tr>
-          <td>29</td>
-          <td>nięw-and-tvintaģ</td>
-          <td>39</td>
-          <td>nięw-and-ðraitaģ</td>
-          <td>&ndash;</td>
-          <td>&ndash;</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>20 〜 999</h3>
+  <XTable
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
+    data={[
+      ['20', 'tvintaģ', '30', 'ðraitaģ', '40', 'fewrtaģ'],
+      ['21', 'an-and-tvintaģ', '31', 'an-and-ðraitaģ', '50', 'fajftaģ'],
+      ['22', 'taw-and-tvintaģ', '32', 'taw-and-ðraitaģ', '60', 'sightaģ'],
+      ['23', 'ðrao-and-tvintaģ', '33', 'ðrao-and-ðraitaģ', '70', 'sœftaģ'],
+      ['24', 'fewr-and-tvintaģ', '34', 'fewr-and-ðraitaģ', '80', 'aghtdaģ'],
+      ['25', 'fajf-and-tvintaģ', '35', 'fajf-and-ðraitaģ', '90', 'newntaģ'],
+      ['26', 'six-and-tvintaģ', '36', 'six-and-ðraitaģ', '100', '(an-)hundred'],
+      ['27', 'sœvon-and-tvintaģ', '37', 'sœvon-and-ðraitaģ', '110', 'enlftaģ'],
+      ['28', 'aght-and-tvintaģ', '38', 'aght-and-ðraitaģ', '120', 'tvelftaģ'],
+      ['29', 'nięw-and-tvintaģ', '39', 'nięw-and-ðraitaģ', '-', '-'],
+    ]}
+  />
 
   <p>
-    21&ndash;99、<strong>および110&ndash;129</strong>は、「(1の位)-<em>and</em
+    21 〜 99、<strong>および110 〜 129</strong>は、「(1の位)-<i>and</i
     >-(10の位)」とハイフンで繋いで書く。
   </p>
   <p>
-    110&ndash;129が特殊なので注意（20&ndash;99と同様に、「(1の位)-<em>and</em>-(<em>änlftaģ</em> or
-    <em>tvälftaģ</em>)」という風に書く。）
+    110&ndash;129が特殊なので注意（20&ndash;99と同様に、「(1の位)-<i>and</i>-(<i>änlftaģ</i> or
+    <i>tvälftaģ</i>)」という風に書く。）
   </p>
   <p>
-    101&ndash;109、および130以降は 245 <em>taw-hundred-faif-and-fewrtaģ</em> のように「(100の位)-<i
+    101&ndash;109、および130以降は 245 <i>taw-hundred-faif-and-fewrtaģ</i> のように「(100の位)-<i
       >hundred</i
-    >-(1&ndash;99の数詞)」と繋げて書く。ただし、100の位が1のとき、<em>an</em> は省略できる。
+    >-(1&ndash;99の数詞)」と繋げて書く。ただし、100の位が1のとき、<i>an</i> は省略できる。
   </p>
   <p>
-    10の位の数詞は概ね対応する1の位の数詞に <em>-taģ</em> をつけたものであるが、ほとんどは1の位の数詞と微妙に異なるので注意。
+    10の位の数詞は概ね対応する1の位の数詞に <i>-taģ</i> をつけたものであるが、ほとんどは1の位の数詞と微妙に異なるので注意。
   </p>
   <p>
-    つまり上記のことを踏まえると、105は <em>(an-)hundred-faif,</em> 115は <em>faif-and-änlftaģ,</em>
-    125は <em>faif-and-tvälftaģ,</em> 135は <em>(an-)hundred-faif-and-ðraitaģ</em> となる。
+    つまり上記のことを踏まえると、105は <i>(an-)hundred-faif,</i> 115は <i>faif-and-änlftaģ,</i>
+    125は <i>faif-and-tvälftaģ,</i> 135は <i>(an-)hundred-faif-and-ðraitaģ</i> となる。
   </p>
   <p>
     20以上の数詞が名詞を修飾する場合、<strong>その名詞は複数属格になる</strong
@@ -300,254 +119,112 @@
   </p>
   <p>2語以上からなる数詞の場合、名詞の直前に来る数詞のルールが適応される。</p>
   <p>
-    例. <em>Inr bylding sind taw ðawzend apble.</em>（直前が1000 <em>ðawzend</em> なので複数属格）
+    例. <i>Inr bylding sind taw ðawzend apble.</i>（直前が1000 <i>ðawzend</i> なので複数属格）
   </p>
   <p>
-    例2. <em>Inr bylding sind ðawzend tvęģ apblas.</em>（直前が2 <em>tvęģ</em> なので複数主格）
+    例2. <i>Inr bylding sind ðawzend tvęģ apblas.</i>（直前が2 <i>tvęģ</i> なので複数主格）
   </p>
-  <h3>1000&ndash;</h3>
-
-  <div class="table-container">
-    <table class="[&_td:first-child]:text-end [&_td:first-child]:font-feat-['tnum']">
-      <thead>
-        <tr>
-          <th></th>
-          <th>数詞</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1,000</td>
-          <td>(an) ðawzend</td>
-        </tr>
-        <tr>
-          <td>10,000</td>
-          <td>taw ðawzend</td>
-        </tr>
-        <tr>
-          <td>100,000</td>
-          <td>(an-)hundred ðawzend</td>
-        </tr>
-        <tr>
-          <td>10<sup>6</sup></td>
-          <td>(an) miljönn</td>
-        </tr>
-        <tr>
-          <td>10<sup>7</sup></td>
-          <td>taw miljonnan</td>
-        </tr>
-        <tr>
-          <td>10<sup>8</sup></td>
-          <td>(an)hundred miljonnan</td>
-        </tr>
-        <tr>
-          <td>10<sup>9</sup></td>
-          <td>(an) miljard</td>
-        </tr>
-        <tr>
-          <td>10<sup>10</sup></td>
-          <td>taw miljardan</td>
-        </tr>
-        <tr>
-          <td>10<sup>12</sup></td>
-          <td>(an) biljönn</td>
-        </tr>
-        <tr>
-          <td>10<sup>15</sup></td>
-          <td>(an) biljard</td>
-        </tr>
-        <tr>
-          <td>10<sup>18</sup></td>
-          <td>(an) triljönn</td>
-        </tr>
-        <tr>
-          <td>10<sup>21</sup></td>
-          <td>(an) triljard</td>
-        </tr>
-        <tr>
-          <td>・・・</td>
-          <td>・・・</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>1000 〜</h3>
+  <XTable
+    class="[&_:where(td:nth-child(odd))]:text-end
+      [&_:where(td:nth-child(even))]:text-start
+      [&_td:nth-child(odd)]:font-feat-['tnum']"
+    data={[
+      ['1,000', '(an) ðawzend'],
+      ['10,000', 'taw ðawzend'],
+      ['100,000', '(an-)hundred ðawzend'],
+      ['10^6', '(an) miljœn'],
+      ['10^7', 'taw milljonan'],
+      ['10^8', '(an)hundred miljonnan'],
+      ['10^9', '(an) miliard'],
+      ['10^10', 'taw miljardan'],
+      ['10^12', 'biljœn'],
+      ['10^15', 'biliard'],
+      ['10^18', 'triljœn'],
+      ['10^21', 'triliard'],
+      ['・・・', '・・・'],
+    ]}
+  />
 
   <p>1,000以降の数詞は、他のヨーロッパ言語と同じように1,000毎に新たな数詞が用いられる。</p>
   <p>
     ヴェッセンズラン語の数詞はいわゆる “long scale” であり（ドイツ語やフランス語と同じ方式）、10<sup
       >6</sup
     >
-    以降の数詞では 10<sup>6</sup> 倍毎に <em>-ljönn</em> 系の数詞が使われ、10<sup>3</sup> 倍は
-    <em>-ljönn</em> を <em>-ljard</em> で置き換えた数詞で表される。
+    以降の数詞では 10<sup>6</sup> 倍毎に <i>-ljœn</i> 系の数詞が使われ、10<sup>3</sup> 倍は
+    <i>-ljœn</i> を <i>-liard</i> で置き換えた数詞で表される。
   </p>
-  <p><em>ðawzend</em> や <em>-ljönn, -ljard</em> 系の数詞の前後にはスペースを入れる。</p>
+  <p><i>ðawzend</i> や <i>-ljœn, -liard</i> 系の数詞の前後にはスペースを入れる。</p>
   <p>
-    <em>-ljönn, -ljard</em> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
+    <i>-ljœn, -liard</i> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
   </p>
   <p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
-  <div class="flex max-md:flex-col">
-    <div class="table-container">
-      <table class="[&_td]:text-start">
-        <caption>-ljönn</caption>
-        <thead>
-          <tr>
-            <th></th>
-            <th>単数</th>
-            <th>複数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>主格</th>
-            <td>-ljönn</td>
-            <td>-ljonnan</td>
-          </tr>
-          <tr>
-            <th>属格</th>
-            <td>-ljonnan</td>
-            <td>-ljonne</td>
-          </tr>
-          <tr>
-            <th>与格</th>
-            <td>-ljonnan</td>
-            <td>-ljonnum</td>
-          </tr>
-          <tr>
-            <th>対格</th>
-            <td>-ljonnan</td>
-            <td>-ljonnan</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="table-container">
-      <table class="[&_td]:text-start">
-        <caption>-ljard</caption>
-        <thead>
-          <tr>
-            <th></th>
-            <th>単数</th>
-            <th>複数</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>主格</th>
-            <td>-ljard</td>
-            <td>-ljardan</td>
-          </tr>
-          <tr>
-            <th>属格</th>
-            <td>-ljardan</td>
-            <td>-ljardne</td>
-          </tr>
-          <tr>
-            <th>与格</th>
-            <td>-ljardan</td>
-            <td>-ljardum</td>
-          </tr>
-          <tr>
-            <th>対格</th>
-            <td>-ljardan</td>
-            <td>-ljardan</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="grid grid-cols-auto-fill-55 gap-2">
+    <XTable
+      caption="-ljœn"
+      class="[&_:where(td)]:text-start"
+      headCols={1}
+      headRows={1}
+      data={[
+        ['＼', '単数', '複数'],
+        ['主格', '-ljœn', '-ljonan'],
+        ['属格', '-ljonan', '-ljonne'],
+        ['与格', '-ljonan', '-ljonum'],
+        ['対格', '-ljonan', '-ljonan'],
+      ]}
+    />
+    <XTable
+      caption="-liard"
+      class="[&_:where(td)]:text-start"
+      headCols={1}
+      headRows={1}
+      data={[
+        ['＼', '単数', '複数'],
+        ['主格', '-liard', '-liardan'],
+        ['属格', '-liardan', '-liardne'],
+        ['与格', '-liardan', '-liardum'],
+        ['対格', '-liardan', '-liardan'],
+      ]}
+    />
   </div>
 
   <p class="text-black/10">
     1,145,141,919,810<br />
-    <em>
-      an biljönn an-hundred-faif-and-fewrtaģ miljardan an-hundred-an-and-fewrtaģ miljonnan
-      nięw-hundred-newntųy ðawzend aght-hundred-tųy
-    </em>
+    <i>
+      an biljœn an-hundred-faif-and-fewrtaģ miliardan an-hundred-an-and-fewrtaģ miljonan
+      nięw-hundred-newntųj ðawzend aght-hundred-tųj
+    </i>
   </p>
 </section>
 <section aria-labelledby="ordinal">
-  <h2 id="ordinal">序数詞 (Ämbyrdlaiķraiman)</h2>
-  <div class="table-container">
-    <table class="[&_td:nth-child(odd)]:text-end [&_td:nth-child(odd)]:font-feat-['tnum']">
-      <thead>
-        <tr>
-          <th></th>
-          <th>数詞</th>
-          <th></th>
-          <th>数詞</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>0.</td>
-          <td>zeroðe</td>
-          <td>10.</td>
-          <td>tųyðe</td>
-        </tr>
-        <tr>
-          <td>1.</td>
-          <td>fyrest</td>
-          <td>11.</td>
-          <td>änlfte</td>
-        </tr>
-        <tr>
-          <td>2.</td>
-          <td>uwðer</td>
-          <td>12.</td>
-          <td>tvälfte</td>
-        </tr>
-        <tr>
-          <td>3.</td>
-          <td>ðritde</td>
-          <td>13.</td>
-          <td>ðrautųyðe</td>
-        </tr>
-        <tr>
-          <td>4.</td>
-          <td>fewrðe</td>
-          <td>14.</td>
-          <td>fewrtųyðe</td>
-        </tr>
-        <tr>
-          <td>5.</td>
-          <td>faifte</td>
-          <td>15.</td>
-          <td>faiftųyðe</td>
-        </tr>
-        <tr>
-          <td>6.</td>
-          <td>sighte</td>
-          <td>16.</td>
-          <td>sightųyðe</td>
-        </tr>
-        <tr>
-          <td>7.</td>
-          <td>sövonðe</td>
-          <td>17.</td>
-          <td>söftųyðe</td>
-        </tr>
-        <tr>
-          <td>8.</td>
-          <td>aghtðe</td>
-          <td>18.</td>
-          <td>aghdtųyðe</td>
-        </tr>
-        <tr>
-          <td>9.</td>
-          <td>nięwðe</td>
-          <td>19.</td>
-          <td>newntųyðe</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2 id="ordinal">序数詞 (Embyrdlajçrajman)</h2>
+  <XTable
+    class="[&_:where(td:nth-child(odd))]:text-end 
+      [&_:where(td:nth-child(even))]:text-start 
+      [&_:where(td:nth-child(odd))]:font-feat-['tnum']"
+    data={[
+      ['0.', 'zéroðe', '10.', 'tųjðe'],
+      ['1.', 'fyrest', '11.', 'ęlęfte'],
+      ['2.', 'óðer', '12.', 'tvelfte'],
+      ['3.', 'ðritde', '13.', 'ðraotųjðe'],
+      ['4.', 'fewrðe', '14.', 'fewrtųjðe'],
+      ['5.', 'fajfte', '15.', 'fajftųjðe'],
+      ['6.', 'sighte', '16.', 'sightųjðe'],
+      ['7.', 'sœvonðe', '17.', 'sœftųjðe'],
+      ['8.', 'aghtðe', '18.', 'aghtdųjðe'],
+      ['9.', 'nięwðe', '19.', 'newntųjðe'],
+    ]}
+  />
 
   <p>
-    序数詞は1&ndash;3は特殊な語形で、4以降は基数詞に <em>-ðe</em> をつける。ただし5, 11, 12など
-    <em>-f, -v</em>
-    で終わる数詞は <em>-fte</em> に変え、6.は <em>sighte</em> と例外的に変化するので注意。
+    序数詞は1&ndash;3は特殊な語形で、4以降は基数詞に <i>-ðe</i> をつける。ただし、 <i>-f, -v</i>
+    で終わる 5. 11. 12. は
+    <i>-fte</i>
+    になり、6.は
+    <i>sighte</i> と例外的に変化するので注意。
   </p>
-  <p>8. <em>aghtðe</em> の <em>t</em> は読まなくてもよい。</p>
-  <p>序数詞を形容詞として使うときは、<em>fyrest, uwðer</em> を除き弱変化のみとなる。</p>
+  <p>8. <i>aghtðe</i> の <i>t</i> は読まなくてもよい。</p>
+  <p>序数詞を形容詞として使うときは、<i>fyrest, óðer</i> を除き弱変化のみとなる。</p>
 </section>
 
 <UnderConstruction />

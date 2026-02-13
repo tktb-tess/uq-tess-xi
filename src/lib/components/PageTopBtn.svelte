@@ -6,9 +6,7 @@
   const isInvisible = $derived(typeof scrollY.current === 'number' ? scrollY.current < 600 : false);
 
   const onclick: MouseEventHandler<HTMLButtonElement> = () => {
-    if (browser) {
-      window.scroll({ top: 0, behavior: 'smooth' });
-    }
+    if (browser) window.scroll({ top: 0, behavior: 'smooth' });
   };
 </script>
 

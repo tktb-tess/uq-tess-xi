@@ -9,12 +9,10 @@ export type Toast = {
   readonly timeoutID: NodeJS.Timeout;
 };
 
-type UUID = ReturnType<typeof crypto.randomUUID>;
-
-export const toastStates = new SvelteMap<UUID, Toast>();
+export const toastStates = new SvelteMap<symbol, Toast>();
 
 export const addToast = (message: string, type: ToastType, timeout: number) => {
-  const key = crypto.randomUUID();
+  const key = Symbol();
 
   const timeoutID = setTimeout(() => {
     dismissToast(key);
@@ -23,7 +21,7 @@ export const addToast = (message: string, type: ToastType, timeout: number) => {
   toastStates.set(key, { message, type, timeout, timeoutID });
 };
 
-export const dismissToast = (key: UUID) => {
+export const dismissToast = (key: symbol) => {
   if (toastStates.has(key)) {
     toastStates.delete(key);
   }

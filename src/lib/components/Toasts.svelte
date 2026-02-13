@@ -42,7 +42,7 @@
   @reference '../../app.css';
   @layer components {
     #toast-root {
-      @apply fixed z-10000 top-5 inset-x-0 flex flex-col
+      @apply fixed z-(--z-toast) top-5 inset-x-0 flex flex-col
       gap-2 items-center *:max-w-full pointer-events-none;
     }
 

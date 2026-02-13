@@ -47,12 +47,12 @@
   --color-d-accent: var(--color-violet-50);
   --color-accent2: var(--color-violet-100);
   --color-d-accent2: var(--color-violet-900-d);
-  --color-border: #00000040;
-  --color-border-light: #00000020;
-  --color-border-dark: #00000080;
-  --color-d-border: #ffffff40;
-  --color-d-border-light: #ffffff20;
-  --color-d-border-dark: #ffffff70;
+  --color-border: hsl(0 0 0 / 25%);
+  --color-border-light: hsl(0 0 0 / 12%);
+  --color-border-dark: hsl(0 0 0 / 50%);
+  --color-d-border: hsl(0 0 100 / 25%);
+  --color-d-border-light: hsl(0 0 100 / 12%);
+  --color-d-border-dark: hsl(0 0 100 / 44%);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-300);
   --color-link-disabled: var(--color-zinc-500);
@@ -97,6 +97,10 @@
   --tf-ease-out: cubic-bezier(0, 0.5, 0.5, 1);
   --tf-ease-in: cubic-bezier(0.5, 0, 1, 0.5);
   --tf-ease-in-out: cubic-bezier(0.5, 0, 0.5, 1);
+
+  --z-header: 200;
+  --z-sidemenu: 100;
+  --z-toast: calc(infinity);
 
   @keyframes --k-top-logo {
     from {
@@ -144,7 +148,7 @@
     }
   }
 
-  --animate-toast: --k-toast-fadein 0.1s var(--tf-ease-out);
+  --animate-toast: --k-toast-fadein 100ms var(--tf-ease-out);
 
   @keyframes --k-swa-slide-in {
     from {
@@ -269,6 +273,10 @@
   font-feature-settings: --value([*]);
 }
 
+@utility cont-vis-* {
+  content-visibility: --value('visible', 'hidden', 'auto');
+}
+
 @custom-variant any-hover {
   @media (any-hover: hover) {
     &:hover {
@@ -296,18 +304,19 @@
 }
 
 @layer base {
-  :is(html, :host) {
+  :root {
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
-    @apply font-sans max-sm:text-sm wrap-anywhere hyphens-auto;
+    scrollbar-gutter: stable;
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
   }
 
-  :not(pre, code, body, html, input, textarea) {
-    @apply font-[inherit];
+  :where(:root *) {
+    @apply font-[unset];
   }
 
-  :lang(x-v3-karphnpn) {
+  [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
   }
 
@@ -323,7 +332,7 @@
     @apply ctext-link any-hover:underline;
 
     &[aria-disabled='true'] {
-      @apply ctext-link-disabled no-underline;
+      @apply ctext-link-disabled no-underline pointer-events-none;
     }
   }
 

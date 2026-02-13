@@ -1,5 +1,7 @@
 <script lang="ts">
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+
   const {} = $props();
 </script>
 
-<p class="ctext-caution">工事中……</p>
+<UnderConstruction />

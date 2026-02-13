@@ -1,6 +1,8 @@
 <script>
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
+  const {} = $props();
 </script>
 
 <XSection title="単独字の発音">
@@ -45,7 +47,7 @@
         'q',
         '/k/',
         [
-          '基本 <em>qu</em> のセットで使われ、<span class="font-ipa">/kʋ/</span> という音を表す',
+          '基本 qu のセットで使われ、 <span class="font-ipa">/kʋ/</span> という音を表す',
           { rawHTML: true },
         ],
       ],
@@ -109,9 +111,8 @@
     <i>tu lüvjenn</i> <span class="font-ipa">/tʊ ˈlyːʋjən/</span>（tu不定詞）
   </p>
   <p>
-    また、母音字にオゴネク（“˛”
-    U+0328）が付いた場合、同様に鼻母音で読む。母音の変わり方は上と同様である。 なお、<strong
-      >重音字の母音は後ろに <i>m, n</i> が来ても、鼻母音にはならない。</strong
+    また、母音字にオゴネク（“˛”）が付いた場合、同様に鼻母音で読む。母音の変わり方は上と同様である。
+    なお、<strong>重音字の母音は後ろに <i>m, n</i> が来ても、鼻母音にはならない。</strong
     >重音字の鼻母音は1番目の母音にオゴネクをつけて表す（「重音字の発音」の項で示したように。）
   </p>
 </XSection>
@@ -128,4 +129,4 @@
   </p>
 </XSection>
 
-<h3 class="ctext-caution my-8 text-center">工事中...</h3>
+<UnderConstruction />
