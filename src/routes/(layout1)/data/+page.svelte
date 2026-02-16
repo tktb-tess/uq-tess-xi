@@ -1,5 +1,7 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  const {}: {} = $props();
 </script>
 
 <ul>
@@ -11,4 +13,4 @@
     <ExtLink href="https://apps.tktb-tess.dev/conlang-gacha">人工言語ガチャ</ExtLink> …日本語圏の人工言語をランダムに1つ表示する。
   </li>
 </ul>
-<p class="text-red-600 text-xl text-center">工事中……</p>
+<UnderConstruction />

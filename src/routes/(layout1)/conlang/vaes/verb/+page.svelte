@@ -1,1 +1,6 @@
-<p class="text-danger text-xl text-center">工事中……</p>
+<script lang="ts">
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
+  const {}: {} = $props();
+</script>
+
+<UnderConstruction />

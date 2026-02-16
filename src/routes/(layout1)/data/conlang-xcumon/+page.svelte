@@ -1,5 +1,6 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
+  const {}: {} = $props();
 </script>
 
 <p>とりあえずやってみようと思います。</p>

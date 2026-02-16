@@ -1,18 +1,18 @@
 <script lang="ts">
+  import XSection from '$lib/components/XSection.svelte';
   import ConjugationTable from './conjugation-table.svelte';
+  const {}: {} = $props();
 </script>
 
-<div>
-  <ul>
-    <li>
-      古英語の動詞活用を網羅的にまとめ、解説する。なお表記は英語版Wiktionaryのものに倣い、ウィン（ƿ）の代わりに
-      w を使い、þ と ð は þ に統一する。
-    </li>
-    <li>c, g の硬口蓋化音はドットで表記し、長母音はマクロンで示す。</li>
-  </ul>
-</div>
-<section aria-labelledby="sect1">
-  <h2 id="sect1">強変化動詞</h2>
+<ul>
+  <li>
+    古英語の動詞活用を網羅的にまとめ、解説する。なお表記は英語版Wiktionaryのものに倣い、ウィン（ƿ）の代わりに
+    w を使い、þ と ð は þ に統一する。
+  </li>
+  <li>c, g の硬口蓋化音はドットで表記し、長母音はマクロンで示す。</li>
+</ul>
+
+<XSection title="強変化動詞">
   <p>
     語幹の母音交替（アプラウトという）を伴う動詞活用を持つ動詞。変化パターンに応じていくつかのクラスに分けられる。
   </p>
@@ -87,4 +87,4 @@
     が有声子音の後に来ると、その子音は無声化する。また直説法現在3人称単数の語尾は本来 <i>-(e)þ</i>
     だが、語幹末子音が <i>t, d, s</i> の場合 <i>-t</i> となる。
   </p>
-</section>
+</XSection>

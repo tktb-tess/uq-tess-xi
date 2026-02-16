@@ -102,6 +102,8 @@
   --z-sidemenu: 100;
   --z-toast: calc(infinity);
 
+  --f-feat-tnum: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03', 'tnum';
+
   @keyframes --k-top-logo {
     from {
       transform: translateY(-70px) rotate(-120deg);
@@ -270,7 +272,7 @@
 }
 
 @utility font-feat-* {
-  font-feature-settings: --value([*]);
+  font-feature-settings: --value(--f-feat-*, [*]);
 }
 
 @utility cont-vis-* {
@@ -359,10 +361,6 @@
     &:disabled {
       @apply ctext-text-pale cbg-main-pale;
     }
-  }
-
-  li > ul {
-    @apply mb-0;
   }
 
   :is(h2, h3, h4, h5, h6) {
