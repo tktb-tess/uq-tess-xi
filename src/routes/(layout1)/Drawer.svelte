@@ -51,7 +51,7 @@
     }
 
     #drawer {
-      @apply flow-root fixed left-0 top-0 h-dvh w-(--w-side-max) overflow-y-auto
+      @apply flow-root fixed left-0 top-0 h-dvh w-(--min-w-side) overflow-y-auto
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
       transition-[translate,visibility]
       ease-(--tf-ease-in-out)

@@ -102,7 +102,9 @@
   --z-drawer: 300;
   --z-header: 200;
   --z-sidemenu: 100;
-  
+
+  --max-w-main: 80rem;
+  --min-w-side: 18rem;
 
   --f-feat-tnum: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03', 'tnum';
 
