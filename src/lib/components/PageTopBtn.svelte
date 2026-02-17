@@ -17,12 +17,7 @@
   title="ページトップへ戻る"
   data-invisible={isInvisible ? '' : null}
 >
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path
-      fill="currentColor"
-      d="M18.78 15.78a.749.749 0 0 1-1.06 0L12 10.061 6.28 15.78a.749.749 0 1 1-1.06-1.06l6.25-6.25a.749.749 0 0 1 1.06 0l6.25 6.25a.749.749 0 0 1 0 1.06Z"
-    />
-  </svg>
+  <div class="arrow"></div>
 </button>
 
 <style lang="postcss">
@@ -30,19 +25,19 @@
   @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
-      @apply grid place-content-center fixed right-5 bottom-5 p-0.5 rounded-[50%] bg-transparent ctext-accent
-      any-hover:cbg-accent any-hover:ctext-textinv
-		  transition-[color,background-color,opacity,display] data-invisible:opacity-0 data-invisible:hidden;
-
-      transition-behavior: allow-discrete;
+      @apply grid place-content-center fixed right-5 bottom-5 p-3 rounded bg-transparent ctext-accent
+        any-hover:cbg-accent any-hover:ctext-textinv
+        data-invisible:opacity-0 data-invisible:hidden
+		    transition-[color,background-color,opacity,display] allow-discrete ease-linear duration-140;
 
       @starting-style {
         @apply opacity-0;
       }
+    }
 
-      > svg {
-        @apply size-8;
-      }
+    .arrow {
+      @apply size-3 border-l-2 border-t-2 border-current;
+      transform: translateY(.24rem) rotateZ(45deg);
     }
   }
 </style>
