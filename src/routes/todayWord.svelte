@@ -35,7 +35,7 @@
     {#if result.isOk()}
       {@const { value } = result}
       {#if value}
-        <h3 class="__entry {value.size}">{value.word}</h3>
+        <h3 class="__entry {value.isLarge ? 'text-5xl' : 'text-4xl'}">{value.word}</h3>
         {#if value.pron}
           <p class="__pronunciation">
             {#if value.pron.includes('/')}

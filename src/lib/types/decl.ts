@@ -25,7 +25,7 @@ export const wordDataSchema = z
     translations: ZpDIC.equivalentSchema.readonly().array().readonly(),
     dicUrl: z.string(),
     pron: z.string(),
-    size: z.union([z.literal('text-4xl'), z.literal('text-5xl')]),
+    isLarge: z.boolean(),
   })
   .readonly();
 
