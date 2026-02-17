@@ -62,9 +62,9 @@ export const GET = async () => {
 
     const dicUrl = `https://zpdic.ziphil.com/dictionary/633?${query}`;
 
-    const size = (() => {
+    const isLarge = (() => {
       const len = todayWord.name.length;
-      return len < 10 ? 'text-5xl' : 'text-4xl';
+      return len < 10;
     })();
 
     const body: WordData = {
@@ -72,7 +72,7 @@ export const GET = async () => {
       translations: todayWord.equivalents,
       dicUrl,
       pron: todayWord.pronunciation,
-      size,
+      isLarge,
     };
 
     return json(body);
