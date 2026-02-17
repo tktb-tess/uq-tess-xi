@@ -9,26 +9,32 @@
   const { contents }: Props = $props();
 </script>
 
-<div class="__card-list">
+<ul class="__card-list">
   {#each contents as { title, desc, href }}
-    <a {href}>
-      <h3>{title}</h3>
-      <p>
-        {desc}
-      </p>
-    </a>
+    <li>
+      <a {href}>
+        <h3>{title}</h3>
+        <p>
+          {desc}
+        </p>
+      </a>
+    </li>
   {/each}
-</div>
+</ul>
 
 <style lang="postcss">
   @reference '../app.css';
   @layer components {
     .__card-list {
-      @apply flex flex-col gap-3 w-full max-w-190 mx-auto my-(--s-figure);
+      @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none w-full max-w-190 mx-auto my-(--s-figure);
 
-      > :where(a) {
-        @apply grid grid-cols-[8.75rem_1fr] *:min-w-0 items-center
-        rounded-sm no-underline px-4 py-2 gbg-accent
+      > :where(li) {
+        @apply contents;
+      }
+
+      :where(a) {
+        @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
+        rounded-sm no-underline gbg-accent h-12 px-3
         any-hover:scale-102 transition-transform;
 
         > :where(h3, p) {
