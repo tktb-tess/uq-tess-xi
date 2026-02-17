@@ -1,7 +1,7 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
-  import MDComponent from '$lib/components/MDComponent.svelte';
   import XSection from '$lib/components/XSection.svelte';
+  const {}: {} = $props();
 </script>
 
 <XSection title="ヴェッセンズラン語 (Vessenzlendisç)">
@@ -29,19 +29,8 @@
     <li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>
   </ul>
 </XSection>
-<section aria-labelledby="jaes">
-  <h2 id="jaes"><s>ヤズニェル語 (Ásnélnowy, 凍結)</s></h2>
-  <p>
-    「まず古語を作り、そこからの音変化を想定して現代語を作る」という方針に変更したため現在制作中断中。
-  </p>
-  <p>
-    最初に作り始めた言語。単語などは基本現実世界に依存しない、ある程度自然言語らしさを求める芸術言語。日本語の直拗音やロシア語の硬音軟音よろしく、ほとんどの子音に硬口蓋化の有無による対立がある。
-    文法は日本語やフィンランド語などの膠着語といわれる言語を中心に参考にしている。
-  </p>
-</section>
-<section aria-labelledby="old-jaes">
-  <h2 id="old-jaes">古ヤズニェル語 (?????)</h2>
+<XSection title="古ヤズニェル語 (?????)">
   <p>
     ヤズニェル語の古語にあたる言語。若干屈折語気味の膠着語の予定。古典ギリシア語、ラテン語、フィンランド語などを参考にする予定。
   </p>
-</section>
+</XSection>

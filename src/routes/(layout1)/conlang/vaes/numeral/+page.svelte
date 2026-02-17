@@ -80,7 +80,7 @@
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end
       [&_:where(td:nth-child(even))]:text-start
-      [&_td:nth-child(odd)]:font-feat-['tnum']"
+      [&_td:nth-child(odd)]:font-feat-tnum"
     data={[
       ['20', 'tvintaģ', '30', 'ðraitaģ', '40', 'fewrtaģ'],
       ['21', 'an-and-tvintaģ', '31', 'an-and-ðraitaģ', '50', 'fajftaģ'],

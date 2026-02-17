@@ -58,8 +58,6 @@
   @reference '../../app.css';
   @layer components {
     .__container {
-      --max-w-main: 96rem;
-      --min-w-side: 17rem;
 
       grid-template-areas:
         'header header header'

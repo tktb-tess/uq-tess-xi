@@ -11,15 +11,15 @@
       const href = `/${dirs.slice(0, i).join('/')}`;
       const text =
         href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : 'Top';
-      return { href, text } as const;
+      return { href, title: text } as const;
     });
   });
   const currentText = $derived(pages.find((d) => d.path === path)?.title ?? '[NO DATA]');
 </script>
 
 <ol id="breadcrumb" aria-label="パンくずリスト">
-  {#each links as link}
-    <li><a href={link.href}>{link.text}</a></li>
+  {#each links as { href, title }}
+    <li><a {href} {title}>{title}</a></li>
   {/each}
   <li><b>{currentText}</b></li>
 </ol>
@@ -34,13 +34,13 @@
         @apply contents;
       }
 
-      > :where(li:not(:last-child))::after {
+      > :where(li:not(:first-child))::before {
         content: '>';
-        @apply block;
+        @apply grid place-content-center;
       }
 
       :where(a, b) {
-        @apply block text-nowrap;
+        @apply grid place-content-center text-nowrap;
       }
     }
   }

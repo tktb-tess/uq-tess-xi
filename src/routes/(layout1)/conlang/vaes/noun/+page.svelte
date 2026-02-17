@@ -1,5 +1,9 @@
-<section aria-labelledby="noun-gender">
-  <h3 id="noun-gender">名詞の性</h3>
+<script lang="ts">
+  import XSection from '$lib/components/XSection.svelte';
+  const {}: {} = $props();
+</script>
+
+<XSection title="名詞の性">
   <p>
     ヴェッセンズラン語の名詞には3つの性があり、<strong>男性・中性・女性</strong
     >に分けられる。いくつか例を挙げると、
@@ -7,7 +11,7 @@
   <ul>
     <li>男性名詞: fader(父), znake(ヘビ) etc.</li>
     <li>中性名詞: uyland(島), mejden(少女) etc.</li>
-    <li>女性名詞: móder(母), bóck(本) etc.</li>
+    <li>女性名詞: móder(母), bócc(本) etc.</li>
   </ul>
   <p>
     の如くである。 <i>fader, móder</i>
@@ -17,9 +21,9 @@
     冠詞・形容詞などはこの名詞の性に応じて異なる形になるので、重要である。見分け方があればよいのだが、生憎うまい方法がないので個別に覚えていく他ない。
   </p>
   <p>なお、複合語は最後の要素の性になるのが普通。</p>
-</section>
-<section aria-labelledby="noun-case-pl">
-  <h3 id="noun-case-pl">格・複数形</h3>
+</XSection>
+
+<XSection title="名詞の格・数">
   <p>
     ヴェッセンズラン語の名詞は文中での機能を示すために語尾や母音を変化させることがある。これを<strong
       >格変化</strong
@@ -34,10 +38,10 @@
   </ul>
   <p>móder(母) を例にしてみてみると、</p>
   <ul>
-    <li>主格: <strong>Säw móder</strong> ietð änn apbel. —— 母はリンゴを食べる。</li>
-    <li>属格: Ðis iss säw orlözķ <strong>ðiar meder</strong>. —— これは母の腕時計だ。</li>
-    <li>与格: Sä fader jaav <strong>ðiar meder</strong> änn bóck. —— 父は母に本をあげた。</li>
-    <li>対格: Ðat mejden ðankð <strong>ða móder</strong>. —— 娘は母に感謝する。</li>
+    <li>主格: <i>Säw móder</i> ietð änn apbel. —— 母はリンゴを食べる。</li>
+    <li>属格: Ðis iss säw orlözķ <i>ðiar meder</i>. —— これは母の腕時計だ。</li>
+    <li>与格: Sä fader jaav <i>ðiar meder</i> änn bóck. —— 父は母に本をあげた。</li>
+    <li>対格: Ðat mejden ðankð <i>ða móder</i>. —— 娘は母に感謝する。</li>
   </ul>
   <p>のようになる。säw, ðiar, ða は定冠詞で、格に応じて変化している。</p>
-</section>
+</XSection>

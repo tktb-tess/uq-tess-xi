@@ -1,4 +1,5 @@
 <script lang="ts">
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 </script>
 
-<h3 class="text-center text-danger my-8">工事中……</h3>
+<UnderConstruction />

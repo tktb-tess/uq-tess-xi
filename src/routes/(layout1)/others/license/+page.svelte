@@ -1,6 +1,6 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
-  const {} = $props();
+  const {}: {} = $props();
 </script>
 
 <p>フォントなどのライセンス表示をまとめたページです。</p>

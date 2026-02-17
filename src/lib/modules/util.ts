@@ -4,6 +4,7 @@ import * as z from 'zod';
 type NamedError<EName extends string | symbol> = {
   readonly name: EName;
   readonly message: string;
+  readonly stack?: string;
   readonly cause?: unknown;
 };
 

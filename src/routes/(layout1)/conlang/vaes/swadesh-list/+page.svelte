@@ -1,6 +1,6 @@
 <script lang="ts">
-  const { data: swadeshList } = $props();
-  const [header, ...body] = $derived(swadeshList.value);
+  const { data } = $props();
+  const [header, ...body] = $derived(data.value);
 </script>
 
 <p>まだ未完成。順次追加していきます。</p>
@@ -39,7 +39,7 @@
       }
 
       &:where(:first-child) {
-        @apply text-end font-feat-['tnum'];
+        @apply text-end font-feat-tnum;
       }
 
       &:where(:nth-child(4)) {
