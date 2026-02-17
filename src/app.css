@@ -391,8 +391,8 @@
     @apply mt-(--s-paragraph);
   }
 
-  :is(ul, ol) {
-    @apply ps-5;
+  ul, ol {
+    @apply ps-6;
   }
 
   li > :is(ul, ol) {
@@ -417,7 +417,7 @@
   }
 
   table {
-    @apply whitespace-nowrap break-keep w-max max-w-full text-center;
+    @apply whitespace-nowrap break-keep w-max max-w-full text-center me-auto;
 
     :where(td, th) {
       @apply px-2 py-1;

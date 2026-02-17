@@ -30,11 +30,18 @@
   @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
-      @apply block fixed right-5 bottom-5 p-0.5 rounded-[50%] bg-transparent ctext-accent any-hover:cbg-accent any-hover:ctext-textinv
-		  transition-[color,background-color,opacity,visibility] data-invisible:opacity-0 data-invisible:invisible;
+      @apply grid place-content-center fixed right-5 bottom-5 p-0.5 rounded-[50%] bg-transparent ctext-accent
+      any-hover:cbg-accent any-hover:ctext-textinv
+		  transition-[color,background-color,opacity,display] data-invisible:opacity-0 data-invisible:hidden;
+
+      transition-behavior: allow-discrete;
+
+      @starting-style {
+        @apply opacity-0;
+      }
 
       > svg {
-        @apply size-8 align-baseline;
+        @apply size-8;
       }
     }
   }

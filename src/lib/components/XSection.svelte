@@ -16,3 +16,12 @@
   <h2 {id}>{title}</h2>
   {@render children?.()}
 </section>
+
+<style lang="postcss">
+  @reference '../../app.css';
+  @layer components {
+    section {
+      @apply flow-root;
+    }
+  }
+</style>

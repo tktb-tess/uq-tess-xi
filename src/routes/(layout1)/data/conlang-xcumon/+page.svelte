@@ -4,9 +4,7 @@
 </script>
 
 <p>とりあえずやってみようと思います。</p>
-<ol
-  class="ms-5 [&_p]:mb-0 [&_li:not(:last-child)]:mb-4 [&_p:first-child]:font-semibold [&_p:first-child]:textc-highlight"
->
+<ol class="[&_:where(p:first-child)]:font-semibold">
   <li>
     <p>まずペンネーム（ハンドルネーム）を教えてください。</p>
     <p>斗琴庭 暁響（とことば あかね）、またはTessyrrhaqt（テセラクト）です。</p>
