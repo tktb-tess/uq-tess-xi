@@ -10,7 +10,7 @@
   </p>
   <ul>
     <li>男性名詞: fader(父), znake(ヘビ) etc.</li>
-    <li>中性名詞: uyland(島), mejden(少女) etc.</li>
+    <li>中性名詞: ujland(島), mejden(少女) etc.</li>
     <li>女性名詞: móder(母), bócc(本) etc.</li>
   </ul>
   <p>
@@ -38,10 +38,10 @@
   </ul>
   <p>móder(母) を例にしてみてみると、</p>
   <ul>
-    <li>主格: <i>Säw móder</i> ietð änn apbel. —— 母はリンゴを食べる。</li>
-    <li>属格: Ðis iss säw orlözķ <i>ðiar meder</i>. —— これは母の腕時計だ。</li>
-    <li>与格: Sä fader jaav <i>ðiar meder</i> änn bóck. —— 父は母に本をあげた。</li>
+    <li>主格: <i>Sew móder</i> ietð enn apbel. —— 母はリンゴを食べる。</li>
+    <li>属格: Ðis iss sew orlözķ <i>ðiar meder</i>. —— これは母の腕時計だ。</li>
+    <li>与格: Se fader jaav <i>ðiar meder</i> enn bóck. —— 父は母に本をあげた。</li>
     <li>対格: Ðat mejden ðankð <i>ða móder</i>. —— 娘は母に感謝する。</li>
   </ul>
-  <p>のようになる。säw, ðiar, ða は定冠詞で、格に応じて変化している。</p>
+  <p>のようになる。sew, ðiar, ða は定冠詞で、格に応じて変化している。</p>
 </XSection>
