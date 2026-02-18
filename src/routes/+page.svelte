@@ -42,24 +42,22 @@
   </XSection>
   <XSection title="頂いた名前">
     <p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>言語</th>
-            <th>作者</th>
-            <th>名</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
-            <td>かえる</td>
-            <td><span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table style:--rows={2} style:--cols={3} style:--head-rows={1}>
+      <thead>
+        <tr>
+          <th>言語</th>
+          <th>作者</th>
+          <th>名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
+          <td>かえる</td>
+          <td><span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
+        </tr>
+      </tbody>
+    </table>
   </XSection>
   <XSection title="相互リンク">
     <p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
