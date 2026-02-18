@@ -10,14 +10,14 @@
     return dirs.map((_, i) => {
       const href = `/${dirs.slice(0, i).join('/')}`;
       const text =
-        href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : 'Top';
+        href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : 'Home';
       return { href, title: text } as const;
     });
   });
   const currentText = $derived(pages.find((d) => d.path === path)?.title ?? '[NO DATA]');
 </script>
 
-<ol id="breadcrumb" aria-label="パンくずリスト">
+<ol id="breadcrumb" title="パンくずリスト">
   {#each links as { href, title }}
     <li><a {href} {title}>{title}</a></li>
   {/each}
