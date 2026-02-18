@@ -15,7 +15,7 @@
     class: cName,
     summary,
     duration = 240,
-    easing = 'cubic-bezier(0.6, 0, 0.4, 1)',
+    easing = 'cubic-bezier(0.25, 0, 0.1, 1)',
   }: Props = $props();
 
   let isOpen = $state(false);
@@ -72,7 +72,7 @@
     }}
   >
     <ArrowIcon
-      class="inline-block h-6 in-data-opened:rotate-x-180 transition-transform duration-(--d-icon-rotate)"
+      class="inline-block h-6 in-data-opened:rotate-x-180 transition-transform ease-in-out-1 duration-(--d-icon-rotate)"
     />
     <span>{summary}</span>
   </summary>
