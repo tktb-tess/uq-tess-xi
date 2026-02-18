@@ -14,7 +14,7 @@
   </p>
   <XTable
     headRows={1}
-    class="[&_:where(tbody_td:nth-child(3))]:font-ipa [&_:where(tbody_td:last-child)]:whitespace-normal"
+    class="[&_:where(tbody_td:nth-child(3))]:font-ipa [&_:where(tbody_td:last-child)]:whitespace-normal [&_:where(tbody_td:last-child)]:wrap-normal"
     data={[
       ['大文字', '小文字', '発音例', '備考'],
       ['A', 'a', '/ä/, /ɑː/', ''],
@@ -51,7 +51,7 @@
           { rawHTML: true },
         ],
       ],
-      ['R', 'r', '/ɽ/, /ɻ/', '日本語のラ行子音に近いが、より奥の方'],
+      ['R', 'r', '/ɽ/', '日本語のラ行子音に近いが、より奥の方'],
       ['S', 's', '/s/', ''],
       ['T', 't', '/tʰ/', ''],
       [

@@ -25,7 +25,7 @@ const _textDirectiveH = (node: TextDirective): ElementContent => {
     const hast = toHast(node, { allowDangerousHtml: true });
     if (hast.type === 'root' || hast.type === 'doctype') {
       return emptyText;
-    } else if (hast.type === 'element' && hast.tagName === 'script') {
+    } else if (hast.type === 'element' && (hast.tagName === 'script' || hast.tagName === 'link')) {
       return emptyText;
     } else {
       return hast;
@@ -41,7 +41,7 @@ const phrasingToHast = (mdNode: PhrasingContent): ElementContent => {
 
     if (hast.type === 'root' || hast.type === 'doctype') {
       return emptyText;
-    } else if (hast.type === 'element' && hast.tagName === 'script') {
+    } else if (hast.type === 'element' && (hast.tagName === 'script' || hast.tagName === 'link')) {
       return emptyText;
     } else {
       return hast;
@@ -99,21 +99,20 @@ export const tableHandler: Handler = (_, node: Table) => {
     children: bodyTrs,
   };
 
+  const cols = bodyTrs.map((tr) => tr.children.length).reduce((p, c) => Math.max(p, c), 0);
+  const headRows = thead?.children.length ?? 0;
+  const rows = headRows + bodyTrs.length;
+
   const table: Element = {
     type: 'element',
     tagName: 'table',
-    properties: {},
+    properties: {
+      style: `--cols: ${cols}; --rows: ${rows}; --head-rows: ${headRows}`,
+    },
     children: thead ? [thead, tbody] : [tbody],
   };
 
-  return {
-    type: 'element',
-    tagName: 'div',
-    properties: {
-      class: ['table-container'],
-    },
-    children: [table],
-  };
+  return table;
 };
 
 export const textDirectiveHandler: Handler = (_, node: TextDirective) => {

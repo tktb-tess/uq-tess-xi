@@ -386,12 +386,12 @@
 
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     @apply mt-(--s-heading);
   }
 
-  h5,
-  h6,
   p,
   ul,
   ol,
@@ -471,7 +471,7 @@
 
   tbody {
     --body-rows: calc(var(--rows, 1) - var(--head-rows, 0));
-    @apply row-span-(--body-rows,1);
+    @apply row-span-(--body-rows);
   }
 
   tr:where(thead > tr:last-child) {
