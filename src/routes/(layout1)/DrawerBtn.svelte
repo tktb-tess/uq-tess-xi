@@ -16,7 +16,7 @@
     drawerIsOpen = true;
   }}
 >
-  <HamburgerIcon class="size-6 inline-block align-baseline" />
+  <HamburgerIcon class="size-6" />
 </button>
 
 <style lang="postcss">

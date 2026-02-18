@@ -126,6 +126,7 @@
 
     <XTable
       headRows={1}
+      headCols={1}
       data={[
         ['＼', '文字', '例'],
         ['C̄ (C ≠ y)（促音）', 'ར◌', 'རྐ (kka)'],
@@ -147,7 +148,6 @@
       を表す。C<sup>u</sup> を表記する場合は下または右に ཝ, ◌ྭ (w) を付す。
     </p>
     <XTable
-      class="[&_:where(tbody_th:first-child)]:text-start"
       headRows={1}
       headCols={1}
       data={[
@@ -177,7 +177,7 @@
       <em>rjes su nga ro</em>「◌ཾ」を付して表す。
     </p>
     <XTable
-      class="[&_:where(tbody_th:first-child)]:text-start"
+      
       headRows={1}
       headCols={1}
       data={[
@@ -232,117 +232,36 @@
     <p>例: ཀྱཽ་ནོ་ ཨ་ས༔ ཝ་ཏ་ཤི་ཝ་ རཾ་ནིཾ་གུ་ཨོ་ ཤཏ། —— 今日の朝、私はランニングをした。</p>
   </XSection>
   <XSection title="例 単語　རཻ ཏཾ་གོ">
-    <table style:--cols={3} style:--rows={21} style:--head-rows={1}>
-      <thead>
-        <tr>
-          <th>単語</th>
-          <th>音節構造</th>
-          <th>表記</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>神</td>
-          <td>ka.mi</td>
-          <td>ཀ་མི</td>
-        </tr>
-        <tr>
-          <td>階段</td>
-          <td>kaĭ.dan̆</td>
-          <td>ཀའི་དཾ</td>
-        </tr>
-        <tr>
-          <td>北</td>
-          <td>k<sup>i</sup>ta</td>
-          <td>གྱཏ</td>
-        </tr>
-        <tr>
-          <td>牛乳</td>
-          <td>gyū.nyū</td>
-          <td>གྱཱུ་ནྱཱུ, གཡཱུ་ནཡཱུ</td>
-        </tr>
-        <tr>
-          <td>浅草</td>
-          <td>a.sa.k<sup>u</sup>sa</td>
-          <td>ཨ་ས་གས</td>
-        </tr>
-        <tr>
-          <td>力</td>
-          <td>č<sup>i</sup>ka.ra</td>
-          <td>ཇཀ་ར</td>
-        </tr>
-        <tr>
-          <td>区間</td>
-          <td>k<sup>u</sup>kan̆</td>
-          <td>གཀཾ</td>
-        </tr>
-        <tr>
-          <td>即興</td>
-          <td>so.kkyō</td>
-          <td>སོ་རྐྱཽ</td>
-        </tr>
-        <tr>
-          <td>楽器店</td>
-          <td>ga.kk<sup>i</sup>ten̆</td>
-          <td>ག་རྒྱཏེཾ</td>
-        </tr>
-        <tr>
-          <td>掴む</td>
-          <td>c<sup>u</sup>ka.mu</td>
-          <td>ཛཀ་མུ</td>
-        </tr>
-        <tr>
-          <td>ンガウンデレ</td>
-          <td>ɴ.ga.un̆.de.re</td>
-          <td>ང་ག་ཨུཾ་དེ་རེ</td>
-        </tr>
-        <tr>
-          <td>コーン茶</td>
-          <td>kō.ɴ.ča</td>
-          <td>ཀཽ་ང་ཅ</td>
-        </tr>
-        <tr>
-          <td>コーン茶（別パターン）</td>
-          <td>ko.on̆.ča</td>
-          <td>ཀོ་ཨོཾ་ཅ</td>
-        </tr>
-        <tr>
-          <td>リヒテンシュタイン</td>
-          <td>ri.h<sup>i</sup>ten̆.š<sup>u</sup>ta.in̆</td>
-          <td>རི་ཧྱཏེཾ་ཤྭཏ་ཨིཾ</td>
-        </tr>
-        <tr>
-          <td>蓋</td>
-          <td>f<sup>u</sup>ta</td>
-          <td>ཕཏ</td>
-        </tr>
-        <tr>
-          <td>ウィーンっ子</td>
-          <td>wī.ɴ.kko</td>
-          <td>ཝཱི་ང་རྐོ</td>
-        </tr>
-        <tr>
-          <td>変える</td>
-          <td>ka.e.ru</td>
-          <td>ཀ་ཨེ་རུ</td>
-        </tr>
-        <tr>
-          <td>帰る</td>
-          <td>kaĕ.ru</td>
-          <td>ཀའེ་རུ</td>
-        </tr>
-        <tr>
-          <td>アウトレット</td>
-          <td>aŭ.to.re.tto</td>
-          <td>ཨའུ་ཏོ་རེ་རྟོ</td>
-        </tr>
-        <tr>
-          <td>名うて</td>
-          <td>na.u.te</td>
-          <td>ན་ཨུ་ཏེ</td>
-        </tr>
-      </tbody>
-    </table>
+    <XTable
+      headRows={1}
+      data={[
+        ['単語', '音節構造', '表記'],
+        ['神', 'ka.mi', 'ཀ་མི'],
+        ['階段', 'kaĭ.dan̆', 'ཀའི་དཾ'],
+        ['北', ['k<sup>i</sup>ta', { rawHTML: true }], 'གྱཏ'],
+        ['牛乳', 'gyū.nyū', 'གྱཱུ་ནྱཱུ,གཡཱུ་ནཡཱུ'],
+        ['浅草', ['a.sa.k<sup>u</sup>sa', { rawHTML: true }], 'ཨ་ས་གས'],
+        ['力', ['č<sup>i</sup>ka.ra', { rawHTML: true }], 'ཇཀ་ར'],
+        ['区間', ['k<sup>u</sup>kan̆', { rawHTML: true }], 'གཀཾ'],
+        ['即興', 'so.kkyō', 'སོ་རྐྱཽ'],
+        ['楽器店', ['ga.kk<sup>i</sup>ten̆', { rawHTML: true }], 'ག་རྒྱཏེཾ'],
+        ['掴む', ['c<sup>u</sup>ka.mu', { rawHTML: true }], 'ཛཀ་མུ'],
+        ['ンガウンデレ', 'ɴ.ga.un̆.de.re', 'ང་ག་ཨུཾ་དེ་རེ'],
+        ['コーン茶', 'kō.ɴ.ča', 'ཀཽ་ང་ཅ'],
+        ['コーン茶（別パターン）', 'ko.on̆.ča', 'ཀོ་ཨོཾ་ཅ'],
+        [
+          'リヒテンシュタイン',
+          ['ri.h<sup>i</sup>ten̆.š<sup>u</sup>ta.in̆', { rawHTML: true }],
+          'རི་ཧྱཏེཾ་ཤྭཏ་ཨིཾ',
+        ],
+        ['蓋', ['f<sup>u</sup>ta', { rawHTML: true }], 'ཕཏ'],
+        ['ウィーンっ子', 'wī.ɴ.kko', 'ཝཱི་ང་རྐོ'],
+        ['変える', 'ka.e.ru', 'ཀ་ཨེ་རུ'],
+        ['帰る', 'kaĕ.ru', 'ཀའེ་རུ'],
+        ['アウトレット', 'aŭ.to.re.tto', 'ཨའུ་ཏོ་རེ་རྟོ'],
+        ['名うて', 'na.u.te', 'ན་ཨུ་ཏེ'],
+      ]}
+    />
   </XSection>
   <XSection title="例文　རཻ་བུཾ">
     <h3 id="indoorkei-nara-trackmaker">
@@ -396,9 +315,8 @@
     }
 
     p,
-    td,
-    th,
-    li {
+    li,
+    :where(#tibet-root) :global(:is(td, th)) {
       @apply overflow-y-clip leading-[1.6];
     }
 

@@ -15,7 +15,7 @@
   id="to-page-top-btn"
   type="button"
   title="ページトップへ戻る"
-  data-invisible={isInvisible ? '' : null}
+  data-invisible={isInvisible || null}
 >
   <div class="arrow"></div>
 </button>
@@ -25,10 +25,10 @@
   @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
-      @apply grid place-content-center fixed right-5 bottom-5 p-3 rounded bg-transparent ctext-accent
-        any-hover:cbg-accent any-hover:ctext-textinv
-        data-invisible:opacity-0 data-invisible:hidden
-		    transition-[color,background-color,opacity,display] allow-discrete ease-linear duration-140;
+      @apply grid place-content-center fixed right-5 bottom-5 p-3 rounded cbg-accent ctext-textinv
+        any-hover:cbg-accent-lighter
+        data-invisible:hidden data-invisible:opacity-0
+		    transition-[background-color,opacity,display] allow-discrete ease-linear duration-140;
 
       @starting-style {
         @apply opacity-0;

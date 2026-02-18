@@ -44,7 +44,9 @@
   --color-textinv: #fff;
   --color-d-textinv: #000;
   --color-accent: var(--color-violet-950-d);
+  --color-accent-lighter: color-mix(in oklch, var(--color-accent) 80%, #fff);
   --color-d-accent: var(--color-violet-50);
+  --color-d-accent-lighter: color-mix(in oklch, var(--color-d-accent) 80%, #000);
   --color-accent2: var(--color-violet-100);
   --color-d-accent2: var(--color-violet-900-d);
   --color-border: hsl(0 0 0 / 25%);
