@@ -13,7 +13,7 @@
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end
       [&_:where(td:nth-child(even))]:text-start
-      [&_td:nth-child(odd)]:font-feat-['tnum']"
+      [&_td:nth-child(odd)]:font-feat-tnum"
     data={[
       ['0', 'zéro', '10', 'tųj'],
       ['1', 'an', '11', 'ęlęv'],
@@ -82,16 +82,16 @@
       [&_:where(td:nth-child(even))]:text-start
       [&_td:nth-child(odd)]:font-feat-tnum"
     data={[
-      ['20', 'tvintaģ', '30', 'ðraitaģ', '40', 'fewrtaģ'],
-      ['21', 'an-and-tvintaģ', '31', 'an-and-ðraitaģ', '50', 'fajftaģ'],
-      ['22', 'taw-and-tvintaģ', '32', 'taw-and-ðraitaģ', '60', 'sightaģ'],
-      ['23', 'ðrao-and-tvintaģ', '33', 'ðrao-and-ðraitaģ', '70', 'sœftaģ'],
-      ['24', 'fewr-and-tvintaģ', '34', 'fewr-and-ðraitaģ', '80', 'aghtdaģ'],
-      ['25', 'fajf-and-tvintaģ', '35', 'fajf-and-ðraitaģ', '90', 'newntaģ'],
-      ['26', 'six-and-tvintaģ', '36', 'six-and-ðraitaģ', '100', '(an-)hundred'],
-      ['27', 'sœvon-and-tvintaģ', '37', 'sœvon-and-ðraitaģ', '110', 'enlftaģ'],
-      ['28', 'aght-and-tvintaģ', '38', 'aght-and-ðraitaģ', '120', 'tvelftaģ'],
-      ['29', 'nięw-and-tvintaģ', '39', 'nięw-and-ðraitaģ', '-', '-'],
+      ['20', 'tvintaģ', '30', 'ðrajtaģ', '40', 'fewrtaģ'],
+      ['21', 'an-and-tvintaģ', '31', 'an-and-ðrajtaģ', '50', 'fajftaģ'],
+      ['22', 'taw-and-tvintaģ', '32', 'taw-and-ðrajtaģ', '60', 'sightaģ'],
+      ['23', 'ðrao-and-tvintaģ', '33', 'ðrao-and-ðrajtaģ', '70', 'sœftaģ'],
+      ['24', 'fewr-and-tvintaģ', '34', 'fewr-and-ðrajtaģ', '80', 'aghtdaģ'],
+      ['25', 'fajf-and-tvintaģ', '35', 'fajf-and-ðrajtaģ', '90', 'newntaģ'],
+      ['26', 'six-and-tvintaģ', '36', 'six-and-ðrajtaģ', '100', '(an-)hundred'],
+      ['27', 'sœvon-and-tvintaģ', '37', 'sœvon-and-ðrajtaģ', '110', 'enlftaģ'],
+      ['28', 'aght-and-tvintaģ', '38', 'aght-and-ðrajtaģ', '120', 'tvelftaģ'],
+      ['29', 'nięw-and-tvintaģ', '39', 'nięw-and-ðrajtaģ', '-', '-'],
     ]}
   />
 
@@ -113,7 +113,7 @@
   </p>
   <p>
     つまり上記のことを踏まえると、105は <i>(an-)hundred-faif,</i> 115は <i>faif-and-änlftaģ,</i>
-    125は <i>faif-and-tvälftaģ,</i> 135は <i>(an-)hundred-faif-and-ðraitaģ</i> となる。
+    125は <i>faif-and-tvälftaģ,</i> 135は <i>(an-)hundred-faif-and-ðrajtaģ</i> となる。
   </p>
   <p>
     20以上の数詞が名詞を修飾する場合、<strong>その名詞は複数属格になる</strong
@@ -130,7 +130,7 @@
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end
       [&_:where(td:nth-child(even))]:text-start
-      [&_td:nth-child(odd)]:font-feat-['tnum']"
+      [&_td:nth-child(odd)]:font-feat-tnum"
     data={[
       ['1,000', '(an) ðawzend'],
       ['10,000', 'taw ðawzend'],
@@ -202,7 +202,7 @@
   <XTable
     class="[&_:where(td:nth-child(odd))]:text-end 
       [&_:where(td:nth-child(even))]:text-start 
-      [&_:where(td:nth-child(odd))]:font-feat-['tnum']"
+      [&_:where(td:nth-child(odd))]:font-feat-tnum"
     data={[
       ['0.', 'zéroðe', '10.', 'tųjðe'],
       ['1.', 'fyrest', '11.', 'ęlęfte'],

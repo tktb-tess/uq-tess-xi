@@ -91,6 +91,7 @@
   --max-w-main: 80rem;
   --min-w-side: 18rem;
 
+  --default-font-feature-settings: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03';
   --f-feat-tnum: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03', 'tnum';
 
   @keyframes --k-top-logo-rot {
@@ -412,36 +413,12 @@
   }
 
   img,
-  .table-container:has(> table) {
+  table {
     @apply my-(--s-figure);
   }
 
   img {
     @apply mx-auto w-max max-w-full;
-  }
-
-  .table-container:has(> table) {
-    @apply overflow-x-auto max-w-full;
-  }
-
-  table {
-    @apply whitespace-nowrap break-keep w-max max-w-full text-center me-auto;
-
-    :where(td, th) {
-      @apply px-2 py-1;
-    }
-
-    :where(& > thead > tr:last-child) {
-      @apply border-b-3 border-double cborder-border-dark;
-    }
-
-    :where(& > tbody > tr:not(:last-child)) {
-      @apply border-b cborder-border;
-    }
-
-    :where(caption) {
-      @apply font-serif text-lg pb-1;
-    }
   }
 
   ul {
@@ -458,5 +435,51 @@
 
   pre.shiki {
     @apply overflow-auto max-w-full px-2 py-1 rounded;
+  }
+
+  table {
+    @apply whitespace-nowrap break-keep w-max max-w-full text-center me-auto overflow-x-auto;
+    grid-template-columns: repeat(var(--cols, 1), auto);
+    grid-template-rows: repeat(calc(var(--rows, 1) + var(--caption, 0)), auto);
+  }
+
+  table,
+  thead,
+  tbody,
+  tr {
+    @apply grid;
+  }
+
+  td,
+  th {
+    @apply block self-center col-span-(--col-span,1) row-span-(--row-span,1) px-2 py-1;
+  }
+
+  caption {
+    @apply col-span-full font-serif text-lg pb-1;
+  }
+
+  thead,
+  tbody,
+  tr {
+    @apply grid-cols-subgrid grid-rows-subgrid col-span-full;
+  }
+
+  thead {
+    @apply row-span-(--head-rows,0);
+  }
+
+  tbody {
+    --body-rows: calc(var(--rows, 1) - var(--head-rows, 0));
+    @apply row-span-(--body-rows,1);
+  }
+
+  tr:where(thead > tr:last-child) {
+    @apply border-b-3 border-double cborder-border-dark;
+  }
+
+  tr:where(tbody > tr:not(:last-child)),
+  tr:where(thead > tr:not(:last-child)) {
+    @apply border-b cborder-border;
   }
 }
