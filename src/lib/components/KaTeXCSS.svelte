@@ -1,5 +1,5 @@
-<script>
-  const {} = $props();
+<script lang="ts">
+  const {}: {} = $props();
 </script>
 
 <svelte:head>

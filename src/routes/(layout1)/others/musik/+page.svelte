@@ -138,7 +138,7 @@
   @reference '../../../../app.css';
   @layer components {
     .__card-root {
-      @apply flex flex-col gap-(--s-figure) mt-(--s-figure);
+      @apply flex flex-col gap-figure my-figure;
     }
 
     .__music-card {

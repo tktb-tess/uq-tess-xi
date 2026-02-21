@@ -57,8 +57,8 @@
   --color-d-border-dark: hsl(0 0 100 / 44%);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-300);
-  --color-link-disabled: var(--color-zinc-500);
-  --color-d-link-disabled: var(--color-zinc-300);
+  --color-link-disabled: hsl(0 0 0 / 40%);
+  --color-d-link-disabled: hsl(0 0 100 / 40%);
   --color-caution: var(--color-red-600);
   --color-d-caution: var(--color-yellow-300);
 
@@ -72,13 +72,13 @@
   --link-transition-dur: 120ms;
   --default-transition-duration: 110ms;
 
-  --tracking-ultra: 3rem;
-
-  --s-paragraph: 0.75rem;
-  --s-heading: 2.5rem;
-  --s-gutter: 1rem;
-  --s-figure: 2rem;
-  --s-header: 3rem;
+  --spacing-paragraph: 0.75rem;
+  --spacing-heading: 2.5rem;
+  --spacing-gutter: 1rem;
+  --spacing-figure: 2rem;
+  --spacing-header: 3rem;
+  --spacing-max-main: 80rem;
+  --spacing-min-side: 18rem;
 
   --ease-out-1: cubic-bezier(0, 0.5, 0.5, 1);
   --ease-in-1: cubic-bezier(0.5, 0, 1, 0.5);
@@ -90,11 +90,8 @@
   --z-header: 200;
   --z-sidemenu: 100;
 
-  --max-w-main: 80rem;
-  --min-w-side: 18rem;
-
   --default-font-feature-settings: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03';
-  --f-feat-tnum: 'case', 'cv01', 'cv05', 'cv08', 'cv10', 'cv07', 'ss03', 'tnum';
+  --f-feat-tnum: var(--default-font-feature-settings), 'tnum';
 
   @keyframes --k-top-logo-rot {
     from {
@@ -306,11 +303,15 @@
 
 @layer base {
   :root {
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
-    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
+
+    @supports (word-break: auto-phrase) {
+      word-break: auto-phrase;
+    }
   }
 
   :where(:root *) {
@@ -326,7 +327,7 @@
   }
 
   main {
-    @apply flow-root cbg-main px-(--s-gutter) min-h-lvh;
+    @apply flow-root cbg-main px-gutter min-h-lvh;
   }
 
   a {
@@ -334,7 +335,7 @@
       @apply ctext-link any-hover:underline;
     }
 
-    &:where(:not(:any-link)) {
+    &[aria-disabled='true'] {
       @apply ctext-link-disabled pointer-events-none;
     }
   }
@@ -391,14 +392,14 @@
   h4,
   h5,
   h6 {
-    @apply mt-(--s-heading);
+    @apply mt-heading;
   }
 
   p,
   ul,
   ol,
   pre {
-    @apply mt-(--s-paragraph);
+    @apply mt-paragraph;
   }
 
   ul,
@@ -416,7 +417,7 @@
 
   img,
   table {
-    @apply my-(--s-figure);
+    @apply my-figure;
   }
 
   img {

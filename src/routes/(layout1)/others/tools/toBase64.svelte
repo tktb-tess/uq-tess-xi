@@ -25,7 +25,7 @@
 </script>
 
 <XSection {title}>
-  <div class="flex flex-col gap-3 my-(--s-figure)">
+  <div class="flex flex-col gap-3 my-figure">
     <div class="flex flex-col gap-2 text-center">
       <label for="input-{seed}">テキスト</label>
       <textarea class="w-full h-32" id="input-{seed}" bind:value={input}></textarea>

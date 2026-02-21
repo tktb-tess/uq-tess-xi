@@ -67,7 +67,7 @@
 
 <XSection {title}>
   <p><s class="ctext-text-pale">この式、なんか変……</s></p>
-  <div class="flex justify-center *:min-w-0 items-center my-(--s-figure) gap-4">
+  <div class="flex justify-center *:min-w-0 items-center my-figure gap-4">
     <input
       name="左側"
       type="number"

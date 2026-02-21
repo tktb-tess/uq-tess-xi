@@ -52,7 +52,7 @@
     2 以上 2<sup>64</sup> (= 18,446,744,073,709,551,616) 以下です。
   </p>
 
-  <div class="flex flex-col gap-5 my-(--s-figure)">
+  <div class="flex flex-col gap-5 my-figure">
     <div class="flex justify-center gap-8 *:min-w-0">
       <div>
         <label for="{seed}-input1">下限</label>

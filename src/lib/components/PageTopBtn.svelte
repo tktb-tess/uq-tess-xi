@@ -3,7 +3,7 @@
   import type { MouseEventHandler } from 'svelte/elements';
   import { browser } from '$app/environment';
 
-  const isInvisible = $derived(typeof scrollY.current === 'number' ? scrollY.current < 600 : false);
+  const isVisible = $derived(typeof scrollY.current === 'number' ? scrollY.current > 600 : false);
 
   const onclick: MouseEventHandler<HTMLButtonElement> = () => {
     if (browser) window.scroll({ top: 0, behavior: 'smooth' });
@@ -15,7 +15,7 @@
   id="to-page-top-btn"
   type="button"
   title="ページトップへ戻る"
-  data-invisible={isInvisible || null}
+  data-visible={isVisible || null}
 >
   <div class="arrow"></div>
 </button>
@@ -25,19 +25,22 @@
   @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
-      @apply grid place-content-center fixed right-5 bottom-5 p-3 rounded cbg-accent ctext-textinv
-        any-hover:cbg-accent-lighter
-        data-invisible:hidden data-invisible:opacity-0
+      @apply hidden place-content-center fixed right-5 bottom-5 size-10 rounded cbg-accent ctext-textinv
+        any-hover:cbg-accent-lighter opacity-0
 		    transition-[background-color,opacity,display] allow-discrete ease-linear duration-140;
 
-      @starting-style {
-        @apply opacity-0;
+      &[data-visible] {
+        @apply opacity-100 grid;
+
+        @starting-style {
+          @apply opacity-0;
+        }
       }
     }
 
     .arrow {
-      @apply size-3 border-l-2 border-t-2 border-current;
-      transform: translateY(.24rem) rotateZ(45deg);
+      @apply size-2 border-l-2 border-t-2 border-current;
+      transform: translateY(3px) rotateZ(45deg);
     }
   }
 </style>
