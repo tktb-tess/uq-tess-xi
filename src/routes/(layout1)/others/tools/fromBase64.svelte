@@ -29,7 +29,7 @@
 </script>
 
 <XSection {title}>
-  <div class="flex flex-col gap-3 my-(--s-figure)">
+  <div class="flex flex-col gap-3 my-figure">
     <div class="flex flex-col gap-2 items-center">
       <label for="input-{seed}">Base64</label>
       <textarea class="w-full h-32" id="input-{seed}" bind:value={input}></textarea>

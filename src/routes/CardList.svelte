@@ -26,7 +26,7 @@
   @reference '../app.css';
   @layer components {
     .__card-list {
-      @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none w-full max-w-190 mx-auto my-(--s-figure);
+      @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none w-full max-w-190 mx-auto my-figure;
 
       > :where(li) {
         @apply contents;
