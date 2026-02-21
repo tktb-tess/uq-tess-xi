@@ -48,7 +48,9 @@
     <div class="h-12"></div>
   </main>
   <aside class="__rside"></aside>
-  <MyFooter />
+  <footer>
+    <MyFooter />
+  </footer>
 </div>
 
 <Toasts />
@@ -58,16 +60,15 @@
   @reference '../../app.css';
   @layer components {
     .__container {
-
       grid-template-areas:
         'header header header'
         'lside main rside'
         'footer footer footer';
 
       grid-template-columns:
-        minmax(min(var(--min-w-side), 50%), 1fr)
-        minmax(0, var(--max-w-main))
-        minmax(min(var(--min-w-side), 50%), 1fr);
+        minmax(min(var(--spacing-min-side), 50%), 1fr)
+        minmax(0, var(--spacing-max-main))
+        minmax(min(var(--spacing-min-side), 50%), 1fr);
 
       grid-template-rows: auto 1fr auto;
 
@@ -75,7 +76,7 @@
 
       > header {
         grid-area: header;
-        @apply flex h-(--s-header) px-6 bg-(image:--grad-accent) sticky top-0 z-(--z-header);
+        @apply flex h-header px-6 bg-(image:--grad-accent) sticky top-0 z-(--z-header);
 
         > :global(*) {
           @apply h-full text-2xl px-1
@@ -101,7 +102,7 @@
         scrollbar-width: thin;
 
         > .__sticky-cont {
-          @apply sticky top-(--s-header) max-h-[calc(100lvh-var(--s-header))] overflow-y-auto z-(--z-sidemenu);
+          @apply sticky top-header max-h-[calc(100lvh-var(--spacing-header))] overflow-y-auto z-(--z-sidemenu);
           scrollbar-width: thin;
         }
       }
@@ -116,11 +117,11 @@
         @apply flow-root cbg-main;
 
         :where(#title) {
-          @apply text-center ps-0 border-none mb-(--s-heading);
+          @apply text-center ps-0 border-none mb-heading;
         }
       }
 
-      > :global(footer) {
+      > footer {
         grid-area: footer;
         @apply flow-root;
       }

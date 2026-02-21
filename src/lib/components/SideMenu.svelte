@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ArrowIcon from './ArrowIcon.svelte';
   import XAccordion from './XAccordion.svelte';
 
   interface Props {

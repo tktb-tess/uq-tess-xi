@@ -1,21 +1,21 @@
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
+  import XSection from '$lib/components/XSection.svelte';
+  const {}: {} = $props();
 </script>
 
-<section aria-labelledby="music">
-  <h2 id="music">音楽</h2>
+<XSection title="音楽">
   <p>一応リンクを貼っておきます。断片みたいなのしかないです。</p>
   <ul>
     <li><a href="/others/musik">いくつかの曲</a></li>
     <li><ExtLink href="https://soundcloud.com/tessyrrhaqtluaming">SoundCloud</ExtLink></li>
     <li><ExtLink href="https://www.youtube.com/@tessyrrhaqt">YouTube</ExtLink></li>
   </ul>
-</section>
-<section aria-labelledby="zatta">
-  <h2 id="zatta">雑多</h2>
+</XSection>
+<XSection title="雑多">
   <ul>
-    <li>n次元超立体の命名案 (準備中)</li>
-    <li>ジョンソンの立体のcrown jewelsの命名案 (準備中)</li>
+    <li><a aria-disabled="true">n次元超立体の命名案 (準備中)</a></li>
+    <li><a aria-disabled="true">ジョンソンの立体のcrown jewelsの命名案 (準備中)</a></li>
     <li><a href="/others/tools">ツール</a></li>
     <li>
       <ExtLink href="https://shuuro.tktb-tess.dev">終末式ローマ字 «Syuğmatusǐkiro–mázi»</ExtLink><br
@@ -34,12 +34,11 @@
       <ExtLink href="https://apps.tktb-tess.dev/">τὰ συστήματα (作ったアプリたち)</ExtLink>
     </li>
   </ul>
-</section>
-<section aria-labelledby="memo">
-  <h2 id="memo">メモ</h2>
+</XSection>
+<XSection title="メモ">
   <ul>
     <li>
       <a href="/others/miller-rabin">Miller–Rabin 素数判定法</a>
     </li>
   </ul>
-</section>
+</XSection>
