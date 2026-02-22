@@ -9,10 +9,12 @@ export type Toast = {
   readonly timeoutID: NodeJS.Timeout;
 };
 
-export const toastStates = new SvelteMap<symbol, Toast>();
+type Key = { __proto__: null };
+
+export const toastStates = new SvelteMap<Key, Toast>();
 
 export const addToast = (message: string, type: ToastType, timeout: number) => {
-  const key = Symbol();
+  const key = { __proto__: null };
 
   const timeoutID = setTimeout(() => {
     dismissToast(key);
@@ -21,7 +23,7 @@ export const addToast = (message: string, type: ToastType, timeout: number) => {
   toastStates.set(key, { message, type, timeout, timeoutID });
 };
 
-export const dismissToast = (key: symbol) => {
+export const dismissToast = (key: Key) => {
   if (toastStates.has(key)) {
     toastStates.delete(key);
   }
