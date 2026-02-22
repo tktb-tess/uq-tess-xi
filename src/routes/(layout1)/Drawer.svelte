@@ -6,6 +6,30 @@
     class?: string;
   }
   let { class: cName, drawerIsOpen = $bindable() }: Props = $props();
+  let closeBtn: HTMLButtonElement | undefined;
+  let drawer: HTMLElement | undefined;
+
+  $effect(() => {
+    const isopen = drawerIsOpen;
+    const handleFocus = async () => {
+      if (!drawer) return;
+      const animations = drawer.getAnimations();
+      if (animations.length === 0) return;
+
+      await Promise.allSettled(animations.map((a) => a.finished));
+
+      requestAnimationFrame(() => {
+        if (isopen) {
+          closeBtn?.focus();
+        } else {
+          const openBtn = document.getElementById('drawer-open-btn');
+          openBtn?.focus();
+        }
+      });
+    };
+
+    handleFocus();
+  });
 </script>
 
 <div id="drawer-root" data-drawer-open={drawerIsOpen || null} class={cName}>
@@ -17,12 +41,13 @@
       drawerIsOpen = false;
     }}
   ></button>
-  <aside id="drawer">
-    <div>
+  <aside id="drawer" bind:this={drawer}>
+    <div class="__close-btn-root">
       <button
         type="button"
         title="Close Drawer"
         id="drawer-close-btn"
+        bind:this={closeBtn}
         onclick={() => {
           drawerIsOpen = false;
         }}
@@ -52,25 +77,25 @@
     }
 
     #drawer {
-      @apply flow-root absolute inset-0 mx-auto w-min-side overflow-y-auto
+      @apply flow-root absolute inset-0 me-auto w-min-side overflow-y-auto
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
       transition-[translate,visibility]
       ease-in-out-1 duration-200;
 
       scrollbar-width: thin;
 
-      > :where(div) {
+      > :where(.__close-btn-root) {
         @apply flex justify-end;
       }
 
       :where(#drawer-close-btn) {
-        @apply leading-none p-2 m-1 rounded any-hover:ctext-textinv
+        @apply leading-none p-2 m-2 rounded any-hover:ctext-textinv
         any-hover:cbg-accent transition-colors;
       }
     }
 
     :global(:is(html, body):has([data-drawer-open])) {
-      @apply overflow-y-clip;
+      @apply overflow-y-clip max-h-dvh;
     }
   }
 </style>

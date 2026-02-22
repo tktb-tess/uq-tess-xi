@@ -308,8 +308,10 @@
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
+  }
 
-    @supports (word-break: auto-phrase) {
+  @supports (word-break: auto-phrase) {
+    :where(:lang(ja)) {
       word-break: auto-phrase;
     }
   }

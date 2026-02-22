@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import ArrowIcon from './ArrowIcon.svelte';
 
   interface Props {
     summary?: string;
@@ -19,8 +18,8 @@
   }: Props = $props();
 
   let isOpen = $state(false);
-  let details: HTMLDetailsElement | undefined = $state();
-  let content: HTMLDivElement | undefined = $state();
+  let details: HTMLDetailsElement | undefined;
+  let content: HTMLDivElement | undefined;
   let isRunning = $state(false);
   const openingAni = $derived.by((): Keyframe[] | undefined => {
     if (!content) return;
@@ -55,28 +54,34 @@
       if (details.open) {
         isOpen = false;
         const anim = content.animate(closingAni, aniOptions);
-        anim.onfinish = () => {
-          if (details) {
-            details.open = false;
-          }
-          isRunning = false;
-        };
+        anim.addEventListener(
+          'finish',
+          () => {
+            if (details) {
+              details.open = false;
+            }
+            isRunning = false;
+          },
+          { once: true },
+        );
       } else {
         details.open = true;
         isOpen = true;
         const anim = content.animate(openingAni, aniOptions);
-        anim.onfinish = () => {
-          isRunning = false;
-        };
+        anim.addEventListener(
+          'finish',
+          () => {
+            isRunning = false;
+          },
+          { once: true },
+        );
       }
     }}
   >
-    <ArrowIcon
-      class="inline-block h-6 in-data-opened:rotate-x-180 transition-transform ease-in-out-1 duration-(--d-icon-rotate)"
-    />
+    <div class="__arrow"></div>
     <span>{summary}</span>
   </summary>
-  <div class="__details-content" bind:this={content}>
+  <div class="__details-content {isRunning ? 'overflow-y-clip' : null}" bind:this={content}>
     {@render children?.()}
   </div>
 </details>
@@ -85,15 +90,24 @@
   @reference '../../app.css';
   @layer components {
     summary {
-      @apply block cursor-pointer;
+      @apply grid cursor-pointer grid-cols-[1.5rem_1fr] items-center;
 
       &::-webkit-details-marker {
         @apply hidden;
       }
     }
 
-    [data-running] > .__details-content {
-      @apply overflow-y-clip;
+    .__arrow {
+      @apply size-2 border-s-2 border-t-2 border-current justify-self-center
+      transition-transform duration-(--d-icon-rotate) ease-in-out-1;
+
+      :not([data-opened]) & {
+        transform: translateY(2px) rotateZ(45deg);
+      }
+
+      [data-opened] & {
+        transform: rotateX(180deg) translateY(2px) rotateZ(45deg);
+      }
     }
   }
 </style>
