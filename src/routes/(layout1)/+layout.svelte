@@ -99,11 +99,11 @@
       > .__lside {
         grid-area: lside;
         @apply max-lg:hidden lg:flow-root;
-        scrollbar-width: thin;
 
         > .__sticky-cont {
           @apply sticky top-header max-h-[calc(100lvh-var(--spacing-header))] overflow-y-auto z-(--z-sidemenu);
           scrollbar-width: thin;
+          scrollbar-gutter: stable;
         }
       }
 

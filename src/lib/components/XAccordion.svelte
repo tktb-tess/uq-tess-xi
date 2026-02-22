@@ -78,8 +78,8 @@
       }
     }}
   >
-    <div class="__arrow"></div>
     <span>{summary}</span>
+    <div class="__arrow"></div>
   </summary>
   <div class="__details-content {isRunning ? 'overflow-y-clip' : null}" bind:this={content}>
     {@render children?.()}
@@ -90,7 +90,7 @@
   @reference '../../app.css';
   @layer components {
     summary {
-      @apply grid cursor-pointer grid-cols-[1.5rem_1fr] items-center;
+      @apply grid cursor-pointer grid-cols-[1fr_1.5rem] items-center;
 
       &::-webkit-details-marker {
         @apply hidden;
@@ -98,15 +98,15 @@
     }
 
     .__arrow {
-      @apply size-2 border-s-2 border-t-2 border-current justify-self-center
+      @apply size-2 border-e-2 border-b-2 border-current justify-self-center
       transition-transform duration-(--d-icon-rotate) ease-in-out-1;
 
       :not([data-opened]) & {
-        transform: translateY(2px) rotateZ(45deg);
+        transform: translateY(-2px) rotateZ(45deg);
       }
 
       [data-opened] & {
-        transform: rotateX(180deg) translateY(2px) rotateZ(45deg);
+        transform: rotateX(180deg) translateY(-2px) rotateZ(45deg);
       }
     }
   }

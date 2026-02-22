@@ -81,8 +81,8 @@
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
       transition-[translate,visibility]
       ease-in-out-1 duration-200;
-
       scrollbar-width: thin;
+      scrollbar-gutter: stable;
 
       > :where(.__close-btn-root) {
         @apply flex justify-end;
