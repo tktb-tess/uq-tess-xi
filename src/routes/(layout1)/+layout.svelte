@@ -76,7 +76,7 @@
 
       > header {
         grid-area: header;
-        @apply flex h-header px-6 bg-(image:--grad-accent) sticky top-0 z-(--z-header);
+        @apply flex h-header px-6 bg-accent sticky top-0 z-(--z-header);
 
         > :global(*) {
           @apply h-full text-2xl px-1
@@ -85,6 +85,10 @@
 
         > :global(:where(:nth-child(3))) {
           @apply ms-auto;
+        }
+
+        > :global(#toggle-color-scheme-btn) {
+          @apply px-2;
         }
 
         :where(#to-top) {

@@ -44,7 +44,7 @@
   --color-textinv: #fff;
   --color-d-textinv: #000;
   --color-accent: var(--color-violet-950-d);
-  --color-accent-lighter: color-mix(in oklch, var(--color-accent) 80%, #fff);
+  --color-accent-lighter: color-mix(in oklch, var(--color-accent) 60%, #fff);
   --color-d-accent: var(--color-violet-50);
   --color-d-accent-lighter: color-mix(in oklch, var(--color-d-accent) 80%, #000);
   --color-accent2: var(--color-violet-100);
@@ -78,7 +78,7 @@
   --spacing-figure: 2rem;
   --spacing-header: 3rem;
   --spacing-max-main: 80rem;
-  --spacing-min-side: 18rem;
+  --spacing-min-side: 16rem;
 
   --ease-out-1: cubic-bezier(0, 0.5, 0.5, 1);
   --ease-in-1: cubic-bezier(0.5, 0, 1, 0.5);
@@ -246,6 +246,7 @@
     auto-fill,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
   );
+  grid-template-columns: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
 }
 
 @utility grid-cols-auto-fit-* {
@@ -253,6 +254,7 @@
     auto-fit,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
   );
+  grid-template-columns: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
 }
 
 @utility btn-1 {
@@ -281,6 +283,10 @@
       @slot;
     }
   }
+
+  &:focus-visible {
+    @slot;
+  }
 }
 
 @custom-variant d {
@@ -302,7 +308,7 @@
 }
 
 @layer base {
-  :where(:root *) {
+  * {
     @apply font-[unset];
   }
 
@@ -332,14 +338,12 @@
     @apply flow-root cbg-main px-gutter min-h-lvh;
   }
 
-  a {
-    &:where(:any-link) {
-      @apply ctext-link any-hover:underline;
-    }
+  a:where(:any-link:not([aria-disabled='true'])) {
+    @apply ctext-link any-hover:underline;
+  }
 
-    &[aria-disabled='true'] {
-      @apply ctext-link-disabled pointer-events-none;
-    }
+  a:where([aria-disabled='true']) {
+    @apply ctext-link-disabled pointer-events-none;
   }
 
   b,
@@ -439,7 +443,7 @@
   }
 
   pre.shiki {
-    @apply overflow-auto max-w-full px-2 py-1 rounded;
+    @apply overflow-auto max-w-full p-4 rounded;
   }
 
   table {

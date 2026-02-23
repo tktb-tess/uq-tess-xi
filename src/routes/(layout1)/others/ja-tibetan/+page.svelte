@@ -177,7 +177,6 @@
       <em>rjes su nga ro</em>「◌ཾ」を付して表す。
     </p>
     <XTable
-      
       headRows={1}
       headCols={1}
       data={[
