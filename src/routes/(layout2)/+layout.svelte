@@ -10,7 +10,7 @@
   @reference '../../app.css';
   @layer components {
     div {
-      @apply min-h-screen bg-black w-full;
+      @apply min-h-lvh bg-black w-full;
     }
   }
 </style>

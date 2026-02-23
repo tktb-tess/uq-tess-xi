@@ -39,17 +39,24 @@
 </ul>
 <XSection title="各ページリンク">
   <ul>
+    <li><a href="/conlang/vaes">概説</a></li>
     <li><a href="/conlang/vaes/phonology">音韻論</a></li>
     <li><a href="/conlang/vaes/letter-et-pron">文字と発音</a></li>
     <li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
-    <li>りんごを食べたい58文 (準備中)</li>
     <li>
-      文法
+      <a href="/conlang/vaes/ringo-bunn" aria-disabled="true" tabindex="-1">
+        りんごを食べたい58文 (準備中)
+      </a>
+    </li>
+    <li>
+      <p>文法</p>
       <ul>
-        <li>名詞 (準備中)</li>
+        <li><a href="/conlang/vaes/noun" aria-disabled="true" tabindex="-1">名詞 (準備中)</a></li>
         <li><a href="/conlang/vaes/numeral">数詞</a></li>
-        <li>動詞 (準備中)</li>
-        <li>形容詞 (準備中)</li>
+        <li><a href="/conlang/vaes/verb" aria-disabled="true" tabindex="-1">動詞 (準備中)</a></li>
+        <li>
+          <a href="/conlang/vaes/adjective" aria-disabled="true" tabindex="-1">形容詞 (準備中)</a>
+        </li>
       </ul>
     </li>
     <li><ExtLink href="https://zpdic.ziphil.com/dictionary/633">辞書 (ZpDIC Online)</ExtLink></li>

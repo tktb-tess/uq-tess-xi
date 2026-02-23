@@ -16,7 +16,7 @@
       const animations = drawer.getAnimations();
       if (animations.length === 0) return;
 
-      await Promise.allSettled(animations.map((a) => a.finished));
+      const _ = await Promise.allSettled(animations.map((a) => a.finished));
 
       requestAnimationFrame(() => {
         if (isopen) {
@@ -35,17 +35,18 @@
 <div id="drawer-root" data-drawer-open={drawerIsOpen || null} class={cName}>
   <button
     id="drawer-backdrop"
-    title="Close Drawer"
+    tabindex="-1"
+    title="Close Sidemenu"
     onclick={(ev) => {
       if (ev.target !== ev.currentTarget) return;
       drawerIsOpen = false;
     }}
   ></button>
-  <aside id="drawer" bind:this={drawer}>
+  <aside id="drawer" aria-labelledby="drawer-title" bind:this={drawer}>
     <div class="__close-btn-root">
       <button
         type="button"
-        title="Close Drawer"
+        title="Close Sidemenu"
         id="drawer-close-btn"
         bind:this={closeBtn}
         onclick={() => {
@@ -55,6 +56,7 @@
         <CloseIcon class="size-6" />
       </button>
     </div>
+    <h2 id="drawer-title">MENU</h2>
     <SideMenu />
   </aside>
 </div>
@@ -64,8 +66,7 @@
   @layer components {
     #drawer-root {
       @apply max-lg:flow-root lg:hidden invisible fixed inset-0 z-(--z-drawer)
-      duration-240 ease-in-out-1 transition-[background-color,visibility]
-      pointer-events-none *:pointer-events-auto;
+      duration-320 ease-in-out-1 transition-[background-color,visibility];
 
       &[data-drawer-open] {
         @apply visible bg-black/25;
@@ -80,7 +81,7 @@
       @apply flow-root absolute inset-0 me-auto w-min-side overflow-y-auto
       cbg-body -translate-x-full in-data-drawer-open:translate-x-0
       transition-[translate,visibility]
-      ease-in-out-1 duration-200;
+      ease-in-out-1 duration-320 overscroll-contain;
       scrollbar-width: thin;
       scrollbar-gutter: stable;
 
@@ -95,7 +96,11 @@
     }
 
     :global(:is(html, body):has([data-drawer-open])) {
-      @apply overflow-y-clip max-h-dvh;
+      @apply overflow-y-clip;
+    }
+
+    h2 {
+      @apply font-sans border-l-2 border-b-0 font-extralight text-3xl mx-2 my-0 py-1;
     }
   }
 </style>
