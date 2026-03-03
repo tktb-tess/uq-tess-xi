@@ -12,6 +12,9 @@
   const updateStr = () => {
     const s = (() => {
       const num = crypto.getRandomValues(new Uint16Array(1))[0];
+      if (typeof num === 'undefined') {
+        throw TypeError('Failed to generate numbers');
+      }
       return num.toString(2).padStart(bits, '0');
     })();
 

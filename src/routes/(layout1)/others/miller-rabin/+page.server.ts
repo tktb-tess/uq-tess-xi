@@ -1,4 +1,4 @@
-import { mdToHtml } from '$lib/modules/md-html';
+import { mdToHtml } from '$lib/modules/mtoh';
 import { readFile } from 'node:fs/promises';
 export const prerender = true;
 

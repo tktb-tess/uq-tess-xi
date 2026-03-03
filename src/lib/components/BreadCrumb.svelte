@@ -1,6 +1,6 @@
 <script lang="ts">
   import pages from '../modules/pages';
-    import HomeIcon from './HomeIcon.svelte';
+  import HomeIcon from '../icons/HomeIcon.svelte';
   interface Props {
     readonly path: string;
   }
@@ -56,7 +56,7 @@
         @apply leading-none;
       }
 
-      :where(a[aria-current="page"]) {
+      :where(a[aria-current='page']) {
         @apply font-semibold;
       }
     }

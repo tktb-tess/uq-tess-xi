@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
-import { htmlToMd } from '$lib/modules/md-html';
-import { NamedError } from '$lib/modules/util.js';
+import { htmlToMd } from '$lib/modules/htom';
+import { NamedError } from '$lib/modules/util';
 
 const headers = {
   'Content-Type': 'application/json',

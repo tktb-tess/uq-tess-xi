@@ -73,7 +73,7 @@
       }
 
       a,
-      :global(:where(#accordion) summary) {
+      :global(:where(.accordion) summary) {
         @apply px-3 h-10 rounded;
       }
 
@@ -81,7 +81,7 @@
         @apply flex items-center;
       }
 
-      :is(a:where(:not([aria-disabled='true'])), :global(:where(#accordion) summary)) {
+      :is(a:where(:not([aria-disabled='true'])), :global(:where(.accordion) summary)) {
         @apply any-hover:ctext-textinv any-hover:cbg-accent transition-colors;
       }
 

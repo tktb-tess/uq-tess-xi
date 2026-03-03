@@ -1,10 +1,10 @@
 <script lang="ts">
-  import DownloadIcon from '$lib/components/DownloadIcon.svelte';
+  import DownloadIcon from '$lib/icons/DownloadIcon.svelte';
   import ExtLink from '$lib/components/ExtLink.svelte';
-  import PauseFill from '$lib/components/PauseIcon.svelte';
-  import PlayFill from '$lib/components/PlayIcon.svelte';
-  import Repeat from '$lib/components/RepeatIcon.svelte';
-  import StopFill from '$lib/components/StopIcon.svelte';
+  import PauseFill from '$lib/icons/PauseIcon.svelte';
+  import PlayFill from '$lib/icons/PlayIcon.svelte';
+  import Repeat from '$lib/icons/RepeatIcon.svelte';
+  import StopFill from '$lib/icons/StopIcon.svelte';
   import type { TrackParams } from './+page.server';
 
   const { data = $bindable() } = $props();
@@ -19,47 +19,51 @@
   );
 
   const handlePlay = async (i: number) => {
-    if (!tracks[i].ref) {
-      console.log(tracks[i].path, 'empty');
+    const currentTrack = tracks[i];
+    if (!currentTrack) throw TypeError('`currentTrack` is undefined');
+    if (!currentTrack.ref) {
+      console.log(currentTrack.path, 'empty');
       return;
     }
 
-    switch (tracks[i].state) {
+    switch (currentTrack.state) {
       case 'stopped': {
-        for (let j = 0; j < tracks.length; j++) {
-          if (tracks[j].state !== 'stopped') {
-            tracks[j].ref?.pause();
-            tracks[j].currentTime = 0;
-            tracks[j].state = 'stopped';
+        for (const track of tracks) {
+          if (track.state !== 'stopped') {
+            track.ref?.pause();
+            track.currentTime = 0;
+            track.state = 'stopped';
           }
         }
-        await tracks[i].ref.play();
-        tracks[i].state = 'playing';
+        await currentTrack.ref.play();
+        currentTrack.state = 'playing';
         return;
       }
       case 'playing': {
-        tracks[i].ref.pause();
-        tracks[i].state = 'paused';
+        currentTrack.ref.pause();
+        currentTrack.state = 'paused';
         return;
       }
       case 'paused': {
-        await tracks[i].ref.play();
-        tracks[i].state = 'playing';
+        await currentTrack.ref.play();
+        currentTrack.state = 'playing';
         return;
       }
     }
   };
 
   const handleStop = async (i: number) => {
-    if (!tracks[i].ref) {
-      console.log(tracks[i].path, 'empty');
+    const currentTrack = tracks[i];
+    if (!currentTrack) throw TypeError('`currentTrack` is undefined');
+    if (!currentTrack.ref) {
+      console.log(currentTrack.path, 'empty');
       return;
     }
 
-    if (tracks[i].state !== 'stopped') {
-      tracks[i].ref.pause();
-      tracks[i].currentTime = 0;
-      tracks[i].state = 'stopped';
+    if (currentTrack.state !== 'stopped') {
+      currentTrack.ref.pause();
+      currentTrack.currentTime = 0;
+      currentTrack.state = 'stopped';
     }
   };
 

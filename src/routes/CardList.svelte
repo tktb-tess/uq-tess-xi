@@ -34,7 +34,7 @@
 
       :where(a) {
         @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
-        rounded-sm no-underline gbg-accent px-4 py-2
+        rounded-sm no-underline gbg-accent px-4 py-3
         any-hover:scale-102 transition-transform;
 
         > :where(h3, p) {
@@ -42,7 +42,7 @@
         }
 
         > :where(h3) {
-          @apply text-nowrap;
+          @apply text-nowrap pb-0.5;
         }
       }
     }
