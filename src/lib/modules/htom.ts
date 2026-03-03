@@ -6,7 +6,7 @@ import remarkStringify from 'remark-stringify';
 import rehypeSanitize from 'rehype-sanitize';
 
 export const htmlToMd = async (html: string) => {
-  const vFile = await unified()
+  const processor = unified()
     .use(rehypeParse)
     .use(rehypeSanitize)
     .use(rehypeRemark)
@@ -14,8 +14,9 @@ export const htmlToMd = async (html: string) => {
     .use(remarkStringify, {
       bullet: '-',
       rule: '-',
-    })
-    .process(html);
+    });
+
+  const vFile = await processor.process(html);
 
   return vFile.toString();
 };

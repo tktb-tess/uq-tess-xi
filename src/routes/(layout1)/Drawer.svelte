@@ -7,7 +7,7 @@
   }
   let { class: cName, drawerIsOpen = $bindable() }: Props = $props();
   let closeBtn: HTMLButtonElement | undefined;
-  let drawer: HTMLElement | undefined;
+  let drawer: HTMLDialogElement | undefined;
 
   $effect(() => {
     const isopen = drawerIsOpen;
@@ -42,7 +42,7 @@
       drawerIsOpen = false;
     }}
   ></button>
-  <aside id="drawer" aria-labelledby="drawer-title" bind:this={drawer}>
+  <aside id="drawer" aria-labelledby="drawer-title">
     <div class="__close-btn-root">
       <button
         type="button"
@@ -60,6 +60,27 @@
     <SideMenu />
   </aside>
 </div>
+
+<dialog id="drawer" class={cName} aria-labelledby="drawer-title" bind:this={drawer}>
+  <div class="__close-btn-root">
+    <!-- svelte-ignore a11y_autofocus -->
+    <button
+      type="button"
+      title="Close Sidemenu"
+      id="drawer-close-btn"
+      bind:this={closeBtn}
+      autofocus
+      onclick={(ev) => {
+        ev.preventDefault();
+        drawer?.close();
+      }}
+    >
+      <CloseIcon class="size-6" />
+    </button>
+  </div>
+  <h2 id="drawer-title">MENU</h2>
+  <SideMenu />
+</dialog>
 
 <style lang="postcss">
   @reference '../../app.css';
