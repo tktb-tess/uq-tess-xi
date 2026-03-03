@@ -1,6 +1,6 @@
 <script lang="ts">
   import ExtLink from './ExtLink.svelte';
-  import GitHubIcon from './GitHubIcon.svelte';
+  import GitHubIcon from '../icons/GitHubIcon.svelte';
   interface Props {
     class?: string;
   }

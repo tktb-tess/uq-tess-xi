@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HamburgerIcon from '$lib/components/HamburgerIcon.svelte';
+  import HamburgerIcon from '$lib/icons/HamburgerIcon.svelte';
   interface Props {
     drawerIsOpen: boolean;
     class?: string;

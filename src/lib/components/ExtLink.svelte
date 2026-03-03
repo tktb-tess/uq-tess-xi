@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import BoxArrowIcon from './BoxArrowIcon.svelte';
+  import BoxArrowIcon from '../icons/BoxArrowIcon.svelte';
 
   type Props = {
     href: string;

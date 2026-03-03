@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite dev",
     "build": "tsx .prebuilds/xml-generate.ts && vite build",
-    "lbuild": "rm -r -f .vercel && pnpm build",
+    "lbuild": "rm -rf .vercel && tsx .prebuilds/xml-generate.ts && vite build",
     "preview": "vite preview",
-    "build-preview": "pnpm lbuild && vite preview",
+    "build-preview": "rm -rf .vercel && tsx .prebuilds/xml-generate.ts && vite build && vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",

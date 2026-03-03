@@ -1,8 +1,8 @@
 <script lang="ts">
   import { siteConfig } from '$lib/modules/site-config.svelte';
-  import MoonIcon from './MoonIcon.svelte';
-  import SunIcon from './SunIcon.svelte';
-  import DevicesIcon from './DevicesIcon.svelte';
+  import MoonIcon from '../icons/MoonIcon.svelte';
+  import SunIcon from '../icons/SunIcon.svelte';
+  import DevicesIcon from '../icons/DevicesIcon.svelte';
 
   interface Props {
     class?: string;

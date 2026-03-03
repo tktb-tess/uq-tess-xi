@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CloseIcon from '$lib/components/CloseIcon.svelte';
+  import CloseIcon from '$lib/icons/CloseIcon.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
   interface Props {
     drawerIsOpen: boolean;
