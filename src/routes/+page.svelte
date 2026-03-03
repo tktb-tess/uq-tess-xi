@@ -42,7 +42,7 @@
   </XSection>
   <XSection title="頂いた名前">
     <p>他の人工言語作者などから頂いた、その言語での名前を掲載しています。</p>
-    <table style:--rows={2} style:--cols={3} style:--head-rows={1}>
+    <table style:--rows={2} style:--cols={3}>
       <thead>
         <tr>
           <th>言語</th>
@@ -54,25 +54,27 @@
         <tr>
           <td><ExtLink href="https://kaeru2193.net/phunlang/name/">雰語</ExtLink></td>
           <td>かえる</td>
-          <td><span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)</td>
+          <td>
+            <div>
+              <span lang="x-v3-karphnpn">常代 方累</span> (常代 方累, Xûyâo Zùngwíl)
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
   </XSection>
   <XSection title="相互リンク">
     <p>敬称略。追加や削除を希望される方は、下記SNSなどより連絡お願いします。</p>
-    <ul>
+    <ul class="mutual-links">
       <li>
-        <ExtLink href="https://kaeru2193.net" noIcon class="no-underline">
+        <ExtLink href="https://kaeru2193.net" noIcon class="no-underline inline-block">
           <img
-            class="inline-block m-0"
             src="https://kaeru2193.net/banner.png"
             width="200"
             height="40"
             alt="之機堂"
           />
         </ExtLink>
-        (かえる)
       </li>
     </ul>
   </XSection>
@@ -117,6 +119,18 @@
 
       :global(:where(h2)) {
         @apply text-center ps-0;
+      }
+    }
+
+    .mutual-links {
+      @apply list-none p-0 flex flex-wrap gap-2;
+
+      > li {
+        @apply block;
+      }
+
+      img {
+        @apply inline-block m-0;
       }
     }
   }
