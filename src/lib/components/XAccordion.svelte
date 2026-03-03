@@ -46,36 +46,28 @@
   style:--d-icon-rotate={`${duration}ms`}
 >
   <summary
-    onclick={(ev) => {
+    onclick={async (ev) => {
       ev.preventDefault();
       if (!content || !openingAni || !closingAni || !details) return;
       if (isRunning) return;
+
       isRunning = true;
+
       if (details.open) {
         isOpen = false;
-        const anim = content.animate(closingAni, aniOptions);
-        anim.addEventListener(
-          'finish',
-          () => {
-            if (details) {
-              details.open = false;
-            }
-            isRunning = false;
-          },
-          { once: true },
-        );
+        content.animate(closingAni, aniOptions);
+
+        await Promise.all(content.getAnimations().map((a) => a.finished));
+
+        details.removeAttribute('open');
       } else {
-        details.open = true;
+        details.setAttribute('open', '');
         isOpen = true;
-        const anim = content.animate(openingAni, aniOptions);
-        anim.addEventListener(
-          'finish',
-          () => {
-            isRunning = false;
-          },
-          { once: true },
-        );
+        content.animate(openingAni, aniOptions);
+
+        await Promise.all(content.getAnimations().map((a) => a.finished));
       }
+      isRunning = false;
     }}
   >
     <span>{summary}</span>
@@ -98,7 +90,7 @@
     }
 
     .__arrow {
-      @apply size-2 border-e-2 border-b-2 border-current justify-self-center
+      @apply size-2 border-r-2 border-b-2 border-current justify-self-center
       transition-transform duration-(--d-icon-rotate) ease-in-out-1;
 
       :not([data-opened]) & {
