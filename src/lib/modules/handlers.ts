@@ -51,6 +51,7 @@ const phrasingToHast = (mdNode: PhrasingContent): ElementContent => {
 
 export const tableHandler: Handler = (_, node: Table) => {
   const [head, ...body] = node.children;
+  if (!head) throw TypeError('`head` is undefined');
   const ths = head.children.map(
     (th): Element => ({
       type: 'element',

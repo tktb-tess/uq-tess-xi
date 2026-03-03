@@ -44,7 +44,7 @@
       case '×': {
         const l = logs[leftVal];
         const r = logs[rightVal];
-        if (l === null || r === null) {
+        if (l == null || r == null) {
           return 0;
         }
         const resExp = (l + r) % 2047;
@@ -53,9 +53,9 @@
       case '÷': {
         const l = logs[leftVal];
         const r = logs[rightVal];
-        if (r === null) {
+        if (r == null) {
           return NaN;
-        } else if (l === null) {
+        } else if (l == null) {
           return 0;
         }
         const resExp = (l - r + 2047) % 2047;

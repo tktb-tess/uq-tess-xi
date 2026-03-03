@@ -1,4 +1,4 @@
-import { htmlToMd } from '$lib/modules/md-html.js';
+import { htmlToMd } from '$lib/modules/htom';
 import { error, text } from '@sveltejs/kit';
 
 export const GET = async ({ fetch: svFetch }) => {

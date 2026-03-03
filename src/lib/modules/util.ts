@@ -22,7 +22,7 @@ const NamedError = {
   },
 };
 
-const msgs = {
+const defaultMsgs = {
   parseError: 'Failed to parse JSON',
   fetchError: 'Failed to fetch',
 } as const;
@@ -33,7 +33,7 @@ export const safeJSONParse: (
   text: string,
   reviver?: (this: unknown, key: string, value: unknown) => unknown,
 ) => Result<unknown, NamedError<'ParseError'>> = Result.fromThrowable(JSON.parse, (e) => {
-  const message = e instanceof Error ? e.message : msgs.parseError;
+  const message = e instanceof Error ? e.message : defaultMsgs.parseError;
   return NamedError.from('ParseError', message);
 });
 
@@ -50,7 +50,7 @@ export const safeFetch = (
   init?: RequestInit,
 ): ResultAsync<Response, NamedError<'FetchError'>> => {
   return ResultAsync.fromPromise(fetch(input, init), (e) => {
-    const m = e instanceof Error ? e.message : msgs.fetchError;
+    const m = e instanceof Error ? e.message : defaultMsgs.fetchError;
     return NamedError.from('FetchError', m);
   }).andThen((resp) => {
     if (!resp.ok) {
@@ -67,7 +67,7 @@ export const safeFetchJson = (
 ): ResultAsync<unknown, NamedError<'ParseError'> | NamedError<'FetchError'>> => {
   return safeFetch(input, init).andThen((res) => {
     return ResultAsync.fromPromise(res.json(), (e) => {
-      const m = e instanceof Error ? e.message : msgs.parseError;
+      const m = e instanceof Error ? e.message : defaultMsgs.parseError;
       return NamedError.from('ParseError', m);
     });
   });
@@ -84,3 +84,6 @@ export const safeFetchJsonAndValidate = <TSchema extends z.ZodType>(
 ) => {
   return safeFetchJson(input, init).andThen((data) => safeValidate(schema, data));
 };
+
+
+

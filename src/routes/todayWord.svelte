@@ -25,7 +25,7 @@
   });
 </script>
 
-<div id="today-word-root">
+<div class="today-word-root">
   {#await resultAsy}
     <div class="flex gap-2 items-center">
       <Spinner class="size-6" />
@@ -87,41 +87,42 @@
 <style lang="postcss">
   @reference '../app.css';
   @layer components {
-    #today-word-root {
+    .today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border my-figure
       cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
 
-      :where(*) {
+      * {
         @apply m-0;
       }
+    }
 
-      .__pronunciation {
-        @apply font-ipa opacity-50;
+    .__pronunciation {
+      @apply font-ipa l:text-black/50 d:text-white/50;
+    }
+
+    .__yaku-title {
+      @apply font-sans text-base;
+    }
+
+    .__yaku-table {
+      @apply grid gap-2 place-items-center border-none;
+      grid-template-columns: repeat(2, auto);
+
+      :where(thead, tbody, tr) {
+        @apply contents;
       }
 
-      .__yaku-title {
-        @apply font-sans text-base;
+      :where(th, td) {
+        @apply block border-none px-2 py-0;
       }
 
-      :where(.__yaku-table) {
-        @apply grid grid-cols-[minmax(max-content,1fr)minmax(0,max-content)] gap-2 place-items-center border-none;
-
-        :where(thead, tbody, tr) {
-          @apply contents;
-        }
-
-        :where(th, td) {
-          @apply block bg-transparent border-none;
-        }
-
-        > :where(tbody) > :where(tr) > :where(td):first-child {
-          @apply cbg-accent ctext-textinv rounded-full;
-        }
+      :where(tbody td):first-child {
+        @apply cbg-accent ctext-textinv rounded-full;
       }
+    }
 
-      :where(.__to-zpdic) {
-        @apply self-end-safe;
-      }
+    .__to-zpdic {
+      @apply self-end-safe;
     }
   }
 </style>

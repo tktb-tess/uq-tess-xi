@@ -1,4 +1,4 @@
-import { mdToHtml } from '../src/lib/modules/md-html';
+import { mdToHtml } from '../src/lib/modules/mtoh';
 import { it } from 'vitest';
 
 it('test1', async () => {
