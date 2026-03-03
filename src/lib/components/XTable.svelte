@@ -16,27 +16,21 @@
     readonly class?: string;
   }
 
-  const { data, headRows = 0, headCols: h_ = [], class: cName, caption }: Props = $props();
+  const { data, headRows = 0, headCols: h_ = 0, class: cName, caption }: Props = $props();
 
+  const cols = $derived(data.map((d) => d.length).reduce((p, c) => Math.max(p, c), 0));
+  const rows = $derived(data.length + (caption ? 1 : 0));
   const headData = $derived(data.slice(0, headRows));
   const bodyData = $derived(data.slice(headRows));
   const headCols = $derived.by(() => {
     if (typeof h_ === 'number') {
-      return [...Array(data.length)].map(() => h_);
+      return [...Array(rows)].map(() => h_);
     } else return h_;
   });
-  const cols = $derived(data.map((d) => d.length).reduce((p, c) => Math.max(p, c), 0));
-  const rows = $derived(data.length);
 </script>
 
-<table
-  class={cName}
-  style:--cols={cols}
-  style:--rows={rows}
-  style:--head-rows={headRows}
-  style:--caption={typeof caption === 'string' ? 1 : 0}
->
-  {#if typeof caption === 'string'}
+<table class={cName} style:--cols={cols} style:--rows={rows}>
+  {#if caption}
     <caption>{caption}</caption>
   {/if}
   {#if headData.length > 0}
@@ -50,9 +44,9 @@
               {@const [text, conf] = cell}
               <th
                 colspan={conf.cols}
-                style:--col-span={conf.cols}
+                style:--colspan={conf.cols}
                 rowspan={conf.rows}
-                style:--row-span={conf.rows}
+                style:--rowspan={conf.rows}
                 class={conf.class}
               >
                 {#if conf.rawHTML}
@@ -80,9 +74,9 @@
             {@const [text, conf] = cell}
             <th
               colspan={conf.cols}
-              style:--col-span={conf.cols}
+              style:--colspan={conf.cols}
               rowspan={conf.rows}
-              style:--row-span={conf.rows}
+              style:--rowspan={conf.rows}
               class={conf.class}
             >
               {#if conf.rawHTML}
@@ -100,9 +94,9 @@
             {@const [text, conf] = cell}
             <td
               colspan={conf.cols}
-              style:--col-span={conf.cols}
+              style:--colspan={conf.cols}
               rowspan={conf.rows}
-              style:--row-span={conf.rows}
+              style:--rowspan={conf.rows}
               class={conf.class}
             >
               {#if conf.rawHTML}

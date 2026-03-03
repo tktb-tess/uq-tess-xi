@@ -111,7 +111,7 @@
         }
 
         :where(th, td) {
-          @apply block bg-transparent;
+          @apply block bg-transparent border-none;
         }
 
         > :where(tbody) > :where(tr) > :where(td):first-child {

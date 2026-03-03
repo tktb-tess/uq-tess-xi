@@ -9,7 +9,7 @@
   const { contents }: Props = $props();
 </script>
 
-<ul class="__card-list">
+<ul class="card-list">
   {#each contents as { title, desc, href }}
     <li>
       <a {href}>
@@ -25,7 +25,7 @@
 <style lang="postcss">
   @reference '../app.css';
   @layer components {
-    .__card-list {
+    .card-list {
       @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none w-full max-w-190 mx-auto my-figure;
 
       > :where(li) {
@@ -34,11 +34,11 @@
 
       :where(a) {
         @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
-        rounded-sm no-underline gbg-accent h-12 px-4 py-1
+        rounded-sm no-underline gbg-accent px-4 py-2
         any-hover:scale-102 transition-transform;
 
         > :where(h3, p) {
-          @apply ctext-textinv m-0;
+          @apply ctext-textinv m-0 leading-none;
         }
 
         > :where(h3) {
