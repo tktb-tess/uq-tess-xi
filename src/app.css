@@ -80,6 +80,7 @@
   --spacing-max-main: 80rem;
   --spacing-min-side: 16rem;
 
+  --default-transition-timing-function: cubic-bezier(0.25, 0, 0.1, 1);
   --ease-out-1: cubic-bezier(0, 0.5, 0.5, 1);
   --ease-in-1: cubic-bezier(0.5, 0, 1, 0.5);
   --ease-in-out-1: cubic-bezier(0.25, 0, 0.1, 1);
@@ -446,48 +447,31 @@
   }
 
   table {
-    @apply whitespace-nowrap break-keep w-max max-w-full text-center me-auto overflow-x-auto;
+    @apply grid break-keep w-max max-w-full text-center me-auto overflow-auto;
     grid-template-columns: repeat(var(--cols, 1), auto);
     grid-template-rows: repeat(calc(var(--rows, 1) + var(--caption, 0)), auto);
   }
 
-  table,
   thead,
   tbody,
   tr {
-    @apply grid;
+    @apply contents;
   }
 
   td,
   th {
-    @apply block self-center col-span-(--col-span,1) row-span-(--row-span,1) px-2 py-1;
+    @apply grid items-center col-span-(--colspan,1) row-span-(--rowspan,1) px-2 py-1;
   }
 
   caption {
     @apply col-span-full font-serif text-lg pb-1;
   }
 
-  thead,
-  tbody,
-  tr {
-    @apply grid-cols-subgrid grid-rows-subgrid col-span-full;
-  }
-
-  thead {
-    @apply row-span-(--head-rows,0);
-  }
-
-  tbody {
-    --body-rows: calc(var(--rows, 1) - var(--head-rows, 0));
-    @apply row-span-(--body-rows);
-  }
-
-  tr:where(thead > tr:last-child) {
+  :is(td, th):where(thead > tr:last-child > *) {
     @apply border-b-3 border-double cborder-border-dark;
   }
 
-  tr:where(tbody > tr:not(:last-child)),
-  tr:where(thead > tr:not(:last-child)) {
+  :is(td, th):where(tr:not(:last-child) > *) {
     @apply border-b cborder-border;
   }
 }

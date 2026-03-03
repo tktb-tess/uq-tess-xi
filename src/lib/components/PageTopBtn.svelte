@@ -14,7 +14,7 @@
   {onclick}
   id="to-page-top-btn"
   type="button"
-  title="ページトップへ戻る"
+  aria-label="ページトップへ戻る"
   data-visible={isVisible || null}
 >
   <div class="arrow"></div>
@@ -22,7 +22,6 @@
 
 <style lang="postcss">
   @reference '../../app.css';
-  @layer properties, theme, base, components, utilities;
   @layer components {
     #to-page-top-btn {
       @apply hidden place-content-center fixed right-5 bottom-5 size-10 rounded cbg-accent ctext-textinv
@@ -39,8 +38,18 @@
     }
 
     .arrow {
-      @apply size-2 border-l-2 border-t-2 border-current;
+      @apply size-2 border-l-2 border-t-2 border-current transition-transform duration-140;
       transform: translateY(3px) rotateZ(45deg);
+    }
+
+    @media (any-hover: hover) {
+      #to-page-top-btn:hover .arrow {
+        transform: translateY(0px) rotateZ(45deg);
+      }
+    }
+
+    #to-page-top-btn:focus-visible .arrow {
+      transform: translateY(0px) rotateZ(45deg);
     }
   }
 </style>
