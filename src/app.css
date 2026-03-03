@@ -308,8 +308,25 @@
 }
 
 @layer base {
-  * {
-    @apply font-[unset];
+  :root,
+  [lang] {
+    word-break: normal;
+  }
+
+  @supports (word-break: auto-phrase) {
+    [lang*='ja'] {
+      word-break: auto-phrase;
+    }
+  }
+
+  [aria-disabled='true'],
+  :disabled,
+  [inert] {
+    @apply opacity-60;
+  }
+
+  [aria-disabled='true'] {
+    @apply pointer-events-none;
   }
 
   :root {
@@ -318,12 +335,6 @@
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
-  }
-
-  @supports (word-break: auto-phrase) {
-    :where(:lang(ja)) {
-      word-break: auto-phrase;
-    }
   }
 
   [lang='x-v3-karphnpn'] {
@@ -340,10 +351,6 @@
 
   a:where(:any-link:not([aria-disabled='true'])) {
     @apply ctext-link any-hover:underline;
-  }
-
-  a:where([aria-disabled='true']) {
-    @apply ctext-link-disabled pointer-events-none;
   }
 
   b,
@@ -401,24 +408,16 @@
     @apply mt-heading;
   }
 
-  p,
-  ul,
-  ol,
-  pre {
+  :not(li) > :where(p, ul, ol, pre) {
     @apply mt-paragraph;
   }
 
-  ul,
-  ol {
+  :not(li) > :where(ul, ol) {
     @apply ps-6;
   }
 
-  li > :is(ul, ol) {
+  li > :where(ul, ol) {
     @apply ps-4;
-  }
-
-  li > :is(ul, ol, p) {
-    @apply mt-0;
   }
 
   img,
