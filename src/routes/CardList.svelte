@@ -42,7 +42,7 @@
         }
 
         > :where(h3) {
-          @apply text-nowrap pb-1;
+          @apply text-nowrap;
         }
       }
     }
