@@ -11,7 +11,21 @@
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
 
   const { children, data } = $props();
-  let drawerIsOpen = $state(false);
+  let drawerElem: HTMLDialogElement | undefined = $state();
+
+  const showDrawer = () => {
+    if (!drawerElem) {
+      throw TypeError('`drawerElem` is undefined');
+    }
+    drawerElem.showModal();
+  };
+
+  const closeDrawer = () => {
+    if (!drawerElem) {
+      throw TypeError('`drawerElem` is undefined');
+    }
+    drawerElem.close();
+  };
   const title = $derived.by(() => {
     const fallBack: PageData = {
       title: '[NO DATA]',
@@ -22,20 +36,19 @@
   });
 
   onNavigate(() => {
-    drawerIsOpen = false;
+    closeDrawer();
   });
 </script>
 
 <div class="__container">
   <header>
-    <DrawerBtn bind:drawerIsOpen />
+    <DrawerBtn {showDrawer} />
     <a id="to-top" href="/." title="トップページに戻る">
       <span>悠久肆方体</span>
     </a>
     <ToggleColorSchemeBtn />
   </header>
-  <Drawer bind:drawerIsOpen />
-
+  <Drawer bind:drawerElem />
   <aside class="__lside">
     <nav class="__sticky-cont">
       <SideMenu />
@@ -80,7 +93,7 @@
 
         > :global(*) {
           @apply h-full text-2xl px-1
-          text-textinv any-hover:text-text any-hover:bg-textinv transition-colors leading-none;
+          text-textinv hover-focus:text-text hover-focus:bg-textinv transition-colors leading-none;
         }
 
         > :global(:where(:nth-child(3))) {

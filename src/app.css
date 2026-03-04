@@ -259,11 +259,11 @@
 }
 
 @utility btn-1 {
-  @apply cbg-accent any-hover:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
+  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
 }
 
 @utility btn-2 {
-  @apply cbg-accent2 any-hover:opacity-70 transition-opacity border cborder-border rounded px-2;
+  @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
 }
 
 @utility font-feat-* {
@@ -279,6 +279,14 @@
 }
 
 @custom-variant any-hover {
+  @media (any-hover: hover) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
+@custom-variant hover-focus {
   @media (any-hover: hover) {
     &:hover {
       @slot;
@@ -315,7 +323,7 @@
   }
 
   @supports (word-break: auto-phrase) {
-    [lang*='ja'] {
+    [lang^='ja'] {
       word-break: auto-phrase;
     }
   }
@@ -336,10 +344,25 @@
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
+    color-scheme: light dark;
   }
 
   [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
+  }
+
+  dialog {
+    @apply size-[unset] max-w-[unset] max-h-[unset] inset-[unset] fixed;
+
+    &:not([open]),
+    &:not([open])::backdrop {
+      @apply hidden;
+    }
+
+    &[open],
+    &[open]::backdrop {
+      @apply flow-root;
+    }
   }
 
   body {
@@ -351,7 +374,7 @@
   }
 
   a:where(:any-link:not([aria-disabled='true'])) {
-    @apply ctext-link any-hover:underline;
+    @apply ctext-link hover-focus:underline;
   }
 
   b,

@@ -1,19 +1,19 @@
 <script lang="ts">
   import HamburgerIcon from '$lib/icons/HamburgerIcon.svelte';
   interface Props {
-    drawerIsOpen: boolean;
     class?: string;
+    showDrawer: () => void;
   }
-  let { class: cName, drawerIsOpen = $bindable() }: Props = $props();
+
+  let { class: cName, showDrawer }: Props = $props();
 </script>
 
 <button
-  type="button"
-  id="drawer-open-btn"
-  title="Open Sidemenu"
-  class={cName}
-  onclick={() => {
-    drawerIsOpen = true;
+  title="サイドメニューを開く"
+  class="{cName} drawer-open-btn"
+  onclick={(ev) => {
+    ev.preventDefault();
+    showDrawer();
   }}
 >
   <HamburgerIcon class="size-6" />
@@ -22,7 +22,7 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
-    #drawer-open-btn {
+    .drawer-open-btn {
       @apply grid lg:hidden place-content-center;
     }
   }

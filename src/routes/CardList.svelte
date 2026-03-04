@@ -35,7 +35,7 @@
       :where(a) {
         @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
         rounded-sm no-underline gbg-accent px-4 py-3
-        any-hover:scale-102 transition-transform;
+        hover-focus:scale-102 transition-transform;
 
         > :where(h3, p) {
           @apply ctext-textinv m-0 leading-none;

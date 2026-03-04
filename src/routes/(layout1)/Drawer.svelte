@@ -1,81 +1,28 @@
 <script lang="ts">
-  import CloseIcon from '$lib/icons/CloseIcon.svelte';
   import SideMenu from '$lib/components/SideMenu.svelte';
   interface Props {
-    drawerIsOpen: boolean;
     class?: string;
+    drawerElem: HTMLDialogElement | undefined;
   }
-  let { class: cName, drawerIsOpen = $bindable() }: Props = $props();
+  let { class: cName, drawerElem = $bindable() }: Props = $props();
   let closeBtn: HTMLButtonElement | undefined;
-  let drawer: HTMLDialogElement | undefined;
-
-  $effect(() => {
-    const isopen = drawerIsOpen;
-    const handleFocus = async () => {
-      if (!drawer) return;
-      const animations = drawer.getAnimations();
-      if (animations.length === 0) return;
-
-      const _ = await Promise.allSettled(animations.map((a) => a.finished));
-
-      requestAnimationFrame(() => {
-        if (isopen) {
-          closeBtn?.focus();
-        } else {
-          const openBtn = document.getElementById('drawer-open-btn');
-          openBtn?.focus();
-        }
-      });
-    };
-
-    handleFocus();
-  });
 </script>
 
-<div id="drawer-root" data-drawer-open={drawerIsOpen || null} class={cName}>
-  <button
-    id="drawer-backdrop"
-    tabindex="-1"
-    title="Close Sidemenu"
-    onclick={(ev) => {
-      if (ev.target !== ev.currentTarget) return;
-      drawerIsOpen = false;
-    }}
-  ></button>
-  <aside id="drawer" aria-labelledby="drawer-title">
-    <div class="__close-btn-root">
-      <button
-        type="button"
-        title="Close Sidemenu"
-        id="drawer-close-btn"
-        bind:this={closeBtn}
-        onclick={() => {
-          drawerIsOpen = false;
-        }}
-      >
-        <CloseIcon class="size-6" />
-      </button>
-    </div>
-    <h2 id="drawer-title">MENU</h2>
-    <SideMenu />
-  </aside>
-</div>
-
-<dialog id="drawer" class={cName} aria-labelledby="drawer-title" bind:this={drawer}>
-  <div class="__close-btn-root">
+<dialog id="drawer" class={cName} aria-labelledby="drawer-title" bind:this={drawerElem} closedby="any">
+  <div class="close-btn-wrapper">
     <!-- svelte-ignore a11y_autofocus -->
     <button
-      type="button"
-      title="Close Sidemenu"
+      title="サイドメニューを閉じる"
       id="drawer-close-btn"
       bind:this={closeBtn}
       autofocus
       onclick={(ev) => {
         ev.preventDefault();
-        drawer?.close();
+        drawerElem?.close();
       }}
     >
-      <CloseIcon class="size-6" />
+      <span></span>
+      <span></span>
     </button>
   </div>
   <h2 id="drawer-title">MENU</h2>
@@ -85,43 +32,61 @@
 <style lang="postcss">
   @reference '../../app.css';
   @layer components {
-    #drawer-root {
-      @apply max-lg:flow-root lg:hidden invisible fixed inset-0 z-(--z-drawer)
-      duration-320 ease-in-out-1 transition-[background-color,visibility];
-
-      &[data-drawer-open] {
-        @apply visible bg-black/25;
-      }
-    }
-
-    #drawer-backdrop {
-      @apply cursor-auto absolute inset-0;
-    }
-
     #drawer {
-      @apply flow-root absolute inset-0 me-auto w-min-side overflow-y-auto
-      cbg-body -translate-x-full in-data-drawer-open:translate-x-0
-      transition-[translate,visibility]
-      ease-in-out-1 duration-320 overscroll-contain;
+      @apply inset-0 w-min-side me-auto cbg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;
       scrollbar-width: thin;
       scrollbar-gutter: stable;
 
-      > :where(.__close-btn-root) {
-        @apply flex justify-end;
+      &,
+      &::backdrop {
+        @apply transition-[background-color,translate,display,overlay] allow-discrete duration-300;
       }
 
-      :where(#drawer-close-btn) {
-        @apply leading-none p-2 m-2 rounded any-hover:ctext-textinv
-        any-hover:cbg-accent transition-colors;
+      &:not([open]) {
+        @apply -translate-x-full;
+      }
+
+      &[open] {
+        @apply flex translate-x-0 starting:-translate-x-full;
+      }
+
+      &:not([open])::backdrop {
+        @apply bg-transparent;
+      }
+
+      &[open]::backdrop {
+        @apply bg-black/80 starting:bg-transparent;
       }
     }
 
-    :global(:is(html, body):has([data-drawer-open])) {
-      @apply overflow-y-clip;
+    #drawer-title {
+      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 border-current
+      leading-none py-0;
     }
 
-    h2 {
-      @apply font-sans border-l-2 border-b-0 font-extralight text-3xl mx-2 my-0 py-1;
+    .close-btn-wrapper {
+      @apply flex justify-end mx-3;
+    }
+
+    #drawer-close-btn {
+      @apply rounded hover-focus:cbg-accent hover-focus:ctext-textinv leading-none size-9
+      grid place-items-center transition-colors;
+
+      > * {
+        @apply col-span-full row-span-full border-b border-current w-5;
+      }
+
+      > :first-child {
+        @apply rotate-45;
+      }
+
+      > :last-child {
+        @apply -rotate-45;
+      }
+    }
+
+    :global(:is(:root, body):has(#drawer[open])) {
+      @apply overflow-hidden;
     }
   }
 </style>

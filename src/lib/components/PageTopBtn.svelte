@@ -25,7 +25,7 @@
   @layer components {
     #to-page-top-btn {
       @apply hidden place-content-center fixed right-5 bottom-5 size-10 rounded cbg-accent ctext-textinv
-        any-hover:cbg-accent-lighter opacity-0
+        hover-focus:cbg-accent-lighter opacity-0
 		    transition-[background-color,opacity,display] allow-discrete ease-linear duration-140;
 
       &[data-visible] {
