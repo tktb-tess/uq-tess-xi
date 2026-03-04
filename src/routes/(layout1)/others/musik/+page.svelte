@@ -157,8 +157,8 @@
     .__btn-dur {
       @apply flex gap-2 items-center;
       :where(button, a) {
-        @apply ctext-accent bg-transparent any-hover:cbg-accent
-        any-hover:ctext-textinv transition-colors rounded px-2 py-1;
+        @apply ctext-accent bg-transparent hover-focus:cbg-accent
+        hover-focus:ctext-textinv transition-colors rounded px-2 py-1;
       }
 
       :where(a) {

@@ -10,7 +10,7 @@ import rehypeShiki from '@shikijs/rehype';
 import { tableHandler, textDirectiveHandler } from './handlers';
 
 export const mdToHtml = async (md: string) => {
-  const vFile = await unified()
+  const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkDirective)
@@ -25,8 +25,10 @@ export const mdToHtml = async (md: string) => {
     .use(rehypeShiki, {
       theme: 'github-dark',
     })
-    .use(rehypeStringify)
-    .process(md);
+    .use(rehypeStringify);
+
+  const vFile = await processor.process(md);
 
   return vFile.toString();
 };
+

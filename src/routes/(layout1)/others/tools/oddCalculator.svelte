@@ -106,7 +106,7 @@
   @layer components {
     .__calc-btn {
       @apply leading-none px-2 py-1 rounded border cborder-border
-      any-hover:cbg-accent2 transition-colors;
+      hover-focus:cbg-accent2 transition-colors;
     }
   }
 </style>

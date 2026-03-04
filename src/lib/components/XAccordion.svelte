@@ -5,16 +5,20 @@
     children?: Snippet;
     duration?: number;
     class?: string;
+    height?: number;
   }
 
-  const { children, class: cName, summary: summaryText, duration = 240 }: Props = $props();
+  const { children, class: cName, summary: summaryText, duration = 240, height }: Props = $props();
   let content: HTMLDivElement | undefined = $state();
+  const openHeight = $derived(
+    height != null ? `${height}px` : `${(content?.scrollHeight ?? 0) + 4}px`,
+  );
 </script>
 
 <details
   class="accordion {cName}"
   style:--accordion-transition-duration={`${duration}ms`}
-  style:--open-height={`${(content?.scrollHeight ?? 0) + 4}px`}
+  style:--open-height={openHeight}
 >
   <summary>
     <span>{summaryText}</span>
