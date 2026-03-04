@@ -258,14 +258,6 @@
   grid-template-columns: repeat(auto-fit, minmax(min(--value([*]), 100%), 1fr));
 }
 
-@utility btn-1 {
-  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
-}
-
-@utility btn-2 {
-  @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
-}
-
 @utility font-feat-* {
   font-feature-settings: --value(--f-feat-*, [*]);
 }
@@ -496,5 +488,15 @@
 
   :is(td, th):where(tr:not(:last-child) > *) {
     @apply border-b cborder-border;
+  }
+}
+
+@layer components {
+  .btn-1 {
+    @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
+  }
+
+  .btn-2 {
+    @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
   }
 }

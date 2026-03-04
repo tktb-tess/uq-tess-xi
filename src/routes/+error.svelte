@@ -30,7 +30,7 @@
       {page.status} {page.error?.message ?? 'No message'}
     {/if}
   </p>
-  <a href="/.">トップに戻る</a>
+  <a class="btn-1" href="/.">トップに戻る</a>
 </div>
 
 <style lang="postcss">
@@ -53,7 +53,7 @@
       }
 
       :where(a) {
-        @apply block btn-1;
+        @apply block;
       }
     }
   }

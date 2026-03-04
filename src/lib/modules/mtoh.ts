@@ -31,4 +31,3 @@ export const mdToHtml = async (md: string) => {
 
   return vFile.toString();
 };
-

@@ -68,12 +68,7 @@
     <ul class="mutual-links">
       <li>
         <ExtLink href="https://kaeru2193.net" noIcon class="no-underline inline-block">
-          <img
-            src="https://kaeru2193.net/banner.png"
-            width="200"
-            height="40"
-            alt="之機堂"
-          />
+          <img src="https://kaeru2193.net/banner.png" width="200" height="40" alt="之機堂" />
         </ExtLink>
       </li>
     </ul>

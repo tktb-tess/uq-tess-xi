@@ -84,6 +84,3 @@ export const safeFetchJsonAndValidate = <TSchema extends z.ZodType>(
 ) => {
   return safeFetchJson(input, init).andThen((data) => safeValidate(schema, data));
 };
-
-
-

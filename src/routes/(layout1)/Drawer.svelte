@@ -8,7 +8,13 @@
   let closeBtn: HTMLButtonElement | undefined;
 </script>
 
-<dialog id="drawer" class={cName} aria-labelledby="drawer-title" bind:this={drawerElem} closedby="any">
+<dialog
+  id="drawer"
+  class={cName}
+  aria-labelledby="drawer-title"
+  bind:this={drawerElem}
+  closedby="any"
+>
   <div class="close-btn-wrapper">
     <!-- svelte-ignore a11y_autofocus -->
     <button
@@ -55,12 +61,12 @@
       }
 
       &[open]::backdrop {
-        @apply bg-black/80 starting:bg-transparent;
+        @apply bg-black/70 starting:bg-transparent;
       }
     }
 
     #drawer-title {
-      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 border-current
+      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 cborder-border-dark
       leading-none py-0;
     }
 

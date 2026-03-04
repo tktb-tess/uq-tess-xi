@@ -24,8 +24,12 @@
   onMount(() => {
     const str = localStorage.getItem(key);
     if (!str) return;
-    const conf = schema.parse(JSON.parse(str));
-    siteConfig.colorScheme = conf.colorScheme;
+    try {
+      const conf = schema.parse(JSON.parse(str));
+      siteConfig.colorScheme = conf.colorScheme;
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   $effect(() => {
