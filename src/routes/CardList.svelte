@@ -1,18 +1,20 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
+
   interface Props {
     readonly contents: {
       readonly title: string;
       readonly desc: string;
-      readonly href: string;
+      readonly href: '/conlang' | '/data' | '/others';
     }[];
   }
   const { contents }: Props = $props();
 </script>
 
 <ul class="card-list">
-  {#each contents as { title, desc, href }}
+  {#each contents as { title, desc, href } (`${title}-${desc}-${href}`)}
     <li>
-      <a {href}>
+      <a href={resolve(href)}>
         <h3>{title}</h3>
         <p>
           {desc}

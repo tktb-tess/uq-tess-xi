@@ -448,7 +448,7 @@
   }
 
   textarea {
-    @apply resize-none;
+    @apply resize-y;
   }
 
   pre.shiki {

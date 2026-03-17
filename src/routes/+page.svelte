@@ -1,3 +1,4 @@
+<svelte:options runes={true} />
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
@@ -8,7 +9,6 @@
   import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
   import MyFooter from '$lib/components/MyFooter.svelte';
-  const { data: _ } = $props();
 </script>
 
 <TopHeader />
