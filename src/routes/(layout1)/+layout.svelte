@@ -26,6 +26,7 @@
     }
     drawerElem.close();
   };
+
   const title = $derived.by(() => {
     const fallBack: PageData = {
       title: '[NO DATA]',

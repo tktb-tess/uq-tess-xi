@@ -2,17 +2,20 @@
 
 @font-face {
   font-family: 'PhunDot';
+  font-display: swap;
   src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Noto-Sans-JP';
-  src: local('Noto Sans JP'), local('Noto Sans CJK JP Regular');
+  font-display: swap;
+  src: local('Noto Sans JP'), local('Noto Sans CJK JP');
 }
 
 @font-face {
   font-family: 'Noto-Serif-JP';
-  src: local('Noto Serif JP'), local('Noto Serif CJK JP Regular');
+  font-display: swap;
+  src: local('Noto Serif JP'), local('Noto Serif CJK JP');
 }
 
 @theme {
@@ -33,16 +36,16 @@
 
   --color-body: var(--color-violet-50);
   --color-d-body: var(--color-violet-950-d);
-  --color-main: #fff;
+  --color-main: Canvas;
   --color-main-pale: var(--color-slate-100);
-  --color-d-main: var(--color-violet-1000-d);
+  --color-d-main: Canvas;
   --color-d-main-pale: var(--color-zinc-800);
-  --color-text: #000;
-  --color-d-text: #fff;
+  --color-text: CanvasText;
+  --color-d-text: CanvasText;
   --color-text-pale: color-mix(in oklch, var(--color-text) 40%, transparent);
   --color-d-text-pale: color-mix(in oklch, var(--color-d-text) 40%, transparent);
-  --color-textinv: #fff;
-  --color-d-textinv: #000;
+  --color-textinv: Canvas;
+  --color-d-textinv: Canvas;
   --color-accent: var(--color-violet-950-d);
   --color-accent-lighter: color-mix(in oklch, var(--color-accent) 60%, #fff);
   --color-d-accent: var(--color-violet-50);
@@ -242,7 +245,7 @@
   grid-template-columns: repeat(--value(integer), auto);
 }
 
-@utility grid-cols-auto-fill-* {
+@utility cols-auto-fill-* {
   grid-template-columns: repeat(
     auto-fill,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
@@ -250,7 +253,7 @@
   grid-template-columns: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
 }
 
-@utility grid-cols-auto-fit-* {
+@utility cols-auto-fit-* {
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
@@ -309,52 +312,43 @@
 }
 
 @layer base {
-  :root,
-  [lang] {
-    word-break: normal;
-  }
-
   @supports (word-break: auto-phrase) {
-    [lang^='ja'] {
+    :lang(ja) {
       word-break: auto-phrase;
+    }
+
+    :not(:lang(ja)) {
+      word-break: normal;
     }
   }
 
   [aria-disabled='true'],
   :disabled,
   [inert] {
-    @apply opacity-60;
-  }
-
-  [aria-disabled='true'] {
-    @apply pointer-events-none;
+    @apply opacity-60 pointer-events-none;
   }
 
   :root {
-    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans scheme-light-dark;
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
-    color-scheme: light dark;
+    text-spacing-trim: trim-start;
   }
 
   [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
   }
 
-  dialog {
+  dialog,
+  [popover] {
     @apply size-[unset] max-w-[unset] max-h-[unset] inset-[unset] fixed;
+  }
 
-    &:not([open]),
-    &:not([open])::backdrop {
-      @apply hidden;
-    }
-
-    &[open],
-    &[open]::backdrop {
-      @apply flow-root;
-    }
+  dialog:where(:not([open])),
+  [popover]:where(:not(:popover-open)) {
+    @apply hidden!;
   }
 
   body {

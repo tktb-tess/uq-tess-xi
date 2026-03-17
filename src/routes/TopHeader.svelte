@@ -1,7 +1,8 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import UqTessLogo from '$lib/components/UQTessLogo.svelte';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
-  const {} = $props();
 </script>
 
 <header>

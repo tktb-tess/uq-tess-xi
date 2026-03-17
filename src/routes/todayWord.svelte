@@ -54,7 +54,9 @@
             </tr>
           </thead>
           <tbody>
-            {#each value.translations as translation}
+            {#each value.translations as translation (translation.titles
+              .concat(translation.names)
+              .join('-'))}
               <tr>
                 <td>
                   {translation.titles.join(', ')}

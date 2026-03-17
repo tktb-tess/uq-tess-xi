@@ -1,8 +1,9 @@
-<script>
+<svelte:options runes={true} />
+
+<script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
-  const {} = $props();
 </script>
 
 <XSection title="単独字の発音">
