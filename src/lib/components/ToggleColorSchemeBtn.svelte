@@ -18,7 +18,7 @@
   class={cName}
   onclick={() => {
     switch (siteConfig.colorScheme) {
-      case 'default': {
+      case 'light dark': {
         siteConfig.colorScheme = 'light';
         break;
       }
@@ -27,7 +27,7 @@
         break;
       }
       case 'dark': {
-        siteConfig.colorScheme = 'default';
+        siteConfig.colorScheme = 'light dark';
         break;
       }
     }

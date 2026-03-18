@@ -2,18 +2,23 @@
 
 @font-face {
   font-family: 'PhunDot';
+  font-display: swap;
   src: url('https://kaeru2193.github.io/Phun-Resources/font/PhunDot-latest.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Noto-Sans-JP';
-  src: local('Noto Sans JP'), local('Noto Sans CJK JP Regular');
+  font-display: swap;
+  src: local('Noto Sans JP'), local('Noto Sans CJK JP');
 }
 
 @font-face {
   font-family: 'Noto-Serif-JP';
-  src: local('Noto Serif JP'), local('Noto Serif CJK JP Regular');
+  font-display: swap;
+  src: local('Noto Serif JP'), local('Noto Serif CJK JP');
 }
+
+/* theme variables */
 
 @theme {
   --font-sans:
@@ -35,7 +40,7 @@
   --color-d-body: var(--color-violet-950-d);
   --color-main: #fff;
   --color-main-pale: var(--color-slate-100);
-  --color-d-main: var(--color-violet-1000-d);
+  --color-d-main: #121212;
   --color-d-main-pale: var(--color-zinc-800);
   --color-text: #000;
   --color-d-text: #fff;
@@ -169,6 +174,8 @@
   --animate-swa: --k-swa-slide-in 300ms var(--ease-in-out-1), --k-swa-fade-in 300ms linear;
 }
 
+/* custom utilities */
+
 @utility cbg-* {
   background-color: --value(--color-*);
 
@@ -242,7 +249,7 @@
   grid-template-columns: repeat(--value(integer), auto);
 }
 
-@utility grid-cols-auto-fill-* {
+@utility cols-auto-fill-* {
   grid-template-columns: repeat(
     auto-fill,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
@@ -250,7 +257,7 @@
   grid-template-columns: repeat(auto-fill, minmax(min(--value([*]), 100%), 1fr));
 }
 
-@utility grid-cols-auto-fit-* {
+@utility cols-auto-fit-* {
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(calc(var(--spacing) * --value(integer)), 100%), 1fr)
@@ -268,6 +275,14 @@
 
 @utility allow-discrete {
   transition-behavior: allow-discrete;
+}
+
+@utility btn-1 {
+  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
+}
+
+@utility btn-2 {
+  @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
 }
 
 @custom-variant any-hover {
@@ -308,53 +323,46 @@
   }
 }
 
-@layer base {
-  :root,
-  [lang] {
-    word-break: normal;
-  }
+/* base styles */
 
+@layer base {
   @supports (word-break: auto-phrase) {
-    [lang^='ja'] {
+    :lang(ja) {
       word-break: auto-phrase;
+    }
+
+    :not(:lang(ja)) {
+      word-break: normal;
     }
   }
 
   [aria-disabled='true'],
   :disabled,
   [inert] {
-    @apply opacity-60;
-  }
-
-  [aria-disabled='true'] {
-    @apply pointer-events-none;
+    @apply opacity-60 pointer-events-none;
   }
 
   :root {
-    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans scheme-light-dark;
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
     scrollbar-gutter: stable;
-    color-scheme: light dark;
+    text-spacing-trim: trim-start;
   }
 
   [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
   }
 
-  dialog {
+  dialog,
+  [popover] {
     @apply size-[unset] max-w-[unset] max-h-[unset] inset-[unset] fixed;
+  }
 
-    &:not([open]),
-    &:not([open])::backdrop {
-      @apply hidden;
-    }
-
-    &[open],
-    &[open]::backdrop {
-      @apply flow-root;
-    }
+  dialog:where(:not([open])),
+  [popover]:where(:not(:popover-open)) {
+    @apply hidden!;
   }
 
   body {
@@ -454,7 +462,7 @@
   }
 
   textarea {
-    @apply resize-none;
+    @apply resize-y;
   }
 
   pre.shiki {
@@ -488,15 +496,5 @@
 
   :is(td, th):where(tr:not(:last-child) > *) {
     @apply border-b cborder-border;
-  }
-}
-
-@layer components {
-  .btn-1 {
-    @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
-  }
-
-  .btn-2 {
-    @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
   }
 }

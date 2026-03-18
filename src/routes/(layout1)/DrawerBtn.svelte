@@ -5,7 +5,7 @@
     showDrawer: () => void;
   }
 
-  let { class: cName, showDrawer }: Props = $props();
+  const { class: cName, showDrawer }: Props = $props();
 </script>
 
 <button

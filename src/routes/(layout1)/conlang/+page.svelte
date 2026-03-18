@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import XSection from '$lib/components/XSection.svelte';
-  const {}: {} = $props();
 </script>
 
 <XSection title="ヴェッセンズラン語 (Vessenzlendisç)">
@@ -10,7 +10,7 @@
     古英語の他、ゲルマン語派の他言語、特にドイツ語やアイスランド語、古ノルド語を参考にしている。
   </p>
   <ul>
-    <li><a href="/conlang/vaes">概説へ</a></li>
+    <li><a href={resolve('/(layout1)/conlang/vaes')}>概説へ</a></li>
   </ul>
 </XSection>
 <XSection title="古ヤズニェル語 (?????)">

@@ -1,6 +1,8 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import ExtLink from '$lib/components/ExtLink.svelte';
-  const {}: {} = $props();
 </script>
 
 <p>とりあえずやってみようと思います。</p>
@@ -152,7 +154,7 @@
   <li>
     <p>数字は何進法ですか?</p>
     <p>
-      概ね10進法です。詳しくは<a href="/conlang/vaes/numeral">数詞の項</a>で。
+      概ね10進法です。詳しくは<a href={resolve('/(layout1)/conlang/vaes/numeral')}>数詞の項</a>で。
     </p>
   </li>
   <li>

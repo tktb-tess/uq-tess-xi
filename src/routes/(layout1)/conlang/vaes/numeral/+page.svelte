@@ -1,9 +1,9 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
-
-  const {}: {} = $props();
 </script>
 
 <p>ヴェッセンズラン語の数詞は概ね10進法である。</p>

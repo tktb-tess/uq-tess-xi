@@ -1,25 +1,29 @@
 <script lang="ts">
   import pages from '../modules/pages';
   import HomeIcon from '../icons/HomeIcon.svelte';
+
   interface Props {
     readonly path: string;
   }
+
   const { path }: Props = $props();
+
   const links = $derived.by(() => {
     const dirs = path.split('/').filter((d) => d !== '');
 
     return dirs.map((_, i) => {
       const href = `/${dirs.slice(0, i).join('/')}`;
-      const text = href !== '/' ? (pages.find((d) => d.path === href)?.title ?? '[NO DATA]') : null;
+      const text = href !== '/' ? (pages.get(href)?.title ?? '[NO DATA]') : null;
       return { href, title: text } as const;
     });
   });
-  const currentText = $derived(pages.find((d) => d.path === path)?.title ?? '[NO DATA]');
+  
+  const currentText = $derived(pages.get(path)?.title ?? '[NO DATA]');
 </script>
 
 <nav class="breadcrumb" aria-label="パンくずリスト">
   <ol class="breadcrumb-list">
-    {#each links as { href, title }}
+    {#each links as { href, title } (href)}
       {#if title == null}
         <li>
           <a {href} title="Home">
@@ -41,7 +45,8 @@
       @apply my-paragraph;
     }
     .breadcrumb-list {
-      @apply p-0 m-0 list-none flex gap-2 flex-wrap;
+      @apply p-0 m-0 flex gap-2 flex-wrap;
+      list-style-type: '';
 
       > :where(li) {
         @apply contents;

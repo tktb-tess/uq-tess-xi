@@ -11,13 +11,20 @@ import { defineConfig } from 'eslint/config';
 
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
-export default defineConfig(
+export default defineConfig([
   includeIgnoreFile(gitignorePath),
   js.configs.recommended,
   ...ts.configs.recommended,
   ...svelte.configs.recommended,
   prettier,
   ...svelte.configs.prettier,
+  {
+    rules: {
+      'svelte/no-navigation-without-resolve': ['warn'],
+      'no-irregular-whitespace': ['off'],
+      'svelte/no-at-html-tags': ['warn'],
+    },
+  },
   {
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
@@ -36,4 +43,4 @@ export default defineConfig(
       },
     },
   },
-);
+]);

@@ -1,9 +1,11 @@
 <script lang="ts">
   import SideMenu from '$lib/components/SideMenu.svelte';
+
   interface Props {
     class?: string;
     drawerElem: HTMLDialogElement | undefined;
   }
+
   let { class: cName, drawerElem = $bindable() }: Props = $props();
   let closeBtn: HTMLButtonElement | undefined;
 </script>
@@ -37,6 +39,7 @@
 
 <style lang="postcss">
   @reference '../../app.css';
+
   @layer components {
     #drawer {
       @apply inset-0 w-min-side me-auto cbg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;

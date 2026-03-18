@@ -1,9 +1,8 @@
+<svelte:options runes={true} />
 <script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import XTable from '$lib/components/XTable.svelte';
-
-  const {}: {} = $props();
 </script>
 
 <XSection title="凡例">
@@ -83,7 +82,7 @@
 </XSection>
 <XSection title="母音">
   <h3 class="ms-1">単母音</h3>
-  <div class="grid grid-cols-auto-fill-110">
+  <div class="grid cols-auto-fill-110 my-figure *:my-0">
     <XTable
       headRows={3}
       headCols={1}
@@ -104,7 +103,7 @@
       caption="鼻母音"
       headRows={2}
       headCols={1}
-      class="[&_:where(td)]:font-ipa"
+      class="[&_:where(td)]:font-ipa content-start"
       data={[
         ['', '前舌', '中舌', '後舌'],
         ['', '非円唇', '円唇', '円唇'],
@@ -117,7 +116,7 @@
   <p>※鼻母音は全て <em>tense</em> 母音である。</p>
 
   <h3>二重母音</h3>
-  <div class="grid grid-cols-auto-fill-75">
+  <div class="grid cols-auto-fill-75 my-figure *:my-0">
     <XTable
       caption="口母音"
       headRows={1}

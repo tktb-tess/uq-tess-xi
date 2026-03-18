@@ -9,7 +9,7 @@
 </script>
 
 <ul>
-  {#each links as link}
+  {#each links as link (link.join('-'))}
     <li><ExtLink href={link[0]}>{link[1]}</ExtLink>{link[2]}</li>
   {/each}
 </ul>

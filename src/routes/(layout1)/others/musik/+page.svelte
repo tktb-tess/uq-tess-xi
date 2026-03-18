@@ -68,7 +68,7 @@
   };
 
   const toTime = (time?: number) => {
-    if (time == undefined || !Number.isFinite(time)) {
+    if (time == null || !Number.isFinite(time)) {
       return '-:--';
     }
     const minutes = (time / 60) | 0;
@@ -112,7 +112,7 @@
         </button>
         <button
           type="button"
-          class={track.loop ? `ctext-textinv cbg-accent` : null}
+          class={track.loop ? `text-textinv cbg-accent` : null}
           title="繰り返し"
           onclick={() => {
             track.loop = !track.loop;
@@ -120,9 +120,11 @@
         >
           <Repeat class="inline-block size-6" />
         </button>
+        <!-- eslint-disable svelte/no-navigation-without-resolve -->
         <a type="button" href="/audio/{track.path}" title="ダウンロード" download={track.path}>
           <DownloadIcon class="inline-block size-6" />
         </a>
+        <!-- eslint-enable -->
         <p class="__duration">{toTime(track.currentTime)}/{toTime(track.duration)}</p>
       </div>
 

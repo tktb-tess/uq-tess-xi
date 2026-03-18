@@ -54,7 +54,9 @@
             </tr>
           </thead>
           <tbody>
-            {#each value.translations as translation}
+            {#each value.translations as translation (translation.titles
+              .concat(translation.names)
+              .join('-'))}
               <tr>
                 <td>
                   {translation.titles.join(', ')}
@@ -117,7 +119,7 @@
       }
 
       :where(tbody td):first-child {
-        @apply cbg-accent ctext-textinv rounded-full;
+        @apply cbg-accent ctext-textinv rounded-full px-3;
       }
     }
 

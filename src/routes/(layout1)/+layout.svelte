@@ -1,14 +1,16 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
+  import pages from '$lib/modules/pages';
+  import type { PageData } from '$lib/modules/pages';
+  import { resolve } from '$app/paths';
   import SideMenu from '$lib/components/SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
-  import Drawer from './Drawer.svelte';
-  import DrawerBtn from './DrawerBtn.svelte';
-  import pages, { type PageData } from '$lib/modules/pages.js';
   import MyFooter from '$lib/components/MyFooter.svelte';
   import Toasts from '$lib/components/Toasts.svelte';
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
+  import Drawer from './Drawer.svelte';
+  import DrawerBtn from './DrawerBtn.svelte';
 
   const { children, data } = $props();
   let drawerElem: HTMLDialogElement | undefined = $state();
@@ -26,12 +28,12 @@
     }
     drawerElem.close();
   };
+
   const title = $derived.by(() => {
     const fallBack: PageData = {
       title: '[NO DATA]',
-      path: '/',
     };
-    const pageData = pages.find((d) => d.path === data.path) ?? fallBack;
+    const pageData = pages.get(data.path) ?? fallBack;
     return pageData.title;
   });
 
@@ -43,7 +45,7 @@
 <div class="__container">
   <header>
     <DrawerBtn {showDrawer} />
-    <a id="to-top" href="/." title="トップページに戻る">
+    <a id="to-top" href={resolve('/')} title="トップページに戻る">
       <span>悠久肆方体</span>
     </a>
     <ToggleColorSchemeBtn />
