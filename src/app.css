@@ -18,6 +18,8 @@
   src: local('Noto Serif JP'), local('Noto Serif CJK JP');
 }
 
+/* theme variables */
+
 @theme {
   --font-sans:
     'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto-Sans-JP', 'BIZ UDPGothic',
@@ -172,6 +174,8 @@
   --animate-swa: --k-swa-slide-in 300ms var(--ease-in-out-1), --k-swa-fade-in 300ms linear;
 }
 
+/* custom utilities */
+
 @utility cbg-* {
   background-color: --value(--color-*);
 
@@ -273,6 +277,14 @@
   transition-behavior: allow-discrete;
 }
 
+@utility btn-1 {
+  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
+}
+
+@utility btn-2 {
+  @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
+}
+
 @custom-variant any-hover {
   @media (any-hover: hover) {
     &:hover {
@@ -310,6 +322,8 @@
     @slot;
   }
 }
+
+/* base styles */
 
 @layer base {
   @supports (word-break: auto-phrase) {
@@ -482,15 +496,5 @@
 
   :is(td, th):where(tr:not(:last-child) > *) {
     @apply border-b cborder-border;
-  }
-}
-
-@layer components {
-  .btn-1 {
-    @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
-  }
-
-  .btn-2 {
-    @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
   }
 }

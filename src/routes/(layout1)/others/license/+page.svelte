@@ -1,6 +1,6 @@
+<svelte:options runes={true} />
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
-  const {}: {} = $props();
 </script>
 
 <p>フォントなどのライセンス表示をまとめたページです。</p>

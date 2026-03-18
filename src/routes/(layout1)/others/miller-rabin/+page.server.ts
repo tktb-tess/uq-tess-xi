@@ -3,7 +3,8 @@ import { readFile } from 'node:fs/promises';
 export const prerender = true;
 
 export const load = async () => {
-  const resp = await readFile('./src/routes/(layout1)/others/miller-rabin/test.md', {
+  const url = './src/routes/(layout1)/others/miller-rabin/test.md';
+  const resp = await readFile(url, {
     encoding: 'utf-8',
   });
 

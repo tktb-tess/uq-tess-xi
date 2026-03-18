@@ -6,7 +6,7 @@
 </script>
 
 <ol>
-  {#each data as entry}
+  {#each data as entry (entry[0])}
     <li>
       <p>{entry[0]}</p>
       <p>{entry[1]}</p>
