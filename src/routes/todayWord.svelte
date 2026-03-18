@@ -119,7 +119,7 @@
       }
 
       :where(tbody td):first-child {
-        @apply cbg-accent ctext-textinv rounded-full;
+        @apply cbg-accent ctext-textinv rounded-full px-3;
       }
     }
 

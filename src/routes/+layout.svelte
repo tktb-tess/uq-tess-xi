@@ -3,7 +3,8 @@
   import { PUBLIC_SITE_NAME, PUBLIC_BASE_URL } from '$env/static/public';
   import { siteConfig, key, schema } from '$lib/modules/site-config.svelte';
   import { onMount } from 'svelte';
-  import pages, { type PageData } from '$lib/modules/pages';
+  import pages from '$lib/modules/pages';
+  import type { PageData } from '$lib/modules/pages';
   import Loads from './Loads.svelte';
 
   const { children, data } = $props();
@@ -11,10 +12,9 @@
   const linkCardUrl = new URL('/link-card.png', PUBLIC_BASE_URL).href;
   const fallBack: PageData = {
     title: '[NO DATA]',
-    path: '/',
   };
 
-  const pageData = $derived(pages.find((d) => d.path === data.path) ?? fallBack);
+  const pageData = $derived(pages.get(data.path) ?? fallBack);
   const ogDesc = $derived(pageData.description ?? pageData.title);
   const ogUrl = $derived(new URL(data.path, PUBLIC_BASE_URL));
   const ogTitle = $derived(

@@ -14,15 +14,15 @@
 >
   <thead>
     <tr>
-      {#each header as str (str)}
+      {#each header as str, i (`${str}-${i}`)}
         <th>{str}</th>
       {/each}
     </tr>
   </thead>
   <tbody>
-    {#each body as row (row)}
+    {#each body as row, i (`${row[1]}-${i}`)}
       <tr>
-        {#each row as str (str)}
+        {#each row as str, j (`${str}-${i}-${j}`)}
           <td>{str}</td>
         {/each}
       </tr>

@@ -32,9 +32,8 @@
   const title = $derived.by(() => {
     const fallBack: PageData = {
       title: '[NO DATA]',
-      path: '/',
     };
-    const pageData = pages.find((d) => d.path === data.path) ?? fallBack;
+    const pageData = pages.get(data.path) ?? fallBack;
     return pageData.title;
   });
 

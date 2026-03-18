@@ -38,16 +38,16 @@
 
   --color-body: var(--color-violet-50);
   --color-d-body: var(--color-violet-950-d);
-  --color-main: Canvas;
+  --color-main: #fff;
   --color-main-pale: var(--color-slate-100);
-  --color-d-main: Canvas;
+  --color-d-main: #121212;
   --color-d-main-pale: var(--color-zinc-800);
-  --color-text: CanvasText;
-  --color-d-text: CanvasText;
+  --color-text: #000;
+  --color-d-text: #fff;
   --color-text-pale: color-mix(in oklch, var(--color-text) 40%, transparent);
   --color-d-text-pale: color-mix(in oklch, var(--color-d-text) 40%, transparent);
-  --color-textinv: Canvas;
-  --color-d-textinv: Canvas;
+  --color-textinv: #fff;
+  --color-d-textinv: #000;
   --color-accent: var(--color-violet-950-d);
   --color-accent-lighter: color-mix(in oklch, var(--color-accent) 60%, #fff);
   --color-d-accent: var(--color-violet-50);

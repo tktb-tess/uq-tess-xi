@@ -48,7 +48,7 @@
         'q',
         '/k/',
         [
-          '基本 qu のセットで使われ、 <span class="font-ipa">/kʋ/</span> という音を表す',
+          '<div>基本 qu のセットで使われ、 <span class="font-ipa">/kʋ/</span> という音を表す</div>',
           { rawHTML: true },
         ],
       ],
