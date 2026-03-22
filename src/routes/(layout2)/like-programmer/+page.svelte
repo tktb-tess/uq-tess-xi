@@ -8,11 +8,12 @@
 
   let str = $state(initialize());
   const bits = 16;
+  let continu = true;
 
   const updateStr = () => {
     const s = (() => {
       const num = crypto.getRandomValues(new Uint16Array(1))[0];
-      if (typeof num === 'undefined') {
+      if (num == null) {
         throw TypeError('Failed to generate numbers');
       }
       return num.toString(2).padStart(bits, '0');
@@ -21,11 +22,17 @@
     str += s;
     str = str.slice(bits);
 
-    requestAnimationFrame(updateStr);
+    if (continu) {
+      requestAnimationFrame(updateStr);
+    }
   };
 
   onMount(() => {
     updateStr();
+
+    return () => {
+      continu = false;
+    }
   });
 </script>
 

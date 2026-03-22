@@ -19,10 +19,10 @@ export const GET = async () => {
     })
       .andThen(() =>
         ResultAsync.fromPromise(client.get(redisKeys.todayWord), (e) => {
-          if (e instanceof Error) {
-            return NamedError.from('RedisError', e.message);
-          }
-          return NamedError.from('RedisError', 'failed to load today-word from redis');
+          return NamedError.from(
+            'RedisError',
+            e instanceof Error ? e.message : 'failed to load today-word from redis',
+          );
         }),
       )
       .andThen((word) => {

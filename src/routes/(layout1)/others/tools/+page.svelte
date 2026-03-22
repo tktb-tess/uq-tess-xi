@@ -7,10 +7,20 @@
   const { data } = $props();
 </script>
 
-<div class="flex flex-col gap-8">
+<div class="root">
   <ToBase64 />
   <FromBase64 />
   <OddCalculator exps={data.exps} logs={data.logs} />
   <PrimGuessr />
   <UnderConstruction />
 </div>
+
+<style lang="postcss">
+  @reference '../../../../app.css';
+
+  @layer components {
+    .root {
+      @apply flex flex-col gap-8;
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import XAccordion from './XAccordion.svelte';
+  import { resolve } from '$app/paths';
 
   interface Props {
     readonly class?: string;
@@ -11,25 +12,35 @@
   <li>
     <h3>VESSENZLENDISÇ</h3>
     <ul>
-      <li><a href="/conlang/vaes">概説</a></li>
-      <li><a href="/conlang/vaes/letter-et-pron">文字と発音</a></li>
-      <li><a href="/conlang/vaes/phonology">音韻論</a></li>
-      <li><a href="/conlang/vaes/swadesh-list">Swadesh List</a></li>
+      <li><a href={resolve('/(layout1)/conlang/vaes')}>概説</a></li>
+      <li><a href={resolve('/(layout1)/conlang/vaes/letter-et-pron')}>文字と発音</a></li>
+      <li><a href={resolve('/(layout1)/conlang/vaes/phonology')}>音韻論</a></li>
+      <li><a href={resolve('/(layout1)/conlang/vaes/swadesh-list')}>Swadesh List</a></li>
       <li>
-        <a href="/conlang/vaes/ringo-bunn" aria-disabled="true" tabindex="-1">りんご文 (準備中)</a>
+        <a href={resolve('/(layout1)/conlang/vaes/ringo-bunn')} aria-disabled="true" tabindex="-1">
+          りんご文 (準備中)
+        </a>
       </li>
       <li>
         <XAccordion summary="文法" height={164}>
           <ul>
             <li>
-              <a href="/conlang/vaes/noun" aria-disabled="true" tabindex="-1">名詞 (準備中)</a>
+              <a href={resolve('/(layout1)/conlang/vaes/noun')} aria-disabled="true" tabindex="-1">
+                名詞 (準備中)
+              </a>
             </li>
-            <li><a href="/conlang/vaes/numeral">数詞</a></li>
+            <li><a href={resolve('/(layout1)/conlang/vaes/numeral')}>数詞</a></li>
             <li>
-              <a href="/conlang/vaes/verb" aria-disabled="true" tabindex="-1">動詞 (準備中)</a>
+              <a href={resolve('/(layout1)/conlang/vaes/verb')} aria-disabled="true" tabindex="-1">
+                動詞 (準備中)
+              </a>
             </li>
             <li>
-              <a href="/conlang/vaes/adjective" aria-disabled="true" tabindex="-1">
+              <a
+                href={resolve('/(layout1)/conlang/vaes/adjective')}
+                aria-disabled="true"
+                tabindex="-1"
+              >
                 形容詞 (準備中)
               </a>
             </li>
@@ -41,8 +52,8 @@
   <li>
     <h3>MISCELLANEOUS</h3>
     <ul>
-      <li><a href="/data">データ</a></li>
-      <li><a href="/others">その他</a></li>
+      <li><a href={resolve('/(layout1)/data')}>データ</a></li>
+      <li><a href={resolve('/(layout1)/others')}>その他</a></li>
     </ul>
   </li>
 </ul>

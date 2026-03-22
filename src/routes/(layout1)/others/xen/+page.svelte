@@ -6,6 +6,8 @@
 
 <KaTeXCSS />
 
+<!-- eslint-disable -->
 {@html data.rawHTML}
+<!-- eslint-enable -->
 
 <UnderConstruction />

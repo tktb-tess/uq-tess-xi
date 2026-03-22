@@ -14,14 +14,16 @@
 </script>
 
 <ul class={cName}>
-  {#each data as item}
+  {#each data as item (item)}
     {#if typeof item === 'string'}
       <li>{item}</li>
     {:else}
       {@const [text, conf] = item}
       <li class={conf.class}>
         {#if conf.rawHTML}
+          <!-- eslint-disable -->
           {@html text}
+          <!-- eslint-enable -->
         {:else}
           {text}
         {/if}

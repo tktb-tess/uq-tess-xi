@@ -35,9 +35,9 @@
   {/if}
   {#if headData.length > 0}
     <thead>
-      {#each headData as row}
+      {#each headData as row (row)}
         <tr>
-          {#each row as cell}
+          {#each row as cell (cell)}
             {#if typeof cell === 'string'}
               <th>{cell}</th>
             {:else}
@@ -50,7 +50,9 @@
                 class={conf.class}
               >
                 {#if conf.rawHTML}
+                  <!-- eslint-disable -->
                   {@html text}
+                  <!-- eslint-enable -->
                 {:else}
                   {text}
                 {/if}
@@ -62,12 +64,12 @@
     </thead>
   {/if}
   <tbody>
-    {#each bodyData as row, i}
+    {#each bodyData as row, i (row)}
       {@const cols = headCols.at(i) ?? 0}
       {@const ths = row.slice(0, cols)}
       {@const tds = row.slice(cols)}
       <tr>
-        {#each ths as cell}
+        {#each ths as cell (cell)}
           {#if typeof cell === 'string'}
             <th>{cell}</th>
           {:else}
@@ -80,14 +82,16 @@
               class={conf.class}
             >
               {#if conf.rawHTML}
+                <!-- eslint-disable -->
                 {@html text}
+                <!-- eslint-enable -->
               {:else}
                 {text}
               {/if}
             </th>
           {/if}
         {/each}
-        {#each tds as cell}
+        {#each tds as cell (cell)}
           {#if typeof cell === 'string'}
             <td>{cell}</td>
           {:else}
@@ -100,7 +104,9 @@
               class={conf.class}
             >
               {#if conf.rawHTML}
+                <!-- eslint-disable -->
                 {@html text}
+                <!-- eslint-enable -->
               {:else}
                 {text}
               {/if}

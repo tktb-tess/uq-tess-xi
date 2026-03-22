@@ -13,21 +13,22 @@ export interface TrackParams extends TrackData {
   duration?: number;
 }
 
+const trackData: readonly TrackData[] = [
+  {
+    path: 'wlcm.m4a',
+    title: 'Welcome',
+    composer: 'Tessyrrhaqt',
+    description: 'Psytranceまがいの静かな曲。',
+  },
+  {
+    path: 'clst.m4a',
+    title: 'Celeste',
+    composer: 'Tessyrrhaqt',
+    description: 'Youtubeのエンディングテーマみたいなの作りたいなって思ったので作った短い曲。',
+  },
+];
+
 export const load = async () => {
-  const trackData: ReadonlyArray<TrackData> = [
-    {
-      path: 'wlcm.m4a',
-      title: 'Welcome',
-      composer: 'Tessyrrhaqt',
-      description: 'Psytranceまがいの静かな曲。',
-    },
-    {
-      path: 'clst.m4a',
-      title: 'Celeste',
-      composer: 'Tessyrrhaqt',
-      description: 'Youtubeのエンディングテーマみたいなの作りたいなって思ったので作った短い曲。',
-    },
-  ];
   return {
     trackData,
   };

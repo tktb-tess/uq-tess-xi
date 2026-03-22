@@ -1,10 +1,10 @@
 <script lang="ts">
   import DownloadIcon from '$lib/icons/DownloadIcon.svelte';
+  import PauseIcon from '$lib/icons/PauseIcon.svelte';
+  import PlayIcon from '$lib/icons/PlayIcon.svelte';
+  import RepeatIcon from '$lib/icons/RepeatIcon.svelte';
+  import StopIcon from '$lib/icons/StopIcon.svelte';
   import ExtLink from '$lib/components/ExtLink.svelte';
-  import PauseFill from '$lib/icons/PauseIcon.svelte';
-  import PlayFill from '$lib/icons/PlayIcon.svelte';
-  import Repeat from '$lib/icons/RepeatIcon.svelte';
-  import StopFill from '$lib/icons/StopIcon.svelte';
   import type { TrackParams } from './+page.server';
 
   const { data = $bindable() } = $props();
@@ -84,12 +84,12 @@
   <img
     src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
     alt="Creative Commons License Mark"
-    class="inline-block max-w-4 max-h-4 ms-1 my-0"
+    class="cc-icons"
   />
   <img
     src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
     alt="Creative Commons License BY Mark"
-    class="inline-block max-w-4 max-h-4 ms-1 my-0"
+    class="cc-icons"
   />
   ライセンスの下公開されます。
 </p>
@@ -102,13 +102,13 @@
       <div class="__btn-dur">
         <button type="button" title="再生/一時停止" onclick={() => handlePlay(i)}>
           {#if track.state === 'playing'}
-            <PauseFill class="inline-block size-6" />
+            <PauseIcon class="inline-block size-6" />
           {:else}
-            <PlayFill class="inline-block size-6" />
+            <PlayIcon class="inline-block size-6" />
           {/if}
         </button>
         <button type="button" title="停止" onclick={() => handleStop(i)}>
-          <StopFill class="inline-block size-6" />
+          <StopIcon class="inline-block size-6" />
         </button>
         <button
           type="button"
@@ -118,7 +118,7 @@
             track.loop = !track.loop;
           }}
         >
-          <Repeat class="inline-block size-6" />
+          <RepeatIcon class="inline-block size-6" />
         </button>
         <!-- eslint-disable svelte/no-navigation-without-resolve -->
         <a type="button" href="/audio/{track.path}" title="ダウンロード" download={track.path}>
@@ -143,6 +143,10 @@
 <style lang="postcss">
   @reference '../../../../app.css';
   @layer components {
+    .cc-icons {
+      @apply inline-block max-w-4 max-h-4 ms-1 my-0;
+    }
+
     .__card-root {
       @apply flex flex-col gap-figure my-figure;
     }

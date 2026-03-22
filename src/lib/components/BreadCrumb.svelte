@@ -17,12 +17,13 @@
       return { href, title: text } as const;
     });
   });
-  
+
   const currentText = $derived(pages.get(path)?.title ?? '[NO DATA]');
 </script>
 
 <nav class="breadcrumb" aria-label="パンくずリスト">
   <ol class="breadcrumb-list">
+    <!-- eslint-disable -->
     {#each links as { href, title } (href)}
       {#if title == null}
         <li>
@@ -34,6 +35,7 @@
         <li><a {href} {title}>{title}</a></li>
       {/if}
     {/each}
+    <!-- eslint-enable -->
     <li><a id="current" aria-current="page" tabindex="-1">{currentText}</a></li>
   </ol>
 </nav>

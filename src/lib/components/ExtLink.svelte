@@ -2,17 +2,18 @@
   import type { Snippet } from 'svelte';
   import BoxArrowIcon from '../icons/BoxArrowIcon.svelte';
 
-  type Props = {
+  interface Props {
     href: string;
     title?: string;
     class?: string;
     children?: Snippet;
     noIcon?: boolean;
-  };
+  }
 
   const { href, children, class: className, noIcon = false, title }: Props = $props();
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
 <a {href} target="_blank" rel="noopener noreferrer" class={className} {title}>
   {#if children}
     {@render children()}
@@ -21,3 +22,4 @@
     <BoxArrowIcon class="inline-block w-[.75em] h-auto align-baseline" />
   {/if}
 </a>
+<!-- eslint-enable -->

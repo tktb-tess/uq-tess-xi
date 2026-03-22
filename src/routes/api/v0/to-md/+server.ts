@@ -42,11 +42,10 @@ export const GET = async ({ url, fetch: svFetch }) => {
         md,
       };
     } catch (e) {
-      const isError = e instanceof Error;
       return {
         success: false,
         url,
-        error: NamedError.from('FetchError', isError ? e.message : 'failed to fetch'),
+        error: NamedError.from('FetchError', e instanceof Error ? e.message : 'failed to fetch'),
       };
     }
   });
