@@ -23,7 +23,8 @@ export const htmlToMd = async (html: string) => {
         bullet: '-',
         bulletOther: '+',
         rule: '-',
-      });
+      })
+      .freeze();
   }
 
   const vFile = await processor.process(html);

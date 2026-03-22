@@ -33,7 +33,8 @@ export const mdToHtml = async (md: string) => {
       .use(rehypeShiki, {
         theme: 'github-dark',
       })
-      .use(rehypeStringify);
+      .use(rehypeStringify)
+      .freeze();
   }
 
   const vFile = await processor.process(md);

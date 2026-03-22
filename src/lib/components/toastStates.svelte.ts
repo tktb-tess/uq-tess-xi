@@ -9,7 +9,6 @@ export type Toast = {
   readonly timeoutID: NodeJS.Timeout;
 };
 
-
 export const toastStates = new SvelteMap<symbol, Toast>();
 
 export const addToast = (message: string, type: ToastType, timeout: number) => {

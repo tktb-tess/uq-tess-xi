@@ -32,7 +32,7 @@
 
     return () => {
       continu = false;
-    }
+    };
   });
 </script>
 

@@ -1,4 +1,5 @@
 <svelte:options runes={true} />
+
 <script lang="ts">
   import XSection from '$lib/components/XSection.svelte';
 </script>

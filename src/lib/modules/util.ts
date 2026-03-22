@@ -1,12 +1,12 @@
 import { Result, ok, err, ResultAsync, okAsync, errAsync } from 'neverthrow';
 import * as z from 'zod';
 
-type NamedError<EName extends string | symbol> = {
+interface NamedError<EName extends string | symbol> {
   readonly name: EName;
   readonly message: string;
   readonly stack?: string;
   readonly cause?: unknown;
-};
+}
 
 const NamedError = {
   from<EName extends string | symbol>(
