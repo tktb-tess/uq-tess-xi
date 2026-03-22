@@ -1,4 +1,7 @@
+<svelte:options runes />
+
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import { page } from '$app/state';
   import { PUBLIC_SITE_NAME } from '$env/static/public';
   import UqTessLogo from '$lib/components/UQTessLogo.svelte';
@@ -19,7 +22,7 @@
 </svelte:head>
 
 <div id="error-root">
-  <div class="__logo">
+  <div class="logo">
     <UqTessLogo />
   </div>
   <h2>Hoppla!</h2>
@@ -30,7 +33,7 @@
       {page.status} {page.error?.message ?? 'No message'}
     {/if}
   </p>
-  <a class="btn-1" href="/.">トップに戻る</a>
+  <a class="btn-1" href={resolve('/')}>トップに戻る</a>
 </div>
 
 <style lang="postcss">
@@ -40,7 +43,7 @@
     #error-root {
       @apply grid min-h-lvh px-3 content-center place-items-center gap-4 overflow-clip **:m-0;
 
-      :where(.__logo) {
+      :where(.logo) {
         @apply animate-err-up-down ctext-text *:size-50 *:animate-err-rot;
       }
 

@@ -5,5 +5,6 @@
 </script>
 
 <KaTeXCSS />
-
+<!-- eslint-disable -->
 {@html data.rawHTML}
+<!-- eslint-enable -->

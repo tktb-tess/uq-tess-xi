@@ -133,7 +133,7 @@
 
       > main {
         grid-area: main;
-        @apply flow-root cbg-main;
+        @apply flow-root cbg-main border-l border-r border-b cborder-border-light;
 
         :where(#title) {
           @apply text-center ps-0 border-none mb-heading;

@@ -55,10 +55,10 @@
   --color-accent2: var(--color-violet-100);
   --color-d-accent2: var(--color-violet-900-d);
   --color-border: hsl(0 0 0 / 25%);
-  --color-border-light: hsl(0 0 0 / 12%);
+  --color-border-light: hsl(0 0 0 / 15%);
   --color-border-dark: hsl(0 0 0 / 50%);
   --color-d-border: hsl(0 0 100 / 25%);
-  --color-d-border-light: hsl(0 0 100 / 12%);
+  --color-d-border-light: hsl(0 0 100 / 15%);
   --color-d-border-dark: hsl(0 0 100 / 44%);
   --color-link: var(--color-blue-700);
   --color-d-link: var(--color-blue-300);
@@ -278,7 +278,7 @@
 }
 
 @utility btn-1 {
-  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-2 no-underline;
+  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-4 py-1 no-underline;
 }
 
 @utility btn-2 {
@@ -326,16 +326,6 @@
 /* base styles */
 
 @layer base {
-  @supports (word-break: auto-phrase) {
-    :lang(ja) {
-      word-break: auto-phrase;
-    }
-
-    :not(:lang(ja)) {
-      word-break: normal;
-    }
-  }
-
   [aria-disabled='true'],
   :disabled,
   [inert] {
@@ -351,12 +341,24 @@
     text-spacing-trim: trim-start;
   }
 
+  [lang] {
+    word-break: normal;
+  }
+
+  @supports (word-break: auto-phrase) {
+    [lang^='ja'] {
+      word-break: auto-phrase;
+    }
+  }
+
   [lang='x-v3-karphnpn'] {
     @apply font-phun-dot;
   }
 
   dialog,
-  [popover] {
+  dialog::backdrop,
+  [popover],
+  [popover]::backdrop {
     @apply size-[unset] max-w-[unset] max-h-[unset] inset-[unset] fixed;
   }
 
@@ -470,7 +472,7 @@
   }
 
   table {
-    @apply grid break-keep w-max max-w-full text-center me-auto overflow-auto;
+    @apply grid break-keep wrap-normal w-max max-w-full text-center me-auto overflow-auto;
     grid-template-columns: repeat(var(--cols, 1), auto);
     grid-template-rows: repeat(calc(var(--rows, 1) + var(--caption, 0)), auto);
   }

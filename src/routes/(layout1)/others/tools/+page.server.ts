@@ -23,5 +23,5 @@ export const load = async () => {
   return {
     exps,
     logs,
-  };
+  } as const;
 };

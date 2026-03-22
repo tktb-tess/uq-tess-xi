@@ -1,4 +1,5 @@
 <svelte:options runes={true} />
+
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
   import RingoBunTemp from './RingoBunTemp.svelte';

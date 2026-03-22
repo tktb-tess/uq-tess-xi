@@ -5,7 +5,8 @@
 
   const isVisible = $derived(typeof scrollY.current === 'number' ? scrollY.current > 600 : false);
 
-  const onclick: MouseEventHandler<HTMLButtonElement> = () => {
+  const onclick: MouseEventHandler<HTMLButtonElement> = (ev) => {
+    ev.preventDefault();
     if (browser) window.scroll({ top: 0, behavior: 'smooth' });
   };
 </script>
@@ -13,7 +14,6 @@
 <button
   {onclick}
   id="to-page-top-btn"
-  type="button"
   aria-label="ページトップへ戻る"
   data-visible={isVisible || null}
 >

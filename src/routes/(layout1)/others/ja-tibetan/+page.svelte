@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
@@ -15,7 +15,7 @@
   />
 </svelte:head>
 
-<div id="tibet-root">
+<div class="tibet-root">
   <XSection title="音節構造　ཨོཾ་སེ་ཛཀཽ་ཛཽ">
     <p>先に音節構造の話からする。</p>
     <p>
@@ -302,7 +302,7 @@
 <style lang="postcss">
   @reference '../../../../app.css';
   @layer components {
-    #tibet-root {
+    .tibet-root {
       @apply contents font-sans;
 
       --font-sans:
@@ -316,11 +316,11 @@
 
     p,
     li,
-    :where(#tibet-root) :global(:is(td, th)) {
+    :where(.tibet-root) :global(:is(td, th)) {
       @apply overflow-y-clip leading-[1.6];
     }
 
-    :where(#tibet-root) :global(h2),
+    :where(.tibet-root) :global(h2),
     h3 {
       @apply overflow-y-clip leading-loose;
     }

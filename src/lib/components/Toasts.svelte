@@ -1,38 +1,36 @@
+<svelte:options runes />
+
 <script lang="ts">
-  import { toastStates, dismissToast } from './toastStates.svelte';
-  const {}: {} = $props();
+  import { toastStates, dismissToast, type Toast } from './toastStates.svelte';
+
+  const decideColor = (toast: Toast) => {
+    switch (toast.type) {
+      case 'info': {
+        return 'bg-blue-600';
+      }
+      case 'warning': {
+        return 'bg-red-600';
+      }
+      case 'hint': {
+        return 'bg-green-500';
+      }
+    }
+  };
 </script>
 
 {#if toastStates.size > 0}
   <div id="toast-root">
-    {#each toastStates as [key, toast]}
-      <div
-        class="__toast-elem
-					{(() => {
-          switch (toast.type) {
-            case 'info': {
-              return 'border-sky-500';
-            }
-            case 'warning': {
-              return 'border-red-600';
-            }
-            case 'hint': {
-              return 'border-green-500';
-            }
-          }
-        })()}"
-      >
+    {#each toastStates as [key, toast] (key)}
+      <div class="__toast-elem {decideColor(toast)}">
         <p>{toast.message}</p>
         <button
+          aria-label="通知を消す"
           onclick={() => {
             clearTimeout(toast.timeoutID);
             dismissToast(key);
           }}
           type="button"
-          class="text-xl"
-        >
-          ×
-        </button>
+        ></button>
       </div>
     {/each}
   </div>
@@ -43,20 +41,36 @@
   @layer components {
     #toast-root {
       @apply fixed z-(--z-toast) top-5 inset-x-0 flex flex-col
-      gap-2 items-center *:max-w-full pointer-events-none;
+      gap-2 items-center pointer-events-none;
     }
 
     .__toast-elem {
-      @apply px-3 border-2 cbg-main rounded flex
-		  gap-5 justify-center items-center relative animate-toast
-      pointer-events-auto;
+      @apply px-4 py-2 text-white rounded w-full max-w-70
+      grid grid-cols-[1fr_1.25rem] items-center
+		  gap-5 relative animate-toast
+      pointer-events-auto *:m-0;
 
-      :where(p, button) {
-        @apply m-0;
+      > p {
+        @apply text-lg;
       }
 
-      :where(p) {
-        @apply text-xl;
+      > button {
+        @apply grid size-6;
+      }
+
+      > button::before,
+      > button::after {
+        content: '';
+        @apply block col-span-full row-span-full place-self-center w-5
+        border-b-2 border-current;
+      }
+
+      > button::before {
+        @apply rotate-45;
+      }
+
+      > button::after {
+        @apply -rotate-45;
       }
     }
   }
