@@ -7,13 +7,13 @@
 }
 
 @font-face {
-  font-family: 'Noto-Sans-JP';
+  font-family: 'noto-sans-jp';
   font-display: swap;
   src: local('Noto Sans JP'), local('Noto Sans CJK JP');
 }
 
 @font-face {
-  font-family: 'Noto-Serif-JP';
+  font-family: 'noto-serif-jp';
   font-display: swap;
   src: local('Noto Serif JP'), local('Noto Serif CJK JP');
 }
@@ -22,10 +22,10 @@
 
 @theme {
   --font-sans:
-    'Inter-Variable', 'Arial', 'Helvetica Neue', 'Noto-Sans-JP', 'BIZ UDPGothic',
+    'Inter-Variable', 'Arial', 'Helvetica Neue', 'noto-sans-jp', 'BIZ UDPGothic',
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', system-ui;
   --font-serif:
-    'Charis-Web', 'Times New Roman', 'Noto-Serif-JP', 'BIZ UDPMincho', 'Hiragino Mincho',
+    'Charis-Web', 'Times New Roman', 'noto-serif-jp', 'BIZ UDPMincho', 'Hiragino Mincho',
     'Hiragino Serif', serif, 'Segoe UI', system-ui;
   --font-ipa: 'Charis-Web', 'Times New Roman', serif, system-ui;
   --font-phun-dot: 'PhunDot', var(--font-sans);
@@ -277,11 +277,11 @@
   transition-behavior: allow-discrete;
 }
 
-@utility btn-1 {
+@utility btn-theme-1 {
   @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-4 py-1 no-underline;
 }
 
-@utility btn-2 {
+@utility btn-theme-2 {
   @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
 }
 
@@ -326,12 +326,6 @@
 /* base styles */
 
 @layer base {
-  [aria-disabled='true'],
-  :disabled,
-  [inert] {
-    @apply opacity-60 pointer-events-none;
-  }
-
   :root {
     @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans scheme-light-dark;
     -webkit-tap-highlight-color: revert;
@@ -339,6 +333,7 @@
     line-break: strict;
     scrollbar-gutter: stable;
     text-spacing-trim: trim-start;
+    text-autospace: normal;
   }
 
   [lang] {
@@ -355,24 +350,27 @@
     @apply font-phun-dot;
   }
 
+  :where([aria-disabled='true'], :disabled, [inert]) {
+    @apply opacity-60! pointer-events-none!;
+  }
+
   dialog,
   dialog::backdrop,
   [popover],
   [popover]::backdrop {
-    @apply size-[unset] max-w-[unset] max-h-[unset] inset-[unset] fixed;
+    @apply size-[unset] max-inline-[unset] max-block-[unset] inset-[unset] fixed;
   }
 
-  dialog:where(:not([open])),
-  [popover]:where(:not(:popover-open)) {
+  :where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
     @apply hidden!;
   }
 
   body {
-    @apply flow-root cbg-body ctext-text min-h-lvh;
+    @apply flow-root cbg-body ctext-text min-block-lvh;
   }
 
   main {
-    @apply flow-root cbg-main px-gutter min-h-lvh;
+    @apply flow-root cbg-main px-gutter min-block-lvh;
   }
 
   a:where(:any-link:not([aria-disabled='true'])) {
