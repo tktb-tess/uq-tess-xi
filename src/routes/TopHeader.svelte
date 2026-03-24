@@ -16,7 +16,8 @@
   @reference '../app.css';
   @layer components {
     header {
-      @apply grid h-svh place-items-center content-center gbg-vivid text-white overflow-clip;
+      @apply grid h-svh place-items-center content-center text-white overflow-clip
+      bg-linear-135 from-main-title-s to-main-title-e;
     }
 
     .top-logo {

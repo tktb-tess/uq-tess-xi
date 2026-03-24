@@ -51,16 +51,16 @@
   --color-border: light-dark(hsl(0 0 0 / 25%), hsl(0 0 100 / 25%));
   --color-border-lighter: light-dark(hsl(0 0 0 / 15%), hsl(0 0 100 / 15%));
   --color-border-darker: light-dark(hsl(0 0 0 / 50%), hsl(0 0 100 / 44%));
-  --color-link: light-dark(var(--color-blue-700), var(--color-blue-300));
+  --color-link: light-dark(var(--color-blue-700), #4cff4c);
   --color-link-disabled: light-dark(hsl(0 0 0 / 40%), hsl(0 0 100 / 40%));
   --color-caution: light-dark(var(--color-red-600), var(--color-yellow-300));
 
-  --grad-vivid: linear-gradient(135deg in oklch, #0000e0, #c000e0);
-  --grad-d-vivid: var(--grad-vivid);
-  --grad-today-word: linear-gradient(in oklch, #fff, var(--color-violet-50));
-  --grad-d-today-word: linear-gradient(in oklch, var(--color-violet-950-d), #000);
-  --grad-accent: linear-gradient(in oklch, var(--color-violet-800-d), var(--color-violet-950-d));
-  --grad-d-accent: linear-gradient(in oklch, var(--color-violet-50), var(--color-violet-200));
+  --color-today-word-s: light-dark(#fff, var(--color-violet-950-d));
+  --color-today-word-e: light-dark(var(--color-violet-50), #000);
+  --color-card-list-s: light-dark(var(--color-violet-800-d), var(--color-violet-50));
+  --color-card-list-e: light-dark(var(--color-violet-950-d), var(--color-violet-200));
+  --color-main-title-s: #0000e0;
+  --color-main-title-e: #c000e0;
 
   --link-transition-dur: 120ms;
   --default-transition-duration: 110ms;
@@ -290,10 +290,19 @@
   dialog::backdrop,
   [popover],
   [popover]::backdrop {
-    @apply size-[unset] max-inline-[unset] max-block-[unset] inset-[unset] fixed;
+    @apply size-[unset] max-inline-[unset] max-block-[unset] fixed;
   }
 
-  :where(dialog:not([open], [popover]), [popover]:not(:popover-open)) {
+  dialog,
+  [popover] {
+    @apply inset-[unset];
+  }
+
+  ::backdrop {
+    @apply inset-0;
+  }
+
+  :where(dialog:not([open]):not([popover]), [popover]:not(:popover-open)) {
     @apply hidden!;
   }
 

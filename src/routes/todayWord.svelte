@@ -91,10 +91,12 @@
 
 <style lang="postcss">
   @reference '../app.css';
+
   @layer components {
     .today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border my-figure
-      border-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
+      border-border rounded-xl gap-y-6 px-4 py-6 shadow-sm
+      bg-linear-to-b from-today-word-s to-today-word-e;
 
       * {
         @apply m-0;
@@ -102,7 +104,8 @@
     }
 
     .__pronunciation {
-      @apply font-ipa l:text-black/50 d:text-white/50;
+      @apply font-ipa text-(--prnctn);
+      --prnctn: light-dark(hsl(0 0 0 / 40%), hsl(0 0 100 / 40%));
     }
 
     .__yaku-title {

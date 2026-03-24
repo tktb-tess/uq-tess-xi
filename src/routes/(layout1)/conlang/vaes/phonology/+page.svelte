@@ -85,7 +85,7 @@
 </XSection>
 <XSection title="母音">
   <h3 class="ms-1">単母音</h3>
-  <div class="grid cols-auto-fill-110 my-figure *:my-0">
+  <div class="grid cols-auto-fill-110 gap-y-4 my-figure *:my-0">
     <XTable
       headRows={3}
       headCols={1}
@@ -119,7 +119,7 @@
   <p>※鼻母音は全て <em>tense</em> 母音である。</p>
 
   <h3>二重母音</h3>
-  <div class="grid cols-auto-fill-75 my-figure *:my-0">
+  <div class="grid cols-auto-fill-75 gap-y-4 my-figure *:my-0">
     <XTable
       caption="口母音"
       headRows={1}

@@ -161,7 +161,7 @@
     <i>-ljœn, -liard</i> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
   </p>
   <p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
-  <div class="grid cols-auto-fill-55 gap-2">
+  <div class="grid cols-auto-fill-55 gap-y-4">
     <XTable
       caption="-ljœn"
       class="[&_:where(td)]:text-start"
@@ -190,7 +190,7 @@
     />
   </div>
 
-  <p class="text-black/10">
+  <p class="text-text/10">
     1,145,141,919,810<br />
     <i>
       an biljœn an-hundred-faif-and-fewrtaģ miliardan an-hundred-an-and-fewrtaģ miljonan

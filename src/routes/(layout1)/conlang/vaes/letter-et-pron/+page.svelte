@@ -15,7 +15,7 @@
   </p>
   <XTable
     headRows={1}
-    class="[&_:where(tbody_td:nth-child(3))]:font-ipa"
+    class="[&_tbody_td:nth-child(3)]:font-ipa [&_tbody_td:nth-child(3)]:whitespace-nowrap"
     data={[
       ['大文字', '小文字', '発音例', '備考'],
       ['A', 'a', '/ä/, /ɑː/', ''],
