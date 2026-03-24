@@ -10,9 +10,11 @@
   <ul>
     <li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
     <li>
-      <span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span class="font-ipa"
-        >“//”</span
-      > で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
+      <span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span
+        class="font-ipa"
+      >
+        “//”
+      </span> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
     </li>
   </ul>
 </XSection>
@@ -83,7 +85,7 @@
 </XSection>
 <XSection title="母音">
   <h3 class="ms-1">単母音</h3>
-  <div class="grid cols-auto-fill-110 my-figure *:my-0">
+  <div class="grid cols-auto-fill-110 gap-y-4 my-figure *:my-0">
     <XTable
       headRows={3}
       headCols={1}
@@ -117,7 +119,7 @@
   <p>※鼻母音は全て <em>tense</em> 母音である。</p>
 
   <h3>二重母音</h3>
-  <div class="grid cols-auto-fill-75 my-figure *:my-0">
+  <div class="grid cols-auto-fill-75 gap-y-4 my-figure *:my-0">
     <XTable
       caption="口母音"
       headRows={1}

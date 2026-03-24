@@ -1,5 +1,7 @@
+import type { Asset } from "$app/types";
+
 export interface TrackData {
-  readonly path: string;
+  readonly path: Asset;
   readonly title: string;
   readonly composer: string;
   readonly description: string;
@@ -15,13 +17,13 @@ export interface TrackParams extends TrackData {
 
 const trackData: readonly TrackData[] = [
   {
-    path: 'wlcm.m4a',
+    path: '/audio/wlcm.m4a',
     title: 'Welcome',
     composer: 'Tessyrrhaqt',
     description: 'Psytranceまがいの静かな曲。',
   },
   {
-    path: 'clst.m4a',
+    path: '/audio/clst.m4a',
     title: 'Celeste',
     composer: 'Tessyrrhaqt',
     description: 'Youtubeのエンディングテーマみたいなの作りたいなって思ったので作った短い曲。',

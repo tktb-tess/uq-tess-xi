@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { NamedError, safeFetchJsonAndValidate } from '$lib/modules/util';
+  import { onMount } from 'svelte';
+  import type * as z from 'zod';
+  import { NamedError } from '@tktb-tess/util-fns';
+  import { resolve } from '$app/paths';
+  import { safeFetchJsonAndValidate } from '$lib/modules/util';
   import ExtLink from '$lib/components/ExtLink.svelte';
   import Spinner from '$lib/components/Spinner.svelte';
   import { wordDataSchema, type WordData } from '$lib/types/decl';
   import { okAsync, type ResultAsync } from 'neverthrow';
-  import { onMount } from 'svelte';
-  import type * as z from 'zod';
 
-  const fetchTodayWord = () => safeFetchJsonAndValidate('/api/v0/today-word', wordDataSchema);
+  const fetchTodayWord = () =>
+    safeFetchJsonAndValidate(resolve('/api/v0/today-word'), wordDataSchema);
   type TWord = ResultAsync<
     WordData | null,
     NamedError<'FetchError'> | NamedError<'ParseError'> | z.ZodError<WordData>
@@ -69,7 +72,7 @@
         <p class="__to-zpdic"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
       {/if}
     {:else}
-      <div class="text-center *:ctext-caution">
+      <div class="text-center *:text-caution">
         <h3>読み込みに失敗しました</h3>
         <p>再読み込みしてください</p>
       </div>
@@ -88,10 +91,12 @@
 
 <style lang="postcss">
   @reference '../app.css';
+
   @layer components {
     .today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border my-figure
-      cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
+      border-border rounded-xl gap-y-6 px-4 py-6 shadow-sm
+      bg-linear-to-b from-today-word-s to-today-word-e;
 
       * {
         @apply m-0;
@@ -99,7 +104,8 @@
     }
 
     .__pronunciation {
-      @apply font-ipa l:text-black/50 d:text-white/50;
+      @apply font-ipa text-(--prnctn);
+      --prnctn: light-dark(hsl(0 0 0 / 40%), hsl(0 0 100 / 40%));
     }
 
     .__yaku-title {
@@ -119,7 +125,7 @@
       }
 
       :where(tbody td):first-child {
-        @apply cbg-accent ctext-textinv rounded-full px-3;
+        @apply bg-accent text-textinv rounded-full px-3;
       }
     }
 

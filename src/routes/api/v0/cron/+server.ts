@@ -35,7 +35,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
     });
 
     if (!resp.ok) {
-      error(404, { message: 'cannotAccessZpdicApi' });
+      error(500, { name: 'FetchError', message: 'cannot access ZpDIC API' });
     }
 
     return resp.json().then((j) => ZpDIC.mwweResponseSchema.parse(j));
@@ -96,7 +96,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
     // check
     const tasks = Object.entries(redisKeys).map(async ([key, value]) => {
       const json = await client.get(value);
-      if (!json) error(404, { message: 'dataNotFound' });
+      if (!json) error(404, { name: 'NotFoundError', message: `'${value}' was not found` });
       return [key, JSON.parse(json) as unknown] as const;
     });
 
@@ -107,11 +107,13 @@ export const GET = async ({ request, fetch: svFetch }) => {
     return json(stored);
   } catch (e) {
     if (isHttpError(e)) {
-      error(e.status, { message: e.body.message });
+      error(e.status, { name: 'HttpError', message: e.body.message });
     } else if (e instanceof Error) {
-      error(500, { message: `${e.name}: ${e.message}` });
+      const { name, message } = e;
+      const cause = `${e.cause}` || undefined;
+      error(500, { name, message, cause });
     } else {
-      error(500, { message: 'unidentifiedError' });
+      error(500, { name: 'UnidentifiedError', message: 'unidentified error' });
     }
   } finally {
     await client.close();

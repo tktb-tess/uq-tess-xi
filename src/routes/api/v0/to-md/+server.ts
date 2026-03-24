@@ -1,9 +1,8 @@
 import { json } from '@sveltejs/kit';
 import { htmlToMd } from '$lib/modules/htom';
-import { NamedError } from '$lib/modules/util';
 
 const headers = {
-  'Content-Type': 'application/json',
+  'Content-Type': 'application/json; charset=utf-8',
 } as const;
 
 export type MdResult =
@@ -15,7 +14,7 @@ export type MdResult =
   | {
       success: false;
       url: string;
-      error: NamedError<'FetchError'>;
+      error: App.Error;
     };
 
 export const GET = async ({ url, fetch: svFetch }) => {
@@ -31,7 +30,11 @@ export const GET = async ({ url, fetch: svFetch }) => {
         return {
           success: false,
           url,
-          error: NamedError.from('FetchError', `${status} ${statusText}`),
+          error: {
+            name: 'FetchError',
+            message: `Failed to fetch: ${status} ${statusText}`,
+            cause: [status, statusText],
+          },
         };
       }
       const html = await resp.text();
@@ -42,10 +45,18 @@ export const GET = async ({ url, fetch: svFetch }) => {
         md,
       };
     } catch (e) {
+      const message = e instanceof Error ? e.message : 'failed to fetch';
+      const cause = e instanceof Error ? `${e.cause}` || undefined : undefined;
+      const stack = e instanceof Error ? e.stack : undefined;
       return {
         success: false,
         url,
-        error: NamedError.from('FetchError', e instanceof Error ? e.message : 'failed to fetch'),
+        error: {
+          message,
+          name: 'FetchError',
+          cause,
+          stack,
+        },
       };
     }
   });

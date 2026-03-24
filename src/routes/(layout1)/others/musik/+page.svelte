@@ -121,7 +121,7 @@
           <RepeatIcon class="inline-block size-6" />
         </button>
         <!-- eslint-disable svelte/no-navigation-without-resolve -->
-        <a type="button" href="/audio/{track.path}" title="ダウンロード" download={track.path}>
+        <a type="button" href={track.path} title="ダウンロード" download={track.path}>
           <DownloadIcon class="inline-block size-6" />
         </a>
         <!-- eslint-enable -->
@@ -129,7 +129,7 @@
       </div>
 
       <audio
-        src="/audio/{track.path}"
+        src={track.path}
         loop={track.loop}
         bind:this={track.ref}
         bind:currentTime={track.currentTime}
@@ -152,7 +152,7 @@
     }
 
     .__music-card {
-      @apply cbg-textinv rounded-lg border cborder-border drop-shadow
+      @apply bg-textinv rounded-lg border-2 border-accent
       flex flex-col gap-3 px-5 py-2 *:m-0;
 
       :where(.__description) {
@@ -163,8 +163,8 @@
     .__btn-dur {
       @apply flex gap-2 items-center;
       :where(button, a) {
-        @apply ctext-accent bg-transparent hover-focus:cbg-accent
-        hover-focus:ctext-textinv transition-colors rounded px-2 py-1;
+        @apply text-accent bg-transparent hover-focus:bg-accent
+        hover-focus:text-textinv transition-colors rounded px-2 py-1;
       }
 
       :where(a) {

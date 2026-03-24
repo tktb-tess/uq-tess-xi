@@ -1,7 +1,7 @@
 import * as z from 'zod';
 
 export const schema = z.object({
-  colorScheme: z.union([z.literal('light dark'), z.literal('light'), z.literal('dark')]),
+  colorScheme: z.literal(['light dark', 'light', 'dark']),
 });
 
 export type SiteConfig = z.infer<typeof schema>;

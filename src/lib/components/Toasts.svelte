@@ -25,11 +25,11 @@
         <p>{toast.message}</p>
         <button
           aria-label="通知を消す"
-          onclick={() => {
+          onclick={(ev) => {
+            ev.preventDefault();
             clearTimeout(toast.timeoutID);
             dismissToast(key);
           }}
-          type="button"
         ></button>
       </div>
     {/each}
@@ -47,7 +47,7 @@
     .__toast-elem {
       @apply px-4 py-2 text-white rounded w-full max-w-70
       grid grid-cols-[1fr_1.25rem] items-center
-		  gap-5 relative animate-toast
+		  gap-5 animate-toast
       pointer-events-auto *:m-0;
 
       > p {

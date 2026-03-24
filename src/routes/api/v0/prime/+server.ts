@@ -46,10 +46,12 @@ export const GET = async ({ url }) => {
       } as const;
       return json(err, { status: 400 });
     } else if (e instanceof Error) {
+      const { name, message } = e;
+      const cause = `${e.cause}` || undefined;
       console.error(e.name, e.message);
-      error(500, { message: `${e.name}: ${e.message}` });
+      error(500, { name, message, cause });
     } else {
-      error(500, { message: 'Unidentified error' });
+      error(500, { name: 'UnidentifiedError', message: 'unidentified error' });
     }
   }
 };

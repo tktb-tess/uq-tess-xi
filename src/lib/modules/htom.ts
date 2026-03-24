@@ -10,7 +10,7 @@ import type * as Hast from 'hast';
 
 type Proc = Processor<Hast.Root, Hast.Root, Mdast.Root, Mdast.Root, string>;
 
-let processor: Proc | null = null;
+let processor: Proc | undefined;
 
 export const htmlToMd = async (html: string) => {
   if (!processor) {

@@ -326,7 +326,7 @@
     }
 
     hr {
-      @apply cborder-border-dark w-20 mx-auto my-12;
+      @apply border-border-darker w-20 mx-auto my-12;
     }
   }
 </style>

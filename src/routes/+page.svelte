@@ -17,7 +17,7 @@
 <main>
   <div>
     <div class="m-2 flex justify-end">
-      <ToggleColorSchemeBtn class="btn-1 p-2" />
+      <ToggleColorSchemeBtn class="btn-theme-1 leading-none" />
     </div>
     <h2 id="subtitle">〜ようこそ〜</h2>
     <p>
@@ -101,7 +101,7 @@
       ]}
     />
   </XSection>
-  <h3 class="ctext-caution text-center my-8">工事中……</h3>
+  <h3 class="text-caution text-center my-8">工事中……</h3>
 </main>
 
 <MyFooter />
@@ -111,7 +111,7 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply mx-auto max-w-7xl border-l border-r border-b cborder-border-light;
+      @apply mx-auto max-w-7xl border-l border-r border-b border-border-lighter;
 
       :global(:where(h2)) {
         @apply text-center ps-0;

@@ -42,7 +42,7 @@
 
   @layer components {
     #drawer {
-      @apply inset-0 w-min-side me-auto cbg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;
+      @apply inset-0 w-min-side me-auto bg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;
       scrollbar-width: thin;
       scrollbar-gutter: stable;
 
@@ -69,7 +69,7 @@
     }
 
     #drawer-title {
-      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 cborder-border-dark
+      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 border-border-darker
       leading-none py-0;
     }
 
@@ -78,7 +78,7 @@
     }
 
     #drawer-close-btn {
-      @apply rounded hover-focus:cbg-accent hover-focus:ctext-textinv leading-none size-9
+      @apply rounded hover-focus:bg-accent hover-focus:text-textinv leading-none size-9
       grid place-items-center transition-colors;
 
       > * {

@@ -65,7 +65,7 @@
 </script>
 
 <XSection {title}>
-  <p><s class="ctext-text-pale">この式、なんか変……</s></p>
+  <p><s class="text-text-pale">この式、なんか変……</s></p>
   <div class="nanka-hen">
     <input
       name="左側"
@@ -108,13 +108,13 @@
     }
 
     .__calc-btn {
-      @apply leading-none px-2 py-1 rounded border cborder-border
-      hover-focus:cbg-accent2 transition-colors;
+      @apply leading-none px-2 py-1 rounded border border-border
+      hover-focus:bg-accent2 transition-colors;
     }
 
     .inputs,
     .result {
-      @apply border rounded px-1 w-20 cborder-border;
+      @apply border rounded px-1 w-20 border-border;
     }
   }
 </style>

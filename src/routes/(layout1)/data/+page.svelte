@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import { resolve } from '$app/paths';
@@ -7,9 +7,9 @@
 </script>
 
 <ul>
-  <li><a href={resolve('/(layout1)/data/conlang-xcumon')}>人工言語製作者に50の質問</a></li>
+  <li><a href={resolve('/data/conlang-xcumon')}>人工言語製作者に50の質問</a></li>
   <li>
-    <a href={resolve('/(layout1)/data/OE-verb-conj-type')} aria-disabled="true">
+    <a href={resolve('/data/OE-verb-conj-type')} aria-disabled="true">
       古英語 動詞活用まとめ (準備中)
     </a>
   </li>

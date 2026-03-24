@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';

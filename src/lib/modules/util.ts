@@ -1,41 +1,26 @@
 import { Result, ok, err, ResultAsync, okAsync, errAsync } from 'neverthrow';
+import { NamedError } from '@tktb-tess/util-fns';
 import * as z from 'zod';
-
-interface NamedError<EName extends string | symbol> {
-  readonly name: EName;
-  readonly message: string;
-  readonly stack?: string;
-  readonly cause?: unknown;
-}
-
-const NamedError = {
-  from<EName extends string | symbol>(
-    name: EName,
-    message: string = '',
-    cause?: unknown,
-  ): NamedError<EName> {
-    return {
-      name,
-      message,
-      cause,
-    };
-  },
-};
 
 const defaultMsgs = {
   parseError: 'Failed to parse JSON',
   fetchError: 'Failed to fetch',
 } as const;
 
-export { NamedError };
+export const createErrHandler = <T extends string>(errName: T, fallbackMsg: string) => {
+  return (e: unknown) => {
+    const msg = e instanceof Error ? e.message : fallbackMsg;
+    return new NamedError(errName, msg, { cause: e });
+  };
+};
 
 export const safeJSONParse: (
   text: string,
   reviver?: (this: unknown, key: string, value: unknown) => unknown,
-) => Result<unknown, NamedError<'ParseError'>> = Result.fromThrowable(JSON.parse, (e) => {
-  const message = e instanceof Error ? e.message : defaultMsgs.parseError;
-  return NamedError.from('ParseError', message);
-});
+) => Result<unknown, NamedError<'ParseError'>> = Result.fromThrowable(
+  JSON.parse,
+  createErrHandler('ParseError', defaultMsgs.parseError),
+);
 
 export const safeValidate = <TSchema extends z.ZodType>(
   schema: TSchema,
@@ -49,13 +34,13 @@ export const safeFetch = (
   input: RequestInfo | URL,
   init?: RequestInit,
 ): ResultAsync<Response, NamedError<'FetchError'>> => {
-  return ResultAsync.fromPromise(fetch(input, init), (e) => {
-    const m = e instanceof Error ? e.message : defaultMsgs.fetchError;
-    return NamedError.from('FetchError', m);
-  }).andThen((resp) => {
+  return ResultAsync.fromPromise(
+    fetch(input, init),
+    createErrHandler('FetchError', defaultMsgs.fetchError),
+  ).andThen((resp) => {
     if (!resp.ok) {
       const m = `Failed to fetch: ${resp.status} ${resp.statusText}`;
-      return errAsync(NamedError.from('FetchError', m));
+      return errAsync(new NamedError('FetchError', m, { cause: resp }));
     }
     return okAsync(resp);
   });
@@ -66,10 +51,10 @@ export const safeFetchJson = (
   init?: RequestInit,
 ): ResultAsync<unknown, NamedError<'ParseError'> | NamedError<'FetchError'>> => {
   return safeFetch(input, init).andThen((res) => {
-    return ResultAsync.fromPromise(res.json(), (e) => {
-      const m = e instanceof Error ? e.message : defaultMsgs.parseError;
-      return NamedError.from('ParseError', m);
-    });
+    return ResultAsync.fromPromise(
+      res.json(),
+      createErrHandler('ParseError', defaultMsgs.parseError),
+    );
   });
 };
 

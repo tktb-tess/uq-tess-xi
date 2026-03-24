@@ -14,7 +14,7 @@ import type * as Hast from 'hast';
 
 type Proc = Processor<Mdast.Root, Mdast.Root, Hast.Root, Hast.Root, string>;
 
-let processor: Proc | null = null;
+let processor: Proc | undefined;
 
 export const mdToHtml = async (md: string) => {
   if (!processor) {

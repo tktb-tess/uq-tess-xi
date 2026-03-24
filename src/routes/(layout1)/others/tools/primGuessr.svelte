@@ -97,7 +97,7 @@
     </div>
     <button onclick={fetchPrimes} type="button" class="btn-1 text-xl self-center">表示</button>
     <p
-      class="my-4 border cborder-border-dark px-2 rounded text-2xl font-mono self-center text-center min-w-0 max-w-full"
+      class="my-4 border border-border-darker px-2 rounded text-2xl font-mono self-center text-center min-w-0 max-w-full"
     >
       {#await primesPr}
         <Spinner class="size-6" />
@@ -165,7 +165,7 @@
     {#if judge !== null}
       <p
         class="
-					my-4 border px-2 rounded text-2xl font-mono self-center cborder-border-dark
+					my-4 border px-2 rounded text-2xl font-mono self-center border-border-darker
 					{judge ? 'text-red-600' : 'text-blue-600'}
 					"
       >

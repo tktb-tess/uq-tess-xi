@@ -1,20 +1,25 @@
 <script lang="ts">
+  import SelectBtn from '$lib/components/SelectBtn.svelte';
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64 } from '@tktb-tess/util-fns';
+  import { toBase64, toBase64Url } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
+  import type { Mode } from './types';
+  import XBtn from '$lib/components/XBtn.svelte';
 
   const en = new TextEncoder();
-  let input = $state('');
-  const title = `テキスト → Base64 変換`;
+  const title = `テキスト → Base64(URL) 変換`;
   const seed = toBase64(en.encode(title));
 
-  const output = $derived.by(() => {
-    if (!input) return '';
+  let input = $state('');
+  let mode: Mode = $state('Base64');
 
-    const utf8 = en.encode(input);
-    const stred = Array.from(utf8, (n) => String.fromCodePoint(n)).join('');
-    return btoa(stred);
+  const output = $derived.by(() => {
+    if (mode === 'Base64') {
+      return toBase64(en.encode(input));
+    } else {
+      return toBase64Url(en.encode(input));
+    }
   });
 
   const copyText: MouseEventHandler<HTMLButtonElement> = (ev) => {
@@ -28,17 +33,44 @@
 
 <XSection {title}>
   <div class="toB64-root">
+    <div class="mode">
+      <h3 class="mode-title">モード</h3>
+      <div class="mode-select">
+        <SelectBtn
+          name={seed}
+          id="{seed}-mode-base64"
+          onchange={(ev) => {
+            ev.preventDefault();
+            mode = 'Base64';
+          }}
+          checked={mode === 'Base64'}
+        >
+          Base64
+        </SelectBtn>
+        <SelectBtn
+          name={seed}
+          id="{seed}-mode-base64url"
+          onchange={(ev) => {
+            ev.preventDefault();
+            mode = 'Base64URL';
+          }}
+          checked={mode === 'Base64URL'}
+        >
+          Base64URL
+        </SelectBtn>
+      </div>
+    </div>
     <div class="input">
       <label for="input-{seed}">テキスト</label>
       <textarea id="input-{seed}" bind:value={input}></textarea>
     </div>
     <p class="arrow">↓</p>
     <div class="output">
-      <label for="output-{seed}">Base64</label>
+      <label for="output-{seed}">{mode}</label>
       <textarea id="output-{seed}" readonly value={output}></textarea>
     </div>
     <div class="copy-btn">
-      <button onclick={copyText}>クリップボードにコピー</button>
+      <XBtn onclick={copyText}>クリップボードにコピー</XBtn>
     </div>
   </div>
 </XSection>
@@ -55,7 +87,8 @@
     }
 
     .input,
-    .output {
+    .output,
+    .mode {
       @apply flex flex-col gap-2 text-center;
 
       > textarea {
@@ -65,10 +98,14 @@
 
     .copy-btn {
       @apply flex justify-center-safe;
+    }
 
-      > button {
-        @apply btn-1;
-      }
+    .mode-select {
+      @apply flex justify-center-safe gap-2 flex-wrap;
+    }
+
+    .mode-title {
+      @apply text-center;
     }
   }
 </style>

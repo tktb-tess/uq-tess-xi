@@ -36,11 +36,12 @@
 
       :where(a) {
         @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
-        rounded-sm no-underline gbg-accent px-4 py-3
-        hover-focus:scale-102 transition-transform;
+        rounded-sm no-underline px-4 py-3
+        hover-focus:scale-102 transition-transform
+        bg-linear-to-b from-card-list-s to-card-list-e;
 
         > :where(h3, p) {
-          @apply ctext-textinv m-0 leading-none;
+          @apply text-textinv m-0 leading-none;
         }
 
         > :where(h3) {
