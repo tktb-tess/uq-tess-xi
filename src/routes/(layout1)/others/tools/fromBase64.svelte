@@ -1,21 +1,30 @@
 <script lang="ts">
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64 } from '@tktb-tess/util-fns';
+  import { toBase64, fromBase64, fromBase64Url } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
+  import type { Mode } from './types';
+  import SelectBtn from '$lib/components/SelectBtn.svelte';
+  import XBtn from '$lib/components/XBtn.svelte';
 
-  const decoder = new TextDecoder('utf-8', { fatal: true });
+  const dec = new TextDecoder('utf-8', { fatal: true });
   const en = new TextEncoder();
-  let input = $state('');
-  const title = 'Base64 → テキスト 変換';
+  const title = 'Base64(URL) → テキスト 変換';
   const seed = toBase64(en.encode(title));
 
+  let input = $state('');
+  let mode: Mode = $state('Base64');
+
   const output = $derived.by(() => {
+    if (!input) return '';
     try {
-      if (!input) return '';
-      const stred = atob(input);
-      const utf8 = Uint8Array.from(stred, (s) => s.charCodeAt(0));
-      return decoder.decode(utf8);
+      if (mode === 'Base64') {
+        const bin = fromBase64(input);
+        return dec.decode(bin);
+      } else {
+        const bin = fromBase64Url(input);
+        return dec.decode(bin);
+      }
     } catch (e) {
       console.warn(e);
       return `Error: invalid string`;
@@ -33,6 +42,33 @@
 
 <XSection {title}>
   <div class="fromB64-root">
+    <div class="mode">
+      <h3 class="mode-title">モード</h3>
+      <div class="mode-select">
+        <SelectBtn
+          name={seed}
+          id="{seed}-mode-base64"
+          onchange={(ev) => {
+            ev.preventDefault();
+            mode = 'Base64';
+          }}
+          checked={mode === 'Base64'}
+        >
+          Base64
+        </SelectBtn>
+        <SelectBtn
+          name={seed}
+          id="{seed}-mode-base64url"
+          onchange={(ev) => {
+            ev.preventDefault();
+            mode = 'Base64URL';
+          }}
+          checked={mode === 'Base64URL'}
+        >
+          Base64URL
+        </SelectBtn>
+      </div>
+    </div>
     <div class="input">
       <label for="input-{seed}">Base64</label>
       <textarea id="input-{seed}" bind:value={input}></textarea>
@@ -43,7 +79,7 @@
       <textarea id="output-{seed}" value={output} readonly></textarea>
     </div>
     <div class="copy-btn">
-      <button onclick={copyText}>クリップボードにコピー</button>
+      <XBtn onclick={copyText}>クリップボードにコピー</XBtn>
     </div>
   </div>
 </XSection>
@@ -60,7 +96,8 @@
     }
 
     .input,
-    .output {
+    .output,
+    .mode {
       @apply flex flex-col gap-2 text-center;
 
       > textarea {
@@ -70,10 +107,14 @@
 
     .copy-btn {
       @apply flex justify-center-safe;
+    }
 
-      > button {
-        @apply btn-theme-1;
-      }
+    .mode-select {
+      @apply flex justify-center-safe gap-2 flex-wrap;
+    }
+
+    .mode-title {
+      @apply text-center;
     }
   }
 </style>

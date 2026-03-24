@@ -121,7 +121,7 @@
           <RepeatIcon class="inline-block size-6" />
         </button>
         <!-- eslint-disable svelte/no-navigation-without-resolve -->
-        <a type="button" href="/audio/{track.path}" title="ダウンロード" download={track.path}>
+        <a type="button" href={track.path} title="ダウンロード" download={track.path}>
           <DownloadIcon class="inline-block size-6" />
         </a>
         <!-- eslint-enable -->
@@ -129,7 +129,7 @@
       </div>
 
       <audio
-        src="/audio/{track.path}"
+        src={track.path}
         loop={track.loop}
         bind:this={track.ref}
         bind:currentTime={track.currentTime}

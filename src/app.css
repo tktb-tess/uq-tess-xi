@@ -210,11 +210,11 @@
 }
 
 @utility btn-theme-1 {
-  @apply bg-accent hover-focus:opacity-70 transition-opacity rounded text-textinv px-4 py-2 no-underline;
+  @apply bg-accent hover-focus:opacity-70 transition-opacity rounded text-textinv px-4 py-2 no-underline leading-none;
 }
 
 @utility btn-theme-2 {
-  @apply bg-accent2 hover-focus:opacity-70 transition-opacity border border-border rounded px-2;
+  @apply bg-accent2 hover-focus:opacity-70 transition-opacity border border-border rounded px-2 leading-none;
 }
 
 @custom-variant any-hover {

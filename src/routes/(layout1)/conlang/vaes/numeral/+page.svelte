@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import UnderConstruction from '$lib/components/UnderConstruction.svelte';
@@ -161,7 +161,7 @@
     <i>-ljœn, -liard</i> 系の数詞は名詞として扱われ、数・格に応じて変化する。共に弱変化であり、変化表は以下。
   </p>
   <p>被修飾名詞は複数属格になるが、数詞自体は元の格になるので注意。</p>
-  <div class="grid grid-cols-auto-fill-55 gap-2">
+  <div class="grid cols-auto-fill-55 gap-2">
     <XTable
       caption="-ljœn"
       class="[&_:where(td)]:text-start"

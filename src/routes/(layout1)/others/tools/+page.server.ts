@@ -10,10 +10,12 @@ const createGF2048 = () => {
     n = next >>> 11 !== 0 ? next ^ mod : next;
   }
   const exps: readonly number[] = maps.slice(1).map(([, i]) => i);
-  const maps2 = maps.toSorted(([, a], [, b]) => {
+
+  maps.sort(([, a], [, b]) => {
     return a - b;
   });
-  const logs: readonly (number | null)[] = maps2.map(([i]) => i);
+
+  const logs: readonly (number | null)[] = maps.map(([i]) => i);
   return [exps, logs] as const;
 };
 

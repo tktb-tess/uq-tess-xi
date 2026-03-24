@@ -10,9 +10,11 @@
   <ul>
     <li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
     <li>
-      <span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span class="font-ipa"
-        >“//”</span
-      > で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
+      <span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span
+        class="font-ipa"
+      >
+        “//”
+      </span> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
     </li>
   </ul>
 </XSection>
