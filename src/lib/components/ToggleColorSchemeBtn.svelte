@@ -12,11 +12,10 @@
 </script>
 
 <button
-  id="toggle-color-scheme-btn"
-  title="Toggle Color Scheme"
-  type="button"
-  class={cName}
-  onclick={() => {
+  aria-label="Toggle Color Scheme"
+  class="toggle {cName}"
+  onclick={(ev) => {
+    ev.preventDefault();
     switch (siteConfig.colorScheme) {
       case 'light dark': {
         siteConfig.colorScheme = 'light';
@@ -34,19 +33,20 @@
   }}
 >
   {#if siteConfig.colorScheme === 'light'}
-    <SunIcon class="size-4 inline-block" />
+    <SunIcon />
   {:else if siteConfig.colorScheme === 'dark'}
-    <MoonIcon class="size-4 inline-block" />
+    <MoonIcon />
   {:else}
-    <DevicesIcon class="size-4 inline-block" />
+    <DevicesIcon />
   {/if}
 </button>
 
 <style lang="postcss">
   @reference '../../app.css';
+
   @layer components {
-    #toggle-color-scheme-btn {
-      @apply grid place-content-center;
+    .toggle {
+      @apply grid items-center-safe leading-none;
     }
   }
 </style>

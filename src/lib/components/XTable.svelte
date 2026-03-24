@@ -16,6 +16,20 @@
     readonly class?: string;
   }
 
+  const toKey = (cellData: CellData, index: number) => {
+    if (typeof cellData === 'string') {
+      return `${index}-${cellData}`;
+    }
+    const str = cellData[0];
+    const { cols = 1, rows = 1, class: cName = '', rawHTML = false } = cellData[1];
+
+    return `${index}-${str}-${cols}-${rows}-${cName}-${rawHTML}`;
+  };
+
+  const toKeys = (cellDatas: CellData[], index: number) => {
+    return `${index}` + cellDatas.map((d, i) => toKey(d, i)).join('');
+  };
+
   const { data, headRows = 0, headCols: h_ = 0, class: cName, caption }: Props = $props();
 
   const cols = $derived(data.map((d) => d.length).reduce((p, c) => Math.max(p, c), 0));
@@ -35,9 +49,9 @@
   {/if}
   {#if headData.length > 0}
     <thead>
-      {#each headData as row (row)}
+      {#each headData as row, i (toKeys(row, i))}
         <tr>
-          {#each row as cell (cell)}
+          {#each row as cell, j (toKey(cell, j))}
             {#if typeof cell === 'string'}
               <th>{cell}</th>
             {:else}
@@ -64,12 +78,12 @@
     </thead>
   {/if}
   <tbody>
-    {#each bodyData as row, i (row)}
+    {#each bodyData as row, i (toKeys(row, i))}
       {@const cols = headCols.at(i) ?? 0}
       {@const ths = row.slice(0, cols)}
       {@const tds = row.slice(cols)}
       <tr>
-        {#each ths as cell (cell)}
+        {#each ths as cell, j (toKey(cell, j))}
           {#if typeof cell === 'string'}
             <th>{cell}</th>
           {:else}
@@ -91,7 +105,7 @@
             </th>
           {/if}
         {/each}
-        {#each tds as cell (cell)}
+        {#each tds as cell, j (toKey(cell, j))}
           {#if typeof cell === 'string'}
             <td>{cell}</td>
           {:else}

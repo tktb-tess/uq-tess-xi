@@ -121,10 +121,10 @@
 
   @keyframes --k-err-up-down {
     from {
-      transform: translateY(-15px);
+      translate: 0 -15px;
     }
     to {
-      transform: translateY(15px);
+      translate: 0 15px;
     }
   }
 
@@ -132,10 +132,10 @@
 
   @keyframes --k-err-rot {
     from {
-      transform: rotateY(0);
+      rotate: 0;
     }
     to {
-      transform: rotateY(360deg);
+      rotate: 360deg;
     }
   }
 
@@ -144,15 +144,15 @@
   @keyframes --k-toast-fadein {
     from {
       opacity: 0;
-      top: -10px;
+      translate: 0 -15px;
     }
     to {
       opacity: 1;
-      top: 0;
+      translate: 0 0;
     }
   }
 
-  --animate-toast: --k-toast-fadein 100ms var(--ease-in-out-1);
+  --animate-toast: --k-toast-fadein 240ms var(--ease-in-out-1);
 
   @keyframes --k-swa-slide-in {
     from {
@@ -278,7 +278,7 @@
 }
 
 @utility btn-theme-1 {
-  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-4 py-1 no-underline;
+  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-4 py-2 no-underline;
 }
 
 @utility btn-theme-2 {
