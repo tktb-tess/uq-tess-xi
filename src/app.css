@@ -237,24 +237,6 @@
   }
 }
 
-@custom-variant d {
-  @media (prefers-color-scheme: dark) {
-    @slot;
-  }
-
-  [data-color-scheme='dark'] & {
-    @slot;
-  }
-}
-
-@custom-variant l {
-  @slot;
-
-  [data-color-scheme='light'] & {
-    @slot;
-  }
-}
-
 /* base styles */
 
 @layer base {
