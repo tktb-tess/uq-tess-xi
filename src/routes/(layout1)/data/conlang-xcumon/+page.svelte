@@ -154,7 +154,7 @@
   <li>
     <p>数字は何進法ですか?</p>
     <p>
-      概ね10進法です。詳しくは<a href={resolve('/(layout1)/conlang/vaes/numeral')}>数詞の項</a>で。
+      概ね10進法です。詳しくは<a href={resolve('/conlang/vaes/numeral')}>数詞の項</a>で。
     </p>
   </li>
   <li>
