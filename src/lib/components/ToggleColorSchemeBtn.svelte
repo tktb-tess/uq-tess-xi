@@ -1,45 +1,98 @@
 <script lang="ts">
-  import { siteConfig } from '$lib/modules/site-config.svelte';
   import MoonIcon from '../icons/MoonIcon.svelte';
   import SunIcon from '../icons/SunIcon.svelte';
   import DevicesIcon from '../icons/DevicesIcon.svelte';
+  import type { MouseEventHandler } from 'svelte/elements';
 
   interface Props {
     class?: string;
   }
 
   const { class: cName }: Props = $props();
-</script>
 
-<button
-  aria-label="Toggle Color Scheme"
-  class="toggle {cName}"
-  onclick={(ev) => {
+  type ColorScheme = 'light dark' | 'light' | 'dark' | null;
+  let colorScheme: ColorScheme = $state(null);
+  const key = 'color-scheme';
+
+  const onclick: MouseEventHandler<HTMLButtonElement> = (ev) => {
     ev.preventDefault();
-    switch (siteConfig.colorScheme) {
+    if (!colorScheme) return;
+
+    switch (colorScheme) {
       case 'light dark': {
-        siteConfig.colorScheme = 'light';
+        colorScheme = 'light';
         break;
       }
       case 'light': {
-        siteConfig.colorScheme = 'dark';
+        colorScheme = 'dark';
         break;
       }
       case 'dark': {
-        siteConfig.colorScheme = 'light dark';
+        colorScheme = 'light dark';
         break;
       }
     }
-  }}
->
-  {#if siteConfig.colorScheme === 'light'}
-    <SunIcon />
-  {:else if siteConfig.colorScheme === 'dark'}
-    <MoonIcon />
-  {:else}
-    <DevicesIcon />
-  {/if}
-</button>
+  };
+
+  $effect(() => {
+    if (!colorScheme) {
+      const cs = localStorage.getItem(key);
+      if (!cs) {
+        console.log('`color-scheme` not found');
+        colorScheme = 'light dark';
+        return;
+      }
+
+      if (cs !== 'light dark' && cs !== 'light' && cs !== 'dark') {
+        console.warn('`color-scheme` is invalid');
+        colorScheme = 'light dark';
+        return;
+      }
+
+      colorScheme = cs;
+    } else {
+      const root = document.documentElement;
+      root.style.setProperty('--color-scheme', colorScheme);
+      localStorage.setItem(key, colorScheme);
+    }
+  });
+</script>
+
+<svelte:head>
+  <script>
+    (() => {
+      const colorScheme = localStorage.getItem('color-scheme');
+      if (!colorScheme) {
+        console.log('`color-scheme` not found');
+        return;
+      }
+
+      if (colorScheme !== 'light dark' && colorScheme !== 'light' && colorScheme !== 'dark') {
+        console.warn('`color-scheme` is invalid');
+        return;
+      }
+
+      try {
+        const root = document.documentElement;
+        root.style.setProperty('--color-scheme', colorScheme);
+      } catch (e) {
+        console.warn(e);
+      }
+    })();
+  </script>
+</svelte:head>
+
+{#if colorScheme}
+  <button aria-label="Toggle Color Scheme" class="toggle {cName}" {onclick}>
+    {#if colorScheme === 'light'}
+      <SunIcon />
+    {:else if colorScheme === 'dark'}
+      <MoonIcon />
+    {:else}
+      <DevicesIcon />
+    {/if}
+  </button>
+{/if}
 
 <style lang="postcss">
   @reference '../../app.css';
