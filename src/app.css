@@ -36,36 +36,24 @@
   --color-violet-900-d: oklch(from var(--color-violet-900) l 0.11 h);
   --color-violet-800-d: oklch(from var(--color-violet-800) l 0.13 h);
 
-  --color-body: var(--color-violet-50);
-  --color-d-body: var(--color-violet-950-d);
-  --color-main: #fff;
-  --color-main-pale: var(--color-slate-100);
-  --color-d-main: #121212;
-  --color-d-main-pale: var(--color-zinc-800);
-  --color-text: #000;
-  --color-d-text: #fff;
-  --color-text-pale: color-mix(in oklch, var(--color-text) 40%, transparent);
-  --color-d-text-pale: color-mix(in oklch, var(--color-d-text) 40%, transparent);
-  --color-textinv: #fff;
-  --color-d-textinv: #000;
-  --color-accent: var(--color-violet-950-d);
-  --color-accent-lighter: color-mix(in oklch, var(--color-accent) 60%, #fff);
+  --color-body: light-dark(var(--color-violet-50), var(--color-violet-950-d));
+  --color-main: Canvas;
+  --color-text: CanvasText;
+  --color-text-pale: hsl(from var(--color-text) h s l / 40%);
+  --color-textinv: Canvas;
+  --color-l-accent: var(--color-violet-950-d);
   --color-d-accent: var(--color-violet-50);
+  --color-accent: light-dark(var(--color-l-accent), var(--color-d-accent));
+  --color-l-accent-lighter: color-mix(in oklch, var(--color-l-accent) 60%, #fff);
   --color-d-accent-lighter: color-mix(in oklch, var(--color-d-accent) 80%, #000);
-  --color-accent2: var(--color-violet-100);
-  --color-d-accent2: var(--color-violet-900-d);
-  --color-border: hsl(0 0 0 / 25%);
-  --color-border-light: hsl(0 0 0 / 15%);
-  --color-border-dark: hsl(0 0 0 / 50%);
-  --color-d-border: hsl(0 0 100 / 25%);
-  --color-d-border-light: hsl(0 0 100 / 15%);
-  --color-d-border-dark: hsl(0 0 100 / 44%);
-  --color-link: var(--color-blue-700);
-  --color-d-link: var(--color-blue-300);
-  --color-link-disabled: hsl(0 0 0 / 40%);
-  --color-d-link-disabled: hsl(0 0 100 / 40%);
-  --color-caution: var(--color-red-600);
-  --color-d-caution: var(--color-yellow-300);
+  --color-accent-lighter: light-dark(var(--color-l-accent-lighter), var(--color-d-accent-lighter));
+  --color-accent2: light-dark(var(--color-violet-100), var(--color-violet-900-d));
+  --color-border: light-dark(hsl(0 0 0 / 25%), hsl(0 0 100 / 25%));
+  --color-border-lighter: light-dark(hsl(0 0 0 / 15%), hsl(0 0 100 / 15%));
+  --color-border-darker: light-dark(hsl(0 0 0 / 50%), hsl(0 0 100 / 44%));
+  --color-link: light-dark(var(--color-blue-700), var(--color-blue-300));
+  --color-link-disabled: light-dark(hsl(0 0 0 / 40%), hsl(0 0 100 / 40%));
+  --color-caution: light-dark(var(--color-red-600), var(--color-yellow-300));
 
   --grad-vivid: linear-gradient(135deg in oklch, #0000e0, #c000e0);
   --grad-d-vivid: var(--grad-vivid);
@@ -176,67 +164,11 @@
 
 /* custom utilities */
 
-@utility cbg-* {
-  background-color: --value(--color-*);
-
-  @media (prefers-color-scheme: dark) {
-    background-color: --value(--color-d- *);
-  }
-
-  [data-color-scheme='dark'] & {
-    background-color: --value(--color-d-*);
-  }
-
-  [data-color-scheme='light'] & {
-    background-color: --value(--color-*);
-  }
-}
-
 @utility gbg-* {
   background-image: --value(--grad-*);
 
   @media (prefers-color-scheme: dark) {
     background-image: --value(--grad-d- *);
-  }
-
-  [data-color-scheme='dark'] & {
-    background-image: --value(--grad-d-*);
-  }
-
-  [data-color-scheme='light'] & {
-    background-image: --value(--grad-*);
-  }
-}
-
-@utility ctext-* {
-  color: --value(--color-*);
-
-  @media (prefers-color-scheme: dark) {
-    color: --value(--color-d- *);
-  }
-
-  [data-color-scheme='dark'] & {
-    color: --value(--color-d-*);
-  }
-
-  [data-color-scheme='light'] & {
-    color: --value(--color-*);
-  }
-}
-
-@utility cborder-* {
-  border-color: --value(--color-*);
-
-  @media (prefers-color-scheme: dark) {
-    border-color: --value(--color-d- *);
-  }
-
-  [data-color-scheme='dark'] & {
-    border-color: --value(--color-d-*);
-  }
-
-  [data-color-scheme='light'] & {
-    border-color: --value(--color-*);
   }
 }
 
@@ -278,11 +210,11 @@
 }
 
 @utility btn-theme-1 {
-  @apply cbg-accent hover-focus:opacity-70 transition-opacity rounded ctext-textinv px-4 py-2 no-underline;
+  @apply bg-accent hover-focus:opacity-70 transition-opacity rounded text-textinv px-4 py-2 no-underline;
 }
 
 @utility btn-theme-2 {
-  @apply cbg-accent2 hover-focus:opacity-70 transition-opacity border cborder-border rounded px-2;
+  @apply bg-accent2 hover-focus:opacity-70 transition-opacity border border-border rounded px-2;
 }
 
 @custom-variant any-hover {
@@ -327,7 +259,7 @@
 
 @layer base {
   :root {
-    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans scheme-light-dark;
+    @apply max-sm:text-sm wrap-anywhere hyphens-auto font-sans;
     -webkit-tap-highlight-color: revert;
     font-optical-sizing: auto;
     line-break: strict;
@@ -366,15 +298,15 @@
   }
 
   body {
-    @apply flow-root cbg-body ctext-text min-block-lvh;
+    @apply flow-root bg-body text-text min-block-lvh;
   }
 
   main {
-    @apply flow-root cbg-main px-gutter min-block-lvh;
+    @apply flow-root bg-main px-gutter min-block-lvh;
   }
 
   a:where(:any-link:not([aria-disabled='true'])) {
-    @apply ctext-link hover-focus:underline;
+    @apply text-link hover-focus:underline;
   }
 
   b,
@@ -397,11 +329,7 @@
     [type='tel']
   ),
   textarea {
-    @apply font-mono border cborder-border rounded px-1;
-
-    &:disabled {
-      @apply ctext-text-pale cbg-main-pale;
-    }
+    @apply font-mono border border-border rounded px-1;
   }
 
   h2,
@@ -409,11 +337,11 @@
   h4,
   h5,
   h6 {
-    @apply ctext-accent font-serif;
+    @apply text-accent font-serif;
   }
 
   h2 {
-    @apply text-3xl ps-1 pb-1 border-b cborder-border-dark;
+    @apply text-3xl ps-1 pb-1 border-b border-border-darker;
   }
 
   h3 {
@@ -491,10 +419,10 @@
   }
 
   :is(td, th):where(thead > tr:last-child > *) {
-    @apply border-b-3 border-double cborder-border-dark;
+    @apply border-b-3 border-double border-border-darker;
   }
 
   :is(td, th):where(tr:not(:last-child) > *) {
-    @apply border-b cborder-border;
+    @apply border-b border-border;
   }
 }

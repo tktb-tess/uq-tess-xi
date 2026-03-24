@@ -72,7 +72,7 @@
         <p class="__to-zpdic"><ExtLink href={value.dicUrl}>ZpDIC Online</ExtLink></p>
       {/if}
     {:else}
-      <div class="text-center *:ctext-caution">
+      <div class="text-center *:text-caution">
         <h3>読み込みに失敗しました</h3>
         <p>再読み込みしてください</p>
       </div>
@@ -94,7 +94,7 @@
   @layer components {
     .today-word-root {
       @apply w-full max-w-180 mx-auto flex flex-col items-center border my-figure
-      cborder-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
+      border-border rounded-xl gap-y-6 px-4 py-6 shadow-sm gbg-today-word;
 
       * {
         @apply m-0;
@@ -122,7 +122,7 @@
       }
 
       :where(tbody td):first-child {
-        @apply cbg-accent ctext-textinv rounded-full px-3;
+        @apply bg-accent text-textinv rounded-full px-3;
       }
     }
 

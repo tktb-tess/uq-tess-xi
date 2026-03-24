@@ -12,12 +12,12 @@
   <li>
     <h3>VESSENZLENDISÇ</h3>
     <ul>
-      <li><a href={resolve('/(layout1)/conlang/vaes')}>概説</a></li>
-      <li><a href={resolve('/(layout1)/conlang/vaes/letter-et-pron')}>文字と発音</a></li>
-      <li><a href={resolve('/(layout1)/conlang/vaes/phonology')}>音韻論</a></li>
-      <li><a href={resolve('/(layout1)/conlang/vaes/swadesh-list')}>Swadesh List</a></li>
+      <li><a href={resolve('/conlang/vaes')}>概説</a></li>
+      <li><a href={resolve('/conlang/vaes/letter-et-pron')}>文字と発音</a></li>
+      <li><a href={resolve('/conlang/vaes/phonology')}>音韻論</a></li>
+      <li><a href={resolve('/conlang/vaes/swadesh-list')}>Swadesh List</a></li>
       <li>
-        <a href={resolve('/(layout1)/conlang/vaes/ringo-bunn')} aria-disabled="true" tabindex="-1">
+        <a href={resolve('/conlang/vaes/ringo-bunn')} aria-disabled="true" tabindex="-1">
           りんご文 (準備中)
         </a>
       </li>
@@ -25,22 +25,18 @@
         <XAccordion summary="文法" height={164}>
           <ul>
             <li>
-              <a href={resolve('/(layout1)/conlang/vaes/noun')} aria-disabled="true" tabindex="-1">
+              <a href={resolve('/conlang/vaes/noun')} aria-disabled="true" tabindex="-1">
                 名詞 (準備中)
               </a>
             </li>
-            <li><a href={resolve('/(layout1)/conlang/vaes/numeral')}>数詞</a></li>
+            <li><a href={resolve('/conlang/vaes/numeral')}>数詞</a></li>
             <li>
-              <a href={resolve('/(layout1)/conlang/vaes/verb')} aria-disabled="true" tabindex="-1">
+              <a href={resolve('/conlang/vaes/verb')} aria-disabled="true" tabindex="-1">
                 動詞 (準備中)
               </a>
             </li>
             <li>
-              <a
-                href={resolve('/(layout1)/conlang/vaes/adjective')}
-                aria-disabled="true"
-                tabindex="-1"
-              >
+              <a href={resolve('/conlang/vaes/adjective')} aria-disabled="true" tabindex="-1">
                 形容詞 (準備中)
               </a>
             </li>
@@ -52,8 +48,8 @@
   <li>
     <h3>MISCELLANEOUS</h3>
     <ul>
-      <li><a href={resolve('/(layout1)/data')}>データ</a></li>
-      <li><a href={resolve('/(layout1)/others')}>その他</a></li>
+      <li><a href={resolve('/data')}>データ</a></li>
+      <li><a href={resolve('/others')}>その他</a></li>
     </ul>
   </li>
 </ul>
@@ -75,11 +71,11 @@
 
       a {
         &:where(:any-link:not([aria-disabled='true'])) {
-          @apply no-underline ctext-text;
+          @apply no-underline text-text;
         }
 
         &:where([aria-disabled='true']) {
-          @apply ctext-text-pale;
+          @apply text-text-pale;
         }
       }
 
@@ -93,7 +89,7 @@
       }
 
       :is(a:where(:not([aria-disabled='true'])), :global(:where(.accordion) summary)) {
-        @apply hover-focus:ctext-textinv hover-focus:cbg-accent transition-colors;
+        @apply hover-focus:text-textinv hover-focus:bg-accent transition-colors;
       }
 
       li {

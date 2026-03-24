@@ -152,7 +152,7 @@
     }
 
     .__music-card {
-      @apply cbg-textinv rounded-lg border cborder-border drop-shadow
+      @apply bg-textinv rounded-lg border-2 border-accent
       flex flex-col gap-3 px-5 py-2 *:m-0;
 
       :where(.__description) {
@@ -163,8 +163,8 @@
     .__btn-dur {
       @apply flex gap-2 items-center;
       :where(button, a) {
-        @apply ctext-accent bg-transparent hover-focus:cbg-accent
-        hover-focus:ctext-textinv transition-colors rounded px-2 py-1;
+        @apply text-accent bg-transparent hover-focus:bg-accent
+        hover-focus:text-textinv transition-colors rounded px-2 py-1;
       }
 
       :where(a) {

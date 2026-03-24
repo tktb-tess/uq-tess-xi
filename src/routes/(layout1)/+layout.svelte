@@ -91,11 +91,11 @@
 
       > header {
         grid-area: header;
-        @apply flex h-header px-6 bg-accent sticky top-0 z-(--z-header);
+        @apply flex h-header px-6 bg-l-accent sticky top-0 z-(--z-header);
 
         > :global(*) {
           @apply h-full text-2xl px-1
-          text-textinv hover-focus:text-text hover-focus:bg-textinv transition-colors leading-none;
+          text-white hover-focus:text-black hover-focus:bg-white transition-colors leading-none;
         }
 
         > :global(:where(:nth-child(3))) {
@@ -133,7 +133,7 @@
 
       > main {
         grid-area: main;
-        @apply flow-root cbg-main border-l border-r border-b cborder-border-light;
+        @apply flow-root bg-main border-l border-r border-b border-border-lighter;
 
         :where(#title) {
           @apply text-center ps-0 border-none mb-heading;

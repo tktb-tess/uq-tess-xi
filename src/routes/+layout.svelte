@@ -34,7 +34,7 @@
 
   $effect(() => {
     const root = document.documentElement;
-    root.dataset.colorScheme = siteConfig.colorScheme;
+    root.style.colorScheme = siteConfig.colorScheme;
     localStorage.setItem(key, JSON.stringify(siteConfig));
   });
 </script>

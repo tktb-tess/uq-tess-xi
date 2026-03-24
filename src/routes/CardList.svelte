@@ -40,7 +40,7 @@
         hover-focus:scale-102 transition-transform;
 
         > :where(h3, p) {
-          @apply ctext-textinv m-0 leading-none;
+          @apply text-textinv m-0 leading-none;
         }
 
         > :where(h3) {

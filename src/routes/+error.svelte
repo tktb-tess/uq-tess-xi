@@ -44,7 +44,7 @@
       @apply grid min-h-lvh px-3 content-center place-items-center gap-4 overflow-clip **:m-0;
 
       :where(.logo) {
-        @apply animate-err-up-down ctext-text *:size-50 *:animate-err-rot;
+        @apply animate-err-up-down text-text *:size-50 *:animate-err-rot;
       }
 
       :where(h2) {
