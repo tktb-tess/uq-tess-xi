@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { NamedError, safeFetchJsonAndValidate } from '$lib/modules/util';
+  import { onMount } from 'svelte';
+  import type * as z from 'zod';
+  import { NamedError } from '@tktb-tess/util-fns';
+  import { resolve } from '$app/paths';
+  import { safeFetchJsonAndValidate } from '$lib/modules/util';
   import ExtLink from '$lib/components/ExtLink.svelte';
   import Spinner from '$lib/components/Spinner.svelte';
   import { wordDataSchema, type WordData } from '$lib/types/decl';
   import { okAsync, type ResultAsync } from 'neverthrow';
-  import { onMount } from 'svelte';
-  import type * as z from 'zod';
 
-  const fetchTodayWord = () => safeFetchJsonAndValidate('/api/v0/today-word', wordDataSchema);
+  const fetchTodayWord = () =>
+    safeFetchJsonAndValidate(resolve('/api/v0/today-word'), wordDataSchema);
   type TWord = ResultAsync<
     WordData | null,
     NamedError<'FetchError'> | NamedError<'ParseError'> | z.ZodError<WordData>

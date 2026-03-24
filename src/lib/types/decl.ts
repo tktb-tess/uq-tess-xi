@@ -1,9 +1,9 @@
 import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import * as z from 'zod';
 
-export type SwadeshList = {
+export interface SwadeshList {
   readonly value: ReadonlyArray<ReadonlyArray<string>>;
-};
+}
 
 export type LoadResult<T> =
   | {

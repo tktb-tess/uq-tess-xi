@@ -24,9 +24,11 @@ export const GET = async () => {
     if (isHttpError(e)) {
       error(e.status, e.body);
     } else if (e instanceof Error) {
-      error(500, { message: `${e.name}: ${e.message}` });
+      const { name, message } = e;
+      const cause = `${e.cause}` || undefined;
+      error(500, { name, message, cause });
     } else {
-      error(500, { message: 'Unidentified error' });
+      error(500, { name: 'UnidentifiedError', message: 'unidentified error' });
     }
   } finally {
     await client.close();

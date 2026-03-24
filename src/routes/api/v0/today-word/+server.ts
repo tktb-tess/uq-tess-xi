@@ -6,45 +6,37 @@ import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { redisKeys } from '$lib/types/decl';
 import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
-import { NamedError, safeParseAndValidate } from '$lib/modules/util';
+import { safeParseAndValidate, createErrHandler } from '$lib/modules/util';
+import { NamedError } from '@tktb-tess/util-fns';
 
 export const GET = async () => {
   const client = createClient({ url: REDIS_URL });
   try {
-    const result = await ResultAsync.fromPromise(client.connect(), (e) => {
-      if (e instanceof Error) {
-        return NamedError.from('RedisError', e.message);
+    await client.connect();
+
+    const result = await ResultAsync.fromPromise(
+      client.get(redisKeys.todayWord),
+      createErrHandler('RedisError', 'failed to load today-word from redis'),
+    ).andThen((word) => {
+      if (!word) {
+        return err(new NamedError('RedisError', 'failed to load today-word from redis'));
       }
-      return NamedError.from('RedisError', 'cannot connect to database');
-    })
-      .andThen(() =>
-        ResultAsync.fromPromise(client.get(redisKeys.todayWord), (e) => {
-          return NamedError.from(
-            'RedisError',
-            e instanceof Error ? e.message : 'failed to load today-word from redis',
-          );
-        }),
-      )
-      .andThen((word) => {
-        if (!word) {
-          return err(NamedError.from('RedisError', 'failed to load today-word from redis'));
-        }
-        return safeParseAndValidate(ZpDIC.wordSchema, word);
-      });
+      return safeParseAndValidate(ZpDIC.wordSchema, word);
+    });
 
     if (result.isErr()) {
       const e = result.error;
 
       if (e instanceof z.ZodError) {
-        const err = {
+        const err: App.Error = {
           name: e.name,
           message: z.prettifyError(e),
-          cause: e.issues,
+          cause: z.flattenError(e),
         };
         return json(err, { status: 500 });
       } else {
         const { name, message } = e;
-        const err = {
+        const err: App.Error = {
           name,
           message,
         };

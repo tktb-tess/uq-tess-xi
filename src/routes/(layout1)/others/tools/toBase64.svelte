@@ -67,7 +67,7 @@
       @apply flex justify-center-safe;
 
       > button {
-        @apply btn-1;
+        @apply btn-theme-1;
       }
     }
   }
