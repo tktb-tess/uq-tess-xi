@@ -2,7 +2,7 @@ import { getRandPrimeByRange } from '@tktb-tess/util-fns';
 import { error, isHttpError, json } from '@sveltejs/kit';
 import * as z from 'zod';
 
-export type Primes = {
+type Primes = {
   p: string;
   q: string;
 };
