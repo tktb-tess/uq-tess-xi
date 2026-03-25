@@ -21,15 +21,15 @@
     switch (colorScheme) {
       case 'light dark': {
         colorScheme = 'light';
-        break;
+        return;
       }
       case 'light': {
         colorScheme = 'dark';
-        break;
+        return;
       }
       case 'dark': {
         colorScheme = 'light dark';
-        break;
+        return;
       }
     }
   };
@@ -61,20 +61,20 @@
 <svelte:head>
   <script>
     (() => {
-      const colorScheme = localStorage.getItem('color-scheme');
-      if (!colorScheme) {
+      const cs = localStorage.getItem('color-scheme');
+      if (!cs) {
         console.log('`color-scheme` not found');
         return;
       }
 
-      if (colorScheme !== 'light dark' && colorScheme !== 'light' && colorScheme !== 'dark') {
+      if (cs !== 'light dark' && cs !== 'light' && cs !== 'dark') {
         console.warn('`color-scheme` is invalid');
         return;
       }
 
       try {
         const root = document.documentElement;
-        root.style.setProperty('--color-scheme', colorScheme);
+        root.style.setProperty('--color-scheme', cs);
       } catch (e) {
         console.warn(e);
       }

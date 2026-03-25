@@ -31,8 +31,7 @@
 <div class="today-word-root">
   {#await resultAsy}
     <div class="flex gap-2 items-center">
-      <Spinner class="size-6" />
-      <h3>読み込み中……</h3>
+      <Spinner />
     </div>
   {:then result}
     {#if result.isOk()}
