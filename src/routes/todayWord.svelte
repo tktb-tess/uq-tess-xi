@@ -93,7 +93,7 @@
 
   @layer components {
     .today-word-root {
-      @apply w-full max-w-180 mx-auto flex flex-col items-center border my-figure
+      @apply inline-full max-inline-180 mx-auto flex flex-col items-center border my-figure
       border-border rounded-xl gap-y-6 px-4 py-6 shadow-sm
       bg-linear-to-b from-today-word-s to-today-word-e;
 

@@ -22,7 +22,7 @@
   @reference '../../app.css';
   @layer components {
     .bai {
-      @apply inline-block w-(--size) h-auto align-baseline;
+      @apply inline-block inline-(--size) block-auto align-baseline;
     }
   }
 </style>

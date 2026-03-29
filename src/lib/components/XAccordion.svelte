@@ -38,11 +38,11 @@
     }
 
     .accordion:not([open])::details-content {
-      @apply h-0;
+      @apply block-0;
     }
 
     .accordion[open]::details-content {
-      @apply h-(--open-height);
+      @apply block-(--open-height);
     }
 
     summary {

@@ -87,14 +87,14 @@
 
       grid-template-rows: auto 1fr auto;
 
-      @apply max-lg:flow-root lg:grid min-h-lvh;
+      @apply max-lg:flow-root lg:grid min-block-lvh;
 
       > header {
         grid-area: header;
-        @apply flex h-header px-6 bg-l-accent sticky top-0 z-(--z-header);
+        @apply flex block-header px-6 bg-l-accent sticky top-0 z-(--z-header);
 
         > :global(*) {
-          @apply h-full text-2xl px-1
+          @apply block-full text-2xl px-1
           text-white hover-focus:text-black hover-focus:bg-white transition-colors leading-none;
         }
 
@@ -120,7 +120,7 @@
         @apply max-lg:hidden lg:flow-root;
 
         > .__sticky-cont {
-          @apply sticky top-header max-h-[calc(100lvh-var(--spacing-header))] overflow-y-auto z-(--z-sidemenu);
+          @apply sticky top-header max-block-[calc(100lvh-var(--spacing-header))] overflow-y-auto z-(--z-sidemenu);
           scrollbar-width: thin;
           scrollbar-gutter: stable;
         }

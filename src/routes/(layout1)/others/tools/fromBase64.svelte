@@ -101,7 +101,7 @@
       @apply flex flex-col gap-2 text-center;
 
       > textarea {
-        @apply min-w-0 h-40;
+        @apply min-inline-0 block-40;
       }
     }
 

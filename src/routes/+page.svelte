@@ -111,7 +111,7 @@
   @reference '../app.css';
   @layer components {
     main {
-      @apply mx-auto max-w-7xl border-l border-r border-b border-border-lighter;
+      @apply mx-auto max-inline-7xl border-l border-r border-b border-border-lighter;
 
       :global(:where(h2)) {
         @apply text-center ps-0;

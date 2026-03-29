@@ -104,7 +104,7 @@
 
   @layer components {
     .nanka-hen {
-      @apply flex justify-center *:min-w-0 *:m-0 items-center my-figure gap-4;
+      @apply flex justify-center *:min-inline-0 *:m-0 items-center my-figure gap-4;
     }
 
     .__calc-btn {
@@ -114,7 +114,7 @@
 
     .inputs,
     .result {
-      @apply border rounded px-1 w-20 border-border;
+      @apply border rounded px-1 inline-20 border-border;
     }
   }
 </style>

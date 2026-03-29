@@ -28,7 +28,7 @@
       {#if title == null}
         <li>
           <a {href} title="Home">
-            <HomeIcon class="w-4 h-auto" />
+            <HomeIcon class="inline-4 block-auto" />
           </a>
         </li>
       {:else}

@@ -264,6 +264,7 @@
   @supports (word-break: auto-phrase) {
     [lang^='ja'] {
       word-break: auto-phrase;
+      text-align: justify;
     }
   }
 
@@ -376,7 +377,7 @@
   }
 
   img {
-    @apply mx-auto w-max max-w-full;
+    @apply mx-auto inline-max max-inline-full;
   }
 
   ul {
@@ -392,11 +393,11 @@
   }
 
   pre.shiki {
-    @apply overflow-auto max-w-full p-4 rounded;
+    @apply overflow-auto max-inline-full p-4 rounded;
   }
 
   table {
-    @apply grid break-keep wrap-normal w-max max-w-full text-center me-auto overflow-auto;
+    @apply grid break-keep wrap-normal inline-max max-inline-full text-center me-auto overflow-auto;
     grid-template-columns: repeat(var(--cols, 1), auto);
     grid-template-rows: repeat(calc(var(--rows, 1) + var(--caption, 0)), auto);
   }
