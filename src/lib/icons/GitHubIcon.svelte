@@ -24,7 +24,7 @@
 
   @layer components {
     .github-icon {
-      @apply inline-block w-(--size) h-auto;
+      @apply inline-block inline-(--size) block-auto;
     }
   }
 </style>

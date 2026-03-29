@@ -81,7 +81,7 @@
 
       a,
       :global(:where(.accordion) summary) {
-        @apply px-3 h-10 rounded;
+        @apply px-3 block-10 rounded;
       }
 
       a {

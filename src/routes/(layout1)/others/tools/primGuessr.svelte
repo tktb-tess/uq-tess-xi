@@ -133,7 +133,7 @@
       <p class="product">----</p>
     {:else}
       {#await primesPr}
-        <div class="grid place-items-center-safe min-h-8">
+        <div class="grid place-items-center-safe min-block-8">
           <Spinner />
         </div>
       {:then primes}
@@ -206,15 +206,15 @@
 
   @layer components {
     .primeguessr-root {
-      @apply flex flex-col gap-6 my-figure *:max-w-full;
+      @apply flex flex-col gap-6 my-figure *:max-inline-full;
     }
 
     .fields {
-      @apply flex justify-center gap-8 *:min-w-0;
+      @apply flex justify-center gap-8 *:min-inline-0;
     }
 
     .fields-item > input {
-      @apply w-40 max-w-full min-w-0;
+      @apply inline-40 max-inline-full min-inline-0;
     }
 
     .product,

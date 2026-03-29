@@ -45,7 +45,7 @@
     }
 
     .__toast-elem {
-      @apply px-4 py-2 text-white rounded w-full max-w-70
+      @apply px-4 py-2 text-white rounded inline-full max-inline-70
       grid grid-cols-[1fr_1.25rem] items-center
 		  gap-5 animate-toast
       pointer-events-auto *:m-0;
@@ -61,7 +61,7 @@
       > button::before,
       > button::after {
         content: '';
-        @apply block col-span-full row-span-full place-self-center w-5
+        @apply block col-span-full row-span-full place-self-center inline-5
         border-b-2 border-current;
       }
 

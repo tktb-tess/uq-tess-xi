@@ -25,7 +25,7 @@
 
   @layer components {
     .icon {
-      @apply w-(--size) h-auto inline-block;
+      @apply inline-(--size) block-auto inline-block;
     }
   }
 </style>

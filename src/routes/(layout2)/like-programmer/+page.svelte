@@ -42,7 +42,7 @@
   @reference '../../../app.css';
   @layer components {
     .__like-program {
-      @apply m-0 break-all whitespace-pre-wrap text-[#0f0] max-h-lvh overflow-y-clip;
+      @apply m-0 break-all whitespace-pre-wrap text-[#0f0] max-block-lvh overflow-y-clip;
     }
   }
 </style>

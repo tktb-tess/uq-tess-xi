@@ -28,14 +28,14 @@
   @reference '../app.css';
   @layer components {
     .card-list {
-      @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none w-full max-w-190 mx-auto my-figure;
+      @apply grid grid-cols-[auto_1fr] gap-3 ps-0 list-none inline-full max-inline-190 mx-auto my-figure;
 
       > :where(li) {
         @apply contents;
       }
 
       :where(a) {
-        @apply grid grid-cols-subgrid col-span-full *:min-w-0 items-center
+        @apply grid grid-cols-subgrid col-span-full *:min-inline-0 items-center
         rounded-sm no-underline px-4 py-3
         hover-focus:scale-102 transition-transform
         bg-linear-to-b from-card-list-s to-card-list-e;

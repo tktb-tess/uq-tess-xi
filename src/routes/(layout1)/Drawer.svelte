@@ -42,7 +42,7 @@
 
   @layer components {
     #drawer {
-      @apply inset-0 w-min-side me-auto bg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;
+      @apply inset-0 inline-min-side me-auto bg-body flex-col *:my-0 py-2 gap-2 overscroll-contain;
       scrollbar-width: thin;
       scrollbar-gutter: stable;
 
@@ -82,7 +82,7 @@
       grid place-items-center transition-colors;
 
       > * {
-        @apply col-span-full row-span-full border-b border-current w-5;
+        @apply col-span-full row-span-full border-b border-current inline-5;
       }
 
       > :first-child {

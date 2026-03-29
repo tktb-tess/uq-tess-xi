@@ -52,7 +52,7 @@
       colorScheme = cs;
     } else {
       const root = document.documentElement;
-      root.style.setProperty('--color-scheme', colorScheme);
+      root.setAttribute('data-color-scheme', colorScheme);
       localStorage.setItem(key, colorScheme);
     }
   });
@@ -74,7 +74,7 @@
 
       try {
         const root = document.documentElement;
-        root.style.setProperty('--color-scheme', cs);
+        root.setAttribute('data-color-scheme', colorScheme);
       } catch (e) {
         console.warn(e);
       }

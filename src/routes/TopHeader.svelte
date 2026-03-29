@@ -16,16 +16,16 @@
   @reference '../app.css';
   @layer components {
     header {
-      @apply grid h-svh place-items-center content-center text-white overflow-clip
+      @apply grid block-svh place-items-center content-center text-white overflow-clip
       bg-linear-135 from-main-title-s to-main-title-e;
     }
 
     .top-logo {
-      @apply animate-top-logo h-[55svh] w-auto max-w-[90lvw];
+      @apply animate-top-logo block-[55svh] inline-auto max-inline-[90lvw];
     }
 
     .top-title-text {
-      @apply font-title font-normal text-justify text-[calc(3rem+2vw)] w-[80lvw] max-w-180 -skew-x-15 -skew-y-2;
+      @apply font-title font-normal text-justify text-[calc(3rem+2vw)] inline-[80lvw] max-inline-180 -skew-x-15 -skew-y-2;
       text-align-last: justify;
     }
   }
