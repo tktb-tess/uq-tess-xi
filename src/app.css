@@ -277,9 +277,8 @@
   }
 
   dialog,
-  dialog::backdrop,
   [popover],
-  [popover]::backdrop {
+  ::backdrop {
     @apply size-[unset] max-inline-[unset] max-block-[unset] fixed;
   }
 
