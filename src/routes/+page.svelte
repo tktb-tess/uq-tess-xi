@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
@@ -86,7 +86,6 @@
     <h3>その他</h3>
     <LinkList
       links={[
-        ['https://tesyrrhaqt.hatenablog.com/', 'はてなブログ (あかねの多目的室)'],
         ['https://youtube.com/@tessyrrhaqt', 'Youtube'],
         ['https://rechord.cc/users/triethylamineq', 'rechord'],
         ['https://migdal.jp/tessyrrhaqt', 'Migdal'],

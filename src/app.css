@@ -20,7 +20,7 @@
 
 /* theme variables */
 
-@theme inline {
+@theme {
   --font-sans:
     'Inter-Variable', 'Arial', 'Helvetica Neue', 'noto-sans-jp', 'BIZ UDPGothic',
     'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif, 'Segoe UI', system-ui;

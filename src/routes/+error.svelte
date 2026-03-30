@@ -39,6 +39,7 @@
 <style lang="postcss">
   @reference '../app.css';
   @layer properties, theme, base, components, utilities;
+
   @layer components {
     #error-root {
       @apply grid min-block-lvh px-3 content-center place-items-center gap-4 overflow-clip **:m-0;
