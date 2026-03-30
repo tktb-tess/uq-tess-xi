@@ -9,7 +9,7 @@
 
   const en = new TextEncoder();
   const title = `テキスト → Base64(URL) 変換`;
-  const seed = toBase64(en.encode(title));
+  const seed = toBase64Url(en.encode(title));
 
   let input = $state('');
   let mode: Mode = $state('Base64');

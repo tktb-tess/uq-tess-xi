@@ -1,4 +1,4 @@
-<svelte:options runes={true} />
+<svelte:options runes />
 
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
@@ -10,6 +10,7 @@
   import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
   import MyFooter from '$lib/components/MyFooter.svelte';
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 </script>
 
 <TopHeader />
@@ -86,7 +87,6 @@
     <h3>その他</h3>
     <LinkList
       links={[
-        ['https://tesyrrhaqt.hatenablog.com/', 'はてなブログ (あかねの多目的室)'],
         ['https://youtube.com/@tessyrrhaqt', 'Youtube'],
         ['https://rechord.cc/users/triethylamineq', 'rechord'],
         ['https://migdal.jp/tessyrrhaqt', 'Migdal'],
@@ -101,7 +101,7 @@
       ]}
     />
   </XSection>
-  <h3 class="text-caution text-center my-8">工事中……</h3>
+  <UnderConstruction />
 </main>
 
 <MyFooter />

@@ -1,5 +1,6 @@
 <script lang="ts">
   import HamburgerIcon from '$lib/icons/HamburgerIcon.svelte';
+
   interface Props {
     class?: string;
     showDrawer: () => void;
@@ -10,13 +11,13 @@
 
 <button
   title="サイドメニューを開く"
-  class="{cName} drawer-open-btn"
+  class="drawer-open-btn {cName}"
   onclick={(ev) => {
     ev.preventDefault();
     showDrawer();
   }}
 >
-  <HamburgerIcon class="size-6" />
+  <HamburgerIcon class="inline-6 block-auto" />
 </button>
 
 <style lang="postcss">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import XAccordion from './XAccordion.svelte';
+  import XAccordion from '$lib/components/XAccordion.svelte';
   import { resolve } from '$app/paths';
 
   interface Props {

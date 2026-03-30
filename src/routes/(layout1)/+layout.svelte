@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onNavigate } from '$app/navigation';
   import pages from '$lib/modules/pages';
-  import type { PageData } from '$lib/modules/pages';
   import { resolve } from '$app/paths';
-  import SideMenu from '$lib/components/SideMenu.svelte';
+  import SideMenu from './SideMenu.svelte';
   import ToggleColorSchemeBtn from '$lib/components/ToggleColorSchemeBtn.svelte';
   import BreadCrumb from '$lib/components/BreadCrumb.svelte';
   import MyFooter from '$lib/components/MyFooter.svelte';
@@ -30,11 +29,7 @@
   };
 
   const title = $derived.by(() => {
-    const fallBack: PageData = {
-      title: '[NO DATA]',
-    };
-    const pageData = pages.get(data.path) ?? fallBack;
-    return pageData.title;
+    return pages.get(data.path)?.title ?? '[NO DATA]';
   });
 
   onNavigate(() => {
@@ -73,12 +68,13 @@
 
 <style lang="postcss">
   @reference '../../app.css';
+
   @layer components {
     .__container {
       grid-template-areas:
-        'header header header'
-        'lside main rside'
-        'footer footer footer';
+        'h h h'
+        'l m r'
+        'f f f';
 
       grid-template-columns:
         minmax(min(var(--spacing-min-side), 50%), 1fr)
@@ -90,7 +86,7 @@
       @apply max-lg:flow-root lg:grid min-block-lvh;
 
       > header {
-        grid-area: header;
+        grid-area: h;
         @apply flex block-header px-6 bg-l-accent sticky top-0 z-(--z-header);
 
         > :global(*) {
@@ -116,7 +112,7 @@
       }
 
       > .__lside {
-        grid-area: lside;
+        grid-area: l;
         @apply max-lg:hidden lg:flow-root;
 
         > .__sticky-cont {
@@ -127,12 +123,12 @@
       }
 
       > .__rside {
-        grid-area: rside;
+        grid-area: r;
         @apply max-lg:hidden invisible;
       }
 
       > main {
-        grid-area: main;
+        grid-area: m;
         @apply flow-root bg-main border-l border-r border-b border-border-lighter;
 
         :where(#title) {
@@ -141,7 +137,7 @@
       }
 
       > footer {
-        grid-area: footer;
+        grid-area: f;
         @apply flow-root;
       }
     }

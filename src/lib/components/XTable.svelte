@@ -65,7 +65,9 @@
               >
                 {#if conf.rawHTML}
                   <!-- eslint-disable -->
-                  {@html text}
+                  <div>
+                    {@html text}
+                  </div>
                   <!-- eslint-enable -->
                 {:else}
                   {text}
@@ -97,7 +99,9 @@
             >
               {#if conf.rawHTML}
                 <!-- eslint-disable -->
-                {@html text}
+                <div>
+                  {@html text}
+                </div>
                 <!-- eslint-enable -->
               {:else}
                 {text}
@@ -119,7 +123,9 @@
             >
               {#if conf.rawHTML}
                 <!-- eslint-disable -->
-                {@html text}
+                <div>
+                  {@html text}
+                </div>
                 <!-- eslint-enable -->
               {:else}
                 {text}

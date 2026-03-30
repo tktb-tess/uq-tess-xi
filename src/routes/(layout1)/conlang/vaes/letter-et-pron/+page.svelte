@@ -9,13 +9,11 @@
 <XSection title="単独字の発音">
   <p>
     表記にはラテン文字を使用する。a–zの26文字に加え、いくつかのダイアクリティカルマークを用いる。
-  </p>
-  <p>
     備考に特に何も書かれていなければ、ローマ字通りの発音でOK。「発音例」の音声記号は、「音韻論」の項で詳しく説明している。
   </p>
   <XTable
     headRows={1}
-    class="[&_tbody_td:nth-child(3)]:font-ipa [&_tbody_td:nth-child(3)]:whitespace-nowrap"
+    class="[&_tbody_td:nth-child(3)]:font-ipa [&_tbody_td:nth-child(3)]:whitespace-nowrap [&_tbody_td:last-child]:text-start"
     data={[
       ['大文字', '小文字', '発音例', '備考'],
       ['A', 'a', '/ä/, /ɑː/', ''],

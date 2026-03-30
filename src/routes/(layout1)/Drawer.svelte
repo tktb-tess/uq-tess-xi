@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SideMenu from '$lib/components/SideMenu.svelte';
+  import SideMenu from './SideMenu.svelte';
 
   interface Props {
     class?: string;
@@ -7,7 +7,6 @@
   }
 
   let { class: cName, drawerElem = $bindable() }: Props = $props();
-  let closeBtn: HTMLButtonElement | undefined;
 </script>
 
 <dialog
@@ -22,11 +21,13 @@
     <button
       title="サイドメニューを閉じる"
       id="drawer-close-btn"
-      bind:this={closeBtn}
       autofocus
       onclick={(ev) => {
         ev.preventDefault();
-        drawerElem?.close();
+        if (!drawerElem) {
+          throw TypeError('`drawerElem is undefined');
+        }
+        drawerElem.close();
       }}
     >
       <span></span>
