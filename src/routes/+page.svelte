@@ -10,6 +10,7 @@
   import TopHeader from './TopHeader.svelte';
   import LinkList from './LinkList.svelte';
   import MyFooter from '$lib/components/MyFooter.svelte';
+  import UnderConstruction from '$lib/components/UnderConstruction.svelte';
 </script>
 
 <TopHeader />
@@ -100,7 +101,7 @@
       ]}
     />
   </XSection>
-  <h3 class="text-caution text-center my-8">工事中……</h3>
+  <UnderConstruction />
 </main>
 
 <MyFooter />

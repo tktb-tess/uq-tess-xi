@@ -7,16 +7,11 @@
 </script>
 
 <XSection title="凡例">
-  <ul>
-    <li>以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。</li>
-    <li>
-      <span class="font-ipa">“[]”</span> で囲ったものがIPAの精密な音声表記で、<span
-        class="font-ipa"
-      >
-        “//”
-      </span> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
-    </li>
-  </ul>
+  <p>
+    以下の説明では、音声記号にはIPA（国際音声記号）を基にした音声記号を使用する。
+    <span class="font-ipa"> “[]” </span>
+    で囲ったものがIPAの精密な音声表記で、<span class="font-ipa"> “//” </span> で囲ったものはヴェッセンズラン語の音韻論に準じた音素表記である。
+  </p>
 </XSection>
 
 <XSection title="子音">
@@ -48,9 +43,9 @@
       が後続する時、後続する音は無声音化する (<span class="font-ipa">[pɽ̊]</span> etc.)。
     </li>
     <li>
-      喉頭化音は両唇音は入破音 (<span class="font-ipa">[ɓ]</span>)、歯茎音と軟口蓋音は放出音 (<span
-        class="font-ipa">[tʼ], [kʼ]</span
-      >) が標準であるが、 方言や年代によって両者の間で揺れる。
+      喉頭化音 <span class="font-ipa">/ɓ/, /tʼ/, /kʼ/</span> は両唇音は入破音
+      <span class="font-ipa">[ɓ]</span>、歯茎音と軟口蓋音は放出音
+      <span class="font-ipa">[tʼ], [kʼ]</span> が標準であるが、 方言や年代によって両者の間で揺れる。
     </li>
     <li>
       <span class="font-ipa">/ð/</span> は歯間〜歯接近音 <span class="font-ipa">[ð̪͆˕ ~ ð̞]</span> である。
@@ -146,16 +141,14 @@
   </div>
 
   <h3>説明</h3>
-  <ul>
-    <li>
-      ヴェッセンズラン語の母音には <strong class="italic">tense</strong> と
-      <strong class="italic">lax</strong>
-      と呼ばれる区別があり、<i>lax</i>
-      母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
-      <span class="font-ipa">/ə/</span> に限っては語末に来ることができる。なお、二重母音は全て
-      <i>tense</i> 母音である。
-    </li>
-  </ul>
+  <p>
+    ヴェッセンズラン語の母音には <strong class="italic">tense</strong> と
+    <strong class="italic">lax</strong>
+    と呼ばれる区別があり、<i>lax</i>
+    母音は別の母音や単語末に来ることはできない。ただし、曖昧母音の
+    <span class="font-ipa">/ə/</span> に限っては語末に来ることができる。なお、二重母音は全て
+    <i>tense</i> 母音である。
+  </p>
 </XSection>
 
 <UnderConstruction />

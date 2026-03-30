@@ -1,15 +1,16 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { toBase64 } from '@tktb-tess/util-fns';
+  import { toBase64Url } from '@tktb-tess/util-fns';
 
   interface Props {
     readonly title: string;
     readonly class?: string;
     readonly children?: Snippet;
   }
+
   const en = new TextEncoder();
   const { title, class: className, children }: Props = $props();
-  const id = $derived('section-' + toBase64(en.encode(title)));
+  const id = $derived('section-' + toBase64Url(en.encode(title)));
 </script>
 
 <section aria-labelledby={id} class={className}>
@@ -19,6 +20,7 @@
 
 <style lang="postcss">
   @reference '../../app.css';
+
   @layer components {
     section {
       @apply flow-root;

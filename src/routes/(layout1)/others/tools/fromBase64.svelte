@@ -1,7 +1,7 @@
 <script lang="ts">
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64, fromBase64, fromBase64Url } from '@tktb-tess/util-fns';
+  import { toBase64Url, fromBase64, fromBase64Url } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
   import type { Mode } from './types';
   import SelectBtn from '$lib/components/SelectBtn.svelte';
@@ -10,7 +10,7 @@
   const dec = new TextDecoder('utf-8', { fatal: true });
   const en = new TextEncoder();
   const title = 'Base64(URL) → テキスト 変換';
-  const seed = toBase64(en.encode(title));
+  const seed = toBase64Url(en.encode(title));
 
   let input = $state('');
   let mode: Mode = $state('Base64');
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="input">
-      <label for="input-{seed}">Base64</label>
+      <label for="input-{seed}">{mode}</label>
       <textarea id="input-{seed}" bind:value={input}></textarea>
     </div>
     <p class="arrow">↓</p>

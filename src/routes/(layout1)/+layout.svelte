@@ -29,8 +29,7 @@
   };
 
   const title = $derived.by(() => {
-    const pageData = pages.get(data.path) ?? { title: '[NO DATA]' };
-    return pageData.title;
+    return pages.get(data.path)?.title ?? '[NO DATA]';
   });
 
   onNavigate(() => {
