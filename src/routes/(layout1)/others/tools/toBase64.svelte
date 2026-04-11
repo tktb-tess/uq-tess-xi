@@ -2,14 +2,14 @@
   import SelectBtn from '$lib/components/SelectBtn.svelte';
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64, toBase64Url } from '@tktb-tess/util-fns';
+  import { toBase64, toBase64URL } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
   import type { Mode } from './types';
   import XBtn from '$lib/components/XBtn.svelte';
 
   const en = new TextEncoder();
   const title = `テキスト → Base64(URL) 変換`;
-  const seed = toBase64Url(en.encode(title));
+  const seed = toBase64URL(en.encode(title));
 
   let input = $state('');
   let mode: Mode = $state('Base64');
@@ -18,7 +18,7 @@
     if (mode === 'Base64') {
       return toBase64(en.encode(input));
     } else {
-      return toBase64Url(en.encode(input));
+      return toBase64URL(en.encode(input));
     }
   });
 

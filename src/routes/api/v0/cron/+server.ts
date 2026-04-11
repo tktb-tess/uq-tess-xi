@@ -1,15 +1,9 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
 import { redisKeys } from '$lib/types/decl';
-import { getRndInt } from '@tktb-tess/util-fns';
+import { getRndInt, getRandPrimeByBitLength } from '@tktb-tess/util-fns';
 import { ZpDIC } from '@tktb-tess/my-zod-schema';
 import { createClient } from 'redis';
-
-type ZpDICQuery = {
-  readonly text: string;
-  readonly skip?: number;
-  readonly limit?: number;
-};
 
 export const GET = async ({ request: req, fetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
@@ -18,24 +12,16 @@ export const GET = async ({ request: req, fetch }) => {
     'X-Api-Key': ZPDIC_API_KEY,
   } as const;
 
-  const fetchZpDICAPI = async (params: ZpDICQuery): Promise<ZpDIC.MWWEResponse> => {
+  const fetchZpDICAPI = async (
+    text: string,
+    skip?: number,
+    limit?: number,
+  ): Promise<ZpDIC.MWWEResponse> => {
     const pa = new URLSearchParams();
 
-    for (const [key, value] of Object.entries(params)) {
-      switch (typeof value) {
-        case 'string': {
-          pa.set(key, value);
-          break;
-        }
-        case 'number': {
-          pa.set(key, value.toString());
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    }
+    pa.set('text', text);
+    if (skip != null) pa.set('skip', skip.toString());
+    if (limit != null) pa.set('skip', limit.toString());
 
     const resp = await fetch(`${zpdicApiRt}?${pa.toString()}`, {
       method: 'GET',
@@ -50,20 +36,12 @@ export const GET = async ({ request: req, fetch }) => {
   };
 
   const getTotal = async () => {
-    const query = {
-      text: '',
-    };
-    const json = await fetchZpDICAPI(query);
+    const json = await fetchZpDICAPI('');
     return json.total;
   };
 
   const getWord = async (index: number) => {
-    const query: ZpDICQuery = {
-      text: '',
-      limit: 1,
-      skip: index,
-    };
-    return fetchZpDICAPI(query);
+    return fetchZpDICAPI('', index, 1);
   };
 
   const getTodayWord = async () => {
@@ -88,8 +66,9 @@ export const GET = async ({ request: req, fetch }) => {
       await client.set(redisKeys.todayWord, JSON.stringify(result));
     };
 
-    const taskSwadeshVae = async () => {
-      await client.set(redisKeys.swadeshVae, '');
+    const taskTodayPRP = async () => {
+      const prime = getRandPrimeByBitLength(256, true);
+      await client.set(redisKeys.todayPRP, prime.toString());
     };
 
     const taskLastUpdate = async () => {
@@ -97,7 +76,7 @@ export const GET = async ({ request: req, fetch }) => {
       await client.set(redisKeys.lastUpdate, JSON.stringify(result));
     };
 
-    await Promise.allSettled([taskTodayWord(), taskSwadeshVae(), taskLastUpdate()]).then((res) => {
+    await Promise.allSettled([taskTodayWord(), taskTodayPRP(), taskLastUpdate()]).then((res) => {
       res.filter((r) => r.status === 'rejected').forEach((r) => console.error(r.reason));
     });
 
