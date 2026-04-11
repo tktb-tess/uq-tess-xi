@@ -14,9 +14,10 @@ export const GET = async () => {
     await client.connect();
     const tasks = Object.entries(redisKeys).map(async ([key, value]) => {
       const data = await client.get(value);
-      if (!data) error(404);
+      if (!data) return [key, null] as const;
       return [key, JSON.parse(data) as unknown] as const;
     });
+
     const body = await Promise.all(tasks).then((b) => Object.fromEntries(b));
 
     return json(body, { headers });

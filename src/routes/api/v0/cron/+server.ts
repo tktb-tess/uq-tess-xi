@@ -11,7 +11,7 @@ type ZpDICQuery = {
   readonly limit?: number;
 };
 
-export const GET = async ({ request, fetch: svFetch }) => {
+export const GET = async ({ request: req, fetch }) => {
   const zpdicApiRt = `https://zpdic.ziphil.com/api/v0/dictionary/633/words`;
 
   const zpdicReqHeaders = {
@@ -22,14 +22,22 @@ export const GET = async ({ request, fetch: svFetch }) => {
     const pa = new URLSearchParams();
 
     for (const [key, value] of Object.entries(params)) {
-      if (typeof value === 'string') {
-        pa.set(key, value);
-      } else if (typeof value === 'number') {
-        pa.set(key, value.toString());
+      switch (typeof value) {
+        case 'string': {
+          pa.set(key, value);
+          break;
+        }
+        case 'number': {
+          pa.set(key, value.toString());
+          break;
+        }
+        default: {
+          break;
+        }
       }
     }
 
-    const resp = await svFetch(`${zpdicApiRt}?${pa.toString()}`, {
+    const resp = await fetch(`${zpdicApiRt}?${pa.toString()}`, {
       method: 'GET',
       headers: zpdicReqHeaders,
     });
@@ -38,7 +46,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
       error(500, { name: 'FetchError', message: 'cannot access ZpDIC API' });
     }
 
-    return resp.json().then((j) => ZpDIC.mwweResponseSchema.parse(j));
+    return resp.json().then((j: unknown) => ZpDIC.mwweResponseSchema.parse(j));
   };
 
   const getTotal = async () => {
@@ -64,7 +72,7 @@ export const GET = async ({ request, fetch: svFetch }) => {
   };
 
   // authorization
-  if (request.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
+  if (req.headers.get('Authorization') !== `Bearer ${CRON_SECRET}`) {
     error(401);
   }
 
