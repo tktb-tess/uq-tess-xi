@@ -36,8 +36,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1(zod@4.3.6)
       '@tktb-tess/util-fns':
-        specifier: ^0.12.1
-        version: 0.12.1
+        specifier: ^0.12.2
+        version: 0.12.2
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -1087,8 +1087,8 @@ packages:
     peerDependencies:
       zod: ^3.0.0 || ^4.0.0
 
-  '@tktb-tess/util-fns@0.12.1':
-    resolution: {integrity: sha512-p5+S/8v6KRlVC48x4kmWwEQEgH0EEXcQCgUtmFD7TZImhHizJVHPTaGOcGrvbCVdVkLBcAIZGrIGGA/oXNEObg==}
+  '@tktb-tess/util-fns@0.12.2':
+    resolution: {integrity: sha512-DPvRVl++eQAzhowKzso9menlqfxc7BwbDzlGvYSRxuyWyydahXcGfw3YjAUPBdgBAkNuCHTyLEER0XTsg9clCw==}
     engines: {node: '>=22', pnpm: '>=10'}
 
   '@tybys/wasm-util@0.10.1':
@@ -3227,7 +3227,7 @@ snapshots:
     dependencies:
       zod: 4.3.6
 
-  '@tktb-tess/util-fns@0.12.1': {}
+  '@tktb-tess/util-fns@0.12.2': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
