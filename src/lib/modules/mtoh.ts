@@ -7,7 +7,7 @@ import remarkDirective from 'remark-directive';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import rehypeShiki from '@shikijs/rehype';
-import { tableHandler, textDirectiveHandler } from './handlers';
+import * as H from './handlers';
 import type { Processor } from 'unified';
 import type * as Mdast from 'mdast';
 import type * as Hast from 'hast';
@@ -25,8 +25,8 @@ export const mdToHtml = async (md: string) => {
       .use(remarkMath)
       .use(remarkRehype, {
         handlers: {
-          table: tableHandler,
-          textDirective: textDirectiveHandler,
+          table: H.tableHandler,
+          textDirective: H.textDirectiveHandler,
         },
       })
       .use(rehypeKatex)

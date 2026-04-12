@@ -2,10 +2,10 @@ import { getRandPrimeByRange } from '@tktb-tess/util-fns';
 import { error, isHttpError, json } from '@sveltejs/kit';
 import * as z from 'zod';
 
-type Primes = {
+interface Primes {
   p: string;
   q: string;
-};
+}
 
 const LIMIT = 1n << 64n;
 
@@ -51,7 +51,15 @@ export const GET = async ({ url }) => {
       console.error(e.name, e.message);
       error(500, { name, message, cause });
     } else {
-      error(500, { name: 'UnidentifiedError', message: 'unidentified error' });
+      const cause = (() => {
+        const e2 = e as Record<string, unknown> | null | undefined;
+        const c = e2?.cause;
+        if (c == null) return;
+        const str = c.toString();
+        return str === '[Object object]' ? JSON.stringify(c) : str;
+      })();
+
+      error(500, { name: 'UnidentifiedError', message: 'unidentified error', cause });
     }
   }
 };

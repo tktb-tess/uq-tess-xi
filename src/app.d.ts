@@ -3,8 +3,10 @@
 import type { Primitive } from 'type-fest';
 
 interface RecursiveRecord {
-  [k: string]: Primitive | RecursiveRecord | (Primitive | RecursiveRecord)[];
+  [k: string]: Primitive | RecursiveRecord | RecursiveArray;
 }
+
+type RecursiveArray = Array<Primitive | RecursiveRecord | RecursiveArray>;
 
 // for information about these interfaces
 declare global {
@@ -12,7 +14,7 @@ declare global {
     interface Error {
       readonly name: string;
       readonly stack?: string;
-      readonly cause?: Primitive | RecursiveRecord | (Primitive | RecursiveRecord)[];
+      readonly cause?: Primitive | RecursiveRecord | RecursiveArray;
     }
     // interface Locals {}
     // interface PageData {}

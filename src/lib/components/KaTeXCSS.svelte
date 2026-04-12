@@ -1,5 +1,4 @@
-<script lang="ts">
-</script>
+<svelte:options runes />
 
 <svelte:head>
   <link
