@@ -68,7 +68,7 @@ export const GET = async ({ request: req, fetch }) => {
 
     const taskTodayPRP = async () => {
       const prime = getRandPrimeByBitLength(256, true);
-      await client.set(redisKeys.todayPRP, prime.toString());
+      await client.set(redisKeys.todayPRP, JSON.stringify(prime.toString()));
     };
 
     const taskLastUpdate = async () => {

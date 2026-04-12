@@ -4,7 +4,7 @@
   import XSection from '$lib/components/XSection.svelte';
   import { toBase64, toBase64URL } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
-  import type { Mode } from './types';
+  import type { Mode } from './typesdecl';
   import XBtn from '$lib/components/XBtn.svelte';
 
   const en = new TextEncoder();

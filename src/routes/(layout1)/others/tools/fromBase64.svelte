@@ -3,7 +3,7 @@
   import XSection from '$lib/components/XSection.svelte';
   import { toBase64URL, fromBase64, fromBase64URL } from '@tktb-tess/util-fns';
   import type { MouseEventHandler } from 'svelte/elements';
-  import type { Mode } from './types';
+  import type { Mode } from './typesdecl';
   import SelectBtn from '$lib/components/SelectBtn.svelte';
   import XBtn from '$lib/components/XBtn.svelte';
 
