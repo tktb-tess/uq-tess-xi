@@ -13,23 +13,7 @@
     "moduleResolution": "bundler",
     "noUncheckedIndexedAccess": true
   },
-  "include": [
-    "ambient.d.ts",
-    "non-ambient.d.ts",
-    "./.svelte-kit/types/**/$types.d.ts",
-    "./vite.config.js",
-    "./vite.config.ts",
-    "./src/**/*.js",
-    "./src/**/*.ts",
-    "./src/**/*.svelte",
-    "./test/**/*.js",
-    "./test/**/*.ts",
-    "./test/**/*.svelte",
-    "./tests/**/*.js",
-    "./tests/**/*.ts",
-    "./tests/**/*.svelte",
-    "./.prebuilds/**/*.ts"
-  ]
+  "exclude": [".prebuilds/"]
 
   // Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
   // except $lib which is handled by https://svelte.dev/docs/kit/configuration#files

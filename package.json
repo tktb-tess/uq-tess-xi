@@ -5,16 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "node .prebuilds/xml-generate.ts && vite build",
-    "lbuild": "rm -rf .vercel && node .prebuilds/xml-generate.ts && vite build",
+    "build": "node .prebuilds/xml-generate.mts && vite build",
+    "lbuild": "rm -rf .vercel && pnpm run build",
     "preview": "vite preview",
-    "build-preview": "rm -rf .vercel && node .prebuilds/xml-generate.ts && vite build && vite preview",
+    "build-preview": "pnpm run lbuild && pnpm run preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "test": "vitest run"
+    "test": "vitest --run"
   },
   "packageManager": "pnpm@10.33.0",
   "devDependencies": {
