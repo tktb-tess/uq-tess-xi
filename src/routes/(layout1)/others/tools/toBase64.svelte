@@ -2,7 +2,7 @@
   import SelectBtn from '$lib/components/SelectBtn.svelte';
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64, toBase64URL } from '@tktb-tess/util-fns';
+  import { toBase64, toBase64URL } from '@tktb-tess/util-fns/base64';
   import type { MouseEventHandler } from 'svelte/elements';
   import type { Mode } from './typesdecl';
   import XBtn from '$lib/components/XBtn.svelte';

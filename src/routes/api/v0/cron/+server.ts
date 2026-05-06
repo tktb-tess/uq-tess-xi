@@ -1,8 +1,9 @@
 import { error, isHttpError, json } from '@sveltejs/kit';
 import { ZPDIC_API_KEY, REDIS_URL, CRON_SECRET } from '$env/static/private';
 import { redisKeys } from '$lib/types/decl';
-import { getRndInt, getRandPrimeByBitLength } from '@tktb-tess/util-fns';
-import { ZpDIC } from '@tktb-tess/my-zod-schema';
+import { getRndInt } from '@tktb-tess/util-fns/random';
+import { getRandPrimeByBitLength } from '@tktb-tess/util-fns/baillie_psw';
+import * as ZpDIC from '@tktb-tess/my-zod-schema/zpdic';
 import { createClient } from 'redis';
 
 export const GET = async ({ request: req, fetch }) => {

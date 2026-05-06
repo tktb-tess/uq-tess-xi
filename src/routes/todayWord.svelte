@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import type * as z from 'zod';
-  import { NamedError } from '@tktb-tess/util-fns';
+  import { NamedError } from '@tktb-tess/util-fns/named_error';
   import { resolve } from '$app/paths';
   import { safeFetchJsonAndValidate } from '$lib/modules/util';
   import ExtLink from '$lib/components/ExtLink.svelte';

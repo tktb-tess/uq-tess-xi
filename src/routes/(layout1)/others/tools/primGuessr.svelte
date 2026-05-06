@@ -3,7 +3,8 @@
   import Spinner from '$lib/components/Spinner.svelte';
   import XSection from '$lib/components/XSection.svelte';
   import { createErrHandler, safeFetchJsonAndValidate } from '$lib/modules/util';
-  import { NamedError, toBase64 } from '@tktb-tess/util-fns';
+  import { NamedError } from '@tktb-tess/util-fns/named_error';
+  import { toBase64 } from '@tktb-tess/util-fns/base64';
   import { err, ok, ResultAsync } from 'neverthrow';
   import * as z from 'zod';
 

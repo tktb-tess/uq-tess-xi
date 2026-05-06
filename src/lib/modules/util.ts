@@ -1,5 +1,5 @@
 import { Result, ok, err, ResultAsync, okAsync, errAsync } from 'neverthrow';
-import { NamedError } from '@tktb-tess/util-fns';
+import { NamedError } from '@tktb-tess/util-fns/named_error';
 import * as z from 'zod';
 
 const defaultMsgs = {

@@ -1,5 +1,3 @@
-<svelte:options runes />
-
 <script lang="ts">
   import ExtLink from '$lib/components/ExtLink.svelte';
   import PageTopBtn from '$lib/components/PageTopBtn.svelte';
