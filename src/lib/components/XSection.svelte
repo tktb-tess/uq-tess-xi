@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { toBase64URL } from '@tktb-tess/util-fns';
+  import { toBase64URL } from '@tktb-tess/util-fns/base64';
 
   interface Props {
     readonly title: string;

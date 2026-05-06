@@ -1,7 +1,7 @@
 <script lang="ts">
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64URL, fromBase64, fromBase64URL } from '@tktb-tess/util-fns';
+  import { toBase64URL, fromBase64, fromBase64URL } from '@tktb-tess/util-fns/base64';
   import type { MouseEventHandler } from 'svelte/elements';
   import type { Mode } from './typesdecl';
   import SelectBtn from '$lib/components/SelectBtn.svelte';

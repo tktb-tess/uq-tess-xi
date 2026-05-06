@@ -1,4 +1,4 @@
-import { getRandPrimeByRange } from '@tktb-tess/util-fns';
+import { getRandPrimeByRange } from '@tktb-tess/util-fns/baillie_psw';
 import { error, isHttpError, json } from '@sveltejs/kit';
 import * as z from 'zod';
 

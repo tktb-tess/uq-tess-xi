@@ -1,13 +1,13 @@
 import { json } from '@sveltejs/kit';
 import { createClient } from 'redis';
-import { REDIS_URL } from '$env/static/private';
-import type { WordData } from '$lib/types/decl';
-import { ZpDIC } from '@tktb-tess/my-zod-schema';
-import { redisKeys } from '$lib/types/decl';
 import * as z from 'zod';
 import { err, ResultAsync } from 'neverthrow';
+import { NamedError } from '@tktb-tess/util-fns/named_error';
+import * as ZpDIC from '@tktb-tess/my-zod-schema/zpdic';
 import { safeParseAndValidate, createErrHandler } from '$lib/modules/util';
-import { NamedError } from '@tktb-tess/util-fns';
+import { redisKeys } from '$lib/types/decl';
+import type { WordData } from '$lib/types/decl';
+import { REDIS_URL } from '$env/static/private';
 
 export const GET = async () => {
   const client = createClient({ url: REDIS_URL });
