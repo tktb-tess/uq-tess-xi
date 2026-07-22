@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import { toBase64URL } from '@tktb-tess/util-fns/base64';
+  import { toBase64 } from '@tktb-tess/util-fns/base64';
 
   interface Props {
     readonly title: string;
@@ -10,7 +10,9 @@
 
   const en = new TextEncoder();
   const { title, class: className, children }: Props = $props();
-  const id = $derived('section-' + toBase64URL(en.encode(title)));
+  const id = $derived(
+    'section-' + toBase64(en.encode(title), { alphabet: 'base64url', omitPadding: true }),
+  );
 </script>
 
 <section aria-labelledby={id} class={className}>
