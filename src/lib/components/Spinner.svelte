@@ -36,7 +36,7 @@
     }
 
     p {
-      @apply mt-0;
+      @apply mbs-0;
     }
   }
 </style>

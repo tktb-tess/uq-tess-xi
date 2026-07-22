@@ -60,7 +60,7 @@
       > button::after {
         content: '';
         @apply block col-span-full row-span-full place-self-center inline-5
-        border-b-2 border-current;
+        border-be-2 border-current;
       }
 
       > button::before {

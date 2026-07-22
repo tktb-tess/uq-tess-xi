@@ -129,10 +129,10 @@
 
       > main {
         grid-area: m;
-        @apply flow-root bg-main border-l border-r border-b border-border-lighter;
+        @apply flow-root bg-main border-s border-e border-be border-border-lighter;
 
         :where(#title) {
-          @apply text-center ps-0 border-none mb-heading;
+          @apply text-center ps-0 border-none mbe-heading;
         }
       }
 

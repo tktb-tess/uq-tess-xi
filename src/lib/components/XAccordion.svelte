@@ -54,7 +54,7 @@
     }
 
     .arrow {
-      @apply size-2 border-r-2 border-b-2 border-current justify-self-center
+      @apply size-2 border-e-2 border-be-2 border-current justify-self-center
       transition-transform duration-(--accordion-transition-duration);
 
       .accordion:not([open]) & {

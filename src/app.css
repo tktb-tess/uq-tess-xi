@@ -269,9 +269,11 @@
   }
 
   @supports (word-break: auto-phrase) {
-    [lang^='ja'] {
-      word-break: auto-phrase;
-      text-align: justify;
+    @media (width >= 40rem) {
+      [lang^='ja'] {
+        word-break: auto-phrase;
+        text-align: justify;
+      }
     }
   }
 
@@ -346,7 +348,7 @@
   }
 
   h2 {
-    @apply text-3xl ps-1 pb-1 border-b border-border-darker;
+    @apply text-3xl ps-1 pbe-1 border-be border-border-darker;
   }
 
   h3 {
@@ -362,11 +364,11 @@
   h4,
   h5,
   h6 {
-    @apply mt-heading;
+    @apply mbs-heading;
   }
 
   :not(li) > :where(p, ul, ol, pre) {
-    @apply mt-paragraph;
+    @apply mbs-paragraph;
   }
 
   :not(li) > :where(ul, ol) {
@@ -420,14 +422,14 @@
   }
 
   caption {
-    @apply col-span-full font-serif text-lg pb-1;
+    @apply col-span-full font-serif text-lg pbe-1;
   }
 
   :is(td, th):where(thead > tr:last-child > *) {
-    @apply border-b-3 border-double border-border-darker;
+    @apply border-be-3 border-double border-border-darker;
   }
 
   :is(td, th):where(tr:not(:last-child) > *) {
-    @apply border-b border-border;
+    @apply border-be border-border;
   }
 }

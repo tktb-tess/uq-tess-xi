@@ -36,7 +36,7 @@
     }
 
     .to-page-top-btn::before {
-      @apply block size-2 border-l-2 border-t-2 border-current
+      @apply block size-2 border-s-2 border-bs-2 border-current
       transition-[translate] duration-140;
       content: '';
       rotate: 45deg;

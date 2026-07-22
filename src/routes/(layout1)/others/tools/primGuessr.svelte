@@ -220,7 +220,7 @@
 
     .product,
     .judge {
-      @apply px-2 py-1 mt-0 border border-border-darker rounded text-2xl font-mono self-center leading-none;
+      @apply px-2 py-1 mbs-0 border border-border-darker rounded text-2xl font-mono self-center leading-none;
     }
 
     .show-btn {

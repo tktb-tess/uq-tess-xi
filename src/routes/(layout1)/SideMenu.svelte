@@ -58,7 +58,7 @@
   @reference '../../app.css';
   @layer components {
     .sidemenu {
-      @apply px-1 gap-6 **:mt-0;
+      @apply px-1 gap-6 **:mbs-0;
 
       &,
       ul {

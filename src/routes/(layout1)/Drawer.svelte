@@ -70,7 +70,7 @@
     }
 
     #drawer-title {
-      @apply font-[unset] font-extralight border-b-0 mx-3 ps-2 border-s-2 border-border-darker
+      @apply font-[unset] font-extralight border-be-0 mx-3 ps-2 border-s-2 border-border-darker
       leading-none py-0;
     }
 
@@ -83,7 +83,7 @@
       grid place-items-center transition-colors;
 
       > * {
-        @apply col-span-full row-span-full border-b border-current inline-5;
+        @apply col-span-full row-span-full border-be border-current inline-5;
       }
 
       > :first-child {

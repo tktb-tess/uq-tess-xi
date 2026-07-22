@@ -1,5 +1,3 @@
-
-
 <svelte:head>
   <link
     rel="stylesheet"

@@ -45,7 +45,7 @@
         }
 
         > :where(h3) {
-          @apply text-nowrap pb-0.5;
+          @apply text-nowrap pbe-0.5;
         }
       }
     }

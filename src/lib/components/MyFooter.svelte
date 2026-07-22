@@ -29,7 +29,7 @@
       @apply my-paragraph text-center break-keep px-gutter;
 
       > .github-link {
-        @apply mt-paragraph flex justify-center-safe;
+        @apply mbs-paragraph flex justify-center-safe;
 
         > a {
           @apply hover-focus:opacity-60 transition-opacity;
