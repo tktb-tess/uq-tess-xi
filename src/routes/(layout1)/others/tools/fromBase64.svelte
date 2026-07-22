@@ -1,7 +1,7 @@
 <script lang="ts">
   import { addToast } from '$lib/components/toastStates.svelte';
   import XSection from '$lib/components/XSection.svelte';
-  import { toBase64URL, fromBase64, fromBase64URL } from '@tktb-tess/util-fns/base64';
+  import { toBase64, fromBase64 } from '@tktb-tess/util-fns/base64';
   import type { MouseEventHandler } from 'svelte/elements';
   import type { Mode } from './typesdecl';
   import SelectBtn from '$lib/components/SelectBtn.svelte';
@@ -10,7 +10,7 @@
   const dec = new TextDecoder('utf-8', { fatal: true });
   const en = new TextEncoder();
   const title = 'Base64(URL) → テキスト 変換';
-  const seed = toBase64URL(en.encode(title));
+  const seed = toBase64(en.encode(title), { alphabet: 'base64url', omitPadding: true });
 
   let input = $state('');
   let mode: Mode = $state('Base64');
@@ -22,7 +22,7 @@
         const bin = fromBase64(input);
         return dec.decode(bin);
       } else {
-        const bin = fromBase64URL(input);
+        const bin = fromBase64(input, { alphabet: 'base64url' });
         return dec.decode(bin);
       }
     } catch (e) {
