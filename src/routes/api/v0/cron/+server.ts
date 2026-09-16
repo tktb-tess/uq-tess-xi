@@ -18,13 +18,13 @@ export const GET = async ({ request: req, fetch }) => {
     skip?: number,
     limit?: number,
   ): Promise<ZpDIC.MWWEResponse> => {
-    const pa = new URLSearchParams();
+    const prms = new URLSearchParams();
 
-    pa.set('text', text);
-    if (skip != null) pa.set('skip', skip.toString());
-    if (limit != null) pa.set('skip', limit.toString());
+    prms.set('text', text);
+    if (skip != null) prms.set('skip', skip.toString());
+    if (limit != null) prms.set('limit', limit.toString());
 
-    const resp = await fetch(`${zpdicApiRt}?${pa.toString()}`, {
+    const resp = await fetch(`${zpdicApiRt}?${prms.toString()}`, {
       method: 'GET',
       headers: zpdicReqHeaders,
     });
@@ -37,7 +37,7 @@ export const GET = async ({ request: req, fetch }) => {
   };
 
   const getTotal = async () => {
-    const json = await fetchZpDICAPI('');
+    const json = await fetchZpDICAPI('', 0, 1);
     return json.total;
   };
 
@@ -45,9 +45,18 @@ export const GET = async ({ request: req, fetch }) => {
     return fetchZpDICAPI('', index, 1);
   };
 
-  const getTodayWord = async () => {
+  const _getTodayWord = async () => {
     const total = await getTotal();
-    return (await getWord(getRndInt(0, total))).words.at(0);
+    console.log('total: ', total);
+    const idx = getRndInt(0, total);
+    console.log('index: ', idx);
+    const todayWord = (await getWord(idx)).words.at(0);
+
+    if (todayWord == null) {
+      throw TypeError('`todayWord` is undefined');
+    }
+
+    return todayWord;
   };
 
   // authorization
@@ -61,25 +70,28 @@ export const GET = async ({ request: req, fetch }) => {
     // connect to Redis
     await client.connect();
 
-    const taskTodayWord = async () => {
-      const result = await getTodayWord();
-      if (!result) throw Error('todayWord is undefined');
-      await client.set(redisKeys.todayWord, JSON.stringify(result));
+    const getTodayWord = async () => {
+      const result = await _getTodayWord();
+      return JSON.stringify(result);
     };
 
-    const taskTodayPRP = async () => {
+    const getTodayPRP = async () => {
+      await new Promise<void>((res) => setTimeout(() => res(), 0));
       const prime = getRandPrimeByBitLength(256, true);
-      await client.set(redisKeys.todayPRP, JSON.stringify(prime.toString()));
+      return prime.toString();
     };
 
-    const taskLastUpdate = async () => {
-      const result = new Date().toISOString();
-      await client.set(redisKeys.lastUpdate, JSON.stringify(result));
+    const getLastUpdate = async () => {
+      return new Date().toISOString();
     };
 
-    await Promise.allSettled([taskTodayWord(), taskTodayPRP(), taskLastUpdate()]).then((res) => {
-      res.filter((r) => r.status === 'rejected').forEach((r) => console.error(r.reason));
-    });
+    await Promise.all([getTodayWord(), getTodayPRP(), getLastUpdate()]).then(
+      async ([word, prp, lastUpdate]) => {
+        await client.set(redisKeys.todayWord, word);
+        await client.set(redisKeys.todayPRP, prp);
+        await client.set(redisKeys.lastUpdate, lastUpdate);
+      },
+    );
 
     // check
     const tasks = Object.entries(redisKeys).map(async ([key, value]) => {
