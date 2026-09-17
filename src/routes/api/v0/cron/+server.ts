@@ -78,11 +78,11 @@ export const GET = async ({ request: req, fetch }) => {
     const getTodayPRP = async () => {
       await new Promise<void>((res) => setTimeout(() => res(), 0));
       const prime = getRandPrimeByBitLength(256, true);
-      return prime.toString();
+      return JSON.stringify(prime.toString());
     };
 
     const getLastUpdate = async () => {
-      return new Date().toISOString();
+      return JSON.stringify(new Date().toISOString());
     };
 
     await Promise.all([getTodayWord(), getTodayPRP(), getLastUpdate()]).then(
@@ -100,7 +100,7 @@ export const GET = async ({ request: req, fetch }) => {
       return [key, JSON.parse(json) as unknown] as const;
     });
 
-    const stored = await Promise.all(tasks).then((entries) => Object.fromEntries(entries));
+    const stored = Object.fromEntries(await Promise.all(tasks));
 
     console.log(stored);
 
